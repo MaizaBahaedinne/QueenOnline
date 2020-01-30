@@ -77,6 +77,8 @@ class Reservation extends BaseController
              $data['FarhetAmor'] = $this->reservation_model->ReservationCalenderFarhetElAMOR();
               $data['Laylina'] = $this->reservation_model->ReservationCalenderLayalina();
                $data['Soltana'] = $this->reservation_model->ReservationCalenderSoltanaR();
+
+               $data['salleRecords'] = $this->salle_model->SalleListing();
             $this->global['pageTitle'] = 'CodeInsect : User Listing';
             $this->loadViews("reservation/calender", $this->global, $data, NULL);
     }
