@@ -170,7 +170,7 @@
           </div>
        
 
-      <?php if ($projectInfo->statut == 1 || $projectInfo->statut == 0  ) { ?>
+      <?php if (($projectInfo->statut == 1 || $projectInfo->statut == 0) &&  $projectInfo->clientName != ''  ) { ?>
         <div class="row">
           
           

@@ -187,9 +187,29 @@
 		  // Birthday Events Source
 		  var birthdayEvents = {
 		    id: 2,
-		    backgroundColor: 'rgba(16,183,89, .25)',
+		    backgroundColor: 'rgba(253,126,20,.25)',
 		    borderColor: '#10b759',
 		    events: [
+		    <?php
+                    if(!empty($userRecords))
+                    {
+                        foreach($FarhetAmor as $record)
+                        {
+                    ?>
+		      
+		      {
+		        id: '2',
+		        start: '<?php echo date_format(date_create($record->dateDebut)  , '20y-m-d'); ?>T<?php echo $record->heureDebut ; ?>' ,
+		        end: '<?php echo date_format(date_create($record->dateFin)  , '20y-m-d'); ?>T<?php echo $record->heureFin ; ?>',
+		        title: '<?php echo $record->salle  ?> <?php echo $record->type  ?> : <?php echo $record->titre  ?>',
+		        description: '<h6>Espace : <small><?php echo $record->salle  ?><small></h6><br><h6>Date : <small><?php echo date_format(date_create($record->dateDebut)  , 'd M 20y');  ?></b>  de <?php echo date_format(date_create($record->heureDebut)  , 'H:i'); ?>  à  <?php echo date_format(date_create($record->heureFin)  , 'H:i'); ?><small></h6><br><h6>nombre de place : <small><?php echo $record->nbPlace  ?><small></h6><br><h6>Option : <small><?php If($record->cuisine == 1 ){echo 'Cuisine ' ; } If($record->tableCM == 1 ){echo '  Table contrat de  marriage' ; }    ?><small></h6><br><h6>Note Admin : <small><?php echo $record->noteAdmin  ?><small></h6><br>'
+		      },
+
+		                          <?php
+                       } 
+                    }
+                    ?>
+
 		      
 		    ]
 		  };
@@ -200,6 +220,26 @@
 		    backgroundColor: 'rgba(241,0,117,.25)',
 		    borderColor: '#f10075',
 		    events: [
+		    <?php
+                    if(!empty($userRecords))
+                    {
+                        foreach($Laylina as $record)
+                        {
+                    ?>
+		      
+		      {
+		        id: '3',
+		        start: '<?php echo date_format(date_create($record->dateDebut)  , '20y-m-d'); ?>T<?php echo $record->heureDebut ; ?>' ,
+		        end: '<?php echo date_format(date_create($record->dateFin)  , '20y-m-d'); ?>T<?php echo $record->heureFin ; ?>',
+		        title: '<?php echo $record->salle  ?> <?php echo $record->type  ?> : <?php echo $record->titre  ?>',
+		        description: '<h6>Espace : <small><?php echo $record->salle  ?><small></h6><br><h6>Date : <small><?php echo date_format(date_create($record->dateDebut)  , 'd M 20y');  ?></b>  de <?php echo date_format(date_create($record->heureDebut)  , 'H:i'); ?>  à  <?php echo date_format(date_create($record->heureFin)  , 'H:i'); ?><small></h6><br><h6>nombre de place : <small><?php echo $record->nbPlace  ?><small></h6><br><h6>Option : <small><?php If($record->cuisine == 1 ){echo 'Cuisine ' ; } If($record->tableCM == 1 ){echo '  Table contrat de  marriage' ; }    ?><small></h6><br><h6>Note Admin : <small><?php echo $record->noteAdmin  ?><small></h6><br>'
+		      },
+
+		                          <?php
+                       } 
+                    }
+                    ?>
+
 		      
 		    ]
 		  };
@@ -209,6 +249,26 @@
 		    backgroundColor: 'rgba(0,204,204,.25)',
 		    borderColor: '#00cccc',
 		    events: [
+		    <?php
+                    if(!empty($userRecords))
+                    {
+                        foreach($Soltana as $record)
+                        {
+                    ?>
+		      
+		      {
+		        id: '2',
+		        start: '<?php echo date_format(date_create($record->dateDebut)  , '20y-m-d'); ?>T<?php echo $record->heureDebut ; ?>' ,
+		        end: '<?php echo date_format(date_create($record->dateFin)  , '20y-m-d'); ?>T<?php echo $record->heureFin ; ?>',
+		        title: '<?php echo $record->salle  ?> <?php echo $record->type  ?> : <?php echo $record->titre  ?>',
+		        description: '<h6>Espace : <small><?php echo $record->salle  ?><small></h6><br><h6>Date : <small><?php echo date_format(date_create($record->dateDebut)  , 'd M 20y');  ?></b>  de <?php echo date_format(date_create($record->heureDebut)  , 'H:i'); ?>  à  <?php echo date_format(date_create($record->heureFin)  , 'H:i'); ?><small></h6><br><h6>nombre de place : <small><?php echo $record->nbPlace  ?><small></h6><br><h6>Option : <small><?php If($record->cuisine == 1 ){echo 'Cuisine ' ; } If($record->tableCM == 1 ){echo '  Table contrat de  marriage' ; }    ?><small></h6><br><h6>Note Admin : <small><?php echo $record->noteAdmin  ?><small></h6><br>'
+		      },
+
+		                          <?php
+                       } 
+                    }
+                    ?>
+
 		      
 		    ]
 		  };

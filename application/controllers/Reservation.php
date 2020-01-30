@@ -71,11 +71,12 @@ class Reservation extends BaseController
             $searchText = $this->security->xss_clean($this->input->post('searchText'));
             $data['searchText'] = $searchText;
             $this->load->library('pagination');
-            $count = $this->reservation_model->ReservationListing();
+            $count = $this->reservation_model->ReservationCalenderElilaErsi();
             $returns = $this->paginationCompress ( "userListing/", $count, 10 );
-            $data['userRecords'] = $this->reservation_model->ReservationListing();
-            $data['salleRecords'] = $this->salle_model->SalleListing();
-
+            $data['userRecords'] = $this->reservation_model->ReservationCalenderElilaErsi();
+             $data['FarhetAmor'] = $this->reservation_model->ReservationCalenderFarhetElAMOR();
+              $data['Laylina'] = $this->reservation_model->ReservationCalenderLayalina();
+               $data['Soltana'] = $this->reservation_model->ReservationCalenderSoltanaR();
             $this->global['pageTitle'] = 'CodeInsect : User Listing';
             $this->loadViews("reservation/calender", $this->global, $data, NULL);
     }
