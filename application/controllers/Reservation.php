@@ -171,6 +171,30 @@ class Reservation extends BaseController
 
 
 
+         /**
+     * This function is used to load the user list
+     */
+    function recuP($resId)
+    {  
+
+            
+
+           
+            $data['projectInfo'] = $this->reservation_model->ReservationInfo($resId);
+            $data['contratInfo'] = $this->contrat_model->contratInfo($resId);
+            $data['paiementInfo'] = $this->paiement_model->paiementListingbyReservation($resId) ;
+            $data['totalPaiement'] = $this->paiement_model->getTotal($resId) ;
+            
+
+
+
+
+            $this->global['pageTitle'] = 'CodeInsect : User Listing';
+            $this->loadViews("paiement/recu", $this->global, $data, NULL);
+    }
+
+
+
 
 
      /**
