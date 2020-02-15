@@ -10,6 +10,10 @@
             <?php } ?>
             </small></b> <small><small>#<?php echo $projectInfo->reservationId ; ?></small></small> </small></h4>
           </div>
+          <div>
+            <a href="" class="btn btn-primary" >Modifier</a> &nbsp;&nbsp; <a href="" class="btn btn-danger">Annuler</a>
+          </div>
+
         </div>
 
         <div class="row">
