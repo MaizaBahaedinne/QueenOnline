@@ -145,7 +145,7 @@
       categories: [
       <?php foreach ($reservationRecords as $record ) {
         $date = new DateTime($record->dateDebut);
-        echo '\''.$date->format('d/m/20y').'\','; ; 
+        echo '\''.$date->format('m/01/20y').'\','; ; 
       } ?> ]
     }
   }

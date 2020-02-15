@@ -43,7 +43,10 @@ class Reservation extends BaseController
             $returns = $this->paginationCompress ( "userListing/", $count, 10 );
             $data['userRecords'] = $this->reservation_model->ReservationListing();
             $this->global['pageTitle'] = 'CodeInsect : User Listing';
-            $this->loadViews("reservation/list", $this->global, $data, NULL);
+        
+            
+        
+         //   $this->loadViews("reservation/list", $this->global, $data, NULL);
     
     }
 

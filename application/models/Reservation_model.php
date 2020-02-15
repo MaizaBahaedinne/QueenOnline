@@ -26,6 +26,9 @@ class Reservation_model extends CI_Model
         $this->db->join('tbl_users as Locataire', 'Locataire.userId = BaseTbl.clientId','left');
         $this->db->join('tbl_salle as Salles', 'Salles.salleID = BaseTbl.salleId','left');
         $this->db->where('BaseTbl.dateFin > NOW() ');
+
+    
+
         $query = $this->db->get();
         
         $result = $query->result();        
@@ -43,14 +46,14 @@ class Reservation_model extends CI_Model
      */
     function ReservationCalenderStat()
     {
-        $this->db->select('count(BaseTbl.reservationId) number , BaseTbl.titre , BaseTbl.type , sum(BaseTbl.prix) prix ,  BaseTbl.dateDebut , BaseTbl.heureDebut , BaseTbl.dateFin , BaseTbl.heureFin , BaseTbl.cuisine , BaseTbl.tableCM , BaseTbl.nbPlace , BaseTbl.noteAdmin , BaseTbl.statut , Client.name clientName , Client.mobile , Salles.nom salle');
+        $this->db->select('count(BaseTbl.reservationId) number , sum(BaseTbl.prix) prix ,  BaseTbl.dateDebut , BaseTbl.heureDebut  ');
         $this->db->from('tbl_reservation as BaseTbl');
-        $this->db->join('tbl_users as Client', 'Client.userId = BaseTbl.clientId','left');
-        $this->db->join('tbl_users as Locataire', 'Locataire.userId = BaseTbl.clientId','left');
-        $this->db->join('tbl_salle as Salles', 'Salles.salleID = BaseTbl.salleId ','left');
-        $this->db->group_by('MONTH(BaseTbl.dateDebut)');
-  
+
+        $this->db->group_by(' MONTH(BaseTbl.dateDebut) DESC');
+        $this->db->where('YEAR(BaseTbl.dateDebut) = YEAR(NOW()) ');
         $this->db->where('BaseTbl.statut IN (0,1) ');
+
+         
         $query = $this->db->get();
         
         $result = $query->result();        
@@ -178,6 +181,8 @@ class Reservation_model extends CI_Model
         $this->db->where("tbl_reservation.statut = 0 or tbl_reservation.statut = 1 ",'');
         $this->db->where("tbl_reservation.statut = 0 or tbl_reservation.statut = 1 ",'');
         $this->db->where("Salles.salleID = ",$salleID );
+
+
         
         $query = $this->db->get();
 
