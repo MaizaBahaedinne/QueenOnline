@@ -52,16 +52,20 @@
 									<div class="row form-group">
 										<div class="col-md-6">
 											<label for="formGroupExampleInput2">Type</label>
-											<select type="text" class="form-control" name="type" >
-												<option value="Marriage" <?php if($projectInfo->type == 'Marriage' ){ echo "selected" ; }  ?>   > Marriage </option>
-												<option value="Finacailles" <?php if($projectInfo->type == 'Marriage' ){ echo "selected" ; }  ?> > Finacailles </option>
-												<option value="Hena" <?php if($projectInfo->type == 'Hena' ){ echo "selected" ; }  ?> > Hena </option>
-												<option value="Outya" <?php if($projectInfo->type == 'Outya' ){ echo "selected" ; }  ?> > Outya </option>
-												<option value="Congret" <?php if($projectInfo->type == 'Congret' ){ echo "selected" ; }  ?> > Congret </option>
-												<option value="Circoncision" <?php if($projectInfo->type == 'Circoncision' ){ echo "selected" ; }  ?> > Circoncision </option>
-												<option value="Team Building" <?php if($projectInfo->type == 'Team Building' ){ echo "selected" ; }  ?> > Team Building </option>
-												<option value="Anniversaire" <?php if($projectInfo->type == 'Anniversaire' ){ echo "selected" ; }  ?> > Anniversaire </option>
-												<option value="Evenement" <?php if($projectInfo->type == 'Evenement' ){ echo "selected" ; }  ?> > Evenement </option>
+											<h1><?php echo $projectInfo->type ?></h1>
+								<select type="text" class="form-control" name="type" >
+
+
+
+									<option value="Marriage" > Marriage </option>
+									<option value="Finacailles"> Finacailles </option>
+									<option value="Hena" <?php if ($projectInfo->type == "Hena" ){ echo " selected"; } ?> > Hena </option>
+									<option value="Outya"  > Outya </option>
+									<option value="Congret" > Congret </option>
+									<option value="Circoncision"  > Circoncision </option>
+									<option value="Team Building"  > Team Building </option>
+									<option value="Anniversaire"> Anniversaire </option>
+									<option value="Evenement" > Evenement </option>
 
 											</select>
 										</div>
@@ -82,18 +86,18 @@
 										<label for="formGroupExampleInput">Options  </label>
 										<br>
 										<input type="checkbox"  name="tableCM" value="1" 
-										chekced="<?php  if ($projectInfo->tableCM == 0 ){ echo 'false'; } ?>" > Table contrat de  mariage
+									     <?php  if ($projectInfo->tableCM == 1 ){ echo 'checked'; } ?> > Table contrat de  mariage
 										<br>
-										<input type="checkbox"  name="cuisine"  value="1"  chekced="<?php  if ($projectInfo->cuisine == 0 ){ echo 'false'; } ?>" > Cuisine
+										<input type="checkbox"  name="cuisine"  value="1"   <?php  if ($projectInfo->cuisine == 1 ){ echo 'checked'; } ?>  > Cuisine
 									</div>
 
 									<div class="form-group">
 										<label for="formGroupExampleInput">Titre</label>
-										<input type="text" class="form-control" name="titre" placeholder="Titre de l'evenement">
+										<input type="text" class="form-control" name="titre" placeholder="Titre de l'evenement" value="<?php echo $projectInfo->titre ?>">
 									</div>
 									<div class="form-group">
 										<label for="formGroupExampleInput">Note Administratif </label>
-										<textarea class="form-control" row="10" name="noteAdmin" ></textarea>
+										<textarea class="form-control" row="10" name="noteAdmin" > <?php echo $projectInfo->noteAdmin ?></textarea>
 									</div>
 
 									<div class="modal-footer">
