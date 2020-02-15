@@ -77,6 +77,8 @@ class Reservation_model extends CI_Model
         $this->db->select('   BaseTbl.dateDebut , BaseTbl.heureDebut  ');
         $this->db->from('tbl_reservation as BaseTbl');
 
+    
+
         $this->db->where('BaseTbl.statut IN (0,1) ');
 
          
