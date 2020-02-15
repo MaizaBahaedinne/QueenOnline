@@ -13,7 +13,7 @@
                     </div>
                     <div class="row">
                       <div class="col-6 col-md-12 col-xl-5">
-                        <h3 class="mb-2">3,897</h3>
+                        <h3 class="mb-2"> </h3>
                         <div class="d-flex align-items-baseline">
                           <p class="text-success">
                             <span>+3.3%</span>
@@ -40,7 +40,7 @@
                     </div>
                     <div class="row">
                       <div class="col-6 col-md-12 col-xl-5">
-                        <h3 class="mb-2">35,084</h3>
+                        <h3 class="mb-2"><?php echo count($reservationRecords) ?></h3>
                         <div class="d-flex align-items-baseline">
                           <p class="text-danger">
                             <span>-2.8%</span>
