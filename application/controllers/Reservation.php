@@ -177,7 +177,7 @@ class Reservation extends BaseController
     {  
 
             
-
+            $data['salleRecords'] = $this->salle_model->SalleListing();
             $data['projectInfo'] = $this->reservation_model->ReservationInfo($resId);
             $data['contratInfo'] = $this->contrat_model->contratInfo($resId);
             $data['paiementInfo'] = $this->paiement_model->paiementListingbyReservation($resId) ;

@@ -42,7 +42,7 @@
 											<select type="text" class="form-control" name="salle" id="salle" placeholder="Example input">
 											<?php foreach ($salleRecords as $record ) {
 											?>	
-											<option value="<?php echo $record->salleID ?>" > <?php echo $record->nom ?> </option>
+											<option value="<?php echo $record->salleID ?>" <?php if($record->salleID == $projectInfo->salleID ){ echo "selected" ; }  ?>  > <?php echo $record->nom ?> </option>
 											<?php } ?>
 										</select>
 										
@@ -53,22 +53,22 @@
 										<div class="col-md-6">
 											<label for="formGroupExampleInput2">Type</label>
 											<select type="text" class="form-control" name="type" >
-												<option value="Marriage" > Marriage </option>
-												<option value="Finacailles" > Finacailles </option>
-												<option value="Hena" > Hena </option>
-												<option value="Marriage" > Outya </option>
-												<option value="Congret" > Congret </option>
-												<option value="Circoncision" > Circoncision </option>
-												<option value="Team Building" > Team Building </option>
-												<option value="Team Building" > Anniversaire </option>
-												<option value="Team Building" > Evenement </option>
+												<option value="Marriage" <?php if($projectInfo->type == 'Marriage' ){ echo "selected" ; }  ?>   > Marriage </option>
+												<option value="Finacailles" <?php if($projectInfo->type == 'Marriage' ){ echo "selected" ; }  ?> > Finacailles </option>
+												<option value="Hena" <?php if($projectInfo->type == 'Hena' ){ echo "selected" ; }  ?> > Hena </option>
+												<option value="Outya" <?php if($projectInfo->type == 'Outya' ){ echo "selected" ; }  ?> > Outya </option>
+												<option value="Congret" <?php if($projectInfo->type == 'Congret' ){ echo "selected" ; }  ?> > Congret </option>
+												<option value="Circoncision" <?php if($projectInfo->type == 'Circoncision' ){ echo "selected" ; }  ?> > Circoncision </option>
+												<option value="Team Building" <?php if($projectInfo->type == 'Team Building' ){ echo "selected" ; }  ?> > Team Building </option>
+												<option value="Anniversaire" <?php if($projectInfo->type == 'Anniversaire' ){ echo "selected" ; }  ?> > Anniversaire </option>
+												<option value="Evenement" <?php if($projectInfo->type == 'Evenement' ){ echo "selected" ; }  ?> > Evenement </option>
 
 											</select>
 										</div>
 										
 										<div class="col-md-3">
 											<label for="formGroupExampleInput2">Nombre des invités</label>
-											<input type="number" class="form-control" value="value="<?php echo $projectInfo->nbPlace ?> min="20" max="1000" name="nbPlace" placeholder="Nombre des invités">
+											<input type="number" class="form-control" value="<?php echo $projectInfo->nbPlace ?>" min="20" max="1000" name="nbPlace" placeholder="Nombre des invités">
 										</div>
 										<div class="col-md-3">
 											<label for="formGroupExampleInput2">Prix</label>
@@ -80,9 +80,11 @@
 
 									<div class="form-group">
 										<label for="formGroupExampleInput">Options  </label>
+										<br>
 										<input type="checkbox"  name="tableCM" value="1" 
 										chekced="<?php  if ($projectInfo->tableCM == 0 ){ echo 'false'; } ?>" > Table contrat de  mariage
-										<input type="checkbox"  name="cuisine"  value="1"  chekced="<?php  if ($projectInfo->tableCM == 0 ){ echo 'false'; } ?>" > Cuisine
+										<br>
+										<input type="checkbox"  name="cuisine"  value="1"  chekced="<?php  if ($projectInfo->cuisine == 0 ){ echo 'false'; } ?>" > Cuisine
 									</div>
 
 									<div class="form-group">

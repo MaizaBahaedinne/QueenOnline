@@ -11,7 +11,9 @@
             </small></b> <small><small>#<?php echo $projectInfo->reservationId ; ?></small></small> </small></h4>
           </div>
           <div>
-            <a href="" class="btn btn-primary" >Modifier</a> &nbsp;&nbsp; <a href="" class="btn btn-danger">Annuler</a>
+            <a href="<?php echo base_url () ?>Reservation/edit/<?php echo $projectInfo->reservationId ?>" class="btn btn-primary" >Modifier</a> 
+            &nbsp;&nbsp; 
+            <a href="" class="btn btn-danger">Annuler</a>
           </div>
 
         </div>
