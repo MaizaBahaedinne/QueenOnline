@@ -13,12 +13,9 @@
                     </div>
                     <div class="row">
                       <div class="col-6 col-md-12 col-xl-5">
-                        <h3 class="mb-2"> </h3>
+                        <h3 class="mb-2"><?php echo $clientecords ?> </h3>
                         <div class="d-flex align-items-baseline">
-                          <p class="text-success">
-                            <span>+3.3%</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-up icon-sm mb-1"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
-                          </p>
+
                         </div>
                       </div>
                       <div class="col-6 col-md-12 col-xl-7">
@@ -42,10 +39,7 @@
                       <div class="col-6 col-md-12 col-xl-5">
                         <h3 class="mb-2"><?php echo count($reservationRecords) ?></h3>
                         <div class="d-flex align-items-baseline">
-                          <p class="text-danger">
-                            <span>-2.8%</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down icon-sm mb-1"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
-                          </p>
+                          
                         </div>
                       </div>
                       <div class="col-6 col-md-12 col-xl-7">
@@ -69,10 +63,7 @@
                       <div class="col-6 col-md-12 col-xl-5">
                         <h3 class="mb-2">89.7%</h3>
                         <div class="d-flex align-items-baseline">
-                          <p class="text-success">
-                            <span>+2.8%</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-up icon-sm mb-1"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
-                          </p>
+                         
                         </div>
                       </div>
                       <div class="col-6 col-md-12 col-xl-7">
@@ -107,10 +98,7 @@
                       <div class="col-6 col-md-12 col-xl-5">
                         <h3 class="mb-2"><?php echo $reservationEERecords ?></h3>
                         <div class="d-flex align-items-baseline">
-                          <p class="text-success">
-                            <span></span>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-up icon-sm mb-1"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
-                          </p>
+                         
                         </div>
                       </div>
                       <div class="col-6 col-md-12 col-xl-7">
@@ -134,10 +122,7 @@
                       <div class="col-6 col-md-12 col-xl-5">
                         <h3 class="mb-2"><?php echo $reservationFARecords ?></h3>
                         <div class="d-flex align-items-baseline">
-                          <p class="text-danger">
-                            <span></span>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down icon-sm mb-1"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
-                          </p>
+                          
                         </div>
                       </div>
                       <div class="col-6 col-md-12 col-xl-7">
@@ -161,10 +146,7 @@
                       <div class="col-6 col-md-12 col-xl-5">
                         <h3 class="mb-2"><?php echo $reservationLRecords ?></h3>
                         <div class="d-flex align-items-baseline">
-                          <p class="text-success">
-                            <span></span>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-up icon-sm mb-1"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
-                          </p>
+                          
                         </div>
                       </div>
                       <div class="col-6 col-md-12 col-xl-7">
@@ -189,10 +171,7 @@
                       <div class="col-6 col-md-12 col-xl-5">
                         <h3 class="mb-2"><?php echo $reservationSRecords ?></h3>
                         <div class="d-flex align-items-baseline">
-                          <p class="text-success">
-                            <span></span>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-up icon-sm mb-1"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
-                          </p>
+                          
                         </div>
                       </div>
                       <div class="col-6 col-md-12 col-xl-7">
@@ -255,7 +234,7 @@
       }
     },
     series: [{
-      name: 'sales',
+      name: 'Reservation',
       data: [<?php foreach ($reservationRecords as $record ) {
         echo $record->number."," ; 
       } ?> ]

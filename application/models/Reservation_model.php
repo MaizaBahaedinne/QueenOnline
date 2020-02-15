@@ -10,6 +10,10 @@
 class Reservation_model extends CI_Model
 {
     
+
+
+
+
     
     /**
      * This function is used to get the user listing count
@@ -51,6 +55,28 @@ class Reservation_model extends CI_Model
 
         $this->db->group_by(' MONTH(BaseTbl.dateDebut) DESC');
         $this->db->where('YEAR(BaseTbl.dateDebut) = YEAR(NOW()) ');
+        $this->db->where('BaseTbl.statut IN (0,1) ');
+
+         
+        $query = $this->db->get();
+        
+        $result = $query->result();        
+        return $result;
+    }
+
+
+    /**
+     * This function is used to get the user listing count
+     * @param string $searchText : This is optional search text
+     * @param number $page : This is pagination offset
+     * @param number $segment : This is pagination limit
+     * @return array $result : This is result
+     */
+    function ReservationCalender()
+    {
+        $this->db->select('   BaseTbl.dateDebut , BaseTbl.heureDebut  ');
+        $this->db->from('tbl_reservation as BaseTbl');
+
         $this->db->where('BaseTbl.statut IN (0,1) ');
 
          

@@ -17,6 +17,7 @@ class User extends BaseController
     public function __construct()
     {
         parent::__construct();
+        $this->load->model('client_model');
         $this->load->model('user_model');
         $this->load->model('reservation_model');
         
@@ -31,12 +32,12 @@ class User extends BaseController
 
 
 
-        $data['reservationRecords'] = $this->reservation_model->ReservationCalenderStat();
+        $data['reservationRecords'] = $this->reservation_model->ReservationCalender();
         $data['reservationEERecords'] = count($this->reservation_model->ReservationCalenderElilaErsi());
         $data['reservationFARecords'] =  count($this->reservation_model->ReservationCalenderFarhetElAMOR());
         $data['reservationLRecords'] =  count($this->reservation_model->ReservationCalenderLayalina());
         $data['reservationSRecords'] =  count($this->reservation_model->ReservationCalenderSoltanaR());
-
+         $data['clientecords'] =   count($this->client_model->clientListing());
 
 
 
