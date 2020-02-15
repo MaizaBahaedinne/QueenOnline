@@ -32,6 +32,11 @@ class User extends BaseController
 
 
         $data['reservationRecords'] = $this->reservation_model->ReservationCalenderStat();
+        $data['reservationEERecords'] = count($this->reservation_model->ReservationCalenderElilaErsi());
+        $data['reservationFARecords'] =  count($this->reservation_model->ReservationCalenderFarhetElAMOR());
+        $data['reservationSRecords'] =  count($this->reservation_model->ReservationCalenderLayalina());
+        $data['reservationLRecords'] =  count($this->reservation_model->ReservationCalenderSoltanaR());
+
 
 
 
