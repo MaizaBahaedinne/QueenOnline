@@ -18,7 +18,7 @@
 									        });
 									});
 							</script>
-							<form action="<?php echo base_url()?>Reservation/editReservation/$projectInfo->reservationId ?>" method="post" >
+							<form action="<?php echo base_url() ?>Reservation/editReservation/<?php echo $projectInfo->reservationId ?>" method="post" >
 							<div id="modalBody2" class="modal-body">
 								
 									<div class="form-group">
