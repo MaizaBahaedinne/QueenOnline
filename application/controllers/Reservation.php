@@ -131,7 +131,7 @@ class Reservation extends BaseController
                 
                
            
-                $result = $this->reservation_model->editReservation($reservationInfo,$resId);
+                $result = $this->reservation_model->addNewReservation($reservationInfo);
                 
                 if($result > 0)
                 {
@@ -195,7 +195,7 @@ class Reservation extends BaseController
                 
                
            
-                $result = $this->reservation_model->addNewReservation($reservationInfo);
+                $result = $this->reservation_model->editReservation($reservationInfo,$resId);
                 
                 if($result > 0)
                 {
