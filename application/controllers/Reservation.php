@@ -184,7 +184,6 @@ class Reservation extends BaseController
                         'prix'=>$prix,
                         'titre'=>$titre,
                         'noteAdmin'=>$noteAdmin,
-                        'statut'=>2,
                         'cuisine'=>$cuisine,
                         'tableCM'=>$tableCM,
                         'locataireId'=>$this->vendorId 
