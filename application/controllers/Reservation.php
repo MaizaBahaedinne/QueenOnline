@@ -91,7 +91,7 @@ class Reservation extends BaseController
         /**
      * This function is used to add new user to the system
      */
-    function addNewReservation($resId)
+    function addNewReservation()
     {
 
                 $dateDebut = $this->input->post('dateDebut');
