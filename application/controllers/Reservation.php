@@ -91,7 +91,71 @@ class Reservation extends BaseController
         /**
      * This function is used to add new user to the system
      */
-    function addNewReservation()
+    function addNewReservation($resId)
+    {
+
+                $dateDebut = $this->input->post('dateDebut');
+                $heureDebut = $this->input->post('heureDebut');
+                $dateFin = $this->input->post('dateDebut');
+                $heureFin = $this->input->post('heureFin');
+                $type = $this->input->post('type');
+                $salle = $this->input->post('salle');
+                $nbPlace = $this->input->post('nbPlace');
+                $prix = $this->input->post('prix');
+                $titre = $this->input->post('titre');
+                $noteAdmin = $this->input->post('noteAdmin');  
+                $cuisine = $this->input->post('cuisine');       
+                $tableCM = $this->input->post('tableCM');                    
+       
+
+
+
+                     $reservationInfo = array('dateDebut'=>$dateDebut,
+                        'heureDebut'=>$heureDebut,
+                        'dateFin'=>$dateFin,
+                        'heureFin'=>$heureFin,
+                        'type'=>$type,
+                        'salleId'=>$salle,
+                        'nbPlace'=>$nbPlace,
+                        'prix'=>$prix,
+                        'titre'=>$titre,
+                        'noteAdmin'=>$noteAdmin,
+                        'statut'=>2,
+                        'cuisine'=>$cuisine,
+                        'tableCM'=>$tableCM,
+                        'locataireId'=>$this->vendorId 
+
+                                 
+                                );
+
+                
+               
+           
+                $result = $this->reservation_model->editReservation($reservationInfo,$resId);
+                
+                if($result > 0)
+                {
+                    $this->session->set_flashdata('success', 'Reservation mise à jour avec succées ');
+                    redirect('Reservation/view/'.$resId);
+                }
+                else
+                {
+                    $this->session->set_flashdata('error', 'Problème de mise à jours');
+                    redirect('Reservation/edit/'.$resId);
+                }
+                
+                
+            
+        
+    }
+
+
+
+
+        /**
+     * This function is used to add new user to the system
+     */
+    function editReservation()
     {
 
                 $dateDebut = $this->input->post('dateDebut');
@@ -148,6 +212,41 @@ class Reservation extends BaseController
     }
 
 
+
+     function deleteReservation($resId)
+    {
+              
+       
+
+
+
+                     $reservationInfo = array('dateDebut'=>$dateDebut,
+                        'statut'=>3,
+       
+
+                                 
+                                );
+
+                
+               
+           
+                $result = $this->reservation_model->editReservation($reservationInfo,$resId);
+                
+                if($result > 0)
+                {
+                    $this->session->set_flashdata('success', 'Reservation annulé avec succées ');
+                }
+                else
+                {
+                    $this->session->set_flashdata('error', 'Problème d\'annulation ');
+                }
+                
+                redirect('Reservation/view/'.$result);
+            
+        
+    }
+
+
      /**
      * This function is used to load the user list
      */
@@ -162,7 +261,7 @@ class Reservation extends BaseController
             $data['totalPaiement'] = $this->paiement_model->getTotal($resId) ;
             
 
-
+            $data['userID'] = $this->vendorId ; 
 
 
             $this->global['pageTitle'] = 'CodeInsect : User Listing';

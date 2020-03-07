@@ -13,7 +13,9 @@
           <div>
             <a href="<?php echo base_url () ?>Reservation/edit/<?php echo $projectInfo->reservationId ?>" class="btn btn-primary" >Modifier</a> 
             &nbsp;&nbsp; 
-            <a href="" class="btn btn-danger">Annuler</a>
+            <?php if ($userID == 1 || $userID ==  25)  {?>
+            <a href="<?php echo base_url()  ?>" class="btn btn-danger">Annuler</a>
+           <?php } ?>
           </div>
 
         </div>
