@@ -25,7 +25,7 @@
                                 <h6 class="card-title">Liste des reservations</h6>
                                    
                 <div class="container">
-                    <table id="example" class="table dataTable no-footer" style="width: 100%" >
+                    <table id="example" class="table dataTable no-footer" style="width: cover" >
                     <thead>
                     <tr>
                        
