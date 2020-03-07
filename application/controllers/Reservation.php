@@ -197,17 +197,19 @@ class Reservation extends BaseController
            
                 $result = $this->reservation_model->editReservation($reservationInfo,$resId);
                 
-                if($result > 0)
+                
+                if($result)
                 {
-                    $this->session->set_flashdata('success', 'Reservation ajouté avec succées ');
+                    $this->session->set_flashdata('success', 'Reservation mise à jour avec succées ');
+                    redirect('Reservation/view/'.$resId);
                 }
                 else
                 {
-                    $this->session->set_flashdata('error', 'Problème d\'ajout');
+                    $this->session->set_flashdata('error', 'Problème de mise à jours');
+                    redirect('Reservation/edit/'.$resId);
                 }
                 
-                redirect('Reservation/view/'.$result);
-            
+              
         
     }
 
@@ -232,16 +234,18 @@ class Reservation extends BaseController
            
                 $result = $this->reservation_model->editReservation($reservationInfo,$resId);
                 
-                if($result > 0)
+                if($result)
                 {
-                    $this->session->set_flashdata('success', 'Reservation annulé avec succées ');
+                    $this->session->set_flashdata('success', 'Reservation mise à jour avec succées ');
+                    redirect('Reservation/view/'.$resId);
                 }
                 else
                 {
-                    $this->session->set_flashdata('error', 'Problème d\'annulation ');
+                    $this->session->set_flashdata('error', 'Problème de mise à jours');
+                    redirect('Reservation/view/'.$resId);
                 }
                 
-                redirect('Reservation/view/'.$result);
+      
             
         
     }
