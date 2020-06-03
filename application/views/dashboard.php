@@ -189,25 +189,20 @@
         <div class="row">
           <div class="col-12 col-xl-12 grid-margin stretch-card">
             <div class="card overflow-hidden">
-              <div class="card-body">
-                <div class="d-flex justify-content-between align-items-baseline mb-4 mb-md-3">
-                  <h6 class="card-title mb-0">Reservation</h6>
+              <div class="card-title "> <h6 class="card-title mb-0">Reservation</h6></div>
+              <div class="card-body">              
                 
-                </div>
-                <div class="row align-items-start mb-2">
-                  <div class="col-md-7">
-                    
-                  </div>
-                
-                </div>
-                <div class="flot-wrapper">
-              
                   <div id="apexBar"></div>
+                
                 </div>
+                
+              
+                
+                
               </div>
             </div>
           </div>
-        </div>
+     
 
 
 
@@ -243,8 +238,8 @@
       type: 'datetime',
       categories: [
       <?php foreach ($reservationRecords as $record ) {
-        $date = new DateTime($record->dateDebut);
-        echo '\''.$date->format('m/01/20y').'\','; ; 
+        $date = new DateTime($record->dateS);
+        echo '\''.$date->format('m/01/Y').'\','; ; 
       } ?> ]
     }
   }

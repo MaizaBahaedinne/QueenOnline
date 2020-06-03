@@ -403,7 +403,9 @@
                               Dernier delais de paiement : 
                             </td>
                             <td>
-                              <?php $date = new DateTime($contratInfo->deadline); echo $date->format('d/m/Y')  ;?>
+
+
+                              <?php  echo date('d/m/Y', strtotime($contratInfo->dateDebut. '  - 30  days'))  ; ?>
                             </td>
                           </tr>
                         </tbody>

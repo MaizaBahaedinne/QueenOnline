@@ -29,7 +29,7 @@ class Reservation_model extends CI_Model
         $this->db->join('tbl_users as Client', 'Client.userId = BaseTbl.clientId','left');
         $this->db->join('tbl_users as Locataire', 'Locataire.userId = BaseTbl.clientId','left');
         $this->db->join('tbl_salle as Salles', 'Salles.salleID = BaseTbl.salleId','left');
-        $this->db->where('BaseTbl.dateFin > NOW() ');
+        $this->db->where('Year(BaseTbl.dateFin) >= Year(NOW()) ');
 
     
 
@@ -50,11 +50,11 @@ class Reservation_model extends CI_Model
      */
     function ReservationCalenderStat()
     {
-        $this->db->select('count(BaseTbl.reservationId) number , sum(BaseTbl.prix) prix ,  BaseTbl.dateDebut , BaseTbl.heureDebut  ');
+        $this->db->select('count(BaseTbl.reservationId) number , sum(BaseTbl.prix) prix ,  DATE_FORMAT(BaseTbl.dateDebut, "%Y-%m ") as dateS  ');
         $this->db->from('tbl_reservation as BaseTbl');
 
-        $this->db->group_by(' MONTH(BaseTbl.dateDebut) DESC');
-        $this->db->where('YEAR(BaseTbl.dateDebut) = YEAR(NOW()) ');
+        $this->db->group_by(' dateS ');
+     
         $this->db->where('BaseTbl.statut IN (0,1) ');
 
          

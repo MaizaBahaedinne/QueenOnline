@@ -343,7 +343,7 @@ class Reservation extends BaseController
 
        $projectInfo = $this->reservation_model->ReservationInfo($resId);
 
-        $nextyear  = date('Y-m-d', strtotime($projectInfo->dateDebut. ' + 335 days'));
+        $nextyear  = date('Y-m-d', strtotime($projectInfo->dateDebut. '  - 30  days'));
 
 
         $contratInfo = array(
