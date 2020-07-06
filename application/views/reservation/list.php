@@ -22,10 +22,15 @@
                     <div class="col-md-12 stretch-card">
             <div class="card">
               <div class="card-body">
-                                <h6 class="card-title">Liste des reservations</h6>
+                                <h6 class="card-title">Liste des reservations</h6> 
+                                <span   class="float-right" >
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                          Ajouter
+                                        </button>
+                                </span>
                                    
                 <div class="container">
-                    <table id="example" class="table dataTable no-footer" style="width: cover" >
+                    <table id="example" class="table" style="width: cover" >
                     <thead>
                     <tr>
                        
@@ -150,3 +155,96 @@
 
 
 
+
+
+  <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <form action="<?php echo base_url()?>Reservation/addNewReservation" method="post"  >
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Ajouter une reservation</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+                                        <label for="formGroupExampleInput">Date</label>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                        <input type="date" class="form-control" name="dateDebut"  min="<?php echo date('Y-m-d') ?>" placeholder="Example input">
+                                            </div> 
+                                            <div class="col-md-3">
+                                        <input type="time" class="form-control" name="heureDebut" placeholder="Example input">
+                                            </div>
+                                            <div class="col-md-3">
+                                        <input type="time" class="form-control" name="heureFin" placeholder="Example input">
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="formGroupExampleInput">Espace</label>
+                                            <select type="text" class="form-control" name="salle" id="salle" placeholder="Example input">
+                                            <?php foreach ($salleRecords as $record ) {
+                                            ?>  
+                                            <option value="<?php echo $record->salleID ?>" > <?php echo $record->nom ?> </option>
+                                            <?php } ?>
+                                        </select>
+                                        
+                                        
+                                    </div>
+                                    
+                                    <div class="row form-group">
+                                        <div class="col-md-6">
+                                            <label for="formGroupExampleInput2">Type</label>
+                                            <select type="text" class="form-control" name="type" >
+                                                <option value="Marriage" > Marriage </option>
+                                                <option value="Finacailles" > Finacailles </option>
+                                                <option value="Hena" > Hena </option>
+                                                <option value="Marriage" > Outya </option>
+                                                <option value="Congret" > Congret </option>
+                                                <option value="Circoncision" > Circoncision </option>
+                                                <option value="Team Building" > Team Building </option>
+                                                <option value="Team Building" > Anniversaire </option>
+                                                <option value="Team Building" > Evenement </option>
+
+                                            </select>
+                                        </div>
+                                        
+                                        <div class="col-md-3">
+                                            <label for="formGroupExampleInput2">Nombre des invités</label>
+                                            <input type="number" class="form-control" min="20" max="1000" name="nbPlace" placeholder="Nombre des invités">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label for="formGroupExampleInput2">Prix</label>
+                                            <input type="number" class="form-control"   min="300" name="prix" placeholder="Prix">
+                                        </div>
+                                    
+                                        
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="formGroupExampleInput">Options  </label>
+                                        <input type="checkbox"  name="tableCM" value="1" > Table contrat de  mariage
+                                        <input type="checkbox"  name="cuisine"  value="1" > Cuisine
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="formGroupExampleInput">Titre</label>
+                                        <input type="text" class="form-control" name="titre" placeholder="Titre de l'evenement">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="formGroupExampleInput">Note Administratif </label>
+                                        <textarea class="form-control" row="10" name="noteAdmin" ></textarea>
+                                    </div>      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <input type="submit" class="btn btn-primary" value="Envoyer" >
+      </div>
+      </form>
+    </div>
+  </div>
+</div>

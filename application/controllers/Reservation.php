@@ -54,7 +54,7 @@ class Reservation extends BaseController
      * This function is used to load the user list
      */
     function ResevationListing()
-    {  
+    {     $data['salleRecords'] = $this->salle_model->SalleListing();
             $searchText = $this->security->xss_clean($this->input->post('searchText'));
             $data['searchText'] = $searchText;
             $this->load->library('pagination');
@@ -71,15 +71,12 @@ class Reservation extends BaseController
      */
     function ResevationCalender()
     {  
-            $searchText = $this->security->xss_clean($this->input->post('searchText'));
-            $data['searchText'] = $searchText;
-            $this->load->library('pagination');
-            $count = $this->reservation_model->ReservationCalenderElilaErsi();
-            $returns = $this->paginationCompress ( "userListing/", $count, 10 );
-            $data['userRecords'] = $this->reservation_model->ReservationCalenderElilaErsi();
-             $data['FarhetAmor'] = $this->reservation_model->ReservationCalenderFarhetElAMOR();
-              $data['Laylina'] = $this->reservation_model->ReservationCalenderLayalina();
-               $data['Soltana'] = $this->reservation_model->ReservationCalenderSoltanaR();
+
+
+            $data['ElilaErsi'] = $this->reservation_model->ReservationCalender1(1);
+             $data['FarhetAmor'] = $this->reservation_model->ReservationCalender1(2);
+              $data['Laylina'] = $this->reservation_model->ReservationCalender1(3);
+               $data['Soltana'] = $this->reservation_model->ReservationCalender1(4);
 
                $data['salleRecords'] = $this->salle_model->SalleListing();
             $this->global['pageTitle'] = 'CodeInsect : User Listing';
