@@ -62,7 +62,7 @@
  
                         </td>
                         <td>
-                            <b><?php echo date_format(date_create($record->dateDebut)  , 'd/m/20y');  ?></b>  de <?php echo date_format(date_create($record->heureDebut)  , 'H:i'); ?>  à  <?php echo date_format(date_create($record->heureFin)  , 'H:i'); ?>
+                            <b><?php echo date_format(date_create($record->dateFin)  , 'd/m/20y');  ?></b>  de <?php echo date_format(date_create($record->heureDebut)  , 'H:i'); ?>  à  <?php echo date_format(date_create($record->heureFin)  , 'H:i'); ?>
  
                         </td>
 
