@@ -36,25 +36,7 @@ class Reservation extends BaseController
      */
     public function index()
     {
-            $searchText = $this->security->xss_clean($this->input->post('searchText'));
-            $data['searchText'] = $searchText;
-            $this->load->library('pagination');
-            $count = $this->reservation_model->ReservationListing();
-            $returns = $this->paginationCompress ( "userListing/", $count, 10 );
-            $data['userRecords'] = $this->reservation_model->ReservationListing();
-            $this->global['pageTitle'] = 'CodeInsect : User Listing';
-        
-            
-        
-         //   $this->loadViews("reservation/list", $this->global, $data, NULL);
-    
-    }
-
-    /**
-     * This function is used to load the user list
-     */
-    function ResevationListing()
-    {     $data['salleRecords'] = $this->salle_model->SalleListing();
+$data['salleRecords'] = $this->salle_model->SalleListing();
             $searchText = $this->security->xss_clean($this->input->post('searchText'));
             $data['searchText'] = $searchText;
             $this->load->library('pagination');
@@ -63,7 +45,12 @@ class Reservation extends BaseController
             $data['userRecords'] = $this->reservation_model->ReservationListing();
             $this->global['pageTitle'] = 'CodeInsect : User Listing';
             $this->loadViews("reservation/list", $this->global, $data, NULL);
+        
+
+    
     }
+
+
 
 
      /**

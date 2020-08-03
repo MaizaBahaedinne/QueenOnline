@@ -1,36 +1,41 @@
+<div class="content-wrapper" style="min-height: 1200.88px;">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Gestion des reservations</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Gestion des reservations</a></li>
+              <li class="breadcrumb-item active">Liste</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
 
-<style type="text/css">
-    
-    .content-loader tr td {
-    white-space: nowrap;
-}
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+          
+            <!-- /.card -->
 
-</style>
-<link rel="stylesheet" href="<?php echo base_url() ?>assets/vendors/prismjs/themes/prism.css">
-
-
-
-
-                <nav class="page-breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">Reservation</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Liste</li>
-                    </ol>
-                </nav>
-
-                <div class="row">
-                    <div class="col-md-12 stretch-card">
             <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Liste des clients</h3>
+                <span class="float-sm-right"> 
+                <button type="button" class="btn btn-default " data-toggle="modal" data-target="#reservationForm">
+                 <i class="fas fa-user-plus"></i> Ajouter
+                </button>
+                </span>
+              </div>
+              <!-- /.card-header -->
               <div class="card-body">
-                                <h6 class="card-title">Liste des reservations</h6> 
-                                <span   class="float-right" >
-                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                                          Ajouter
-                                        </button>
-                                </span>
-                                   
-                <div class="container">
-                    <table id="example" class="table" style="width: cover" >
+                 <table id="table" class="table" style="width: cover" >
                     <thead>
                     <tr>
                        
@@ -126,39 +131,31 @@
                     </tbody>
 
                   </table>
-
-
-                </div>
-              </div>
+              <!-- /.card-body -->
             </div>
-                    </div>
-                </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div>
 
 
-             <!-- begin::Global Config(global config for global JS sciprts) -->
-              <link rel="stylesheet" href="<?php echo base_url() ?>assets/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
-              <script defer src="<?php echo base_url() ?>assets/vendors/datatables.net/jquery.dataTables.js"></script>
-              <script defer src="<?php echo base_url() ?>assets/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
-              
+      <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>
 
-            
-            <script src="<?php echo base_url() ?>assets/vendors/prismjs/prism.js"></script>
-            <script src="<?php echo base_url() ?>assets/vendors/clipboard/clipboard.min.js"></script>
-            <!-- end plugin js for this page -->
 
-<script type="text/javascript">
-              $(document).ready( function () {
-                    $('table').DataTable();
-                } );
 
-  </script>
+
 
 
 
 
 
   <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="reservationForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
         <form action="<?php echo base_url()?>Reservation/addNewReservation" method="post"  >

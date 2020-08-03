@@ -1,3 +1,27 @@
+<div class="content-wrapper" style="min-height: 1200.88px;">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Gestion des reservations</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Gestion des reservations</a></li>
+              <li class="breadcrumb-item active">Details</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+
 <link rel="stylesheet" href="<?php echo base_url() ?>assets/vendors/prismjs/themes/prism.css">
 
 <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
@@ -28,15 +52,15 @@
                 <div class="card">
                   <div class="card-body">
                     <div class="d-flex justify-content-between align-items-baseline">
-                      <h6 class="card-title mb-0">Date</h6>
+                      <h6 class="card-title mb-0">Date : <?php $date = new DateTime($projectInfo->dateDebut); echo $date->format('d/m/Y') ?></h6>
                       <div class="dropdown mb-2">
                       </div>
                     </div>
                     <div class="row">
                       <div class="col-12 col-md-12 col-xl-12">
-                        Debut : <h5 class="mb-1"><?php $date = new DateTime($projectInfo->dateDebut); echo $date->format('d/m/Y').' '.$projectInfo->heureDebut;  ?></h5> 
+                        Debut :  <b> <?php  echo $projectInfo->heureDebut;  ?></b>
 
-                        Fin : <h5 class="mb-1"><?php $date = new DateTime($projectInfo->dateFin); echo $date->format('d/m/Y').' '.$projectInfo->heureFin;  ?></h5>             
+                        Fin :  <b> <?php $date = new DateTime($projectInfo->dateFin); echo $projectInfo->heureFin;  ?></b>            
                       </div>
                     </div>
                     <br>
@@ -693,7 +717,15 @@
     </div>
   </div>
 </div>
+        </div>
+        <!-- /.row -->
+      </div>
 
+
+      <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>
 
   <!-- plugin js for this page -->
   <script defer src="<?php echo base_url() ?>assets/vendors/prismjs/prism.js"></script>x

@@ -35,24 +35,10 @@ class Client extends BaseController
             $count = $this->client_model->clientListing();
             $returns = $this->paginationCompress ( "userListing/", $count, 10 );
             $data['userRecords'] = $this->client_model->clientListing();
-            $this->global['pageTitle'] = 'CodeInsect : User Listing';
+            $this->global['pageTitle'] = 'Clients';
             $this->loadViews("client/list", $this->global, $data, NULL);
     }
 
-    /**
-     * This function is used to load the user list
-     */
-    function clientListing()
-    {  
-            $searchText = $this->security->xss_clean($this->input->post('searchText'));
-            $data['searchText'] = $searchText;
-            $this->load->library('pagination');
-            $count = $this->client_model->clientListing();
-            $returns = $this->paginationCompress ( "userListing/", $count, 10 );
-            $data['userRecords'] = $this->client_model->clientListing();
-            $this->global['pageTitle'] = 'CodeInsect : User Listing';
-            $this->loadViews("client/list", $this->global, $data, NULL);
-    }
 
 
     /**

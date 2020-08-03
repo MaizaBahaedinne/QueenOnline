@@ -1,34 +1,52 @@
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
-<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<div class="content-wrapper" style="min-height: 1200.88px;">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Gestion des clients</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Gestion des clients</a></li>
+              <li class="breadcrumb-item active">Liste</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
 
-                <nav class="page-breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">Client</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Liste</li>
-                    </ol>
-                </nav>
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+          
+            <!-- /.card -->
 
-                <div class="row">
-                    <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Liste des clients</h3>
+                <span class="float-sm-right"> 
+                <button type="button" class="btn btn-default " data-toggle="modal" data-target="#addUser">
+                 <i class="fas fa-user-plus"></i> Ajouter
+                </button>
+                </span>
+              </div>
+              <!-- /.card-header -->
               <div class="card-body">
-                <h6 class="card-title">Liste des clients</h6>
-            <!--begin: Datatable -->
-        <!--begin: Datatable -->
-
-        <table id="example" class="table dataTable no-footer" style="width:100%" >
+                <table id="table" class="table table-hover">
                     <thead>
                     <tr>
-                        <th>Code</th>
-                        <th>CIN</th>
-                        <th>Nom et prénom</th>
-                        <th>Ville</th>
-                        <th>Contact</th>
-                        <th width="10%">Action</th>
+                        <th>Nom</th>
+            
+                        <th>Mobile</th>
+                        <th>cin</th>
+                        <th>adresse</th>
+                        <th class="text-center">Actions</th>
                     </tr>
                     </thead>
-                <tbody>              
+                    <tbody>
                     <?php
                     if(!empty($userRecords))
                     {
@@ -36,69 +54,116 @@
                         {
                     ?>
                     <tr>
-                       
-                        <td>
-                            <?php echo $record->userId ?>
-                        </td>
-                        <td>
-                            <?php echo $record->cin ?>
-                        </td>
-                      
-                        <td>                
-                                <a class="kt-user-card-v2__name" href="#">
-                                     <?php if ($record->raisonSocial != ''){  ?> STE <?php echo $record->raisonSocial ;?><hr> <?php } ?>    <?php echo $record->nom ?>&nbsp;<?php echo $record->prenom ?>
-                                </a>
-                                        <br>                             
-                        </td>
+                        <td><?php echo $record->nom ?> <?php echo $record->prenom ?> </td>
+                        <td><?php echo $record->mobile ?> <br>
+                           <?php echo $record->mobile2 ?></td>
+                        <td><?php echo $record->cin ?></td>
                         <td><?php echo $record->ville ?> </td>
-                        <td>                                
-                            <?php echo $record->mobile ?> <br> <hr>   <?php echo $record->mobile2 ?>             
-                        </td>
-                        <td>
-                            <a href="" >
-                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="#626262" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8s11 8 11 8s-4 8-11 8s-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></g></svg>
-                            </a>
-
-                            &nbsp;&nbsp;|&nbsp;&nbsp;<a href="<?php echo base_url() ?>CLient/edit/<?php echo $record->userId ?>" ><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="#626262" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5L2 22l1.5-5.5L17 3z"/></g></svg></a>
-
-                           
-                        </td>
-  
-       
+                       
                         
-                        
+                        <td class="text-center">
 
+                          <a class="btn btn-info btn-sm" href="<?php echo base_url() ?>editOld/<?php echo $record->userId ?>">
+                              <i class="fas fa-pencil-alt">
+                              </i>
+                              Modifier
+                          </a>
+                          
+                      </td>
+                        
                     </tr>
                     <?php
                         }
                     }
                     ?>
-                    
                     </tbody>
-
                   </table>
-
-
-
-                
-              </div>
+              <!-- /.card-body -->
             </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div>
+
+      <div class="modal" tabindex="-1" role="dialog" id="addUser">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+       <form action="<?php echo base_url() ?>addNewUser" method="post">
+      <div class="modal-header">
+        <h5 class="modal-title">Ajouter un compte</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       
+        <div class="row">
+                                <div class="col-md-6">                                
+                                    <div class="form-group">
+                                        <label for="fname">Nom</label>
+                                        <input type="text" class="form-control required"  id="fname" name="fname" maxlength="128" required>
+                                    </div>
+                                    
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="email">Email address</label>
+                                        <input type="text" class="form-control required email" id="email" value="" name="email" maxlength="128" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="password">Mot de passe</label>
+                                        <input type="password" class="form-control required" id="password" name="password" maxlength="20" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="cpassword">Confirmer Mot de passe</label>
+                                        <input type="password" class="form-control required equalTo" id="cpassword" name="cpassword" maxlength="20" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="mobile">Mobile</label>
+                                        <input type="text" class="form-control required digits" id="mobile"  name="mobile" maxlength="8" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="role">Role</label>
+                                        <select class="form-control required" id="role" name="role">
+                                            <option value="3">Agent</option>
+                                            <option value="2">Administrateur</option>
+                                        </select>
+                                    </div>
+                                </div>    
+                            </div>
+                          
+                         
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                         <input type="submit" class="btn btn-primary swalDefaultSuccess" value="Envoyer"> 
+                        </div>
+                     </form>
+                      </div>
                     </div>
-                </div>
-
-             <!-- begin::Global Config(global config for global JS sciprts) -->
-
-        <!-- end::Global Config -->
-        <script src="https://code.jquery.com/jquery-3.3.1.js" type="text/javascript"></script>
-        <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" type="text/javascript"></script>
-
-        <!--end::Page Scripts -->
+                  </div>
 
 
-<script>
-$('table').dataTable( {
+      <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>
 
-  paginate: true,
-  
-} );
-</script>
+
+
+
+
