@@ -337,9 +337,26 @@
                     - Le bailleur ne pourra être tenu de tout dommage causé aux véhicules ou matériel situés sur le parking. <br>
 
 
-                    <br>          <br>
-   
+                    <br>          
+                    <br>
+                       <p style="text-align: right;">
+                ييرجى ذكر العنوان أدناه في دعوات حفلك : 
 
+ 
+                 <br>
+
+                   <b>   "<?php echo $contratInfo->salle ; ?>&nbsp;فضاء  "</b> 
+                   <br> 
+
+                  بوجردقة طريق مرناق      Centre Queen Park
+                  
+                
+              
+
+  
+  
+                                        
+                    </p>
                     <br><br>
                     <div class="row">
                     <div class="col-md-12"> Fait à Mornag , le <b><?php echo $contratInfo->createdDate; ?></b>  </div>
@@ -384,10 +401,10 @@
                           </tr>
                           <tr>
                             <td width="30 %">
-                              Evenet & Horaire
+                              Event & Horaire
                             </td>
                             <td>
-                              <?php echo $contratInfo->type ;?> <br>
+                              <?php echo $contratInfo->type ;?> à l'espace <?php echo $contratInfo->salle ; ?> <br>
                               <?php echo $contratInfo->titre ;?> <br>
                                <b>Debut : </b><?php $date = new DateTime($projectInfo->dateDebut); echo $date->format('d/m/Y').' '.$projectInfo->heureDebut;  ?><br>
                                <b>Fin : </b><?php $date = new DateTime($projectInfo->dateFin); echo $date->format('d/m/Y').' '.$projectInfo->heureFin;  ?>          
@@ -410,7 +427,7 @@
                               <?php if ($projectInfo->tableCM == 1 ){ echo "Table contrat de mariage";}  ?>
                             </td>
                             <td width="30 %">
-                             reste
+                             Reste
                             </td>
                             <td>
                               <?php echo $contratInfo->prix - $contratInfo->avance ;?>
@@ -437,7 +454,7 @@
                     
                       
                     <br>
-                    <p style="text-align: center;">Queen Park - Mc 34 Route  Mornag boujardga 2090 - mobile : 54 419 959  - 79 352 153 </p>
+                    <p style="text-align: center;">Queen Park - Mc 34 Route  Mornag boujardga 2090 - mobile : 54 419 959  - 79 352 153 - 58 465 249 </p>
                   
 
 
