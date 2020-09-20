@@ -146,7 +146,7 @@
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button"><i class="fas fa-th-large"></i></a>
+        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="<?php echo base_url() ?>logout" role="button"><i class="fas fa-sign-out-alt"> Déconnexion</i></a>
       </li>
     </ul>
   </nav>
@@ -158,7 +158,8 @@
     <a href="<?php echo base_url() ?>assets/index3.html" class="brand-link text-sm navbar-white" style="text-align-last: center;"  >
      <!--   <img src="<?php echo base_url() ?>assets\images\logo1.png"  src="<?php echo base_url() ?>assets\images\logo1.png"> -->
       <span class="brand-text font-weight-light">
-        <img src="<?php echo base_url() ?>assets\images\logo.png" width="80%" >
+      <!--   <img src="<?php echo base_url() ?>assets\images\logo.png" width="80%" > --> 
+      <h2> Queen Online </h2>
       </span>
     </a>
 

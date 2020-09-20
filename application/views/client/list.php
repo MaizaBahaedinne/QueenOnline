@@ -68,6 +68,7 @@
                               </i>
                               Modifier
                           </a>
+                          <a class="btn btn-sm btn-danger" href="<?php echo base_url() ?>User/sms/<?php echo $record->userId ?>" ><i class="fas fa-pencil-alt"> SMS </i></a>
                           
                       </td>
                         

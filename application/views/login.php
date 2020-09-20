@@ -1,7 +1,7 @@
 <html lang="en"><head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>COMAR Assurances | Log in</title>
+  <title>Queen Online | Log in</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&amp;display=fallback">
@@ -76,7 +76,7 @@
           </div>
           <!-- /.col -->
           <div class="col-4">
-            <input  type="submit" class="btn btn-primary btn-block">Se connecter</button>
+            <input  type="submit" class="btn btn-primary btn-block" value="Connexion">
           </div>
           <!-- /.col -->
         </div>

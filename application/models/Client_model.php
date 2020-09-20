@@ -72,10 +72,10 @@ class Client_model extends CI_Model
      */
     function getClientInfo($clientID)
     {
-         $this->db->select('');
+         $this->db->select('*');
         $this->db->from('tbl_users as BaseTbl');
         $this->db->join('tbl_roles as Role', 'Role.roleId = BaseTbl.roleId','left');
-        $this->db->where('BaseTbl.roleId =',4 );
+        //$this->db->where('BaseTbl.roleId =',4 );
         $this->db->where('BaseTbl.userId =',$clientID );
         $this->db->order_by('BaseTbl.userId', 'DESC');
         $query = $this->db->get();

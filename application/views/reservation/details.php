@@ -339,10 +339,8 @@
 
                     <br>          
                     <br>
-                       <p style="text-align: right;">
-                ييرجى ذكر العنوان أدناه في دعوات حفلك : 
+                       <p style="text-align: right;">يرجى ذكر العنوان أدناه في دعوات حفلتكم : 
 
- 
                  <br>
 
                    <b>   "<?php echo $contratInfo->salle ; ?>&nbsp;فضاء  "</b> 
@@ -396,7 +394,7 @@
                               Prix
                             </td>
                             <td>
-                                <?php echo $contratInfo->prix ;?>
+                                 <b ><?php echo $contratInfo->prix ;?></b>
                             </td>
                           </tr>
                           <tr>
@@ -404,7 +402,7 @@
                               Event & Horaire
                             </td>
                             <td>
-                              <?php echo $contratInfo->type ;?> à l'espace <?php echo $contratInfo->salle ; ?> <br>
+                              <?php echo $contratInfo->type ;?> à l'espace  <b> <?php echo $contratInfo->salle ; ?> </b> <br>
                               <?php echo $contratInfo->titre ;?> <br>
                                <b>Debut : </b><?php $date = new DateTime($projectInfo->dateDebut); echo $date->format('d/m/Y').' '.$projectInfo->heureDebut;  ?><br>
                                <b>Fin : </b><?php $date = new DateTime($projectInfo->dateFin); echo $date->format('d/m/Y').' '.$projectInfo->heureFin;  ?>          
@@ -413,9 +411,16 @@
                             </td>
                             <td width="30 %">
                               Avance 
+                              <br>Reste
                             </td>
                             <td>
+                               <b style="color: green ">
                               <?php echo $contratInfo->avance ;?>
+                              </b>
+                              <br>
+                               <b style="color: red ">
+                              <?php echo $contratInfo->prix - $contratInfo->avance ;?>
+                              </b>
                             </td>
                           </tr>
                           <tr>
@@ -427,10 +432,11 @@
                               <?php if ($projectInfo->tableCM == 1 ){ echo "Table contrat de mariage";}  ?>
                             </td>
                             <td width="30 %">
-                             Reste
+                             
                             </td>
                             <td>
-                              <?php echo $contratInfo->prix - $contratInfo->avance ;?>
+                              
+                              Dernier delais de paiement : 
                             </td>
                           </tr>
                           <tr>
@@ -441,7 +447,7 @@
                                 <?php echo $contratInfo->nbPlace ;?>
                             </td>
                             <td width="30 %">
-                              Dernier delais de paiement : 
+                              
                             </td>
                             <td>
 
