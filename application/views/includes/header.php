@@ -146,7 +146,7 @@
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="<?php echo base_url() ?>logout" role="button"><i class="fas fa-sign-out-alt"> Déconnexion</i></a>
+        <a class="nav-link" href="<?php echo base_url() ?>logout" role="button"><i class="fas fa-sign-out-alt"> Déconnexion</i></a>
       </li>
     </ul>
   </nav>

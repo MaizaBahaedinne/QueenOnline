@@ -12,6 +12,12 @@ require APPPATH . '/libraries/BaseController.php';
 
 class Reservation extends BaseController
 {
+
+
+
+
+
+
     /**
      * This is default constructor of the class
      */
@@ -354,27 +360,18 @@ $data['salleRecords'] = $this->salle_model->SalleListing();
 
 
         $this->reservation_model->editReservation($reservationInfo, $resId); 
-/*
+
         $ReservationInfo =  $this->reservation_model->ReservationInfo($resId) ;
         $clientInfo = $this->client_model->getClientInfo($ReservationInfo->clientId);
 
-                            $myMobile = $clientInfo->mobile ;
-                            $mySms = "Bonjour ".$clientInfo->name.", On vous souhaite la bienvenue chez nous. Votre réservation de l'espace (".$ReservationInfo->salle.") pour la date (".$ReservationInfo->dateDebut.") a été enregistrer.";
-                            $mySender = 'Queen park';
-                            $myDate = date('d/m/Y').'' ;
-                            $myTime = date('H:i').'' ;
+        $myMobile = $clientInfo->mobile ;
+        $mySms = "Salut ".$clientInfo->name.", On vous souhaite la bienvenue chez nous. Votre réservation de l'espace (".$ReservationInfo->salle.") pour la date (".$ReservationInfo->dateDebut.") a été enregistrer.";
 
-                            $Url_str ="https://www.tunisiesms.tn/client/Api/Api.aspx?fct=sms&key=ns1PwxEKAljejzi3RSBAHPsoQl/P9s0jtrXDkRb4j6sjNpzNER8aprZNyzyAuLlteKM222LwbgBRrlBCvFDV4YlQbSvBZMYA/Ye3r0ggsYQ=&mobile=216XXXXXXXX&sms=Hello+World&sender=YYYYYYY&date=jj/mm/aaaa&heure=hh:mm:ss";
-                                                            
-                            $Url_str = str_replace("216XXXXXXXX",$myMobile,$Url_str);
-                            $Url_str = str_replace("Hello+World",$mySms,$Url_str);
-                            $Url_str = str_replace("YYYYYYY",$mySender,$Url_str);
-                            $Url_str = str_replace("jj/mm/aaaa",$myDate,$Url_str);
-                            $Url_str = str_replace("hh:mm:ss",$myTime,$Url_str);
-                                                            
-                      
-                            redirect($Url_str);
-*/
+
+        
+        echo $this->sendSMS("216".$myMobile, $mySms) ;
+                           
+
        redirect('Reservation/view/'.$resId) ;               
     }
 
@@ -395,6 +392,11 @@ $data['salleRecords'] = $this->salle_model->SalleListing();
                         'libele'=>'Partie ',
                         'reservationId'=>$resId,                           
                                 );
+            $ReservationInfo =  $this->reservation_model->ReservationInfo($resId) ;
+            $clientInfo = $this->client_model->getClientInfo($ReservationInfo->clientId); 
+            $myMobile = $clientInfo->mobile ;
+            $mySms = "Salut ".$clientInfo->name.", une paiement de (".$avance." DT)  pour la reservation N°".$resId." a été effectuer avec succées" ;
+            $this->sendSMS("216".$myMobile, $mySms) ;
 
         $this->paiement_model->addNewPaiement($paiementInfo);
 
@@ -409,7 +411,13 @@ $data['salleRecords'] = $this->salle_model->SalleListing();
 
         if (  $projectInfo->prix - $totalPaiement->valeur == 0   )
         {
+            
+            $myMobile = $clientInfo->mobile ;
+            $mySms = "Bonjour ".$clientInfo->name.", votre reservation de la salle (".$ReservationInfo->salle.") pour le (".$ReservationInfo->dateDebut.") a été valider on vous souhaite une belle cérimonie. CODE = ".$resId ;
 
+
+        
+        $this->sendSMS("216".$myMobile, $mySms) ;
 
         $reservationInfo = array(
                         'noteAdmin'=>$noteAdmin,
@@ -439,9 +447,60 @@ $data['salleRecords'] = $this->salle_model->SalleListing();
     }
 
 
+    function http_response($url)
+        {
+            $ch = curl_init();
+
+            $options = array(
+                CURLOPT_URL            => $url ,
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_HEADER         => false,
+                CURLOPT_FOLLOWLOCATION => true,
+                CURLOPT_ENCODING       => "",
+                CURLOPT_AUTOREFERER    => true,
+                CURLOPT_CONNECTTIMEOUT => 120,
+                CURLOPT_TIMEOUT        => 120,
+                CURLOPT_MAXREDIRS      => 10,
+                CURLOPT_SSL_VERIFYPEER => false,
+            );
+            curl_setopt_array( $ch, $options );
+            $response = curl_exec($ch);
+           
+            $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
+            if ( $httpCode != 200 ){
+                return "Return code is {$httpCode} \n"
+                    .curl_error($ch);
+            } else {
+                //echo "<pre>".htmlspecialchars($response)."</pre>";
+                return $response;
+            }
+
+            curl_close($ch);
+        }
 
 
 
+        function sendSMS($myMobile, $mySms)
+        {
+
+        $mySender = 'Queen park';
+        $key = "ns1PwxEKAljejzi3RSBAHPsoQl/P9s0jtrXDkRb4j6sjNpzNER8aprZNyzyAuLlteKM222LwbgBRrlBCvFDV4YlQbSvBZMYA/Ye3r0ggsYQ=";
+
+        $Url_str ="www.tunisiesms.tn/client/Api/Api.aspx?fct=sms&key=%KEY%&mobile=%MSISDN%&sms=%SMS%&sender=%SENDER%";
+
+        $Url_str = str_replace("%MSISDN%",$myMobile,$Url_str);
+        $Url_str = str_replace("%SMS%",urlencode($mySms),$Url_str);
+        $Url_str = str_replace("%SENDER%",urlencode($mySender),$Url_str);
+        $Url_str = str_replace("%KEY%",urlencode($key),$Url_str);
+
+        
+        echo $this->http_response($Url_str);
+
+        }
+
+
+        
 
 
 

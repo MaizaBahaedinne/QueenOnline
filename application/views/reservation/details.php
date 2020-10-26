@@ -26,13 +26,17 @@
 
 <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
           <div>
-            <h4 class="mb-3 mb-md-0"> <?php echo $projectInfo->titre ; ?> <small><small> de <b> <?php echo $projectInfo->clientName ; ?>
+            <h4 class="mb-3 mb-md-0"> <?php echo $projectInfo->titre ; ?>
+            <small> 
+              de <b> <?php echo $projectInfo->clientName ; ?>
 
-            <?php if ($projectInfo->clientName == '' ){ ?>                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2">
+            <?php if ($projectInfo->clientName == '' ){ ?>
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2">
                 Ajouter un client
-                     </button>
-            <?php } ?>
-            </small></b> <small><small>#<?php echo $projectInfo->reservationId ; ?></small></small> </small></h4>
+              </button>
+            <?php }
+            else{  echo '<b>mobile 1 :</b><small><a href="tel:'.$projectInfo->mobile.'">.'.$projectInfo->mobile.'</a>  -   <b>mobile 2 :</b><a href="tel:'.$projectInfo->mobile2.'">'.$projectInfo->mobile2.'</a></small>'; } ?>
+            </small> 
           </div>
           <div>
             <a href="<?php echo base_url () ?>Reservation/edit/<?php echo $projectInfo->reservationId ?>" class="btn btn-primary" >Modifier</a> 
@@ -471,12 +475,11 @@
 
                 
               </div> 
-            </div>
-          </div>
+
   
 
 
-</div> <!-- row -->
+
 
 
 
