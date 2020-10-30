@@ -413,7 +413,7 @@ $data['salleRecords'] = $this->salle_model->SalleListing();
         {
             
             $myMobile = $clientInfo->mobile ;
-            $mySms = "Bonjour ".$clientInfo->name.", votre reservation de la salle (".$ReservationInfo->salle.") pour le (".$ReservationInfo->dateDebut.") a été valider on vous souhaite une belle cérimonie. CODE = ".$resId ;
+            $mySms = "Bonjour ".$clientInfo->name.", votre reservation de la salle (".$ReservationInfo->salle.") pour le (".$ReservationInfo->dateDebut.") a été validé on vous souhaite une belle cérimonie." ;
 
 
         
