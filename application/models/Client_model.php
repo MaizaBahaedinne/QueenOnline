@@ -32,6 +32,29 @@ class Client_model extends CI_Model
     }
 
 
+
+    /**
+     * This function is used to get the user listing count
+     * @param string $searchText : This is optional search text
+     * @param number $page : This is pagination offset
+     * @param number $segment : This is pagination limit
+     * @return array $result : This is result
+     */
+    function client2021Listing()
+    {
+        $this->db->select('BaseTbl.name ,BaseTbl.mobile');
+        $this->db->from('client2021 as BaseTbl');
+        $query = $this->db->get();
+        
+        $result = $query->result();        
+        return $result;
+    }
+
+
+
+    
+
+
     /**
      * This function is used to check whether email id is already exist or not
      * @param {string} $email : This is email id

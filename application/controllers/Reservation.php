@@ -368,9 +368,9 @@ $data['salleRecords'] = $this->salle_model->SalleListing();
         $mySms = "Salut ".$clientInfo->name.", On vous souhaite la bienvenue chez nous. Votre réservation de l'espace (".$ReservationInfo->salle.") pour la date (".$ReservationInfo->dateDebut.") a été enregistrer.";
 
 
-        /*
+        
         echo $this->sendSMS("216".$myMobile, $mySms) ;
-            */               
+                          
 
        redirect('Reservation/view/'.$resId) ;               
     }
@@ -396,9 +396,9 @@ $data['salleRecords'] = $this->salle_model->SalleListing();
             $clientInfo = $this->client_model->getClientInfo($ReservationInfo->clientId); 
             $myMobile = $clientInfo->mobile ;
             $mySms = "Salut ".$clientInfo->name.", une paiement de (".$avance." DT)  pour la reservation N°".$resId." a été effectuer avec succées" ;
-            /*
+            
             $this->sendSMS("216".$myMobile, $mySms) ;
-            */
+          
         $this->paiement_model->addNewPaiement($paiementInfo);
 
         $totalPaiement = $this->paiement_model->getTotal($resId) ; 
@@ -417,9 +417,9 @@ $data['salleRecords'] = $this->salle_model->SalleListing();
             $mySms = "Bonjour ".$clientInfo->name.", votre reservation de la salle (".$ReservationInfo->salle.") pour le (".$ReservationInfo->dateDebut.") a été validé on vous souhaite une belle cérimonie." ;
 
 
-        /*
+   
         $this->sendSMS("216".$myMobile, $mySms) ;
-            */
+           
         $reservationInfo = array(
                         'noteAdmin'=>$noteAdmin,
                         'statut'=>0 ,

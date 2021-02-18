@@ -1,6 +1,29 @@
-<div>
+<div class="content-wrapper" style="min-height: 1200.88px;">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Gestion des reservations</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Gestion des reservations</a></li>
+              <li class="breadcrumb-item active">Details</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+			<div>
 					<div >
-						<div class="modal-content">
+						
 							<div class="modal-header">
 								<h4 id="modalTitle2" class="modal-title">Modifier l'évenement </h4>
 								<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span> <span class="sr-only">close</span></button>
@@ -19,7 +42,7 @@
 									});
 							</script>
 							<form action="<?php echo base_url() ?>Reservation/editReservation/<?php echo $projectInfo->reservationId ?>" method="post" >
-							<div id="modalBody2" class="modal-body">
+								
 								
 									<div class="form-group">
 										<label for="formGroupExampleInput">Date</label>
@@ -53,21 +76,18 @@
 										<div class="col-md-6">
 											<label for="formGroupExampleInput2">Type</label>
 											<h1><?php echo $projectInfo->type ?></h1>
-								<select type="text" class="form-control" name="type" >
+											<select type="text" class="form-control" name="type" >
+											<option value="Marriage" > Marriage </option>
+											<option value="Finacailles"> Finacailles </option>
+											<option value="Hena" <?php if ($projectInfo->type == "Hena" ){ echo " selected"; } ?> > Hena </option>
+											<option value="Outya"  > Outya </option>
+											<option value="Congret" > Congret </option>
+											<option value="Circoncision"  > Circoncision </option>
+											<option value="Team Building"  > Team Building </option>
+											<option value="Anniversaire"> Anniversaire </option>
+											<option value="Evenement" > Evenement </option>
 
-
-
-									<option value="Marriage" > Marriage </option>
-									<option value="Finacailles"> Finacailles </option>
-									<option value="Hena" <?php if ($projectInfo->type == "Hena" ){ echo " selected"; } ?> > Hena </option>
-									<option value="Outya"  > Outya </option>
-									<option value="Congret" > Congret </option>
-									<option value="Circoncision"  > Circoncision </option>
-									<option value="Team Building"  > Team Building </option>
-									<option value="Anniversaire"> Anniversaire </option>
-									<option value="Evenement" > Evenement </option>
-
-											</select>
+										</select>
 										</div>
 										
 										<div class="col-md-3">
@@ -100,14 +120,20 @@
 										<textarea class="form-control" row="10" name="noteAdmin" > <?php echo $projectInfo->noteAdmin ?></textarea>
 									</div>
 
-									<div class="modal-footer">
+									
 
 										<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 										<button class="btn btn-primary">Ajouter</button>
 										
-									</div>
+									
 								</form>
-							</div>
+						
 							
 						</div>
 					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+			

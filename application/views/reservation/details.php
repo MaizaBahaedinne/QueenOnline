@@ -330,7 +330,9 @@
                     <h6>ARTICLE 9 – PRIX DE LA LOCATION :</h6>
                      La présente location est consentie et acceptée moyennant le versement d’un loyer de <b><?php echo $contratInfo->prix ;?> DT</b>, payable au plus tard <b style="color: red"> 30 jours avant la date de début de location.</b> <br>
                     Il est demandé au locataire de verser <b style="color: green "><?php echo $contratInfo->avance ;?> DT  dès la signature du contrat.</b><br>
-                    Le mode de paiement accepté est en espèces.<br> <br>
+                    Le mode de paiement accepté est en espèces.<br>
+                    <b>NB :<br>1. dans tous les cas le montant versé ne sera pas rembourser (le client  peut seulement reporter sa date de reservation) </b> <br>
+                    <b>2. dans le cas de report du date de la reservation ce contrat sera systèmatiquement annulé et un autre sera signer avec une nouvelle négociation du montant tout en respectant le montant deja versé  </b> <br>
 <hr>
                     <h6>ARTICLE 10 – RÈGLEMENT INTÉRIEUR :</h6>
                     - Il est interdit de fumer à l’intérieur des locaux. <br>
