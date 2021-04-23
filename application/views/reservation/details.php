@@ -434,7 +434,7 @@
                               Options : 
                             </td>
                             <td>
-                              <?php if ($projectInfo->cuisine == 1 ){ echo "Cuisine <br>";}  ?>
+                              <?php if ($projectInfo->cuisine == 1 ){ echo "Cuisine (Disponible le jour de l'évenement de 09h) <br>";}  ?>
                               <?php if ($projectInfo->tableCM == 1 ){ echo "Table contrat de mariage";}  ?>
                             </td>
                             <td width="30 %">

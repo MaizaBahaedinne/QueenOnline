@@ -77,11 +77,11 @@
 											<label for="formGroupExampleInput2">Type</label>
 											<h1><?php echo $projectInfo->type ?></h1>
 											<select type="text" class="form-control" name="type" >
-											<option value="Marriage" > Marriage </option>
-											<option value="Finacailles"> Finacailles </option>
+											<option value="Marriage" <?php if ($projectInfo->type == "Marriage" ){ echo " selected"; } ?> > Marriage </option>
+											<option value="Finacailles" <?php if ($projectInfo->type == "Finacailles" ){ echo " selected"; } ?>> Finacailles </option>
 											<option value="Hena" <?php if ($projectInfo->type == "Hena" ){ echo " selected"; } ?> > Hena </option>
-											<option value="Outya"  > Outya </option>
-											<option value="Congret" > Congret </option>
+											<option value="Outya"  <?php if ($projectInfo->type == "Outya" ){ echo " selected"; } ?> > Outya </option>
+											<option value="Congret" <?php if ($projectInfo->type == "Congret" ){ echo " selected"; } ?> > Congret </option>
 											<option value="Circoncision"  > Circoncision </option>
 											<option value="Team Building"  > Team Building </option>
 											<option value="Anniversaire"> Anniversaire </option>

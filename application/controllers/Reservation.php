@@ -370,7 +370,7 @@ $data['salleRecords'] = $this->salle_model->SalleListing();
 
         
         echo $this->sendSMS("216".$myMobile, $mySms) ;
-                          
+                        
 
        redirect('Reservation/view/'.$resId) ;               
     }
@@ -396,9 +396,9 @@ $data['salleRecords'] = $this->salle_model->SalleListing();
             $clientInfo = $this->client_model->getClientInfo($ReservationInfo->clientId); 
             $myMobile = $clientInfo->mobile ;
             $mySms = "Salut ".$clientInfo->name.", une paiement de (".$avance." DT)  pour la reservation N°".$resId." a été effectuer avec succées" ;
-            
+      
             $this->sendSMS("216".$myMobile, $mySms) ;
-          
+   
         $this->paiement_model->addNewPaiement($paiementInfo);
 
         $totalPaiement = $this->paiement_model->getTotal($resId) ; 
@@ -419,7 +419,7 @@ $data['salleRecords'] = $this->salle_model->SalleListing();
 
    
         $this->sendSMS("216".$myMobile, $mySms) ;
-           
+   
         $reservationInfo = array(
                         'noteAdmin'=>$noteAdmin,
                         'statut'=>0 ,
