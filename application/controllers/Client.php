@@ -377,6 +377,12 @@ class Client extends BaseController
         
     }
 
+    function clientInfo() {
+        $cin = $this->input->post('cin');
+        $data = $this->client_model->checkClientExists($cin) ;
+        echo $this->response($data); 
+    }
+
 
 
 

@@ -20,6 +20,7 @@ class User extends BaseController
         $this->load->model('client_model');
         $this->load->model('user_model');
         $this->load->model('reservation_model');
+        $this->load->model('paiement_model');
         
         $this->isLoggedIn();   
     }
@@ -29,28 +30,18 @@ class User extends BaseController
      */
     public function index()
     {
-
-
-
-
-        $data['reservationCRecords'] = $this->reservation_model->ReservationCalender();
-
         $data['reservationRecords'] = $this->reservation_model->ReservationCalenderStat();
-        $data['reservationEERecords'] = $this->reservation_model->ReservationCalender1(1);
-        $data['reservationFARecords'] =  $this->reservation_model->ReservationCalender1(2);
-        $data['reservationLRecords'] =  $this->reservation_model->ReservationCalender1(3);
-        $data['reservationSRecords'] =  $this->reservation_model->ReservationCalender1(4);
-         $data['clientecords'] =   $this->client_model->clientListing();
+        $data['reservationPerMounthRecords'] = $this->reservation_model->ReservationCalenderStatMounth();
+        $data['ReservationPerYearRecords'] = $this->reservation_model->ReservationCalenderStatYear() ;
+        $data['SalleRecords'] = $this->reservation_model->ReservationCalenderStatSalle() ;
+        $data['ReservationPerEmployeRecords'] = $this->reservation_model->ReservationCalenderStatEmploye() ;
+        $data['ReservationRecords'] = $this->reservation_model->ReservationListing(null ,null , 'date');
 
-
-
-
-
+        $data['clientecords'] =   $this->client_model->clientListing();
+        $data['chiffres'] =   $this->paiement_model->getTotal();
+  
         $this->global['pageTitle'] = 'CodeInsect : Dashboard';
-        
-
-
-
+ 
         $this->loadViews("dashboard", $this->global, $data , NULL);
     }
     
@@ -59,27 +50,22 @@ class User extends BaseController
      */
     function userListing()
     {
-        if($this->isAdmin() == TRUE)
-        {
-            $this->loadThis();
-        }
-        else
-        {        
+      
             $searchText = $this->security->xss_clean($this->input->post('searchText'));
             $data['searchText'] = $searchText;
             
             $this->load->library('pagination');
             
-            $count = $this->user_model->userListingCount($searchText);
-
-			$returns = $this->paginationCompress ( "userListing/", $count, 10 );
             
-            $data['userRecords'] = $this->user_model->userListing($searchText, $returns["page"], $returns["segment"]);
+
+			
+            
+            $data['userRecords'] = $this->user_model->userListing();
             
             $this->global['pageTitle'] = 'CodeInsect : User Listing';
             
             $this->loadViews("users", $this->global, $data, NULL);
-        }
+        
     }
 
     /**

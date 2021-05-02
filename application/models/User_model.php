@@ -44,16 +44,11 @@ class User_model extends CI_Model
         $this->db->select('BaseTbl.userId, BaseTbl.email, BaseTbl.name, BaseTbl.mobile, BaseTbl.createdDtm, BaseTbl.createdDtm, Role.role');
         $this->db->from('tbl_users as BaseTbl');
         $this->db->join('tbl_roles as Role', 'Role.roleId = BaseTbl.roleId','left');
-        if(!empty($searchText)) {
-            $likeCriteria = "(BaseTbl.email  LIKE '%".$searchText."%'
-                            OR  BaseTbl.name  LIKE '%".$searchText."%'
-                            OR  BaseTbl.mobile  LIKE '%".$searchText."%')";
-            $this->db->where($likeCriteria);
-        }
+        
         $this->db->where('BaseTbl.isDeleted', 0);
         $this->db->where('BaseTbl.roleId !=', 1);
         $this->db->order_by('BaseTbl.userId', 'DESC');
-        $this->db->limit($page, $segment);
+    
         $query = $this->db->get();
         
         $result = $query->result();        
@@ -118,7 +113,7 @@ class User_model extends CI_Model
      */
     function getUserInfo($userId)
     {
-        $this->db->select('userId, name, email, mobile, roleId');
+        $this->db->select('*');
         $this->db->from('tbl_users');
         $this->db->where('isDeleted', 0);
 		$this->db->where('roleId !=', 1);
@@ -129,6 +124,7 @@ class User_model extends CI_Model
     }
     
     
+
     /**
      * This function is used to update the user information
      * @param array $userInfo : This is users updated information

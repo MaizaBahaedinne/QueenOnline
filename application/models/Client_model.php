@@ -63,7 +63,7 @@ class Client_model extends CI_Model
      */
     function checkClientExists($cin)
     {
-        $this->db->select("cin");
+        $this->db->select("*");
         $this->db->from("tbl_users");
         $this->db->where("cin =", $cin);   
         $query = $this->db->get();

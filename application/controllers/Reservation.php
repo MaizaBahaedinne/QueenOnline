@@ -42,18 +42,21 @@ class Reservation extends BaseController
      */
     public function index()
     {
-$data['salleRecords'] = $this->salle_model->SalleListing();
-            $searchText = $this->security->xss_clean($this->input->post('searchText'));
-            $data['searchText'] = $searchText;
-            $this->load->library('pagination');
-            $count = $this->reservation_model->ReservationListing();
-            $returns = $this->paginationCompress ( "userListing/", $count, 10 );
-            $data['userRecords'] = $this->reservation_model->ReservationListing();
+            $data['salleRecords'] = $this->salle_model->SalleListing();
+        
+            $data['userRecords'] = $this->reservation_model->ReservationListing( );
             $this->global['pageTitle'] = 'CodeInsect : User Listing';
             $this->loadViews("reservation/list", $this->global, $data, NULL);
-        
+  
+    }
 
-    
+
+        public function addNew()
+    {
+           
+            $this->global['pageTitle'] = 'CodeInsect : User Listing';
+            $this->loadViews("reservation/new", $this->global, NULL , NULL);
+  
     }
 
 
@@ -62,18 +65,22 @@ $data['salleRecords'] = $this->salle_model->SalleListing();
      /**
      * This function is used to load the user list
      */
-    function ResevationCalender()
+    function ResevationTroupe()
     {  
-
-
-            $data['ElilaErsi'] = $this->reservation_model->ReservationCalender1(1);
-             $data['FarhetAmor'] = $this->reservation_model->ReservationCalender1(2);
-              $data['Laylina'] = $this->reservation_model->ReservationCalender1(3);
-               $data['Soltana'] = $this->reservation_model->ReservationCalender1(4);
-
-               $data['salleRecords'] = $this->salle_model->SalleListing();
+            $data['userRecords'] = $this->reservation_model->ReservationListing(1,null);
             $this->global['pageTitle'] = 'CodeInsect : User Listing';
-            $this->loadViews("reservation/calender", $this->global, $data, NULL);
+            $this->loadViews("reservation/list", $this->global, $data, NULL);
+    }
+
+
+    /**
+     * This function is used to load the user list
+     */
+    function ResevationPhotographe()
+    {  
+            $data['userRecords'] = $this->reservation_model->ReservationListing(null,1);
+            $this->global['pageTitle'] = 'CodeInsect : User Listing';
+            $this->loadViews("reservation/list", $this->global, $data, NULL);
     }
 
 
@@ -84,6 +91,53 @@ $data['salleRecords'] = $this->salle_model->SalleListing();
     function addNewReservation()
     {
 
+                $clientId = $this->input->post('clientId');
+
+                $nom = $this->input->post('nom');
+                $prenom = $this->input->post('prenom');
+                $CIN = $this->input->post('CIN');
+                $dateCin = $this->input->post('dateCin');
+                $n = $this->input->post('N');
+                $rue = $this->input->post('rue');
+                $ville = $this->input->post('ville');
+                $codePostal = $this->input->post('codePostal');
+                $email = $this->input->post('email');
+                $mobile = $this->input->post('mobile');
+                $mobile2 = $this->input->post('mobile2');
+                $birthday = $this->input->post('birthday');
+                $sexe = $this->input->post('sexe');
+
+               
+             
+                $userInfo = array('email'=>$email,
+                                 'password'=>getHashedPassword($CIN), 
+                                 'roleId'=>4, 
+                                 'name'=> $prenom.' '.$nom,
+                                 'cin'=> $CIN,
+                                 'dateCin'=> $dateCin,
+                                 'mobile'=>$mobile,
+                                 'mobile2'=>$mobile2,
+                                 'createdBy'=>$this->vendorId,
+                                 'createdDtm'=>date('Y-m-d H:i:s'),
+                                 'n '=>$n   , 
+                                 'rue'=>$rue, 
+                                 'codePostal'=> $codePostal,
+                                 'ville'=> $ville,
+                                 'type'=> 'personne' ,
+                                 'nom'=>$nom,
+                                 'prenom'=>$prenom,
+                                 'Sexe'=>$sexe , 
+                                 'birthday'=>$birthday 
+                                    );
+                
+                if($clientId != null)
+                { 
+                    $clientId = $this->client_model->addNewClient($userInfo);
+                }else
+                {
+                    $clientId = $this->client_model->editClient($userInfo, $clientId) ;
+                }
+                
                 $dateDebut = $this->input->post('dateDebut');
                 $heureDebut = $this->input->post('heureDebut');
                 $dateFin = $this->input->post('dateDebut');
@@ -97,29 +151,24 @@ $data['salleRecords'] = $this->salle_model->SalleListing();
                 $cuisine = $this->input->post('cuisine');       
                 $tableCM = $this->input->post('tableCM');                    
        
+                 $reservationInfo = array('dateDebut'=>$dateDebut,
+                    'heureDebut'=>$heureDebut,
+                    'dateFin'=>$dateFin,
+                    'heureFin'=>$heureFin,
+                    'type'=>$type,
+                    'salleId'=>$salle,
+                    'nbPlace'=>$nbPlace,
+                    'prix'=>$prix,
+                    'titre'=>$titre,
+                    'noteAdmin'=>$noteAdmin,
+                    'statut'=>2,
+                    'cuisine'=>$cuisine,
+                    'tableCM'=>$tableCM,
+                    'locataireId'=>$this->vendorId ,
+                    'createdDTM'=>date('Y-m-d H:i:s'),
+                    'clientId' => $clientId       
+                            );
 
-
-
-                     $reservationInfo = array('dateDebut'=>$dateDebut,
-                        'heureDebut'=>$heureDebut,
-                        'dateFin'=>$dateFin,
-                        'heureFin'=>$heureFin,
-                        'type'=>$type,
-                        'salleId'=>$salle,
-                        'nbPlace'=>$nbPlace,
-                        'prix'=>$prix,
-                        'titre'=>$titre,
-                        'noteAdmin'=>$noteAdmin,
-                        'statut'=>2,
-                        'cuisine'=>$cuisine,
-                        'tableCM'=>$tableCM,
-                        'locataireId'=>$this->vendorId 
-
-                                 
-                                );
-
-                
-               
            
                 $result = $this->reservation_model->addNewReservation($reservationInfo);
                 
@@ -127,19 +176,13 @@ $data['salleRecords'] = $this->salle_model->SalleListing();
                 {
                     $this->session->set_flashdata('success', 'Reservation mise à jour avec succées ');
                     redirect('Reservation/view/'.$result);
-
-
-                            
-
                 }
                 else
                 {
                     $this->session->set_flashdata('error', 'Problème de mise à jours');
                     redirect('Reservation/edit/'.$result);
                 }
-                
-                
-            
+           
         
     }
 
@@ -163,7 +206,9 @@ $data['salleRecords'] = $this->salle_model->SalleListing();
                 $titre = $this->input->post('titre');
                 $noteAdmin = $this->input->post('noteAdmin');  
                 $cuisine = $this->input->post('cuisine');       
-                $tableCM = $this->input->post('tableCM');                    
+                $tableCM = $this->input->post('tableCM');
+                $troupe = $this->input->post('troupe');  
+                $photographe = $this->input->post('photographe');                      
        
 
 
@@ -253,6 +298,7 @@ $data['salleRecords'] = $this->salle_model->SalleListing();
             
 
             $data['projectInfo'] = $this->reservation_model->ReservationInfo($resId);
+            $data['clientInfo'] = $this->user_model->getUserInfo($data['projectInfo']->clientId);
             $data['contratInfo'] = $this->contrat_model->contratInfo($resId);
             $data['paiementInfo'] = $this->paiement_model->paiementListingbyReservation($resId) ;
             $data['totalPaiement'] = $this->paiement_model->getTotal($resId) ;
@@ -311,7 +357,7 @@ $data['salleRecords'] = $this->salle_model->SalleListing();
 
 
             $this->global['pageTitle'] = 'CodeInsect : User Listing';
-            $this->loadViews("reservation/edit", $this->global, $data, NULL);
+            $this->loadViews("reservation/edit", $this->global, $data, $data);
     }
 
 

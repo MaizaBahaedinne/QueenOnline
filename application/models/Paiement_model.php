@@ -91,11 +91,13 @@ class Paiement_model extends CI_Model
      * @param number $userId : This is user id
      * @return array $result : This is user information
      */
-    function getTotal($resId)
+    function getTotal($resId = '')
     {
          $this->db->select('sum(valeur) valeur');
         $this->db->from('tbl_paiement as BaseTbl');
+        if($resId != null) {
         $this->db->where('BaseTbl.reservationId =',$resId );
+        }
         $query = $this->db->get();
         
         return $query->row();
