@@ -1,5 +1,6 @@
 <?php defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' ); 
-
+header('Access-Control-Allow-Origin: *');
+header("Access-Control-Allow-Methods: GET, OPTIONS");
 /**
  * Class : BaseController
  * Base Class to control over all the classes
