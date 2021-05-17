@@ -1,13 +1,14 @@
 DirectoryIndex index.php
 RewriteEngine on
 
-<FilesMatch ".(eot|ttf|otf|woff)">
+<FilesMatch ".(ttf|otf|eot|woff|woff2)$">
+  <IfModule mod_headers.c>
+    Allow from all
     Header set Access-Control-Allow-Origin "*"
+  </IfModule>
 </FilesMatch>
 
 
-
-RewriteCond $1 !^(index\.php|(.*)\.swf|forums|images|avatar|crud|image|css|downloads|jquery|js|robots\.txt|components|favicon\.ico|ajaxcom|uploads|vendor|packages|fonts|.(eot|ttf|otf|woff))
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ ./index.php?$1 [L,QSA]
