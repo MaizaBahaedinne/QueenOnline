@@ -75,7 +75,7 @@
                         <div class="widget-subheading">Depuis 2016</div>
                      </div>
                      <div class="widget-content-right">
-                        <div class="widget-numbers text-danger"><?php echo ($chiffres->valeur)/1000  ?>M DT</div>
+                        <div class="widget-numbers text-danger"><?php if($uid == 1 ){ echo ($chiffres->valeur)/1000 ; }  ?>M DT</div>
                      </div>
                   </div>
                   <div class="widget-progress-wrapper">
@@ -282,7 +282,8 @@
                  <div class="pt-2 pb-0 card-body">
                     <div class="row">
                       <ul class="rm-list-borders list-group list-group-flush" style="width: 100%;padding: 20px">
-                          <?php foreach ($ReservationPerEmployeRecords as $Employer ) {  ?>
+                          
+                          <?php if($uid == 1 ){ foreach ($ReservationPerEmployeRecords as $Employer ) {  ?>
                           <li class="list-group-item">
                              <div class="widget-content p-0">
                                 <div class="widget-content-wrapper">
@@ -300,7 +301,7 @@
                                 </div>
                              </div>
                           </li>
-                        <?php  } ?>
+                        <?php  }  } ?>
                        </ul>
                     </div>
                  </div>
