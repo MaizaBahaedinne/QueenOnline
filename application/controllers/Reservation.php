@@ -67,7 +67,7 @@ class Reservation extends BaseController
      */
     function ResevationTroupe()
     {  
-            $data['userRecords'] = $this->reservation_model->ReservationListing(1,null);
+            $data['userRecords'] = $this->reservation_model->ReservationListing(1,0);
             $this->global['pageTitle'] = 'CodeInsect : User Listing';
             $this->loadViews("reservation/list", $this->global, $data, NULL);
     }
@@ -78,7 +78,7 @@ class Reservation extends BaseController
      */
     function ResevationPhotographe()
     {  
-            $data['userRecords'] = $this->reservation_model->ReservationListing(null,1);
+            $data['userRecords'] = $this->reservation_model->ReservationListing(0,1);
             $this->global['pageTitle'] = 'CodeInsect : User Listing';
             $this->loadViews("reservation/list", $this->global, $data, NULL);
     }

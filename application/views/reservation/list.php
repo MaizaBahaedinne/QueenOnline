@@ -61,9 +61,9 @@
               <td>
                 <?php if ($record->cuisine == 1 ){ echo '<i class="fas fa-utensils"></i> Cuisine<br>';}  ?>
                 <?php if ($record->tableCM == 1 ){ echo '<i class="fa fa-file" ></i> contrat de mariage<br>';}  ?>
-                <?php if ($record->voiture != null ){ echo '<i class="fa fa-car" ></i> Limousine<br>';}  ?>
-                <?php if ($record->troupe != null ){ echo '<i class="fa fa-music" ></i> troupe<br>';}  ?>
-                <?php if ($record->photographe != null ){ echo '<i class="fa fa-camera"></i> photographe<br>';}  ?>
+                <?php if ($record->voiture != 1 ){ echo '<i class="fa fa-car" ></i> Limousine<br>';}  ?>
+                <?php if ($record->troupe != 1 ){ echo '<i class="fa fa-music" ></i> troupe<br>';}  ?>
+                <?php if ($record->photographe != 1 ){ echo '<i class="fa fa-camera"></i> photographe<br>';}  ?>
 
               </td>
               <td  onclick='tdclick(this.id)' id="<?php echo $record->reservationId ?>" >
