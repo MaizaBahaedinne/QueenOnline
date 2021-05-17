@@ -1,0 +1,1 @@
+select month(`queenbd`.`tbl_reservation`.`dateDebut`) AS `MONTH`,year(`queenbd`.`tbl_reservation`.`dateDebut`) AS `YEAR`,count(0) AS `COUNT` from `queenbd`.`tbl_reservation` where `queenbd`.`tbl_reservation`.`statut` = 1 group by year(`queenbd`.`tbl_reservation`.`dateDebut`),month(`queenbd`.`tbl_reservation`.`dateDebut`) order by `queenbd`.`tbl_reservation`.`dateDebut`
