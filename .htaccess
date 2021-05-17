@@ -1,6 +1,10 @@
 DirectoryIndex index.php
 RewriteEngine on
-Header set Access-Control-Allow-Origin "*"
+
+<FilesMatch ".(eot|ttf|otf|woff)">
+    Header set Access-Control-Allow-Origin "*"
+</FilesMatch>
+
 
 
 RewriteCond $1 !^(index\.php|(.*)\.swf|forums|images|avatar|crud|image|css|downloads|jquery|js|robots\.txt|components|favicon\.ico|ajaxcom|uploads|vendor|packages|fonts|.(eot|ttf|otf|woff))
