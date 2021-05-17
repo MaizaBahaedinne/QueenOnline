@@ -51,13 +51,13 @@
                   <h6 class="card-title mb-0"></h6>
                   <div class="dropdown mb-2">
                      <?php if(!empty($contratInfo)) {  ?>
-                     <button id="printC" class="dropdown-item d-flex align-items-center">
+                     <button id="printC" class="dropdown-item d-flex align-items-center"  onclick="print()">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-printer icon-sm mr-2">
                            <polyline points="6 9 6 2 18 2 18 9"></polyline>
                            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
                            <rect x="6" y="14" width="12" height="8"></rect>
                         </svg>
-                        <span class=""  >Imprimer</span>
+                        <span   >Imprimer</span>
                      </button>
                      <?php }  ?>
                   </div>
@@ -259,6 +259,7 @@
             </div>
             <div class="p-3">
                <h6 class="text-muted text-uppercase font-size-md opacity-5 font-weight-normal">Paiament</h6>
+
                <ul class="rm-list-borders list-group list-group-flush">
                   <?php foreach ($paiementInfo as $res ) { ?>
                   <li class="list-group-item">
@@ -284,14 +285,76 @@
                      </div>
                   </li>
                   <?php } ?>
+                  <?php if( $totalPaiement->valeur > 0 ){  ?>
+                     <form style="display: none; border: 2px " 
+                        id="addPayementForm" 
+                        action="<?php echo base_url() ?>Reservation/addPaiement/<?php echo $projectInfo->reservationId ?>" 
+                        method="post"  >
+                  <?php } if ($totalPaiement->valeur ==  0 ) {  ?>
+                     <form style="display: none; border: 2px " 
+                        id="addPayementForm" 
+                        action="<?php echo base_url() ?>Reservation/generateContrat/<?php echo $projectInfo->reservationId ?>" 
+                        method="post"  >
+                  <?php } ?>   
+                     <hr>
+                    <li class="list-group-item">
+                     <div class="widget-content p-0">
+                        <div class="widget-content-wrapper">
+                           <div class="widget-content-left mr-3">
+                              <img width="42" class="rounded-circle" src="assets/images/avatars/4.jpg" alt="">
+                           </div>
+                           <div class="widget-content-left">
+                              <div class="widget-heading"><input type="text" class="form-control"  placeholder="motif" value="Partie" ></div>
+                              <div class="widget-subheading"></div>
+                           </div>
+                           <div class="widget-content-right">
+                              <div class="font-size-xlg text-muted">
+                                 <span> 
+                                    <input type="number"  placeholder="DT" value="0" min="0" max="<?php echo ($projectInfo->prix - $totalPaiement->valeur ) ?>" name="avance" > 
+                                   
+                                 </span>
+                                 <small class="opacity-5 pr-1">DT</small>
+                                
+                                 
+                              </div>
+                           </div>
+                           
+                        </div>
+                        <hr>
+                        <input  class="btn btn-block btn-primary"  type="submit" >
+                     </div>
+                  </li>
+                 
+                  </form>
                </ul>
+               <hr>
+               <span style="float: right">Prix : <?php echo $projectInfo->prix  ?> DT</span><br>
+               <span style="float: right">Payé : <?php echo $totalPaiement->valeur  ?> DT</span><br>
+               <span style="float: right">Reste : <?php echo ($projectInfo->prix - $totalPaiement->valeur ) ?> DT</span>
             </div>
             <div class="text-center d-block card-footer">
-               <button class="btn btn-primary" data-toggle="modal" data-target="#payementForm" >Ajouter</button> <button class="btn btn-info">View Details</button>
+               <button class="btn btn-warning" id="addPayement" >Ajouter</button> <a href="<?php echo base_url() ?>Reservation/recuP/<?php echo $projectInfo->reservationId ?>" class="btn btn-info">Reçu</a>
             </div>
          </div>
       </div>
-      
+      <script type="text/javascript">
+         $('#addPayement').click(function(){
+            $('#addPayementForm').toggle() ;
+         })
+      </script>
+        <script  type="text/javascript">
+          function print() {
+            
+            printJS({
+              printable: 'contrat',
+              type: 'html',
+              targetStyles: ['*']
+           });
+
+          }
+  
+         
+  </script>
 
 
    </div>

@@ -27,12 +27,12 @@
         <table id="example" style="width: 100%;" id="example" class="table  table-hover table-striped table-bordered" >
           <thead>
             <tr>
-              <th>titre</th>
               <th>Date</th>
-              <th>Espace</th>
-              <th>Prix</th>
-              <th>Options</th>
-              <th>Contact</th>
+              <th>titre</th>
+              <th width="10%">Espace</th>
+              <th width="5%">Prix</th>
+              <th width="15%">Options</th>
+              <th width="15%">Contact</th>
               <th width="5%">Statut</th>
               <th width="5%">Action</th>
             </tr>
@@ -45,11 +45,12 @@
                   {
               ?>
             <tr>
-              <td>
-                <b><?php echo $record->type ?> : </b> <br><?php echo $record->titre ?>
-              </td>
+              
               <td>
                 <b><?php echo date_format(date_create($record->dateFin)  , 'd/m/20y');  ?></b><br>  de <?php echo date_format(date_create($record->heureDebut)  , 'H:i'); ?>  à  <?php echo date_format(date_create($record->heureFin)  , 'H:i'); ?>
+              </td>
+              <td>
+                <b><?php echo $record->type ?> : </b> <br><?php echo $record->titre ?>
               </td>
               <td>            
                 <?php echo $record->salle  ?>
@@ -58,7 +59,7 @@
                 <b><?php echo $record->prix  ?> DT</b>
               </td>
               <td>
-                <?php if ($record->cuisine == 1 ){ echo '<i class="fa fa-cutlery" ></i> Cuisine<br>';}  ?>
+                <?php if ($record->cuisine == 1 ){ echo '<i class="fas fa-utensils"></i> Cuisine<br>';}  ?>
                 <?php if ($record->tableCM == 1 ){ echo '<i class="fa fa-file" ></i> contrat de mariage<br>';}  ?>
                 <?php if ($record->voiture != null ){ echo '<i class="fa fa-car" ></i> Limousine<br>';}  ?>
                 <?php if ($record->troupe != null ){ echo '<i class="fa fa-music" ></i> troupe<br>';}  ?>
@@ -91,14 +92,14 @@
                 <?php } ?>
               </td>
               <td>
-                <a href="<?php echo base_url() ?>Reservation/view/<?php echo $record->reservationId ?>" >
-                  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
-                    <g fill="none" stroke="#626262" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M1 12s4-8 11-8s11 8 11 8s-4 8-11 8s-11-8-11-8z"/>
-                      <circle cx="12" cy="12" r="3"/>
-                    </g>
-                  </svg>
+                <div class="btn-group" role="group" > 
+                <a class="btn" href="<?php echo base_url() ?>Reservation/view/<?php echo $record->reservationId ?>" >
+                  <i class="fa fa-eye"></i>
                 </a>
+                <a class="btn" href="<?php echo base_url() ?>Reservation/edit/<?php echo $record->reservationId ?>" >
+                  <i class="fas fa-pencil-alt"></i>
+                </a>
+              </div>
               </td>
             </tr>
             <?php
@@ -114,8 +115,8 @@
               <th>Prix</th>
               <th>Options</th>
               <th>Contact</th>
-              <th width="5%">Statut</th>
-              <th width="5%">Action</th>
+              <th >Statut</th>
+              <th >Action</th>
             </tr>
           </tfoot>
         </table>

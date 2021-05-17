@@ -30,10 +30,11 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
     <link href="<?php echo base_url() ; ?>main.d810cf0ae7f39f28f336.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
-    <link href='fullcalendar/main.css' rel='stylesheet' />
+    
 
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script  src="<?php echo base_url() ; ?>assets/scripts/script.js"></script>
+    <script  src="<?php echo base_url() ; ?>assets/scripts/print.js"></script>
 
 </head>
 

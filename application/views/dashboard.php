@@ -106,7 +106,7 @@
                   </div>
                </div>
                <div class="widget-chart p-0">
-                  <div id="parSalle"></div>
+                  <div id="parSalle" style="padding-right: 30px"></div>
                   <script type="text/javascript">
                      var options = {
                               series: [{
@@ -114,7 +114,7 @@
                               data: [<?php foreach($reservationPerMounthRecords as $data) { echo $data->COUNT.',' ;  } ?>]
                             }],
                               chart: {
-                              height: 500,
+                              height: 580,
                               type: 'bar',
                             },
                             plotOptions: {
@@ -144,7 +144,7 @@
                                 show: true
                               },
                               axisTicks: {
-                                show: true
+                                show: false
                               },
                               crosshairs: {
                                 fill: {
@@ -159,7 +159,7 @@
                                 }
                               },
                               tooltip: {
-                                enabled: true,
+                                enabled: false,
                               }
                             },
                             yaxis: {
@@ -170,7 +170,7 @@
                                 show: false,
                               },
                               labels: {
-                                show: true,
+                                show: false,
                                 formatter: function (val) {
                                   return val ;
                                 }
@@ -179,7 +179,7 @@
                             },
                             title: {
                               text: 'Reservation par mois',
-                              floating: true,
+                              floating: false,
                               offsetY: 0,
                               align: 'center',
                               style: {
@@ -196,7 +196,7 @@
                <div class="grid-menu grid-menu-2col">
                   <div class="no-gutters row">
                      <?php foreach ($ReservationPerYearRecords as $data ) { ?>
-                     <div class="col-md-3">
+                     <div class="col-md-6">
                         <div class="widget-content mt-2">
                            <div class="widget-content-outer">
                               <div class="widget-content-wrapper">
@@ -247,15 +247,15 @@
                     var options = {
                           series: [<?php foreach($SalleRecords as $data) { echo $data->COUNT.',' ;  } ?>],
                           chart: {
-                          width: 600,
+                      
                           type: 'pie',
                         },
                         labels: [<?php foreach($SalleRecords as $data) { echo '"'.$data->nom.'",' ;  } ?>],
                         responsive: [{
-                          breakpoint: 200,
+                          breakpoint: 500,
                           options: {
                             chart: {
-                              width: 500
+                              width: 100
                             },
                             legend: {
                               position: 'buttom'
@@ -268,9 +268,8 @@
                         chart.render();
 
             </script>
-         </div>
-         <div class="col-lg-4">
-           <div class="mb-3 card">
+
+            <div class="mb-3 card">
                  <div class="card-header-tab card-header">
                     <div class="card-header-title">
                        <i class="header-icon lnr-rocket icon-gradient bg-tempting-azure"> </i>
@@ -306,8 +305,9 @@
                     </div>
                  </div>
                  <div class="divider mb-0"></div>
-           </div>            
+           </div>   
          </div>
+         
          <div class="col-lg-8">
            <div class="mb-3 card">
                  <div class="card-header-tab card-header">
@@ -327,7 +327,6 @@
               <th>titre</th>
               <th>Date</th>
               <th>Espace</th>
-              <th>Prix</th>
               <th>Options</th>
               <th>Contact</th>
               <th width="5%">Statut</th>
@@ -351,9 +350,7 @@
               <td>            
                 <?php echo $record->salle  ?>
               </td>
-              <td>            
-                <b><?php echo $record->prix  ?> DT</b>
-              </td>
+             
               <td>
                 <?php if ($record->cuisine == 1 ){ echo '<i class="fa fa-cutlery" ></i> Cuisine<br>';}  ?>
                 <?php if ($record->tableCM == 1 ){ echo '<i class="fa fa-file" ></i> contrat de mariage<br>';}  ?>
@@ -408,7 +405,7 @@
               <th>titre</th>
               <th>Date</th>
               <th>Espace</th>
-              <th>Prix</th>
+      
               <th>Options</th>
               <th>Contact</th>
               <th width="5%">Statut</th>

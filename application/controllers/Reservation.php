@@ -53,9 +53,9 @@ class Reservation extends BaseController
 
         public function addNew()
     {
-           
+             $data['salleRecords'] = $this->salle_model->SalleListing();
             $this->global['pageTitle'] = 'CodeInsect : User Listing';
-            $this->loadViews("reservation/new", $this->global, NULL , NULL);
+            $this->loadViews("reservation/new", $this->global, $data , NULL);
   
     }
 
@@ -104,7 +104,7 @@ class Reservation extends BaseController
                 $email = $this->input->post('email');
                 $mobile = $this->input->post('mobile');
                 $mobile2 = $this->input->post('mobile2');
-                $birthday = $this->input->post('birthday');
+                $birthday = $this->input->post('birth');
                 $sexe = $this->input->post('sexe');
 
                
@@ -130,12 +130,13 @@ class Reservation extends BaseController
                                  'birthday'=>$birthday 
                                     );
                 
-                if($clientId != null)
+                if($clientId == null )
                 { 
                     $clientId = $this->client_model->addNewClient($userInfo);
+                    var_dump($clientId) ; 
                 }else
                 {
-                    $clientId = $this->client_model->editClient($userInfo, $clientId) ;
+                     $this->client_model->editClient($userInfo, $clientId) ;
                 }
                 
                 $dateDebut = $this->input->post('dateDebut');
@@ -169,7 +170,7 @@ class Reservation extends BaseController
                     'clientId' => $clientId       
                             );
 
-           
+                var_dump($reservationInfo) ; 
                 $result = $this->reservation_model->addNewReservation($reservationInfo);
                 
                 if($result > 0)

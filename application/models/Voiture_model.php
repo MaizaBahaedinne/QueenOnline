@@ -7,14 +7,8 @@
  * @version : 1.1
  * @since : 15 November 2016
  */
-class Reservation_model extends CI_Model
+class Voiture_model extends CI_Model
 {
-    
-
-
-
-
-    
     /**
      * This function is used to get the user listing count
      * @param string $searchText : This is optional search text
@@ -22,28 +16,13 @@ class Reservation_model extends CI_Model
      * @param number $segment : This is pagination limit
      * @return array $result : This is result
      */
-    function ReservationListing($troupe = null , $photographe = null , $date = null  )
+    function ReservationListing()
     {
-        $this->db->select('BaseTbl.reservationId , BaseTbl.titre , BaseTbl.type , BaseTbl.prix ,  BaseTbl.dateDebut , BaseTbl.heureDebut , BaseTbl.dateFin , BaseTbl.heureFin , BaseTbl.cuisine , BaseTbl.tableCM , BaseTbl.voiture , BaseTbl.troupe , BaseTbl.photographe , BaseTbl.gateau   , BaseTbl.nbPlace , BaseTbl.noteAdmin , BaseTbl.statut , Client.name clientName , Client.mobile , Salles.nom salle');
-        $this->db->from('tbl_reservation as BaseTbl');
-        $this->db->join('tbl_users as Client', 'Client.userId = BaseTbl.clientId','left');
-        $this->db->join('tbl_users as Locataire', 'Locataire.userId = BaseTbl.clientId','left');
-        $this->db->join('tbl_salle as Salles', 'Salles.salleID = BaseTbl.salleId','left');
+        $this->db->select('BaseTbl.*');
+        $this->db->from('tbl_voiture_location as BaseTbl');
         $this->db->where('BaseTbl.statut in (0,1) ');
         $this->db->where('Year(BaseTbl.dateFin) >= Year(NOW()) ');
 
-        if( $troupe != null ){
-        $this->db->where('BaseTbl.troupe = ',1);
-        }
-
-        if( $photographe != null ){
-        $this->db->where('BaseTbl.photographe = ',1);
-        }
-
-
-        if( $date != null ){
-        $this->db->where('BaseTbl.dateFin = NOW() ');
-        }
     
 
         $query = $this->db->get();
@@ -54,22 +33,6 @@ class Reservation_model extends CI_Model
 
 
 
-/**
-     * This function is used to get the user listing count
-     * @param string $searchText : This is optional search text
-     * @param number $page : This is pagination offset
-     * @param number $segment : This is pagination limit
-     * @return array $result : This is result
-     */
-    function ReservationCalenderStat()
-    {
-        $this->db->select('*');
-        $this->db->from('tbl_reservation as BaseTbl');
-        $this->db->where('BaseTbl.statut IN (1) ');
-        $query = $this->db->get();
-        $result = $query->result();        
-        return $result;
-    }
 
 
     /**
@@ -177,28 +140,7 @@ class Reservation_model extends CI_Model
     }
 
 
-     /**
-     * This function is used to get the user listing count
-     * @param string $searchText : This is optional search text
-     * @param number $page : This is pagination offset
-     * @param number $segment : This is pagination limit
-     * @return array $result : This is result
-     */
-    function ReservationCalender1($salleId)
-    {
-        $this->db->select('BaseTbl.reservationId , BaseTbl.titre , BaseTbl.type , BaseTbl.prix ,  BaseTbl.dateDebut , BaseTbl.heureDebut , BaseTbl.dateFin , BaseTbl.heureFin , BaseTbl.cuisine , BaseTbl.tableCM , BaseTbl.nbPlace , BaseTbl.noteAdmin , BaseTbl.statut , Client.name clientName , Client.mobile , Salles.nom salle');
-        $this->db->from('tbl_reservation as BaseTbl');
-        $this->db->join('tbl_users as Client', 'Client.userId = BaseTbl.clientId','left');
-        $this->db->join('tbl_users as Locataire', 'Locataire.userId = BaseTbl.clientId','left');
-        $this->db->join('tbl_salle as Salles', 'Salles.salleID = BaseTbl.salleId ','left');
-        $this->db->where('BaseTbl.salleId =',$salleId);
-        $this->db->where('BaseTbl.statut IN (0,1) ');
-        $this->db->where('BaseTbl.dateDebut >= NOW() ');
-        $query = $this->db->get();
-        
-        $result = $query->result();        
-        return $result;
-    }
+     
 
 
     
@@ -219,27 +161,7 @@ class Reservation_model extends CI_Model
         return $insert_id;
     }
 
-        
-    function checkreservation($dateDebut,$datefin,$heureDebut,$heureFin,$salleID){
-        $this->db->select("dateDebut , dateFin");
-        $this->db->from("tbl_reservation");
-        $this->db->join('tbl_salle as Salles', 'Salles.salleID = BaseTbl.salleId','left');
-        $this->db->where("dateDebut BETWEEN ".$dateDebut." AND ".$dateFin);
-        $this->db->where("dateFin BETWEEN ".$dateDebut." AND ".$dateFin);
-        $this->db->where("heureDebut BETWEEN ".$heureDebut." AND ".$heureFin);
-        $this->db->where("heureFin BETWEEN ".$heureDebut." AND ".$heureFin);   
-        $this->db->where("tbl_reservation.statut = 0 or tbl_reservation.statut = 1 ",'');
-        $this->db->where("tbl_reservation.statut = 0 or tbl_reservation.statut = 1 ",'');
-        $this->db->where("Salles.salleID = ",$salleID );
-
-
-        
-        $query = $this->db->get();
-
-        return $query->result();
-
-    }
-
+  
 
    
     
@@ -250,12 +172,10 @@ class Reservation_model extends CI_Model
      */
     function ReservationInfo($resId)
     {
-        $this->db->select('BaseTbl.reservationId , BaseTbl.titre , BaseTbl.type , BaseTbl.prix ,  BaseTbl.dateDebut , BaseTbl.heureDebut , BaseTbl.dateFin , BaseTbl.heureFin , BaseTbl.cuisine , BaseTbl.tableCM ,  BaseTbl.troupe , BaseTbl.photographe ,BaseTbl.nbPlace , BaseTbl.noteAdmin , BaseTbl.statut , Client.userId clientId , Client.name clientName ,  Client.cin , Client.mobile , Salles.salleID , Salles.nom salle ,  BaseTbl.clientId,Client.mobile ,Client.mobile2');
+        $this->db->select('BaseTbl.*');
         $this->db->from('tbl_reservation as BaseTbl');
-        $this->db->join('tbl_users as Client', 'Client.userId = BaseTbl.clientId','left');
-        $this->db->join('tbl_users as Locataire', 'Locataire.userId = BaseTbl.clientId','left');
-        $this->db->join('tbl_salle as Salles', 'Salles.salleID = BaseTbl.salleId','left');
-        $this->db->where('BaseTbl.reservationId =',$resId );
+        
+        $this->db->where('BaseTbl.locationId =',$locationId );
 
         $query = $this->db->get();
         
@@ -270,9 +190,9 @@ class Reservation_model extends CI_Model
      * @param array $userInfo : This is users updated information
      * @param number $userId : This is user id
      */
-    function editReservation($reservationInfo, $reservationId)
+    function editReservation($reservationInfo, $locationId)
     {
-        $this->db->where('reservationId', $reservationId);
+        $this->db->where('locationId', $locationId);
         $this->db->update('tbl_reservation', $reservationInfo);
         
         return TRUE;

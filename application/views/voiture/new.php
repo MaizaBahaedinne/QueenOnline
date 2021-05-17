@@ -1,13 +1,14 @@
+
 <div class="app-main__inner">
   <div class="app-page-title">
     <div class="page-title-wrapper">
       <div class="page-title-heading">
         <div class="page-title-icon">
-          <i class="pe-7s-medal icon-gradient bg-tempting-azure"></i>
+          <i class="pe-7s-car icon-gradient bg-tempting-azure"></i>
         </div>
         <div>
-          Reservation
-          <div class="page-title-subheading">Les reservations</div>
+          Reservation des voitures
+          <div class="page-title-subheading">Nouvelle reservation</div>
         </div>
       </div>
       <div class="page-title-actions">
@@ -19,7 +20,7 @@
       </div>
     </div>
   </div>
-<form action="<?php echo base_url()?>Reservation/addNewReservation" method="post">
+<form action="<?php echo base_url()?>Voiture/addNewReservation" method="post">
               
                 <div class="modal-body">
                     <div class="tab-content">
@@ -53,7 +54,7 @@
                                                             <div class="col-sm-6">
                                                                 <div class="form-group">
                                                                     <label class="control-label">Carte d'identié national</label>
-                                                                    <input type="text" class="form-control" name="CIN" id="cin" onkeyup="cinClient(this.value)" placeholder="CIN"   required />
+                                                                    <input type="text" class="form-control" name="CIN" id="cin"  onkeyup="cinClient(this.value)" placeholder="CIN" value="<?php echo $this->input->get('cin') ?>" required />
                                                                     <input hidden type="text" class="form-control" name="clientId" id="clientId" />
                                                                 </div>
                                                             </div>
@@ -64,8 +65,6 @@
                                                                     <input
                                                                         name="dateCin"
                                                                         class="form-control mb-4 mb-md-0"
-                                                                        data-inputmask="'alias': 'datetime'"
-                                                                        data-inputmask-inputformat="dd/mm/yyyy"
                                                                         im-insert="false"
                                                                         type="Date"
                                                                         required
@@ -180,61 +179,54 @@
                                                         <div data-parent="#accordion" id="collapseOne" aria-labelledby="headingOne" class="collapse show">
                                                             <div class="card-body">
                                                                 <div class="form-row">
-                                                                    <div class="col-md-12">
-                                                                        <label for="formGroupExampleInput">Titre</label>
-                                                                        <input type="text" class="form-control" name="titre" placeholder="Titre de l'evenement" />
+
+                                                                	<div class="col-md-12">
+                                                                        <label for="formGroupExampleInput">Code Reservation</label>
+                                                                        <input readonly type="number" class="form-control" value="<?php echo $this->input->get('reservationId') ?>" name="reservationId"  placeholder="Reservation Hors queen park" />
                                                                     </div>
+                                                                    
                                                                     <div class="col-md-12">
                                                                         <label for="formGroupExampleInput">Date et heure</label>
                                                                         <input type="date" class="form-control" name="dateDebut" min="<?php echo date('Y-m-d') ?>" placeholder="Example input" />
                                                                     </div>
                                                                     <div class="col-md-6">
-                                                                        <input type="time" class="form-control" name="heureDebut" placeholder="Example input" />
+                                                                    	<label for="formGroupExampleInput">heure de départ du client</label>
+                                                                        <input type="time" class="form-control" name="heureDebut" placeholder="" />
                                                                     </div>
                                                                     <div class="col-md-6">
-                                                                        <input type="time" class="form-control" name="heureFin" placeholder="Example input" />
+                                                                    	<label for="formGroupExampleInput">heure de retoure vers queen park</label>
+                                                                        <input type="time" class="form-control" name="heureFin" placeholder="" />
                                                                     </div>
+
+                                                                    <div class="col-md-6">
+                                                                    	 <label for="formGroupExampleInput2">Lieu de Départ</label>
+                                                                        <input type="url" class="form-control" row="20" name="depart"  required>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                    	 <label for="formGroupExampleInput2">Lieu de Arrivée</label>
+                                                                        <input type="url" class="form-control" row="20" name="arrivee" required>
+                                                                    </div>
+
+
                                                                     <div class="col-md-12">
-                                                                        <label for="formGroupExampleInput">Espace</label>
-                                                                        <select type="text" class="form-control" name="salle" id="salle" placeholder="Example input">
-                                                                            <?php foreach ($salleRecords as $record ) {
-                                                                    ?>
-                                                                            <option value="<?php echo $record->salleID ?>"> <?php echo $record->nom ?> </option>
-                                                                            <?php } ?>
-                                                                        </select>
+                                                                    	 <label for="formGroupExampleInput2">Google Maps</label>
+                                                                        <textarea type="url" class="form-control" row="20" name="maps" required></textarea>
                                                                     </div>
-                                                                    <div class="col-md-12">
-                                                                        <label for="formGroupExampleInput2">Type</label>
-                                                                        <select type="text" class="form-control" name="type">
-                                                                            <option value="Marriage"> Marriage </option>
-                                                                            <option value="Finacailles"> Finacailles </option>
-                                                                            <option value="Hena"> Hena </option>
-                                                                            <option value="Marriage"> Outya </option>
-                                                                            <option value="Congret"> Congret </option>
-                                                                            <option value="Circoncision"> Circoncision </option>
-                                                                            <option value="Team Building"> Team Building </option>
-                                                                            <option value="Team Building"> Anniversaire </option>
-                                                                            <option value="Team Building"> Evenement </option>
-                                                                        </select>
-                                                                    </div>
-                                                                    <div class="col-md-12">
-                                                                        <label for="formGroupExampleInput2">invités</label>
-                                                                        <input type="number" class="form-control" min="20" max="1000" name="nbPlace" id="nbPlace" placeholder="Nombre des invités" />
-                                                                    </div>
+                                                                    
+                                                                    
                                                                     <div class="col-md-12">
                                                                         <label for="formGroupExampleInput2">Prix</label>
-                                                                        <input type="number" class="form-control" min="300" name="prix" id="prix" placeholder="Prix" />
+                                                                        <input type="number" class="form-control" min="300" name="prix"  placeholder="Prix" />
                                                                     </div>
+
                                                                     <div class="col-md-12">
-                                                                        <label for="formGroupExampleInput">Options </label><br />
-                                                                        <input type="checkbox" name="tableCM" value="1" /> Table contrat de mariage <br />
-                                                                        <input type="checkbox" name="cuisine" value="1" /> Cuisine <br />
-                                                                        <input type="checkbox" name="Troupe" value="1" /> Troupe<br />
-                                                                        <input type="checkbox" name="Photographe" value="1" /> Photographe<br />
+                                                                        <label for="formGroupExampleInput2">Avance</label>
+                                                                        <input type="number" class="form-control" min="300" name="avance"  placeholder="Prix" />
                                                                     </div>
+                                                                    
                                                                     <div class="col-md-12">
                                                                         <label for="formGroupExampleInput">Note Administratif </label>
-                                                                        <textarea class="form-control" row="10" name="noteAdmin"></textarea>
+                                                                        <textarea class="form-control" row="40" name="noteAdmin"></textarea>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -262,8 +254,8 @@
                                             </div>
                                             <div class="clearfix">
                         <button type="button" id="reset-btn" class="btn-shadow float-left btn btn-link">Reset</button>
-                        <button type="button" id="next-btn" class="btn-shadow btn-wide float-right btn-pill btn-hover-shine btn btn-primary">Next</button>
-                        <button type="button" id="prev-btn" class="btn-shadow float-right btn-wide btn-pill mr-3 btn btn-outline-secondary">Previous</button>
+                        <button type="button" id="next-btn" class="btn-shadow btn-wide float-right btn-pill btn-hover-shine btn btn-primary">Suivant</button>
+                        <button type="button" id="prev-btn" class="btn-shadow float-right btn-wide btn-pill mr-3 btn btn-outline-secondary">Précedent</button>
                     </div>
                                         </div>
                                     </div>

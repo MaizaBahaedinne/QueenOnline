@@ -1271,6 +1271,11 @@
         });
     }
 
+
+    $( "#cin1" ).load(function() {
+      alert( "Load was performed." );
+    });
+
     
 
     }
