@@ -256,21 +256,10 @@ class Reservation extends BaseController
 
      function deleteReservation($resId)
     {
-              
-       
 
+                $reservationInfo = array('dateDebut'=>$dateDebut,
+                                         'statut'=>3,);
 
-
-                     $reservationInfo = array('dateDebut'=>$dateDebut,
-                        'statut'=>3,
-       
-
-                                 
-                                );
-
-                
-               
-           
                 $result = $this->reservation_model->editReservation($reservationInfo,$resId);
                 
                 if($result)

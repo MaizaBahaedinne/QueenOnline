@@ -19,21 +19,21 @@
                <span class="btn-icon-wrapper pr-2 opacity-7">
                <i class="fa fa-business-time fa-w-20"></i>
                </span>
-               Buttons
+               Menu
                </button>
                <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
                   <ul class="nav flex-column">
                      <li class="nav-item">
-                        <a class="nav-link">
+                        <a href="<?php echo base_url() ?>Reservation/edit/<?php echo $projectInfo->reservationId  ?>" class="nav-link">
                            <i class="nav-link-icon lnr-inbox"></i>
-                           <span> Inbox</span>
-                           <div class="ml-auto badge badge-pill badge-secondary">86</div>
+                           <span> Modifier</span>
+                          
                         </a>
                      </li>
                      <li class="nav-item">
-                        <a disabled="" class="nav-link disabled">
+                        <a  href="<?php echo base_url() ?>Reservation/deleteReservation/<?php echo $projectInfo->reservationId  ?>" class="nav-link">
                         <i class="nav-link-icon lnr-file-empty"></i>
-                        <span> File Disabled</span>
+                        <span> Annuler</span>
                         </a>
                      </li>
                   </ul>
