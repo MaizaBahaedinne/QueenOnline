@@ -21,9 +21,10 @@
          <table id="example" style="width: 100%;" id="example" class="table  table-hover table-striped table-bordered" >
             <thead>
                <tr>
+                  <th>cin</th>
                   <th>Nom</th>
                   <th>Mobile</th>
-                  <th>cin</th>
+                  
                   <th>adresse</th>
                   <th class="text-center">Actions</th>
                </tr>
@@ -36,11 +37,11 @@
                       {
                   ?>
                <tr>
+                  <td><i class="fa fa-id-card" aria-hidden="true"></i> <?php echo $record->cin ?></td>
                   <td><?php echo $record->nom ?> <?php echo $record->prenom ?> </td>
                   <td><i class="fa fa-phone" aria-hidden="true"></i> <?php echo $record->mobile ?> <br>
                      <i class="fa fa-phone" aria-hidden="true"></i> <?php echo $record->mobile2 ?>
                   </td>
-                  <td><i class="fa fa-id-card" aria-hidden="true"></i> <?php echo $record->cin ?></td>
                   <td><?php echo $record->ville ?> </td>
                   <td class="text-center">
                      

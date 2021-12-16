@@ -125,6 +125,7 @@ class Reservation_model extends CI_Model
         $this->db->join('tbl_salle as Salles', 'Salles.salleID = BaseTbl.salleId','left');
         $this->db->group_by('BaseTbl.salleId');
         $this->db->where('BaseTbl.statut IN (1) ');
+        $this->db->where('BaseTbl.dateFin >= NOW() ');
         $query = $this->db->get();
         $result = $query->result();        
         return $result;
@@ -145,8 +146,10 @@ class Reservation_model extends CI_Model
         $this->db->join('tbl_users as Locataire', 'Locataire.userId = BaseTbl.locataireId','left');
         
         $this->db->where('BaseTbl.statut IN (1) ');
+        $this->db->where('BaseTbl.dateFin >= NOW() ');
         $this->db->group_by('BaseTbl.locataireId');
         $this->db->order_by('count(userId) DESC');
+
         
         $query = $this->db->get();
         $result = $query->result();        
