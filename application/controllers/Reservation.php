@@ -401,7 +401,7 @@ class Reservation extends BaseController
         $clientInfo = $this->client_model->getClientInfo($ReservationInfo->clientId);
 
         $myMobile = $clientInfo->mobile ;
-        $mySms = "Salut ".$clientInfo->name.", On vous souhaite la bienvenue chez nous. Votre réservation de l'espace (".$ReservationInfo->salle.") pour la date (".$ReservationInfo->dateDebut.") a été enregistrer.";
+        $mySms = "Salut ".$clientInfo->name.", On vous souhaite la bienvenue chez nous. Votre réservation de l'espace (".$ReservationInfo->salle.") pour la date (".$ReservationInfo->dateDebut.") a été enregistrée.";
 
 
         
@@ -431,7 +431,7 @@ class Reservation extends BaseController
             $ReservationInfo =  $this->reservation_model->ReservationInfo($resId) ;
             $clientInfo = $this->client_model->getClientInfo($ReservationInfo->clientId); 
             $myMobile = $clientInfo->mobile ;
-            $mySms = "Salut ".$clientInfo->name.", une paiement de (".$avance." DT)  pour la reservation N°".$resId." a été effectuer avec succées" ;
+            $mySms = "Salut ".$clientInfo->name.", une paiement de (".$avance." DT)  pour la reservation N°".$resId." a été effectuée avec succées" ;
       
             $this->sendSMS("216".$myMobile, $mySms) ;
    
@@ -450,7 +450,7 @@ class Reservation extends BaseController
         {
             
             $myMobile = $clientInfo->mobile ;
-            $mySms = "Bonjour ".$clientInfo->name.", votre reservation de la salle (".$ReservationInfo->salle.") pour le (".$ReservationInfo->dateDebut.") a été validé on vous souhaite une belle cérimonie." ;
+            $mySms = "Bonjour ".$clientInfo->name.", votre reservation de la salle (".$ReservationInfo->salle.") pour le (".$ReservationInfo->dateDebut.") a été validée on vous souhaite une belle cérimonie." ;
 
 
    

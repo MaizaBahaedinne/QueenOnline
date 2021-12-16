@@ -230,7 +230,7 @@
                   <br>
                   <p style="text-align: center;">Queen Park - Mc 34 Route  Mornag boujardga 2090 - mobile : 54 419 959  - 79 352 153 - 58 465 249 </p>
                </div>
-               <?php } else{ echo '<h5 style="color : red" >Pour avoir votre contrat il faut verser une avance superieur à 1000DT </h5>' ;}  ?>
+               <?php } else{ echo '<h5 style="color : red" >Pour avoir votre contrat il faut verser une avance superieur à 2000DT </h5>' ;}  ?>
                <!-- Modal -->
             </div>
          </div>
