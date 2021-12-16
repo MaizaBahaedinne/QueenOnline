@@ -128,28 +128,55 @@
                                                             <div class="col-sm-3">
                                                                 <div class="form-group">
                                                                     <label class="control-label">N°</label>
-                                                                    <input type="text" class="form-control" name="N" id="n" placeholder="N°" />
+                                                                    <input type="number" class="form-control" name="N" id="n" placeholder="N°" />
                                                                 </div>
                                                             </div>
                                                             <!-- Col -->
                                                             <div class="col-sm-9">
                                                                 <div class="form-group">
                                                                     <label class="control-label">Rue</label>
-                                                                    <input type="text" class="form-control" name="rue" id="rue" placeholder="Rue" />
+                                                                    <input type="text" class="form-control" name="rue" minlength="6" id="rue" placeholder="Rue" />
                                                                 </div>
                                                             </div>
                                                             <!-- Col -->
                                                             <div class="col-sm-9">
                                                                 <div class="form-group">
                                                                     <label class="control-label">Ville</label>
-                                                                    <input type="text" class="form-control" name="ville" id="ville" placeholder="Ville" required />
+                                                                    
+                                                                    <select name="ville" class="form-control" id="ville" required>
+                                                                        <option value="">—— Selectionner —— </option>
+                                                                        <option value="Ariana">Ariana</option>
+                                                                        <option value="Béja">Béja</option>
+                                                                        <option value="Ben Arous">Ben Arous</option>
+                                                                        <option value="Bizerte">Bizerte</option>
+                                                                        <option value="Gabes">Gabès</option>
+                                                                        <option value="Gafsa">Gafsa</option>
+                                                                        <option value="Jendouba">Jendouba</option>
+                                                                        <option value="Kairouan">Kairouan</option>
+                                                                        <option value="Kasserine">Kasserine</option>
+                                                                        <option value="Kébili">Kébili</option>
+                                                                        <option value="Kef">Kef</option>
+                                                                        <option value="Mahdia">Mahdia</option>
+                                                                        <option value="Manouba">Manouba</option>
+                                                                        <option value="Médenine">Médenine</option>
+                                                                        <option value="Monastir">Monastir</option>
+                                                                        <option value="Nabeul">Nabeul</option>
+                                                                        <option value="Sfax">Sfax</option>
+                                                                        <option value="Sidi Bouzid">Sidi Bouzid</option>
+                                                                        <option value="Siliana">Siliana</option>
+                                                                        <option value="Sousse">Sousse</option>
+                                                                        <option value="Tataouine">Tataouine</option>
+                                                                        <option value="Tozeur">Tozeur</option>
+                                                                        <option value="Tunis">Tunis</option>
+                                                                        <option value="Zaghouan">Zaghouan</option>
+                                                                    </select>
                                                                 </div>
                                                             </div>
                                                             <!-- Col -->
                                                             <div class="col-sm-3">
                                                                 <div class="form-group">
                                                                     <label class="control-label">code postale</label>
-                                                                    <input type="text" class="form-control" name="codePostal" id="codePostal" placeholder="Code postale" />
+                                                                    <input type="number" class="form-control" min="1000" max="8000" name="codePostal" id="codePostal" placeholder="Code postale" />
                                                                 </div>
                                                             </div>
                                                             <!-- Col -->
@@ -234,7 +261,7 @@
                                                                     </div>
                                                                     <div class="col-md-12">
                                                                         <label for="formGroupExampleInput">Note Administratif </label>
-                                                                        <textarea class="form-control" row="10" name="noteAdmin"></textarea>
+                                                                        <textarea class="form-control" row="20" name="noteAdmin"></textarea>
                                                                     </div>
                                                                 </div>
                                                             </div>
