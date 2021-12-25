@@ -11,8 +11,6 @@
             </div>
          </div>
          <div class="page-title-actions">
-            
-            
          </div>
       </div>
    </div>
@@ -88,6 +86,113 @@
                      </div>
                   </div>
                </div>
+            </div>
+         </div>
+          <div class="col-lg-12">
+            <div class="mb-3 card">
+               <div class="card-header-tab card-header">
+                  <div class="card-header-title">
+                     <i class="header-icon lnr-rocket icon-gradient bg-tempting-azure"> </i>
+                     Reservation du jour
+                  </div>
+                  <div class="btn-actions-pane-right text-capitalize">
+                     <button class="btn-wide btn-outline-2x btn btn-outline-primary btn-sm">View All</button>
+                  </div>
+               </div>
+               <div class="pt-2 pb-0 card-body">
+                  <div class="row">
+                     <table  style="width: 100%;"  class="table-hover table-striped table-bordered" >
+                        <thead>
+                           <tr>
+                              <th>titre</th>
+                              <th>Date</th>
+                              <th>Espace</th>
+                              <th>Options</th>
+                              <th>Contact</th>
+                              <th width="5%">Statut</th>
+                              <th width="5%">Action</th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <?php
+                              if(!empty($ReservationRecords))
+                              {
+                                  foreach($ReservationRecords as $record)
+                                  {
+                              ?>
+                           <tr>
+                              <td>
+                                 <b><?php echo $record->type ?> : </b> <br><?php echo $record->titre ?>
+                              </td>
+                              <td>
+                                 <b><?php echo date_format(date_create($record->dateFin)  , 'd/m/20y');  ?></b><br>  de <?php echo date_format(date_create($record->heureDebut)  , 'H:i'); ?>  à  <?php echo date_format(date_create($record->heureFin)  , 'H:i'); ?>
+                              </td>
+                              <td>            
+                                 <?php echo $record->salle  ?>
+                              </td>
+                              <td>
+                                 <?php if ($record->cuisine == 1 ){ echo '<i class="fa fa-cutlery" ></i> Cuisine<br>';}  ?>
+                                 <?php if ($record->tableCM == 1 ){ echo '<i class="fa fa-file" ></i> contrat de mariage<br>';}  ?>
+                                 <?php if ($record->voiture != null ){ echo '<i class="fa fa-car" ></i> Limousine<br>';}  ?>
+                                 <?php if ($record->troupe != null ){ echo '<i class="fa fa-music" ></i> troupe<br>';}  ?>
+                                 <?php if ($record->photographe != null ){ echo '<i class="fa fa-camera"></i> photographe<br>';}  ?>
+                              </td>
+                              <td  onclick='tdclick(this.id)' id="<?php echo $record->reservationId ?>" >
+                                 <?php if($record->clientName != '') { ?>
+                                 <button type="button" class="btn" data-toggle="tooltip" data-html="true" data-placement="bottom" 
+                                    title="<h6>Mobile :<small>  <a href=tel:<?php echo $record->mobile  ?> > <?php echo $record->mobile  ?> </a> </small> </h6>">
+                                 <?php echo $record->clientName  ?>
+                                 </button>
+                                 <?php } ?>
+                                 <?php if($record->clientName == '') { ?>
+                                 <a href="<?php echo base_url()?>">Ajouter un client</a>                            
+                                 <?php } ?>
+                              </td>
+                              <td> 
+                                 <?php if ($record->statut == 0 ) { ?>
+                                 <span class="badge badge-pill badge-success"><i class="metismenu-icon pe-7s-check"></i></span>
+                                 <?php } ?>    
+                                 <?php if ($record->statut == 1 ) { ?>
+                                 <span class="badge badge-pill badge-warning"><i class="metismenu-icon pe-7s-stopwatch"></i></span>
+                                 <?php } ?>
+                                 <?php if ($record->statut == 2 ) { ?>
+                                 <span class="badge badge-pill badge-dark"></span>
+                                 <?php } ?>
+                                 <?php if ($record->statut == 3 ) { ?>
+                                 <span class="badge badge-pill badge-danger"><i class="metismenu-icon pe-7s-close"></i></span>
+                                 <?php } ?>
+                              </td>
+                              <td>
+                                 <a href="<?php echo base_url() ?>Reservation/view/<?php echo $record->reservationId ?>" >
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+                                       <g fill="none" stroke="#626262" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                          <path d="M1 12s4-8 11-8s11 8 11 8s-4 8-11 8s-11-8-11-8z"/>
+                                          <circle cx="12" cy="12" r="3"/>
+                                       </g>
+                                    </svg>
+                                 </a>
+                              </td>
+                           </tr>
+                           <?php
+                              } 
+                              }
+                              ?>
+                        </tbody>
+                        <tfoot>
+                           <tr>
+                              <th>titre</th>
+                              <th>Date</th>
+                              <th>Espace</th>
+                              <th>Options</th>
+                              <th>Contact</th>
+                              <th width="5%">Statut</th>
+                              <th width="5%">Action</th>
+                           </tr>
+                        </tfoot>
+                     </table>
+                  </div>
+               </div>
+               <div class="divider mb-0"></div>
             </div>
          </div>
          <div class="col-lg-8 col-xl-8">
@@ -223,202 +328,89 @@
             </div>
          </div>
          <div class="col-lg-4">
-           <div class="mb-3 card">
-                 <div class="card-header-tab card-header">
-                    <div class="card-header-title">
-                       <i class="header-icon lnr-rocket icon-gradient bg-tempting-azure"> </i>
-                       Statistique Par Salle
-                    </div>
-                    <div class="btn-actions-pane-right text-capitalize">
-                       <button class="btn-wide btn-outline-2x btn btn-outline-primary btn-sm">View All</button>
-                    </div>
-                 </div>
-                 <div class="pt-2 pb-0 card-body">
-                    <div class="row">
-                    </div>
-                 </div>
-                 <div class="widget-chart p-0">
-                    <div id="Salle"></div>
-                   
-                 </div>
-                 <div class="divider mb-0"></div>
-           </div>            
-            <script type="text/javascript">
-                    var options = {
-                          series: [<?php foreach($SalleRecords as $data) { echo $data->COUNT.',' ;  } ?>],
-                          chart: {
-                      
-                          type: 'pie',
-                        },
-                        labels: [<?php foreach($SalleRecords as $data) { echo '"'.$data->nom.'",' ;  } ?>],
-                        responsive: [{
-                          breakpoint: 500,
-                          options: {
-                            chart: {
-                              width: 100
-                            },
-                            legend: {
-                              position: 'buttom'
-                            }
-                          }
-                        }]
-                        };
-
-                        var chart = new ApexCharts(document.querySelector("#Salle"), options);
-                        chart.render();
-
-            </script>
-
             <div class="mb-3 card">
-                 <div class="card-header-tab card-header">
-                    <div class="card-header-title">
-                       <i class="header-icon lnr-rocket icon-gradient bg-tempting-azure"> </i>
-                       Statistique par Employée
-                    </div>
-                    <div class="btn-actions-pane-right text-capitalize">
-                       <button class="btn-wide btn-outline-2x btn btn-outline-primary btn-sm">View All</button>
-                    </div>
-                 </div>
-                 <div class="pt-2 pb-0 card-body">
-                    <div class="row">
-                      <ul class="rm-list-borders list-group list-group-flush" style="width: 100%;padding: 20px">
-                          
-                          <?php if($uid == 1 ){ foreach ($ReservationPerEmployeRecords as $Employer ) {  ?>
-                          <li class="list-group-item">
-                             <div class="widget-content p-0">
-                                <div class="widget-content-wrapper">
-                                   <div class="widget-content-left mr-3">
-                                      <img width="42" class="rounded-circle" src="assets/images/avatars/4.jpg" alt="">
-                                   </div>
-                                   <div class="widget-content-left">
-                                      <div class="widget-heading"><?php echo  $Employer->name ?></div>
-                                   </div>
-                                   <div class="widget-content-right">
-                                      <div class="font-size-xlg text-muted">
-                                         <span> <?php echo $Employer->COUNT ?></span>
-                                      </div>
-                                   </div>
-                                </div>
-                             </div>
-                          </li>
+               <div class="card-header-tab card-header">
+                  <div class="card-header-title">
+                     <i class="header-icon lnr-rocket icon-gradient bg-tempting-azure"> </i>
+                     Statistique Par Salle
+                  </div>
+                  <div class="btn-actions-pane-right text-capitalize">
+                     <button class="btn-wide btn-outline-2x btn btn-outline-primary btn-sm">View All</button>
+                  </div>
+               </div>
+               <div class="pt-2 pb-0 card-body">
+                  <div class="row">
+                  </div>
+               </div>
+               <div class="widget-chart p-0">
+                  <div id="Salle"></div>
+               </div>
+               <div class="divider mb-0"></div>
+            </div>
+            <script type="text/javascript">
+               var options = {
+                     series: [<?php foreach($SalleRecords as $data) { echo $data->COUNT.',' ;  } ?>],
+                     chart: {
+                 
+                     type: 'pie',
+                   },
+                   labels: [<?php foreach($SalleRecords as $data) { echo '"'.$data->nom.'",' ;  } ?>],
+                   responsive: [{
+                     breakpoint: 500,
+                     options: {
+                       chart: {
+                         width: 100
+                       },
+                       legend: {
+                         position: 'buttom'
+                       }
+                     }
+                   }]
+                   };
+               
+                   var chart = new ApexCharts(document.querySelector("#Salle"), options);
+                   chart.render();
+               
+            </script>
+            <div class="mb-3 card">
+               <div class="card-header-tab card-header">
+                  <div class="card-header-title">
+                     <i class="header-icon lnr-rocket icon-gradient bg-tempting-azure"> </i>
+                     Statistique par Employée
+                  </div>
+                  <div class="btn-actions-pane-right text-capitalize">
+                     <button class="btn-wide btn-outline-2x btn btn-outline-primary btn-sm">View All</button>
+                  </div>
+               </div>
+               <div class="pt-2 pb-0 card-body">
+                  <div class="row">
+                     <ul class="rm-list-borders list-group list-group-flush" style="width: 100%;padding: 20px">
+                        <?php if($uid == 1 ){ foreach ($ReservationPerEmployeRecords as $Employer ) {  ?>
+                        <li class="list-group-item">
+                           <div class="widget-content p-0">
+                              <div class="widget-content-wrapper">
+                                 <div class="widget-content-left mr-3">
+                                    <img width="42" class="rounded-circle" src="assets/images/avatars/4.jpg" alt="">
+                                 </div>
+                                 <div class="widget-content-left">
+                                    <div class="widget-heading"><?php echo  $Employer->name ?></div>
+                                 </div>
+                                 <div class="widget-content-right">
+                                    <div class="font-size-xlg text-muted">
+                                       <span> <?php echo $Employer->COUNT ?></span>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </li>
                         <?php  }  } ?>
-                       </ul>
-                    </div>
-                 </div>
-                 <div class="divider mb-0"></div>
-           </div>   
+                     </ul>
+                  </div>
+               </div>
+               <div class="divider mb-0"></div>
+            </div>
          </div>
-         
-         <div class="col-lg-8">
-           <div class="mb-3 card">
-                 <div class="card-header-tab card-header">
-                    <div class="card-header-title">
-                       <i class="header-icon lnr-rocket icon-gradient bg-tempting-azure"> </i>
-                       Reservation du jour
-                    </div>
-                    <div class="btn-actions-pane-right text-capitalize">
-                       <button class="btn-wide btn-outline-2x btn btn-outline-primary btn-sm">View All</button>
-                    </div>
-                 </div>
-                 <div class="pt-2 pb-0 card-body">
-                    <div class="row">
-                      <table  style="width: 100%;"  class="table-hover table-striped table-bordered" >
-          <thead>
-            <tr>
-              <th>titre</th>
-              <th>Date</th>
-              <th>Espace</th>
-              <th>Options</th>
-              <th>Contact</th>
-              <th width="5%">Statut</th>
-              <th width="5%">Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            <?php
-              if(!empty($ReservationRecords))
-              {
-                  foreach($ReservationRecords as $record)
-                  {
-              ?>
-            <tr>
-              <td>
-                <b><?php echo $record->type ?> : </b> <br><?php echo $record->titre ?>
-              </td>
-              <td>
-                <b><?php echo date_format(date_create($record->dateFin)  , 'd/m/20y');  ?></b><br>  de <?php echo date_format(date_create($record->heureDebut)  , 'H:i'); ?>  à  <?php echo date_format(date_create($record->heureFin)  , 'H:i'); ?>
-              </td>
-              <td>            
-                <?php echo $record->salle  ?>
-              </td>
-             
-              <td>
-                <?php if ($record->cuisine == 1 ){ echo '<i class="fa fa-cutlery" ></i> Cuisine<br>';}  ?>
-                <?php if ($record->tableCM == 1 ){ echo '<i class="fa fa-file" ></i> contrat de mariage<br>';}  ?>
-                <?php if ($record->voiture != null ){ echo '<i class="fa fa-car" ></i> Limousine<br>';}  ?>
-                <?php if ($record->troupe != null ){ echo '<i class="fa fa-music" ></i> troupe<br>';}  ?>
-                <?php if ($record->photographe != null ){ echo '<i class="fa fa-camera"></i> photographe<br>';}  ?>
-
-              </td>
-              <td  onclick='tdclick(this.id)' id="<?php echo $record->reservationId ?>" >
-                <?php if($record->clientName != '') { ?>
-                <button type="button" class="btn" data-toggle="tooltip" data-html="true" data-placement="bottom" 
-                  title="<h6>Mobile :<small>  <a href=tel:<?php echo $record->mobile  ?> > <?php echo $record->mobile  ?> </a> </small> </h6>">
-                <?php echo $record->clientName  ?>
-                </button>
-                <?php } ?>
-                <?php if($record->clientName == '') { ?>
-                <a href="<?php echo base_url()?>">Ajouter un client</a>                            
-                <?php } ?>
-              </td>
-              <td> 
-                <?php if ($record->statut == 0 ) { ?>
-                <span class="badge badge-pill badge-success"><i class="metismenu-icon pe-7s-check"></i></span>
-                <?php } ?>    
-                <?php if ($record->statut == 1 ) { ?>
-                <span class="badge badge-pill badge-warning"><i class="metismenu-icon pe-7s-stopwatch"></i></span>
-                <?php } ?>
-                <?php if ($record->statut == 2 ) { ?>
-                <span class="badge badge-pill badge-dark"></span>
-                <?php } ?>
-                <?php if ($record->statut == 3 ) { ?>
-                <span class="badge badge-pill badge-danger"><i class="metismenu-icon pe-7s-close"></i></span>
-                <?php } ?>
-              </td>
-              <td>
-                <a href="<?php echo base_url() ?>Reservation/view/<?php echo $record->reservationId ?>" >
-                  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
-                    <g fill="none" stroke="#626262" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M1 12s4-8 11-8s11 8 11 8s-4 8-11 8s-11-8-11-8z"/>
-                      <circle cx="12" cy="12" r="3"/>
-                    </g>
-                  </svg>
-                </a>
-              </td>
-            </tr>
-            <?php
-              } 
-              }
-              ?>
-          </tbody>
-          <tfoot>
-            <tr>
-              <th>titre</th>
-              <th>Date</th>
-              <th>Espace</th>
-      
-              <th>Options</th>
-              <th>Contact</th>
-              <th width="5%">Statut</th>
-              <th width="5%">Action</th>
-            </tr>
-          </tfoot>
-        </table>
-                    </div>
-                 </div>
-                 <div class="divider mb-0"></div>
-           </div>            
-         </div>
+        
       </div>
    </div>
 </div>
