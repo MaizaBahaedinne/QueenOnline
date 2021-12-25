@@ -30,8 +30,9 @@ class Reservation_model extends CI_Model
         $this->db->join('tbl_users as Locataire', 'Locataire.userId = BaseTbl.clientId','left');
         $this->db->join('tbl_salle as Salles', 'Salles.salleID = BaseTbl.salleId','left');
         $this->db->where('BaseTbl.statut in (0,1) ');
-        $this->db->where('BaseTbl.dateFin >=  SUBDATE(NOW(),1); ');
-        
+        if($date == null){
+        $this->db->where('BaseTbl.dateFin >=  SUBDATE(NOW(),1) ');
+        }
 
         if( $troupe != 0 ){
         $this->db->where('BaseTbl.troupe = ',1);
@@ -42,8 +43,9 @@ class Reservation_model extends CI_Model
         }
 
 
-        if( $date != 0 ){
-        $this->db->where('BaseTbl.dateFin = NOW() ');
+        if( $date != null ){
+         $this->db->where('BaseTbl.dateFin >=  SUBDATE(NOW(),1) ');
+         $this->db->where('BaseTbl.dateFin <=  ADDDATE(NOW(),1) ');
         }
     
 
