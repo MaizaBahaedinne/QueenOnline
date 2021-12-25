@@ -285,17 +285,12 @@ class Reservation extends BaseController
     function view($resId)
     {  
 
-            
-
             $data['projectInfo'] = $this->reservation_model->ReservationInfo($resId);
             $data['clientInfo'] = $this->user_model->getUserInfo($data['projectInfo']->clientId);
             $data['contratInfo'] = $this->contrat_model->contratInfo($resId);
             $data['paiementInfo'] = $this->paiement_model->paiementListingbyReservation($resId) ;
-            $data['totalPaiement'] = $this->paiement_model->getTotal($resId) ;
-            
-
+            $data['totalPaiement'] = $this->paiement_model->getTotal($resId) ;           
             $data['userID'] = $this->vendorId ; 
-
 
             $this->global['pageTitle'] = 'CodeInsect : User Listing';
             $this->loadViews("reservation/details", $this->global, $data, NULL);
@@ -308,18 +303,11 @@ class Reservation extends BaseController
      */
     function recuP($resId)
     {  
-
-            
-
-           
+       
             $data['projectInfo'] = $this->reservation_model->ReservationInfo($resId);
             $data['contratInfo'] = $this->contrat_model->contratInfo($resId);
             $data['paiementInfo'] = $this->paiement_model->paiementListingbyReservation($resId) ;
             $data['totalPaiement'] = $this->paiement_model->getTotal($resId) ;
-            
-
-
-
 
             $this->global['pageTitle'] = 'CodeInsect : User Listing';
             $this->loadViews("paiement/recu", $this->global, $data, NULL);
@@ -401,7 +389,7 @@ class Reservation extends BaseController
         $clientInfo = $this->client_model->getClientInfo($ReservationInfo->clientId);
 
         $myMobile = $clientInfo->mobile ;
-        $mySms = "Salut ".$clientInfo->name.", On vous souhaite la bienvenue chez nous. Votre réservation de l'espace (".$ReservationInfo->salle.") pour la date (".$ReservationInfo->dateDebut.") a été enregistrée.";
+        $mySms = "Salut ".$clientInfo->name.", Votre réservation de l'espace (".$ReservationInfo->salle.") pour la date (".$ReservationInfo->dateDebut.") a été enregistrée.";
 
 
         
