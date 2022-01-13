@@ -28,10 +28,10 @@
           <thead>
             <tr>
               <th>Date</th>
-              <th>titre</th>
-              <th width="10%">Espace</th>
-              <th width="5%">Prix</th>
-              <th width="15%">Options</th>
+              <th>voiture</th>
+              <th width="15%">Depart</th>
+              <th width="15%">arret</th>
+              <th width="15%">arrivé</th>
               <th width="15%">Contact</th>
               <th width="5%">Statut</th>
               <th width="5%">Action</th>
@@ -47,35 +47,23 @@
             <tr>
               
               <td>
-                <b><?php echo date_format(date_create($record->dateFin)  , 'd/m/20y');  ?></b><br>  de <?php echo date_format(date_create($record->heureDebut)  , 'H:i'); ?>  à  <?php echo date_format(date_create($record->heureFin)  , 'H:i'); ?>
+                <b><?php echo date_format(date_create($record->date)  , 'd/m/20y');  ?></b><br> <?php echo $record->depart ;  ?> 
               </td>
               <td>
-                <b><?php echo $record->type ?> : </b> <br><?php echo $record->titre ?>
+                <b><?php echo $record->voitureName ?>
               </td>
               <td>            
-                <?php echo $record->salle  ?>
+                <?php echo $record->l1  ?>
               </td>
               <td>            
-                <b><?php echo $record->prix  ?> DT</b>
+                <b><?php echo $record->l2  ?></b>
               </td>
               <td>
-                <?php if ($record->cuisine == 1 ){ echo '<i class="fas fa-utensils"></i> Cuisine<br>';}  ?>
-                <?php if ($record->tableCM == 1 ){ echo '<i class="fa fa-file" ></i> contrat de mariage<br>';}  ?>
-                <?php if ($record->voiture != 0 ){ echo '<i class="fa fa-car" ></i> Voiture<br>';}  ?>
-                <?php if ($record->troupe != 0  ){ echo '<i class="fa fa-music" ></i> troupe<br>';}  ?>
-                <?php if ($record->photographe != 0  ){ echo '<i class="fa fa-camera"></i> photographe<br>';}  ?>
+               <?php echo $record->l3  ?>
 
               </td>
               <td  onclick='tdclick(this.id)' id="<?php echo $record->reservationId ?>" >
-                <?php if($record->clientName != '') { ?>
-                <button type="button" class="btn" data-toggle="tooltip" data-html="true" data-placement="bottom" 
-                  title="<h6>Mobile :<small>  <a href=tel:<?php echo $record->mobile  ?> > <?php echo $record->mobile  ?> </a> </small> </h6>">
-                <?php echo $record->clientName  ?>
-                </button>
-                <?php } ?>
-                <?php if($record->clientName == '') { ?>
-                <a href="<?php echo base_url()?>">Ajouter un client</a>                            
-                <?php } ?>
+                <?php echo $record->mobile1   ?>   -  <?php echo $record->mobile2   ?> 
               </td>
               <td> 
                 <?php if ($record->statut == 0 ) { ?>

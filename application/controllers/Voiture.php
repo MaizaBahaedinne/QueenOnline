@@ -32,7 +32,7 @@ class Voiture extends BaseController
     {
 
            
-            $data['voituresRecords'] = $this->voiture_model->voitureLocationListing();
+            $data['userRecords'] = $this->voiture_model->ReservationListing();
             $this->global['pageTitle'] = 'Voiture';
             $this->loadViews("voiture/list", $this->global, $data, NULL);
     }
@@ -40,93 +40,62 @@ class Voiture extends BaseController
 
 
 
-        public function addNew()
+        public function addNew($reservationId)
     {
+            $data['projectInfo'] = $this->reservation_model->ReservationInfo($reservationId);
             $this->global['pageTitle'] = 'Clients';
-            $this->loadViews("voiture/new", $this->global, NULL, NULL);
+            $this->loadViews("voiture/new", $this->global, $data, NULL);
     }
 
       /**
      * This function is used to add new user to the system
      */
-    function addNewReservation()
+    function addNewReservationL()
     {
 
                 $clientId = $this->input->post('clientId');
-
-                $nom = $this->input->post('nom');
-                $prenom = $this->input->post('prenom');
-                $CIN = $this->input->post('CIN');
-                $dateCin = $this->input->post('dateCin');
-                $n = $this->input->post('N');
-                $rue = $this->input->post('rue');
-                $ville = $this->input->post('ville');
-                $codePostal = $this->input->post('codePostal');
-                $email = $this->input->post('email');
-                $mobile = $this->input->post('mobile');
-                $mobile2 = $this->input->post('mobile2');
-                $birthday = $this->input->post('birth');
-                $sexe = $this->input->post('sexe');
-
-               
-             
-                $userInfo = array('email'=>$email,
-                                 'password'=>getHashedPassword($CIN), 
-                                 'roleId'=>4, 
-                                 'name'=> $prenom.' '.$nom,
-                                 'cin'=> $CIN,
-                                 'dateCin'=> $dateCin,
-                                 'mobile'=>$mobile,
-                                 'mobile2'=>$mobile2,
-                                 'createdBy'=>$this->vendorId,
-                                 'createdDtm'=>date('Y-m-d H:i:s'),
-                                 'n '=>$n   , 
-                                 'rue'=>$rue, 
-                                 'codePostal'=> $codePostal,
-                                 'ville'=> $ville,
-                                 'type'=> 'personne' ,
-                                 'nom'=>$nom,
-                                 'prenom'=>$prenom,
-                                 'Sexe'=>$sexe , 
-                                 'birthday'=>$birthday 
-                                    );
-                
-                if($clientId == null )
-                { 
-                    $clientId = $this->client_model->addNewClient($userInfo);
-                    var_dump($clientId) ; 
-                }else
-                {
-                     $this->client_model->editClient($userInfo, $clientId) ;
-                }
-                
                 $reservationId = $this->input->post('reservationId');
 
-                $dateDebut = $this->input->post('dateDebut');
-                $heureDebut = $this->input->post('heureDebut');
-                $dateFin = $this->input->post('dateDebut');
-                $heureFin = $this->input->post('heureFin');
+              
+                
+               
+                $voitureName = $this->input->post('voitureName');
+                $date = $this->input->post('date');
                 $depart = $this->input->post('depart');
-                $arrivee = $this->input->post('arrivee');
-                $maps = $this->input->post('maps');
+
+                $l1 = $this->input->post('l1');
+                $l2 = $this->input->post('l2');
+                $l3 = $this->input->post('l3');
+                $l4 = $this->input->post('l4');
+
+                $mobile1 = $this->input->post('mobile1');
+                $mobile2 = $this->input->post('mobile2');
+
                 $prix = $this->input->post('prix');
                 $avance = $this->input->post('avance');
+
                 $noteAdmin = $this->input->post('noteAdmin');  
                  
        
-                $reservationInfo = array('dateDebut'=>$dateDebut,
-                    'heureDebut'=>$heureDebut,
-                    'dateFin'=>$dateFin,
-                    'heureFin'=>$heureFin,
+                $reservationInfo = array(
+                    'voitureName'=>$voitureName,
+                    'date'=>$date,
                     'depart'=>$depart,
-                    'arrivee'=>$arrivee,
-                    'maps' => $maps, 
+
+                    'l1'=>$l1,
+                    'l2'=>$l2,
+                    'l3'=>$l3,
+                    'l4'=>$l4,
+
+                    'mobile1'=>$mobile1,
+                    'mobile2'=>$mobile2,
+                    
                     'prix'=>$prix,
                     'avance'=>$avance,
                     'noteAdmin'=>$noteAdmin,
-                    'statut'=>2,
+                    
                     'reservationId'=>$reservationId,
-                    'locataireId'=>$this->vendorId ,
+                    'createdBy'=>$this->vendorId ,
                     'createdDTM'=>date('Y-m-d H:i:s'),
                     'clientId' => $clientId       
                             );
@@ -136,13 +105,18 @@ class Voiture extends BaseController
                 
                 if($result > 0)
                 {
+
+                     $reservationInfo1 = array('voiture'=>$result);
+
+                    $this->reservation_model->editReservation($reservationInfo1, $reservationId); 
+
                     $this->session->set_flashdata('success', 'Reservation mise à jour avec succées ');
-                    redirect('Reservation/view/'.$result);
+                    redirect('Reservation/view/'.$reservationId);
                 }
                 else
                 {
                     $this->session->set_flashdata('error', 'Problème de mise à jours');
-                    redirect('Reservation/edit/'.$result);
+                    redirect('Reservation/view/'.$reservationId);
                 }
            
         

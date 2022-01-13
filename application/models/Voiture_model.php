@@ -19,9 +19,9 @@ class Voiture_model extends CI_Model
     function ReservationListing()
     {
         $this->db->select('BaseTbl.*');
-        $this->db->from('tbl_voiture_location as BaseTbl');
-        $this->db->where('BaseTbl.statut in (0,1) ');
-        $this->db->where('Year(BaseTbl.dateFin) >= Year(NOW()) ');
+        $this->db->from('tbl_reservation_voiture as BaseTbl');
+
+ 
 
     
 
@@ -126,7 +126,7 @@ class Voiture_model extends CI_Model
     function ReservationCalender()
     {
         $this->db->select('   BaseTbl.dateDebut , BaseTbl.heureDebut  ');
-        $this->db->from('tbl_reservation as BaseTbl');
+        $this->db->from('tbl_reservation_voiture as BaseTbl');
 
     
 
@@ -152,7 +152,7 @@ class Voiture_model extends CI_Model
     function addNewReservation($reservationInfo)
     {
         $this->db->trans_start();
-        $this->db->insert('tbl_reservation', $reservationInfo);
+        $this->db->insert('tbl_reservation_voiture', $reservationInfo);
         
         $insert_id = $this->db->insert_id();
         
@@ -173,9 +173,9 @@ class Voiture_model extends CI_Model
     function ReservationInfo($resId)
     {
         $this->db->select('BaseTbl.*');
-        $this->db->from('tbl_reservation as BaseTbl');
+        $this->db->from('tbl_reservation_voiture as BaseTbl');
         
-        $this->db->where('BaseTbl.locationId =',$locationId );
+        $this->db->where('BaseTbl.reservationId =',$resId );
 
         $query = $this->db->get();
         

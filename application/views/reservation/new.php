@@ -74,19 +74,19 @@
                                                                 </div>
                                                             </div>
                                                             <!-- Col -->
-                                                            <div class="col-md-6">
+                                                            <div class="col-md-4">
                                                                 <div class="position-relative form-group">
                                                                     <label class="control-label">Nom</label>
                                                                     <input type="text" class="form-control" name="nom" id="nom" required placeholder="Nom de famille" />
                                                                 </div>
                                                             </div>
-                                                            <div class="col-md-6">
+                                                            <div class="col-md-4">
                                                                 <div class="position-relative form-group">
                                                                     <label class="control-label">Prenom</label>
                                                                     <input type="text" class="form-control" name="prenom" id="prenom" required placeholder="Prenom" />
                                                                 </div>
                                                             </div>
-                                                            <div class="col-md-12">
+                                                            <div class="col-md-4">
                                                                 <div class="position-relative form-group">
                                                                     <label class="control-label">Date de naissance</label>
                                                                     <input
@@ -125,21 +125,21 @@
                                                         <div class="form-row"></div>
                                                         <div class="position-relative form-group"></div>
                                                         <div class="form-row">
-                                                            <div class="col-sm-3">
+                                                            <div class="col-sm-2">
                                                                 <div class="form-group">
                                                                     <label class="control-label">N°</label>
                                                                     <input type="number" class="form-control" name="N" id="n" placeholder="N°" />
                                                                 </div>
                                                             </div>
                                                             <!-- Col -->
-                                                            <div class="col-sm-9">
+                                                            <div class="col-sm-4">
                                                                 <div class="form-group">
                                                                     <label class="control-label">Rue</label>
                                                                     <input type="text" class="form-control" name="rue" minlength="6" id="rue" placeholder="Rue" />
                                                                 </div>
                                                             </div>
                                                             <!-- Col -->
-                                                            <div class="col-sm-9">
+                                                            <div class="col-sm-4">
                                                                 <div class="form-group">
                                                                     <label class="control-label">Ville</label>
                                                                     
@@ -173,7 +173,7 @@
                                                                 </div>
                                                             </div>
                                                             <!-- Col -->
-                                                            <div class="col-sm-3">
+                                                            <div class="col-sm-2">
                                                                 <div class="form-group">
                                                                     <label class="control-label">code postale</label>
                                                                     <input type="number" class="form-control" min="1000" max="8000" name="codePostal" id="codePostal" placeholder="Code postale" />
@@ -211,46 +211,52 @@
                                                                         <label for="formGroupExampleInput">Titre</label>
                                                                         <input type="text" class="form-control" name="titre" placeholder="Titre de l'evenement" />
                                                                     </div>
-                                                                    <div class="col-md-12">
+                                                                    <div class="col-md-6">
                                                                         <label for="formGroupExampleInput">Date et heure</label>
                                                                         <input type="date" class="form-control" name="dateDebut" min="<?php echo date('Y-m-d') ?>" placeholder="Example input" />
                                                                     </div>
-                                                                    <div class="col-md-6">
+                                                                    <div class="col-md-3">
+                                                                        <label for="formGroupExampleInput">Debut</label>
                                                                         <input type="time" class="form-control" name="heureDebut" placeholder="Example input" />
                                                                     </div>
-                                                                    <div class="col-md-6">
+                                                                    <div class="col-md-3">
+                                                                        <label for="formGroupExampleInput">Fin</label>
                                                                         <input type="time" class="form-control" name="heureFin" placeholder="Example input" />
                                                                     </div>
-                                                                    <div class="col-md-12">
+                                                                    <div class="col-md-6">
                                                                         <label for="formGroupExampleInput">Espace</label>
-                                                                        <select type="text" class="form-control" name="salle" id="salle" placeholder="Example input">
+                                                                        <select  class="form-control" name="salle" id="salle"  required="">
+                                                                            <option value=""></option>
                                                                             <?php foreach ($salleRecords as $record ) {
                                                                     ?>
                                                                             <option value="<?php echo $record->salleID ?>"> <?php echo $record->nom ?> </option>
                                                                             <?php } ?>
                                                                         </select>
                                                                     </div>
-                                                                    <div class="col-md-12">
+                                                                    <div class="col-md-6">
                                                                         <label for="formGroupExampleInput2">Type</label>
                                                                         <select type="text" class="form-control" name="type">
+                                                                            <option value=""></option>
                                                                             <option value="Marriage"> Marriage </option>
                                                                             <option value="Finacailles"> Finacailles </option>
                                                                             <option value="Hena"> Hena </option>
-                                                                            <option value="Marriage"> Outya </option>
+                                                                            <option value="Outya"> Outya </option>
                                                                             <option value="Congret"> Congret </option>
                                                                             <option value="Circoncision"> Circoncision </option>
                                                                             <option value="Team Building"> Team Building </option>
-                                                                            <option value="Team Building"> Anniversaire </option>
-                                                                            <option value="Team Building"> Evenement </option>
+                                                                            <option value="Anniversaire"> Anniversaire </option>
+                                                                            <option value="Evenement"> Evenement </option>
                                                                         </select>
                                                                     </div>
-                                                                    <div class="col-md-12">
-                                                                        <label for="formGroupExampleInput2">invités</label>
-                                                                        <input type="number" class="form-control" min="20" max="1000" name="nbPlace" id="nbPlace" placeholder="Nombre des invités" />
-                                                                    </div>
-                                                                    <div class="col-md-12">
+                                                                    
+                                                                    <div class="col-md-6">
                                                                         <label for="formGroupExampleInput2">Prix</label>
                                                                         <input type="number" class="form-control" min="300" name="prix" id="prix" placeholder="Prix" />
+                                                                    </div>
+
+                                                                    <div class="col-md-6">
+                                                                        <label for="formGroupExampleInput2">invités</label>
+                                                                        <input type="number" class="form-control" min="20" max="1000" name="nbPlace" id="nbPlace" placeholder="Nombre des invités" />
                                                                     </div>
                                                                     <div class="col-md-12">
                                                                         <label for="formGroupExampleInput">Options </label><br />

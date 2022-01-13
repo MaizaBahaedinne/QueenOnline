@@ -30,6 +30,7 @@ class Reservation extends BaseController
         $this->load->model('salle_model');
         $this->load->model('paiement_model');
         $this->load->model('contrat_model');
+        $this->load->model('voiture_model'); 
         
         
         
@@ -291,6 +292,9 @@ class Reservation extends BaseController
             $data['paiementInfo'] = $this->paiement_model->paiementListingbyReservation($resId) ;
             $data['totalPaiement'] = $this->paiement_model->getTotal($resId) ;           
             $data['userID'] = $this->vendorId ; 
+
+
+             $data['voiture'] = $this->voiture_model->ReservationInfo($resId);
 
             $this->global['pageTitle'] = 'CodeInsect : User Listing';
             $this->loadViews("reservation/details", $this->global, $data, NULL);

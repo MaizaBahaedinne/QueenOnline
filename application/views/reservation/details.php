@@ -43,6 +43,74 @@
       </div>
    </div>
    <div class="row">
+
+       <div class="col-md-3">
+         <div class="card-shadow-primary card-border mb-3 card">
+             <div class="card-header">
+               <h5>Troupe</h5>
+             </div>
+             <div class="card-body">
+                  <?php if ($projectInfo->troupe == 0 ){ echo '<a style="color: white"  class="btn btn-info btn-block" >Ajouter</a> ';}  ?>
+             </div>
+         </div>
+          
+           
+      </div>
+      <div class="col-md-3">
+         <div class="card-shadow-primary card-border mb-3 card">
+            <div class="card-header">
+               <h5>Photographe</h5>
+             </div>
+            <div class="card-body">
+               <?php if ($projectInfo->photographe == 0 ){  echo '<a style="color: white"  class="btn btn-info btn-block" >Ajouter</a> ';}  ?>
+             </div>
+         </div>
+          
+           
+      </div>
+      
+      <div class="col-md-3">
+         <div class="card-shadow-primary card-border mb-3 card">
+            <div class="card-header">
+               <h5>Voiture</h5>
+             </div>
+            <div class="card-body">
+               <?php if ($projectInfo->voiture == 0 ){  echo '<a  style="color: white"  class="btn btn-info btn-block" href='.base_url().'Voiture/addNew/'.$projectInfo->reservationId.' >Ajouter</a> ';} else {   ?>
+                  Depart  :   <?php echo $voiture->depart ; ?><br>
+                  Point 1 :   <?php echo $voiture->l1 ; ?><br>
+                  Point 2 :   <?php echo $voiture->l2 ; ?><br>
+                  Point 3 :   <?php echo $voiture->l3 ; ?><br>
+
+                  Retour : <?php echo $voiture->l4 ; ?>
+               <?php }   ?>
+             </div>
+              <?php if ($projectInfo->voiture != 0 ){ ?> 
+               <div class="card-footer">
+                  <a style="color: white"  class="btn btn-success btn-block">Details</a> 
+               </div>
+               <?php }   ?>
+         </div>
+          
+           
+      </div>
+      
+      <div class="col-md-3">
+         <div class="card-shadow-primary card-border mb-3 card">
+            <div class="card-header">
+               <h5>Note</h5>
+             </div>
+            <div class="card-body">
+            <?php  echo $projectInfo->noteAdmin ;  ?>
+             </div>
+         </div>
+          
+           
+      </div>
+      
+      
+      
+      
+
       <!-- contrat -->
       <div class="col-md-8">
          <div class="main-card mb-3 card">
