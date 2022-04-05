@@ -114,7 +114,19 @@ class Voiture extends BaseController
 
                     $this->reservation_model->editReservation($reservationInfo1, $reservationId); 
 
+                    $paiementInfo = array(
+                        'createdDate'=>date('Y-m-d H:i:s'),
+                        'valeur'=>$avance,
+                        'recepteurId'=>$this->vendorId,
+                        'libele'=>'Avance ',
+                        'reservationVId'=>$resId,                           
+                                );
+                        $this->paiement_model->addNewVoiturePaiement($paiementInfo);
+
+
                     $this->session->set_flashdata('success', 'Reservation mise à jour avec succées ');
+
+
                     redirect('Reservation/view/'.$reservationId);
                 }
                 else

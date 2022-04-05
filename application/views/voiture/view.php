@@ -70,7 +70,7 @@
                      <?php }  ?>
                   </div>
                </div>
-               <?php if( $totalPaiement->valeur > 100 ) {  ?>
+             
                <div class="contrat" id="contrat"  >
                   <div class="row ">
                      <div class="col-md-2"> </div>
@@ -205,8 +205,7 @@
                   <br>
                   <p style="text-align: center;">Queen Park - Mc 34 Route  Mornag boujardga 2090 - mobile : 54 419 959  - 79 352 153 - 58 465 249 </p>
                </div>
-               <?php } else{ echo '<h5 style="color : red" >Pour avoir votre contrat il faut verser une avance superieur à 200 DT </h5>' ;}  ?>
-               <!-- Modal -->
+                             <!-- Modal -->
             </div>
          </div>
       </div>
