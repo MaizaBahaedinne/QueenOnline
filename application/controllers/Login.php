@@ -73,6 +73,7 @@ class Login extends CI_Controller
                                         'role'=>$result->roleId,
                                         'roleText'=>$result->role,
                                         'name'=>$result->name,
+                                        'avatar'=>$result->avatar,
                                         'lastLogin'=> $lastLogin->createdDtm,
                                         'isLoggedIn' => TRUE
                                 );

@@ -683,7 +683,7 @@
                                     <div class="btn-group">
                                        
                                         <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="p-0 btn">
-                                            <!-- <img width="42" class="rounded-circle" src="<?php echo base_url() ; ?>assets/images/avatars/1.jpg" alt="">-->
+                                             <img width="42" class="rounded-circle" src="https://www.queenpark.tn/assets/img/teams/<?php echo $avatar ?>" alt="">
                                             <i class="fa fa-angle-down ml-2 opacity-8"></i>
                                         </a>
                                         

@@ -15,6 +15,7 @@ class BaseController extends CI_Controller {
 	protected $roleText = '';
 	protected $global = array ();
 	protected $lastLogin = '';
+	protected $avatar = '';
 	
 	/**
 	 * Takes mixed data and optionally a status code, then creates the response
@@ -43,12 +44,14 @@ class BaseController extends CI_Controller {
 			$this->name = $this->session->userdata ( 'name' );
 			$this->roleText = $this->session->userdata ( 'roleText' );
 			$this->lastLogin = $this->session->userdata ( 'lastLogin' );
+			$this->avatar = $this->session->userdata ( 'avatar' );
 			
 			$this->global ['uid'] = $this->vendorId;
 			$this->global ['name'] = $this->name;
 			$this->global ['role'] = $this->role;
 			$this->global ['role_text'] = $this->roleText;
 			$this->global ['last_login'] = $this->lastLogin;
+			$this->global ['avatar'] = $this->avatar;
 		}
 	}
 	
