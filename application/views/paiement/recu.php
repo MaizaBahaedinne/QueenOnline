@@ -27,7 +27,7 @@
                 <div class="container-fluid d-flex">
                   <div class="row">
                     <div class="col-lg-2 ">
-                        <img src="<?php echo base_url() ?>assets/images/logo.png" width="75%">
+                        <img src="<?php echo base_url() ?>assets/images/logo-inverse.png" width="75%">
                       </div>
                     <div class="col-lg-10 ">
                       <b>Queen Online</b>
