@@ -85,7 +85,7 @@ class Reservation_model extends CI_Model
     function ReservationCalenderStatMounth()
     {
         $this->db->select('');
-        $this->db->from('statMounth as BaseTbl');
+        $this->db->from('statmounth as BaseTbl');
         
         $query = $this->db->get();
         $result = $query->result();        
@@ -104,7 +104,7 @@ class Reservation_model extends CI_Model
     function ReservationCalenderStatYear()
     {
         $this->db->select('sum(COUNT) as COUNT , BaseTbl.YEAR');
-        $this->db->from('statMounth as BaseTbl');
+        $this->db->from('statmounth as BaseTbl');
         $this->db->group_by('YEAR');
         
         $query = $this->db->get();
