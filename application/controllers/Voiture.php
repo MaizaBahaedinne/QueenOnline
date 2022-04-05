@@ -126,7 +126,7 @@ class Voiture extends BaseController
 
 
 
-                            if (  $projectInfo->prix - $totalPaiement->valeur == 0   )
+                            if (  $prix - $avance == 0   )
                             {
                               
                                 $reservationInfoe = array(
