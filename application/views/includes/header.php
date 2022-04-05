@@ -694,9 +694,9 @@
                                                     <div class="menu-header-content text-left">
                                                         <div class="widget-content p-0">
                                                             <div class="widget-content-wrapper">
-                                                                <!-- <div class="widget-content-left mr-3">
-                                                                    <img width="42" class="rounded-circle" src="<?php echo base_url() ; ?>assets/images/avatars/1.jpg" alt="">
-                                                                </div> -->
+                                                                 <div class="widget-content-left mr-3">
+                                                                    <img width="42" class="rounded-circle" src="https://www.queenpark.tn/assets/img/teams/<?php echo $avatar ?>" alt="">
+                                                                </div> 
                                                                 <div class="widget-content-left">
                                                                     <div class="widget-heading"><?php echo $name ?></div>
                                                                     <div class="widget-subheading opacity-8"><?php echo $role_text ?></div>
