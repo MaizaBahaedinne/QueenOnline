@@ -690,7 +690,7 @@
                                         <div tabindex="-1" role="menu" aria-hidden="true" class="rm-pointers dropdown-menu-lg dropdown-menu dropdown-menu-right">
                                             <div class="dropdown-menu-header">
                                                 <div class="dropdown-menu-header-inner bg-info">
-                                                    <div class="menu-header-image opacity-2" style="background-image: url('<?php echo base_url() ; ?>assets/images/dropdown-header/city3.jpg');"></div>
+                                                    <div class="menu-header-image opacity-2" style="background-image: url('<?php echo base_url() ; ?>assets/images/dropdown-header/city1.jpg');"></div>
                                                     <div class="menu-header-content text-left">
                                                         <div class="widget-content p-0">
                                                             <div class="widget-content-wrapper">
