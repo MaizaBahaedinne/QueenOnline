@@ -101,7 +101,8 @@ class Voiture extends BaseController
                     'reservationId'=>$reservationId,
                     'createdBy'=>$this->vendorId ,
                     'createdDTM'=>date('Y-m-d H:i:s'),
-                    'clientId' => $clientId       
+                    'clientId' => $clientId   ,     
+                    'statut' => 1 
                             );
 
            
@@ -120,7 +121,7 @@ class Voiture extends BaseController
                         'recepteurId'=>$this->vendorId,
                         'libele'=>'Avance ',
                         'reservationVId'=>$result, 
-                        'statut' => 1 ,                          
+                                            
                                 );
                         $resId = $this->paiement_model->addNewVoiturePaiement($paiementInfo);
 
