@@ -51,7 +51,7 @@
                                             <div class="col-md-7">
                                                     <div class="form-group">
                                                         <label class="control-label">Voiture </label>
-                                                        <select class="form-control" name="voitureName" required="">
+                                                        <select class="form-control" name="voitureName" required>
                                                             <option value=""></option>
                                                             <option value="Limou'queen">Limou'queen</option>
                                                             <option value="Queen traction">Queen traction</option>
@@ -67,9 +67,10 @@
                                                             readonly
                                                             type="text"
                                                             required
-                                                            value="<?php echo date_format(date_create($projectInfo->dateDebut)  , 'd/m/20y');  ?>"
+                                                           value="<?php echo $projectInfo->dateDebut   ?>"
                                                             
                                                         />
+                                                         <!-- value="<?php echo date_format(date_create($projectInfo->dateDebut)  , 'd/m/20y');  ?>"-->
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2">

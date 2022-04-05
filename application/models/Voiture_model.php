@@ -175,7 +175,7 @@ class Voiture_model extends CI_Model
         $this->db->select('BaseTbl.*');
         $this->db->from('tbl_reservation_voiture as BaseTbl');
         
-        $this->db->where('BaseTbl.reservationId =',$resId );
+        $this->db->where('BaseTbl.reservationVId =',$resId );
 
         $query = $this->db->get();
         
@@ -192,8 +192,8 @@ class Voiture_model extends CI_Model
      */
     function editReservation($reservationInfo, $locationId)
     {
-        $this->db->where('locationId', $locationId);
-        $this->db->update('tbl_reservation', $reservationInfo);
+        $this->db->where('reservationVId', $locationId);
+        $this->db->update('tbl_reservation_voiture', $reservationInfo);
         
         return TRUE;
     }

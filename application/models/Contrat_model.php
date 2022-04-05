@@ -76,7 +76,6 @@ class Contrat_model extends CI_Model
 
    
 
-    
 
 
 }

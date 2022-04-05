@@ -22,6 +22,10 @@ class Voiture extends BaseController
         $this->load->model('client_model');
         $this->load->model('reservation_model');
         $this->load->model('voiture_model');
+        $this->load->model('contrat_model');
+        $this->load->model('paiement_model');
+    
+
         $this->isLoggedIn();   
     }
     
@@ -123,6 +127,74 @@ class Voiture extends BaseController
     }
 
 
+
+     /**
+     * This function is used to load the user list
+     */
+    function view($resId)
+    {  
+
+            $data['projectInfo'] = $this->voiture_model->ReservationInfo($resId);
+
+            $data['clientInfo'] = $this->user_model->getUserInfo($data['projectInfo']->clientId);
+          
+            $data['paiementInfo'] = $this->paiement_model->paiementListingbyReservationVoiture($resId) ;
+            $data['totalPaiement'] = $this->paiement_model->getVTotal($resId) ;             
+                 
+            $data['userID'] = $this->vendorId ; 
+
+
+
+            $this->global['pageTitle'] = 'CodeInsect : User Listing';
+            $this->loadViews("voiture/view", $this->global, $data, NULL);
+    }
+
+
+
+     /**
+     * This function is used to load the user list
+     */
+    function addPaiement($resId)
+    {  
+
+        $avance = $this->input->post('avance');
+        $noteAdmin = $this->input->post('noteAdmin');
+
+         $paiementInfo = array(
+                        'createdDate'=>date('Y-m-d H:i:s'),
+                        'valeur'=>$avance,
+                        'recepteurId'=>$this->vendorId,
+                        'libele'=>'Partie ',
+                        'reservationVId'=>$resId,                           
+                                );
+            $ReservationInfo =  $this->voiture_model->ReservationInfo($resId) ;
+            $clientInfo = $this->client_model->getClientInfo($ReservationInfo->clientId); 
+            
+   
+        $this->paiement_model->addNewVoiturePaiement($paiementInfo);
+
+        $totalPaiement = $this->paiement_model->getVTotal($resId) ; 
+        $projectInfo = $this->voiture_model->ReservationInfo($resId);
+
+
+        $reservationInfo = array(
+                        'noteAdmin'=>$noteAdmin,
+                        'statut'=>1,
+                                );
+
+        if (  $projectInfo->prix - $totalPaiement->valeur == 0   )
+        {
+          
+            $reservationInfo = array(
+                        'noteAdmin'=>$noteAdmin,
+                        'statut'=>0 ,
+                                );
+        }
+
+        $this->voiture_model->editReservation($reservationInfo, $resId);    
+        redirect('Voiture/view/'.$resId) ; 
+            
+    }
 
 
 

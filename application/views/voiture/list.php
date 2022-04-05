@@ -81,10 +81,10 @@
               </td>
               <td>
                 <div class="btn-group" role="group" > 
-                <a class="btn" href="<?php echo base_url() ?>Reservation/view/<?php echo $record->reservationId ?>" >
+                <a class="btn" href="<?php echo base_url() ?>Voiture/view/<?php echo $record->reservationVId ?>" >
                   <i class="fa fa-eye"></i>
                 </a>
-                <a class="btn" href="<?php echo base_url() ?>Reservation/edit/<?php echo $record->reservationId ?>" >
+                <a class="btn" href="<?php echo base_url() ?>Reservation/edit/<?php echo $record->reservationVId ?>" >
                   <i class="fas fa-pencil-alt"></i>
                 </a>
               </div>
