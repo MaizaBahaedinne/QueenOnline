@@ -133,9 +133,10 @@ class Voiture extends BaseController
                                 $reservationInfoe = array(
                                             'statut'=>0 ,
                                                     );
+                                 $this->voiture_model->editReservation($reservationInfoe, $resId); 
                             }
 
-                            $this->voiture_model->editReservation($reservationInfoe, $resId); 
+                           
 
 
                     $this->session->set_flashdata('success', 'Reservation mise à jour avec succées ');
