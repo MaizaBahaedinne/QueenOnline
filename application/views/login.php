@@ -15,7 +15,7 @@
     <!-- Disable tap highlight on IE -->
     <meta name="msapplication-tap-highlight" content="no">
 
-<link href="<?php echo base_url() ?>main.d810cf0ae7f39f28f336.css" rel="stylesheet"></head>
+<link href="<?php echo base_url() ?>assets/css/main.d810cf0ae7f39f28f336.css" rel="stylesheet"></head>
 
 <body>
     <div class="app-container app-theme-white body-tabs-shadow">
