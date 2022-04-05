@@ -117,7 +117,7 @@ class Paiement_model extends CI_Model
     function addNewVoiturePaiement($paiementInfo)
     {
         $this->db->trans_start();
-        $this->db->insert('tbl_paiement_Voiture', $paiementInfo);
+        $this->db->insert('tbl_paiement_voiture', $paiementInfo);
         
         $insert_id = $this->db->insert_id();
         
