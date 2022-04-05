@@ -29,9 +29,8 @@
                                     <div class="position-relative h-100 d-flex justify-content-center align-items-center bg-plum-plate" tabindex="-1">
                                         <div class="slide-img-bg" style="background-image: url('assets/images/originals/city.jpg');"></div>
                                         <div class="slider-content">
-                                            <h3>Perfect Balance</h3>
-                                            <p>ArchitectUI is like a dream. Some think it's too good to be true! Extensive
-                                                collection of unified React Boostrap Components and Elements.
+                                            <h3>Queen Administration Online</h3>
+                                            <p>.
                                             </p>
                                         </div>
                                     </div>
