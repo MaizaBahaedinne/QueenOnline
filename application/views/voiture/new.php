@@ -28,7 +28,7 @@
                     type="text"
                     required
                     value="<?php echo $projectInfo->clientId  ?>"
-                    
+                    hidden
                 />
                 <input
                     name="reservationId"
@@ -37,7 +37,7 @@
                     type="text"
                     required
                     value="<?php echo $projectInfo->reservationId  ?>"
-                    
+                    hidden
                 />
                 <div class="modal-body">
                     <div class="tab-content">

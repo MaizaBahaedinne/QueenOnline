@@ -119,7 +119,7 @@ class Voiture extends BaseController
                         'valeur'=>$avance,
                         'recepteurId'=>$this->vendorId,
                         'libele'=>'Avance ',
-                        'reservationVId'=>$resId, 
+                        'reservationVId'=>$result, 
                         'statut' => 1 ,                          
                                 );
                         $resId = $this->paiement_model->addNewVoiturePaiement($paiementInfo);
