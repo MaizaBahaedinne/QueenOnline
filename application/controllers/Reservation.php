@@ -294,7 +294,7 @@ class Reservation extends BaseController
             $data['userID'] = $this->vendorId ; 
 
 
-             $data['voiture'] = $this->voiture_model->ReservationInfo($data['projectInfo']->reservationVId);
+             $data['voiture'] = $this->voiture_model->ReservationInfo($data['projectInfo']->voiture);
 
             $this->global['pageTitle'] = 'CodeInsect : User Listing';
             $this->loadViews("reservation/details", $this->global, $data, NULL);
