@@ -32,7 +32,8 @@
               <th width="15%">Depart</th>
               <th width="15%">arret</th>
               <th width="15%">arrivé</th>
-              <th width="15%">Contact</th>
+              <th width="15%">mobile 1</th>
+              <th width="15%">mobile 2</th>
               <th width="5%">Statut</th>
               <th width="5%">Action</th>
             </tr>
