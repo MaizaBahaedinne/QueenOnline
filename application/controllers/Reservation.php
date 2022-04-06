@@ -397,7 +397,7 @@ class Reservation extends BaseController
 
 
         
-        echo $this->sendSMS("216".$myMobile, $mySms) ;
+    //    echo $this->sendSMS("216".$myMobile, $mySms) ;
                         
 
        redirect('Reservation/view/'.$resId) ;               
@@ -425,7 +425,7 @@ class Reservation extends BaseController
             $myMobile = $clientInfo->mobile ;
             $mySms = "Salut ".$clientInfo->name.", une paiement de (".$avance." DT)  pour la reservation N°".$resId." a été effectuée avec succées" ;
       
-            $this->sendSMS("216".$myMobile, $mySms) ;
+  //          $this->sendSMS("216".$myMobile, $mySms) ;
    
         $this->paiement_model->addNewPaiement($paiementInfo);
 
@@ -446,7 +446,7 @@ class Reservation extends BaseController
 
 
    
-        $this->sendSMS("216".$myMobile, $mySms) ;
+ //       $this->sendSMS("216".$myMobile, $mySms) ;
    
         $reservationInfo = array(
                         'noteAdmin'=>$noteAdmin,
