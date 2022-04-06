@@ -63,7 +63,11 @@
 
               </td>
               <td  onclick='tdclick(this.id)' id="<?php echo $record->reservationId ?>" >
-                <?php echo $record->mobile1   ?>   -  <?php echo $record->mobile2   ?> 
+               <a href="tel:<?php echo $record->mobile1   ?>"><?php echo $record->mobile2  ?></a>   
+              </td>
+              <td>
+               <a href="tel:<?php echo $record->mobile2   ?>"><?php echo $record->mobile2   ?></a> 
+
               </td>
               <td> 
                 <?php if ($record->statut == 0 ) { ?>
