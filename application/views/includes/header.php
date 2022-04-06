@@ -42,7 +42,7 @@
     <div class="app-container app-theme-white body-tabs-shadow fixed-header fixed-sidebar">
         <div class="app-header header-shadow">
             <div class="app-header__logo">
-                <div class="logo-src"><b>Queen Park <b>Online</small></div>
+                <div class="logo-src"><b>Queen Park <b><small>Online</small></div>
                 <div class="header__pane ml-auto">
                     <div>
                         <button type="button" class="hamburger close-sidebar-btn hamburger--elastic" data-class="closed-sidebar">
@@ -1130,7 +1130,7 @@
         <div class="app-main">
             <div class="app-sidebar sidebar-shadow">
                 <div class="app-header__logo">
-                    <div class="logo-src"><b>Queen Park <b>Online</small></h2></div>
+                    <div class="logo-src"><b>Queen Park <b><small>Online</small></div>
                     <div class="header__pane ml-auto">
                         <div>
                             <button type="button" class="hamburger close-sidebar-btn hamburger--elastic" data-class="closed-sidebar">
