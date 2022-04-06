@@ -81,16 +81,16 @@
                   Point 2 :   <?php echo $voiture->l2 ; ?><br>
                   Point 3 :   <?php echo $voiture->l3 ; ?><br>
 
-                  statut :   <?php if ($record->statut == 0 ) { ?>
+                  statut :   <?php if ($voiture->statut == 0 ) { ?>
                 <span class="badge badge-pill badge-success"><i class="metismenu-icon pe-7s-check"></i> Validée</span>
                 <?php } ?>    
-                <?php if ($record->statut == 1 ) { ?>
+                <?php if ($voiture->statut == 1 ) { ?>
                 <span class="badge badge-pill badge-warning"><i class="metismenu-icon pe-7s-stopwatch"></i> En attente</span>
                 <?php } ?>
-                <?php if ($record->statut == 2 ) { ?>
+                <?php if ($voiture->statut == 2 ) { ?>
                 <span class="badge badge-pill badge-dark"></span>
                 <?php } ?>
-                <?php if ($record->statut == 3 ) { ?>
+                <?php if ($voiture->statut == 3 ) { ?>
                 <span class="badge badge-pill badge-danger"><i class="metismenu-icon pe-7s-close"></i></span>
                 <?php } ?>
                <?php }   ?>
