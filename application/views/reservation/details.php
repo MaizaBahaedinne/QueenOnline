@@ -97,7 +97,7 @@
              </div>
               <?php if ($projectInfo->voiture != 0 ){ ?> 
                <div class="card-footer">
-                  <a style="color: white"  class="btn btn-success btn-block">Details</a> 
+                  <a style="color: white" href="<?php echo base_url() ?>Voiture/view/<?php echo $projectInfo->voiture ?>"  class="btn btn-success btn-block">Details</a> 
                </div>
                <?php }   ?>
          </div>
