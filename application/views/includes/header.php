@@ -1187,7 +1187,7 @@
                             </li>
                             <li>
                                 <a href="<?php echo base_url() ?>Voiture">
-                                    <i class="metismenu-icon pe-7s-car"></i>Limou'queen
+                                    <i class="metismenu-icon pe-7s-car"></i>Cars
                                 </a>
                             </li>
                         </ul>
