@@ -143,7 +143,7 @@ class Reservation_model extends CI_Model
      */
     function ReservationCalenderStatEmploye()
     {
-        $this->db->select('count(userId) as COUNT , BaseTbl.salleId , Locataire.name ');
+        $this->db->select('count(userId) as COUNT , BaseTbl.salleId , Locataire.name , Locataire.avatar ');
         $this->db->from('tbl_reservation as BaseTbl');
         $this->db->join('tbl_users as Locataire', 'Locataire.userId = BaseTbl.locataireId','left');
         
