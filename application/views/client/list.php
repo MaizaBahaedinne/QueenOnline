@@ -62,6 +62,7 @@
                   <th>Mobile</th>
                   <th>cin</th>
                   <th>adresse</th>
+                  <th>reservation</th>
                   <th class="text-center">Actions</th>
                </tr>
             </tfoot>
