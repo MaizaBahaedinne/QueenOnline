@@ -44,7 +44,7 @@
                   foreach($userRecords as $record)
                   {
               ?>
-            <tr <?php  if( (date('d/m/Y', strtotime($record->dateDebut. '  - 30  days')) < date('d/m/Y') ) ) { echo 'style="background-color:yellow"' ;}   ?>>
+            <tr <?php  if( (date('d/m/Y', strtotime($record->dateDebut. '  - 30  days')) > date('d/m/Y') ) ) { echo 'style="background-color:yellow"' ;}   ?>>
               
               <td>
                 <b><?php echo date_format(date_create($record->dateFin)  , 'd/m/20y');  ?></b><br>  de <?php echo date_format(date_create($record->heureDebut)  , 'H:i'); ?>  à  <?php echo date_format(date_create($record->heureFin)  , 'H:i'); ?>
