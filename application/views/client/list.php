@@ -26,6 +26,7 @@
                   <th>Mobile</th>
                   
                   <th>adresse</th>
+                  <th class="text-center">Reservatoion</th>
                   <th class="text-center">Actions</th>
                </tr>
             </thead>
@@ -43,6 +44,9 @@
                      <i class="fa fa-phone" aria-hidden="true"></i> <?php echo $record->mobile2 ?>
                   </td>
                   <td><?php echo $record->ville ?> </td>
+                  <td class="text-center">
+                     <?php echo count($record->reservations) ?>
+                  </td>
                   <td class="text-center">
                      
                   </td>

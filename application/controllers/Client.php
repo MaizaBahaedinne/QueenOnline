@@ -29,12 +29,15 @@ class Client extends BaseController
      */
     public function index()
     {
-            $searchText = $this->security->xss_clean($this->input->post('searchText'));
-            $data['searchText'] = $searchText;
-            $this->load->library('pagination');
-            $count = $this->client_model->clientListing();
-            $returns = $this->paginationCompress ( "userListing/", $count, 10 );
+            
+
             $data['userRecords'] = $this->client_model->clientListing();
+
+            foreach ($data['userRecords'] as $client ) 
+            {
+                $client->reservations = $this->reservation_model->ReservationListing(0 , 0 , null , $client->userId );
+
+            }
             $this->global['pageTitle'] = 'Clients';
             $this->loadViews("client/list", $this->global, $data, NULL);
     }

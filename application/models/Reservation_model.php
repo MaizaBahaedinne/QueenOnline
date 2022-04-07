@@ -22,7 +22,7 @@ class Reservation_model extends CI_Model
      * @param number $segment : This is pagination limit
      * @return array $result : This is result
      */
-    function ReservationListing($troupe = 0 , $photographe = 0 , $date = null  )
+    function ReservationListing($troupe = 0 , $photographe = 0 , $date = null , $clientId = null )
     {
         $this->db->select('BaseTbl.reservationId , BaseTbl.titre , BaseTbl.type , BaseTbl.prix ,  BaseTbl.dateDebut , BaseTbl.heureDebut , BaseTbl.dateFin , BaseTbl.heureFin , BaseTbl.cuisine , BaseTbl.tableCM , BaseTbl.voiture , BaseTbl.troupe , BaseTbl.photographe , BaseTbl.gateau   , BaseTbl.nbPlace , BaseTbl.noteAdmin , BaseTbl.statut , Client.name clientName , Client.mobile , Salles.nom salle');
         $this->db->from('tbl_reservation as BaseTbl');
@@ -49,6 +49,11 @@ class Reservation_model extends CI_Model
         if( $date != null ){
          $this->db->where('BaseTbl.dateFin >=  SUBDATE(NOW(),1) ');
          $this->db->where('BaseTbl.dateFin <=  ADDDATE(NOW(),1) ');
+        }
+
+        if( $clientId != null ){
+         $this->db->where('BaseTbl.clientId = ', $clientId );
+
         }
     
          $this->db->order_by('BaseTbl.dateFin ASC');
