@@ -48,7 +48,7 @@ class Reservation_model extends CI_Model
          $this->db->where('BaseTbl.dateFin <=  ADDDATE(NOW(),1) ');
         }
     
-
+         $this->db->order_by('BaseTbl.dateFin ASC');
         $query = $this->db->get();
         
         $result = $query->result();        
