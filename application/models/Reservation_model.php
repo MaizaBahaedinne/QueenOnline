@@ -31,7 +31,10 @@ class Reservation_model extends CI_Model
         $this->db->join('tbl_salle as Salles', 'Salles.salleID = BaseTbl.salleId','left');
         $this->db->where('BaseTbl.statut in (0,1) ');
         if($date == null){
-        $this->db->where('BaseTbl.dateFin >=  SUBDATE(NOW(),1) ');
+      //  $this->db->where('BaseTbl.dateFin >=  SUBDATE(NOW(),1) ');
+
+        $this->db->where('YEAR(BaseTbl.dateFin) >= 2022  ');
+
         }
 
         if( $troupe != 0 ){
