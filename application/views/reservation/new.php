@@ -213,7 +213,8 @@
                                                                     </div>
                                                                     <div class="col-md-6">
                                                                         <label for="formGroupExampleInput">Date et heure</label>
-                                                                        <input type="date" class="form-control" name="dateDebut" min="<?php echo date('Y-m-d') ?>" placeholder="Example input" />
+                                                                        <!-- min="<?php echo date('Y-m-d') ?>" -->
+                                                                        <input type="date" class="form-control" name="dateDebut"  placeholder="Example input" />
                                                                     </div>
                                                                     <div class="col-md-3">
                                                                         <label for="formGroupExampleInput">Debut</label>
