@@ -390,7 +390,7 @@
                            <div class="widget-content p-0">
                               <div class="widget-content-wrapper">
                                  <div class="widget-content-left mr-3">
-                                    <img width="42" class="rounded-circle" src="assets/images/avatars/4.jpg" alt="">
+                                    <img width="42" class="rounded-circle" src="https://www.queenpark.tn/assets/img/teams/<?php echo $Employer->avatar  ?>" alt="">
                                  </div>
                                  <div class="widget-content-left">
                                     <div class="widget-heading"><?php echo  $Employer->name ?></div>
