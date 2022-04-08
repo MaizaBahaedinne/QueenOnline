@@ -58,7 +58,7 @@
                   foreach($userRecords as $record)
                   {
               ?>
-            <tr class="<?php if ( (time() > strtotime($record->dateDebut. '  - 30  days') && $record->statut != 0 ) )  { echo "alert-bg" ;}  ?>"  >
+            <tr class="<?php if ( (time() > strtotime($record->date. '  - 30  days') && $record->statut != 0 ) )  { echo "alert-bg" ;}  ?>"  >
               <td>
                 <b><?php echo $record->reservationVId ?>
               </td>
