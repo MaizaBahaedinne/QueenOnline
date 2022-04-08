@@ -34,7 +34,7 @@
               <th width="15%">Options</th>
               <th width="15%">Contact</th>
               <th width="5%">Statut</th>
-              <th width="5%" >Action</th>
+              <th width="5%"  >Action</th>
             </tr>
           </thead>
           <tbody> 
@@ -44,7 +44,7 @@
                   foreach($userRecords as $record)
                   {
               ?>
-            <tr <?php if (if ( date() >= date('d/m/Y', strtotime($contratInfo->dateDebut. '  - 30  days') ) { echo "style='background-color:lightgoldenrodyellow' " ;}   ; ) >
+            <tr <?php if ( ( date() >= date('d/m/Y', strtotime($contratInfo->dateDebut. '  - 30  days') ) ) ) { echo "style='background-color:orangered' " ;}  ?>  >
               
               <td>
                 <b><?php echo date_format(date_create($record->dateFin)  , 'd/m/20y');  ?></b><br>  de <?php echo date_format(date_create($record->heureDebut)  , 'H:i'); ?>  à  <?php echo date_format(date_create($record->heureFin)  , 'H:i'); ?>
