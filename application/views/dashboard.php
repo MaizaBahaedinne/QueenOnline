@@ -214,10 +214,17 @@
                   <div id="parSalle" style="padding-right: 30px"></div>
                   <script type="text/javascript">
                      var options = {
-                              series: [{
+                              series: 
+                              [
+                              {
                               name: 'Reservation',
-                              data: [{<?php foreach($reservationPerMounthRecords as $data) { echo $data->COUNT.',' ;  } ?>},{<?php foreach($reservationPerMounthRecords1 as $data) { echo '"'.$data->YEAR.'",' ;  } ?>}]
-                            }],
+                              data: [<?php foreach($reservationPerMounthRecords as $data) { echo $data->COUNT.',' ;  } ?>]
+                              }, 
+                              {
+                              name: 'en attent',
+                              data: [<?php foreach($reservationPerMounthRecords1 as $data) { echo $data->COUNT.',' ;  } ?>]
+                              }
+                              ],
                               chart: {
                               height: 580,
                               type: 'bar',
