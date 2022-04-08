@@ -223,7 +223,7 @@
                               {
                               name: 'en attent',
                               data: [<?php foreach($reservationPerMounthRecords1 as $data) { echo $data->COUNT.',' ;  } ?>],
-                              backgroundColor: "#FF8C00"
+                              fillColor: "#FF8C00"
                               }
                               ],
                               chart: {
