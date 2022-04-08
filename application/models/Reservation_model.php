@@ -153,8 +153,8 @@ class Reservation_model extends CI_Model
         $this->db->from('tbl_reservation as BaseTbl');
         $this->db->join('tbl_salle as Salles', 'Salles.salleID = BaseTbl.salleId','left');
         $this->db->group_by('BaseTbl.salleId');
-        $this->db->where('BaseTbl.statut IN (0) ');
-        $this->db->where('BaseTbl.dateFin >= NOW() ');
+        $this->db->where('BaseTbl.statut IN (0,1) ');
+        $this->db->where('YEAR(BaseTbl.dateFin) >= YEAR() ');
         $query = $this->db->get();
         $result = $query->result();        
         return $result;
