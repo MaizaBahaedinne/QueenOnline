@@ -231,7 +231,7 @@
                             },
                             plotOptions: {
                               bar: {
-                                borderRadius: 5,
+                                borderRadius: 2,
                                 dataLabels: {
                                   position: 'top', // top, center, bottom
                                 },
@@ -245,7 +245,7 @@
                               offsetY: -20,
                               style: {
                                 fontSize: '12px',
-                                colors: ["#304758"]
+                                colors: ["#304758","#FF8C00"]
                               }
                             },
                             
