@@ -1,3 +1,20 @@
+<style type="text/css">
+  
+  .arlert-bg {
+  width: 300px;
+  height: 200px;
+  background: red;
+  animation: mymove 5s infinite;
+}
+
+@keyframes mymove {
+  from {background-color: lightgoldenrodyellow;}
+  to {background-color: white;}
+}
+
+</style>
+
+
 <div class="app-main__inner">
   <div class="app-page-title">
     <div class="page-title-wrapper">
@@ -44,7 +61,7 @@
                   foreach($userRecords as $record)
                   {
               ?>
-            <tr <?php if ( (time() > strtotime($record->dateDebut. '  - 30  days') and $record->statut != 0 ) )  { echo "style='background-color:orangered' " ;}  ?>  >
+            <tr class="<?php if ( (time() > strtotime($record->dateDebut. '  - 30  days') and $record->statut != 0 ) )  { echo "arlert-bg' " ;}  ?>"  >
               
               <td>
                
