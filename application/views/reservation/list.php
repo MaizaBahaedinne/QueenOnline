@@ -40,6 +40,7 @@
         <table id="example" style="width: 100%;" id="example" class="table  table-hover table-striped table-bordered table-responsive" cellspacing="0" >
           <thead>
             <tr>
+              <th>ID</th>
               <th>Date</th>
               <th>titre</th>
               <th width="10%">Espace</th>
@@ -58,7 +59,11 @@
                   {
               ?>
             <tr class="<?php if ( (time() > strtotime($record->dateDebut. '  - 30  days') && $record->statut != 0 ) )  { echo "alert-bg" ;}  ?>"  >
-              
+              <td>
+               
+                  <?php echo $record->reservationId  ?>
+                
+              </td>
               <td>
                
 
@@ -124,6 +129,7 @@
           </tbody>
           <tfoot>
             <tr>
+              <th>ID</th>
               <th>titre</th>
               <th>Date</th>
               <th>Espace</th>
