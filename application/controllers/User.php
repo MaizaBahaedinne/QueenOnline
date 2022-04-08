@@ -32,6 +32,7 @@ class User extends BaseController
     {
         $data['reservationRecords'] = $this->reservation_model->ReservationCalenderStat();
         $data['reservationPerMounthRecords'] = $this->reservation_model->ReservationCalenderStatMounth();
+        $data['reservationPerMounthRecords1'] = $this->reservation_model->ReservationCalenderStatMounth1() ;
         $data['ReservationPerYearRecords'] = $this->reservation_model->ReservationCalenderStatYear() ;
         $data['SalleRecords'] = $this->reservation_model->ReservationCalenderStatSalle() ;
         $data['ReservationPerEmployeRecords'] = $this->reservation_model->ReservationCalenderStatEmploye() ;

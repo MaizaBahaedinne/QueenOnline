@@ -100,6 +100,24 @@ class Reservation_model extends CI_Model
         return $result;
     }
 
+    /**
+     * This function is used to get the user listing count
+     * @param string $searchText : This is optional search text
+     * @param number $page : This is pagination offset
+     * @param number $segment : This is pagination limit
+     * @return array $result : This is result
+     */
+    function ReservationCalenderStatMounth1()
+    {
+        $this->db->select('');
+        $this->db->from('statmounth1 as BaseTbl');
+ 
+        $query = $this->db->get();
+        $result = $query->result();        
+        return $result;
+    }
+
+
 
 
         /**

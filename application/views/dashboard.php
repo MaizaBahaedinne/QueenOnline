@@ -216,7 +216,7 @@
                      var options = {
                               series: [{
                               name: 'Reservation',
-                              data: [<?php foreach($reservationPerMounthRecords as $data) { echo $data->COUNT.',' ;  } ?>]
+                              data: [{<?php foreach($reservationPerMounthRecords as $data) { echo $data->COUNT.',' ;  } ?>},{<?php foreach($reservationPerMounthRecords1 as $data) { echo '"'.$data->YEAR.'",' ;  } ?>}]
                             }],
                               chart: {
                               height: 580,
