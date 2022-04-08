@@ -110,7 +110,7 @@ class Reservation_model extends CI_Model
     function ReservationCalenderStatMounth1()
     {
         $this->db->select('');
-        $this->db->from('statmounth1 as BaseTbl');
+        $this->db->from('statmount1 as BaseTbl');
  
         $query = $this->db->get();
         $result = $query->result();        
