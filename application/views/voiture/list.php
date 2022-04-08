@@ -1,3 +1,15 @@
+<style> 
+.alert-bg {
+  background: red;
+  animation: mymove 4s infinite;
+}
+
+@keyframes mymove {
+  from {background-color: whitesmoke;}
+  to {background-color: indianred ;}
+}
+</style>
+
 <div class="app-main__inner">
   <div class="app-page-title">
     <div class="page-title-wrapper">
@@ -46,7 +58,7 @@
                   foreach($userRecords as $record)
                   {
               ?>
-            <tr>
+            <tr class="<?php if ( (time() > strtotime($record->dateDebut. '  - 30  days') && $record->statut != 0 ) )  { echo "alert-bg" ;}  ?>"  >
               <td>
                 <b><?php echo $record->reservationVId ?>
               </td>
