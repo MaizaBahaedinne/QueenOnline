@@ -44,7 +44,7 @@
                   foreach($userRecords as $record)
                   {
               ?>
-            <tr <?php if ( time() > strtotime($record->dateDebut. '  - 30  days') )  { echo "style='background-color:orangered' " ;}  ?>  >
+            <tr <?php if ( (time() > strtotime($record->dateDebut. '  - 30  days') and $record->statut != 0 ) )  { echo "style='background-color:orangered' " ;}  ?>  >
               
               <td>
                
