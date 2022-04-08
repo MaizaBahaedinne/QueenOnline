@@ -250,7 +250,7 @@
                             },
                             
                             xaxis: {
-                              categories: [<?php foreach($reservationPerMounthRecords as $data) { echo '"'.$data->YEAR.'",' ;  } ?>],
+                              categories: [<?php foreach($reservationPerMounthRecords1 as $data) { echo '"'.$data->YEAR.'",' ;  } ?>],
                               position: 'buttom',
                               axisBorder: {
                                 show: true
