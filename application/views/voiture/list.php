@@ -6,7 +6,7 @@
           <i class="pe-7s-medal icon-gradient bg-tempting-azure"></i>
         </div>
         <div>
-          Reservation
+          Cars reservation
           <div class="page-title-subheading">Les reservations</div>
         </div>
       </div>
@@ -105,6 +105,7 @@
           </tbody>
           <tfoot>
             <tr>
+              <th>ID</th>
               <th>titre</th>
               <th>Date</th>
               <th>Espace</th>
