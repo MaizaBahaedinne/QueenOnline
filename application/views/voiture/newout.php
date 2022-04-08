@@ -16,7 +16,7 @@
          </div>
       </div>
    </div>
-   <form action="<?php echo base_url()?>Reservation/addNewReservation" method="post">
+   <form action="<?php echo base_url()?>Voiture/addNewReservation" method="post">
       <div class="modal-body">
          <div class="tab-content">
             <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
