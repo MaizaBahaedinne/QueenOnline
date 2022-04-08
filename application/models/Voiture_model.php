@@ -20,7 +20,7 @@ class Voiture_model extends CI_Model
     {
         $this->db->select('BaseTbl.*');
         $this->db->from('tbl_reservation_voiture as BaseTbl');
-        $this->db->where('BaseTbl.date ASC');
+        $this->db->order_by('BaseTbl.date ASC');
 
  
 
