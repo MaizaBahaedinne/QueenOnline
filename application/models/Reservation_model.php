@@ -94,6 +94,7 @@ class Reservation_model extends CI_Model
     {
         $this->db->select('');
         $this->db->from('statmounth as BaseTbl');
+        $this->db->where('BaseTbl.statut IN (0) ');
         
         $query = $this->db->get();
         $result = $query->result();        
@@ -113,6 +114,7 @@ class Reservation_model extends CI_Model
     {
         $this->db->select('sum(COUNT) as COUNT , BaseTbl.YEAR');
         $this->db->from('statmounth as BaseTbl');
+        $this->db->where('BaseTbl.statut IN (0) ');
         $this->db->group_by('YEAR');
         
         $query = $this->db->get();
