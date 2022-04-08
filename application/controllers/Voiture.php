@@ -254,7 +254,7 @@ class Voiture extends BaseController
                     
                     'createdBy'=>$this->vendorId ,
                     'createdDTM'=>date('Y-m-d H:i:s'),
-                    
+                    'clientId' => $clientId ,
                     'statut' => 1 
                             );
 
@@ -295,12 +295,12 @@ class Voiture extends BaseController
                     $this->session->set_flashdata('success', 'Reservation mise à jour avec succées ');
 
 
-                    redirect('Reservation/view/'.$reservationId);
+                    redirect('Voiture/view/'.$result);
                 }
                 else
                 {
                     $this->session->set_flashdata('error', 'Problème de mise à jours');
-                    redirect('Reservation/view/'.$reservationId);
+                    redirect('Voiture/view/'.$result);
                 }
 
                 
