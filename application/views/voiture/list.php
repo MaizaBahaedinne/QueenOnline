@@ -27,6 +27,7 @@
         <table id="example" style="width: 100%;" id="example" class="table  table-hover table-striped table-bordered table-responsive" cellspacing="0"  >
           <thead>
             <tr>
+              <th>ID</th>
               <th>Date</th>
               <th>voiture</th>
               <th width="15%">Depart</th>
@@ -46,7 +47,9 @@
                   {
               ?>
             <tr>
-              
+              <td>
+                <b><?php echo $record->reservationVId ?>
+              </td>
               <td>
                 <b><?php echo date_format(date_create($record->date)  , 'd/m/20y');  ?></b><br> <?php echo $record->depart ;  ?> 
               </td>
