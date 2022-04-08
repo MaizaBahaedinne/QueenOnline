@@ -13,7 +13,7 @@
       <div class="page-title-actions">
        
         <div class="d-inline-block">
-          <a href="<?php echo base_url() ?>Reservation/addNew" class="btn  btn-info">
+          <a href="<?php echo base_url() ?>Voiture/addNewO" class="btn  btn-info">
           Ajouter
           </a>
           

@@ -114,7 +114,7 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                         <label for="formGroupExampleInput">mobile 1</label>
-                                                        <input type="tel" class="form-control" name="mobile1"  value="<?php echo $projectInfo->mobile ?>" />
+                                                        <input type="tel" class="form-control" name="mobile1"  value="<?php echo $clientInfo->mobile1 ?>" />
                                                 </div>
                                                 <div class="col-md-6">
                                                         <label for="formGroupExampleInput">mobile 2</label>

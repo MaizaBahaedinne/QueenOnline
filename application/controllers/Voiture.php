@@ -41,7 +41,12 @@ class Voiture extends BaseController
             $this->loadViews("voiture/list", $this->global, $data, NULL);
     }
 
-
+        public function addNewO()
+    {
+           
+            $this->global['pageTitle'] = 'Clients';
+            $this->loadViews("voiture/newout", $this->global, null , NULL);
+    }
 
 
         public function addNew($reservationId)
