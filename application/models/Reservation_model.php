@@ -33,7 +33,8 @@ class Reservation_model extends CI_Model
         if($date == null){
       //  $this->db->where('BaseTbl.dateFin >=  SUBDATE(NOW(),1) ');
 
-        $this->db->where('YEAR(BaseTbl.dateFin) >= 2022  ');
+        $this->db->where('YEAR(BaseTbl.dateFin) >= 2021  ');
+        $this->db->where('YEAR(BaseTbl.dateFin) <= 2021  ');
 
         }
 
