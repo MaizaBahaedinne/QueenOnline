@@ -1,17 +1,13 @@
-<style type="text/css">
-  
-  .arlert-bg {
-  width: 300px;
-  height: 200px;
+<style> 
+.alert-bg {
   background: red;
-  animation: mymove 5s infinite;
+  animation: mymove 4s infinite;
 }
 
 @keyframes mymove {
-  from {background-color: lightgoldenrodyellow;}
-  to {background-color: white;}
+  from {background-color: whitesmoke;}
+  to {background-color: lightgoldenrodyellow;}
 }
-
 </style>
 
 
@@ -61,7 +57,7 @@
                   foreach($userRecords as $record)
                   {
               ?>
-            <tr class="<?php if ( (time() > strtotime($record->dateDebut. '  - 30  days') and $record->statut != 0 ) )  { echo "arlert-bg' " ;}  ?>"  >
+            <tr class="<?php if ( (time() > strtotime($record->dateDebut. '  - 30  days') && $record->statut != 0 ) )  { echo "alert-bg" ;}  ?>"  >
               
               <td>
                
