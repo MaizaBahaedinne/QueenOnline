@@ -419,7 +419,7 @@ class Reservation extends BaseController
                         'recepteurId'=>$this->vendorId,
                         'libele'=>'Partie ',
                         'reservationId'=>$resId,                           
-                                );
+            );
             $ReservationInfo =  $this->reservation_model->ReservationInfo($resId) ;
             $clientInfo = $this->client_model->getClientInfo($ReservationInfo->clientId); 
             $myMobile = $clientInfo->mobile ;

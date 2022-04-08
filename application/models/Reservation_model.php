@@ -156,8 +156,8 @@ class Reservation_model extends CI_Model
         $this->db->from('tbl_reservation as BaseTbl');
         $this->db->join('tbl_users as Locataire', 'Locataire.userId = BaseTbl.locataireId','left');
         
-        $this->db->where('BaseTbl.statut IN (1) ');
-        $this->db->where('BaseTbl.dateFin >= NOW() ');
+        $this->db->where('BaseTbl.statut IN (0,1) ');
+        $this->db->where('Year(BaseTbl.dateFin) >= 2022  ');
         $this->db->group_by('BaseTbl.locataireId');
         $this->db->order_by('count(userId) DESC');
 
