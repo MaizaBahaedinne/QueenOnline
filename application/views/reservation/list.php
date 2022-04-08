@@ -6,7 +6,7 @@
 
 @keyframes mymove {
   from {background-color: whitesmoke;}
-  to {background-color: lightgoldenrodyellow;}
+  to {background-color: indianred ;}
 }
 </style>
 
