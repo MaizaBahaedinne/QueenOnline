@@ -39,8 +39,8 @@
 </head>
 
 <body>
-    <div class="app-container app-theme-white body-tabs-shadow fixed-header fixed-sidebar">
-        <div class="app-header header-shadow">
+    <div class="app-container app-theme-white fixed-footer body-tabs-line fixed-header fixed-sidebar closed-sidebar">
+        <div class="app-header header-shadow bg-dark header-text-light" >
             <div class="app-header__logo">
                 <div class="logo-src"></div>
                 <div class="header__pane ml-auto">
@@ -1128,7 +1128,7 @@
             </div>
         </div>        
         <div class="app-main">
-            <div class="app-sidebar sidebar-shadow">
+            <div class="app-sidebar sidebar-shadow bg-dark sidebar-text-light">
                 <div class="app-header__logo">
                     <div class="logo-src"></div>
                     <div class="header__pane ml-auto">
