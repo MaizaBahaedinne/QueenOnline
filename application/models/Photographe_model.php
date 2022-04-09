@@ -101,7 +101,7 @@ class Photographe_model extends CI_Model
      */
     function editReservation($reservationInfo, $locationId)
     {
-        $this->db->where('reservationVId', $locationId);
+        $this->db->where('reservationPId', $locationId);
         $this->db->update('tbl_reservation_photographe', $reservationInfo);
         
         return TRUE;

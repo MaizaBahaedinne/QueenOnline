@@ -70,7 +70,7 @@ class Photographe extends BaseController
                
                 $packId = $this->input->post('packId');
                 $date = $this->input->post('date');
-                $depart = $this->input->post('depart');
+             
 
    
 
@@ -92,7 +92,7 @@ class Photographe extends BaseController
                     'reservationId'=>$reservationId,
                     'createdBy'=>$this->vendorId ,
                     'createdDTM'=>date('Y-m-d H:i:s'),
-                    'clientId' => $clientId   ,     
+                       
                     'statut' => 1 
                             );
 
@@ -102,7 +102,7 @@ class Photographe extends BaseController
                 if($result > 0)
                 {
 
-                     $reservationInfo1 = array('voiture'=>$result);
+                     $reservationInfo1 = array('photographe'=>$result);
 
                     $this->reservation_model->editReservation($reservationInfo1, $reservationId); 
 
@@ -111,10 +111,10 @@ class Photographe extends BaseController
                         'valeur'=>$avance,
                         'recepteurId'=>$this->vendorId,
                         'libele'=>'Avance ',
-                        'reservationVId'=>$result, 
+                        'reservationPId'=>$result, 
                                             
                                 );
-                        $resId = $this->paiement_model->addNewVoiturePaiement($paiementInfo);
+                        $resId = $this->paiement_model->addNewPhotographePaiement($paiementInfo);
 
 
 
@@ -124,7 +124,7 @@ class Photographe extends BaseController
                                 $reservationInfoe = array(
                                             'statut'=>0 ,
                                                     );
-                                 $this->photographe_model->editReservation($reservationInfoe, $resId); 
+                                 $this->photographe_model->editReservation($reservationInfoe, $result); 
                             }
 
                            
