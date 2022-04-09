@@ -39,7 +39,7 @@
 </head>
 
 <body>
-    <div class="app-container app-theme-white fixed-footer body-tabs-line fixed-header fixed-sidebar closed-sidebar">
+    <div id="p1" class="app-container  app-theme-white fixed-footer fixed-header fixed-sidebar ">
         <div class="app-header header-shadow bg-dark header-text-light" >
             <div class="app-header__logo">
                 <div class="logo-src"></div>
@@ -55,7 +55,7 @@
             </div>
             <div class="app-header__mobile-menu">
                 <div>
-                    <button type="button" class="hamburger hamburger--elastic mobile-toggle-nav">
+                    <button type="button" class="hamburger close-sidebar-btn hamburger--elastic">
                         <span class="hamburger-box">
                             <span class="hamburger-inner"></span>
                         </span>
@@ -790,9 +790,9 @@
                     </div>        </div>
             </div>
         </div>        <div class="ui-theme-settings">
-            <button type="button" id="TooltipDemo" class="btn-open-options btn btn-warning">
+         <!--   <button type="button" id="TooltipDemo" class="btn-open-options btn btn-warning">
                 <i class="fa fa-cog fa-w-16 fa-spin fa-2x"></i>
-            </button>
+            </button>-->
             <div class="theme-settings__inner">
                 <div class="scrollbar-container">
                     <div class="theme-settings__options-wrapper">
@@ -1181,7 +1181,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="<?php echo base_url() ?>Reservation/ResevationPhotographe">
+                                <a href="<?php echo base_url() ?>Photographe">
                                     <i class="metismenu-icon pe-7s-camera"></i>Photographe
                                 </a>
                             </li>

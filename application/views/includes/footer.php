@@ -1,6 +1,7 @@
   <div class="app-wrapper-footer">
                     <div class="app-footer">
                         <div class="app-footer__inner">
+                            <!--
                             <div class="app-footer-left">
                                 <div class="footer-dots">
                                     <div class="dropdown">
@@ -422,7 +423,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div>-->
                             <div class="app-footer-right">
                                 <ul class="header-megamenu nav">
                                     <li class="nav-item">
@@ -1280,6 +1281,21 @@
 
     }
 
+</script>
+
+<script>
+         $(document).ready(function() {
+                
+                      $( "#p1" ).addClass( "closed-sidebar" );
+                
+            });
+  
+       $(document).ready(function() {
+                setTimeout(function() {
+                      $( "#p1" ).addClass( "closed-sidebar" );
+                }, 1000);
+            });
+ 
 </script>
 
 

@@ -31,6 +31,7 @@ class Reservation extends BaseController
         $this->load->model('paiement_model');
         $this->load->model('contrat_model');
         $this->load->model('voiture_model'); 
+        $this->load->model('photographe_model');
         
         
         
@@ -63,26 +64,6 @@ class Reservation extends BaseController
 
 
 
-     /**
-     * This function is used to load the user list
-     */
-    function ResevationTroupe()
-    {  
-            $data['userRecords'] = $this->reservation_model->ReservationListing(1,0);
-            $this->global['pageTitle'] = 'CodeInsect : User Listing';
-            $this->loadViews("reservation/list", $this->global, $data, NULL);
-    }
-
-
-    /**
-     * This function is used to load the user list
-     */
-    function ResevationPhotographe()
-    {  
-            $data['userRecords'] = $this->reservation_model->ReservationListing(0,1);
-            $this->global['pageTitle'] = 'CodeInsect : User Listing';
-            $this->loadViews("reservation/list", $this->global, $data, NULL);
-    }
 
 
 
@@ -295,6 +276,7 @@ class Reservation extends BaseController
 
 
              $data['voiture'] = $this->voiture_model->ReservationInfo($data['projectInfo']->voiture);
+             $data['photographe'] = $this->photographe_model->ReservationInfo($data['projectInfo']->photographe);
 
             $this->global['pageTitle'] = 'CodeInsect : User Listing';
             $this->loadViews("reservation/details", $this->global, $data, NULL);

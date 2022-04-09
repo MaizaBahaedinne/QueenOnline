@@ -18,16 +18,16 @@
           <i class="pe-7s-medal icon-gradient bg-tempting-azure"></i>
         </div>
         <div>
-          Cars reservation
+          Photographe reservation
           <div class="page-title-subheading">Les reservations</div>
         </div>
       </div>
       <div class="page-title-actions">
        
         <div class="d-inline-block">
-          <a href="<?php echo base_url() ?>Voiture/addNewO" class="btn  btn-info">
+         <!-- <a href="<?php echo base_url() ?>Voiture/addNewO" class="btn  btn-info">
           Ajouter
-          </a>
+          </a>-->
           
         </div>
       </div>
@@ -41,10 +41,10 @@
             <tr>
               <th>ID</th>
               <th>Date</th>
-              <th>voiture</th>
-              <th width="15%">Depart</th>
-              <th width="15%">arret</th>
-              <th width="15%">arrivé</th>
+              <th>Espace</th>
+              <th>Pack</th>
+              <th width="15%">prix</th>
+              <th width="15%">avance</th>
               <th width="15%">mobile 1</th>
               <th width="15%">mobile 2</th>
               <th width="5%">Statut</th>
@@ -60,29 +60,29 @@
               ?>
             <tr class="<?php if ( (time() > strtotime($record->date. '  - 3  days') && $record->statut != 0 ) )  { echo "alert-bg" ;}  ?>"  >
               <td>
-                <b><?php echo $record->reservationVId ?>
+                <b><?php echo $record->reservationPId ?>
               </td>
               <td>
-                <b><?php echo date_format(date_create($record->date)  , 'd/m/20y');  ?></b><br> <?php echo $record->depart ;  ?> 
+                <b><?php echo date_format(date_create($record->date)  , 'd/m/20y');  ?>
+              </td>
+               <td>
+                <b><?php echo $record->projectInfo->salle ?>
               </td>
               <td>
-                <b><?php echo $record->voitureName ?>
+                <b><?php echo $record->packname ?>
               </td>
               <td>            
-                <?php echo $record->l1  ?>
+                <?php echo $record->prix  ?>
               </td>
               <td>            
-                <b><?php echo $record->l2  ?></b>
+                <b><?php echo $record->avance  ?></b>
+              </td>
+            
+              <td>
+               <a href="tel:<?php $record->projectInfo->mobile   ?>"><?php echo $record->projectInfo->mobile  ?></a>   
               </td>
               <td>
-               <?php echo $record->l3  ?>
-
-              </td>
-              <td  onclick='tdclick(this.id)' id="<?php echo $record->reservationId ?>" >
-               <a href="tel:<?php echo $record->mobile1   ?>"><?php echo $record->mobile1  ?></a>   
-              </td>
-              <td>
-               <a href="tel:<?php echo $record->mobile2   ?>"><?php echo $record->mobile2   ?></a> 
+               <a href="tel:<?php $record->projectInfo->mobile2   ?>"><?php echo $record->projectInfo->mobile2   ?></a> 
 
               </td>
               <td> 
@@ -101,10 +101,10 @@
               </td>
               <td>
                 <div class="btn-group" role="group" > 
-                <a class="btn" href="<?php echo base_url() ?>Voiture/view/<?php echo $record->reservationVId ?>" >
+                <a class="btn" href="<?php echo base_url() ?>Voiture/view/<?php echo $record->reservationPId ?>" >
                   <i class="fa fa-eye"></i>
                 </a>
-                <a class="btn" href="<?php echo base_url() ?>Reservation/edit/<?php echo $record->reservationVId ?>" >
+                <a class="btn" href="<?php echo base_url() ?>Reservation/edit/<?php echo $record->reservationPId ?>" >
                   <i class="fas fa-pencil-alt"></i>
                 </a>
               </div>
@@ -118,14 +118,15 @@
           <tfoot>
             <tr>
               <th>ID</th>
-              <th>titre</th>
               <th>Date</th>
               <th>Espace</th>
-              <th>Prix</th>
-              <th>Options</th>
-              <th>Contact</th>
-              <th >Statut</th>
-              <th >Action</th>
+              <th>Pack</th>
+              <th width="15%">prix</th>
+              <th width="15%">avance</th>
+              <th width="15%">mobile 1</th>
+              <th width="15%">mobile 2</th>
+              <th width="5%">Statut</th>
+              <th width="5%">Action</th>
             </tr>
           </tfoot>
         </table>

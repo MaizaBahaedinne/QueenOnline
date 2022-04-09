@@ -48,13 +48,14 @@
                                         <div class="card-body">
                                            
                                            <div class="row">
-                                            <div class="col-md-7">
+                                            <div class="col-md-9">
                                                     <div class="form-group">
-                                                        <label class="control-label">Voiture </label>
-                                                        <select class="form-control" name="voitureName" required>
+                                                        <label class="control-label">Pack</label>
+                                                        <select class="form-control" name="packId" required>
                                                             <option value=""></option>
-                                                            <option value="Limou'queen">Limou'queen</option>
-                                                            <option value="Queen traction">Queen traction</option>
+                                                            <?php foreach ($Packs as $Pack ) {  ?>
+                                                                <option value="<?php echo $Pack->packId ?>" ><?php echo $Pack->nom ?></option>
+                                                            <?php } ?>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -73,53 +74,19 @@
                                                          <!-- value="<?php echo date_format(date_create($projectInfo->dateDebut)  , 'd/m/20y');  ?>"-->
                                                     </div>
                                                 </div>
-                                                <div class="col-md-2">
-                                                        <label for="formGroupExampleInput">Départ</label>
-                                                        <input type="time" class="form-control" name="depart"  />
-                                                </div>
+                                                
                                                 <div class="col-md-12">
                                                     <br>
-                                                    <strong>Détail de transfère</strong>
+                                                    <strong>Note</strong>
                                                 </div>   
-                                                <div class="col-md-4">
-                                                        <label for="formGroupExampleInput">Point de départ</label>
-                                                        <input type="text" class="form-control" name="l1"  />
+                                                 <div class="col-md-12">
+                                                        <label for="formGroupExampleInput">Note Admin au photographe</label>
+                                                        <textarea  rows="20" class="form-control" name=" "></textarea>
                                                 </div>
-                                                <div class="col-md-4">
-                                                        <label for="formGroupExampleInput">Point d'arret </label>
-                                                        <input type="text" class="form-control" name="l2"  />
-                                                </div>
-                                                <div class="col-md-4">
-                                                        <label for="formGroupExampleInput">Point d'arrivé</label>
-                                                        <input type="text" class="form-control" name="l3" value="<?php echo $projectInfo->salle   ?> (Queen Park)"  />
-                                                </div>
-                                                <div class="col-md-12">
-                                                        <br>
-                                                        <label for="formGroupExampleInput">type de transfère</label>
-                                                        <br>
-                                                        <input type="checkbox"    id="aller" />
-                                                        <label for="formGroupExampleInput">Aller/retour</label>
-                                                </div>
-                                                <div class="col-md-4" id="l4" style="display: none">
-                                                        <label for="formGroupExampleInput">Point de retour</label>
-                                                        <input type="text" class="form-control" name="l4"  />
-                                                        <script type="text/javascript">
-                                                            $("#aller").click( function(){  $("#l4").toggle(); } ) ;
-                                                        </script>
-                                                </div>
+                                                
+                                                
 
-                                                <div class="col-md-12">
-                                                    <br>
-                                                    <strong>Contact</strong>
-                                                </div>
-                                                <div class="col-md-6">
-                                                        <label for="formGroupExampleInput">mobile 1</label>
-                                                        <input type="tel" class="form-control" name="mobile1"  value="<?php echo $clientInfo->mobile1 ?>" />
-                                                </div>
-                                                <div class="col-md-6">
-                                                        <label for="formGroupExampleInput">mobile 2</label>
-                                                        <input type="tel" class="form-control" name="mobile2"  />
-                                                </div>
+                                               
                                                 <div class="col-md-12">
                                                     <br>
                                                     <strong>Administration/Finance</strong>
@@ -133,11 +100,7 @@
                                                         <input type="number" class="form-control" name="avance"  />
                                                 </div>
 
-                                                <div class="col-md-6">
-                                                        <label for="formGroupExampleInput">Note Admin</label>
-                                                        <textarea  row="80" class="form-control" name="noteAdmin"></textarea>
-                                                </div>
-                                                
+                                               
                                                 <div class="col-md-12">
                                                         <br>
                                                         <button type="submit" class="btn btn-info btn-block" >Envoyer</button>

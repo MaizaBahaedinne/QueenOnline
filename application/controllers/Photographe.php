@@ -10,7 +10,7 @@ require APPPATH . '/libraries/BaseController.php';
  * @since : 15 November 2016
  */
 
-class Voiture extends BaseController
+class Photographe extends BaseController
 {
     /**
      * This is default constructor of the class
@@ -37,6 +37,9 @@ class Voiture extends BaseController
 
            
             $data['userRecords'] = $this->photographe_model->ReservationListing();
+            foreach ( $data['userRecords'] as $record ) {
+              $record->projectInfo = $this->reservation_model->ReservationInfo($record->reservationId);
+            }
             $this->global['pageTitle'] = 'Photographe';
             $this->loadViews("photographe/list", $this->global, $data, NULL);
     }
@@ -45,7 +48,9 @@ class Voiture extends BaseController
 
 
         public function addNew($reservationId)
+
     {
+            $data['Packs'] = $this->photographe_model->Packs();
             $data['projectInfo'] = $this->reservation_model->ReservationInfo($reservationId);
             $this->global['pageTitle'] = 'Clients';
             $this->loadViews("photographe/new", $this->global, $data, NULL);

@@ -36,7 +36,7 @@
   <div class="main-card mb-3 card">
     <div class="card-body" style="width: 100%;">
       
-        <table id="example" style="width: 100%;" id="example" class="table  table-hover table-striped table-bordered table-responsive" cellspacing="0"  >
+        <table id="example" style="width: 100%;" id="example" class="table  table-hover table-striped table-bordered " cellspacing="0"  >
           <thead>
             <tr>
               <th>ID</th>
@@ -104,9 +104,9 @@
                 <a class="btn" href="<?php echo base_url() ?>Voiture/view/<?php echo $record->reservationVId ?>" >
                   <i class="fa fa-eye"></i>
                 </a>
-                <a class="btn" href="<?php echo base_url() ?>Reservation/edit/<?php echo $record->reservationVId ?>" >
+               <!-- <a class="btn" href="<?php echo base_url() ?>Reservation/edit/<?php echo $record->reservationVId ?>" >
                   <i class="fas fa-pencil-alt"></i>
-                </a>
+                </a>-->
               </div>
               </td>
             </tr>
