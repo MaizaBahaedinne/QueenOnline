@@ -305,6 +305,18 @@ class Reservation_model extends CI_Model
      */
     function editReservation($reservationInfo, $reservationId)
     {
+
+        $this->db->select('BaseTbl.*');
+        $this->db->from('tbl_reservation as BaseTbl');
+        $this->db->where('BaseTbl.reservationId =',$reservationId );
+        $query = $this->db->get();
+        $copie = $query->row();
+        $this->db->trans_start();
+        $this->db->insert('tbl_reservation_backup', $copie);
+        $insert_id = $this->db->insert_id();
+        $this->db->trans_complete();
+        echo $insert_id;
+
         $this->db->where('reservationId', $reservationId);
         $this->db->update('tbl_reservation', $reservationInfo);
         

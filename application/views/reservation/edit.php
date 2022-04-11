@@ -89,20 +89,13 @@
                        <?php  if ($projectInfo->tableCM == 1 ){ echo 'checked'; } ?> >  Table contrat de  mariage
                     <br>
                     <input type="checkbox"  name="cuisine"  value="1"   <?php  if ($projectInfo->cuisine == 1 ){ echo 'checked'; } ?>  >  Cuisine
-                    <br>
-                    <input type="checkbox" name="Troupe" value="1" <?php  if ($projectInfo->troupe == 1 ){ echo 'checked'; } ?>  >  Troupe
-                    <br>
-                    <input type="checkbox" name="Photographe" value="1" <?php  if ($projectInfo->photographe == 1 ){ echo 'Photographe'; } ?> >  Photographe
+              
                     <br>
                   </div>
 
                   <hr>
-                  <div class="form-group">
-                    <h4 for="formGroupExampleInput">Limou'queen </h4>
-                    <a class="btn btn-block btn-warning" href="<?php echo base_url() ?>Voiture/addNew?reservationId=<?php echo $projectInfo->reservationId ?>&cin=<?php echo $projectInfo->cin ?>" ><i class="fa fa-car"></i> Ajouter une reservation</a>
-                    
-                  </div>
-                  <hr>
+                  
+                  
 
                   <div class="form-group">
                     <label for="formGroupExampleInput">Titre</label>

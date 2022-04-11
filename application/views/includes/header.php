@@ -51,7 +51,7 @@
 
 <body>
 
-    <div id="p1" class="app-container app-theme-white body-tabs-shadow fixed-header fixed-sidebar closed-sidebar ">
+    <div id="p1" class="app-container fixed-footer fixed-sidebar fixed-header body-tabs-shadow app-theme-gray">
         <div class="app-header header-shadow bg-dark header-text-light" >
             <div class="app-header__logo">
                 <div class="logo-src"></div>
@@ -802,9 +802,9 @@
                     </div>        </div>
             </div>
         </div>        <div class="ui-theme-settings">
-         <!--   <button type="button" id="TooltipDemo" class="btn-open-options btn btn-warning">
-                <i class="fa fa-cog fa-w-16 fa-spin fa-2x"></i>
-            </button>-->
+         <!--  <button type="button" id="TooltipDemo" class="btn-open-options btn btn-warning">
+                <i class="fa fa-cog fa-w-16 fa-spin fa-2x"></i>-->
+            </button>
             <div class="theme-settings__inner">
                 <div class="scrollbar-container">
                     <div class="theme-settings__options-wrapper">
@@ -1140,7 +1140,7 @@
             </div>
         </div>        
         <div class="app-main">
-            <div class="app-sidebar sidebar-shadow bg-dark sidebar-text-light">
+            <div class="app-sidebar sidebar-shadow bg-light sidebar-text-dark">
                 <div class="app-header__logo">
                     <div class="logo-src"></div>
                     <div class="header__pane ml-auto">

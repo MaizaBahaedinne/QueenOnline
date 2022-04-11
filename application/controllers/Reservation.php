@@ -152,7 +152,7 @@ class Reservation extends BaseController
                     'clientId' => $clientId       
                             );
 
-                var_dump($reservationInfo) ; 
+                
                 $result = $this->reservation_model->addNewReservation($reservationInfo);
                 
                 if($result > 0)
@@ -295,7 +295,7 @@ class Reservation extends BaseController
             $data['paiementInfo'] = $this->paiement_model->paiementListingbyReservation($resId) ;
             $data['totalPaiement'] = $this->paiement_model->getTotal($resId) ;
 
-            $this->global['pageTitle'] = 'CodeInsect : User Listing';
+            $this->global['pageTitle'] = 'Recu de reservation';
             $this->loadViews("paiement/recu", $this->global, $data, NULL);
     }
 
@@ -309,18 +309,13 @@ class Reservation extends BaseController
     function edit($resId)
     {  
 
-            
             $data['salleRecords'] = $this->salle_model->SalleListing();
             $data['projectInfo'] = $this->reservation_model->ReservationInfo($resId);
             $data['contratInfo'] = $this->contrat_model->contratInfo($resId);
             $data['paiementInfo'] = $this->paiement_model->paiementListingbyReservation($resId) ;
             $data['totalPaiement'] = $this->paiement_model->getTotal($resId) ;
             
-
-
-
-
-            $this->global['pageTitle'] = 'CodeInsect : User Listing';
+            $this->global['pageTitle'] = '';
             $this->loadViews("reservation/edit", $this->global, $data, $data);
     }
 
@@ -379,7 +374,7 @@ class Reservation extends BaseController
 
 
         
-    //    echo $this->sendSMS("216".$myMobile, $mySms) ;
+        echo $this->sendSMS("216".$myMobile, $mySms) ;
                         
 
        redirect('Reservation/view/'.$resId) ;               
@@ -407,7 +402,7 @@ class Reservation extends BaseController
             $myMobile = $clientInfo->mobile ;
             $mySms = "Salut ".$clientInfo->name.", une paiement de (".$avance." DT)  pour la reservation N°".$resId." a été effectuée avec succées" ;
       
-  //          $this->sendSMS("216".$myMobile, $mySms) ;
+            $this->sendSMS("216".$myMobile, $mySms) ;
    
         $this->paiement_model->addNewPaiement($paiementInfo);
 
@@ -424,11 +419,11 @@ class Reservation extends BaseController
         {
             
             $myMobile = $clientInfo->mobile ;
-            $mySms = "Bonjour ".$clientInfo->name.", votre reservation de la salle (".$ReservationInfo->salle.") pour le (".$ReservationInfo->dateDebut.") a été validée on vous souhaite une belle cérimonie." ;
+            $mySms = "Bonjour ".$clientInfo->name.", votre reservation de la salle (".$ReservationInfo->salle.") pour le (".$ReservationInfo->dateDebut.") a été validée on vous souhaite une belle cérémonie." ;
 
 
    
- //       $this->sendSMS("216".$myMobile, $mySms) ;
+        $this->sendSMS("216".$myMobile, $mySms) ;
    
         $reservationInfo = array(
                         'noteAdmin'=>$noteAdmin,
