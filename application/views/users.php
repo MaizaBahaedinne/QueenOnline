@@ -19,9 +19,9 @@
          </div>
       </div>
    </div>
-   <div class="main-card mb-3 card">
+   <div class="main-card  card">
       <div class="card-body">
-         <table width="100%" id="example" class="table table-responsive table-hover table-striped table-bordered" >
+         <table width="100%" id="example" class="table  table-hover table-striped table-bordered table-responsive" >
             <thead>
                <tr>
                   <th>Name</th>
