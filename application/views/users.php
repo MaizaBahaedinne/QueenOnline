@@ -1,27 +1,42 @@
+<style> 
+.alert-bg {
+  background: red;
+  animation: mymove 4s infinite;
+}
+
+@keyframes mymove {
+  from {background-color: whitesmoke;}
+  to {background-color: indianred ;}
+}
+</style>
+
 <div class="app-main__inner">
-   <div class="app-page-title">
-      <div class="page-title-wrapper">
-         <div class="page-title-heading">
-            <div class="page-title-icon">
-               <i class="pe-7s-medal icon-gradient bg-tempting-azure"></i>
-            </div>
-            <div>
-               Utilisateurs
-               <div class="page-title-subheading">Les utilisateurs</div>
-            </div>
-         </div>
-         <div class="page-title-actions">
-            <div class="d-inline-block">
-               <button type="button" data-toggle="modal" data-target="#addUser"  class="btn  btn-info">
-               Ajouter
-               </button>
-            </div>
-         </div>
+  <div class="app-page-title">
+    <div class="page-title-wrapper">
+      <div class="page-title-heading">
+        <div class="page-title-icon">
+          <i class="pe-7s-medal icon-gradient bg-tempting-azure"></i>
+        </div>
+        <div>
+          Cars reservation
+          <div class="page-title-subheading">Les reservations</div>
+        </div>
       </div>
-   </div>
-   <div class="main-card  card">
-      <div class="card-body">
-         <table width="100%" id="example" class="table  table-hover table-striped table-bordered table-responsive" >
+      <div class="page-title-actions">
+       
+        <div class="d-inline-block">
+          <a href="<?php echo base_url() ?>Voiture/addNewO" class="btn  btn-info">
+          Ajouter
+          </a>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="main-card mb-3 card">
+    <div class="card-body" style="width: 100%;">
+      
+       <table width="100%" id="example" class="table  table-hover table-striped table-bordered table-responsive" >
             <thead>
                <tr>
                   <th>Name</th>
@@ -63,7 +78,13 @@
                <th class="text-center">Actions</th>
             </tfoot>
          </table>
-      </div>
-   </div>
+      
+    </div>
+  </div>
 </div>
 <!-- Modal -->
+
+
+
+
+
