@@ -19,7 +19,7 @@
       </div>
     </div>
   </div>
-<form action="<?php echo base_url()?>Reservation/addNewReservation" method="post">
+<form action="<?php echo base_url()?>Reservation/addNewReservation" method="post" >
               
                 <div class="modal-body">
                     <div class="tab-content">
@@ -289,6 +289,7 @@
                                                             <div class="mt-3 mb-3"></div>
                                                             <div class="text-center">
                                                                 <input type="submit" class="btn-shadow btn-wide btn btn-success btn-lg" />
+                                                               
                                                             </div>
                                                         </div>
                                                     </div>
