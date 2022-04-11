@@ -1182,26 +1182,34 @@
                         </ul>
                         <ul class="vertical-nav-menu">
                             <li class="app-sidebar__heading">Reservation</li>
+                            <?php if($role == 1 || $role == 2 ){  ?>
                             <li>
                                 <a href="<?php echo base_url() ?>Reservation">
                                     <i class="metismenu-icon pe-7s-notebook"></i>Salles
                                 </a>
                             </li>
+                            <?php }  ?>
+                            <?php if($role == 1 || $role == 2 ){  ?>
                             <li>
                                 <a href="<?php echo base_url() ?>Reservation/ResevationTroupe">
                                     <i class="metismenu-icon pe-7s-music"></i>Troupe
                                 </a>
                             </li>
+                            <?php }  ?>
+                            <?php if($role == 1 || $role == 2 || $role == 6 ){  ?>
                             <li>
                                 <a href="<?php echo base_url() ?>Photographe">
                                     <i class="metismenu-icon pe-7s-camera"></i>Photographe
                                 </a>
                             </li>
+                            <?php }  ?>
+                            <?php if($role == 1 || $role == 2 || $role == 7 ){  ?>
                             <li>
                                 <a href="<?php echo base_url() ?>Voiture">
                                     <i class="metismenu-icon pe-7s-car"></i>Cars
                                 </a>
                             </li>
+                            <?php }  ?>
                         </ul>
                         <ul class="vertical-nav-menu">
                             <li class="app-sidebar__heading">Administration</li>
