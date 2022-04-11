@@ -81,7 +81,7 @@
                                                 </div>   
                                                  <div class="col-md-12">
                                                         <label for="formGroupExampleInput">Note Admin au photographe</label>
-                                                        <textarea  rows="20" class="form-control" name="noteAdmin"></textarea>
+                                                        <textarea  rows="10" class="form-control" name="noteAdmin"></textarea>
                                                 </div>
                                                 
                                                 
