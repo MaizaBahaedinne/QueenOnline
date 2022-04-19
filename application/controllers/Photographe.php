@@ -314,7 +314,7 @@ class Photographe extends BaseController
 
 
             $this->global['pageTitle'] = 'CodeInsect : User Listing';
-            $this->loadViews("voiture/view", $this->global, $data, NULL);
+            $this->loadViews("photographe/view", $this->global, $data, NULL);
     }
 
 
