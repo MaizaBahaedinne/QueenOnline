@@ -93,7 +93,7 @@
                 
                   <h6>ARTICLE 2 – DUREE::</h6>
                   Débute le <b><?php echo $projectInfo->date ;?> </b> , à <b><?php echo $projectInfo->depart ;?></b> <br>
-                  <b>Point de départ  :</b> <?php echo $projectInfo->l1 ;?>  <b>vers</b> <?php echo $projectInfo->l2 ;?> <b>arrivant à </b>   <?php echo $projectInfo->l3 ;?>
+                  <b>Point de départ  :</b> <?php echo $projectInfo->l1 ;?>  <b>vers</b> <?php echo $projectInfo->l2 ;?> <b>arrivant à </b>   <?php echo $projectInfo->l3 ;?><br><?php if ($projectInfo->l4 != '' ) { echo "<b>Retour vers : </b>".$projectInfo->l4 ;  } ?>
 
                   <hr>
                   <h6>ARTICLE 3 – PRIX DE LA LOCATION :</h6>
