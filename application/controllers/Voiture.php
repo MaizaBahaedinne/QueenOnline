@@ -264,9 +264,8 @@ class Voiture extends BaseController
                 if($result > 0)
                 {
 
-                     $reservationInfo1 = array('voiture'=>$result);
+                    
 
-                    $this->reservation_model->editReservation($reservationInfo1, $reservationId); 
 
                     $paiementInfo = array(
                         'createdDate'=>date('Y-m-d H:i:s'),
