@@ -146,154 +146,11 @@ class Photographe extends BaseController
 
 
 
-           /**
-     * This function is used to add new user to the system
-     */
-    function addNewReservation()
-    {
-
-                $clientId = $this->input->post('clientId');
-
-                $nom = $this->input->post('nom');
-                $prenom = $this->input->post('prenom');
-                $CIN = $this->input->post('CIN');
-                $dateCin = $this->input->post('dateCin');
-                $n = $this->input->post('N');
-                $rue = $this->input->post('rue');
-                $ville = $this->input->post('ville');
-                $codePostal = $this->input->post('codePostal');
-                $email = $this->input->post('email');
-                $mobile = $this->input->post('mobile');
-                $mobile2 = $this->input->post('mobile2');
-                $birthday = $this->input->post('birth');
-                $sexe = $this->input->post('sexe');
-
-               
-             
-                $userInfo = array('email'=>$email,
-                                 'password'=>getHashedPassword($CIN), 
-                                 'roleId'=>4, 
-                                 'name'=> $prenom.' '.$nom,
-                                 'cin'=> $CIN,
-                                 'dateCin'=> $dateCin,
-                                 'mobile'=>$mobile,
-                                 'mobile2'=>$mobile2,
-                                 'createdBy'=>$this->vendorId,
-                                 'createdDtm'=>date('Y-m-d H:i:s'),
-                                 'n '=>$n   , 
-                                 'rue'=>$rue, 
-                                 'codePostal'=> $codePostal,
-                                 'ville'=> $ville,
-                                 'type'=> 'personne' ,
-                                 'nom'=>$nom,
-                                 'prenom'=>$prenom,
-                                 'Sexe'=>$sexe , 
-                                 'birthday'=>$birthday 
-                                    );
-                
-                if($clientId == null )
-                { 
-                    $clientId = $this->client_model->addNewClient($userInfo);
-                    var_dump($clientId) ; 
-                }else
-                {
-                     $this->client_model->editClient($userInfo, $clientId) ;
-                }
-                
-                    
-               
-                $voitureName = $this->input->post('voitureName');
-                $date = $this->input->post('date');
-                $depart = $this->input->post('depart');
-
-                $l1 = $this->input->post('l1');
-                $l2 = $this->input->post('l2');
-                $l3 = $this->input->post('l3');
-                $l4 = $this->input->post('l4');
-
-                $mobile1 = $this->input->post('mobile1');
-                $mobile2 = $this->input->post('mobile2');
-
-                $prix = $this->input->post('prix');
-                $avance = $this->input->post('avance');
-
-                $noteAdmin = $this->input->post('noteAdmin');  
-                 
-       
-                $reservationInfo = array(
-                    'voitureName'=>$voitureName,
-                    'date'=>$date,
-                    'depart'=>$depart,
-
-                    'l1'=>$l1,
-                    'l2'=>$l2,
-                    'l3'=>$l3,
-                    'l4'=>$l4,
-
-                    'mobile1'=>$mobile,
-                    'mobile2'=>$mobile2,
-                    
-                    'prix'=>$prix,
-                    'avance'=>$avance,
-                    'noteAdmin'=>$noteAdmin,
-                    
-                    
-                    'createdBy'=>$this->vendorId ,
-                    'createdDTM'=>date('Y-m-d H:i:s'),
-                    'clientId' => $clientId ,
-                    'statut' => 1 
-                            );
-
-           
-                $result = $this->photographe_model->addNewReservation($reservationInfo);
-                
-                if($result > 0)
-                {
-
-                     $reservationInfo1 = array('voiture'=>$result);
-
-                    $this->reservation_model->editReservation($reservationInfo1, $reservationId); 
-
-                    $paiementInfo = array(
-                        'createdDate'=>date('Y-m-d H:i:s'),
-                        'valeur'=>$avance,
-                        'recepteurId'=>$this->vendorId,
-                        'libele'=>'Avance ',
-                        'reservationVId'=>$result, 
-                                            
-                                );
-                        $resId = $this->paiement_model->addNewVoiturePaiement($paiementInfo);
-
-
-
-                            if (  $prix - $avance == 0   )
-                            {
-                              
-                                $reservationInfoe = array(
-                                            'statut'=>0 ,
-                                                    );
-                                 $this->photographe_model->editReservation($reservationInfoe, $resId); 
-                            }
-
-                           
-
-
-                    $this->session->set_flashdata('success', 'Reservation mise à jour avec succées ');
-
-
-                    redirect('Voiture/view/'.$result);
-                }
-                else
-                {
-                    $this->session->set_flashdata('error', 'Problème de mise à jours');
-                    redirect('Voiture/view/'.$result);
-                }
-
+ 
                 
            
         
-    }
-
+ 
 
 
      /**
@@ -339,7 +196,7 @@ class Photographe extends BaseController
             $clientInfo = $this->client_model->getClientInfo($ReservationInfo->clientId); 
             
    
-        $this->paiement_model->addNewVoiturePaiement($paiementInfo);
+        $this->paiement_model->addNewPhotographePaiement($paiementInfo);
 
         $totalPaiement = $this->paiement_model->getVTotal($resId) ; 
         $projectInfo = $this->photographe_model->ReservationInfo($resId);
@@ -360,7 +217,7 @@ class Photographe extends BaseController
         }
 
         $this->photographe_model->editReservation($reservationInfo, $resId);    
-        redirect('Voiture/view/'.$resId) ; 
+        redirect('Photographe/view/'.$resId) ; 
             
     }
 

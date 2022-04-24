@@ -7,7 +7,7 @@
             </div>
             <div>
                Détails de la reservation
-               <div class="page-title-subheading">Reservation de la voiture</div>
+               <div class="page-title-subheading">Reservation du photographe</div>
             </div>
          </div>
          <div class="page-title-actions">
@@ -75,7 +75,7 @@
                   <div class="row ">
                      <div class="col-md-2"> </div>
                      <div class="col-md-8">
-                        <p style="font-size: 25; text-align: center;" >Contrat de location de voiture <br> <b><?php echo $projectInfo->voitureName ; ?></b></p>
+                        <p style="font-size: 25; text-align: center;" >Contrat de prestation avec Mak'Photo <br> </p>
                      </div>
                      <div class="col-md-2"> </div>
                   </div>
@@ -87,28 +87,37 @@
                   <b>ET</b> <br>
                   <b><?php echo $clientInfo->nom.' '.$clientInfo->prenom ;?></b> titulaire de la carte d’identité nationale <b>N°<?php echo $clientInfo->cin ;?></b> délivrée le <b><?php echo $clientInfo->dateCin ;?></b> et demeurant à <b>N°<?php echo $clientInfo->n.' '.$clientInfo->rue.' '.$clientInfo->ville.' '.$clientInfo->codePostal ;?></b>   désigné ci-après « le locataire »  <br><br> 
 
-                  <h6>ARTICLE 1 – Voiture :</h6>
-                  La voiture mis à disposition doit être rendu propre et en bon état de fonctionnement. Il fera l’objet d’un inventaire lors des états des lieux de l'utilisation . <br><br>
+                  <h6>ARTICLE 1 – Objet :</h6>
+                  Revive cérémonie :
+                   Nature <b><?php echo $projectInfo->type ?></b>. Qui se déroulera Le <b><?php echo  $projectInfo->date ?></b> Lieu <b><?php echo  $projectInfo->salle ?></b>
+                  
+                   <br><br>
                   <hr>
                 
-                  <h6>ARTICLE 2 – DUREE::</h6>
-                  Débute le <b><?php echo $projectInfo->date ;?> </b> , à <b><?php echo $projectInfo->depart ;?></b> <br>
-                  <b>Point de départ  :</b> <?php echo $projectInfo->l1 ;?>  <b>vers</b> <?php echo $projectInfo->l2 ;?> <b>arrivant à </b>   <?php echo $projectInfo->l3 ;?>
+                  <h6>ARTICLE 2 – Pack ::</h6>
+                  Le photographe s’engage à faire le pack : <b><?php echo $projectInfo->packname ?></b>
+                     <br>
+                  Matériel : <br>
+                   <?php if( $projectInfo->photos == "oui" ) { ?>
+                        1 camera pour les photos .
+                   <?php }  ?>
+                  <?php if( $projectInfo->video == "oui" ) { ?>
+                     <li> <?php echo $projectInfo->nombreCamera ?> Camera pour le video</li>
+                     <?php if ($projectInfo->ghiraphe == "oui" ) {  ?> <li> 1 Girafe </li><?php }  ?>
+                     <?php if ($projectInfo->drone == "oui" ) {  ?> <li> 1 Drone </li><?php }  ?>
+                  <?php } ?>
+
 
                   <hr>
                   <h6>ARTICLE 3 – PRIX DE LA LOCATION :</h6>
-                  La présente location est consentie et acceptée moyennant le versement d’un loyer de <b><?php echo $projectInfo->prix ;?> DT</b>, payable au plus tard <b style="color: red"> 72 heures avant la date de début de location.</b> <br>
-                  Il est demandé au locataire de verser <b style="color: green "><?php echo $projectInfo->avance ;?> DT  dès la signature du contrat.</b><br>
-                  Le mode de paiement accepté est en espèces.<br>
-                  <b>NB :<br>1. dans tous les cas le montant versé ne sera pas rembourser (le client  peut seulement reporter sa date de reservation) </b> <br>
-                  <b>2. dans le cas de report du date de la reservation ce contrat sera systèmatiquement annulé et un autre sera signer avec une nouvelle négociation du montant tout en respectant le montant deja versé  </b> <br>
+                  Le client s’engage à payer la somme de <?php echo $projectInfo->prix ?>  DT payée comme suit : <br>
+                  - Avance : <b style="color:green;"><?php echo $projectInfo->avance ?></b> DT  <br>
+                  - Reste : <b style="color:red;"><?php echo $projectInfo->prix - $projectInfo->avance ?></b> DT <br>
+                  <br><b>NB : Le reste de la totalité des frais seront payé 72 heures avant la cérémonie. </b>
+
                   <hr>
-                  <h6>ARTICLE 4 – RÈGLEMENT INTÉRIEUR :</h6>
-                  - 
-                  - Il est interdit de fumer à l’intérieur de la voiture. <br>
-                  - Il est strictement interdit d’importer des boissons alcooliques à l’intérieur de la voiture.<br>
-                 
-                  - La voiture ne peut pas entrer dans les rues étroites et les routes non goudronnées.<small>(Dans ce cas, le client est responsable de se déplacer au point le plus proche possible)</small>
+                  <h6>ARTICLE 4  :</h6>
+                  Les deux parties s’engagent é respecter ce présent contrat.
                   
       
                   <br>          
@@ -139,7 +148,7 @@
                               Réference
                            </td>
                            <td>
-                              QP<?php echo  $clientInfo->cin ; ?>/<?php echo  $projectInfo->reservationVId ; ?>/<?php echo  $projectInfo->createdBy ; ?>
+                              QP<?php echo  $clientInfo->cin ; ?>/<?php echo  $projectInfo->reservationPId ; ?>/<?php echo  $projectInfo->createdBy ; ?> || <?php echo $projectInfo->reservationId ?>
                            </td>
                            <td width="30 %">
                               Prix
@@ -154,8 +163,8 @@
                            </td>
                            <td>
                               <br>
-                              <b>Debut : </b><?php $date = new DateTime($projectInfo->date); echo $date->format('d/m/Y').' '.$projectInfo->depart;  ?><br>
-                              <b>Fin :       
+                              <b>Debut : </b><?php $date = new DateTime($projectInfo->date); echo $date->format('d/m/Y')  ?><br>
+                                  
                            </td>
                            <td width="30 %">
                               Avance 
@@ -186,10 +195,10 @@
                         </tr>
                         <tr>
                            <td width="30 %">
-                              Nombre de place
+                              Pack :
                            </td>
                            <td>
-                     
+                              <?php echo $projectInfo->packname ?>
                            </td>
                            <td width="30 %">
                            </td>
@@ -262,7 +271,7 @@
                   <?php if( $totalPaiement->valeur > 0 ){  ?>
                      <form style="display: none; border: 2px " 
                         id="addPayementForm" 
-                        action="<?php echo base_url() ?>Voiture/addPaiement/<?php echo $projectInfo->reservationVId ?>" 
+                        action="<?php echo base_url() ?>Photographe/addPaiement/<?php echo $projectInfo->reservationPId ?>" 
                         method="post"  >
                  
                      <hr>
@@ -280,7 +289,7 @@
                   <?php } if ($totalPaiement->valeur ==  0 ) {  ?>
                      <form style="display: none; border: 2px " 
                         id="addPayementForm" 
-                        action="<?php echo base_url() ?>Voiture/addPaiement/<?php echo $projectInfo->reservationVId ?>" 
+                        action="<?php echo base_url() ?>Voiture/addPaiement/<?php echo $projectInfo->reservationPId ?>" 
                         method="post"  >
                  
                      <hr>
@@ -321,7 +330,7 @@
                <span style="float: right">Reste : <?php echo ($projectInfo->prix - $totalPaiement->valeur ) ?> DT</span>
             </div>
             <div class="text-center d-block card-footer">
-               <button class="btn btn-warning" id="addPayement" >Ajouter</button> <a href="<?php echo base_url() ?>Voiture/recuP/<?php echo $projectInfo->reservationVId ?>" class="btn btn-info">Reçu</a>
+               <button class="btn btn-warning" id="addPayement" >Ajouter</button> <a href="<?php echo base_url() ?>Photographe/recuP/<?php echo $projectInfo->reservationPId ?>" class="btn btn-info">Reçu</a>
             </div>
          </div>
       </div>
