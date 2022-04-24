@@ -74,6 +74,28 @@ class Paiement_model extends CI_Model
         return $result;
     }
 
+
+
+         /**
+     * This function is used to get the user listing count
+     * @param string $searchText : This is optional search text
+     * @param number $page : This is pagination offset
+     * @param number $segment : This is pagination limit
+     * @return array $result : This is result
+     */
+    function paiementListingbyReservationPhotographe($resId)
+    {
+        $this->db->select('BaseTbl.* , Recepteur.name');
+        $this->db->from('tbl_paiement_photographe BaseTbl');
+        $this->db->join('tbl_reservation_photographe as Reservation', 'BaseTbl.reservationPId = Reservation.reservationPId','left');
+        $this->db->join('tbl_users Recepteur', 'BaseTbl.recepteurId = Recepteur.userId','left');
+        
+        $this->db->where('BaseTbl.reservationPId = ',$resId);
+        $query = $this->db->get();
+        $result = $query->result();        
+        return $result;
+    }
+
     /**
      * This function is used to check whether email id is already exist or not
      * @param {string} $email : This is email id
@@ -176,6 +198,26 @@ class Paiement_model extends CI_Model
         $this->db->from('tbl_paiement_voiture as BaseTbl');
         if($resId != null) {
         $this->db->where('BaseTbl.reservationVId =',$resId );
+        }
+        $query = $this->db->get();
+        
+        return $query->row();
+    }
+    
+
+
+
+        /**
+     * This function used to get user information by id
+     * @param number $userId : This is user id
+     * @return array $result : This is user information
+     */
+    function getPTotal($resId = '')
+    {
+         $this->db->select('sum(valeur) valeur');
+        $this->db->from('tbl_paiement_photographe as BaseTbl');
+        if($resId != null) {
+        $this->db->where('BaseTbl.reservationPId =',$resId );
         }
         $query = $this->db->get();
         

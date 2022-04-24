@@ -163,15 +163,17 @@ class Photographe extends BaseController
 
             $data['clientInfo'] = $this->user_model->getUserInfo($data['projectInfo']->clientId);
           
-            $data['paiementInfo'] = $this->paiement_model->paiementListingbyReservationVoiture($resId) ;
-            $data['totalPaiement'] = $this->paiement_model->getVTotal($resId) ;             
+            $data['paiementInfo'] = $this->paiement_model->paiementListingbyReservationPhotographe($resId) ;
+
+
+            $data['totalPaiement'] = $this->paiement_model->getPTotal($resId) ;             
                  
             $data['userID'] = $this->vendorId ; 
 
 
 
             $this->global['pageTitle'] = 'CodeInsect : User Listing';
-            $this->loadViews("photographe/view", $this->global, $data, NULL);
+           $this->loadViews("photographe/view", $this->global, $data, NULL);
     }
 
 
