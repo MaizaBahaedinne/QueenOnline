@@ -91,7 +91,7 @@
                                                 </div>
                                                 <div class="col-md-4">
                                                         <label for="formGroupExampleInput">Point d'arrivé</label>
-                                                        <input type="text" class="form-control" name="l3" value="<?php echo $projectInfo->salle   ?> (Queen Park)"  />
+                                                        <input type="text" class="form-control" name="l3" value="<?php echo $projectInfo->salle   ?> (Queen Park)"  readonly  />
                                                 </div>
                                                 <div class="col-md-12">
                                                         <br>
