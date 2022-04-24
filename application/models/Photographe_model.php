@@ -66,7 +66,7 @@ class Photographe_model extends CI_Model
      */
     function ReservationInfo($resId)
     {
-       $this->db->select('BaseTbl.* , Pack.*  , Pack.nom packname , Reservation.* , Salles.nom salle');
+       $this->db->select('BaseTbl.* , Pack.*  , Pack.nom packname , Reservation.* , Salles.nom salle , BaseTbl.prix , BaseTbl.avance');
         $this->db->from('tbl_reservation_photographe as BaseTbl');
         $this->db->join('tbl_pack_photographe as Pack', 'Pack.packId = BaseTbl.packId','left');
          $this->db->join('tbl_reservation as Reservation', 'Reservation.reservationId = BaseTbl.reservationId','left');
