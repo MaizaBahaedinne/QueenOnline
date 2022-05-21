@@ -160,18 +160,10 @@ class Photographe extends BaseController
     {  
 
             $data['projectInfo'] = $this->photographe_model->ReservationInfo($resId);
-
             $data['clientInfo'] = $this->user_model->getUserInfo($data['projectInfo']->clientId);
-          
             $data['paiementInfo'] = $this->paiement_model->paiementListingbyReservationPhotographe($resId) ;
-
-
-            $data['totalPaiement'] = $this->paiement_model->getPTotal($resId) ;             
-                 
+            $data['totalPaiement'] = $this->paiement_model->getPTotal($resId) ;                 
             $data['userID'] = $this->vendorId ; 
-
-
-
             $this->global['pageTitle'] = 'CodeInsect : User Listing';
            $this->loadViews("photographe/view", $this->global, $data, NULL);
     }
@@ -192,7 +184,7 @@ class Photographe extends BaseController
                         'valeur'=>$avance,
                         'recepteurId'=>$this->vendorId,
                         'libele'=>'Partie ',
-                        'reservationVId'=>$resId,                           
+                        'reservationPId'=>$resId,                           
                                 );
             $ReservationInfo =  $this->photographe_model->ReservationInfo($resId) ;
             $clientInfo = $this->client_model->getClientInfo($ReservationInfo->clientId); 
