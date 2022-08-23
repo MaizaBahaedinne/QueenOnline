@@ -47,7 +47,7 @@
                   
                       <h3>Recu de paiement</h3><br>
                     <p >
-                      <b>Sujet :</b> &nbsp; Location de voiture <?php echo $projectInfo->voiture ?> pour  le <?php echo $projectInfo->dateDebut ?>  <?php echo $projectInfo->heureDebut ?> 
+                      <b>Sujet :</b> &nbsp; Location de voiture <?php echo $projectInfo->voitureName ?> pour  le <?php echo $projectInfo->date ?>  <?php echo $projectInfo->depart ?> 
                     </p>
                      
                     <br>
