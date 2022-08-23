@@ -380,6 +380,24 @@ class Voiture extends BaseController
 
 
 
+             /**
+     * This function is used to load the user list
+     */
+    function recuP($resId)
+    {  
+       
+            $data['projectInfo'] = $this->voiture_model->ReservationInfo($resId);
+            
+            $data['paiementInfo'] = $this->paiement_model->paiementListingbyReservationVoiture($resId) ;
+            $data['totalPaiement'] = $this->paiement_model->getVTotal($resId) ;
+
+            $this->global['pageTitle'] = 'Recu de reservation';
+            $this->loadViews("voiture/recu", $this->global, $data, NULL);
+    }
+
+
+
+
 
 }
 
