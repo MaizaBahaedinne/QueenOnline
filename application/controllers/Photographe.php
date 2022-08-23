@@ -192,7 +192,7 @@ class Photographe extends BaseController
    
         $this->paiement_model->addNewPhotographePaiement($paiementInfo);
 
-        $totalPaiement = $this->paiement_model->getVTotal($resId) ; 
+        $totalPaiement = $this->paiement_model->getPTotal($resId) ; 
         $projectInfo = $this->photographe_model->ReservationInfo($resId);
 
 
@@ -215,6 +215,21 @@ class Photographe extends BaseController
             
     }
 
+
+             /**
+     * This function is used to load the user list
+     */
+    function recuP($resId)
+    {  
+       
+            $data['projectInfo'] = $this->photographe_model->ReservationInfo($resId);
+             $data['clientInfo'] = $this->user_model->getUserInfo($data['projectInfo']->clientId);
+            $data['paiementInfo'] = $this->paiement_model->paiementListingbyReservationPhotographe($resId) ;
+            $data['totalPaiement'] = $this->paiement_model->getPTotal($resId) ;
+
+            $this->global['pageTitle'] = 'Recu de reservation';
+            $this->loadViews("voiture/recu", $this->global, $data, NULL);
+    }
 
 
 
