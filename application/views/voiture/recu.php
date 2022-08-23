@@ -52,7 +52,7 @@
                      
                     <br>
                    
-                      <b>Récu par:</b> &nbsp; <?php echo $projectInfo->clientName ; ?> 
+                      <b>Récu par:</b> &nbsp; <?php echo $clientInfo->nom.' '.$clientInfo->prenom ;?>
                       <br><br><br><br><br>
                  
                       

@@ -387,7 +387,7 @@ class Voiture extends BaseController
     {  
        
             $data['projectInfo'] = $this->voiture_model->ReservationInfo($resId);
-            
+             $data['clientInfo'] = $this->user_model->getUserInfo($data['projectInfo']->clientId);
             $data['paiementInfo'] = $this->paiement_model->paiementListingbyReservationVoiture($resId) ;
             $data['totalPaiement'] = $this->paiement_model->getVTotal($resId) ;
 
