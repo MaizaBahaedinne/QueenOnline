@@ -37,14 +37,13 @@
   <div class="main-card mb-3 card">
     <div class="card-body" style="width: 100%;">
       
-        <table id="example" style="width: 100%;" id="example" class="table  table-hover table-striped table-bordered" cellspacing="0" >
+        <table id="example" style="width: 100%;" id="example" class="table  table-hover table-striped table-bordered table-responsive" cellspacing="0" >
           <thead>
             <tr>
-              <th>ID</th>
+              
               <th>Date</th>
-              <th>titre</th>
               <th width="10%">Espace</th>
-              <th width="5%">Prix</th>
+              <th>titre</th>
               <th width="15%">Options</th>
               <th width="15%">Contact</th>
               <th width="5%">Statut</th>
@@ -59,25 +58,20 @@
                   {
               ?>
             <tr class="<?php if ( (time() > strtotime($record->dateDebut. '  - 30  days') && $record->statut != 0 ) )  { echo "alert-bg" ;}  ?>"  >
-              <td>
-               
-                  <?php echo $record->reservationId  ?>
-                
-              </td>
+              
               <td>
                
 
                 <b><?php echo date_format(date_create($record->dateFin)  , 'd/m/20y');  ?></b><br>  de <?php echo date_format(date_create($record->heureDebut)  , 'H:i'); ?>  à  <?php echo date_format(date_create($record->heureFin)  , 'H:i'); ?>
               </td>
-              <td>
-                <b><?php echo $record->type ?> : </b> <br><?php echo $record->titre ?>
-              </td>
               <td>            
                 <?php echo $record->salle  ?>
               </td>
-              <td>            
-                <b><?php echo $record->prix  ?> DT</b>
+              <td>
+                <b><?php echo $record->type ?> : </b> <br><?php echo $record->titre ?>
               </td>
+              
+              
               <td>
                 <?php if ($record->cuisine == 1 ){ echo '<i class="fas fa-utensils"></i> Cuisine<br>';}  ?>
                 <?php if ($record->tableCM == 1 ){ echo '<i class="fa fa-file" ></i> contrat de mariage<br>';}  ?>
@@ -129,11 +123,9 @@
           </tbody>
           <tfoot>
             <tr>
-              <th>ID</th>
               <th>titre</th>
-              <th>Date</th>
               <th>Espace</th>
-              <th>Prix</th>
+              <th>Date</th>
               <th>Options</th>
               <th>Contact</th>
               <th >Statut</th>

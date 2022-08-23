@@ -58,7 +58,7 @@
                <div class="d-flex justify-content-between align-items-center mb-2">
                   <h6 class="card-title mb-0"></h6>
                   <div class="dropdown mb-2">
-                     <?php if( $totalPaiement->valeur > 100  ) {  ?>
+                     <?php if( $totalPaiement->valeur >= 50  ) {  ?>
                      <button id="printC" class="dropdown-item d-flex align-items-center"  onclick="print()">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-printer icon-sm mr-2">
                            <polyline points="6 9 6 2 18 2 18 9"></polyline>
