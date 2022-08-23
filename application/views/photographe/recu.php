@@ -47,7 +47,7 @@
                   
                       <h3>Recu de paiement</h3><br>
                     <p >
-                      <b>Sujet :</b> &nbsp; Paiement de photographe  pour  le <?php echo $projectInfo->date ?>  <?php echo $projectInfo->depart ?> 
+                      <b>Sujet :</b> &nbsp; Paiement de photographe  pour  le <?php echo $projectInfo->date ?> 
                     </p>
                      
                     <br>
