@@ -228,7 +228,7 @@ class Photographe extends BaseController
             $data['totalPaiement'] = $this->paiement_model->getPTotal($resId) ;
 
             $this->global['pageTitle'] = 'Recu de reservation';
-            $this->loadViews("voiture/recu", $this->global, $data, NULL);
+            $this->loadViews("photographe/recu", $this->global, $data, NULL);
     }
 
 
