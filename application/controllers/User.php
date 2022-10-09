@@ -31,8 +31,9 @@ class User extends BaseController
     public function index()
     {
         $data['reservationRecords'] = $this->reservation_model->ReservationCalenderStat();
-        $data['reservationPerMounthRecords'] = $this->reservation_model->ReservationCalenderStatMounth();
-        $data['reservationPerMounthRecords1'] = $this->reservation_model->ReservationCalenderStatMounth1() ;
+        $data['reservationDo'] = $this->reservation_model->ReservationYearStat(0);
+        $data['reservationEnAttent'] = $this->reservation_model->ReservationYearStat(1);
+        $data['reservationAnnule'] = $this->reservation_model->ReservationYearStat(3);
         $data['ReservationPerYearRecords'] = $this->reservation_model->ReservationCalenderStatYear() ;
         $data['SalleRecords'] = $this->reservation_model->ReservationCalenderStatSalle() ;
         $data['ReservationPerEmployeRecords'] = $this->reservation_model->ReservationCalenderStatEmploye() ;

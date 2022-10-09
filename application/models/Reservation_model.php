@@ -90,6 +90,25 @@ class Reservation_model extends CI_Model
      * @param number $segment : This is pagination limit
      * @return array $result : This is result
      */
+    function ReservationYearStat($status)
+    {
+        $this->db->select('COUNT(reservationId) countRes , Year(BaseTbl.dateFin) yearDate ');
+        $this->db->from('tbl_reservation as BaseTbl');
+        $this->db->where('BaseTbl.statut IN ('.$status.') ');
+        $this->db->group_by('yearDate') ;
+        $query = $this->db->get();
+        $result = $query->result();        
+        return $result;
+    }
+
+
+    /**
+     * This function is used to get the user listing count
+     * @param string $searchText : This is optional search text
+     * @param number $page : This is pagination offset
+     * @param number $segment : This is pagination limit
+     * @return array $result : This is result
+     */
     function ReservationCalenderStatMounth()
     {
         $this->db->select('');

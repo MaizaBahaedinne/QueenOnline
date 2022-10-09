@@ -218,11 +218,15 @@
                               [
                               {
                               name: 'Reservation',
-                              data: [<?php foreach($reservationPerMounthRecords as $data) { echo $data->COUNT.',' ;  } ?>]
+                              data: [<?php foreach($reservationDo as $data) { echo $data->countRes.',' ;  } ?>]
                               }, 
                               {
                               name: 'en attent',
-                              data: [<?php foreach($reservationPerMounthRecords1 as $data) { echo $data->COUNT.',' ;  } ?>]
+                              data: [<?php foreach($reservationEnAttent as $data) { echo $data->countRes.',' ;  } ?>]
+                              }, 
+                              {
+                              name: 'Annule',
+                              data: [<?php foreach($reservationAnnule as $data) { echo $data->countRes.',' ;  } ?>]
                               }
                               ],
                               chart: {
@@ -250,7 +254,7 @@
                             },
                             
                             xaxis: {
-                              categories: [<?php foreach($reservationPerMounthRecords1 as $data) { echo '"'.$data->YEAR.'",' ;  } ?>],
+                              categories: [<?php foreach($reservationDo as $data) { echo '"'.$data->yearDate.'",' ;  } ?>],
                               position: 'buttom',
                               axisBorder: {
                                 show: true

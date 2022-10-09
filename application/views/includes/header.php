@@ -1233,7 +1233,7 @@
                             <li class="app-sidebar__heading">Comptabilité</li>
 
                             <li>
-                                <a href="<?php echo base_url() ?>">
+                                <a href="<?php echo base_url() ?>Finance">
                                     <i class="metismenu-icon pe-7s-users"></i>Revenue /Jour
                                 </a>
                             </li>
