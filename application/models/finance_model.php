@@ -7,7 +7,7 @@
  * @version : 1.1
  * @since : 15 November 2016
  */
-class finance_model extends CI_Model
+class Finance_model extends CI_Model
 {
     
 
@@ -27,7 +27,7 @@ class finance_model extends CI_Model
         $this->db->join('tbl_users Recepteur', 'BaseTbl.recepteurId = Recepteur.userId','left');
         $this->db->join('tbl_users Client', 'Reservation.clientId = Client.userId','left');
         $this->db->join('tbl_salle as Salles', 'Salles.salleID = Reservation.salleId','left');
-        
+
         
         $this->db->order_by("BaseTbl.createdDate DESC") ; 
 
