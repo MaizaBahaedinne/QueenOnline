@@ -46,8 +46,7 @@
               <th>titre</th>
               <th width="15%">Options</th>
               <th width="15%">Contact</th>
-              <th width="5%">Statut</th>
-              <th width="5%"  >Action</th>
+            
             </tr>
           </thead>
           <tbody> 
