@@ -254,7 +254,7 @@
                             },
                             
                             xaxis: {
-                              categories: [<?php foreach($reservationDo as $data) { echo '"'.$data->yearDate.'",' ;  } ?>],
+                              categories: [<?php foreach($reservationDo as $data) { if($data->yearDate >0 ){ echo '"'.$data->yearDate.'",' ; }  } ?>],
                               position: 'buttom',
                               axisBorder: {
                                 show: true
