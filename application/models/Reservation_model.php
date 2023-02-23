@@ -76,7 +76,7 @@ class Reservation_model extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('tbl_reservation as BaseTbl');
-        $this->db->where('BaseTbl.statut IN (1) ');
+        $this->db->where('BaseTbl.statut IN (1,2) ');
         $query = $this->db->get();
         $result = $query->result();        
         return $result;
