@@ -218,15 +218,15 @@
                               [
                               {
                               name: 'Reservation',
-                              data: [<?php foreach($reservationDo as $data) { echo $data->countRes.',' ;  } ?>]
+                              data: [<?php if(count($reservationDo)>0) {foreach($reservationDo as $data) { echo $data->countRes.',' ;  }} else { echo "0" ;} ?>]
                               }, 
                               {
                               name: 'en attent',
-                              data: [<?php foreach($reservationEnAttent as $data) { echo $data->countRes.',' ;  } ?>]
+                              data: [<?php  if(count($reservationEnAttent)>0) {foreach($reservationEnAttent as $data) { echo $data->countRes.',' ;  }} else { echo "0" ;} ?>]
                               }, 
                               {
                               name: 'Annule',
-                              data: [<?php foreach($reservationAnnule as $data) { echo $data->countRes.',' ;  } ?>]
+                              data: [<?php  if(count($reservationAnnule)>0) {foreach($reservationAnnule as $data) { echo $data->countRes.',' ;  }} else { echo "0" ;} ?>]
                               }
                               ],
                               chart: {
