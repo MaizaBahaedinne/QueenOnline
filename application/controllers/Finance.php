@@ -40,13 +40,25 @@ class Finance extends BaseController
     public function index()
     {
             $data['financeRecords'] = $this->finance_model->paiemenentListing();
- 
+            
 
             $this->global['pageTitle'] = 'User Listing';
             $this->loadViews("finance/view", $this->global, $data, NULL);
     }
 
 
+
+    /**
+     * This function used to load the first screen of the user
+     */
+    public function relance()
+    {
+            $data['financeRecords'] = $this->finance_model->paiemenentListing();
+            
+
+            $this->global['pageTitle'] = 'User Listing';
+            $this->loadViews("finance/view", $this->global, $data, NULL);
+    }
 
 
 
