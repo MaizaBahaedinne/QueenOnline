@@ -218,15 +218,15 @@
                               [
                               {
                               name: 'Reservation',
-                              data: [<?php foreach($reservationDo as $data) { echo $data->countRes.',' ;  } ?>]
+                              data: [<?php if(count($reservationDo)>0) {foreach($reservationDo as $data) { echo $data->countRes.',' ;  }} else { echo "0" ;} ?>]
                               }, 
                               {
                               name: 'en attent',
-                              data: [<?php foreach($reservationEnAttent as $data) { echo $data->countRes.',' ;  } ?>]
+                              data: [<?php  if(count($reservationEnAttent)>0) {foreach($reservationEnAttent as $data) { echo $data->countRes.',' ;  }} else { echo "0" ;} ?>]
                               }, 
                               {
                               name: 'Annule',
-                              data: [<?php foreach($reservationAnnule as $data) { echo $data->countRes.',' ;  } ?>]
+                              data: [<?php  if(count($reservationAnnule)>0) {foreach($reservationAnnule as $data) { echo $data->countRes.',' ;  }} else { echo "0" ;} ?>]
                               }
                               ],
                               chart: {
@@ -254,7 +254,7 @@
                             },
                             
                             xaxis: {
-                              categories: [<?php foreach($reservationDo as $data) { echo '"'.$data->yearDate.'",' ;  } ?>],
+                              categories: [<?php foreach($reservationEnAttent as $data) { if($data->yearDate >0 ){ echo '"'.$data->yearDate.'",' ; }  } ?>],
                               position: 'buttom',
                               axisBorder: {
                                 show: true
@@ -311,7 +311,7 @@
                <div class="divider mb-0"></div>
                <div class="grid-menu grid-menu-2col">
                   <div class="no-gutters row">
-                     <?php foreach ($ReservationPerYearRecords as $data ) { ?>
+                     <?php foreach ($ReservationPerYearRecords as $data ) { if ($data->YEAR > 0 ){  ?>
                      <div class="col-md-6">
                         <div class="widget-content mt-2">
                            <div class="widget-content-outer">
@@ -333,7 +333,7 @@
                            </div>
                         </div>
                      </div>
-                     <?php } ?>
+                     <?php } } ?>
                   </div>
                </div>
             </div>
