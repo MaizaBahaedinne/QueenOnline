@@ -309,7 +309,7 @@
                            
                         </div>
                         <hr>
-                        <input  class="btn btn-block btn-primary"  type="submit" >
+                        <input  class="btn btn-block btn-primary block-page-btn-example-1"  type="submit" >
                      </div>
                   </li>
                  

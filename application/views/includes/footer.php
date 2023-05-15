@@ -1302,28 +1302,18 @@
 
 <div class="modal">
 </div>
-<style>
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 100%;
-            background: rgba( 255, 255, 255, .8 ) 
-                        url("{% static 'img/loading.gif' %}") 
-                        50% 50% 
-                        no-repeat;
-            }
-        body.loading {
-            overflow: hidden;   
-        }
-        body.loading .modal {
-            display: block;
-        }
-</style>
 
+
+
+
+
+<script>
+  $(window).on('load', function () {
+    var selectedEffect = 'blind';
+        var options = {};
+    $('#loading').delay(2000).fadeOut('slow');
+  }) 
+</script>
 
  <script type="text/javascript">
     $("#searchform").submit(function(event) {
@@ -1354,6 +1344,41 @@
       });
     });
 </script>
+
+
+
+ <script src='https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.7/index.global.min.js'></script>
+    <script src='https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@6.1.7/index.global.min.js'></script>
+    <script>
+
+      document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar1');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+          
+            height: 'auto',
+            locale: 'fr', 
+             events: [
+                <?php $i=0; foreach ($reservationRecords as $r ){  $i++ ; ?>
+                { 
+
+                  title: '<?php echo $r->heureDebut ?> <?php echo $r->titre ?>', 
+                  start: '<?php echo $r->dateDebut ?>',
+                  end: '<?php echo $r->dateFin ?>' , 
+                  color : <?php if ($r->salle == "Elila ERSI"){ ?>'pink' , textColor :'black' <?php } ?> 
+                          <?php if ($r->salle == "Farhet Elamor"){ ?>'yellow' , textColor :'black' <?php } ?>
+                          <?php if ($r->salle == "Soltana"){ ?>'green'  <?php } ?>,
+
+
+                 },
+                <?php 
+
+                if($i==90){ break; } } ?>
+              ]
+        });
+        calendar.render();
+      });
+
+    </script>
 
 
   

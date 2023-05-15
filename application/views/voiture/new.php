@@ -140,7 +140,7 @@
                                                 
                                                 <div class="col-md-12">
                                                         <br>
-                                                        <button type="submit" class="btn btn-info btn-block" >Envoyer</button>
+                                                        <button type="submit" class="btn btn-info btn-block block-page-btn-example-1"  >Envoyer</button>
                                                 </div>
 
                                            </div>
