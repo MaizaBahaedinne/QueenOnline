@@ -38,9 +38,81 @@ class Finance_model extends CI_Model
         return $result;
     }
 
+
+
+
+        /**
+     * This function is used to get the user listing count
+     * @param string $searchText : This is optional search text
+     * @param number $page : This is pagination offset
+     * @param number $segment : This is pagination limit
+     * @return array $result : This is result
+     */
+    function ReservationCalender()
+    {
+       $this->db->select('BaseTbl.reservationId , BaseTbl.titre , BaseTbl.type , BaseTbl.prix ,  BaseTbl.dateDebut , DATE_ADD(BaseTbl.dateDebut , INTERVAL 30 DAY) delai  , BaseTbl.heureDebut , BaseTbl.dateFin , BaseTbl.heureFin , BaseTbl.cuisine , BaseTbl.tableCM , BaseTbl.nbPlace , BaseTbl.noteAdmin , BaseTbl.statut , Client.name clientName , Client.mobile , Salles.nom salle');
+        $this->db->from('tbl_reservation as BaseTbl');
+        $this->db->join('tbl_users as Client', 'Client.userId = BaseTbl.clientId','left');
+        $this->db->join('tbl_users as Locataire', 'Locataire.userId = BaseTbl.clientId','left');
+        $this->db->join('tbl_salle as Salles', 'Salles.salleID = BaseTbl.salleId ','left');
+       
+        $this->db->where('BaseTbl.statut = 1 ');
+        
+        $this->db->where('BaseTbl.dateDebut >= NOW() ');
+        $this->db->where('BaseTbl.dateDebut <= NOW()+INTERVAL 30 DAY ');
+        
+
+
+        $this->db->order_by('BaseTbl.dateDebut ASC');
+         
+        $query = $this->db->get();
+        
+        $result = $query->result();        
+        return $result;
+    }
+
+            /**
+     * This function is used to get the user listing count
+     * @param string $searchText : This is optional search text
+     * @param number $page : This is pagination offset
+     * @param number $segment : This is pagination limit
+     * @return array $result : This is result
+     */
+    function relanceListing($resId)
+    {
+       $this->db->select('');
+        $this->db->from('tbl_relance as BaseTbl');
+        $this->db->where('BaseTbl.reservationId   ' , $resId );
+
+        $this->db->order_by("BaseTbl.createdDTM ASC") ; 
+
+        $query = $this->db->get();
+        
+        $result = $query->result();        
+        return $result;
+    }
+    
     
 
-    
+     /**
+     * This function is used to add new user to system
+     * @return number $insert_id : This is last inserted id
+     */
+    function addNewRelance($relanceInfo)
+    {
+        $this->db->trans_start();
+        $this->db->insert('tbl_relance', $relanceInfo);
+        
+        $insert_id = $this->db->insert_id();
+        
+        $this->db->trans_complete();
+        
+        return $insert_id;
+    }
+
+
+
+
    
 
    

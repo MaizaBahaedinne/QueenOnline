@@ -53,12 +53,116 @@ class Finance extends BaseController
      */
     public function relance()
     {
-            $data['financeRecords'] = $this->finance_model->paiemenentListing();
-            
+            $data['financeRecords'] = $this->finance_model->ReservationCalender();
+            foreach ($data['financeRecords'] as $f ) {
+                $f->relance =   sizeof( $this->finance_model->relanceListing($f->reservationId) );
+            }
 
             $this->global['pageTitle'] = 'User Listing';
-            $this->loadViews("finance/view", $this->global, $data, NULL);
+            $this->loadViews("finance/relance", $this->global, $data, NULL);
     }
+
+
+
+  /**
+     * This function used to load the first screen of the user
+     */
+    public function addRelance()
+    {
+            
+
+            $check = $this->input->post('check'); 
+
+            foreach ($check as $c ) {
+               
+                    $data['projectInfo'] = $this->reservation_model->ReservationInfo($c);
+                    $data['clientInfo'] = $this->user_model->getUserInfo($data['projectInfo']->clientId);
+                    $data['paiementInfo'] = $this->paiement_model->paiementListingbyReservation($c) ;
+                    
+                        $val =  0 ;
+                        foreach ($data['paiementInfo'] as $p ) {
+                                $val = $val + $p->valeur ;                            
+                        }
+
+                     $mySms = "Bonjour ".$data['clientInfo']->prenom.", Nous venons de vous rappeler que votre reservation à un dus ".($data['projectInfo']->prix - $val) ." est échue.  Pour d’éviter l'anulation du contrat merci de règler ces dus."  ;
+                    
+                         $myMobile = $data['clientInfo']->mobile ;
+                     //      $this->sendSMS("216".$myMobile, $mySms) ;
+
+
+                     $relanceInfo = array(
+                        'createdDTM'=>date('Y-m-d H:i:s'),
+                        'createdBy'=>$this->vendorId,
+                        'reservationId'=>$c,                           
+                       );
+
+                      $this->finance_model->addNewRelance($relanceInfo) ;
+
+            }
+
+
+            redirect("Finance/relance") ;
+    }
+
+             
+
+
+
+    function http_response($url)
+        {
+            $ch = curl_init();
+
+            $options = array(
+                CURLOPT_URL            => $url ,
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_HEADER         => false,
+                CURLOPT_FOLLOWLOCATION => true,
+                CURLOPT_ENCODING       => "",
+                CURLOPT_AUTOREFERER    => true,
+                CURLOPT_CONNECTTIMEOUT => 120,
+                CURLOPT_TIMEOUT        => 120,
+                CURLOPT_MAXREDIRS      => 10,
+                CURLOPT_SSL_VERIFYPEER => false,
+            );
+            curl_setopt_array( $ch, $options );
+            $response = curl_exec($ch);
+           
+            $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
+            if ( $httpCode != 200 ){
+                return "Return code is {$httpCode} \n"
+                    .curl_error($ch);
+            } else {
+                //echo "<pre>".htmlspecialchars($response)."</pre>";
+                return $response;
+            }
+
+            curl_close($ch);
+        }
+
+
+
+        function sendSMS($myMobile, $mySms)
+        {
+
+        $mySender = 'Queen park';
+        $key = "ns1PwxEKAljejzi3RSBAHPsoQl/P9s0jtrXDkRb4j6sjNpzNER8aprZNyzyAuLlteKM222LwbgBRrlBCvFDV4YlQbSvBZMYA/Ye3r0ggsYQ=";
+
+        $Url_str ="www.tunisiesms.tn/client/Api/Api.aspx?fct=sms&key=%KEY%&mobile=%MSISDN%&sms=%SMS%&sender=%SENDER%";
+
+        $Url_str = str_replace("%MSISDN%",$myMobile,$Url_str);
+        $Url_str = str_replace("%SMS%",urlencode($mySms),$Url_str);
+        $Url_str = str_replace("%SENDER%",urlencode($mySender),$Url_str);
+        $Url_str = str_replace("%KEY%",urlencode($key),$Url_str);
+
+        
+        echo $this->http_response($Url_str);
+
+        }
+
+
+
+        
 
 
 
