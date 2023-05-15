@@ -55,7 +55,7 @@ class Finance extends BaseController
     {
             $data['financeRecords'] = $this->finance_model->ReservationCalender();
             foreach ($data['financeRecords'] as $f ) {
-                $f->relance =   sizeof( $this->finance_model->relanceListing($f->reservationId) );
+                $f->relance =   sizeof( $this->finance_model->relanceListing($f->reservationId));
             }
 
             $this->global['pageTitle'] = 'User Listing';
@@ -84,10 +84,10 @@ class Finance extends BaseController
                                 $val = $val + $p->valeur ;                            
                         }
 
-                     $mySms = "Bonjour ".$data['clientInfo']->prenom.", Nous venons de vous rappeler que votre reservation à un dus ".($data['projectInfo']->prix - $val) ." est échue.  Pour d’éviter l'anulation du contrat merci de règler ces dus."  ;
+                     $mySms = "Bonjour ".$data['clientInfo']->prenom.", Nous venons de vous rappeler que le reste de votre réservation ".($data['projectInfo']->prix - $val) ." DT a expiré. Pour éviter l'annulation du contrat, veuillez payer ces dus."  ;
                     
                          $myMobile = $data['clientInfo']->mobile ;
-                     //      $this->sendSMS("216".$myMobile, $mySms) ;
+                           $this->sendSMS("21655465244", $mySms) ;
 
 
                      $relanceInfo = array(
