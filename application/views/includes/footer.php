@@ -1311,7 +1311,7 @@
   $(window).on('load', function () {
     var selectedEffect = 'blind';
         var options = {};
-    $('#loading').delay(2000).fadeOut('slow');
+    $('#loading').delay(3000).fadeOut('slow');
   }) 
 </script>
 
@@ -1361,7 +1361,7 @@
                 <?php $i=0; foreach ($reservationRecords as $r ){  $i++ ; ?>
                 { 
 
-                  title: '<?php echo $r->heureDebut ?> <?php echo $r->titre ?>', 
+                  title: '[<?php $date = strtotime($r->heureDebut); echo date('H', $date);  ?>h<?php echo date('i', $date);  ?>] <?php echo $r->titre ?>', 
                   start: '<?php echo $r->dateDebut ?>',
                   end: '<?php echo $r->dateFin ?>' , 
                   color : <?php if ($r->salle == "Elila ERSI"){ ?>'pink' , textColor :'black' <?php } ?> 

@@ -81,20 +81,7 @@
 
 
 </style>
-<div id="loading">
-    <div class="loading-image">
-<div class="justify-content-center align-items-center">
-<div class="loader">
-<div class="ball-pulse">
-<div></div>
-<div></div>
-<div></div>
-</div>
-</div>
-</div>
-</div>
-  
-</div>
+
 
     <div id="p1" class="app-container fixed-footer fixed-sidebar fixed-header body-tabs-shadow app-theme-gray">
         <div class="app-header header-shadow bg-dark header-text-light" >
@@ -1296,6 +1283,22 @@
 
                     </div>
                 </div>
-            </div><div class="app-main__outer">
+            </div>
+            <div id="loading">
+                <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <div class="loading-image">
+<div class="justify-content-center align-items-center">
+<div class="loader">
+<div class="ball-pulse">
+<div>Q</div>
+<div>P</div>
+<div>O</div>
+</div>
+</div>
+</div>
+</div>
+  
+</div>
+<div class="app-main__outer">
               
               
