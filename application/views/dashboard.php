@@ -28,6 +28,7 @@
                         <div class="widget-numbers text-success"><?php echo count($reservationRecords) ?></div>
                      </div>
                   </div>
+                  <!--
                   <div class="widget-progress-wrapper">
                      <div class="progress-bar-sm progress">
                         <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="71" aria-valuemin="0" aria-valuemax="100" style="width: 71%;"></div>
@@ -37,6 +38,7 @@
                         <div class="sub-label-right">100%</div>
                      </div>
                   </div>
+                  -->
                </div>
             </div>
          </div>
@@ -52,6 +54,7 @@
                         <div class="widget-numbers text-warning"><?php echo count($clientecords) ?></div>
                      </div>
                   </div>
+                  <!--
                   <div class="widget-progress-wrapper">
                      <div class="progress-bar-sm progress-bar-animated-alt progress">
                         <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 85%;"></div>
@@ -61,6 +64,7 @@
                         <div class="sub-label-right">100%</div>
                      </div>
                   </div>
+                  -->
                </div>
             </div>
          </div>
@@ -76,6 +80,7 @@
                         <div class="widget-numbers text-danger"><?php if($uid == 1 ){ echo ($chiffres->valeur)/1000 ; }  ?>M DT</div>
                      </div>
                   </div>
+                  <!--
                   <div class="widget-progress-wrapper">
                      <div class="progress-bar-sm progress-bar-animated-alt progress">
                         <div class="progress-bar bg-success" role="progressbar" aria-valuenow="46" aria-valuemin="0" aria-valuemax="100" style="width: 46%;"></div>
@@ -85,6 +90,7 @@
                         <div class="sub-label-right">100%</div>
                      </div>
                   </div>
+                  -->
                </div>
             </div>
          </div>
