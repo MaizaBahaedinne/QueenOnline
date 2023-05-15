@@ -56,6 +56,8 @@ class Finance extends BaseController
             $data['financeRecords'] = $this->finance_model->ReservationCalender();
             foreach ($data['financeRecords'] as $f ) {
                 $f->relance =   sizeof( $this->finance_model->relanceListing($f->reservationId));
+                $f->last = $this->finance_model->lastrelanceListing($f->reservationId) ;
+
             }
 
             $this->global['pageTitle'] = 'User Listing';

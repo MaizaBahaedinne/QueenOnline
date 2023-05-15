@@ -91,6 +91,20 @@ class Finance_model extends CI_Model
         $result = $query->result();        
         return $result;
     }
+
+
+
+    function lastrelanceListing($resId)
+    {
+       $this->db->select('max(createdDTM) createdDTM');
+        $this->db->from('tbl_relance as BaseTbl');
+        $this->db->where('BaseTbl.reservationId   ' , $resId );
+
+        $query = $this->db->get();
+        
+        $result = $query->row();        
+        return $result;
+    }
     
     
 
@@ -108,6 +122,7 @@ class Finance_model extends CI_Model
         $this->db->trans_complete();
         
         return $insert_id;
+        
     }
 
 

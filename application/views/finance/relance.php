@@ -40,6 +40,8 @@
               <th width="10%" >Date de paiement </th>
               <th width="30%" >Client</th>
               <th   width="5%" >Relance</th>
+              <th   width="10%" >Dernier relance</th>
+              <th   width="5%" >action</th>
               
            
         
@@ -60,6 +62,14 @@
                 <td><?php echo $record->delai ?></td>
                 <th><?php echo $record->clientName ?></th>
                 <th><?php echo $record->relance ?> </th>
+                <th><?php echo $record->last->createdDTM ?> </th>
+                <th>
+                  <div class="btn-group" role="group" > 
+                      <a class="btn" href="<?php echo base_url() ?>Reservation/view/<?php echo $record->reservationId ?>" >
+                        <i class="fa fa-eye"></i>
+                      </a>
+                  </div> 
+                </th>
                
              
                
@@ -81,6 +91,8 @@
               <th width="10%" >Date de paiement </th>
               <th width="30%" >Client</th>
               <th   width="5%" >Relance</th>
+              <th   width="10%" >Dernier relance</th>
+              <th   width="5%" >action</th>
               
             
 
