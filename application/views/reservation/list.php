@@ -37,17 +37,17 @@
   <div class="main-card mb-3 card">
     <div class="card-body" style="width: 100%;">
       
-        <table id="example" style="width: 100%;" id="example" class="table  table-hover table-striped table-bordered table-responsive" cellspacing="0" >
+        <table id="example" style="width: 100%;"  class="table  table-hover table-striped table-bordered " cellspacing="0" >
           <thead>
             <tr>
               
-              <th>Date</th>
-              <th width="10%">Espace</th>
-              <th>titre</th>
-              <th width="15%">Options</th>
-              <th width="15%">Contact</th>
+              <th width="10%" >Date</th>
+              <th width="10%" >Espace</th>
+              <th width="10%">titre</th>
+              <th >Options</th>
+              <th >Contact</th>
               <th >Statut</th>
-              <th >Action</th>
+              <th width="5%" >Action</th>
             </tr>
           </thead>
           <tbody> 
@@ -123,11 +123,11 @@
           </tbody>
           <tfoot>
             <tr>
-              <th>titre</th>
-              <th>Espace</th>
               <th>Date</th>
-              <th>Options</th>
-              <th>Contact</th>
+              <th >Espace</th>
+              <th>titre</th>
+              <th >Options</th>
+              <th >Contact</th>
               <th >Statut</th>
               <th >Action</th>
             </tr>
