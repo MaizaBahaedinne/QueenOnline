@@ -1354,17 +1354,22 @@
       document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('calendar1');
         var calendar = new FullCalendar.Calendar(calendarEl, {
-          
+          initialView: 'dayGridWeek',
+           headerToolbar: {
+                left: 'prev,next',
+                center: 'title',
+                right: 'dayGridWeek,dayGridDay' // user can switch between the two
+              },
             height: 'auto',
             locale: 'fr', 
              events: [
                 <?php $i=0; foreach ($reservationRecords as $r ){  $i++ ; ?>
                 { 
 
-                  title: '[<?php $date = strtotime($r->heureDebut); echo date('H', $date);  ?>h<?php echo date('i', $date);  ?>] <?php echo $r->titre ?>', 
-                  start: '<?php echo $r->dateDebut ?>',
-                  end: '<?php echo $r->dateFin ?>' , 
-                  color : <?php if ($r->salle == "Elila ERSI"){ ?>'pink' , textColor :'black' <?php } ?> 
+                  title: '<?php echo $r->titre ?>', 
+                  start: '<?php echo $r->dateDebut.'T'.$r->heureDebut ?>',
+                  end: '<?php echo $r->dateFin.'T'.$r->heureDebut  ?>' , 
+                  backgroundColor : <?php if ($r->salle == "Elila ERSI"){ ?>'pink' , textColor :'black' <?php } ?> 
                           <?php if ($r->salle == "Farhet Elamor"){ ?>'yellow' , textColor :'black' <?php } ?>
                           <?php if ($r->salle == "Soltana"){ ?>'green'  <?php } ?>,
 
