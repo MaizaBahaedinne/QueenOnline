@@ -1285,7 +1285,7 @@
                 </div>
             </div>
             <div id="loading">
-                <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                <br><br><br><br><br><br><br><br><br><br><br>
     <div class="loading-image">
 <div class="justify-content-center align-items-center">
 <div class="loader">

@@ -1358,8 +1358,11 @@
            headerToolbar: {
                 left: 'prev,next',
                 center: 'title',
-                right: 'dayGridWeek,dayGridDay' // user can switch between the two
+                right: 'dayGridWeek' // user can switch between the two
               },
+            
+            weekends: true,
+            firstDay : 1 ,
             height: 'auto',
             locale: 'fr', 
              events: [
@@ -1369,12 +1372,13 @@
                   title: '<?php echo $r->titre ?>', 
                   start: '<?php echo $r->dateDebut.'T'.$r->heureDebut ?>',
                   end: '<?php echo $r->dateFin.'T'.$r->heureDebut  ?>' , 
-                  backgroundColor : <?php if ($r->salle == "Elila ERSI"){ ?>'pink' , textColor :'black' <?php } ?> 
+                  color  : <?php if ($r->salle == "Elila ERSI"){ ?>'pink' , textColor :'black' <?php } ?> 
                           <?php if ($r->salle == "Farhet Elamor"){ ?>'yellow' , textColor :'black' <?php } ?>
                           <?php if ($r->salle == "Soltana"){ ?>'green'  <?php } ?>,
 
-
+                   textColor : 'red' ,       
                  },
+
                 <?php 
 
                 if($i==90){ break; } } ?>
