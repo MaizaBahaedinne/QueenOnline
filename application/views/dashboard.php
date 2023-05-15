@@ -99,7 +99,7 @@
                <div class="card-header-tab card-header">
                   <div class="card-header-title">
                      <i class="header-icon lnr-rocket icon-gradient bg-tempting-azure"> </i>
-                     Reservation du jour
+                     Reservation par semaine
                   </div>
                   <div class="btn-actions-pane-right text-capitalize">
                      <button class="btn-wide btn-outline-2x btn btn-outline-primary btn-sm">View All</button>
