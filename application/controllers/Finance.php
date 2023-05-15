@@ -87,7 +87,7 @@ class Finance extends BaseController
                      $mySms = "Bonjour ".$data['clientInfo']->prenom.", Nous venons de vous rappeler que le reste de votre réservation ".($data['projectInfo']->prix - $val) ." DT a expiré. Pour éviter l'annulation du contrat, veuillez payer ces dus."  ;
                     
                          $myMobile = $data['clientInfo']->mobile ;
-                           $this->sendSMS("21655465244", $mySms) ;
+                           $this->sendSMS("216".$myMobile, $mySms) ;
 
 
                      $relanceInfo = array(
