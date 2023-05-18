@@ -62,7 +62,12 @@
                 <td><?php echo $record->delai ?></td>
                 <th><?php echo $record->clientName ?></th>
                 <th><?php echo $record->relance ?> </th>
-                <th><?php echo $record->last->createdDTM ?> </th>
+                <th><?php   $now = time(); // or your date as well
+                            $your_date = strtotime($record->last->createdDTM );
+                            $datediff = $now - $your_date;
+
+                            echo "il y a ".round($datediff / (60 * 60 * 24))." jours"; 
+                            echo $record->last->createdDTM ?>     </th>
                 <th>
                   <div class="btn-group" role="group" > 
                       <a class="btn" href="<?php echo base_url() ?>Reservation/view/<?php echo $record->reservationId ?>" >
