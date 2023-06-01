@@ -180,7 +180,7 @@ class Paiement_model extends CI_Model
         if($resId != null) {
         $this->db->where('BaseTbl.reservationId =',$resId );
         }
-        $this->db->where('Year(BaseTbl.createdDate) >= 2022  ');
+        
         $query = $this->db->get();
         
         return $query->row();
