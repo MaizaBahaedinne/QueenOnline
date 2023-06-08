@@ -1381,7 +1381,7 @@
 
                 <?php 
 
-                if($i==80){ break; } } ?>
+                if($i==50){ break; } } ?>
               ]
         });
         calendar.render();
