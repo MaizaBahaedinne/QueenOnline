@@ -415,6 +415,10 @@ class Reservation extends BaseController
                         'statut'=>1,
                                 );
 
+            $HediMobile = "98552446" ;
+            $mySms = $this->name." a réçu (".$avance." DT) pour la reservation de ".$ReservationInfo->salle." pour le ".$ReservationInfo->dateDebut  ;
+            $this->sendSMS("216".$myMobile, $mySms) ;
+
         if (  $projectInfo->prix - $totalPaiement->valeur == 0   )
         {
             
@@ -430,8 +434,7 @@ class Reservation extends BaseController
                         'statut'=>0 ,
                                 );
 
-
-
+            
         }
 
         $this->reservation_model->editReservation($reservationInfo, $resId);    
