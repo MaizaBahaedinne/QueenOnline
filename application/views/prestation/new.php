@@ -88,7 +88,7 @@
                                                         <input
                                                             name="heure"
                                                             class="form-control mb-4 mb-md-0"
-                                                            readonly
+                                                         
                                                             type="time"
                                                             required
                                                            value="<?php echo $projectInfo->dateDebut; ?>"
