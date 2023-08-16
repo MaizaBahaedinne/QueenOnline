@@ -168,6 +168,23 @@ class Paiement_model extends CI_Model
     }
 
 
+          /**
+     * This function is used to add new user to system
+     * @return number $insert_id : This is last inserted id
+     */
+    function addNewPrestationPaiement($paiementInfo)
+    {
+        $this->db->trans_start();
+        $this->db->insert('tbl_paiement_prestation', $paiementInfo);
+        
+        $insert_id = $this->db->insert_id();
+        
+        $this->db->trans_complete();
+        
+        return $insert_id;
+    }
+
+
     /**
      * This function used to get user information by id
      * @param number $userId : This is user id
@@ -224,6 +241,23 @@ class Paiement_model extends CI_Model
         return $query->row();
     }
     
+
+            /**
+     * This function used to get user information by id
+     * @param number $userId : This is user id
+     * @return array $result : This is user information
+     */
+    function getPresTotal($resId = '')
+    {
+         $this->db->select('sum(valeur) valeur');
+        $this->db->from('tbl_paiement_prestation as BaseTbl');
+        if($resId != null) {
+        $this->db->where('BaseTbl.reservationPId =',$resId );
+        }
+        $query = $this->db->get();
+        
+        return $query->row();
+    }
     
     
     

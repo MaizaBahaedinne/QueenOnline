@@ -20,10 +20,11 @@ class Troupe extends BaseController
     public function __construct()
     {
         parent::__construct();
-        $this->load->model("user_model");
+        $this->load->model("user_model");+
+        8
         $this->load->model("client_model");
         $this->load->model("reservation_model");
-        $this->load->model("prestation_model");
+        $this->load->model("troupe_model");
         $this->load->model("contrat_model");
         $this->load->model("paiement_model");
 
@@ -35,7 +36,7 @@ class Troupe extends BaseController
      */
     public function index()
     {
-        $data["userRecords"] = $this->prestation_model->ReservationListing();
+        $data["userRecords"] = $this->troupe_model->ReservationListing();
         foreach ($data["userRecords"] as $record) {
             $record->projectInfo = $this->reservation_model->ReservationInfo(
                 $record->reservationId
@@ -47,7 +48,7 @@ class Troupe extends BaseController
 
     public function addNew($reservationId)
     {
-        $data["Packs"] = $this->prestation_model->Packs();
+        $data["Packs"] = $this->troupe_model->Packs();
         $data["projectInfo"] = $this->reservation_model->ReservationInfo(
             $reservationId
         );
@@ -88,7 +89,7 @@ class Troupe extends BaseController
             "statut" => 1,
         ];
 
-        $result = $this->prestation_model->addNewReservation($reservationInfo);
+        $result = $this->troupe_model->addNewReservation($reservationInfo);
 
         if ($result > 0) {
             $reservationInfo1 = ["photographe" => $result];
@@ -105,7 +106,7 @@ class Troupe extends BaseController
                 "libele" => "Avance ",
                 "reservationPId" => $result,
             ];
-            $resId = $this->paiement_model->addNewPhotographePaiement(
+            $resId = $this->paiement_model->addNewTroupeaiement(
                 $paiementInfo
             );
 
@@ -113,7 +114,7 @@ class Troupe extends BaseController
                 $reservationInfoe = [
                     "statut" => 0,
                 ];
-                $this->prestation_model->editReservation(
+                $this->troupe_model->editReservation(
                     $reservationInfoe,
                     $result
                 );
@@ -136,7 +137,7 @@ class Troupe extends BaseController
      */
     function view($resId)
     {
-        $data["projectInfo"] = $this->prestation_model->ReservationInfo(
+        $data["projectInfo"] = $this->troupe_model->ReservationInfo(
             $resId
         );
         $data["clientInfo"] = $this->user_model->getUserInfo(
@@ -144,7 +145,7 @@ class Troupe extends BaseController
         );
         $data[
             "paiementInfo"
-        ] = $this->paiement_model->paiementListingbyReservationPhotographe(
+        ] = $this->paiement_model->paiementListingbyReservationTroupe(
             $resId
         );
         $data["totalPaiement"] = $this->paiement_model->getPTotal($resId);
@@ -168,15 +169,15 @@ class Troupe extends BaseController
             "libele" => "Partie ",
             "reservationPId" => $resId,
         ];
-        $ReservationInfo = $this->prestation_model->ReservationInfo($resId);
+        $ReservationInfo = $this->troupe_model->ReservationInfo($resId);
         $clientInfo = $this->client_model->getClientInfo(
             $ReservationInfo->clientId
         );
 
-        $this->paiement_model->addNewPhotographePaiement($paiementInfo);
+        $this->paiement_model->addNewTroupePaiement($paiementInfo);
 
         $totalPaiement = $this->paiement_model->getPTotal($resId);
-        $projectInfo = $this->prestation_model->ReservationInfo($resId);
+        $projectInfo = $this->troupe_model->ReservationInfo($resId);
 
         $reservationInfo = [
             "noteAdmin" => $noteAdmin,
@@ -190,7 +191,7 @@ class Troupe extends BaseController
             ];
         }
 
-        $this->prestation_model->editReservation($reservationInfo, $resId);
+        $this->troupe_model->editReservation($reservationInfo, $resId);
         redirect("troupe/view/" . $resId);
     }
 
@@ -199,7 +200,7 @@ class Troupe extends BaseController
      */
     function recuP($resId)
     {
-        $data["projectInfo"] = $this->prestation_model->ReservationInfo(
+        $data["projectInfo"] = $this->troupe_model->ReservationInfo(
             $resId
         );
         $data["clientInfo"] = $this->user_model->getUserInfo(
@@ -207,10 +208,10 @@ class Troupe extends BaseController
         );
         $data[
             "paiementInfo"
-        ] = $this->paiement_model->paiementListingbyReservationPhotographe(
+        ] = $this->paiement_model->paiementListingbyReservationTroupe(
             $resId
         );
-        $data["totalPaiement"] = $this->paiement_model->getPTotal($resId);
+        $data["totalPaiement"] = $this->paiement_model->getTTotal($resId);
 
         $this->global["pageTitle"] = "Recu de reservation";
         $this->loadViews("troupe/recu", $this->global, $data, null);

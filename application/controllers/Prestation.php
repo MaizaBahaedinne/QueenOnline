@@ -103,9 +103,9 @@ class Prestation extends BaseController
                 "valeur" => $avance,
                 "recepteurId" => $this->vendorId,
                 "libele" => "Avance ",
-                "reservationPId" => $result,
+                "reservationPresId" => $result,
             ];
-            $resId = $this->paiement_model->addNewPhotographePaiement(
+            $resId = $this->paiement_model->addNewPrestationPaiement(
                 $paiementInfo
             );
 
@@ -144,10 +144,10 @@ class Prestation extends BaseController
         );
         $data[
             "paiementInfo"
-        ] = $this->paiement_model->paiementListingbyReservationPhotographe(
+        ] = $this->paiement_model->paiementListingbyReservationPrestation(
             $resId
         );
-        $data["totalPaiement"] = $this->paiement_model->getPTotal($resId);
+        $data["totalPaiement"] = $this->paiement_model->getPresTotal($resId);
         $data["userID"] = $this->vendorId;
         $this->global["pageTitle"] = "CodeInsect : User Listing";
         $this->loadViews("prestation/view", $this->global, $data, null);
@@ -166,14 +166,14 @@ class Prestation extends BaseController
             "valeur" => $avance,
             "recepteurId" => $this->vendorId,
             "libele" => "Partie ",
-            "reservationPId" => $resId,
+            "reservationPresId" => $resId,
         ];
         $ReservationInfo = $this->prestation_model->ReservationInfo($resId);
         $clientInfo = $this->client_model->getClientInfo(
             $ReservationInfo->clientId
         );
 
-        $this->paiement_model->addNewPhotographePaiement($paiementInfo);
+        $this->paiement_model->addNewPrestationPaiement($paiementInfo);
 
         $totalPaiement = $this->paiement_model->getPTotal($resId);
         $projectInfo = $this->prestation_model->ReservationInfo($resId);
@@ -207,7 +207,7 @@ class Prestation extends BaseController
         );
         $data[
             "paiementInfo"
-        ] = $this->paiement_model->paiementListingbyReservationPhotographe(
+        ] = $this->paiement_model->paiementListingbyReservationPrestation(
             $resId
         );
         $data["totalPaiement"] = $this->paiement_model->getPTotal($resId);
