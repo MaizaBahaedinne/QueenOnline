@@ -214,8 +214,9 @@
                                                                         <label class="control-label">Voiture </label>
                                                                         <select class="form-control" name="voitureName" required>
                                                                            <option value=""></option>
-                                                                           <option value="Limou'queen">Limou'queen</option>
-                                                                           <option value="Queen traction">Queen traction</option>
+                                                                           <option value="Limou'queen">Limou'Queen (chrysler 300c)</option>
+                                                                           <option value="Queen traction">Queen Traction (citroen traction)</option>
+                                                                           <option value="Queen Lioness">Queen Lioness (peugeot 203)</option>
                                                                         </select>
                                                                      </div>
                                                                   </div>
