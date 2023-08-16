@@ -1240,7 +1240,7 @@
                             <?php if($role == 1 || $role == 2 || $role == 7 ){  ?>
                             <li>
                                 <a href="<?php echo base_url() ?>Voiture">
-                                    <i class="metismenu-icon pe-7s-car"></i>Cars
+                                    <i class="metismenu-icon pe-7s-car"></i>Voitures
                                 </a>
                             </li>
                             <?php }  ?>
@@ -1275,7 +1275,7 @@
                             </li>
                             <li>
                                 <a href="<?php echo base_url() ?>Finance/relance">
-                                    <<i class="metismenu-icon pe-7s-mail-open"></i>Relance
+                                    <i class="metismenu-icon pe-7s-mail-open"></i>Relance
                                 </a>
                             </li>
                         </ul>
