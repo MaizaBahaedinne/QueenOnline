@@ -20,14 +20,14 @@
       </div>
     </div>
   </div>
-<form action="<?php echo base_url()?>Prestation/addNewReservationP" method="post">
+<form action="<?php echo base_url(); ?>Prestation/addNewReservationP" method="post">
               <input
                     name="clientId"
                     class="form-control mb-4 mb-md-0"
                     readonly
                     type="text"
                     required
-                    value="<?php echo $projectInfo->clientId  ?>"
+                    value="<?php echo $projectInfo->clientId; ?>"
                     hidden
                 />
                 <input
@@ -36,9 +36,9 @@
                     readonly
                     type="text"
                     required
-                    value="<?php echo $projectInfo->reservationId  ?>"
+                    value="<?php echo $projectInfo->reservationId; ?>"
                     hidden
-                />vgfb 
+                />
                 <div class="modal-body">
                     <div class="tab-content">
                         <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
@@ -53,8 +53,11 @@
                                                         <label class="control-label">Prestataire</label>
                                                         <select class="form-control" name="packId" required>
                                                             <option value=""></option>
-                                                            <?php foreach ($Packs as $Pack ) {  ?>
-                                                                <option value="<?php echo $Pack->packId ?>" ><b><?php echo $Pack->nom ?></b> - <?php echo $Pack->prix ?> DT </option>
+                                                            <?php foreach (
+                                                                $Packs
+                                                                as $Pack
+                                                            ) { ?>
+                                                                <option value="<?php echo $Pack->packId; ?>" ><b><?php echo $Pack->nom; ?></b> - <?php echo $Pack->prix; ?> DT </option>
                                                             <?php } ?>
                                                         </select>
                                                     </div>
@@ -68,10 +71,15 @@
                                                             readonly
                                                             type="text"
                                                             required
-                                                           value="<?php echo $projectInfo->dateDebut   ?>"
+                                                           value="<?php echo $projectInfo->dateDebut; ?>"
                                                             
                                                         />
-                                                         <!-- value="<?php echo date_format(date_create($projectInfo->dateDebut)  , 'd/m/20y');  ?>"-->
+                                                         <!-- value="<?php echo date_format(
+                                                             date_create(
+                                                                 $projectInfo->dateDebut
+                                                             ),
+                                                             "d/m/20y"
+                                                         ); ?>"-->
                                                     </div>
                                                 </div>
                                                 
