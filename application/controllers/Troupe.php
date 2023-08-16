@@ -1,6 +1,8 @@
-<?php if(!defined('BASEPATH')) exit('No direct script access allowed');
+<?php if (!defined("BASEPATH")) {
+    exit("No direct script access allowed");
+}
 
-require APPPATH . '/libraries/BaseController.php';
+require APPPATH . "/libraries/BaseController.php";
 
 /**
  * Class : User (UserController)
@@ -18,215 +20,201 @@ class Troupe extends BaseController
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('user_model');
-        $this->load->model('client_model');
-        $this->load->model('reservation_model');
-        $this->load->model('troupe_model');
-        $this->load->model('contrat_model');
-        $this->load->model('paiement_model');
-    
+        $this->load->model("user_model");
+        $this->load->model("client_model");
+        $this->load->model("reservation_model");
+        $this->load->model("prestation_model");
+        $this->load->model("contrat_model");
+        $this->load->model("paiement_model");
 
-        $this->isLoggedIn();   
+        $this->isLoggedIn();
     }
-    
+
     /**
      * This function used to load the first screen of the user
      */
     public function index()
     {
-
-           
-            $data['userRecords'] = $this->troupe_model->ReservationListing();
-            $this->global['pageTitle'] = 'Voiture';
-            $this->loadViews("voiture/list", $this->global, $data, NULL);
+        $data["userRecords"] = $this->prestation_model->ReservationListing();
+        foreach ($data["userRecords"] as $record) {
+            $record->projectInfo = $this->reservation_model->ReservationInfo(
+                $record->reservationId
+            );
+        }
+        $this->global["pageTitle"] = "Photographe";
+        $this->loadViews("troupe/list", $this->global, $data, null);
     }
 
-
-
-
-        public function addNew($reservationId)
+    public function addNew($reservationId)
     {
-            $data['projectInfo'] = $this->reservation_model->ReservationInfo($reservationId);
-            $this->global['pageTitle'] = 'Clients';
-            $this->loadViews("voiture/new", $this->global, $data, NULL);
+        $data["Packs"] = $this->prestation_model->Packs();
+        $data["projectInfo"] = $this->reservation_model->ReservationInfo(
+            $reservationId
+        );
+        $this->global["pageTitle"] = "Clients";
+        $this->loadViews("troupe/new", $this->global, $data, null);
     }
 
-      /**
+    /**
      * This function is used to add new user to the system
      */
     function addNewReservationL()
     {
+        $clientId = $this->input->post("clientId");
+        $reservationId = $this->input->post("reservationId");
 
-                $clientId = $this->input->post('clientId');
-                $reservationId = $this->input->post('reservationId');
+        $packId = $this->input->post("packId");
+        $date = $this->input->post("date");
+        $heure = $this->input->post("heure");
 
-              
-                
-               
-                $voitureName = $this->input->post('voitureName');
-                $date = $this->input->post('date');
-                $depart = $this->input->post('depart');
+        $prix = $this->input->post("prix");
+        $avance = $this->input->post("avance");
 
-                $l1 = $this->input->post('l1');
-                $l2 = $this->input->post('l2');
-                $l3 = $this->input->post('l3');
-                $l4 = $this->input->post('l4');
+        $noteAdmin = $this->input->post("noteAdmin");
 
-                $mobile1 = $this->input->post('mobile1');
-                $mobile2 = $this->input->post('mobile2');
+        $reservationInfo = [
+            "packId" => $packId,
+            "date" => $date,
+            "heure" => $date,
 
-                $prix = $this->input->post('prix');
-                $avance = $this->input->post('avance');
+            "prix" => $prix,
+            "avance" => $avance,
+            "noteAdmin" => $noteAdmin,
 
-                $noteAdmin = $this->input->post('noteAdmin');  
-                 
-       
-                $reservationInfo = array(
-                    'voitureName'=>$voitureName,
-                    'date'=>$date,
-                    'depart'=>$depart,
+            "reservationId" => $reservationId,
+            "createdBy" => $this->vendorId,
+            "createdDTM" => date("Y-m-d H:i:s"),
 
-                    'l1'=>$l1,
-                    'l2'=>$l2,
-                    'l3'=>$l3,
-                    'l4'=>$l4,
+            "statut" => 1,
+        ];
 
-                    'mobile1'=>$mobile1,
-                    'mobile2'=>$mobile2,
-                    
-                    'prix'=>$prix,
-                    'avance'=>$avance,
-                    'noteAdmin'=>$noteAdmin,
-                    
-                    'reservationId'=>$reservationId,
-                    'createdBy'=>$this->vendorId ,
-                    'createdDTM'=>date('Y-m-d H:i:s'),
-                    'clientId' => $clientId   ,     
-                    'statut' => 1 
-                            );
+        $result = $this->prestation_model->addNewReservation($reservationInfo);
 
-           
-                $result = $this->troupe_model->addNewReservation($reservationInfo);
-                
-                if($result > 0)
-                {
+        if ($result > 0) {
+            $reservationInfo1 = ["photographe" => $result];
 
-                     $reservationInfo1 = array('voiture'=>$result);
+            $this->reservation_model->editReservation(
+                $reservationInfo1,
+                $reservationId
+            );
 
-                    $this->reservation_model->editReservation($reservationInfo1, $reservationId); 
+            $paiementInfo = [
+                "createdDate" => date("Y-m-d H:i:s"),
+                "valeur" => $avance,
+                "recepteurId" => $this->vendorId,
+                "libele" => "Avance ",
+                "reservationPId" => $result,
+            ];
+            $resId = $this->paiement_model->addNewPhotographePaiement(
+                $paiementInfo
+            );
 
-                    $paiementInfo = array(
-                        'createdDate'=>date('Y-m-d H:i:s'),
-                        'valeur'=>$avance,
-                        'recepteurId'=>$this->vendorId,
-                        'libele'=>'Avance ',
-                        'reservationVId'=>$result, 
-                                            
-                                );
-                        $resId = $this->paiement_model->addNewVoiturePaiement($paiementInfo);
+            if ($prix - $avance == 0) {
+                $reservationInfoe = [
+                    "statut" => 0,
+                ];
+                $this->prestation_model->editReservation(
+                    $reservationInfoe,
+                    $result
+                );
+            }
 
+            $this->session->set_flashdata(
+                "success",
+                "Reservation mise à jour avec succées "
+            );
 
-
-                            if (  $prix - $avance == 0   )
-                            {
-                              
-                                $reservationInfoe = array(
-                                            'statut'=>0 ,
-                                                    );
-                                 $this->troupe_model->editReservation($reservationInfoe, $resId); 
-                            }
-
-                           
-
-
-                    $this->session->set_flashdata('success', 'Reservation mise à jour avec succées ');
-
-
-                    redirect('Reservation/view/'.$reservationId);
-                }
-                else
-                {
-                    $this->session->set_flashdata('error', 'Problème de mise à jours');
-                    redirect('Reservation/view/'.$reservationId);
-                }
-           
-        
+            redirect("Reservation/view/" . $reservationId);
+        } else {
+            $this->session->set_flashdata("error", "Problème de mise à jours");
+            redirect("troupe/view/" . $reservationId);
+        }
     }
 
-
-
-     /**
+    /**
      * This function is used to load the user list
      */
     function view($resId)
-    {  
-
-            $data['projectInfo'] = $this->troupe_model->ReservationInfo($resId);
-
-            $data['clientInfo'] = $this->user_model->getUserInfo($data['projectInfo']->clientId);
-          
-            $data['paiementInfo'] = $this->paiement_model->paiementListingbyReservationVoiture($resId) ;
-            $data['totalPaiement'] = $this->paiement_model->getVTotal($resId) ;             
-                 
-            $data['userID'] = $this->vendorId ; 
-
-
-
-            $this->global['pageTitle'] = 'CodeInsect : User Listing';
-            $this->loadViews("voiture/view", $this->global, $data, NULL);
+    {
+        $data["projectInfo"] = $this->prestation_model->ReservationInfo(
+            $resId
+        );
+        $data["clientInfo"] = $this->user_model->getUserInfo(
+            $data["projectInfo"]->clientId
+        );
+        $data[
+            "paiementInfo"
+        ] = $this->paiement_model->paiementListingbyReservationPhotographe(
+            $resId
+        );
+        $data["totalPaiement"] = $this->paiement_model->getPTotal($resId);
+        $data["userID"] = $this->vendorId;
+        $this->global["pageTitle"] = "CodeInsect : User Listing";
+        $this->loadViews("troupe/view", $this->global, $data, null);
     }
 
-
-
-     /**
+    /**
      * This function is used to load the user list
      */
     function addPaiement($resId)
-    {  
+    {
+        $avance = $this->input->post("avance");
+        $noteAdmin = $this->input->post("noteAdmin");
 
-        $avance = $this->input->post('avance');
-        $noteAdmin = $this->input->post('noteAdmin');
+        $paiementInfo = [
+            "createdDate" => date("Y-m-d H:i:s"),
+            "valeur" => $avance,
+            "recepteurId" => $this->vendorId,
+            "libele" => "Partie ",
+            "reservationPId" => $resId,
+        ];
+        $ReservationInfo = $this->prestation_model->ReservationInfo($resId);
+        $clientInfo = $this->client_model->getClientInfo(
+            $ReservationInfo->clientId
+        );
 
-         $paiementInfo = array(
-                        'createdDate'=>date('Y-m-d H:i:s'),
-                        'valeur'=>$avance,
-                        'recepteurId'=>$this->vendorId,
-                        'libele'=>'Partie ',
-                        'reservationVId'=>$resId,                           
-                                );
-            $ReservationInfo =  $this->troupe_model->ReservationInfo($resId) ;
-            $clientInfo = $this->client_model->getClientInfo($ReservationInfo->clientId); 
-            
-   
-        $this->paiement_model->addNewVoiturePaiement($paiementInfo);
+        $this->paiement_model->addNewPhotographePaiement($paiementInfo);
 
-        $totalPaiement = $this->paiement_model->getVTotal($resId) ; 
-        $projectInfo = $this->troupe_model->ReservationInfo($resId);
+        $totalPaiement = $this->paiement_model->getPTotal($resId);
+        $projectInfo = $this->prestation_model->ReservationInfo($resId);
 
+        $reservationInfo = [
+            "noteAdmin" => $noteAdmin,
+            "statut" => 1,
+        ];
 
-        $reservationInfo = array(
-                        'noteAdmin'=>$noteAdmin,
-                        'statut'=>1,
-                                );
-
-        if (  $projectInfo->prix - $totalPaiement->valeur == 0   )
-        {
-          
-            $reservationInfo = array(
-                        'noteAdmin'=>$noteAdmin,
-                        'statut'=>0 ,
-                                );
+        if ($projectInfo->prix - $totalPaiement->valeur == 0) {
+            $reservationInfo = [
+                "noteAdmin" => $noteAdmin,
+                "statut" => 0,
+            ];
         }
 
-        $this->troupe_model->editReservation($reservationInfo, $resId);    
-        redirect('Voiture/view/'.$resId) ; 
-            
+        $this->prestation_model->editReservation($reservationInfo, $resId);
+        redirect("troupe/view/" . $resId);
     }
 
+    /**
+     * This function is used to load the user list
+     */
+    function recuP($resId)
+    {
+        $data["projectInfo"] = $this->prestation_model->ReservationInfo(
+            $resId
+        );
+        $data["clientInfo"] = $this->user_model->getUserInfo(
+            $data["projectInfo"]->clientId
+        );
+        $data[
+            "paiementInfo"
+        ] = $this->paiement_model->paiementListingbyReservationPhotographe(
+            $resId
+        );
+        $data["totalPaiement"] = $this->paiement_model->getPTotal($resId);
 
-
-
-
+        $this->global["pageTitle"] = "Recu de reservation";
+        $this->loadViews("troupe/recu", $this->global, $data, null);
+    }
 }
 
 ?>
