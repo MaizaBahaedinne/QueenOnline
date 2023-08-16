@@ -50,7 +50,7 @@
                <h5>Troupe</h5>
              </div>
              <div class="card-body">
-                  <?php if ($projectInfo->troupe == 0 ){ echo '<a style="color: white"  class="btn btn-info btn-block" href='.base_url().'Prestation/addNew/'.$projectInfo->reservationId.' >Ajouter</a> ';}  ?>
+                  <?php if ($projectInfo->troupe == 0 ){ echo '<a style="color: white"  class="btn btn-info btn-block" href='.base_url().'Troupe/addNew/'.$projectInfo->reservationId.' >Ajouter</a> ';}  ?>
 
                   <?php  echo '<a style="color: white"  class="btn btn-info btn-block" href='.base_url().'Prestation/addNew/'.$projectInfo->reservationId.' >Ajouter une prestation</a> '; ?>
              </div>
