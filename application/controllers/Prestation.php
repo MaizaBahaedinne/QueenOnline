@@ -65,6 +65,7 @@ class Prestation extends BaseController
 
         $packId = $this->input->post("packId");
         $date = $this->input->post("date");
+        $heure = $this->input->post("heure");
 
         $prix = $this->input->post("prix");
         $avance = $this->input->post("avance");
@@ -74,6 +75,7 @@ class Prestation extends BaseController
         $reservationInfo = [
             "packId" => $packId,
             "date" => $date,
+            "heure" => $date,
 
             "prix" => $prix,
             "avance" => $avance,

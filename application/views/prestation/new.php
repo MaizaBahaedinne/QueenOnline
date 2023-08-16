@@ -48,7 +48,7 @@
                                         <div class="card-body">
                                            
                                            <div class="row">
-                                            <div class="col-md-9">
+                                            <div class="col-md-7">
                                                     <div class="form-group">
                                                         <label class="control-label">Prestataire</label>
                                                         <select class="form-control" name="packId" required>
@@ -80,6 +80,21 @@
                                                              ),
                                                              "d/m/20y"
                                                          ); ?>"-->
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label class="control-label">Date </label>
+                                                        <input
+                                                            name="heure"
+                                                            class="form-control mb-4 mb-md-0"
+                                                            readonly
+                                                            type="time"
+                                                            required
+                                                           value="<?php echo $projectInfo->dateDebut; ?>"
+                                                            
+                                                        />
+                                                        
                                                     </div>
                                                 </div>
                                                 
