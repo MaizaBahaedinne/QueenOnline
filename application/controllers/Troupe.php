@@ -20,8 +20,7 @@ class Troupe extends BaseController
     public function __construct()
     {
         parent::__construct();
-        $this->load->model("user_model");+
-        8
+        $this->load->model("user_model");
         $this->load->model("client_model");
         $this->load->model("reservation_model");
         $this->load->model("troupe_model");
