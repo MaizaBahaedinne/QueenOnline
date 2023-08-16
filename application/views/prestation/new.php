@@ -48,7 +48,7 @@
                                         <div class="card-body">
                                            
                                            <div class="row">
-                                            <div class="col-md-7">
+                                            <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label class="control-label">Prestataire</label>
                                                         <select class="form-control" name="packId" required>
