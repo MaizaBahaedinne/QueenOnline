@@ -1228,7 +1228,13 @@
                                     <i class="metismenu-icon pe-7s-music"></i>Troupe
                                 </a>
                             </li>
-                                -->
+                            -->
+                            <li>
+                                <a href="<?php echo base_url() ?>Prestation">
+                                    <i class="metismenu-icon pe-7s-music"></i>Prestation
+                                </a>
+                            </li>
+                                
                             <?php }  ?>
                             <?php if($role == 1 || $role == 2 || $role == 6 ){  ?>
                             <li>

@@ -18,7 +18,7 @@
           <i class="pe-7s-medal icon-gradient bg-tempting-azure"></i>
         </div>
         <div>
-           Reservation des prestetion
+           Reservation des prestation
           <div class="page-title-subheading">Les reservations</div>
         </div>
       </div>
