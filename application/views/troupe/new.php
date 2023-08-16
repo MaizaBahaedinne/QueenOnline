@@ -20,7 +20,7 @@
       </div>
     </div>
   </div>
-<form action="<?php echo base_url()?>Photographe/addNewReservationL" method="post">
+<form action="<?php echo base_url()?>Troupe/addNewReservationL" method="post">
               <input
                     name="clientId"
                     class="form-control mb-4 mb-md-0"
@@ -80,7 +80,7 @@
                                                     <strong>Note</strong>
                                                 </div>   
                                                  <div class="col-md-12">
-                                                        <label for="formGroupExampleInput">Note Admin au photographe</label>
+                                                        <label for="formGroupExampleInput">Note Admin au troupe</label>
                                                         <textarea  rows="10" class="form-control" name="noteAdmin"></textarea>
                                                 </div>
                                                 

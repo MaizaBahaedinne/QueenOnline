@@ -20,7 +20,7 @@
       </div>
     </div>
   </div>
-<form action="<?php echo base_url(); ?>Prestation/addNewReservationP" method="post">
+<form action="<?php echo base_url(); ?>Prestation/addNewReservationL" method="post">
               <input
                     name="clientId"
                     class="form-control mb-4 mb-md-0"
