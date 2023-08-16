@@ -278,7 +278,7 @@ class Reservation extends BaseController
 
              $data['voiture'] = $this->voiture_model->ReservationInfo($data['projectInfo']->voiture);
              $data['photographe'] = $this->photographe_model->ReservationInfo($data['projectInfo']->photographe);
-             $data['prestation'] = $this->prestation_model->ReservationInfo($data['projectInfo']->prestation); 
+             $data['prestation'] = $this->prestation_model->ReservationInfo($resId); 
 
 
             $this->global['pageTitle'] = 'CodeInsect : User Listing';

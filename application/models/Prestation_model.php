@@ -72,7 +72,7 @@ class Prestation_model extends CI_Model
          $this->db->join('tbl_reservation as Reservation', 'Reservation.reservationId = BaseTbl.reservationId','left');
           $this->db->join('tbl_salle as Salles', 'Salles.salleID = Reservation.salleId','left');
         
-        $this->db->where('BaseTbl.reservationPId =',$resId );
+        $this->db->where('BaseTbl.reservationId =',$resId );
 
         $query = $this->db->get();
         
