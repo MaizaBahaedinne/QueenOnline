@@ -54,7 +54,7 @@
                                                         <select class="form-control" name="packId" required>
                                                             <option value=""></option>
                                                             <?php foreach ($Packs as $Pack ) {  ?>
-                                                                <option value="<?php echo $Pack->packId ?>" ><?php echo $Pack->nom ?></option>
+                                                                <option value="<?php echo $Pack->packId ?>" ><?php echo $Pack->nom ?> - <?php echo $Pack->prix ?> </option>
                                                             <?php } ?>
                                                         </select>
                                                     </div>
@@ -80,7 +80,7 @@
                                                     <strong>Note</strong>
                                                 </div>   
                                                  <div class="col-md-12">
-                                                        <label for="formGroupExampleInput">Note Admin au photographe</label>
+                                                        <label for="formGroupExampleInput">Note Admin</label>
                                                         <textarea  rows="10" class="form-control" name="noteAdmin"></textarea>
                                                 </div>
                                                 
