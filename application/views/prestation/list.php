@@ -18,7 +18,7 @@
           <i class="pe-7s-medal icon-gradient bg-tempting-azure"></i>
         </div>
         <div>
-          Photographe reservation
+           Reservation des prestetion
           <div class="page-title-subheading">Les reservations</div>
         </div>
       </div>
@@ -101,10 +101,10 @@
               </td>
               <td>
                 <div class="btn-group" role="group" > 
-                <a class="btn" href="<?php echo base_url() ?>Photographe/view/<?php echo $record->reservationPId ?>" >
+                <a class="btn" href="<?php echo base_url() ?>Prestation/view/<?php echo $record->reservationPId ?>" >
                   <i class="fa fa-eye"></i>
                 </a>
-                <a class="btn" href="<?php echo base_url() ?>Reservation/edit/<?php echo $record->reservationPId ?>" >
+                <a class="btn" href="<?php echo base_url() ?>Prestation/edit/<?php echo $record->reservationPId ?>" >
                   <i class="fas fa-pencil-alt"></i>
                 </a>
               </div>

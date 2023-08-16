@@ -32,6 +32,7 @@ class Reservation extends BaseController
         $this->load->model('contrat_model');
         $this->load->model('voiture_model'); 
         $this->load->model('photographe_model');
+        $this->load->model('prestation_model');
         
         
         
@@ -277,6 +278,8 @@ class Reservation extends BaseController
 
              $data['voiture'] = $this->voiture_model->ReservationInfo($data['projectInfo']->voiture);
              $data['photographe'] = $this->photographe_model->ReservationInfo($data['projectInfo']->photographe);
+             $data['prestation'] = $this->prestation_model->ReservationInfo($data['projectInfo']->prestation); 
+
 
             $this->global['pageTitle'] = 'CodeInsect : User Listing';
             $this->loadViews("reservation/details", $this->global, $data, NULL);
