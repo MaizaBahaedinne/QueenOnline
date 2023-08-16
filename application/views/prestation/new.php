@@ -54,7 +54,7 @@
                                                         <select class="form-control" name="packId" required>
                                                             <option value=""></option>
                                                             <?php foreach ($Packs as $Pack ) {  ?>
-                                                                <option value="<?php echo $Pack->packId ?>" ><?php echo $Pack->nom ?> - <?php echo $Pack->prix ?> </option>
+                                                                <option value="<?php echo $Pack->packId ?>" ><?php echo $Pack->nom ?> - <?php echo $Pack->prix ?> DT </option>
                                                             <?php } ?>
                                                         </select>
                                                     </div>
