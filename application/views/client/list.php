@@ -51,7 +51,7 @@
                
                 
                <?php foreach($record->reservations as $reservation) { ?>
-                 <a href="<?php echo base_url().'Reservation/view/'.$reservation->reservationId  ?>" ><?php echo $reservation->dateDebut  ?> </a> <br>
+                 <a href="<?php echo base_url().'Reservation/view/'.$reservation->reservationId  ?>" ><?php echo $reservation->dateDebut." ".$reservation->salle  ?> </a> <br>
                <?php    }   ?>
                   </td>
                   <td class="text-center">
