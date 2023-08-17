@@ -1253,12 +1253,13 @@
                         </ul>
                         <ul class="vertical-nav-menu">
                             <li class="app-sidebar__heading">Administration</li>
+                            <!--
                             <li>
                                 <a href="<?php echo base_url() ?>">
                                     <i class="metismenu-icon pe-7s-box2"></i>Salles
                                 </a>
                             </li>
-                            <!--
+                            
                             <li>
                                 <a href="<?php echo base_url() ?>">
                                     <i class="metismenu-icon pe-7s-box2"></i>Artists
@@ -1273,17 +1274,20 @@
                         </ul>
                         <ul class="vertical-nav-menu">
                             <li class="app-sidebar__heading">Comptabilité</li>
-
+                            <?php if($role == 1 || $role == 2 ){  ?>
                             <li>
                                 <a href="<?php echo base_url() ?>Finance">
                                     <i class="metismenu-icon pe-7s-users"></i>Revenue /Jour
                                 </a>
                             </li>
+                             <?php }  ?>
+                            <?php if($role == 1 || $role == 2 ){  ?>
                             <li>
                                 <a href="<?php echo base_url() ?>Finance/relance">
                                     <i class="metismenu-icon pe-7s-mail-open"></i>Relance
                                 </a>
                             </li>
+                            <?php }  ?>
                         </ul>
 
 
