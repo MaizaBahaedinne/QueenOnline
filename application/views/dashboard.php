@@ -95,7 +95,7 @@
             </div>
          </div>
           <div class="col-lg-12">
-            <div class="mb-3 card">
+            <div class="mb-3 card bg-dark">
                <div class="card-header-tab card-header">
                   <div class="card-header-title">
                      <i class="header-icon lnr-rocket icon-gradient bg-tempting-azure"> </i>
