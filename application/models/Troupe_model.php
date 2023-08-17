@@ -20,7 +20,7 @@ class Troupe_model extends CI_Model
     {
         $this->db->select('BaseTbl.* , Pack.nom packname');
         $this->db->from('tbl_reservation_troupe as BaseTbl');
-        $this->db->join('tbl_pack_troupe as Pack', 'Pack.packId = BaseTbl.packId','left');
+        $this->db->join('tbl_pack_troupe as Pack', 'Pack.packId = BaseTbl.packId ','left');
       
         $this->db->where('BaseTbl.date >=  SUBDATE(NOW(),1) ');
         $this->db->order_by('BaseTbl.date ASC');

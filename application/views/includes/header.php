@@ -1225,7 +1225,7 @@
                             
                             <li>
                                 <a href="<?php echo base_url() ?>Troupe">
-                                    <i class="metismenu-icon pe-7s-music"></i>Troupe
+                                    <i class="metismenu-icon pe-7s-users"></i>Troupe
                                 </a>
                             </li>
                             
@@ -1268,7 +1268,7 @@
                             -->
                             <li>
                                 <a href="<?php echo base_url() ?>Client">
-                                    <i class="metismenu-icon pe-7s-users"></i>Clients
+                                    <i class="metismenu-icon pe-7s-id"></i>Clients
                                 </a>
                             </li>
                         </ul>
@@ -1277,7 +1277,7 @@
                             <?php if($role == 1 || $role == 2 ){  ?>
                             <li>
                                 <a href="<?php echo base_url() ?>Finance">
-                                    <i class="metismenu-icon pe-7s-users"></i>Revenue /Jour
+                                    <i class="metismenu-icon pe-7s-piggy"></i>Revenue /Jour
                                 </a>
                             </li>
                              <?php }  ?>
