@@ -1260,13 +1260,13 @@
                                     <i class="metismenu-icon pe-7s-box2"></i>Salles
                                 </a>
                             </li>
-                            
+                            -->
                             <li>
                                 <a href="<?php echo base_url() ?>">
                                     <i class="metismenu-icon pe-7s-box2"></i>Artists
                                 </a>
                             </li>
-                            -->
+                            
                             <li>
                                 <a href="<?php echo base_url() ?>Client">
                                     <i class="metismenu-icon pe-7s-id"></i>Clients
@@ -1297,16 +1297,18 @@
             </div>
             <div id="loading">
                 <br><br><br><br><br><br><br><br><br><br><br>
-    <div class="loading-image">
-<div class="justify-content-center align-items-center">
-<div class="loader">
-<div class="ball-pulse">
-<div>Q</div>
-<div>P</div>
-<div>O</div>
-</div>
-</div>
-</div>
+<div class="loading-image">
+    <div class="justify-content-center align-items-center">
+        <div class="loader">
+            <div class="ball-pulse">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
 </div>
   
 </div>
