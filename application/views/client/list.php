@@ -43,7 +43,7 @@
                   <td><i class="fa fa-phone" aria-hidden="true"></i> <?php echo $record->mobile ?> <br>
                      <i class="fa fa-phone" aria-hidden="true"></i> <?php echo $record->mobile2 ?>
                   </td>
-                  <td><?php echo $record->ville ?> </td>
+                  <td><?php echo $record->n ?> <?php echo $record->rue ?> <?php echo $record->ville ?> </td>
                   <td class="text-center">
                      <?php echo count($record->reservations) ?>
                   </td>
