@@ -20,7 +20,7 @@ class Client_model extends CI_Model
      */
     function clientListing()
     {
-        $this->db->select('BaseTbl.userId , BaseTbl.email ,  BaseTbl.nom  , BaseTbl.raisonSocial , BaseTbl.prenom , BaseTbl.cin , BaseTbl.ville  , BaseTbl.mobile,BaseTbl.mobile2, BaseTbl.createdDtm, Role.role');
+        $this->db->select('BaseTbl.userId , BaseTbl.email ,  BaseTbl.nom  , BaseTbl.raisonSocial , BaseTbl.prenom , BaseTbl.cin , BaseTbl.n, BaseTbl.rue, BaseTbl.ville  , BaseTbl.mobile,BaseTbl.mobile2, BaseTbl.createdDtm, Role.role');
         $this->db->from('tbl_users as BaseTbl');
         $this->db->join('tbl_roles as Role', 'Role.roleId = BaseTbl.roleId','left');
         $this->db->where('BaseTbl.roleId =',4 );
