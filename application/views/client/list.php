@@ -48,7 +48,7 @@
                      
                
                 
-               <?php foreach($reservations as $reservation) { ?>
+               <?php foreach($record->reservations as $reservation) { ?>
                <button type="button" class="btn" data-toggle="tooltip" data-html="true" data-placement="bottom" 
                   title="<h6>Mobile :<small>  <a href=<?php echo base_url().$reservation->reservationId  ?> > <?php echo $reservation->reservationId  ?> </a> </small> </h6>">
                 <?php echo count($record->reservations) ?>
