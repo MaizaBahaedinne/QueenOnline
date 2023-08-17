@@ -262,7 +262,7 @@
                <div class="card-header-tab card-header">
                   <div class="card-header-title">
                      <i class="header-icon lnr-rocket icon-gradient bg-tempting-azure"> </i>
-                     Statistique Par Salle
+                     Reservation Par Salle (<?php $year = date("Y"); echo $year; ?>)
                   </div>
                   <div class="btn-actions-pane-right text-capitalize">
                      <button class="btn-wide btn-outline-2x btn btn-outline-primary btn-sm">View All</button>
