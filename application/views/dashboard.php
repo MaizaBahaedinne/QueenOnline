@@ -95,7 +95,7 @@
             </div>
          </div>
           <div class="col-lg-12">
-            <div class="mb-3 card bg-dark">
+            <div class="mb-3 card k">
                <div class="card-header-tab card-header">
                   <div class="card-header-title">
                      <i class="header-icon lnr-rocket icon-gradient bg-tempting-azure"> </i>
@@ -105,7 +105,7 @@
                      <a class="btn-wide btn-outline-2x btn btn-outline-primary btn-sm" href="<?php echo base_url() ?>Reservation" >Voir tout</a>
                   </div>
                </div>
-               <div class="pt-2 pb-0 card-body">
+               <div class="pt-2 pb-0 card-body bg-dar">
                   <div class="row">
                     <div id="calendar1"></div>
                      
