@@ -105,7 +105,7 @@
                      <a class="btn-wide btn-outline-2x btn btn-outline-primary btn-sm" href="<?php echo base_url() ?>Reservation" >Voir tout</a>
                   </div>
                </div>
-               <div class="pt-2 pb-0 card-body bg-dar">
+               <div class="pt-2 pb-0 card-body bg-dark">
                   <div class="row">
                     <div id="calendar1"></div>
                      
