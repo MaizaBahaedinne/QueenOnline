@@ -102,7 +102,7 @@
                      Reservation par semaine
                   </div>
                   <div class="btn-actions-pane-right text-capitalize">
-                     <button class="btn-wide btn-outline-2x btn btn-outline-primary btn-sm">View All</button>
+                     <a class="btn-wide btn-outline-2x btn btn-outline-primary btn-sm" href="<?php echo base_url() ?>Reservation" >Voir tout</a>
                   </div>
                </div>
                <div class="pt-2 pb-0 card-body">
@@ -122,7 +122,7 @@
                      Chiffres par mois
                   </div>
                   <div class="btn-actions-pane-right text-capitalize">
-                     <button class="btn-wide btn-outline-2x btn btn-outline-primary btn-sm">View All</button>
+                     <button class="btn-wide btn-outline-2x btn btn-outline-primary btn-sm">Voir tout</button>
                   </div>
                </div>
                <div class="pt-2 pb-0 card-body">
@@ -136,15 +136,15 @@
                               series: 
                               [
                               {
-                              name: 'Reservation',
+                              name: 'Terminée',
                               data: [<?php if(count($reservationDo)>0) {foreach($reservationDo as $data) { echo $data->countRes.',' ;  }} else { echo "0" ;} ?>]
                               }, 
                               {
-                              name: 'en attent',
+                              name: 'en attente',
                               data: [<?php  if(count($reservationEnAttent)>0) {foreach($reservationEnAttent as $data) { echo $data->countRes.',' ;  }} else { echo "0" ;} ?>]
                               }, 
                               {
-                              name: 'Annule',
+                              name: 'Annulée',
                               data: [<?php  if(count($reservationAnnule)>0) {foreach($reservationAnnule as $data) { echo $data->countRes.',' ;  }} else { echo "0" ;} ?>]
                               }
                               ],
@@ -213,7 +213,7 @@
                             
                             },
                             title: {
-                              text: 'Reservation par mois',
+                              text: 'Reservation par année',
                               floating: false,
                               offsetY: 0,
                               align: 'center',
@@ -265,7 +265,7 @@
                      Reservation Par Salle (<?php $year = date("Y"); echo $year; ?>)
                   </div>
                   <div class="btn-actions-pane-right text-capitalize">
-                     <button class="btn-wide btn-outline-2x btn btn-outline-primary btn-sm">View All</button>
+                     <button class="btn-wide btn-outline-2x btn btn-outline-primary btn-sm">Voir tout</button>
                   </div>
                </div>
                <div class="pt-2 pb-0 card-body">
@@ -309,7 +309,7 @@
                      Statistique par Employée
                   </div>
                   <div class="btn-actions-pane-right text-capitalize">
-                     <button class="btn-wide btn-outline-2x btn btn-outline-primary btn-sm">View All</button>
+                     <button class="btn-wide btn-outline-2x btn btn-outline-primary btn-sm">Voir tout</button>
                   </div>
                </div>
                <div class="pt-2 pb-0 card-body">
