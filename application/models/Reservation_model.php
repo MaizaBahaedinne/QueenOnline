@@ -47,7 +47,7 @@ class Reservation_model extends CI_Model
 
 
         if( $date != null ){
-         $this->db->where('BaseTbl.dateFin >=  $date  ');
+         $this->db->where('BaseTbl.dateFin >=   '.$date );
         
         }
 
