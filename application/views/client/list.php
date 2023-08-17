@@ -21,6 +21,7 @@
          <table id="example" style="width: 100%;" id="example" class="table  table-hover table-striped table-bordered" >
             <thead>
                <tr>
+                  <th>Code </th>
                   <th>cin</th>
                   <th>Nom</th>
                   <th>Mobile</th>
@@ -38,6 +39,7 @@
                       {
                   ?>
                <tr>
+                  <td> <?php echo $record->userId ?></td>
                   <td><i class="fa fa-id-card" aria-hidden="true"></i> <?php echo $record->cin ?></td>
                   <td><?php echo $record->nom ?> <?php echo $record->prenom ?> </td>
                   <td><i class="fa fa-phone" aria-hidden="true"></i> <?php echo $record->mobile ?> <br>
@@ -63,6 +65,7 @@
             </tbody>
             <tfoot>
                <tr>
+                  <th>Code </th>
                   <th>Nom</th>
                   <th>Mobile</th>
                   <th>cin</th>
