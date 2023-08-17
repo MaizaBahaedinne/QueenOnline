@@ -1368,7 +1368,7 @@
              events: [
                 <?php $i=0; foreach ($reservationRecords as $r ){  $i++ ; ?>
                 { 
-
+                    backgroundColor : 'black' ,   
                   title: '<?php echo $r->titre ?>', 
                   start: '<?php echo $r->dateDebut.'T'.$r->heureDebut ?>',
                   end: '<?php echo $r->dateFin.'T'.$r->heureDebut  ?>' , 
@@ -1378,7 +1378,7 @@
 
                    textColor :  'red' ,
                    url: <?php echo "'".base_url()."Reservation/view/".$r->reservationId."'"   ?> ,
-                   backgroundColor : 'black' ,       
+                       
                  },
 
                 <?php 
