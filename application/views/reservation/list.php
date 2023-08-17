@@ -46,7 +46,7 @@
               <th width="10%">titre</th>
               <th >Options</th>
               <th >Contact</th>
-              <th >Statut</th>
+              <th width="5%">Statut</th>
               <th width="5%" >Action</th>
             </tr>
           </thead>
@@ -91,7 +91,7 @@
                 <a href="<?php echo base_url()?>">Ajouter un client</a>                            
                 <?php } ?>
               </td>
-              <td> 
+              <td style="text-align:center;"> 
                 <?php if ($record->statut == 0 ) { ?>
                 <span class="badge badge-pill badge-success"><i class="metismenu-icon pe-7s-check"></i></span>
                 <?php } ?>    
