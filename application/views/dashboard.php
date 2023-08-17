@@ -122,7 +122,7 @@
                      Chiffres par mois
                   </div>
                   <div class="btn-actions-pane-right text-capitalize">
-                     <button class="btn-wide btn-outline-2x btn btn-outline-primary btn-sm">Voir tout</button>
+                    <a class="btn-wide btn-outline-2x btn btn-outline-primary btn-sm" href="<?php echo base_url() ?>Reservation" >Voir tout</a>
                   </div>
                </div>
                <div class="pt-2 pb-0 card-body">
@@ -265,7 +265,7 @@
                      Reservation Par Salle (<?php $year = date("Y"); echo $year; ?>)
                   </div>
                   <div class="btn-actions-pane-right text-capitalize">
-                     <button class="btn-wide btn-outline-2x btn btn-outline-primary btn-sm">Voir tout</button>
+                     <a class="btn-wide btn-outline-2x btn btn-outline-primary btn-sm" href="<?php echo base_url() ?>Reservation" >Voir tout</a>
                   </div>
                </div>
                <div class="pt-2 pb-0 card-body">

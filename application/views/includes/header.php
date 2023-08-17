@@ -1222,13 +1222,13 @@
                             </li>
                             <?php }  ?>
                             <?php if($role == 1 || $role == 2 ){  ?>
-                                <!--
+                            
                             <li>
-                                <a href="<?php echo base_url() ?>Reservation/ResevationTroupe">
+                                <a href="<?php echo base_url() ?>Troupe">
                                     <i class="metismenu-icon pe-7s-music"></i>Troupe
                                 </a>
                             </li>
-                            -->
+                            
                             <li>
                                 <a href="<?php echo base_url() ?>Prestation">
                                     <i class="metismenu-icon pe-7s-music"></i>Prestation
