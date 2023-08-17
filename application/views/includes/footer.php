@@ -1377,7 +1377,7 @@
                           <?php if ($r->salle == "Soltana"){ ?>'green'  <?php } ?>,
 
                    textColor :  'red' ,
-                   url: <?php echo "'".base_url()."Reservation/view/".$r->reservationId.'"   ?> ,       
+                   url: <?php echo "'".base_url()."Reservation/view/".$r->reservationId."'"   ?> ,       
                  },
 
                 <?php 
