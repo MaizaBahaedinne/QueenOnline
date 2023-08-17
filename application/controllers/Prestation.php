@@ -41,7 +41,7 @@ class Prestation extends BaseController
                 $record->reservationId
             );
         }
-        $this->global["pageTitle"] = "Photographe";
+        $this->global["pageTitle"] = "Prestation";
         $this->loadViews("prestation/list", $this->global, $data, null);
     }
 
@@ -75,7 +75,7 @@ class Prestation extends BaseController
         $reservationInfo = [
             "packId" => $packId,
             "date" => $date,
-            "heure" => $date,
+            "heure" => $heure,
 
             "prix" => $prix,
             "avance" => $avance,
@@ -91,7 +91,7 @@ class Prestation extends BaseController
         $result = $this->prestation_model->addNewReservation($reservationInfo);
 
         if ($result > 0) {
-            $reservationInfo1 = ["photographe" => $result];
+            $reservationInfo1 = ["Prestation" => $result];
 
             $this->reservation_model->editReservation(
                 $reservationInfo1,
@@ -175,7 +175,7 @@ class Prestation extends BaseController
 
         $this->paiement_model->addNewPrestationPaiement($paiementInfo);
 
-        $totalPaiement = $this->paiement_model->getPTotal($resId);
+        $totalPaiement = $this->paiement_model->getPresTotal($resId);
         $projectInfo = $this->prestation_model->ReservationInfo($resId);
 
         $reservationInfo = [

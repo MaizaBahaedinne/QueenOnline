@@ -65,7 +65,7 @@ class Troupe extends BaseController
 
         $packId = $this->input->post("packId");
         $date = $this->input->post("date");
-        $heure = $this->input->post("heure");
+        
 
         $prix = $this->input->post("prix");
         $avance = $this->input->post("avance");
@@ -75,7 +75,7 @@ class Troupe extends BaseController
         $reservationInfo = [
             "packId" => $packId,
             "date" => $date,
-            "heure" => $date,
+            
 
             "prix" => $prix,
             "avance" => $avance,
@@ -91,7 +91,7 @@ class Troupe extends BaseController
         $result = $this->troupe_model->addNewReservation($reservationInfo);
 
         if ($result > 0) {
-            $reservationInfo1 = ["photographe" => $result];
+            $reservationInfo1 = ["Troupe" => $result];
 
             $this->reservation_model->editReservation(
                 $reservationInfo1,
@@ -103,7 +103,7 @@ class Troupe extends BaseController
                 "valeur" => $avance,
                 "recepteurId" => $this->vendorId,
                 "libele" => "Avance ",
-                "reservationPId" => $result,
+                "reservationTroupeId" => $result,
             ];
             $resId = $this->paiement_model->addNewTroupeaiement(
                 $paiementInfo
