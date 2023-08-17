@@ -173,7 +173,7 @@
                   <br>
                   Entre <b>Ste Queen Park</b> Mc 34 Route Mornag Boujardgha Ben Arous 2090, désigné ci-après « le bailleur » <br>
                   <b>ET</b> <br>
-                  <b><?php echo $contratInfo->nom.' '.$contratInfo->prenom ;?></b> titulaire de la carte d’identité nationale <b>N°<?php echo $contratInfo->cin ;?></b> délivrée le <b><?php echo $contratInfo->dateCin ;?></b> et demeurant à <b>N°<?php echo $contratInfo->n.' '.$contratInfo->rue.' '.$contratInfo->ville.' '.$contratInfo->codePostal ;?></b>   désigné ci-après « le locataire »  <br><br> 
+                  <b><?php echo $contratInfo->nom.' '.$contratInfo->prenom ;?></b> titulaire de la carte d’identité nationale <b>N°<?php echo $contratInfo->cin ;?></b> délivrée le <b><?php echo $contratInfo->dateCin ;?></b> et demeurant à <b>N°<?php echo $contratInfo->n.' '.$contratInfo->rue.' '.$contratInfo->ville.' ' ;?></b>   désigné ci-après « le locataire »  <br><br> 
                   <br>
                   <hr>
                   <h6>ARTICLE 1 – DESIGNATION DES LOCAUX :</h6>
