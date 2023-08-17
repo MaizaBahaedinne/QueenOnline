@@ -1347,7 +1347,7 @@
 
 
 
- <script src='https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.7/index.global.min.js'></script>
+    <script src='https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.7/index.global.min.js'></script>
     <script src='https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@6.1.7/index.global.min.js'></script>
     <script>
 
@@ -1355,6 +1355,7 @@
         var calendarEl = document.getElementById('calendar1');
         var calendar = new FullCalendar.Calendar(calendarEl, {
           initialView: 'dayGridWeek',
+          themeSystem: 'bootstrap5',
            headerToolbar: {
                 left: 'prev,next',
                 center: 'title',
@@ -1378,7 +1379,7 @@
 
                    textColor :  'red' ,
                    url: <?php echo "'".base_url()."Reservation/view/".$r->reservationId."'"   ?> ,
-                       
+
                  },
 
                 <?php 
