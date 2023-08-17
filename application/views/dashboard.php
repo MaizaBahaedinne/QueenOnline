@@ -111,7 +111,7 @@
                      
                   </div>
                </div>
-               <div class="divider mb-0"></div>
+              
             </div>
          </div>
          <div class="col-lg-8 col-xl-8">
