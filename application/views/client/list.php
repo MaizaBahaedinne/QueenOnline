@@ -45,7 +45,13 @@
                   </td>
                   <td><?php echo $record->n ?> <?php echo $record->rue ?> <?php echo $record->ville ?> </td>
                   <td class="text-center">
-                     <?php echo count($record->reservations) ?>
+                     
+                <button type="button" class="btn" data-toggle="tooltip" data-html="true" data-placement="bottom" 
+                  title="<h6>Mobile :<small> <?php foreach ($record->reservations as $reservation ){ ?><a href='<?php echo base_url().'Reservation/view/'.$$reservation->reservationId ?> >  </a></small> 
+                     <?php } ?></h6>">
+                <?php echo count($record->reservations) ?>
+                </button>
+                     
                   </td>
                   <td class="text-center">
                      
