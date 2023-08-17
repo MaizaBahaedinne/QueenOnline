@@ -1376,7 +1376,8 @@
                           <?php if ($r->salle == "Farhet Elamor"){ ?>'yellow' , textColor :'black' <?php } ?>
                           <?php if ($r->salle == "Soltana"){ ?>'green'  <?php } ?>,
 
-                   textColor : 'red' ,       
+                   textColor :  'red' ,
+                   url: <?php echo "'".base_url()."Reservation/view/".$r->reservationId.'"   ?> ,       
                  },
 
                 <?php 

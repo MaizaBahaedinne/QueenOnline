@@ -1208,7 +1208,7 @@
                             <li class="app-sidebar__heading">Menu</li>
                              <li>
                                 <a href="<?php echo base_url() ?>">
-                                    <i class="metismenu-icon pe-7s-users"></i>Dashboard
+                                    <i class="metismenu-icon pe-7s-home"></i>Dashboard
                                 </a>
                             </li>
                         </ul>
@@ -1217,7 +1217,7 @@
                             <?php if($role == 1 || $role == 2 ){  ?>
                             <li>
                                 <a href="<?php echo base_url() ?>Reservation">
-                                    <i class="metismenu-icon pe-7s-notebook"></i>Salles
+                                    <i class="metismenu-icon pe-7s-culture"></i>Salles
                                 </a>
                             </li>
                             <?php }  ?>
