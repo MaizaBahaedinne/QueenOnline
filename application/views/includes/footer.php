@@ -1311,7 +1311,7 @@
   $(window).on('load', function () {
     var selectedEffect = 'blind';
         var options = {};
-    $('#loading').delay(3000).fadeOut('slow');
+    $('#loading').delay(2000).fadeOut('slow');
   }) 
 </script>
 
@@ -1337,7 +1337,7 @@
             setTimeout(function() { 
               $("body").removeClass("loading");
               
-            }, 5000);
+            }, 3000);
         
          
 
