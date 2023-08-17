@@ -89,6 +89,7 @@ class Prestation_model extends CI_Model
     {
        $this->db->select('BaseTbl.* ');
         $this->db->from('tbl_pack_prestation as BaseTbl');
+        $this->db->order_by('BaseTbl.nom ASC');
         $query = $this->db->get();
         
         return $query->result();
