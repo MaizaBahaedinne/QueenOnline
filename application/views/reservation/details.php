@@ -193,9 +193,9 @@
                                                      <th width="10%">titre</th>
                                                      <th >Options</th>
                                                      <th >Prix</th>
-                                                     <th>note</th>
-                                                     <th width="5%">Statut</th>
 
+                                                     <th width="5%">Statut</th>
+                                                     <th>note</th>
                                                      <th width="5%" >date et par</th>
                                                    </tr>
                                                  </thead>
@@ -291,7 +291,7 @@
                                                        <span class="badge badge-pill badge-danger"><i class="metismenu-icon pe-7s-close"></i></span>
                                                        <?php } ?>
                                                      </td>
-                                                     <td><td><?php echo $record->noteAdmin ; ?>  </td></td>
+                                                     <td><?php echo $record->noteAdmin ; ?>  </td>
                                                      <td>
                                                        <?php echo $record->editDTM; ?> Par                                                         
                                                        <img width="30" class="rounded-circle" src="https://www.queenpark.tn/assets/img/teams/<?php echo $record->avatar; ?>" alt="<?php echo $record->recuPar; ?>"> 
