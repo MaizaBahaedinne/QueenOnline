@@ -159,7 +159,29 @@
             <div class="card-body">
                <?php  echo $projectInfo->noteAdmin ;  ?>
                <hr>
-             <?php if( count($Backups) > 0 ) { echo count($Backups)." changements" ;  } ?> 
+             <?php if( count($Backups) > 0 ) { echo " <button type='button' class='btn btn-primary' data-toggle='modal' data-target='#changements'>
+                          ".count($Backups)." changements</button>" ;  } ?> 
+
+
+                        <div class="modal fade" id="changements" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Annulation de la reservation</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                 modal 1
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
              <?php  foreach($Backups as $backup) { echo "<li>".$backup->dateDebut."</li>" ;  }   ?>
              </div>
              
@@ -360,7 +382,7 @@
                   <br>
                   <p style="text-align: center;">Queen Park - Mc 34 Route  Mornag boujardga 2090 - mobile : 54 419 959  - 79 352 153 - 58 465 249 </p>
                </div>
-               <?php } else{ echo '<h5 style="color : red" >Pour avoir votre contrat il faut verser une avance superieur à 2000DT </h5>' ;}  ?>
+               <?php } else{ echo '<h5 style="color : red" >Pour avoir votre contrat il faut verser une avance superieur à 1000DT </h5>' ;}  ?>
                <!-- Modal -->
             </div>
          </div>
