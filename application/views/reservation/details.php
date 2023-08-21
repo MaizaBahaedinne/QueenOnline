@@ -253,17 +253,7 @@
                                                      }
                                                      ?>
                                                  </tbody>
-                                                 <tfoot>
-                                                   <tr>
-                                                     <th>Date</th>
-                                                     <th >Espace</th>
-                                                     <th>titre</th>
-                                                     <th >Options</th>
-                                                     <th >Contact</th>
-                                                     <th >Statut</th>
-                                                     <th >Action</th>
-                                                   </tr>
-                                                 </tfoot>
+                                              
                                                </table>
 
                               </div>
