@@ -102,7 +102,7 @@ class Photographe extends BaseController
                 if($result > 0)
                 {
 
-                     $reservationInfo1 = array('photographe'=>$result);
+                     $reservationInfo1 = array('photographe'=>$result, 'noteAdmin' => 'Ajout de photographe');
 
                     $this->reservation_model->editReservation($reservationInfo1, $reservationId); 
 

@@ -91,7 +91,7 @@ class Troupe extends BaseController
         $result = $this->troupe_model->addNewReservation($reservationInfo);
 
         if ($result > 0) {
-            $reservationInfo1 = ["Troupe" => $result];
+            $reservationInfo1 = array("Troupe" => $result, 'noteAdmin' => 'Ajout de Troupe'); ;
 
             $this->reservation_model->editReservation(
                 $reservationInfo1,

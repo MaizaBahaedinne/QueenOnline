@@ -116,7 +116,7 @@ class Voiture extends BaseController
                 if($result > 0)
                 {
 
-                     $reservationInfo1 = array('voiture'=>$result);
+                     $reservationInfo1 = array('voiture'=>$result , 'noteAdmin' => 'Ajout de voiture' );
 
                     $this->reservation_model->editReservation($reservationInfo1, $reservationId); 
 
