@@ -24,14 +24,14 @@
                <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
                   <ul class="nav flex-column">
                      <li class="nav-item">
-                        <a href="<?php echo base_url() ?>Reservation/edit/<?php echo $projectInfo->reservationId  ?>" class="nav-link">
+                        <a href="<?php echo base_url(); ?>Reservation/edit/<?php echo $projectInfo->reservationId; ?>" class="nav-link">
                            <i class="nav-link-icon lnr-inbox"></i>
                            <span> Modifier</span>
                           
                         </a>
                      </li>
                      <li class="nav-item">
-                        <a  href="<?php echo base_url() ?>Reservation/deleteReservation/<?php echo $projectInfo->reservationId  ?>" class="nav-link">
+                        <a  href="<?php echo base_url(); ?>Reservation/deleteReservation/<?php echo $projectInfo->reservationId; ?>" class="nav-link">
                         <i class="nav-link-icon lnr-file-empty"></i>
                         <span> Annuler</span>
                         </a>
@@ -53,9 +53,19 @@
                <h5>Troupe</h5>
              </div>
              <div class="card-body">
-                  <?php if ($projectInfo->troupe == 0 ){ echo '<a style="color: white"  class="btn btn-info btn-block" href='.base_url().'Troupe/addNew/'.$projectInfo->reservationId.' >Ajouter</a> ';}  ?>
+                  <?php if ($projectInfo->troupe == 0) {
+                      echo '<a style="color: white"  class="btn btn-info btn-block" href=' .
+                          base_url() .
+                          "Troupe/addNew/" .
+                          $projectInfo->reservationId .
+                          " >Ajouter</a> ";
+                  } ?>
 
-                  <?php  echo '<a style="color: white"  class="btn btn-info btn-block" href='.base_url().'Prestation/addNew/'.$projectInfo->reservationId.' >Ajouter une prestation</a> '; ?>
+                  <?php echo '<a style="color: white"  class="btn btn-info btn-block" href=' .
+                      base_url() .
+                      "Prestation/addNew/" .
+                      $projectInfo->reservationId .
+                      " >Ajouter une prestation</a> "; ?>
              </div>
          </div>
           
@@ -67,29 +77,37 @@
                <h5>Photographe</h5>
              </div>
             <div class="card-body">
-                <?php if ($projectInfo->photographe == 0 ){  echo '<a style="color: white"  class="btn btn-info btn-block" href='.base_url().'Photographe/addNew/'.$projectInfo->reservationId.' >Ajouter</a> ';}   else {   ?>
+                <?php if ($projectInfo->photographe == 0) {
+                    echo '<a style="color: white"  class="btn btn-info btn-block" href=' .
+                        base_url() .
+                        "Photographe/addNew/" .
+                        $projectInfo->reservationId .
+                        " >Ajouter</a> ";
+                } else {
+                     ?>
                   
-                  Pack : <?php echo $photographe->packname ?>  <br>  
-                  statut :   <?php if ($photographe->statut == 0 ) { ?>
+                  Pack : <?php echo $photographe->packname; ?>  <br>  
+                  statut :   <?php if ($photographe->statut == 0) { ?>
                 <span class="badge badge-pill badge-success"><i class="metismenu-icon pe-7s-check"></i> Validée</span>
                 <?php } ?>    
-                <?php if ($photographe->statut == 1 ) { ?>
+                <?php if ($photographe->statut == 1) { ?>
                 <span class="badge badge-pill badge-warning"><i class="metismenu-icon pe-7s-stopwatch"></i> En attente</span>
                 <?php } ?>
-                <?php if ($photographe->statut == 2 ) { ?>
+                <?php if ($photographe->statut == 2) { ?>
                 <span class="badge badge-pill badge-dark"></span>
                 <?php } ?>
-                <?php if ($photographe->statut == 3 ) { ?>
+                <?php if ($photographe->statut == 3) { ?>
                 <span class="badge badge-pill badge-danger"><i class="metismenu-icon pe-7s-close"></i></span>
                 <?php } ?>
-               <?php }   ?>
+               <?php
+                } ?>
               
              </div>
-             <?php if ($projectInfo->photographe != 0 ){ ?> 
+             <?php if ($projectInfo->photographe != 0) { ?> 
                <div class="card-footer">
-                  <a style="color: white" href="<?php echo base_url() ?>Photographe/view/<?php echo $projectInfo->photographe ?>"  class="btn btn-success btn-block">Details</a> 
+                  <a style="color: white" href="<?php echo base_url(); ?>Photographe/view/<?php echo $projectInfo->photographe; ?>"  class="btn btn-success btn-block">Details</a> 
                </div>
-               <?php }   ?>
+               <?php } ?>
          </div>
           
            
@@ -101,31 +119,39 @@
                <h5>Voiture</h5>
              </div>
             <div class="card-body">
-               <?php if ($projectInfo->voiture == 0 ){  echo '<a  style="color: white"  class="btn btn-info btn-block" href='.base_url().'Voiture/addNew/'.$projectInfo->reservationId.' >Ajouter</a> ';} else {   ?>
-                  Depart  :   <?php echo $voiture->depart ; ?><br>
-                  Point 1 :   <?php echo $voiture->l1 ; ?><br>
-                  Point 2 :   <?php echo $voiture->l2 ; ?><br>
-                  Point 3 :   <?php echo $voiture->l3 ; ?><br>
+               <?php if ($projectInfo->voiture == 0) {
+                   echo '<a  style="color: white"  class="btn btn-info btn-block" href=' .
+                       base_url() .
+                       "Voiture/addNew/" .
+                       $projectInfo->reservationId .
+                       " >Ajouter</a> ";
+               } else {
+                    ?>
+                  Depart  :   <?php echo $voiture->depart; ?><br>
+                  Point 1 :   <?php echo $voiture->l1; ?><br>
+                  Point 2 :   <?php echo $voiture->l2; ?><br>
+                  Point 3 :   <?php echo $voiture->l3; ?><br>
 
-                  statut :   <?php if ($voiture->statut == 0 ) { ?>
+                  statut :   <?php if ($voiture->statut == 0) { ?>
                 <span class="badge badge-pill badge-success"><i class="metismenu-icon pe-7s-check"></i> Validée</span>
                 <?php } ?>    
-                <?php if ($voiture->statut == 1 ) { ?>
+                <?php if ($voiture->statut == 1) { ?>
                 <span class="badge badge-pill badge-warning"><i class="metismenu-icon pe-7s-stopwatch"></i> En attente</span>
                 <?php } ?>
-                <?php if ($voiture->statut == 2 ) { ?>
+                <?php if ($voiture->statut == 2) { ?>
                 <span class="badge badge-pill badge-dark"></span>
                 <?php } ?>
-                <?php if ($voiture->statut == 3 ) { ?>
+                <?php if ($voiture->statut == 3) { ?>
                 <span class="badge badge-pill badge-danger"><i class="metismenu-icon pe-7s-close"></i></span>
                 <?php } ?>
-               <?php }   ?>
+               <?php
+               } ?>
              </div>
-              <?php if ($projectInfo->voiture != 0 ){ ?> 
+              <?php if ($projectInfo->voiture != 0) { ?> 
                <div class="card-footer">
-                  <a style="color: white" href="<?php echo base_url() ?>Voiture/view/<?php echo $projectInfo->voiture ?>"  class="btn btn-success btn-block">Details</a> 
+                  <a style="color: white" href="<?php echo base_url(); ?>Voiture/view/<?php echo $projectInfo->voiture; ?>"  class="btn btn-success btn-block">Details</a> 
                </div>
-               <?php }   ?>
+               <?php } ?>
          </div>
           
            
@@ -137,10 +163,14 @@
                <h5>Note</h5>
              </div>
             <div class="card-body">
-               <?php  echo $projectInfo->noteAdmin ;  ?>
+               <?php echo $projectInfo->noteAdmin; ?>
                <hr>
-             <?php if( count($Backups) > 0 ) { echo " <button type='button' class='btn btn-primary  btn-block' data-toggle='modal' data-target='#changements'>
-                          Historique (".count($Backups).") </button>" ;  } ?> 
+             <?php if (count($Backups) > 0) {
+                 echo " <button type='button' class='btn btn-primary  btn-block' data-toggle='modal' data-target='#changements'>
+                          Historique (" .
+                     count($Backups) .
+                     ") </button>";
+             } ?> 
 
 
                         <div class="modal fade bd-example-modal-lg" id="changements" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -169,61 +199,104 @@
                                                    </tr>
                                                  </thead>
                                                  <tbody> 
-                                                   <?php
-                                                     if(!empty($Backups))
-                                                     {
-                                                         foreach($Backups as $record)
-                                                         {
-                                                     ?>
-                                                   <tr class="<?php if ( (time() > strtotime($record->dateDebut. '  - 30  days') && $record->statut != 0 ) )  { echo "alert-bg" ;}  ?>"  >
-                                                     <td><?php echo $record->backupId ?></td>
+                                                   <?php if (!empty($Backups)) {
+                                                       foreach (
+                                                           $Backups
+                                                           as $record
+                                                       ) { ?>
+                                                   <tr class="<?php if (
+                                                       time() >
+                                                           strtotime(
+                                                               $record->dateDebut .
+                                                                   "  - 30  days"
+                                                           ) &&
+                                                       $record->statut != 0
+                                                   ) {
+                                                       echo "alert-bg";
+                                                   } ?>"  >
+                                                     <td><?php echo $record->backupId; ?></td>
                                                      <td>
                                                       
 
-                                                       <b><?php echo date_format(date_create($record->dateFin)  , 'd/m/20y');  ?></b><br>  de <?php echo date_format(date_create($record->heureDebut)  , 'H:i'); ?>  à  <?php echo date_format(date_create($record->heureFin)  , 'H:i'); ?>
+                                                       <b><?php echo date_format(
+                                                           date_create(
+                                                               $record->dateFin
+                                                           ),
+                                                           "d/m/20y"
+                                                       ); ?></b><br>  de <?php echo date_format(
+    date_create($record->heureDebut),
+    "H:i"
+); ?>  à  <?php echo date_format(date_create($record->heureFin), "H:i"); ?>
                                                      </td>
                                                      <td>            
-                                                       <?php echo $record->salle  ?>
+                                                       <?php echo $record->salle; ?>
                                                      </td>
                                                      <td>
-                                                       <b><?php echo $record->type ?> : </b> <br><?php echo $record->titre ?>
+                                                       <b><?php echo $record->type; ?> : </b> <br><?php echo $record->titre; ?>
                                                      </td>
                                                      
                                                      
                                                      <td>
-                                                       <?php if ($record->cuisine == 1 ){ echo '<i class="fas fa-utensils"></i> Cuisine<br>';}  ?>
-                                                       <?php if ($record->tableCM == 1 ){ echo '<i class="fa fa-file" ></i> contrat de mariage<br>';}  ?>
-                                                       <?php if ($record->voiture != 0 ){ echo '<i class="fa fa-car" ></i> Voiture<br>';}  ?>
-                                                       <?php if ($record->troupe != 0  ){ echo '<i class="fa fa-music" ></i> troupe<br>';}  ?>
-                                                       <?php if ($record->photographe != 0  ){ echo '<i class="fa fa-camera"></i> photographe<br>';}  ?>
+                                                       <?php if (
+                                                           $record->cuisine == 1
+                                                       ) {
+                                                           echo '<i class="fas fa-utensils"></i> Cuisine<br>';
+                                                       } ?>
+                                                       <?php if (
+                                                           $record->tableCM == 1
+                                                       ) {
+                                                           echo '<i class="fa fa-file" ></i> contrat de mariage<br>';
+                                                       } ?>
+                                                       <?php if (
+                                                           $record->voiture != 0
+                                                       ) {
+                                                           echo '<i class="fa fa-car" ></i> Voiture<br>';
+                                                       } ?>
+                                                       <?php if (
+                                                           $record->troupe != 0
+                                                       ) {
+                                                           echo '<i class="fa fa-music" ></i> troupe<br>';
+                                                       } ?>
+                                                       <?php if (
+                                                           $record->photographe !=
+                                                           0
+                                                       ) {
+                                                           echo '<i class="fa fa-camera"></i> photographe<br>';
+                                                       } ?>
 
                                                      </td>
                                                      <td >
-                                                          <?php echo $record->prix ?>
+                                                          <?php echo $record->prix; ?>
                                                      </td>
                                                      <td style="text-align:center;"> 
-                                                       <?php if ($record->statut == 0 ) { ?>
+                                                       <?php if (
+                                                           $record->statut == 0
+                                                       ) { ?>
                                                        <span class="badge badge-pill badge-success"><i class="metismenu-icon pe-7s-check"></i></span>
                                                        <?php } ?>    
-                                                       <?php if ($record->statut == 1 ) { ?>
+                                                       <?php if (
+                                                           $record->statut == 1
+                                                       ) { ?>
                                                        <span class="badge badge-pill badge-warning"><i class="metismenu-icon pe-7s-stopwatch"></i></span>
                                                        <?php } ?>
-                                                       <?php if ($record->statut == 2 ) { ?>
+                                                       <?php if (
+                                                           $record->statut == 2
+                                                       ) { ?>
                                                        <span class="badge badge-pill badge-dark"></span>
                                                        <?php } ?>
-                                                       <?php if ($record->statut == 3 ) { ?>
+                                                       <?php if (
+                                                           $record->statut == 3
+                                                       ) { ?>
                                                        <span class="badge badge-pill badge-danger"><i class="metismenu-icon pe-7s-close"></i></span>
                                                        <?php } ?>
                                                      </td>
                                                      <td>
-                                                       <?php echo $record->editDTM ?> Par                                                         
-                                                       <img width="30" class="rounded-circle" src="https://www.queenpark.tn/assets/img/teams/<?php echo $record->avatar ?>" alt="<?php echo $record->recuPar ?>"> 
+                                                       <?php echo $record->editDTM; ?> Par                                                         
+                                                       <img width="30" class="rounded-circle" src="https://www.queenpark.tn/assets/img/teams/<?php echo $record->avatar; ?>" alt="<?php echo $record->recuPar; ?>"> 
                                                      </td>
                                                    </tr>
-                                                   <?php
-                                                     } 
-                                                     }
-                                                     ?>
+                                                   <?php }
+                                                   } ?>
                                                  </tbody>
                                               
                                                </table>
@@ -256,7 +329,7 @@
                <div class="d-flex justify-content-between align-items-center mb-2">
                   <h6 class="card-title mb-0"></h6>
                   <div class="dropdown mb-2">
-                     <?php if(!empty($contratInfo)) {  ?>
+                     <?php if (!empty($contratInfo)) { ?>
                      <button id="printC" class="dropdown-item d-flex align-items-center"  onclick="print()">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-printer icon-sm mr-2">
                            <polyline points="6 9 6 2 18 2 18 9"></polyline>
@@ -265,15 +338,15 @@
                         </svg>
                         <span   >Imprimer</span>
                      </button>
-                     <?php }  ?>
+                     <?php } ?>
                   </div>
                </div>
-               <?php if(!empty($contratInfo)) {  ?>
+               <?php if (!empty($contratInfo)) { ?>
                <div class="contrat" id="contrat"  >
                   <div class="row ">
                      <div class="col-md-2"> </div>
                      <div class="col-md-8">
-                        <p style="font-size: 25; text-align: center;" >Contrat de location de salle des fêtes <br> <b><?php echo $contratInfo->salle ; ?></b></p>
+                        <p style="font-size: 25; text-align: center;" >Contrat de location de salle des fêtes <br> <b><?php echo $contratInfo->salle; ?></b></p>
                      </div>
                      <div class="col-md-2"> </div>
                   </div>
@@ -282,21 +355,28 @@
                   <br>
                   Entre <b>Ste Queen Park</b> Mc 34 Route Mornag Boujardgha Ben Arous 2090, désigné ci-après « le bailleur » <br>
                   <b>ET</b> <br>
-                  <b><?php echo $contratInfo->nom.' '.$contratInfo->prenom ;?></b> titulaire de la carte d’identité nationale <b>N°<?php echo $contratInfo->cin ;?></b> délivrée le <b><?php echo $contratInfo->dateCin ;?></b> et demeurant à <b>N°<?php echo $contratInfo->n.' '.$contratInfo->rue.' '.$contratInfo->ville.' ' ;?></b>   désigné ci-après « le locataire »  <br><br> 
+                  <b><?php echo $contratInfo->nom .
+                      " " .
+                      $contratInfo->prenom; ?></b> titulaire de la carte d’identité nationale <b>N°<?php echo $contratInfo->cin; ?></b> délivrée le <b><?php echo $contratInfo->dateCin; ?></b> et demeurant à <b>N°<?php echo $contratInfo->n .
+    " " .
+    $contratInfo->rue .
+    " " .
+    $contratInfo->ville .
+    " "; ?></b>   désigné ci-après « le locataire »  <br><br> 
                   <br>
                   <hr>
                   <h6>ARTICLE 1 – DESIGNATION DES LOCAUX :</h6>
-                  Les locaux concernés par la location incluent la salle de réception <?php echo $contratInfo->salle ; ?> , ainsi que les dépendances listées ci-dessous : Cuisines, WC, Vestiaires, parking.<br><br>
+                  Les locaux concernés par la location incluent la salle de réception <?php echo $contratInfo->salle; ?> , ainsi que les dépendances listées ci-dessous : Cuisines, WC, Vestiaires, parking.<br><br>
                   <hr>
                   <h6>ARTICLE 2 – EQUIPEMENTS :</h6>
                   Le matériel mis à disposition doit être rendu propre et en bon état de fonctionnement. Il fera l’objet d’un inventaire lors des états des lieux d’entrée et de sortie de la salle. <br><br>
                   <hr>
                   <h6>ARTICLE 3 – DESTINATION DES LIEUX LOUES :</h6>
-                  La salle est louée pour accueillir l’évènement suivant : <?php echo $contratInfo->type ;?> <br><br>
+                  La salle est louée pour accueillir l’évènement suivant : <?php echo $contratInfo->type; ?> <br><br>
                   <hr>
                   <h6>ARTICLE 4 – DUREE::</h6>
-                  Débute le <b><?php echo $contratInfo->dateDebut ;?> </b> , à <b><?php echo $contratInfo->heureDebut ;?></b> <br>
-                  Elle prend fin le <b><?php echo $contratInfo->dateFin ;?></b>  , à <b><?php echo $contratInfo->heureFin ;?></b> <br>
+                  Débute le <b><?php echo $contratInfo->dateDebut; ?> </b> , à <b><?php echo $contratInfo->heureDebut; ?></b> <br>
+                  Elle prend fin le <b><?php echo $contratInfo->dateFin; ?></b>  , à <b><?php echo $contratInfo->heureFin; ?></b> <br>
                   <br>
                   Le transfert de responsabilité s'effectue à la date et l’heure fixée ci-dessus. Le locataire est tenu de se présenter 
                   1 Heure avant l’heure de début de location pour procéder à l’état des lieux d’entrée. La salle doit être vidée et rendue dans son état initial à la date et l’heure de fin de location fixée ci-dessus. Le locataire est tenu de rester 20 minutes après la fin de location pour procéder à l’état des lieux de sortie. <br><br>
@@ -323,8 +403,8 @@
                   - Le bailleur se réserve le droit d'interdire l'accès aux salles ou de mettre fin à la location s'il apparaissait que la manifestation organisée ne correspond pas à celle décrite dans le présent contrat. <br><br>
                   <hr>
                   <h6>ARTICLE 9 – PRIX DE LA LOCATION :</h6>
-                  La présente location est consentie et acceptée moyennant le versement d’un loyer de <b><?php echo $contratInfo->prix ;?> DT</b>, payable au plus tard <b style="color: red"> 30 jours avant la date de début de location.</b> <br>
-                  Il est demandé au locataire de verser <b style="color: green "><?php echo $contratInfo->avance ;?> DT  dès la signature du contrat.</b><br>
+                  La présente location est consentie et acceptée moyennant le versement d’un loyer de <b><?php echo $contratInfo->prix; ?> DT</b>, payable au plus tard <b style="color: red"> 30 jours avant la date de début de location.</b> <br>
+                  Il est demandé au locataire de verser <b style="color: green "><?php echo $contratInfo->avance; ?> DT  dès la signature du contrat.</b><br>
                   Le mode de paiement accepté est en espèces.<br>
                   <b>NB :<br>1. dans tous les cas le montant versé ne sera pas rembourser (le client  peut seulement reporter sa date de reservation) </b> <br>
                   <b>2. dans le cas de report du date de la reservation ce contrat sera systèmatiquement annulé et un autre sera signer avec une nouvelle négociation du montant tout en respectant le montant deja versé  </b> <br>
@@ -340,7 +420,7 @@
                   <br>
                   <p style="text-align: right;">يرجى ذكر العنوان أدناه في دعوات حفلتكم : 
                      <br>
-                     <b>   "<?php echo $contratInfo->salle ; ?>&nbsp;فضاء  "</b> 
+                     <b>   "<?php echo $contratInfo->salle; ?>&nbsp;فضاء  "</b> 
                      <br> 
                      بوجردقة طريق مرناق      Centre Queen Park
                   </p>
@@ -371,13 +451,13 @@
                               Réference
                            </td>
                            <td>
-                              QP<?php echo  $contratInfo->cin ; ?>/<?php echo  $contratInfo->reservationId ; ?>/<?php echo  $contratInfo->createdBy ; ?>
+                              QP<?php echo $contratInfo->cin; ?>/<?php echo $contratInfo->reservationId; ?>/<?php echo $contratInfo->createdBy; ?>
                            </td>
                            <td width="30 %">
                               Prix
                            </td>
                            <td>
-                              <b ><?php echo $contratInfo->prix ;?></b>
+                              <b ><?php echo $contratInfo->prix; ?></b>
                            </td>
                         </tr>
                         <tr>
@@ -385,10 +465,20 @@
                               Event & Horaire
                            </td>
                            <td>
-                              <?php echo $contratInfo->type ;?> à l'espace  <b> <?php echo $contratInfo->salle ; ?> </b> <br>
-                              <?php echo $contratInfo->titre ;?> <br>
-                              <b>Debut : </b><?php $date = new DateTime($projectInfo->dateDebut); echo $date->format('d/m/Y').' '.$projectInfo->heureDebut;  ?><br>
-                              <b>Fin : </b><?php $date = new DateTime($projectInfo->dateFin); echo $date->format('d/m/Y').' '.$projectInfo->heureFin;  ?>          
+                              <?php echo $contratInfo->type; ?> à l'espace  <b> <?php echo $contratInfo->salle; ?> </b> <br>
+                              <?php echo $contratInfo->titre; ?> <br>
+                              <b>Debut : </b><?php
+                              $date = new DateTime($projectInfo->dateDebut);
+                              echo $date->format("d/m/Y") .
+                                  " " .
+                                  $projectInfo->heureDebut;
+                              ?><br>
+                              <b>Fin : </b><?php
+                              $date = new DateTime($projectInfo->dateFin);
+                              echo $date->format("d/m/Y") .
+                                  " " .
+                                  $projectInfo->heureFin;
+                              ?>          
                            </td>
                            <td width="30 %">
                               Avance 
@@ -396,11 +486,12 @@
                            </td>
                            <td>
                               <b style="color: green ">
-                              <?php echo $contratInfo->avance ;?>
+                              <?php echo $contratInfo->avance; ?>
                               </b>
                               <br>
                               <b style="color: red ">
-                              <?php echo $contratInfo->prix - $contratInfo->avance ;?>
+                              <?php echo $contratInfo->prix -
+                                  $contratInfo->avance; ?>
                               </b>
                            </td>
                         </tr>
@@ -409,8 +500,12 @@
                               Options : 
                            </td>
                            <td>
-                              <?php if ($projectInfo->cuisine == 1 ){ echo "Cuisine (Disponible le jour de l'évenement de 09h) <br>";}  ?>
-                              <?php if ($projectInfo->tableCM == 1 ){ echo "Table contrat de mariage";}  ?>
+                              <?php if ($projectInfo->cuisine == 1) {
+                                  echo "Cuisine (Disponible le jour de l'évenement de 09h) <br>";
+                              } ?>
+                              <?php if ($projectInfo->tableCM == 1) {
+                                  echo "Table contrat de mariage";
+                              } ?>
                            </td>
                            <td width="30 %">
                            </td>
@@ -423,12 +518,17 @@
                               Nombre de place
                            </td>
                            <td>
-                              <?php echo $contratInfo->nbPlace ;?>
+                              <?php echo $contratInfo->nbPlace; ?>
                            </td>
                            <td width="30 %">
                            </td>
                            <td>
-                              <?php  echo date('d/m/Y', strtotime($contratInfo->dateDebut. '  - 30  days'))  ; ?>
+                              <?php echo date(
+                                  "d/m/Y",
+                                  strtotime(
+                                      $contratInfo->dateDebut . "  - 30  days"
+                                  )
+                              ); ?>
                            </td>
                         </tr>
                      </tbody>
@@ -436,7 +536,7 @@
                   <br>
                   <p style="text-align: center;">Queen Park - Mc 34 Route  Mornag boujardga 2090 - mobile : 54 419 959  - 79 352 153 - 58 465 249 </p>
                </div>
-               <?php } else{ echo '<h5 style="color : red" >Pour avoir votre contrat il faut verser une avance superieur à 1000DT </h5>' ;}  ?>
+               <?php } else {echo '<h5 style="color : red" >Pour avoir votre contrat il faut verser une avance superieur à 1000DT </h5>';} ?>
                <!-- Modal -->
             </div>
          </div>
@@ -452,10 +552,10 @@
                         </div>
                      </div>
                      <div>
-                        <h5 class="menu-header-title"><?php echo $clientInfo->name ?></h5>
-                        <h6 class="menu-header-subtitle"><b>CIN :</b> <?php echo $clientInfo->cin ?></h6>
-                        <h6 class="menu-header-subtitle"><b>Mobile :</b> <?php echo $clientInfo->mobile ?> - <?php echo $clientInfo->mobile2 ?></h6>
-                        <h6 class="menu-header-subtitle"><?php echo $clientInfo->n ?> <?php echo $clientInfo->rue ?> <?php echo $clientInfo->ville ?> <?php echo $clientInfo->codePostal ?> </h6>
+                        <h5 class="menu-header-title"><?php echo $clientInfo->name; ?></h5>
+                        <h6 class="menu-header-subtitle"><b>CIN :</b> <?php echo $clientInfo->cin; ?></h6>
+                        <h6 class="menu-header-subtitle"><b>Mobile :</b> <?php echo $clientInfo->mobile; ?> - <?php echo $clientInfo->mobile2; ?></h6>
+                        <h6 class="menu-header-subtitle"><?php echo $clientInfo->n; ?> <?php echo $clientInfo->rue; ?> <?php echo $clientInfo->ville; ?> <?php echo $clientInfo->codePostal; ?> </h6>
                      </div>
                      <div class="menu-header-btn-pane pt-1">
                         <button class="btn-icon btn btn-warning btn-sm">View Complete Profile</button>
@@ -467,7 +567,7 @@
                <h6 class="text-muted text-uppercase font-size-md opacity-5 font-weight-normal">Paiament</h6>
 
                <ul class="rm-list-borders list-group list-group-flush">
-                  <?php foreach ($paiementInfo as $res ) { ?>
+                  <?php foreach ($paiementInfo as $res) { ?>
                   <li class="list-group-item">
                      <div class="widget-content p-0">
                         <div class="widget-content-wrapper">
@@ -475,12 +575,15 @@
                               <img width="42" class="rounded-circle" src="assets/images/avatars/4.jpg" alt="">
                            </div>
                            <div class="widget-content-left">
-                              <div class="widget-heading"><?php echo $res->libele ?></div>
-                              <div class="widget-subheading"><?php $date = new DateTime($res->createdDate); echo $date->format('d/m/Y H:i');  ?><br> <?php echo $res->name ?></div>
+                              <div class="widget-heading"><?php echo $res->libele; ?></div>
+                              <div class="widget-subheading"><?php
+                              $date = new DateTime($res->createdDate);
+                              echo $date->format("d/m/Y H:i");
+                              ?><br> <?php echo $res->name; ?></div>
                            </div>
                            <div class="widget-content-right">
                               <div class="font-size-xlg text-muted">
-                                 <span> <?php echo $res->valeur ?> DT</span>
+                                 <span> <?php echo $res->valeur; ?> DT</span>
                                  <small class="opacity-5 pr-1">DT</small>
                                  <small class="text-success pl-2">
                                  <i class="fa fa-angle-up "></i>
@@ -491,17 +594,20 @@
                      </div>
                   </li>
                   <?php } ?>
-                  <?php if( $totalPaiement->valeur > 0 ){  ?>
+                  <?php
+                  if ($totalPaiement->valeur > 0) { ?>
                      <form style="display: none; border: 2px " 
                         id="addPayementForm" 
-                        action="<?php echo base_url() ?>Reservation/addPaiement/<?php echo $projectInfo->reservationId ?>" 
+                        action="<?php echo base_url(); ?>Reservation/addPaiement/<?php echo $projectInfo->reservationId; ?>" 
                         method="post"  >
-                  <?php } if ($totalPaiement->valeur ==  0 ) {  ?>
+                  <?php }
+                  if ($totalPaiement->valeur == 0) { ?>
                      <form style="display: none; border: 2px " 
                         id="addPayementForm" 
-                        action="<?php echo base_url() ?>Reservation/generateContrat/<?php echo $projectInfo->reservationId ?>" 
+                        action="<?php echo base_url(); ?>Reservation/generateContrat/<?php echo $projectInfo->reservationId; ?>" 
                         method="post"  >
-                  <?php } ?>   
+                  <?php }
+                  ?>   
                      <hr>
                     <li class="list-group-item">
                      <div class="widget-content p-0">
@@ -516,7 +622,8 @@
                            <div class="widget-content-right">
                               <div class="font-size-xlg text-muted">
                                  <span> 
-                                    <input type="number"  placeholder="DT" value="0" min="0" max="<?php echo ($projectInfo->prix - $totalPaiement->valeur ) ?>" name="avance" > 
+                                    <input type="number"  placeholder="DT" value="0" min="0" max="<?php echo $projectInfo->prix -
+                                        $totalPaiement->valeur; ?>" name="avance" > 
                                    
                                  </span>
                                  <small class="opacity-5 pr-1">DT</small>
@@ -534,12 +641,13 @@
                   </form>
                </ul>
                <hr>
-               <span style="float: right">Prix : <?php echo $projectInfo->prix  ?> DT</span><br>
-               <span style="float: right">Payé : <?php echo $totalPaiement->valeur  ?> DT</span><br>
-               <span style="float: right">Reste : <?php echo ($projectInfo->prix - $totalPaiement->valeur ) ?> DT</span>
+               <span style="float: right">Prix : <?php echo $projectInfo->prix; ?> DT</span><br>
+               <span style="float: right">Payé : <?php echo $totalPaiement->valeur; ?> DT</span><br>
+               <span style="float: right">Reste : <?php echo $projectInfo->prix -
+                   $totalPaiement->valeur; ?> DT</span>
             </div>
             <div class="text-center d-block card-footer">
-               <button class="btn btn-warning" id="addPayement" >Ajouter</button> <a href="<?php echo base_url() ?>Reservation/recuP/<?php echo $projectInfo->reservationId ?>" class="btn btn-info">Reçu</a>
+               <button class="btn btn-warning" id="addPayement" >Ajouter</button> <a href="<?php echo base_url(); ?>Reservation/recuP/<?php echo $projectInfo->reservationId; ?>" class="btn btn-info">Reçu</a>
             </div>
          </div>
       </div>
