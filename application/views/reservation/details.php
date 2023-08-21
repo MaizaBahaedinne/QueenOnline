@@ -162,7 +162,7 @@
                                                      <th width="10%" >Espace</th>
                                                      <th width="10%">titre</th>
                                                      <th >Options</th>
-                                                     <th >Contact</th>
+                                                     <th >Prix</th>
                                                      <th width="5%">Statut</th>
 
                                                      <th width="5%" >date et par</th>
@@ -198,16 +198,8 @@
                                                        <?php if ($record->photographe != 0  ){ echo '<i class="fa fa-camera"></i> photographe<br>';}  ?>
 
                                                      </td>
-                                                     <td  onclick='tdclick(this.id)' id="<?php echo $record->reservationId ?>" >
-                                                       <?php if($record->clientName != '') { ?>
-                                                       <button type="button" class="btn" data-toggle="tooltip" data-html="true" data-placement="bottom" 
-                                                         title="<h6>Mobile :<small>  <a href=tel:<?php echo $record->mobile  ?> > <?php echo $record->mobile  ?> </a> </small> </h6>">
-                                                       <?php echo $record->clientName  ?>
-                                                       </button>
-                                                       <?php } ?>
-                                                       <?php if($record->clientName == '') { ?>
-                                                       <a href="<?php echo base_url()?>">Ajouter un client</a>                            
-                                                       <?php } ?>
+                                                     <td >
+                                                          <?php echo $record->prix ?>
                                                      </td>
                                                      <td style="text-align:center;"> 
                                                        <?php if ($record->statut == 0 ) { ?>
