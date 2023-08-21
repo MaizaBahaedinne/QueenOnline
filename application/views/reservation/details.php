@@ -158,9 +158,10 @@
              </div>
             <div class="card-body">
                <?php  echo $projectInfo->noteAdmin ;  ?>
-             </div>
-             <hr>
+               <hr>
              <?php  count($Backups) ;   ?> changements
+             </div>
+             
                   
          </div>
           
