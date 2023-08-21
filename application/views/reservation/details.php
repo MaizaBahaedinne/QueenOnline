@@ -82,6 +82,11 @@
                <?php }   ?>
               
              </div>
+             <?php if ($projectInfo->photographe != 0 ){ ?> 
+               <div class="card-footer">
+                  <a style="color: white" href="<?php echo base_url() ?>Photographe/view/<?php echo $projectInfo->photographe ?>"  class="btn btn-success btn-block">Details</a> 
+               </div>
+               <?php }   ?>
          </div>
           
            
@@ -129,8 +134,12 @@
                <h5>Note</h5>
              </div>
             <div class="card-body">
-            <?php  echo $projectInfo->noteAdmin ;  ?>
+               <?php  echo $projectInfo->noteAdmin ;  ?>
              </div>
+             <hr>
+             <?php  foreach ($Backups as $backup ) {   ?>
+                  
+             <?php  }  ?>
          </div>
           
            
