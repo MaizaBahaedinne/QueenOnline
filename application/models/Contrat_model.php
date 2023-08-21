@@ -56,7 +56,7 @@ class Contrat_model extends CI_Model
     function contratInfo($resId)
     {
        $this->db->select('BaseTbl.contratID , BaseTbl.reservationID  , BaseTbl.createdDate , BaseTbl.createdBy ,  BaseTbl.deadline , Client.name clientName , Locataire.name locataireName , 
-           Reservation.titre , Reservation.dateDebut , Reservation.heureDebut , Reservation.dateFin , Reservation.heureFin , Reservation.type, Reservation.prix, Salles.nom salle , Avance.valeur avance , Reservation.nbPlace , Reservation.reservationId , Reservation.voiture , Reservation.troupe , Reservation.cuisine , Reservation.photographe ,
+           Reservation.titre , Reservation.dateDebut , Reservation.heureDebut , Reservation.dateFin , Reservation.heureFin , Reservation.type, Reservation.prix, Salles.nom salle , Avance.valeur avance , Reservation.nbPlace , Reservation.reservationId , Reservation.voiture , Reservation.troupe , Reservation.cuisine , Reservation.photographe , Reservation.tableCM
 
             Client.nom , Client.prenom , Client.cin , Client.dateCin , Client.n , Client.rue  , Client.ville  , Client.codePostal ,
 
