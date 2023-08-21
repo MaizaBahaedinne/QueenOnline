@@ -140,7 +140,7 @@
                <?php  echo $projectInfo->noteAdmin ;  ?>
                <hr>
              <?php if( count($Backups) > 0 ) { echo " <button type='button' class='btn btn-primary  btn-block' data-toggle='modal' data-target='#changements'>
-                          ".count($Backups)." changements</button>" ;  } ?> 
+                          Historique (".count($Backups).") </button>" ;  } ?> 
 
 
                         <div class="modal fade bd-example-modal-lg" id="changements" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -225,7 +225,7 @@
                                                      </td>
                                                      <td>
                                                        <?php echo $record->editDTM ?> Par                                                         
-                                                       <img width="30" class="rounded-circle" src="https://www.queenpark.tn/assets/img/teams/<?php echo $record->avatar ?>" alt=""> <?php echo $record->recuPar ?>
+                                                       <img width="30" class="rounded-circle" src="https://www.queenpark.tn/assets/img/teams/<?php echo $record->avatar ?>" alt="<?php echo $record->recuPar ?>"> 
                                                      </td>
                                                    </tr>
                                                    <?php
