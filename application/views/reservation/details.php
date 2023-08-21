@@ -244,8 +244,7 @@
                                                        <?php } ?>
                                                      </td>
                                                      <td>
-                                                       <?php echo $record->createdDtm ?>
-                                                         
+                                                       <?php echo $record->editDTM ?> Par                                                         
                                                        <img width="30" class="rounded-circle" src="https://www.queenpark.tn/assets/img/teams/<?php echo $record->avatar ?>" alt=""> <?php echo $record->recuPar ?>
                                                      </td>
                                                    </tr>
