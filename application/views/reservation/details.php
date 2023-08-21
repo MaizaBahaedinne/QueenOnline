@@ -384,7 +384,6 @@
                                                        <?php } ?>
                                                      </td>
                                                      <td>
-                                                       <?php echo $contratInfo->editDTM; ?> Par                                                         
                                                        <img width="30" class="rounded-circle" src="https://www.queenpark.tn/assets/img/teams/<?php echo $contratInfo->avatar; ?>" alt="<?php echo $contratInfo->recuPar; ?>"> 
                                                      </td>
                                                    </tr>
