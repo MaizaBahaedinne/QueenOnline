@@ -272,12 +272,14 @@ class Reservation extends BaseController
             $data['clientInfo'] = $this->user_model->getUserInfo($data['projectInfo']->clientId);
             $data['contratInfo'] = $this->contrat_model->contratInfo($resId);
             $data['paiementInfo'] = $this->paiement_model->paiementListingbyReservation($resId) ;
-            $data['totalPaiement'] = $this->paiement_model->getTotal($resId) ;           
+            $data['totalPaiement'] = $this->paiement_model->getTotal($resId) ; 
+            $data['Backup'] = $this->reservation_model->ReservationBackupListing($resId)          
             $data['userID'] = $this->vendorId ; 
 
 
              $data['voiture'] = $this->voiture_model->ReservationInfo($data['projectInfo']->voiture);
              $data['photographe'] = $this->photographe_model->ReservationInfo($data['projectInfo']->photographe);
+             $data['troupe'] = $this->troupe_model->ReservationInfo($resId);
              $data['prestation'] = $this->prestation_model->ReservationInfo($resId); 
 
 

@@ -65,6 +65,28 @@ class Reservation_model extends CI_Model
 
 
 
+     /**
+     * This function is used to get the user listing count
+     * @param string $searchText : This is optional search text
+     * @param number $page : This is pagination offset
+     * @param number $segment : This is pagination limit
+     * @return array $result : This is result
+     */
+    function ReservationBackupListing($resId  )
+    {
+        $this->db->select('BaseTbl.*');
+        $this->db->from('tbl_reservation_backup as BaseTbl');
+        
+    
+        $this->db->where('BaseTbl.reservationID= ', $resId );
+        $query = $this->db->get();
+        
+        $result = $query->result();        
+        return $result;
+    }
+
+
+
 /**
      * This function is used to get the user listing count
      * @param string $searchText : This is optional search text
