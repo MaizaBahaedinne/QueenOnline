@@ -173,7 +173,7 @@
                                 </button>
                               </div>
                               <div class="modal-body">
-                                 modal 1
+                                 <?php  foreach($Backups as $backup) { echo "<li>".$backup->dateDebut."</li>" ;  }   ?>
                               </div>
                               <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -182,7 +182,7 @@
                             </div>
                           </div>
                         </div>
-             <?php  foreach($Backups as $backup) { echo "<li>".$backup->dateDebut."</li>" ;  }   ?>
+             
              </div>
              
                   
