@@ -191,7 +191,7 @@
                                                    <?php
                                                      if(!empty($Backups))
                                                      {
-                                                         <?php  foreach($Backups as $record) { ?>
+                                                         foreach($Backups as $record)
                                                          {
                                                      ?>
                                                    <tr class="<?php if ( (time() > strtotime($record->dateDebut. '  - 30  days') && $record->statut != 0 ) )  { echo "alert-bg" ;}  ?>"  >
