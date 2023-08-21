@@ -163,7 +163,7 @@
                           ".count($Backups)." changements</button>" ;  } ?> 
 
 
-                        <div class="modal fade" id="changements" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade bd-example-modal-lg" id="changements" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                           <div class="modal-dialog" role="document">
                             <div class="modal-content">
                               <div class="modal-header">
@@ -184,7 +184,8 @@
                                                      <th >Options</th>
                                                      <th >Contact</th>
                                                      <th width="5%">Statut</th>
-                                                     <th width="5%" >Action</th>
+
+                                                     <th width="5%" >date et par</th>
                                                    </tr>
                                                  </thead>
                                                  <tbody> 
@@ -243,14 +244,9 @@
                                                        <?php } ?>
                                                      </td>
                                                      <td>
-                                                       <div class="btn-group" role="group" > 
-                                                       <a class="btn" href="<?php echo base_url() ?>Reservation/view/<?php echo $record->reservationId ?>" >
-                                                         <i class="fa fa-eye"></i>
-                                                       </a>
-                                                       <a class="btn" href="<?php echo base_url() ?>Reservation/edit/<?php echo $record->reservationId ?>" >
-                                                         <i class="fas fa-pencil-alt"></i>
-                                                       </a>
-                                                     </div>
+                                                       <?php echo $record->createdDtm ?>
+                                                         
+                                                       <img width="30" class="rounded-circle" src="https://www.queenpark.tn/assets/img/teams/<?php echo $record->avatar ?>" alt=""> <?php echo $record->recuPar ?>
                                                      </td>
                                                    </tr>
                                                    <?php
