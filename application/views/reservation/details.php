@@ -177,7 +177,7 @@
                                             <table id="example" style="width: 100%;"  class="table  table-hover table-striped table-bordered " cellspacing="0" >
                                                  <thead>
                                                    <tr>
-                                                     
+                                                     <th width="10%" >ID</th>
                                                      <th width="10%" >Date</th>
                                                      <th width="10%" >Espace</th>
                                                      <th width="10%">titre</th>
@@ -196,7 +196,7 @@
                                                          {
                                                      ?>
                                                    <tr class="<?php if ( (time() > strtotime($record->dateDebut. '  - 30  days') && $record->statut != 0 ) )  { echo "alert-bg" ;}  ?>"  >
-                                                     
+                                                     <td><?php echo $record->backupId ?></td>
                                                      <td>
                                                       
 
