@@ -243,7 +243,7 @@ class Reservation extends BaseController
                 $nextyear = date("Y-m-d", strtotime($projectInfo->dateDebut . "  - 30  days"));
                 $contratInfo = ["createdDate" => date("Y-m-d H:i:s"), "reservationID" => $resId, "avanceId" => $avanceId, "createdBy" => $this->vendorId, "deadline" => $nextyear, "statut" => 0];
                 $this->contrat_model->addNewContrat($contratInfo);
-                $reservationInfo = ["noteAdmin" => $noteAdmin, "statut" => 1];
+                $reservationInfo = ["noteAdmin" => "Generation de contrat <br>".$noteAdmin, "statut" => 1];
                 $this->reservation_model->editReservation($reservationInfo, $resId);
                 $ReservationInfo = $this->reservation_model->ReservationInfo($resId);
                 $clientInfo = $this->client_model->getClientInfo($ReservationInfo->clientId);
@@ -268,7 +268,7 @@ class Reservation extends BaseController
                 $this->paiement_model->addNewPaiement($paiementInfo);
                 $totalPaiement = $this->paiement_model->getTotal($resId);
                 $projectInfo = $this->reservation_model->ReservationInfo($resId);
-                $reservationInfo = ["noteAdmin" => $noteAdmin, "statut" => 1];
+                $reservationInfo = ["noteAdmin" => "Paiement de partie de  <br>".$noteAdmin, "statut" => 1];
                 $HediMobile = "98552446";
                 $mySms = $this->name . " a réçu (" . $avance . " DT) pour la reservation de " . $ReservationInfo->salle . " pour le " . $ReservationInfo->dateDebut;
                 $this->sendSMS("216" . $HediMobile, $mySms);
@@ -279,7 +279,7 @@ class Reservation extends BaseController
                         $myMobile = $clientInfo->mobile;
                         $mySms = "Bonjour " . $clientInfo->name . ", votre reservation de la salle (" . $ReservationInfo->salle . ") pour le (" . $ReservationInfo->dateDebut . ") a été validée on vous souhaite une belle cérémonie.";
                         $this->sendSMS("216" . $myMobile, $mySms);
-                        $reservationInfo = ["noteAdmin" => $noteAdmin, "statut" => 0];
+                        $reservationInfo = ["noteAdmin" => "Paiement de reste  <br>".$noteAdmin, "statut" => 0];
                 }
                 $this->reservation_model->editReservation($reservationInfo, $resId);
                 redirect("Reservation/view/" . $resId);
