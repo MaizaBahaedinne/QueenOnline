@@ -159,7 +159,7 @@
             <div class="card-body">
                <?php  echo $projectInfo->noteAdmin ;  ?>
                <hr>
-             <?php  count($Backups) ;   ?> changements
+             <?php if( count($Backups) > 0 ) { echo count($Backups)." changements" ;  } ?> 
              <?php  foreach($Backups as $backup) { echo "<li>".$backup->dateDebut."</li>" ;  }   ?>
              </div>
              
