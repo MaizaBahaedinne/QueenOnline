@@ -224,9 +224,9 @@
                                                            ),
                                                            "d/m/20y"
                                                        ); ?></b><br>  de <?php echo date_format(
-    date_create($record->heureDebut),
-    "H:i"
-); ?>  à  <?php echo date_format(date_create($record->heureFin), "H:i"); ?>
+                                                                   date_create($record->heureDebut),
+                                                                   "H:i"
+                                                                    ); ?>  à  <?php echo date_format(date_create($record->heureFin), "H:i"); ?>
                                                      </td>
                                                      <td>            
                                                        <?php echo $record->salle; ?>
@@ -297,6 +297,97 @@
                                                    </tr>
                                                    <?php }
                                                    } ?>
+                                                <tr class="<?php if (
+                                                       time() >
+                                                           strtotime(
+                                                               $contratInfo->dateDebut .
+                                                                   "  - 30  days"
+                                                           ) &&
+                                                       $contratInfo->statut != 0
+                                                   ) {
+                                                       echo "alert-bg";
+                                                   } ?>"  >
+                                                     <td><?php echo $contratInfo->backupId; ?></td>
+                                                     <td>
+                                                      
+
+                                                       <b><?php echo date_format(
+                                                           date_create(
+                                                               $contratInfo->dateFin
+                                                           ),
+                                                           "d/m/20y"
+                                                       ); ?></b><br>  de <?php echo date_format(
+                                                                   date_create($contratInfo->heureDebut),
+                                                                   "H:i"
+                                                                    ); ?>  à  <?php echo date_format(date_create($contratInfo->heureFin), "H:i"); ?>
+                                                     </td>
+                                                     <td>            
+                                                       <?php echo $contratInfo->salle; ?>
+                                                     </td>
+                                                     <td>
+                                                       <b><?php echo $contratInfo->type; ?> : </b> <br><?php echo $contratInfo->titre; ?>
+                                                     </td>
+                                                     
+                                                     
+                                                     <td>
+                                                       <?php if (
+                                                           $contratInfo->cuisine == 1
+                                                       ) {
+                                                           echo '<i class="fas fa-utensils"></i> Cuisine<br>';
+                                                       } ?>
+                                                       <?php if (
+                                                           $contratInfo->tableCM == 1
+                                                       ) {
+                                                           echo '<i class="fa fa-file" ></i> contrat de mariage<br>';
+                                                       } ?>
+                                                       <?php if (
+                                                           $contratInfo->voiture != 0
+                                                       ) {
+                                                           echo '<i class="fa fa-car" ></i> Voiture<br>';
+                                                       } ?>
+                                                       <?php if (
+                                                           $contratInfo->troupe != 0
+                                                       ) {
+                                                           echo '<i class="fa fa-music" ></i> troupe<br>';
+                                                       } ?>
+                                                       <?php if (
+                                                           $contratInfo->photographe !=
+                                                           0
+                                                       ) {
+                                                           echo '<i class="fa fa-camera"></i> photographe<br>';
+                                                       } ?>
+
+                                                     </td>
+                                                     <td >
+                                                          <?php echo $contratInfo->prix; ?>
+                                                     </td>
+                                                     <td style="text-align:center;"> 
+                                                       <?php if (
+                                                           $contratInfo->statut == 0
+                                                       ) { ?>
+                                                       <span class="badge badge-pill badge-success"><i class="metismenu-icon pe-7s-check"></i></span>
+                                                       <?php } ?>    
+                                                       <?php if (
+                                                           $contratInfo->statut == 1
+                                                       ) { ?>
+                                                       <span class="badge badge-pill badge-warning"><i class="metismenu-icon pe-7s-stopwatch"></i></span>
+                                                       <?php } ?>
+                                                       <?php if (
+                                                           $contratInfo->statut == 2
+                                                       ) { ?>
+                                                       <span class="badge badge-pill badge-dark"></span>
+                                                       <?php } ?>
+                                                       <?php if (
+                                                           $contratInfo->statut == 3
+                                                       ) { ?>
+                                                       <span class="badge badge-pill badge-danger"><i class="metismenu-icon pe-7s-close"></i></span>
+                                                       <?php } ?>
+                                                     </td>
+                                                     <td>
+                                                       <?php echo $contratInfo->editDTM; ?> Par                                                         
+                                                       <img width="30" class="rounded-circle" src="https://www.queenpark.tn/assets/img/teams/<?php echo $contratInfo->avatar; ?>" alt="<?php echo $contratInfo->recuPar; ?>"> 
+                                                     </td>
+                                                   </tr>
                                                  </tbody>
                                               
                                                </table>
