@@ -307,7 +307,7 @@
                                                    ) {
                                                        echo "alert-bg";
                                                    } ?>"  >
-                                                     <td><?php echo $contratInfo->backupId; ?></td>
+                                                     <td></td>
                                                      <td>
                                                       
 
