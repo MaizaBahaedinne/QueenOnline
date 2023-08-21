@@ -160,7 +160,7 @@
                <?php  echo $projectInfo->noteAdmin ;  ?>
              </div>
              <hr>
-             <?php  count($Backups) ;   ?>
+             <?php  count($Backups) ;   ?> changements
                   
          </div>
           
