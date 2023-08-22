@@ -525,10 +525,7 @@
                      <br>
                      <br>                          
                      <br>
-                     <br>
-                     <br>
-                     <br>
-                     <br> 
+                     
                   </div>
                   <table width="100%" class="table  table-hover table-striped table-bordered">
                      <thead>
@@ -610,7 +607,7 @@
                            </td>
                            <td width="30 %">
                            </td>
-                           <td>
+                           <td style="background: lightyellow;" >
                               <?php echo date(
                                   "d/m/Y",
                                   strtotime(
