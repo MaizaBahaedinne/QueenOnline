@@ -439,7 +439,7 @@
                   <div class="row ">
                      <div class="col-md-2"> </div>
                      <div class="col-md-8">
-                        <p style="font-size: 25; text-align: center;" >Contrat de location de salle des fêtes <br> <b><?php echo $contratInfo->salle; ?></b></p>
+                        <p style="font-size: 25; text-align: center;" >Contrat de location de salle des fêtes <br> <?php echo $contratInfo->salle; ?></p>
                      </div>
                      <div class="col-md-2"> </div>
                   </div>

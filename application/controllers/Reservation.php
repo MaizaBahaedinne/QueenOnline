@@ -163,7 +163,7 @@ class Reservation extends BaseController
                         "noteAdmin" => $noteAdmin,
                         "cuisine" => $cuisine,
                         "tableCM" => $tableCM,
-                        "locataireId" => $this->vendorId,
+                        
                 ];
                 $result = $this->reservation_model->editReservation($reservationInfo, $resId);
                 if ($result) {

@@ -359,6 +359,7 @@ class Reservation_model extends CI_Model
         $query = $this->db->get();
         $copie = $query->row();
         $this->db->trans_start();
+        $copie["createdBy"] = $this->vendorId ;
         $this->db->insert('tbl_reservation_backup', $copie);
         $insert_id = $this->db->insert_id();
         $this->db->trans_complete();
