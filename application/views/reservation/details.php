@@ -740,7 +740,10 @@
                    $totalPaiement->valeur; ?> DT</span>
             </div>
             <div class="text-center d-block card-footer">
-               <button class="btn btn-warning" id="addPayement" >Ajouter</button> <a href="<?php echo base_url(); ?>Reservation/recuP/<?php echo $projectInfo->reservationId; ?>" class="btn btn-info">Reçu</a>
+               <?php if ( ($projectInfo->prix - $totalPaiement->valeur ) > 0 ){ ?> 
+                  <button class="btn btn-warning" id="addPayement" >Ajouter</button> 
+               <?php } ?> 
+               <a href="<?php echo base_url(); ?>Reservation/recuP/<?php echo $projectInfo->reservationId; ?>" class="btn btn-info">Reçu</a>
             </div>
          </div>
       </div>
