@@ -450,12 +450,7 @@
                   <b>ET</b> <br>
                   <b><?php echo $contratInfo->nom .
                       " " .
-                      $contratInfo->prenom; ?></b> titulaire de la carte d’identité nationale <b>N°<?php echo $contratInfo->cin; ?></b> délivrée le <b><?php echo $contratInfo->dateCin; ?></b> et demeurant à <b>N°<?php echo $contratInfo->n .
-    " " .
-    $contratInfo->rue .
-    " " .
-    $contratInfo->ville .
-    " "; ?></b>   désigné ci-après « le locataire »  <br><br> 
+                      $contratInfo->prenom; ?></b> titulaire de la carte d’identité nationale <b>N°<?php  echo $contratInfo->cin; ?></b> délivrée le <b><?php echo date_format(date_create($record->dateCin)  , 'd/m/20y'); ?></b> et demeurant à <b>N°<?php echo $contratInfo->n ." ".$contratInfo->rue ." " .$contratInfo->ville ." "; ?></b>   désigné ci-après « le locataire »  <br><br> 
                   <br>
                   <hr>
                   <h6>ARTICLE 1 – DESIGNATION DES LOCAUX :</h6>
@@ -468,8 +463,8 @@
                   La salle est louée pour accueillir l’évènement suivant : <?php echo $contratInfo->type; ?> <br><br>
                   <hr>
                   <h6>ARTICLE 4 – DUREE::</h6>
-                  Débute le <b><?php echo $contratInfo->dateDebut; ?> </b> , à <b><?php echo $contratInfo->heureDebut; ?></b> <br>
-                  Elle prend fin le <b><?php echo $contratInfo->dateFin; ?></b>  , à <b><?php echo $contratInfo->heureFin; ?></b> <br>
+                  Débute le <b><?php echo date_format(date_create($record->dateDebut)  , 'd/m/20y'); ?> </b> , à <b><?php echo $contratInfo->heureDebut; ?></b> <br>
+                  Elle prend fin le <b><?php echo date_format(date_create($record->dateFin)  , 'd/m/20y'); ?></b>  , à <b><?php echo $contratInfo->heureFin; ?></b> <br>
                   <br>
                   Le transfert de responsabilité s'effectue à la date et l’heure fixée ci-dessus. Le locataire est tenu de se présenter 
                   1 Heure avant l’heure de début de location pour procéder à l’état des lieux d’entrée. La salle doit être vidée et rendue dans son état initial à la date et l’heure de fin de location fixée ci-dessus. Le locataire est tenu de rester 20 minutes après la fin de location pour procéder à l’état des lieux de sortie. <br><br>
@@ -511,7 +506,7 @@
                   - Le bailleur ne pourra être tenu de tout dommage causé aux véhicules ou matériel situés sur le parking. <br>
                   <br>          
                   <br>
-                  <p style="text-align: right;">يرجى ذكر العنوان أدناه في دعوات حفلتكم : 
+                  <p style="text-align: right; background: green;">يرجى ذكر العنوان أدناه في دعوات حفلتكم : 
                      <br>
                      <b>   "<?php echo $contratInfo->salle; ?>&nbsp;فضاء  "</b> 
                      <br> 
@@ -641,18 +636,20 @@
                   <div class="menu-header-content">
                      <div class="avatar-icon-wrapper mb-3 avatar-icon-xl">
                         <div class="avatar-icon">
-                           <img src="assets/images/avatars/6.jpg" alt="Avatar 5">
+                        <!--   <img src="assets/images/avatars/6.jpg" alt="Avatar 5"> -->
                         </div>
                      </div>
                      <div>
                         <h5 class="menu-header-title"><?php echo $clientInfo->name; ?></h5>
                         <h6 class="menu-header-subtitle"><b>CIN :</b> <?php echo $clientInfo->cin; ?></h6>
                         <h6 class="menu-header-subtitle"><b>Mobile :</b> <?php echo $clientInfo->mobile; ?> - <?php echo $clientInfo->mobile2; ?></h6>
-                        <h6 class="menu-header-subtitle"><?php echo $clientInfo->n; ?> <?php echo $clientInfo->rue; ?> <?php echo $clientInfo->ville; ?> <?php echo $clientInfo->codePostal; ?> </h6>
+                        <h6 class="menu-header-subtitle"><?php echo $clientInfo->n; ?> <?php echo $clientInfo->rue; ?> <?php echo $clientInfo->ville; ?>  </h6>
                      </div>
+                     <!--
                      <div class="menu-header-btn-pane pt-1">
                         <button class="btn-icon btn btn-warning btn-sm">View Complete Profile</button>
                      </div>
+                     -->
                   </div>
                </div>
             </div>
