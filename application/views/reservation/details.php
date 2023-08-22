@@ -506,7 +506,7 @@
                   - Le bailleur ne pourra être tenu de tout dommage causé aux véhicules ou matériel situés sur le parking. <br>
                   <br>          
                   <br>
-                  <p style="text-align: right; background: green;">يرجى ذكر العنوان أدناه في دعوات حفلتكم : 
+                  <p style="text-align: right; background: lightyellow;">يرجى ذكر العنوان أدناه في دعوات حفلتكم : 
                      <br>
                      <b>   "<?php echo $contratInfo->salle; ?>&nbsp;فضاء  "</b> 
                      <br> 
