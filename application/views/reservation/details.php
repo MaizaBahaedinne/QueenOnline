@@ -450,7 +450,7 @@
                   <b>ET</b> <br>
                   <b><?php echo $contratInfo->nom .
                       " " .
-                      $contratInfo->prenom; ?></b> titulaire de la carte d’identité nationale <b>N°<?php  echo $contratInfo->cin; ?></b> délivrée le <b><?php echo date_format(date_create($record->dateCin)  , 'd/m/20y'); ?></b> et demeurant à <b>N°<?php echo $contratInfo->n ." ".$contratInfo->rue ." " .$contratInfo->ville ." "; ?></b>   désigné ci-après « le locataire »  <br><br> 
+                      $contratInfo->prenom; ?></b> titulaire de la carte d’identité nationale <b>N°<?php  echo $contratInfo->cin; ?></b> délivrée le <b><?php echo date_format(date_create($contratInfo->dateCin)  , 'd/m/20y'); ?></b> et demeurant à <b>N°<?php echo $contratInfo->n ." ".$contratInfo->rue ." " .$contratInfo->ville ." "; ?></b>   désigné ci-après « le locataire »  <br><br> 
                   <br>
                   <hr>
                   <h6>ARTICLE 1 – DESIGNATION DES LOCAUX :</h6>
