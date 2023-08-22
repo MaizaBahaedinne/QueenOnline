@@ -91,7 +91,7 @@ class Prestation extends BaseController
         $result = $this->prestation_model->addNewReservation($reservationInfo);
 
         if ($result > 0) {
-            $reservationInfo1 = array("Prestation" => $result, , 'noteAdmin' => 'Ajout de photographe');
+            $reservationInfo1 = array("Prestation" => $result,  'noteAdmin' => 'Ajout de photographe');
 
             $this->reservation_model->editReservation(
                 $reservationInfo1,
