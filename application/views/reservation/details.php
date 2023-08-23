@@ -463,8 +463,8 @@
                   La salle est louée pour accueillir l’évènement suivant : <?php echo $contratInfo->type; ?> <br><br>
                   <hr>
                   <h6>ARTICLE 4 – DUREE::</h6>
-                  Débute le <b><?php echo date_format(date_create($record->dateDebut)  , 'd/m/20y'); ?> </b> , à <b><?php echo $contratInfo->heureDebut; ?></b> <br>
-                  Elle prend fin le <b><?php echo date_format(date_create($record->dateFin)  , 'd/m/20y'); ?></b>  , à <b><?php echo $contratInfo->heureFin; ?></b> <br>
+                  Débute le <b><?php echo date_format(date_create($contratInfo->dateDebut)  , 'd/m/20y'); ?> </b> , à <b><?php echo $contratInfo->heureDebut; ?></b> <br>
+                  Elle prend fin le <b><?php echo date_format(date_create($contratInfo->dateFin)  , 'd/m/20y'); ?></b>  , à <b><?php echo $contratInfo->heureFin; ?></b> <br>
                   <br>
                   Le transfert de responsabilité s'effectue à la date et l’heure fixée ci-dessus. Le locataire est tenu de se présenter 
                   1 Heure avant l’heure de début de location pour procéder à l’état des lieux d’entrée. La salle doit être vidée et rendue dans son état initial à la date et l’heure de fin de location fixée ci-dessus. Le locataire est tenu de rester 20 minutes après la fin de location pour procéder à l’état des lieux de sortie. <br><br>
