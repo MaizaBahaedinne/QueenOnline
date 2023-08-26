@@ -16,7 +16,7 @@ class Prestation_model extends CI_Model
      * @param number $segment : This is pagination limit
      * @return array $result : This is result
      */
-    function ReservationListing($resId)
+    function ReservationListing($resId = null )
     {
         $this->db->select('BaseTbl.* , Pack.nom packname , BaseTbl.statut PresStatut ');
         $this->db->from('tbl_reservation_prestation as BaseTbl');
