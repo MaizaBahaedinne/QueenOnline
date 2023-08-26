@@ -75,7 +75,7 @@
                   <?php  } ?>
                   <hr>
                   <?php foreach ($prestation as $pres ){ ?>
-                        nom  : <?php echo $pres->packname; ?>
+                        nom  : <?php echo $pres->packname; ?> à <?php echo $pres->heure; ?>
                         <?php if ($pres->PresStatut == 0) { ?>
                        <span class="badge badge-pill badge-success"><i class="metismenu-icon pe-7s-check"></i> Validée</span>
                        <?php } ?>    
