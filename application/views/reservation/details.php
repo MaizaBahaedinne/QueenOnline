@@ -101,16 +101,14 @@
                      ?>
                   
                   Pack : <?php echo $photographe->packname; ?>  <br>  
-                  statut :   <?php if ($photographe->statut == 0) { ?>
+                  statut :   <?php if ($photographe->Pstatut == 0) { ?>
                 <span class="badge badge-pill badge-success"><i class="metismenu-icon pe-7s-check"></i> Validée</span>
                 <?php } ?>    
-                <?php if ($photographe->statut == 1) { ?>
+                <?php if ($photographe->Pstatut == 1) { ?>
                 <span class="badge badge-pill badge-warning"><i class="metismenu-icon pe-7s-stopwatch"></i> En attente</span>
                 <?php } ?>
-                <?php if ($photographe->statut == 2) { ?>
-                <span class="badge badge-pill badge-dark"></span>
-                <?php } ?>
-                <?php if ($photographe->statut == 3) { ?>
+                
+                <?php if ($photographe->Pstatut == 3) { ?>
                 <span class="badge badge-pill badge-danger"><i class="metismenu-icon pe-7s-close"></i></span>
                 <?php } ?>
                <?php

@@ -76,7 +76,8 @@
                 <?php if ($record->cuisine == 1 ){ echo '<i class="fas fa-utensils"></i> Cuisine<br>';}  ?>
                 <?php if ($record->tableCM == 1 ){ echo '<i class="fa fa-file" ></i> contrat de mariage<br>';}  ?>
                 <?php if ($record->voiture != 0 ){ echo '<i class="fa fa-car" ></i> Voiture<br>';}  ?>
-                <?php if ($record->troupe != 0  ){ echo '<i class="fa fa-music" ></i> troupe<br>';}  ?>
+                <?php if ($record->troupe != 0  ){ echo '<i class="fa fa-music" ></i> Troupe ';}  ?>
+                <?php if (count($record->prestation) > 0  ){ echo ' | '.count($record->prestation).' Prestations<br>';}  ?>
                 <?php if ($record->photographe != 0  ){ echo '<i class="fa fa-camera"></i> photographe<br>';}  ?>
 
               </td>
@@ -98,9 +99,7 @@
                 <?php if ($record->statut == 1 ) { ?>
                 <span class="badge badge-pill badge-warning"><i class="metismenu-icon pe-7s-stopwatch"></i></span>
                 <?php } ?>
-                <?php if ($record->statut == 2 ) { ?>
-                <span class="badge badge-pill badge-dark"></span>
-                <?php } ?>
+                
                 <?php if ($record->statut == 3 ) { ?>
                 <span class="badge badge-pill badge-danger"><i class="metismenu-icon pe-7s-close"></i></span>
                 <?php } ?>

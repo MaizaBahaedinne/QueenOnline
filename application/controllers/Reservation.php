@@ -35,8 +35,12 @@ class Reservation extends BaseController
          */
         public function index()
         {
-                $data["salleRecords"] = $this->salle_model->SalleListing();
+                
                 $data["userRecords"] = $this->reservation_model->ReservationListing();
+                     foreach ($data["userRecords"]  as $rerva) {
+        
+                         $rerva->prestation = $this->prestation_model->ReservationListing($rerva->reservationId) ; 
+                       }   
                 $this->global["pageTitle"] = "Reservation des salles";
                 $this->loadViews("reservation/list", $this->global, $data, null);
         }

@@ -18,7 +18,7 @@
           <i class="pe-7s-medal icon-gradient bg-tempting-azure"></i>
         </div>
         <div>
-           Reservation des prestation
+           Reservation des prestations
           <div class="page-title-subheading">Les reservations</div>
         </div>
       </div>
@@ -60,7 +60,7 @@
               ?>
             <tr class="<?php if ( (time() > strtotime($record->date. '  - 3  days') && $record->statut != 0 ) )  { echo "alert-bg" ;}  ?>"  >
               <td>
-                <b><?php echo $record->reservationPId ?>
+                <b><?php echo $record->prestationId  ?>
               </td>
               <td>
                 <b><?php echo date_format(date_create($record->date)  , 'd/m/20y');  ?>
@@ -101,10 +101,10 @@
               </td>
               <td>
                 <div class="btn-group" role="group" > 
-                <a class="btn" href="<?php echo base_url() ?>Prestation/view/<?php echo $record->reservationPId ?>" >
+                <a class="btn" href="<?php echo base_url() ?>Prestation/view/<?php echo $record->prestationId  ?>" >
                   <i class="fa fa-eye"></i>
                 </a>
-                <a class="btn" href="<?php echo base_url() ?>Prestation/edit/<?php echo $record->reservationPId ?>" >
+                <a class="btn" href="<?php echo base_url() ?>Prestation/edit/<?php echo $record->prestationId  ?>" >
                   <i class="fas fa-pencil-alt"></i>
                 </a>
               </div>

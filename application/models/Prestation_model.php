@@ -16,12 +16,15 @@ class Prestation_model extends CI_Model
      * @param number $segment : This is pagination limit
      * @return array $result : This is result
      */
-    function ReservationListing()
+    function ReservationListing($resId)
     {
         $this->db->select('BaseTbl.* , Pack.nom packname');
         $this->db->from('tbl_reservation_prestation as BaseTbl');
         $this->db->join('tbl_pack_prestation as Pack', 'Pack.packId = BaseTbl.packId','left');
-      
+        
+
+        if($resId != null ){ $this->db->where('BaseTbl.reservationId ', $resId ); }
+
         $this->db->where('BaseTbl.date >=  SUBDATE(NOW(),1) ');
         $this->db->order_by('BaseTbl.date ASC');
 

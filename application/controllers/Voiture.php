@@ -118,7 +118,7 @@ class Voiture extends BaseController
 
                      $reservationInfo1 = array('voiture'=>$result , 'noteAdmin' => 'Ajout de voiture' );
 
-                    $this->reservation_model->editReservation($reservationInfo1, $reservationId); 
+                    $this->reservation_model->editReservation($reservationInfo1, $reservationId, $this->vendorId); 
 
                     $paiementInfo = array(
                         'createdDate'=>date('Y-m-d H:i:s'),

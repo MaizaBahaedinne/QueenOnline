@@ -104,7 +104,7 @@ class Photographe extends BaseController
 
                      $reservationInfo1 = array('photographe'=>$result, 'noteAdmin' => 'Ajout de photographe');
 
-                    $this->reservation_model->editReservation($reservationInfo1, $reservationId); 
+                    $this->reservation_model->editReservation($reservationInfo1, $reservationId, $this->vendorId); 
 
                     $paiementInfo = array(
                         'createdDate'=>date('Y-m-d H:i:s'),

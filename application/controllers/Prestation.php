@@ -51,7 +51,7 @@ class Prestation extends BaseController
         $data["projectInfo"] = $this->reservation_model->ReservationInfo(
             $reservationId
         );
-        $this->global["pageTitle"] = "Clients";
+        $this->global["pageTitle"] = "Ajouter une prestation";
         $this->loadViews("prestation/new", $this->global, $data, null);
     }
 
@@ -91,11 +91,11 @@ class Prestation extends BaseController
         $result = $this->prestation_model->addNewReservation($reservationInfo);
 
         if ($result > 0) {
-            $reservationInfo1 = array("Prestation" => $result,  'noteAdmin' => 'Ajout de photographe');
+            $reservationInfo1 = array("Prestation" => $result,  'noteAdmin' => 'Ajout de Prestation');
 
             $this->reservation_model->editReservation(
                 $reservationInfo1,
-                $reservationId
+                $reservationId, $this->vendorId
             );
 
             $paiementInfo = [
