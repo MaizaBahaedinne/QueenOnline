@@ -122,13 +122,13 @@
           </tbody>
           <tfoot>
             <tr>
-              <th>Date</th>
-              <th >Espace</th>
-              <th>titre</th>
+              <th width="10%" >Date</th>
+              <th width="10%" >Espace</th>
+              <th width="10%">titre</th>
               <th >Options</th>
               <th >Contact</th>
-              <th >Statut</th>
-              <th >Action</th>
+              <th width="5%">Statut</th>
+              <th width="5%" >Action</th>
             </tr>
           </tfoot>
         </table>

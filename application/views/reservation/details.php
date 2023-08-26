@@ -529,7 +529,7 @@
                   - Le bailleur ne pourra être tenu de tout dommage causé aux véhicules ou matériel situés sur le parking. <br>
                   <br>          
                   <br>
-                  <p style="text-align: right; background: FFFC25;">يرجى ذكر العنوان أدناه في دعوات حفلتكم : 
+                  <p style="text-align: right; background: #FFFC25;">يرجى ذكر العنوان أدناه في دعوات حفلتكم : 
                      <br>
                      <b>   "<?php echo $contratInfo->salle; ?>&nbsp;فضاء  "</b> 
                      <br> 
@@ -573,8 +573,7 @@
                               Event & Horaire
                            </td>
                            <td>
-                              <?php echo $contratInfo->type; ?> à l'espace  <b> <?php echo $contratInfo->salle; ?> </b> <br>
-                              <?php echo $contratInfo->titre; ?> <br>
+                              <?php echo $contratInfo->type; ?> à l'espace  <b> <?php echo $contratInfo->salle; ?> </b> de <b> <?php echo $contratInfo->titre; ?></b> <br>
                               <b>Debut : </b><?php
                               $date = new DateTime($projectInfo->dateDebut);
                               echo $date->format("d/m/Y") .
@@ -617,8 +616,14 @@
                            </td>
                            <td width="30 %">
                            </td>
-                           <td>
-                              Dernier delais de paiement : 
+                           <td style="background: #F84949 ;" >
+                              Dernier delais de paiement :  <b><?php echo date(
+                                  "d/m/Y",
+                                  strtotime(
+                                      $contratInfo->dateDebut . "  - 30  days"
+                                  )
+                                 ); ?>
+                                </b>
                            </td>
                         </tr>
                         <tr>
@@ -630,13 +635,8 @@
                            </td>
                            <td width="30 %">
                            </td>
-                           <td style="background: FF2525;" >
-                              <?php echo date(
-                                  "d/m/Y",
-                                  strtotime(
-                                      $contratInfo->dateDebut . "  - 30  days"
-                                  )
-                              ); ?>
+                           <td  >
+                              
                            </td>
                         </tr>
                      </tbody>
