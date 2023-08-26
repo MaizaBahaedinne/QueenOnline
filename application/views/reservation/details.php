@@ -74,7 +74,17 @@
                
                   <?php  } ?>
                   <hr>
-
+                  <?php foreach ($prestation as $pres ){ ?>
+                        nom  : <?php echo $pres->packname; ?>
+                        <?php if ($pres->PresStatut == 0) { ?>
+                       <span class="badge badge-pill badge-success"><i class="metismenu-icon pe-7s-check"></i> Validée</span>
+                       <?php } ?>    
+                       <?php if ($pres->PresStatut == 1) { ?>
+                       <span class="badge badge-pill badge-warning"><i class="metismenu-icon pe-7s-stopwatch"></i> En attente</span>
+                       <?php } ?>
+                       <?php if ($pres->PresStatut == 3) { ?>
+                       <span class="badge badge-pill badge-danger"><i class="metismenu-icon pe-7s-close"></i></span>
+                  <?php } echo "<br>" ; } ?>
                   <?php echo '<a style="color: white"  class="btn btn-info btn-block" href=' .
                       base_url() .
                       "Prestation/addNew/" .

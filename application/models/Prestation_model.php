@@ -18,7 +18,7 @@ class Prestation_model extends CI_Model
      */
     function ReservationListing($resId)
     {
-        $this->db->select('BaseTbl.* , Pack.nom packname');
+        $this->db->select('BaseTbl.* , Pack.nom packname , BaseTbl.statut PresStatut ');
         $this->db->from('tbl_reservation_prestation as BaseTbl');
         $this->db->join('tbl_pack_prestation as Pack', 'Pack.packId = BaseTbl.packId','left');
         
@@ -69,7 +69,7 @@ class Prestation_model extends CI_Model
      */
     function ReservationInfo($resId)
     {
-       $this->db->select('BaseTbl.* , Pack.*  , Pack.nom packname , Reservation.* , Salles.nom salle , BaseTbl.prix , BaseTbl.avance');
+       $this->db->select('BaseTbl.* , Pack.*  , Pack.nom packname , BaseTbl.statut PresStatut , Reservation.* , Salles.nom salle , BaseTbl.prix , BaseTbl.avance');
         $this->db->from('tbl_reservation_prestation as BaseTbl');
         $this->db->join('tbl_pack_prestation as Pack', 'Pack.packId = BaseTbl.packId','left');
          $this->db->join('tbl_reservation as Reservation', 'Reservation.reservationId = BaseTbl.reservationId','left');
