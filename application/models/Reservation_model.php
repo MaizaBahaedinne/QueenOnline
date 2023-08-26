@@ -29,7 +29,7 @@ class Reservation_model extends CI_Model
         $this->db->join('tbl_users as Client', 'Client.userId = BaseTbl.clientId','left');
         $this->db->join('tbl_users as Locataire', 'Locataire.userId = BaseTbl.clientId','left');
         $this->db->join('tbl_salle as Salles', 'Salles.salleID = BaseTbl.salleId','left');
-        $this->db->where('BaseTbl.statut in (0,1,3) ');
+        $this->db->where('BaseTbl.statut in (0,1) ');
         if($date == null){
       // 
 
@@ -350,7 +350,7 @@ class Reservation_model extends CI_Model
      * @param array $userInfo : This is users updated information
      * @param number $userId : This is user id
      */
-    function editReservation($reservationInfo, $reservationId)
+    function editReservation($reservationInfo, $reservationId , $userChange  )
     {
 
         $this->db->select('BaseTbl.*');
@@ -358,8 +358,10 @@ class Reservation_model extends CI_Model
         $this->db->where('BaseTbl.reservationId =',$reservationId );
         $query = $this->db->get();
         $copie = $query->row();
+        print_r($copie) ; 
+        $copie->createdBy = $userChange ; 
         $this->db->trans_start();
-        $copie["createdBy"] = $this->vendorId ;
+        
         $this->db->insert('tbl_reservation_backup', $copie);
         $insert_id = $this->db->insert_id();
         $this->db->trans_complete();

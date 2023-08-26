@@ -37,7 +37,7 @@ class Reservation extends BaseController
         {
                 $data["salleRecords"] = $this->salle_model->SalleListing();
                 $data["userRecords"] = $this->reservation_model->ReservationListing();
-                $this->global["pageTitle"] = "CodeInsect : User Listing";
+                $this->global["pageTitle"] = "Reservation des salles";
                 $this->loadViews("reservation/list", $this->global, $data, null);
         }
         public function addNew()
@@ -115,7 +115,7 @@ class Reservation extends BaseController
                         "prix" => $prix,
                         "titre" => $titre,
                         "noteAdmin" => $noteAdmin,
-                        "statut" => 2,
+                        "statut" => 1,
                         "cuisine" => $cuisine,
                         "tableCM" => $tableCM,
                         "locataireId" => $this->vendorId,
@@ -165,7 +165,9 @@ class Reservation extends BaseController
                         "tableCM" => $tableCM,
                         
                 ];
-                $result = $this->reservation_model->editReservation($reservationInfo, $resId);
+
+                $result = $this->reservation_model->
+                       editReservation($reservationInfo,$resId, $this->vendorId );
                 if ($result) {
                         $this->session->set_flashdata("success", "Reservation mise à jour avec succées ");
                         redirect("Reservation/view/" . $resId);
