@@ -75,7 +75,7 @@
                   <?php  } ?>
                   <hr>
                   <?php foreach ($prestation as $pres ){ ?>
-                        nom  : <?php echo $pres->packname; ?> à <?php echo $pres->heure; ?>
+                        <?php echo $pres->packname; ?> à <?php echo $pres->heure; ?>
                         <?php if ($pres->PresStatut == 0) { ?>
                        <span class="badge badge-pill badge-success"><i class="metismenu-icon pe-7s-check"></i> Validée</span>
                        <?php } ?>    
@@ -85,6 +85,7 @@
                        <?php if ($pres->PresStatut == 3) { ?>
                        <span class="badge badge-pill badge-danger"><i class="metismenu-icon pe-7s-close"></i></span>
                   <?php } echo "<br>" ; } ?>
+                  <br>
                   <?php echo '<a style="color: white"  class="btn btn-info btn-block" href=' .
                       base_url() .
                       "Prestation/addNew/" .
@@ -528,7 +529,7 @@
                   - Le bailleur ne pourra être tenu de tout dommage causé aux véhicules ou matériel situés sur le parking. <br>
                   <br>          
                   <br>
-                  <p style="text-align: right; background: lightyellow;">يرجى ذكر العنوان أدناه في دعوات حفلتكم : 
+                  <p style="text-align: right; background: FFFC25;">يرجى ذكر العنوان أدناه في دعوات حفلتكم : 
                      <br>
                      <b>   "<?php echo $contratInfo->salle; ?>&nbsp;فضاء  "</b> 
                      <br> 
@@ -629,7 +630,7 @@
                            </td>
                            <td width="30 %">
                            </td>
-                           <td style="background: lightyellow;" >
+                           <td style="background: FF2525;" >
                               <?php echo date(
                                   "d/m/Y",
                                   strtotime(
