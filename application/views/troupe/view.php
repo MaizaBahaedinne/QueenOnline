@@ -75,7 +75,7 @@
                   <div class="row ">
                      <div class="col-md-2"> </div>
                      <div class="col-md-8">
-                        <p style="font-size: 25; text-align: center;" >Contrat de prestation avec Mak'Photo <br> </p>
+                        <p style="font-size: 25; text-align: center;" >Contrat de prestation avec Troupe Lahmedi <br> </p>
                      </div>
                      <div class="col-md-2"> </div>
                   </div>
@@ -83,29 +83,23 @@
                   <hr>
                   <br>
                     <br>
-                  Entre <b>Ste Queen Park</b> Mc 34 Route Mornag Boujardgha Ben Arous 2090, désigné ci-après « le bailleur » <br>
+                  Entre <b> TROUPE LAHMEDI de la Ste Queen Park</b> Mc 34 Route Mornag Boujardgha Ben Arous 2090, désigné ci-après « le bailleur » <br>
                   <b>ET</b> <br>
                   <b><?php echo $clientInfo->nom.' '.$clientInfo->prenom ;?></b> titulaire de la carte d’identité nationale <b>N°<?php echo $clientInfo->cin ;?></b> délivrée le <b><?php echo $clientInfo->dateCin ;?></b> et demeurant à <b>N°<?php echo $clientInfo->n.' '.$clientInfo->rue.' '.$clientInfo->ville.' '.$clientInfo->codePostal ;?></b>   désigné ci-après « le locataire »  <br><br> 
 
                   <h6>ARTICLE 1 – Objet :</h6>
                   Revive cérémonie :
-                   Nature <b><?php echo $projectInfo->type ?></b>. Qui se déroulera Le <b><?php echo  $projectInfo->date ?></b> Lieu <b><?php echo  $projectInfo->salle ?></b>
+                   Nature <b><?php echo $projectInfo->type ?></b>. Qui se déroulera Le <b><?php echo  $projectInfo->date ?></b> Lieu <b><?php echo  $projectInfo->salle ?></b><br>
+                   N.B : tout dépassement d’horairie mentionné entrainera des frais supplémentaires au client(e). 
                   
                    <br><br>
                   <hr>
                 
-                  <h6>ARTICLE 2 – Pack ::</h6>
-                  Le photographe s’engage à faire le pack : <b><?php echo $projectInfo->packname ?></b>
-                     <br>
-                  Matériel : <br>
-                   <?php if( $projectInfo->photos == "oui" ) { ?>
-                        1 camera pour les photos .
-                   <?php }  ?>
-                  <?php if( $projectInfo->video == "oui" ) { ?>
-                     <li> <?php echo $projectInfo->nombreCamera ?> Camera pour le video</li>
-                     <?php if ($projectInfo->ghiraphe == "oui" ) {  ?> <li> 1 Girafe </li><?php }  ?>
-                     <?php if ($projectInfo->drone == "oui" ) {  ?> <li> 1 Drone </li><?php }  ?>
-                  <?php } ?>
+                  <h6>ARTICLE 2 – Pack :</h6>
+                  La troupe sera composé de  : <b><?php echo $projectInfo->packname ?></b>
+                  <br>
+                  TROUPE LAHMEDI : s’engage que les musiciens seront sur la lieu déjà cité dessus à l’horaire prévu. 
+                 
 
 
                   <hr>
