@@ -6,16 +6,15 @@
           <i class="pe-7s-medal icon-gradient bg-tempting-azure"></i>
         </div>
         <div>
-          Reservation
-          <div class="page-title-subheading">Les reservations</div>
+          Modification de reservation
+          <div class="page-title-subheading"><?php echo $projectInfo->type ?> <?php echo $projectInfo->dateDebut ?> | <?php echo $projectInfo->salle ?> | <?php echo $projectInfo->titre ?> </div>
         </div>
       </div>
       <div class="page-title-actions">
        
         <div class="d-inline-block">
-          <a href="http://127.0.0.1/QueenOnline/Reservation/addNew" class="btn  btn-info">
-          Ajouter
-          </a>
+          
+
           
         </div>
       </div>
