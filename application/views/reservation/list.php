@@ -76,8 +76,8 @@
                 <?php if ($record->cuisine == 1 ){ echo '<i class="fas fa-utensils"></i> Cuisine<br>';}  ?>
                 <?php if ($record->tableCM == 1 ){ echo '<i class="fa fa-file" ></i> contrat de mariage<br>';}  ?>
                 <?php if ($record->voiture != 0 ){ echo '<i class="fa fa-car" ></i> Voiture<br>';}  ?>
-                <?php if ($record->troupe != 0  ){ echo '<i class="fa fa-music" ></i> Troupe ';}  ?>
-                <?php if (count($record->prestation) > 0  ){ echo ' | '.count($record->prestation).' Prestations<br>';}  ?>
+                <?php if ($record->troupe != 0  ){ echo '<i class="fa fa-music" ></i> Troupe <br>';}  ?>
+                <?php if (count($record->prestation) > 0  ){ echo '    | '.count($record->prestation).' Prestations';}  ?>
                 <?php if ($record->photographe != 0  ){ echo '<i class="fa fa-camera"></i> photographe<br>';}  ?>
 
               </td>
