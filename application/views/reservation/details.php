@@ -59,7 +59,21 @@
                           "Troupe/addNew/" .
                           $projectInfo->reservationId .
                           " >Ajouter</a> ";
-                  } ?>
+                  } else { ?>
+                    
+                    Pack : <?php echo $troupe->packname; ?>  <br>  
+                     statut :   <?php if ($troupe->STroupe == 0) { ?>
+                   <span class="badge badge-pill badge-success"><i class="metismenu-icon pe-7s-check"></i> Validée</span>
+                   <?php } ?>    
+                   <?php if ($troupe->STroupe == 1) { ?>
+                   <span class="badge badge-pill badge-warning"><i class="metismenu-icon pe-7s-stopwatch"></i> En attente</span>
+                   <?php } ?>
+                   <?php if ($troupe->STroupe == 3) { ?>
+                   <span class="badge badge-pill badge-danger"><i class="metismenu-icon pe-7s-close"></i></span>
+                   <?php } ?>
+               
+                  <?php  } ?>
+                  <hr>
 
                   <?php echo '<a style="color: white"  class="btn btn-info btn-block" href=' .
                       base_url() .

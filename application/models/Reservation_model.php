@@ -350,7 +350,7 @@ class Reservation_model extends CI_Model
      * @param array $userInfo : This is users updated information
      * @param number $userId : This is user id
      */
-    function editReservation($reservationInfo, $reservationId , $userChange  )
+    function editReservation($reservationInfo, $reservationId , $userChange = null  )
     {
 
         $this->db->select('BaseTbl.*');

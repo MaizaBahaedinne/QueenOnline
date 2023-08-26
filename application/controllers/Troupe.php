@@ -95,7 +95,8 @@ class Troupe extends BaseController
 
             $this->reservation_model->editReservation(
                 $reservationInfo1,
-                $reservationId
+                $reservationId ,
+                $this->vendorId
             );
 
             $paiementInfo = [
@@ -105,7 +106,7 @@ class Troupe extends BaseController
                 "libele" => "Avance ",
                 "reservationTroupeId" => $result,
             ];
-            $resId = $this->paiement_model->addNewTroupeaiement(
+            $resId = $this->paiement_model->addNewTroupePaiement(
                 $paiementInfo
             );
 

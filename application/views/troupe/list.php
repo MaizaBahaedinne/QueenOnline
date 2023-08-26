@@ -60,7 +60,7 @@
               ?>
             <tr class="<?php if ( (time() > strtotime($record->date. '  - 3  days') && $record->statut != 0 ) )  { echo "alert-bg" ;}  ?>"  >
               <td>
-                <b><?php echo $record->reservationPId ?>
+                <b><?php echo $record->reservationTId ?>
               </td>
               <td>
                 <b><?php echo date_format(date_create($record->date)  , 'd/m/20y');  ?>
@@ -101,10 +101,10 @@
               </td>
               <td>
                 <div class="btn-group" role="group" > 
-                <a class="btn" href="<?php echo base_url() ?>Photographe/view/<?php echo $record->reservationPId ?>" >
+                <a class="btn" href="<?php echo base_url() ?>Troupe/view/<?php echo $record->reservationTId ?>" >
                   <i class="fa fa-eye"></i>
                 </a>
-                <a class="btn" href="<?php echo base_url() ?>Reservation/edit/<?php echo $record->reservationPId ?>" >
+                <a class="btn" href="<?php echo base_url() ?>Troupe/edit/<?php echo $record->reservationTId ?>" >
                   <i class="fas fa-pencil-alt"></i>
                 </a>
               </div>

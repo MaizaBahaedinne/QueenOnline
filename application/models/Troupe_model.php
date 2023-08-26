@@ -66,7 +66,7 @@ class Troupe_model extends CI_Model
      */
     function ReservationInfo($resId)
     {
-       $this->db->select('BaseTbl.* , Pack.*  , Pack.nom packname , Reservation.* , Salles.nom salle , BaseTbl.prix , BaseTbl.avance');
+       $this->db->select('BaseTbl.* , Pack.*  , BaseTbl.statut STroupe ,  Pack.nom packname , Reservation.* , Salles.nom salle , BaseTbl.prix , BaseTbl.avance');
         $this->db->from('tbl_reservation_troupe as BaseTbl');
         $this->db->join('tbl_pack_troupe as Pack', 'Pack.packId = BaseTbl.packId','left');
          $this->db->join('tbl_reservation as Reservation', 'Reservation.reservationId = BaseTbl.reservationId','left');
