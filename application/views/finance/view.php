@@ -50,6 +50,7 @@
               <th   width="5%" >Valeur</th>
               <th  width="15%" >recepteur</th>
               <th  width="20%" >Motif</th>
+              <th  width="5%" >action</th>
         
             </tr>
           </thead>
@@ -69,6 +70,13 @@
                 <td> <img width="30" class="rounded-circle" src="https://www.queenpark.tn/assets/img/teams/<?php echo $record->avatar ?>" alt=""> <?php echo $record->recuPar ?></td>
              
                 <td> <?php echo $record->libele ?>  </td>
+                <td>
+                  <div class="btn-group" role="group" > 
+                      <a class="btn" href="<?php echo base_url() ?>Reservation/view/<?php echo $record->reservationId ?>" >
+                        <i class="fa fa-eye"></i>
+                      </a>
+                  </div> 
+                </td>
               </tr>
            
              
@@ -87,6 +95,7 @@
               <th   width="5%" >Valeur</th>
               <th  width="15%" >recepteur</th>
               <th  width="20%" >Motif</th>
+              <th  width="5%" >action</th>
         
 
             </tr>
