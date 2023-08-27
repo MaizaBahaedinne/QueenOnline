@@ -192,12 +192,8 @@ class Prestation extends BaseController
      */
     function recuP($resId)
     {
-        $data["projectInfo"] = $this->prestation_model->ReservationInfo(
-            $resId
-        );
-        $data["clientInfo"] = $this->user_model->getUserInfo(
-            $data["projectInfo"]->clientId
-        );
+        $data["projectInfo"] = $this->prestation_model->ReservationInfoS($resId);
+        $data["clientInfo"] = $this->user_model->getUserInfo($data["projectInfo"]->clientId);
         $data[
             "paiementInfo"
         ] = $this->paiement_model->paiementListingbyReservationPrestation(

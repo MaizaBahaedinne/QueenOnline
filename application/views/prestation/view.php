@@ -322,7 +322,7 @@
                <span style="float: right">Reste : <?php echo ($projectInfo->prix - $totalPaiement->valeur ) ?> DT</span>
             </div>
             <div class="text-center d-block card-footer">
-               <button class="btn btn-warning" id="addPayement" >Ajouter</button> <a href="<?php echo base_url() ?>Photographe/recuP/<?php echo $projectInfo->prestationId ?>" class="btn btn-info">Reçu</a>
+               <button class="btn btn-warning" id="addPayement" >Ajouter</button> <a href="<?php echo base_url() ?>Prestation/recuP/<?php echo $projectInfo->prestationId ?>" class="btn btn-info">Reçu</a>
             </div>
          </div>
       </div>
