@@ -7,7 +7,7 @@
             </div>
             <div>
                Détails de la reservation
-               <div class="page-title-subheading">Instead of regular checkboxes, use these toggle widgets for a better UX.</div>
+               <div class="page-title-subheading"><?php echo $projectInfo->type ?> <?php echo $projectInfo->dateDebut ?> | <?php echo $projectInfo->salle ?> | <?php echo $projectInfo->titre ?></div>
             </div>
          </div>
          <div class="page-title-actions">
@@ -74,17 +74,23 @@
                
                   <?php  } ?>
                   <hr>
+                  <?php if ($projectInfo->troupe != 0) { ?> 
+                    
+                  <a style="color: white" href="<?php echo base_url(); ?>Troupe/view/<?php echo $projectInfo->troupe; ?>"  class="btn btn-success btn-block">Details</a> 
+               
+               <?php } ?>
+                  <hr>
                   <?php foreach ($prestation as $pres ){ ?>
-                        <?php echo $pres->packname; ?> à <?php echo $pres->heure; ?>
+                        <?php  ?>
                         <?php if ($pres->PresStatut == 0) { ?>
-                       <span class="badge badge-pill badge-success"><i class="metismenu-icon pe-7s-check"></i> Validée</span>
+                       <span class="badge badge-pill badge-success"><i class="metismenu-icon pe-7s-check"></i> </span>
                        <?php } ?>    
                        <?php if ($pres->PresStatut == 1) { ?>
-                       <span class="badge badge-pill badge-warning"><i class="metismenu-icon pe-7s-stopwatch"></i> En attente</span>
+                       <span class="badge badge-pill badge-warning"><i class="metismenu-icon pe-7s-stopwatch"></i></span>
                        <?php } ?>
                        <?php if ($pres->PresStatut == 3) { ?>
                        <span class="badge badge-pill badge-danger"><i class="metismenu-icon pe-7s-close"></i></span>
-                  <?php } echo "<br>" ; } ?>
+                  <?php } echo $pres->packname; ?> à <?php echo $pres->heure;  echo "<br>" ; } ?>
                   <br>
                   <?php echo '<a style="color: white"  class="btn btn-info btn-block" href=' .
                       base_url() .

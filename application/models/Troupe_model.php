@@ -72,7 +72,7 @@ class Troupe_model extends CI_Model
          $this->db->join('tbl_reservation as Reservation', 'Reservation.reservationId = BaseTbl.reservationId','left');
           $this->db->join('tbl_salle as Salles', 'Salles.salleID = Reservation.salleId','left');
         
-        $this->db->where('BaseTbl.reservationId =',$resId );
+        $this->db->where('BaseTbl.reservationTId =',$resId );
 
         $query = $this->db->get();
         
@@ -104,7 +104,7 @@ class Troupe_model extends CI_Model
      */
     function editReservation($reservationInfo, $locationId)
     {
-        $this->db->where('reservationPId', $locationId);
+        $this->db->where('reservationTId', $locationId);
         $this->db->update('tbl_reservation_troupe', $reservationInfo);
         
         return TRUE;

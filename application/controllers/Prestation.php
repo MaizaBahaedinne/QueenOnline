@@ -136,20 +136,15 @@ class Prestation extends BaseController
      */
     function view($resId)
     {
-        $data["projectInfo"] = $this->prestation_model->ReservationInfo(
-            $resId
-        );
-        $data["clientInfo"] = $this->user_model->getUserInfo(
-            $data["projectInfo"]->clientId
-        );
+        $data["projectInfo"] = $this->prestation_model->ReservationInfoS($resId);
+        $data["clientInfo"] = $this->user_model->getUserInfo( $data["projectInfo"]->clientId);
         $data[
             "paiementInfo"
-        ] = $this->paiement_model->paiementListingbyReservationPrestation(
-            $resId
-        );
+        ] = $this->paiement_model->paiementListingbyReservationPrestation(   $resId      );
         $data["totalPaiement"] = $this->paiement_model->getPresTotal($resId);
         $data["userID"] = $this->vendorId;
-        $this->global["pageTitle"] = "CodeInsect : User Listing";
+        $this->global["pageTitle"] = "Reservation de prestation";
+     
         $this->loadViews("prestation/view", $this->global, $data, null);
     }
 
@@ -168,15 +163,13 @@ class Prestation extends BaseController
             "libele" => "Partie ",
             "reservationPresId" => $resId,
         ];
-        $ReservationInfo = $this->prestation_model->ReservationInfo($resId);
-        $clientInfo = $this->client_model->getClientInfo(
-            $ReservationInfo->clientId
-        );
+        $ReservationInfo = $this->prestation_model->ReservationInfoS($resId);
+        $clientInfo = $this->client_model->getClientInfo($ReservationInfo->clientId);
 
         $this->paiement_model->addNewPrestationPaiement($paiementInfo);
 
         $totalPaiement = $this->paiement_model->getPresTotal($resId);
-        $projectInfo = $this->prestation_model->ReservationInfo($resId);
+        $projectInfo = $this->prestation_model->ReservationInfoS($resId);
 
         $reservationInfo = [
             "noteAdmin" => $noteAdmin,

@@ -101,10 +101,10 @@
               </td>
               <td>
                 <div class="btn-group" role="group" > 
-                <a class="btn" href="<?php echo base_url() ?>Troupe/view/<?php echo $record->reservationId ?>" >
+                <a class="btn" href="<?php echo base_url() ?>Troupe/view/<?php echo $record->reservationTId ?>" >
                   <i class="fa fa-eye"></i>
                 </a>
-                <a class="btn" href="<?php echo base_url() ?>Troupe/edit/<?php echo $record->reservationId ?>" >
+                <a class="btn" href="<?php echo base_url() ?>Troupe/edit/<?php echo $record->reservationTId ?>" >
                   <i class="fas fa-pencil-alt"></i>
                 </a>
               </div>

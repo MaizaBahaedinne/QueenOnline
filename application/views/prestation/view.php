@@ -75,7 +75,7 @@
                   <div class="row ">
                      <div class="col-md-2"> </div>
                      <div class="col-md-8">
-                        <p style="font-size: 25; text-align: center;" >Contrat de prestation avec Mak'Photo <br> </p>
+                        <p style="font-size: 25; text-align: center;" ><b>Contrat de prestation</b><br>  <?php echo $projectInfo->packname ?> <br> </p>
                      </div>
                      <div class="col-md-2"> </div>
                   </div>
@@ -95,17 +95,9 @@
                   <hr>
                 
                   <h6>ARTICLE 2 – Pack ::</h6>
-                  Le photographe s’engage à faire le pack : <b><?php echo $projectInfo->packname ?></b>
+                  Queen Park s’engage à faire le pack : <b><?php echo $projectInfo->packname ?></b>
                      <br>
-                  Matériel : <br>
-                   <?php if( $projectInfo->photos == "oui" ) { ?>
-                        1 camera pour les photos .
-                   <?php }  ?>
-                  <?php if( $projectInfo->video == "oui" ) { ?>
-                     <li> <?php echo $projectInfo->nombreCamera ?> Camera pour le video</li>
-                     <?php if ($projectInfo->ghiraphe == "oui" ) {  ?> <li> 1 Girafe </li><?php }  ?>
-                     <?php if ($projectInfo->drone == "oui" ) {  ?> <li> 1 Drone </li><?php }  ?>
-                  <?php } ?>
+                 
 
 
                   <hr>
@@ -148,7 +140,7 @@
                               Réference
                            </td>
                            <td>
-                              QP<?php echo  $clientInfo->cin ; ?>/<?php echo  $projectInfo->reservationPId ; ?>/<?php echo  $projectInfo->createdBy ; ?> || <?php echo $projectInfo->reservationId ?>
+                              QP<?php echo  $clientInfo->cin ; ?>/<?php echo  $projectInfo->prestationId ; ?>/<?php echo  $projectInfo->createdBy ; ?> || <?php echo $projectInfo->reservationId ?>
                            </td>
                            <td width="30 %">
                               Prix
@@ -271,7 +263,7 @@
                   <?php if( $totalPaiement->valeur > 0 ){  ?>
                      <form style="display: none; border: 2px " 
                         id="addPayementForm" 
-                        action="<?php echo base_url() ?>Photographe/addPaiement/<?php echo $projectInfo->reservationPId ?>" 
+                        action="<?php echo base_url() ?>Prestation/addPaiement/<?php echo $projectInfo->prestationId ?>" 
                         method="post"  >
                  
                      <hr>
@@ -282,14 +274,14 @@
                               <img width="42" class="rounded-circle" src="https://www.queenpark.tn/assets/img/teams/<?php echo $avatar ?>" alt="">
                            </div>
                            <div class="widget-content-left">
-                              <div class="widget-heading"><input type="text" class="form-control"  placeholder="motif" value="Partie" ></div>
+                              <div class="widget-heading"><input type="text" class="form-control"  placeholder="motif" value="Partie" max="<?php echo ($projectInfo->prix - $totalPaiement->valeur ) ?>" ></div>
                               <div class="widget-subheading"></div>
                            </div>
                   
                   <?php } if ($totalPaiement->valeur ==  0 ) {  ?>
                      <form style="display: none; border: 2px " 
                         id="addPayementForm" 
-                        action="<?php echo base_url() ?>Voiture/addPaiement/<?php echo $projectInfo->reservationPId ?>" 
+                        action="<?php echo base_url() ?>Prestation/addPaiement/<?php echo $projectInfo->prestationId ?>" 
                         method="post"  >
                  
                      <hr>
@@ -330,7 +322,7 @@
                <span style="float: right">Reste : <?php echo ($projectInfo->prix - $totalPaiement->valeur ) ?> DT</span>
             </div>
             <div class="text-center d-block card-footer">
-               <button class="btn btn-warning" id="addPayement" >Ajouter</button> <a href="<?php echo base_url() ?>Photographe/recuP/<?php echo $projectInfo->reservationPId ?>" class="btn btn-info">Reçu</a>
+               <button class="btn btn-warning" id="addPayement" >Ajouter</button> <a href="<?php echo base_url() ?>Photographe/recuP/<?php echo $projectInfo->prestationId ?>" class="btn btn-info">Reçu</a>
             </div>
          </div>
       </div>

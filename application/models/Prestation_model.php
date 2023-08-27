@@ -83,6 +83,30 @@ class Prestation_model extends CI_Model
     }
 
 
+
+    
+
+    /**
+     * This function used to get user information by id
+     * @param number $userId : This is user id
+     * @return array $result : This is user information
+     */
+    function ReservationInfoS($resId)
+    {
+       $this->db->select('BaseTbl.* , Pack.*  , Pack.nom packname , BaseTbl.statut PresStatut , Reservation.* , Salles.nom salle , BaseTbl.prix , BaseTbl.avance');
+        $this->db->from('tbl_reservation_prestation as BaseTbl');
+        $this->db->join('tbl_pack_prestation as Pack', 'Pack.packId = BaseTbl.packId','left');
+         $this->db->join('tbl_reservation as Reservation', 'Reservation.reservationId = BaseTbl.reservationId','left');
+          $this->db->join('tbl_salle as Salles', 'Salles.salleID = Reservation.salleId','left');
+        
+        $this->db->where('BaseTbl.prestationId =',$resId );
+
+        $query = $this->db->get();
+        
+        return $query->row();
+    }
+
+
      /**
      * This function used to get user information by id
      * @param number $userId : This is user id
@@ -107,7 +131,7 @@ class Prestation_model extends CI_Model
      */
     function editReservation($reservationInfo, $locationId)
     {
-        $this->db->where('reservationPId', $locationId);
+        $this->db->where('prestationId', $locationId);
         $this->db->update('tbl_reservation_prestation', $reservationInfo);
         
         return TRUE;

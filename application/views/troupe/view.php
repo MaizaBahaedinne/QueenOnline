@@ -24,14 +24,14 @@
                <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
                   <ul class="nav flex-column">
                      <li class="nav-item">
-                        <a href="<?php echo base_url() ?>Reservation/edit/<?php   ?>" class="nav-link">
+                        <a href="" class="nav-link">
                            <i class="nav-link-icon lnr-inbox"></i>
                            <span> Modifier</span>
                           
                         </a>
                      </li>
                      <li class="nav-item">
-                        <a  href="<?php echo base_url() ?>Reservation/deleteReservation/<?php   ?>" class="nav-link">
+                        <a  href="<?php echo base_url() ?>Troupe/deleteReservation/<?php $projectInfo->reservationTId   ?>" class="nav-link">
                         <i class="nav-link-icon lnr-file-empty"></i>
                         <span> Annuler</span>
                         </a>
@@ -142,7 +142,7 @@
                               Réference
                            </td>
                            <td>
-                              QP<?php echo  $clientInfo->cin ; ?>/<?php echo  $projectInfo->reservationPId ; ?>/<?php echo  $projectInfo->createdBy ; ?> || <?php echo $projectInfo->reservationId ?>
+                              QP<?php echo  $clientInfo->cin ; ?>/<?php echo  $projectInfo->reservationTId ; ?>/<?php echo  $projectInfo->createdBy ; ?> || <?php echo $projectInfo->reservationId ?>
                            </td>
                            <td width="30 %">
                               Prix
@@ -265,7 +265,7 @@
                   <?php if( $totalPaiement->valeur > 0 ){  ?>
                      <form style="display: none; border: 2px " 
                         id="addPayementForm" 
-                        action="<?php echo base_url() ?>Photographe/addPaiement/<?php echo $projectInfo->reservationPId ?>" 
+                        action="<?php echo base_url() ?>Troupe/addPaiement/<?php echo $projectInfo->reservationTId ?>" 
                         method="post"  >
                  
                      <hr>
@@ -276,14 +276,14 @@
                               <img width="42" class="rounded-circle" src="https://www.queenpark.tn/assets/img/teams/<?php echo $avatar ?>" alt="">
                            </div>
                            <div class="widget-content-left">
-                              <div class="widget-heading"><input type="text" class="form-control"  placeholder="motif" value="Partie" ></div>
+                              <div class="widget-heading"><input type="text" class="form-control"  placeholder="motif" value="Partie" max="<?php echo ($projectInfo->prix - $totalPaiement->valeur ) ?>" ></div>
                               <div class="widget-subheading"></div>
                            </div>
                   
                   <?php } if ($totalPaiement->valeur ==  0 ) {  ?>
                      <form style="display: none; border: 2px " 
                         id="addPayementForm" 
-                        action="<?php echo base_url() ?>Voiture/addPaiement/<?php echo $projectInfo->reservationPId ?>" 
+                        action="<?php echo base_url() ?>Troupe/addPaiement/<?php echo $projectInfo->reservationTId ?>" 
                         method="post"  >
                  
                      <hr>
@@ -324,7 +324,8 @@
                <span style="float: right">Reste : <?php echo ($projectInfo->prix - $totalPaiement->valeur ) ?> DT</span>
             </div>
             <div class="text-center d-block card-footer">
-               <button class="btn btn-warning" id="addPayement" >Ajouter</button> <a href="<?php echo base_url() ?>Photographe/recuP/<?php echo $projectInfo->reservationPId ?>" class="btn btn-info">Reçu</a>
+              <?php if(  ($projectInfo->prix - $totalPaiement->valeur ) > 0 ) { ?> <button class="btn btn-warning" id="addPayement" >Ajouter</button> <?php } ?>
+               <a href="<?php echo base_url() ?>Troupe/recuP/<?php echo $projectInfo->reservationTId ?>" class="btn btn-info">Reçu</a>
             </div>
          </div>
       </div>

@@ -41,7 +41,7 @@ class Troupe extends BaseController
                 $record->reservationId
             );
         }
-        $this->global["pageTitle"] = "Photographe";
+        $this->global["pageTitle"] = "Troupe Lahmedi";
         $this->loadViews("troupe/list", $this->global, $data, null);
     }
 
@@ -137,18 +137,10 @@ class Troupe extends BaseController
      */
     function view($resId)
     {
-        $data["projectInfo"] = $this->troupe_model->ReservationInfo(
-            $resId
-        );
-        $data["clientInfo"] = $this->user_model->getUserInfo(
-            $data["projectInfo"]->clientId
-        );
-        $data[
-            "paiementInfo"
-        ] = $this->paiement_model->paiementListingbyReservationTroupe(
-            $resId
-        );
-        $data["totalPaiement"] = $this->paiement_model->getPTotal($resId);
+        $data["projectInfo"] = $this->troupe_model->ReservationInfo( $resId );
+        $data["clientInfo"] = $this->user_model->getUserInfo( $data["projectInfo"]->clientId);
+        $data["paiementInfo"] = $this->paiement_model->paiementListingbyReservationTroupe($resId);
+        $data["totalPaiement"] = $this->paiement_model->getTTotal($resId);
         $data["userID"] = $this->vendorId;
         $this->global["pageTitle"] = "CodeInsect : User Listing";
         $this->loadViews("troupe/view", $this->global, $data, null);
@@ -167,16 +159,14 @@ class Troupe extends BaseController
             "valeur" => $avance,
             "recepteurId" => $this->vendorId,
             "libele" => "Partie ",
-            "reservationPId" => $resId,
+            "reservationTroupeId" => $resId,
         ];
         $ReservationInfo = $this->troupe_model->ReservationInfo($resId);
-        $clientInfo = $this->client_model->getClientInfo(
-            $ReservationInfo->clientId
-        );
+        $clientInfo = $this->client_model->getClientInfo($ReservationInfo->clientId);
 
         $this->paiement_model->addNewTroupePaiement($paiementInfo);
 
-        $totalPaiement = $this->paiement_model->getPTotal($resId);
+        $totalPaiement = $this->paiement_model->getTTotal($resId);
         $projectInfo = $this->troupe_model->ReservationInfo($resId);
 
         $reservationInfo = [
@@ -213,9 +203,28 @@ class Troupe extends BaseController
         );
         $data["totalPaiement"] = $this->paiement_model->getTTotal($resId);
 
-        $this->global["pageTitle"] = "Recu de reservation";
+        $this->global["pageTitle"] = "Recu de reservation du troupe lahmedi";
         $this->loadViews("troupe/recu", $this->global, $data, null);
     }
+
+         function deleteReservation($resId)
+        {
+                $reservationInfo = [ "statut" => 3];
+                $result = $this->troupe_model->editReservation($reservationInfo, $resId);
+                if ($result) {
+                        $this->session->set_flashdata("success", "Reservation mise à jour avec succées ");
+                        redirect("Troupe/view/" . $resId);
+                } else {
+                        $this->session->set_flashdata("error", "Problème de mise à jours");
+                        redirect("Troupe/view/" . $resId);
+                }
+        }
+
+
+
+
 }
+
+
 
 ?>

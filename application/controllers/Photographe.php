@@ -232,6 +232,19 @@ class Photographe extends BaseController
     }
 
 
+     function deleteReservation($resId)
+        {
+                $reservationInfo = [ "statut" => 3];
+                $result = $this->photographe_model->editReservation($reservationInfo, $resId);
+                if ($result) {
+                        $this->session->set_flashdata("success", "Reservation mise à jour avec succées ");
+                        redirect("Photographe/view/" . $resId);
+                } else {
+                        $this->session->set_flashdata("error", "Problème de mise à jours");
+                        redirect("Photographe/view/" . $resId);
+                }
+        }
+
 
 
 }
