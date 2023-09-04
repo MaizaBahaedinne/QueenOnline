@@ -183,7 +183,7 @@ class Reservation extends BaseController
         function deleteReservation($resId)
         {
                 $reservationInfo = ["dateDebut" => $dateDebut, "statut" => 3];
-                $result = $this->reservation_model->editReservation($reservationInfo, $resId);
+                $result = $this->reservation_model->editReservation($reservationInfo, $resId, $this->vendorId);
                 if ($result) {
                         $this->session->set_flashdata("success", "Reservation mise à jour avec succées ");
                         redirect("Reservation/view/" . $resId);
@@ -250,7 +250,7 @@ class Reservation extends BaseController
                 $contratInfo = ["createdDate" => date("Y-m-d H:i:s"), "reservationID" => $resId, "avanceId" => $avanceId, "createdBy" => $this->vendorId, "deadline" => $nextyear, "statut" => 0];
                 $this->contrat_model->addNewContrat($contratInfo);
                 $reservationInfo = ["noteAdmin" => "Generation de contrat <br>".$noteAdmin, "statut" => 1];
-                $this->reservation_model->editReservation($reservationInfo, $resId);
+                $this->reservation_model->editReservation($reservationInfo, $resId , $this->vendorId);
                 $ReservationInfo = $this->reservation_model->ReservationInfo($resId);
                 $clientInfo = $this->client_model->getClientInfo($ReservationInfo->clientId);
                 $myMobile = $clientInfo->mobile;
@@ -275,19 +275,21 @@ class Reservation extends BaseController
                 $totalPaiement = $this->paiement_model->getTotal($resId);
                 $projectInfo = $this->reservation_model->ReservationInfo($resId);
                 $reservationInfo = ["noteAdmin" => "Paiement de partie de  <br>".$noteAdmin, "statut" => 1];
+                
                 $HediMobile = "98552446";
                 $mySms = $this->name . " a réçu (" . $avance . " DT) pour la reservation de " . $ReservationInfo->salle . " pour le " . $ReservationInfo->dateDebut;
                 $this->sendSMS("216" . $HediMobile, $mySms);
                 $koussayMobile = "55465244";
                 $mySms = $this->name . " a réçu (" . $avance . " DT) pour la reservation de " . $ReservationInfo->salle . " pour le " . $ReservationInfo->dateDebut;
                 $this->sendSMS("216" . $koussayMobile, $mySms);
+
                 if ($projectInfo->prix - $totalPaiement->valeur == 0) {
                         $myMobile = $clientInfo->mobile;
                         $mySms = "Bonjour " . $clientInfo->name . ", votre reservation de la salle (" . $ReservationInfo->salle . ") pour le (" . $ReservationInfo->dateDebut . ") a été validée on vous souhaite une belle cérémonie.";
                         $this->sendSMS("216" . $myMobile, $mySms);
                         $reservationInfo = ["noteAdmin" => "Paiement de reste  <br>".$noteAdmin, "statut" => 0];
                 }
-                $this->reservation_model->editReservation($reservationInfo, $resId);
+                $this->reservation_model->editReservation($reservationInfo, $resId , $this->vendorId );
                 redirect("Reservation/view/" . $resId);
         }
         function checkreservation($dateDebut, $datefin, $heureDebut, $heureFin)
