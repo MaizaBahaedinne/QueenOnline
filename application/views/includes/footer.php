@@ -1254,8 +1254,9 @@
              $('#nom').val(data[0].nom).css("border", "5px solid green");  
              $('#prenom').val(data[0].prenom).css("border", "5px solid green");
 
-             $('#dateCin').val(data[0].dateCin).css("border", "5px solid red");
-             $('#birth').val(data[0].birth).css("border", "5px solid red");
+             
+
+             alert("Remplir la date de CIN et  la date de naissance") ;
             
         
              $('#n').val(data[0].n).css("border", "5px solid green");
