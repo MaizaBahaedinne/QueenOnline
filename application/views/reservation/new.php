@@ -6,7 +6,7 @@
           <i class="pe-7s-medal icon-gradient bg-tempting-azure"></i>
         </div>
         <div>
-          Reservation
+          Reservation de salle
           <div class="page-title-subheading">Les reservations</div>
         </div>
       </div>
@@ -19,7 +19,7 @@
       </div>
     </div>
   </div>
-<form action="<?php echo base_url()?>Reservation/addNewReservation" method="post" >
+    <form action="<?php echo base_url()?>Reservation/addNewReservation" method="post" >
               
                 <div class="modal-body">
                     <div class="tab-content">
@@ -63,6 +63,7 @@
                                                                     <label class="control-label">Délivrée le </label>
                                                                     <input
                                                                         name="dateCin"
+                                                                        id="dateCin"
                                                                         class="form-control mb-4 mb-md-0"
                                                                         data-inputmask="'alias': 'datetime'"
                                                                         data-inputmask-inputformat="dd/mm/yyyy"

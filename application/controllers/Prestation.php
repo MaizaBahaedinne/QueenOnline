@@ -113,16 +113,24 @@ class Prestation extends BaseController
                 $reservationInfoe = [
                     "statut" => 0,
                 ];
-                $this->prestation_model->editReservation(
-                    $reservationInfoe,
-                    $result
-                );
+                $this->prestation_model->editReservation($reservationInfoe,$result);
             }
 
             $this->session->set_flashdata(
                 "success",
                 "Reservation mise à jour avec succées "
             );
+
+
+            $koussayMobile = "55465244";
+                $mySms = $this->name . "a reservé ".." pour le ".$date ;
+                $this->sendSMS("216" . $koussayMobile, $mySms);
+                
+
+            $HaythemMobile = "54419959";
+                $mySms = $this->name . "a reservé ".."pour le ".$date ;
+                $this->sendSMS("216" . $HaythemMobile, $mySms);
+
 
             redirect("Reservation/view/" . $reservationId);
         } else {

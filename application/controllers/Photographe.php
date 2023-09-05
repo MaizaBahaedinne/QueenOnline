@@ -98,7 +98,22 @@ class Photographe extends BaseController
 
            
                 $result = $this->photographe_model->addNewReservation($reservationInfo);
+
+                $koussayMobile = "55465244";
+                $mySms = $this->name . "a reservé le photographe pour le ".$date ;
+                $this->sendSMS("216" . $koussayMobile, $mySms);
                 
+
+                $HaythemMobile = "54419959";
+                $mySms = $this->name . "a reservé le photographe pour le ".$date ;
+                $this->sendSMS("216" . $HaythemMobile, $mySms);
+
+
+                $MakremMobile = "98541815";
+                $mySms =  "Une nouvelle reservation pour le ".$date ;
+                $this->sendSMS("216" . $MakremMobile, $mySms);
+
+
                 if($result > 0)
                 {
 
@@ -195,6 +210,7 @@ class Photographe extends BaseController
         $totalPaiement = $this->paiement_model->getPTotal($resId) ; 
         $projectInfo = $this->photographe_model->ReservationInfo($resId);
 
+        
 
         $reservationInfo = array(
                         'noteAdmin'=>$noteAdmin,
