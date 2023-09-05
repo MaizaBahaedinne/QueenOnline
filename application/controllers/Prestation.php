@@ -192,14 +192,10 @@ class Prestation extends BaseController
      */
     function recuP($resId)
     {
-        $data["projectInfo"] = $this->prestation_model->ReservationInfoS($resId);
+        $data["projectInfo"] = $this->prestation_model->ReservationInfoS($resId        );
         $data["clientInfo"] = $this->user_model->getUserInfo($data["projectInfo"]->clientId);
-        $data[
-            "paiementInfo"
-        ] = $this->paiement_model->paiementListingbyReservationPrestation(
-            $resId
-        );
-        $data["totalPaiement"] = $this->paiement_model->getPTotal($resId);
+        $data["paiementInfo"] = $this->paiement_model->paiementListingbyReservationPrestation($resId);
+        $data["totalPaiement"] = $this->paiement_model->getPresTotal($resId);
 
         $this->global["pageTitle"] = "Recu de reservation";
         $this->loadViews("prestation/recu", $this->global, $data, null);
