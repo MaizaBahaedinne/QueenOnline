@@ -7,7 +7,7 @@
             </div>
             <div>
                Détails de la reservation
-               <div class="page-title-subheading">Reservation du photographe</div>
+               <div class="page-title-subheading">Reservation du prestation <?php echo $projectInfo->packname ?></div>
             </div>
          </div>
          <div class="page-title-actions">

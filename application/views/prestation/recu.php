@@ -47,7 +47,7 @@
                   
                       <h3>Recu de paiement</h3><br>
                     <p >
-                      <b>Sujet :</b> &nbsp; Paiement de prestation  pour  le <?php echo $projectInfo->date ?> 
+                      <b>Sujet :</b> &nbsp; Paiement de prestation de <b><?php echo $projectInfo->packname ?></b>  pour le <?php echo $projectInfo->date ?> 
                     </p>
                      
                     <br>
