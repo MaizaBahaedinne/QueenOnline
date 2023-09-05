@@ -182,7 +182,7 @@ class Reservation extends BaseController
         }
         function deleteReservation($resId)
         {
-                $reservationInfo = ["dateDebut" => $dateDebut, "statut" => 3];
+                $reservationInfo = ["statut" => 3];
                 $result = $this->reservation_model->editReservation($reservationInfo, $resId, $this->vendorId);
                 if ($result) {
                         $this->session->set_flashdata("success", "Reservation mise à jour avec succées ");
