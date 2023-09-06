@@ -177,7 +177,7 @@
                                                             <div class="col-sm-2">
                                                                 <div class="form-group">
                                                                     <label class="control-label">code postale</label>
-                                                                    <input type="number" class="form-control" min="1000" max="8000" name="codePostal" id="codePostal" placeholder="Code postale" />
+                                                                    <input type="number" class="form-control"  max="8000" name="codePostal" id="codePostal" placeholder="Code postale" />
                                                                 </div>
                                                             </div>
                                                             <!-- Col -->
