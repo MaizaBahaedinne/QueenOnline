@@ -100,12 +100,12 @@ class Photographe extends BaseController
                 $result = $this->photographe_model->addNewReservation($reservationInfo);
 
                 $koussayMobile = "55465244";
-                $mySms = $this->name . "a reservé le photographe pour le ".$date ;
+                $mySms = $this->name . " a reservé le photographe pour le ".$date ;
                 $this->sendSMS("216" . $koussayMobile, $mySms);
                 
 
                 $HaythemMobile = "54419959";
-                $mySms = $this->name . "a reservé le photographe pour le ".$date ;
+                $mySms = $this->name . " a reservé le photographe pour le ".$date ;
                 $this->sendSMS("216" . $HaythemMobile, $mySms);
 
 
