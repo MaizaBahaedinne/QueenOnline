@@ -50,7 +50,7 @@ class Finance_model extends CI_Model
     {
         $this->db->select('BaseTbl.paiementId , BaseTbl.createdDate ,  BaseTbl.valeur  , BaseTbl.recepteurId , BaseTbl.libele , BaseTbl.reservationId , Recepteur.name recuPar , Reservation.dateFin dateRes , Salles.nom espace , Recepteur.avatar , Client.name clientName ');
         $this->db->from('tbl_paiement_voiture as BaseTbl');
-        $this->db->join('tbl_reservation as Reservation', 'BaseTbl.reservationId = Reservation.reservationId','left');
+        $this->db->join('tbl_reservation_voiture as Reservation', 'BaseTbl.reservationId = Reservation.reservationId','left');
         $this->db->join('tbl_users Recepteur', 'BaseTbl.recepteurId = Recepteur.userId','left');
         $this->db->join('tbl_users Client', 'Reservation.clientId = Client.userId','left');
         $this->db->join('tbl_salle as Salles', 'Salles.salleID = Reservation.salleId','left');
