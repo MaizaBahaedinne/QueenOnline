@@ -47,6 +47,59 @@ class Finance extends BaseController
     }
 
 
+        /**
+     * This function used to load the first screen of the user
+     */
+    public function voiture()
+    {
+            $data['financeRecords'] = $this->finance_model->paiemenentVoitureListing();
+            
+
+            $this->global['pageTitle'] = 'Finance voiture';
+            $this->loadViews("finance/view", $this->global, $data, NULL);
+    }
+
+
+
+            /**
+     * This function used to load the first screen of the user
+     */
+    public function prestation()
+    {
+            $data['financeRecords'] = $this->finance_model->paiemenentPrestationListing();
+            
+
+            $this->global['pageTitle'] = 'Finance prestation';
+            $this->loadViews("finance/view", $this->global, $data, NULL);
+    }
+
+
+                /**
+     * This function used to load the first screen of the user
+     */
+    public function troupe()
+    {
+            $data['financeRecords'] = $this->finance_model->paiemenentTroupeListing();
+            
+
+            $this->global['pageTitle'] = 'Finance troupe';
+            $this->loadViews("finance/view", $this->global, $data, NULL);
+    }
+
+
+                    /**
+     * This function used to load the first screen of the user
+     */
+    public function photographe()
+    {
+            $data['financeRecords'] = $this->finance_model->paiemenentPhotographeListing();
+            
+
+            $this->global['pageTitle'] = 'Finance troupe';
+            $this->loadViews("finance/view", $this->global, $data, NULL);
+    }
+
+
 
     /**
      * This function used to load the first screen of the user

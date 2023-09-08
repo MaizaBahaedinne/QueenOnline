@@ -121,14 +121,15 @@ class Prestation extends BaseController
                 "Reservation mise à jour avec succées "
             );
 
+           $reservationInfosms = $this->prestation_model->ReservationInfoS($result);
 
             $koussayMobile = "55465244";
-                $mySms = $this->name . "a reservé ".." pour le ".$date ;
+                $mySms = $this->name . "a reservé ".$reservationInfosms->packname." pour le ".$date ;
                 $this->sendSMS("216" . $koussayMobile, $mySms);
                 
 
             $HaythemMobile = "54419959";
-                $mySms = $this->name . "a reservé ".."pour le ".$date ;
+                $mySms = $this->name . "a reservé ".$reservationInfosms->packname." pour le ".$date ;
                 $this->sendSMS("216" . $HaythemMobile, $mySms);
 
 

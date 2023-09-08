@@ -1278,10 +1278,39 @@
                             <?php if($role == 1 || $role == 2 ){  ?>
                             <li>
                                 <a href="<?php echo base_url() ?>Finance">
-                                    <i class="metismenu-icon pe-7s-piggy"></i>Revenue /Jour
+                                    <i class="metismenu-icon pe-7s-piggy"></i>Revenue /Salle
                                 </a>
                             </li>
                              <?php }  ?>
+                             <?php if($role == 1 || $role == 2 ){  ?>
+                            <li>
+                                <a href="<?php echo base_url() ?>Finance/photographe">
+                                    <i class="metismenu-icon pe-7s-piggy"></i>Revenue /Photographe
+                                </a>
+                            </li>
+                             <?php }  ?>
+                             <?php if($role == 1 || $role == 2 ){  ?>
+                            <li>
+                                <a href="<?php echo base_url() ?>Finance/troupe">
+                                    <i class="metismenu-icon pe-7s-piggy"></i>Revenue /Troupe
+                                </a>
+                            </li>
+                             <?php }  ?>
+                             <?php if($role == 1 || $role == 2 ){  ?>
+                            <li>
+                                <a href="<?php echo base_url() ?>Finance/prestation">
+                                    <i class="metismenu-icon pe-7s-piggy"></i>Revenue /Prestation
+                                </a>
+                            </li>
+                             <?php }  ?>
+                             <?php if($role == 1 || $role == 2 ){  ?>
+                            <li>
+                                <a href="<?php echo base_url() ?>Finance/voiture">
+                                    <i class="metismenu-icon pe-7s-piggy"></i>Revenue /Voiture
+                                </a>
+                            </li>
+                             <?php }  ?>
+
                             <?php if($role == 1 || $role == 2 ){  ?>
                             <li>
                                 <a href="<?php echo base_url() ?>Finance/relance">
@@ -1289,6 +1318,10 @@
                                 </a>
                             </li>
                             <?php }  ?>
+                        </ul>
+                         <ul class="vertical-nav-menu">
+                            <li class="app-sidebar__heading">Statistique</li>
+
                         </ul>
 
 
