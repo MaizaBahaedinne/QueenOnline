@@ -77,8 +77,8 @@
                 <?php if ($record->tableCM == 1 ){ echo '<br><i class="fa fa-file" ></i> contrat de mariage';}  ?>
                 <?php if ($record->voiture != 0 ){ echo '<br><i class="fa fa-car" ></i> Voiture';}  ?>
                 <?php if ($record->troupe != 0  ){ echo '<br><i class="fa fa-music" ></i> Troupe ';}  ?>
-                <?php if (count($record->prestation) > 0  ){ echo '| '.count($record->prestation).' Prestations<br>';}  ?>
-                
+                <?php if (count($record->prestation) > 0  ){ echo '    | '.count($record->prestation).' Prestations<br>';}  ?>
+                <?php if ($record->photographe != 0  ){ echo '<i class="fa fa-camera"></i> photographe<br>';}  ?>
 
               </td>
               <td  onclick='tdclick(this.id)' id="<?php echo $record->reservationId ?>" >
