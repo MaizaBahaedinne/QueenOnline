@@ -52,7 +52,7 @@
                                                         <div class="form-row">
                                                             <div class="col-sm-6">
                                                                 <div class="form-group">
-                                                                    <label class="control-label">Carte d'identié national</label>
+                                                                    <label class="control-label">Carte d'identié national*</label>
                                                                     <input type="text" class="form-control" name="CIN" id="cin" onkeyup="cinClient(this.value)" placeholder="CIN"   required />
                                                                     <input hidden type="text" class="form-control" name="clientId" id="clientId" />
                                                                 </div>
@@ -60,7 +60,7 @@
                                                             <!-- Col -->
                                                             <div class="col-sm-6">
                                                                 <div class="form-group">
-                                                                    <label class="control-label">Délivrée le </label>
+                                                                    <label class="control-label">Délivrée le* </label>
                                                                     <input
                                                                         name="dateCin"
                                                                         id="dateCin"
@@ -77,19 +77,19 @@
                                                             <!-- Col -->
                                                             <div class="col-md-4">
                                                                 <div class="position-relative form-group">
-                                                                    <label class="control-label">Nom</label>
+                                                                    <label class="control-label">Nom*</label>
                                                                     <input type="text" class="form-control" name="nom" id="nom" required placeholder="Nom de famille" />
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <div class="position-relative form-group">
-                                                                    <label class="control-label">Prenom</label>
+                                                                    <label class="control-label">Prenom*</label>
                                                                     <input type="text" class="form-control" name="prenom" id="prenom" required placeholder="Prenom" />
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <div class="position-relative form-group">
-                                                                    <label class="control-label">Date de naissance</label>
+                                                                    <label class="control-label">Date de naissance*</label>
                                                                     <input
                                                                         name="birth"
                                                                         id="birth"
@@ -142,7 +142,7 @@
                                                             <!-- Col -->
                                                             <div class="col-sm-4">
                                                                 <div class="form-group">
-                                                                    <label class="control-label">Ville</label>
+                                                                    <label class="control-label">Ville*</label>
                                                                     
                                                                     <select name="ville" class="form-control" id="ville" required>
                                                                         <option value="">—— Selectionner —— </option>
@@ -177,7 +177,7 @@
                                                             <div class="col-sm-2">
                                                                 <div class="form-group">
                                                                     <label class="control-label">code postale</label>
-                                                                    <input type="number" class="form-control"  max="8000" name="codePostal" id="codePostal" placeholder="Code postale" />
+                                                                    <input type="number" class="form-control"   name="codePostal" id="codePostal" placeholder="Code postale" />
                                                                 </div>
                                                             </div>
                                                             <!-- Col -->
@@ -190,15 +190,15 @@
                                                             <!-- Col -->
                                                             <div class="col-sm-6">
                                                                 <div class="form-group">
-                                                                    <label class="control-label">Mobile</label>
-                                                                    <input id="mobile" name="mobile" class="form-control mb-4 mb-md-0" data-inputmask-alias="99 999 999" im-insert="true" />
+                                                                    <label class="control-label">Mobile*</label>
+                                                                    <input id="mobile" name="mobile" class="form-control mb-4 mb-md-0" data-inputmask-alias="99 999 999" im-insert="true" required />
                                                                 </div>
                                                             </div>
                                                             <!-- Col -->
                                                             <div class="col-sm-6">
                                                                 <div class="form-group">
-                                                                    <label class="control-label">Mobile 2</label>
-                                                                    <input id="mobile2" name="mobile2" class="form-control mb-4 mb-md-0" data-inputmask-alias="99 999 999" im-insert="true" />
+                                                                    <label class="control-label">Mobile 2*</label>
+                                                                    <input id="mobile2" name="mobile2" class="form-control mb-4 mb-md-0" data-inputmask-alias="99 999 999" im-insert="true" required />
                                                                 </div>
                                                             </div>
                                                             <!-- Col -->
@@ -214,16 +214,16 @@
                                                                     </div>
                                                                     <div class="col-md-6">
                                                                         <label for="formGroupExampleInput">Date et heure</label>
-                                                                        <!-- min="<?php echo date('Y-m-d') ?>" -->
-                                                                        <input type="date" class="form-control" name="dateDebut"  placeholder="Example input" />
+                                                                        " 
+                                                                        <input type="date" class="form-control" name="dateDebut"  placeholder="Example input" min="<?php echo date('Y-m-d') ?>" />
                                                                     </div>
                                                                     <div class="col-md-3">
                                                                         <label for="formGroupExampleInput">Debut</label>
-                                                                        <input type="time" class="form-control" name="heureDebut" placeholder="Example input" />
+                                                                        <input type="time" class="form-control" name="heureDebut" placeholder="Example input" value="21:00" />
                                                                     </div>
                                                                     <div class="col-md-3">
                                                                         <label for="formGroupExampleInput">Fin</label>
-                                                                        <input type="time" class="form-control" name="heureFin" placeholder="Example input" />
+                                                                        <input type="time" class="form-control" name="heureFin" placeholder="Example input" value="23:59" />
                                                                     </div>
                                                                     <div class="col-md-6">
                                                                         <label for="formGroupExampleInput">Espace</label>
@@ -258,14 +258,14 @@
 
                                                                     <div class="col-md-6">
                                                                         <label for="formGroupExampleInput2">invités</label>
-                                                                        <input type="number" class="form-control" min="20" max="1000" name="nbPlace" id="nbPlace" placeholder="Nombre des invités" />
+                                                                        <input type="number" class="form-control" min="1" max="600" name="nbPlace" id="nbPlace" placeholder="Nombre des invités" />
                                                                     </div>
                                                                     <div class="col-md-12">
                                                                         <label for="formGroupExampleInput">Options </label><br />
                                                                         <input type="checkbox" name="tableCM" value="1" /> Table contrat de mariage <br />
                                                                         <input type="checkbox" name="cuisine" value="1" /> Cuisine <br />
-                                                                        <input type="checkbox" name="Troupe" value="1" /> Troupe<br />
-                                                                        <input type="checkbox" name="Photographe" value="1" /> Photographe<br />
+                                                                        <input type="checkbox" name="Troupe" value="1" hidden /> Troupe<br />
+                                                                        <input type="checkbox" name="Photographe" value="1" hidden /> Photographe<br />
                                                                     </div>
                                                                     <div class="col-md-12">
                                                                         <label for="formGroupExampleInput">Note Administratif </label>
@@ -285,8 +285,8 @@
                                                                 <div class="swal2-success-fix" style="background-color: rgb(255, 255, 255);"></div>
                                                                 <div class="swal2-success-circular-line-right" style="background-color: rgb(255, 255, 255);"></div>
                                                             </div>
-                                                            <div class="results-subtitle mt-4">Finished!</div>
-                                                            <div class="results-title">You arrived at the last form wizard step!</div>
+                                                            <div class="results-subtitle mt-4">Fini!</div>
+                                                            <div class="results-title">Vous êtes arrivé à la dernière étape de l'assistant de formulaire</div>
                                                             <div class="mt-3 mb-3"></div>
                                                             <div class="text-center">
                                                                 <input type="submit" class="btn-shadow btn-wide btn btn-success btn-lg" />
@@ -298,8 +298,8 @@
                                             </div>
                                             <div class="clearfix">
                         <button type="button" id="reset-btn" class="btn-shadow float-left btn btn-link">Reset</button>
-                        <button type="button" id="next-btn" class="btn-shadow btn-wide float-right btn-pill btn-hover-shine btn btn-primary">Next</button>
-                        <button type="button" id="prev-btn" class="btn-shadow float-right btn-wide btn-pill mr-3 btn btn-outline-secondary">Previous</button>
+                        <button type="button" id="next-btn" class="btn-shadow btn-wide float-right btn-pill btn-hover-shine btn btn-primary">Suivant</button>
+                        <button type="button" id="prev-btn" class="btn-shadow float-right btn-wide btn-pill mr-3 btn btn-outline-secondary">Précédent</button>
                     </div>
                                         </div>
                                     </div>
