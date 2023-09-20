@@ -87,7 +87,7 @@
     <div id="p1" class="app-container fixed-footer fixed-sidebar fixed-header body-tabs-shadow app-theme-gray">
         <div class="app-header header-shadow bg-dark header-text-light" >
             <div class="app-header__logo">
-                <div class="logo-src"><b>Queen Park </b>| Administration</div>
+                <div class="logo-src">Queen Park | Administration</div>
                 <div class="header__pane ml-auto">
                     <div>
                         <button type="button" class="hamburger close-sidebar-btn hamburger--elastic" data-class="closed-sidebar">
