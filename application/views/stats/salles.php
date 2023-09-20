@@ -17,7 +17,7 @@
    <div class="tabs-animation">
       <div class="row">
 
-		<?php for ($i=2018 ; $i <= date(Y) ; $i++) { ?>
+		<?php for ($i=2018 ; $i <= date('Y') ; $i++) { ?>
 
 		
 			<div class="mb-3 card">
