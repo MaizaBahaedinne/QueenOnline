@@ -6,7 +6,7 @@
                <i class="pe-7s-graph icon-gradient bg-ripe-malin"></i>
             </div>
             <div>
-               Dashboard
+               Statistique des salles par ans
                <div class="page-title-subheading"></div>
             </div>
          </div>
@@ -17,13 +17,14 @@
    <div class="tabs-animation">
       <div class="row">
 
-		<?php foreach ($stats as $stat ) { ?>
+		<?php for ($i=2018 ; $i <= date(Y) ; $i++) { ?>
+
 		
 			<div class="mb-3 card">
                <div class="card-header-tab card-header">
                   <div class="card-header-title">
                      <i class="header-icon lnr-rocket icon-gradient bg-tempting-azure"> </i>
-                     Reservation Par Salle (<?php echo $stat->year; ?>)
+                     Reservation Par Salle (<?php echo $i; ?>)
                   </div>
                   <div class="btn-actions-pane-right text-capitalize">
                      <a class="btn-wide btn-outline-2x btn btn-outline-primary btn-sm" href="<?php echo base_url() ?>Reservation" >Voir tout</a>
@@ -34,18 +35,18 @@
                   </div>
                </div>
                <div class="widget-chart p-0">
-                  <div id="Salle<?php echo $stat->year; ?>"></div>
+                  <div id="Salle<?php echo $i; ?>"></div>
                </div>
                <div class="divider mb-0"></div>
             </div>
 			<script type="text/javascript">
                var options = {
-                     series: [<?php foreach($stat-> as $data) { echo $data->COUNT.',' ;  } ?>],
+                     series: [<?php foreach($stats as $data) { <?php if ($i == $data->da ){ echo $stats->COUNT.',' ; }  } ?>],
                      chart: {
                  
                      type: 'pie',
                    },
-                   labels: [<?php foreach($stat as $data) { echo '"'.$data->nom.'",' ;  } ?>],
+                   labels: [<?php foreach($stat as $data) {  <?php if ($i == $data->da ){ echo '"'.$data->sallename.'",' } ;  } ?>],
                    responsive: [{
                      breakpoint: 500,
                      options: {
@@ -59,7 +60,7 @@
                    }]
                    };
                
-                   var chart = new ApexCharts(document.querySelector("#Salle<?php echo $stat->year; ?>"), options);
+                   var chart = new ApexCharts(document.querySelector("#Salle<?php echo $i; ?>"), options);
                    chart.render();
                
             </script>
