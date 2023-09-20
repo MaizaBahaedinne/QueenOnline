@@ -46,7 +46,7 @@
                  
                      type: 'pie',
                    },
-                   labels: [<?php foreach($stat as $data) {   if ($i == $data->da ){ echo '"'.$data->sallename.'",' } ;  } ?>],
+                   labels: [<?php foreach($stat as $data) {   if ($i == $data->da ){ echo '"'.$data->sallename.'",' ; } }   ?>],
                    responsive: [{
                      breakpoint: 500,
                      options: {
