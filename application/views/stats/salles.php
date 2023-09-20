@@ -19,7 +19,7 @@
 
 		<?php for ($i=2018 ; $i <= date('Y') ; $i++) { ?>
 
-		
+		<div class="col-md-3 col-xl-4">
 			<div class="mb-3 card">
                <div class="card-header-tab card-header">
                   <div class="card-header-title">
@@ -64,6 +64,7 @@
                    chart.render();
                
             </script>
+             </div>
             <?php } ?>
 
 		</div>
