@@ -23,10 +23,6 @@ class Statistique_model extends CI_Model
     {
         $this->db->select('BaseTbl.* ');
         $this->db->from('statsSalleParAns as BaseTbl');
- 
-
-
-
         $query = $this->db->get();
         
         $result = $query->result();        
