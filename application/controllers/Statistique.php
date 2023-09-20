@@ -44,7 +44,7 @@ class Statistique extends BaseController
             
 
             $this->global['pageTitle'] = 'Statistique par salles';
-            $this->loadViews("stats/view", $this->global, $data, NULL);
+            $this->loadViews("stats/salles", $this->global, $data, NULL);
     }
 
 
