@@ -1321,7 +1321,13 @@
                         </ul>
                          <ul class="vertical-nav-menu">
                             <li class="app-sidebar__heading">Statistique</li>
-
+                            <?php if($role == 1 || $role == 2 ){  ?>
+                            <li>
+                                <a href="<?php echo base_url() ?>Statistique">
+                                    <i class="metismenu-icon pe-7s-graph"></i>Salle/Ans
+                                </a>
+                            </li>
+                            <?php }  ?>
                         </ul>
 
 
