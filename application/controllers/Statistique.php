@@ -10,7 +10,7 @@ require APPPATH . '/libraries/BaseController.php';
  * @since : 15 November 2016
  */
 
-class Finance extends BaseController
+class Statistique extends BaseController
 {
 
 
