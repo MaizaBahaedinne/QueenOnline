@@ -19,7 +19,7 @@
 
 		<?php for ($i=2018 ; $i <= date('Y') ; $i++) { ?>
 
-		<div class="col-md-6 col-xl-4">
+		<div class="col-md-6 col-xl-6">
 			<div class="mb-3 card">
                <div class="card-header-tab card-header">
                   <div class="card-header-title">
@@ -41,7 +41,7 @@
             </div>
 			<script type="text/javascript">
                var options = {
-                     series: [<?php print_r($stats); foreach($stats as $data) {  if ($i == $data->da ) { echo $data->COUNTRES.',' ; }  } ?>],
+                     series: [<?php foreach($stats as $data) {  if ($i == $data->da ) { echo $data->COUNTRES.',' ; }  } ?>],
                      chart: {
                  
                      type: 'pie',
