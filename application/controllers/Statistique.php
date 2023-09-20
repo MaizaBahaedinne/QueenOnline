@@ -38,7 +38,7 @@ class Statistique extends BaseController
     /**
      * This function used to load the first screen of the user
      */
-    public function Statistique()
+    public function index()
     {
             $data['stats'] = $this->statistique_model->statsParSalleListing();
             
