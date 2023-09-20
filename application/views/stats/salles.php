@@ -41,7 +41,7 @@
             </div>
 			<script type="text/javascript">
                var options = {
-                     series: [<?php print_r($stats); foreach($stats as $data) {  if ($i == $data->da ) { echo $stats->COUNTRES.',' ; }  } ?>],
+                     series: [<?php print_r($stats); foreach($stats as $data) {  if ($i == $data->da ) { echo $data->COUNTRES.',' ; }  } ?>],
                      chart: {
                  
                      type: 'pie',
