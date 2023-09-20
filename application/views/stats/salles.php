@@ -41,12 +41,12 @@
             </div>
 			<script type="text/javascript">
                var options = {
-                     series: [<?php foreach($stats as $data) {  if ($i == $data->da ) { echo $stats->COUNT.',' ; }  } ?>],
+                     series: [<?php foreach($stats as $data) {  if ($i == $data->da ) { echo $stats->COUNTRES.',' ; }  } ?>],
                      chart: {
                  
                      type: 'pie',
                    },
-                   labels: [<?php foreach($stat as $data) {   if ($i == $data->da ){ echo '"'.$data->sallename.'",' ; } }   ?>],
+                   labels: [<?php foreach($stats as $data) {   if ($i == $data->da ){ echo '"'.$data->sallename.'",' ; } }   ?>],
                    responsive: [{
                      breakpoint: 500,
                      options: {
