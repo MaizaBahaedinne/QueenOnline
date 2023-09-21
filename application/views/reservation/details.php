@@ -40,11 +40,23 @@
 
                         <script type="text/javascript">
                             function annule() {
-                                Swal.fire(
-                                      'Nouvelle procedure',
-                                      'That thing is still around?',
-                                      'question'
-                                    );
+                                Swal.fire({
+                                          title: '<strong>Une nouvelle La procédure d\'annulation d\'un contrat de location </strong>',
+                                          icon: 'info',
+                                          html:
+                                            '1. Vérification de la date de paiement <br>' +
+                                            '2.Invitation à se présenter aux bureaux <br> ' +
+                                            '3. Réunion de résiliation de contrat de location',
+                                          showCloseButton: true,
+                                          showCancelButton: true,
+                                          focusConfirm: false,
+                                          confirmButtonText:
+                                            'Go',
+                                          confirmButtonAriaLabel: 'Pas encore',
+                                          cancelButtonText:
+                                            '<i class="fa fa-thumbs-down"></i>',
+                                          cancelButtonAriaLabel: 'Thumbs down'
+                                        })
                             }
                         </script>
                         
