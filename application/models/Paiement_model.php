@@ -247,6 +247,26 @@ class Paiement_model extends CI_Model
     }
 
 
+   /**
+     * This function used to get user information by id
+     * @param number $userId : This is user id
+     * @return array $result : This is user information
+     */
+    function getTotalByYear($year = '')
+    {
+         $this->db->select('sum(valeur) valeur');
+        $this->db->from('tbl_paiement as BaseTbl');
+        if($resId != null) {
+        $this->db->where('YEAR(BaseTbl.createdDate) ='.$year );
+
+        }
+        
+        $query = $this->db->get();
+        
+        return $query->row();
+    }
+
+
     /**
      * This function used to get user information by id
      * @param number $userId : This is user id
@@ -257,7 +277,8 @@ class Paiement_model extends CI_Model
          $this->db->select('sum(valeur) valeur');
         $this->db->from('tbl_paiement as BaseTbl');
         if($resId != null) {
-        $this->db->where('BaseTbl.reservationId =',$resId );
+        $this->db->where('BaseTbl.reservationId ='.$resId );
+
         }
         
         $query = $this->db->get();

@@ -40,7 +40,8 @@ class User extends BaseController
         $data['ReservationRecords'] = $this->reservation_model->ReservationListing(null ,null , 'date');
 
         $data['clientecords'] =   $this->client_model->clientListing();
-        $data['chiffres'] =   $this->paiement_model->getTotal();
+        $data['chiffres'] =   $this->paiement_model->getTotalByYear(date('Y'));
+        $data['chiffresPrec'] =   $this->paiement_model->getTotalByYear(date('Y')-1);
   
         $this->global['pageTitle'] = 'CodeInsect : Dashboard';
  
