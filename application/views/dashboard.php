@@ -115,7 +115,7 @@
             </div>
          </div>
          <div class="col-lg-8 col-xl-8">
-            <div class="mb-3 card">
+            <div class="mb-3 card bg-premium-dark">
                <div class="card-header-tab card-header">
                   <div class="card-header-title">
                      <i class="header-icon lnr-rocket icon-gradient bg-tempting-azure"> </i>
@@ -258,7 +258,7 @@
             </div>
          </div>
          <div class="col-lg-4">
-            <div class="mb-3 card">
+            <div class="mb-3 card bg-premium-dark">
                <div class="card-header-tab card-header">
                   <div class="card-header-title">
                      <i class="header-icon lnr-rocket icon-gradient bg-tempting-azure"> </i>
@@ -302,7 +302,7 @@
                    chart.render();
                
             </script>
-            <div class="mb-3 card">
+            <div class="mb-3 card bg-premium-dark">
                <div class="card-header-tab card-header">
                   <div class="card-header-title">
                      <i class="header-icon lnr-rocket icon-gradient bg-tempting-azure"> </i>
