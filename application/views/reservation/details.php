@@ -51,7 +51,7 @@
                                           showCancelButton: true,
                                           focusConfirm: false,
                                           confirmButtonText:
-                                            '<a href="<?php echo base_url() ?>">Go</a>',
+                                            '<a style="color: white" href="<?php echo base_url() ?>">Go</a>',
                                           confirmButtonAriaLabel: 'Pas encore',
                                           cancelButtonText:
                                             '<i class="fa fa-thumbs-down"></i>',
