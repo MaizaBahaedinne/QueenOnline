@@ -49,7 +49,7 @@
                                             '3. Réunion de résiliation de contrat de location<br> <br><b>Le client est pret à signer</b>',
                                           showCloseButton: true,
                                           showCancelButton: true,
-                                          focusConfirm: false,
+                                          focusConfirm: true,
                                           confirmButtonText:
                                             '<a style="color: white" href="<?php echo base_url() ?>">Oui</a>',
                                           confirmButtonAriaLabel: 'Pas encore',
