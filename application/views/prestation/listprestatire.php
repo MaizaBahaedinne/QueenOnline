@@ -88,8 +88,9 @@
             <tr>
               <th>ID</th>
               <th>Nom</th>
+              <th>Mobile</th>
               <th>Prix</th>
-              <th>Pack</th>
+              <th>Reservation</th>
               <th width="5%">Action</th>
             </tr>
           </tfoot>
