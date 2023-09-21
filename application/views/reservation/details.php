@@ -35,7 +35,7 @@
                         <i class="nav-link-icon lnr-file-empty"></i>
                         <span> Annuler</span>
                         </a>
-                        <a href="" class="nav-link o nannuler" onclick="annule()" > <i class="nav-link-icon lnr-file-empty"></i> New Annuler</a>
+                        <a  class="nav-link o nannuler" onclick="annule()" > <i class="nav-link-icon lnr-file-empty"></i> New Annuler</a>
 
 
                         <script type="text/javascript">
