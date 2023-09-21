@@ -50,7 +50,7 @@
        <div class="col-md-3">
          <div class="card-shadow-primary card-border mb-3 card">
              <div class="card-header">
-               <h5><i class="metismenu-icon pe-7s-users"></i>Troupe</h5>
+               <h5><i class="pe-7s-users"></i> Troupe</h5>
              </div>
              <div class="card-body">
                   <?php if ($projectInfo->troupe == 0) {
@@ -105,7 +105,7 @@
       <div class="col-md-3">
          <div class="card-shadow-primary card-border mb-3 card">
             <div class="card-header">
-               <h5><i class="metismenu-icon pe-7s-camera"></i>Photographe</h5>
+               <h5><i class="pe-7s-camera"></i> Photographe</h5>
              </div>
             <div class="card-body">
                 <?php if ($projectInfo->photographe == 0) {
@@ -145,7 +145,7 @@
       <div class="col-md-3">
          <div class="card-shadow-primary card-border mb-3 card">
             <div class="card-header">
-               <h5><i class="metismenu-icon pe-7s-car"></i>Voiture</h5>
+               <h5><i class="pe-7s-car"></i> Voiture</h5>
              </div>
             <div class="card-body">
                <?php if ($projectInfo->voiture == 0) {
