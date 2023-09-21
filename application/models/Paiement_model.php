@@ -256,7 +256,7 @@ class Paiement_model extends CI_Model
     {
          $this->db->select('sum(valeur) valeur');
         $this->db->from('tbl_paiement as BaseTbl');
-        if($resId != null) {
+        if($year != null) {
         $this->db->where('YEAR(BaseTbl.createdDate) ='.$year );
 
         }
