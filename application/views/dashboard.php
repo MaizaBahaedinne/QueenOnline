@@ -95,7 +95,7 @@
             </div>
          </div>
           <div class="col-lg-12">
-            <div class="mb-3 card  bg-premium-dark">
+            <div class="mb-3 card bg-premium-dark">
                <div class="card-header-tab card-header">
                   <div class="card-header-title">
                      <i class="header-icon lnr-rocket icon-gradient bg-tempting-azure"> </i>
@@ -105,7 +105,7 @@
                      <a class="btn-wide btn-outline-2x btn btn-outline-primary btn-sm" href="<?php echo base_url() ?>Reservation" >Voir tout</a>
                   </div>
                </div>
-               <div class="pt-2 pb-0 card-body ">
+               <div class="pt-2 pb-0 card-body bg-dark">
                   <div class="row">
                     <div id="calendar1"></div>
                      
@@ -115,7 +115,7 @@
             </div>
          </div>
          <div class="col-lg-8 col-xl-8">
-            <div class="mb-3 card bg-premium-dark">
+            <div class="mb-3 card">
                <div class="card-header-tab card-header">
                   <div class="card-header-title">
                      <i class="header-icon lnr-rocket icon-gradient bg-tempting-azure"> </i>
@@ -231,8 +231,8 @@
                <div class="grid-menu grid-menu-2col">
                   <div class="no-gutters row">
                      <?php foreach ($ReservationPerYearRecords as $data ) { if ($data->YEAR > 0 ){  ?>
-                     <div class="col-md-6">
-                        <div class="widget-content mt-2">
+                     <div class="col-md-6 bg-premium-dark">
+                        <div class="widget-content mt-2 ">
                            <div class="widget-content-outer">
                               <div class="widget-content-wrapper">
                                  <div class="widget-content-left pr-2 fsize-1">
@@ -258,7 +258,7 @@
             </div>
          </div>
          <div class="col-lg-4">
-            <div class="mb-3 card bg-premium-dark">
+            <div class="mb-3 card">
                <div class="card-header-tab card-header">
                   <div class="card-header-title">
                      <i class="header-icon lnr-rocket icon-gradient bg-tempting-azure"> </i>
@@ -302,7 +302,7 @@
                    chart.render();
                
             </script>
-            <div class="mb-3 card bg-premium-dark">
+            <div class="mb-3 card">
                <div class="card-header-tab card-header">
                   <div class="card-header-title">
                      <i class="header-icon lnr-rocket icon-gradient bg-tempting-azure"> </i>
