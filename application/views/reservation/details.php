@@ -46,7 +46,7 @@
                                           html:
                                             '1. Vérification de la date de paiement <br>' +
                                             '2. Invitation à se présenter aux bureaux <a href="tel:<?php echo $clientInfo->mobile; ?>"><?php echo $clientInfo->mobile; ?></a> <br> ' +
-                                            '3. Réunion de résiliation de contrat de location',
+                                            '3. Réunion de résiliation de contrat de location<br> <a href:"">Le client est pret à signer</a>',
                                           showCloseButton: true,
                                           showCancelButton: true,
                                           focusConfirm: false,
