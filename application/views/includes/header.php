@@ -1302,37 +1302,22 @@
                                 </li>
                                
                                 <li>
-                                 <a href="<?php echo base_url() ?>Finance/troupe">
-                                    <i class="metismenu-icon pe-7s-piggy"></i>Revenue /Troupe
+                                <a href="<?php echo base_url() ?>Finance/prestation">
+                                    <i class="metismenu-icon pe-7s-piggy"></i>Revenue /Prestation
+                                </a>
+                                </li>
+                                <li>
+                                <a href="<?php echo base_url() ?>Finance/voiture">
+                                    <i class="metismenu-icon pe-7s-piggy"></i>Revenue /Voiture
                                 </a>
                                 </li>
                                 </ul>
                             </li>
-                            
+                            </ul>
 
                             
                              
-                             <?php if($role == 1 || $role == 2 ){  ?>
-                            <li>
-                                <a href="<?php echo base_url() ?>Finance/troupe">
-                                    <i class="metismenu-icon pe-7s-piggy"></i>Revenue /Troupe
-                                </a>
-                            </li>
-                             <?php }  ?>
-                             <?php if($role == 1 || $role == 2 ){  ?>
-                            <li>
-                                <a href="<?php echo base_url() ?>Finance/prestation">
-                                    <i class="metismenu-icon pe-7s-piggy"></i>Revenue /Prestation
-                                </a>
-                            </li>
-                             <?php }  ?>
-                             <?php if($role == 1 || $role == 2 ){  ?>
-                            <li>
-                                <a href="<?php echo base_url() ?>Finance/voiture">
-                                    <i class="metismenu-icon pe-7s-piggy"></i>Revenue /Voiture
-                                </a>
-                            </li>
-                             <?php }  ?>
+                             
 
                             <?php if($role == 1 || $role == 2 ){  ?>
                             <li>
