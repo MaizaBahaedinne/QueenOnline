@@ -1279,38 +1279,40 @@
 
                             <li class="">
                                 <a href="#" aria-expanded="false">
-                                <i class="metismenu-icon pe-7s-diamond"></i> Revenue
+                                <i class="metismenu-icon pe-7s-diamond"></i> Revenues
                                 <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                                 </a>
                                 <ul class="mm-collapse" style="height: 7.04px;">
+                                <?php if($role == 1 || $role == 2 ){  ?>
                                 <li>
                                 <a href="<?php echo base_url() ?>Finance">
-                                    <i class="metismenu-icon pe-7s-piggy"></i>Revenue /Salle
+                                    <i class="metismenu-icon pe-7s-piggy"></i>Salles
                                 </a>
                                 </li>
                                 <li>
                                 <a href="<?php echo base_url() ?>Finance/photographe">
-                                    <i class="metismenu-icon pe-7s-piggy"></i>Revenue /Photographe
+                                    <i class="metismenu-icon pe-7s-piggy"></i>Photographe
                                 </a>
                                 </li>
                                 
                                 
                                 <li>
                                 <a href="<?php echo base_url() ?>Finance/troupe">
-                                    <i class="metismenu-icon pe-7s-piggy"></i>Revenue /Troupe
+                                    <i class="metismenu-icon pe-7s-piggy"></i>Troupe
                                 </a>
                                 </li>
                                
                                 <li>
                                 <a href="<?php echo base_url() ?>Finance/prestation">
-                                    <i class="metismenu-icon pe-7s-piggy"></i>Revenue /Prestation
+                                    <i class="metismenu-icon pe-7s-piggy"></i>Prestation
                                 </a>
                                 </li>
                                 <li>
                                 <a href="<?php echo base_url() ?>Finance/voiture">
-                                    <i class="metismenu-icon pe-7s-piggy"></i>Revenue /Voiture
+                                    <i class="metismenu-icon pe-7s-piggy"></i>Voiture
                                 </a>
                                 </li>
+                                <?php }  ?>
                                 </ul>
                             </li>
                             
