@@ -81,7 +81,7 @@ Grow Rate:
 Increased by
 <span class="text-warning pl-1">
 <i class="fa fa-angle-up"></i>
-<span class="pl-1">7.35%</span>
+<span class="pl-1"><?php if($uid == 1 ){ echo ($chiffresPrec->valeur)/1000 ; }  ?>M DT</span>
 </span>
 </div>
 </div>
