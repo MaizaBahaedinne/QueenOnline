@@ -964,7 +964,6 @@
     <div class="app-drawer-overlay d-none animated fadeIn"></div>
 
 
-    <script defer type="text/javascript" src="<?php echo base_url() ; ?>assets/scripts/main.d810cf0ae7f39f28f336.js"></script>
 </body>
 
 
@@ -1352,8 +1351,7 @@
 
 
 
-    <script src='https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.7/index.global.min.js'></script>
-    <script src='https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@6.1.7/index.global.min.js'></script>
+   
     <script>
 
       document.addEventListener('DOMContentLoaded', function() {
