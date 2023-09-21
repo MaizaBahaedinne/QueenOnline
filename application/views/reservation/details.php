@@ -45,7 +45,7 @@
                                           icon: 'info',
                                           html:
                                             '1. Vérification de la date de paiement <br>' +
-                                            '2. Invitation à se présenter aux bureaux <br> ' +
+                                            '2. Invitation à se présenter aux bureaux <a href="tel:<?php echo $clientInfo->mobile; ?>"><?php echo $clientInfo->mobile; ?></a> <br> ' +
                                             '3. Réunion de résiliation de contrat de location',
                                           showCloseButton: true,
                                           showCancelButton: true,
