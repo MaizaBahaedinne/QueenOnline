@@ -1262,7 +1262,7 @@
                             </li>
                             -->
                             <li>
-                                <a href="<?php echo base_url() ?>">
+                                <a href="<?php echo base_url() ?>Prestation/Pestataire">
                                     <i class="metismenu-icon pe-7s-box2"></i>Artists
                                 </a>
                             </li>

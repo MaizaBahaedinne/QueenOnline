@@ -45,6 +45,19 @@ class Prestation extends BaseController
         $this->loadViews("prestation/list", $this->global, $data, null);
     }
 
+     /**
+     * This function used to load the first screen of the user
+     */
+    public function Pestataire()
+    {
+        $data["userRecords"] = $this->prestation_model->Packs();
+        foreach ($data["userRecords"] as $record) {
+            $record->projectInfo = $this->prestation_model->PacksReservation($record->packId);
+        }
+        $this->global["pageTitle"] = "Prestation";
+        $this->loadViews("prestation/listprestatire", $this->global, $data, null);
+    }
+
     public function addNew($reservationId)
     {
         $data["Packs"] = $this->prestation_model->Packs();
