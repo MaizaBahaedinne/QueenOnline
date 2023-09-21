@@ -35,6 +35,18 @@
                         <i class="nav-link-icon lnr-file-empty"></i>
                         <span> Annuler</span>
                         </a>
+                        <a class="btn btn-primary o nannuler" onclick="annule()" >New Annuler</a>
+
+
+                        <script type="text/javascript">
+                            function annule() {
+                                Swal.fire(
+                                      'Nouvelle procedure',
+                                      'That thing is still around?',
+                                      'question'
+                                    );
+                            }
+                        </script>
                         
                        
 
