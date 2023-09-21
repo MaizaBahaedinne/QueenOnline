@@ -89,93 +89,16 @@ Increased by
 </div>
 </div>
 <div class="text-center d-block p-3 card-footer">
-<button class="btn-pill btn-shadow btn-wide fsize-1 btn btn-primary btn-lg">
+<a href="<?php echo base_url() ?>" class="btn-pill btn-shadow btn-wide fsize-1 btn btn-primary btn-lg">
 <span class="mr-2 opacity-7">
 <i class="icon icon-anim-pulse ion-ios-analytics-outline"></i>
 </span>
-<span class="mr-1">View Complete Report</span>
-</button>
+
+</a>
 </div>
 </div>
 </div>
-         <div class="col-md-6 col-xl-4">
-            <div class="card mb-3 widget-content widget-content bg-premium-dark">
-               <div class="widget-content-outer">
-                  <div class="widget-content-wrapper">
-                     <div class="widget-content-left text-white">
-                        <div class="widget-heading">Reservations</div>
-                        <div class="widget-subheading">Depuis 2018</div>
-                     </div>
-                     <div class="widget-content-right">
-                        <div class="widget-numbers text-success"><?php echo count($reservationRecords) ?></div>
-                     </div>
-                  </div>
-                  <!--
-                  <div class="widget-progress-wrapper">
-                     <div class="progress-bar-sm progress">
-                        <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="71" aria-valuemin="0" aria-valuemax="100" style="width: 71%;"></div>
-                     </div>
-                     <div class="progress-sub-label">
-                        <div class="sub-label-left">Reservation</div>
-                        <div class="sub-label-right">100%</div>
-                     </div>
-                  </div>
-                  -->
-               </div>
-            </div>
-         </div>
-         <div class="col-md-6 col-xl-4">
-            <div class="card mb-3 widget-content widget-content bg-premium-dark">
-               <div class="widget-content-outer">
-                  <div class="widget-content-wrapper">
-                     <div class="widget-content-left text-white">
-                        <div class="widget-heading">Clients</div>
-                        <div class="widget-subheading">Depuis 2018</div>
-                     </div>
-                     <div class="widget-content-right">
-                        <div class="widget-numbers text-warning"><?php echo count($clientecords) ?></div>
-                     </div>
-                  </div>
-                  <!--
-                  <div class="widget-progress-wrapper">
-                     <div class="progress-bar-sm progress-bar-animated-alt progress">
-                        <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 85%;"></div>
-                     </div>
-                     <div class="progress-sub-label">
-                        <div class="sub-label-left">Client</div>
-                        <div class="sub-label-right">100%</div>
-                     </div>
-                  </div>
-                  -->
-               </div>
-            </div>
-         </div>
-         <div class="col-md-6 col-xl-4">
-            <div class="card mb-3 widget-content widget-content bg-premium-dark">
-               <div class="widget-content-outer">
-                  <div class="widget-content-wrapper">
-                     <div class="widget-content-left text-white">
-                        <div class="widget-heading">Chiffres</div>
-                        <div class="widget-subheading">Depuis 2016</div>
-                     </div>
-                     <div class="widget-content-right">
-                        <div class="widget-numbers text-danger"><?php if($uid == 1 ){ echo ($chiffres->valeur)/1000 ; }  ?>M DT</div>
-                     </div>
-                  </div>
-                  <!--
-                  <div class="widget-progress-wrapper">
-                     <div class="progress-bar-sm progress-bar-animated-alt progress">
-                        <div class="progress-bar bg-success" role="progressbar" aria-valuenow="46" aria-valuemin="0" aria-valuemax="100" style="width: 46%;"></div>
-                     </div>
-                     <div class="progress-sub-label">
-                        <div class="sub-label-left">Chiffres</div>
-                        <div class="sub-label-right">100%</div>
-                     </div>
-                  </div>
-                  -->
-               </div>
-            </div>
-         </div>
+        
           <div class="col-lg-12">
             <div class="mb-3 card bg-premium-dark">
                <div class="card-header-tab card-header">
