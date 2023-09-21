@@ -20,7 +20,7 @@
             <div class="card mb-3 widget-content widget-content bg-premium-dark">
                <div class="widget-content-outer">
                   <div class="widget-content-wrapper">
-                     <div class="widget-content-left">
+                     <div class="widget-content-left text-white">
                         <div class="widget-heading">Reservations</div>
                         <div class="widget-subheading">Depuis 2018</div>
                      </div>
@@ -46,7 +46,7 @@
             <div class="card mb-3 widget-content widget-content bg-premium-dark">
                <div class="widget-content-outer">
                   <div class="widget-content-wrapper">
-                     <div class="widget-content-left">
+                     <div class="widget-content-left text-white">
                         <div class="widget-heading">Clients</div>
                         <div class="widget-subheading">Depuis 2018</div>
                      </div>
@@ -72,7 +72,7 @@
             <div class="card mb-3 widget-content widget-content bg-premium-dark">
                <div class="widget-content-outer">
                   <div class="widget-content-wrapper">
-                     <div class="widget-content-left">
+                     <div class="widget-content-left text-white">
                         <div class="widget-heading">Chiffres</div>
                         <div class="widget-subheading">Depuis 2016</div>
                      </div>
