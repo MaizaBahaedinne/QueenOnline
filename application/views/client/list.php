@@ -51,6 +51,7 @@
                
                 
                <?php foreach($record->reservations as $reservation) { ?>
+                  <a href="<?php echo base_url().'Reservation/view/'.$reservation->reservationId  ?>" >
                   <?php if ($reservation->statut == 0 ) { ?>
                 <span class="badge badge-pill badge-success"><i class="metismenu-icon pe-7s-check"></i></span>
                 <?php } ?>    
@@ -61,7 +62,8 @@
                 <?php if ($reservation->statut == 3 ) { ?>
                 <span class="badge badge-pill badge-danger"><i class="metismenu-icon pe-7s-close"></i></span>
                 <?php } ?>
-                <a href="<?php echo base_url().'Reservation/view/'.$reservation->reservationId  ?>" ><?php echo $reservation->salle." ".$reservation->dateDebut  ?> </a> <br>
+                <?php echo $reservation->salle." ".$reservation->dateDebut  ?><br>
+               </a> 
                <?php    }   ?>
                   </td>
                   <td class="text-center">
