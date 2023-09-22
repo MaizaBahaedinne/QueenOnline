@@ -67,7 +67,18 @@
                         </svg>
                         <span   >Imprimer</span>
                      </button>
-                     <?php } else{   ?> <span style="color: red" >il faut verser une avance superieure ou égale à 100 dt pour imprimer le contrat </span> <?php } ?>
+                     <?php } else{   ?> 
+                        <script type="text/javascript">
+                           
+                           Swal.fire({
+                                      icon: 'error',
+                                      title: 'Avance < 100 DT',
+                                      text: 'il faut verser une avance superieure ou égale à 100 dt pour imprimer le contrat ',
+                                      footer: ''
+                                    })
+
+                        </script>
+                        <span style="color: red" >il faut verser une avance superieure ou égale à 100 dt pour imprimer le contrat </span> <?php } ?>
                   </div>
                </div>
              
