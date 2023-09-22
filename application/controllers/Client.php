@@ -35,7 +35,7 @@ class Client extends BaseController
 
             foreach ($data['userRecords'] as $client ) 
             {
-                $client->reservations = $this->reservation_model->ReservationListing(null , null , "2017-06-01" , $client->userId );
+                $client->reservations = $this->reservation_model->ReservationListingByClient($client->userId );
 
             }
             $this->global['pageTitle'] = 'Clients';
