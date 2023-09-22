@@ -230,7 +230,7 @@
                           <div class="modal-dialog modal-lg" role="document">
                             <div class="modal-content">
                               <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Annulation de la reservation</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">Historique de la reservation</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                   <span aria-hidden="true">&times;</span>
                                 </button>
@@ -674,7 +674,19 @@
                   <br>
                   <p style="text-align: center;">Queen Park - Mc 34 Route  Mornag boujardga 2090 - mobile : 54 419 959  - 79 352 153 - 58 465 249 </p>
                </div>
-               <?php } else {echo '<h5 style="color : red" >Pour avoir votre contrat il faut verser une avance superieur à 1000DT </h5>';} ?>
+               <?php } else {?> 
+                   <h5 style="color : red" >Pour avoir votre contrat il faut verser une avance superieur à 1000DT </h5>  
+                   <script type="text/javascript">
+                           
+                           Swal.fire({
+                                      icon: 'error',
+                                      title: 'Avance < 1000 DT',
+                                      text: 'il faut verser une avance superieure ou égale à 1000 dt pour imprimer le contrat ',
+                                      footer: ''
+                                    })
+
+                        </script>
+               <?php } ?>
                <!-- Modal -->
             </div>
          </div>

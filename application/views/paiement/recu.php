@@ -102,6 +102,10 @@
                               </tbody>
                           </table>
 
+                          <span style="color:gray;" >
+                            * Ce reçu de paiement atteste simplement que la somme mentionnée a été reçue.<br>
+                            * un montant égal ou supérieur à 1000 DT doit être versé dans un délai maximum de 10 jours à compter de la date de ce reçu. En cas de non-paiement dans ce délai, le montant mentionné dans ce reçu sera annulé et considéré comme non versé.</span>
+
 
 
 
