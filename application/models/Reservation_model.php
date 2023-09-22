@@ -78,7 +78,7 @@ class Reservation_model extends CI_Model
      */
     function ReservationListingByClient($clientId = null )
     {
-        $this->db->select('BaseTbl.* , Salles.nom salle');
+        $this->db->select('BaseTbl.reservationId , BaseTbl.dateDebut , BaseTbl.statut , Salles.nom salle');
         $this->db->from('tbl_reservation as BaseTbl');
         $this->db->join('tbl_users as Client', 'Client.userId = BaseTbl.clientId','left');
         $this->db->join('tbl_salle as Salles', 'Salles.salleID = BaseTbl.salleId','left');
