@@ -53,6 +53,7 @@ class Reservation_model extends CI_Model
 
         if( $clientId != null ){
          $this->db->where('BaseTbl.clientId = ', $clientId );
+         $this->db->where('BaseTbl.statut in (0,1,3) ');
 
         }
     
