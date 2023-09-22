@@ -12,6 +12,15 @@
         <!-- Disable tap highlight on IE -->
         <meta name="msapplication-tap-highlight" content="no">
         <link href="<?php echo base_url() ?>assets/css/main.d810cf0ae7f39f28f336.css" rel="stylesheet">
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-3WXM3GLE2B"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-3WXM3GLE2B');
+        </script>
     </head>
     <body>
         <div class="app-container app-theme-white body-tabs-shadow">

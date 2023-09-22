@@ -31,7 +31,15 @@
     <link href="<?php echo base_url() ; ?>assets/css/main.d810cf0ae7f39f28f336.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
     
-   
+           <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-3WXM3GLE2B"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-3WXM3GLE2B');
+        </script>
 
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script  src="<?php echo base_url() ; ?>assets/scripts/script.js"></script>
