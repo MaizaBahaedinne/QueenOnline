@@ -101,7 +101,7 @@
                                        Swal.fire({
                                                   icon: 'info',
                                                   title: 'Rappler le client',
-                                                  text: 'Ce reçu de paiement atteste simplement que la somme mentionnée a été reçue. <br><br> Avance > 1000 DT doit être versé dans un délai maximum de 10 jours ',
+                                                  text: 'Ce reçu de paiement atteste simplement que la somme mentionnée a été reçue.               Avance > 1000 DT doit être versé dans un délai maximum de 10 jours ',
                                                   footer: ''
                                                 })
 
