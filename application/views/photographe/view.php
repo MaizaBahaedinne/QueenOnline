@@ -24,7 +24,7 @@
                <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
                   <ul class="nav flex-column">
                      <li class="nav-item">
-                        <a href="<?php echo base_url() ?>Reservation/edit/<?php   ?>" class="nav-link">
+                        <a href="<?php echo base_url() ?>Photographe/edit/<?php   ?>" class="nav-link">
                            <i class="nav-link-icon lnr-inbox"></i>
                            <span> Modifier</span>
                           
