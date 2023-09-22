@@ -94,6 +94,20 @@
                                 <tr>
                                   <td class="text-right" > <b>montant payée</b> </td>
                                   <td class="text-danger text-right">- <?php echo $totalPaiement->valeur  ?> DT </td>
+                                  <?php if (  $totalPaiement->valeur < 1000 ) { ?>
+
+                                    <script type="text/javascript">
+                                       
+                                       Swal.fire({
+                                                  icon: 'info',
+                                                  title: 'Rappler le client',
+                                                  text: 'Ce reçu de paiement atteste simplement que la somme mentionnée a été reçue. <br><br> Avance > 1000 DT doit être versé dans un délai maximum de 10 jours ',
+                                                  footer: ''
+                                                })
+
+                                    </script>
+
+                                  <?php } ?>
                                 </tr>
                                 <tr class="bg-light">
                                   <td class="text-right"><b>Reste à payer</b></td>
