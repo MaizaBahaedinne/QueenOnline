@@ -67,7 +67,7 @@
                         </svg>
                         <span   >Imprimer</span>
                      </button>
-                     <?php } else{   ?> <span style="color: red" >il faut une avance superieure ou égale à 100 dt pour imprimer le contrat </span> <?php } ?>
+                     <?php } else{   ?> <span style="color: red" >il faut verser une avance superieure ou égale à 100 dt pour imprimer le contrat </span> <?php } ?>
                   </div>
                </div>
              
