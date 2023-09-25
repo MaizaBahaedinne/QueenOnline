@@ -37,7 +37,7 @@ class Photographe_model extends CI_Model
      * @param number $userId : This is user id
      * @return array $result : This is user information
      */
-    function ClassementPhotographe($year , $type)
+    function ClassementPhotographe($year)
     {
        $this->db->select('BaseTbl.prestationId , Pack.* , Pack.nom packname  , count(BaseTbl.prestationId) countRes ');
         $this->db->from('tbl_reservation_photographe as BaseTbl');
