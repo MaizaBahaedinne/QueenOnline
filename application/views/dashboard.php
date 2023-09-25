@@ -371,9 +371,11 @@
           <div class="pt-2 pb-0 card-body">
             <?php $i = 0 ; foreach ($ClassementPrestation as $prestation) {
                           $i++ ; ?> 
+                <tr>
                 <td> <strong> <?php  echo $i ; ?> </strong> </td>
                 <td> <?php  echo $prestation->packname ; ?> </td>
                 <td> <?php  echo $prestation->countRes ; ?> </td> 
+                </tr>
 
             <?php } ?>
           </div>
@@ -393,15 +395,16 @@
           </div>
           <div class="pt-2 pb-0 card-body">
             <table class="table" width="100%">
-                <tr>
+                
                 <?php $i = 0 ; foreach ($ClassementChanteurs as $chanteur) {
                           $i++ ; ?> 
+                <tr>
                 <td> <strong> <?php  echo $i ; ?> </strong> </td>
                 <td> <?php  echo $chanteur->packname ; ?> </td>
                 <td> <?php  echo $chanteur->countRes ; ?> </td> 
-
+                </tr>
                 <?php } ?>
-              </tr>
+              
             </table>
           </div>
           <div class="divider mb-0"></div>
@@ -420,15 +423,16 @@
           </div>
           <div class="pt-2 pb-0 card-body">
             <table class="table" width="100%">
-                <tr>
+               
                 <?php $i = 0 ; foreach ($ClassementVoiture as $voiture) {
-                          $i++ ; ?> 
+                          $i++ ; ?>  
+                <tr>
                 <td> <strong> <?php  echo $i ; ?> </strong> </td>
                 <td> <?php  echo $voiture->name ; ?> </td>
                 <td> <?php  echo $voiture->countRes ; ?> </td> 
-
+                </tr>
                 <?php } ?>
-              </tr>
+              
             </table>
           </div>
           <div class="divider mb-0"></div>
@@ -448,15 +452,16 @@
           <div class="pt-2 pb-0 card-body">
             
               <table class="table" width="100%">
-                <tr>
+                
                 <?php $i = 0 ; foreach ($ClassementPhotographe as $photographe) {
                           $i++ ; ?> 
+                <tr>
                 <td> <strong> <?php  echo $i ; ?> </strong> </td>
                 <td> <?php  echo $photographe->packname ; ?> </td>
                 <td> <?php  echo $photographe->countRes ; ?> </td> 
-
+                </tr>
                 <?php } ?>
-              </tr>
+              
             </table>
           </div>
           <div class="divider mb-0"></div>
