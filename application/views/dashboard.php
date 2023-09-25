@@ -442,7 +442,7 @@
                         $i++ ; ?> <div class="col-sm-2">
                 <strong> <?php  echo $i ; ?> </strong>
               </div>
-              <div class="col-sm-8"> <?php  echo $photographe->name ; ?> </div>
+              <div class="col-sm-8"> <?php  echo $photographe->packname ; ?> </div>
               <div class="col-sm-2"> <?php  echo $photographe->countRes ; ?> </div> <?php } ?>
             </div>
           </div>
