@@ -361,6 +361,35 @@
         <div class="mb-3 card">
           <div class="card-header-tab card-header">
             <div class="card-header-title">
+              <i class="header-icon lnr-rocket icon-gradient bg-tempting-azure"></i> TOP 3 Salle
+            </div>
+            <div class="btn-actions-pane-right text-capitalize">
+              <a class="btn-wide btn-outline-2x btn btn-outline-primary btn-sm" href="
+                           <?php echo base_url() ?>Reservation">Voir</a>
+            </div>
+          </div>
+          <div class="pt-2 pb-0 card-body">
+            
+              <table class="table" width="100%">
+                
+                <?php $i = 0 ; foreach ($ClassementSalle as $salle) {
+                          $i++ ; ?> 
+                <tr>
+                <td> <strong> <?php  echo $i ; ?> </strong> </td>
+                <td> <?php  echo $salle->packname ; ?> </td>
+                <td> <?php  echo $salle->countRes ; ?> </td> 
+                </tr>
+                <?php } ?>
+              
+            </table>
+          </div>
+          <div class="divider mb-0"></div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="mb-3 card">
+          <div class="card-header-tab card-header">
+            <div class="card-header-title">
               <i class="header-icon lnr-rocket icon-gradient bg-tempting-azure"></i> TOP 3 Prestations 
             </div>
             <div class="btn-actions-pane-right text-capitalize">
