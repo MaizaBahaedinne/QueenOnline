@@ -132,7 +132,7 @@
               var options = {
                 series: [{
                   name: 'Terminée',
-                  data: [ < ? php
+                  data: [ <?php 
                     if (count($reservationDo) > 0) {
                       foreach($reservationDo as $data) {
                         echo $data - > countRes.
@@ -144,7 +144,7 @@
                   ]
                 }, {
                   name: 'en attente',
-                  data: [ < ? php
+                  data: [ <?php 
                     if (count($reservationEnAttent) > 0) {
                       foreach($reservationEnAttent as $data) {
                         echo $data - > countRes.
@@ -156,7 +156,7 @@
                   ]
                 }, {
                   name: 'Annulée',
-                  data: [ < ? php
+                  data: [ <?php 
                     if (count($reservationAnnule) > 0) {
                       foreach($reservationAnnule as $data) {
                         echo $data - > countRes.
@@ -191,7 +191,7 @@
                   }
                 },
                 xaxis: {
-                  categories: [ < ? php foreach($reservationEnAttent as $data) {
+                  categories: [ <?php  foreach($reservationEnAttent as $data) {
                     if ($data - > yearDate > 0) {
                       echo '"'.$data - > yearDate.
                       '",';
@@ -297,14 +297,14 @@
         </div>
         <script type="text/javascript">
           var options = {
-            series: [ < ? php foreach($SalleRecords as $data) {
+            series: [ <?php  foreach($SalleRecords as $data) {
               echo $data - > COUNT.
               ',';
             } ? > ],
             chart: {
               type: 'pie',
             },
-            labels: [ < ? php foreach($SalleRecords as $data) {
+            labels: [ <?php  foreach($SalleRecords as $data) {
               echo '"'.$data - > nom.
               '",';
             } ? > ],

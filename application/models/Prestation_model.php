@@ -164,6 +164,8 @@ class Prestation_model extends CI_Model
 
         $this->db->where('YEAR(BaseTbl.date) >= ',$year );
         $this->db->where('Pack.type = ',$type );
+
+        $this->db->limit('3');
         $this->db->group_by('BaseTbl.packId ' );
         $this->db->order_by('countRes DESC');
         $query = $this->db->get();
