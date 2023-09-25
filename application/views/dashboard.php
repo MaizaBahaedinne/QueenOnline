@@ -350,12 +350,12 @@ Increased by
       </div>
       <div class="row">
          
-         <div class="col-lg-4">
+         <div class="col-lg-6">
             <div class="mb-3 card">
                <div class="card-header-tab card-header">
                   <div class="card-header-title">
                      <i class="header-icon lnr-rocket icon-gradient bg-tempting-azure"> </i>
-                     Classement des prestations (<?php $year = date("Y"); echo $year; ?>)
+                     TOP 5 Prestations (<?php $year = date("Y"); echo $year; ?>)
                   </div>
                   <div class="btn-actions-pane-right text-capitalize">
                      <a class="btn-wide btn-outline-2x btn btn-outline-primary btn-sm" href="<?php echo base_url() ?>Prestation" >Voir tout</a>
@@ -385,12 +385,12 @@ Increased by
 
          </div>
 
-         <div class="col-lg-4">
+         <div class="col-lg-6">
             <div class="mb-3 card">
                <div class="card-header-tab card-header">
                   <div class="card-header-title">
                      <i class="header-icon lnr-rocket icon-gradient bg-tempting-azure"> </i>
-                     Classement des chanteurs (<?php $year = date("Y"); echo $year; ?>)
+                     TOP 5 Chanteurs (<?php $year = date("Y"); echo $year; ?>)
                   </div>
                   <div class="btn-actions-pane-right text-capitalize">
                      <a class="btn-wide btn-outline-2x btn btn-outline-primary btn-sm" href="<?php echo base_url() ?>Prestation" >Voir tout</a>
