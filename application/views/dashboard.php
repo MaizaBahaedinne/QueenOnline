@@ -438,7 +438,7 @@
             </div>
           </div>
           <div class="pt-2 pb-0 card-body">
-            <div class="row"> <?php $i = 0 ; foreach ($ClassementPhotograohe as $photographe) {
+            <div class="row"> <?php $i = 0 ; foreach ($ClassementPhotographe as $photographe) {
                         $i++ ; ?> <div class="col-sm-2">
                 <strong> <?php  echo $i ; ?> </strong>
               </div>
