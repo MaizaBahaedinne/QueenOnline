@@ -348,7 +348,9 @@ Increased by
             
         
       </div>
-      <div class="row">
+
+
+      
          
          <div class="col-md-6">
             <div class="mb-3 card">
@@ -455,6 +457,7 @@ Increased by
 
          </div>
 
-      </div>
+      
+      
    </div>
 </div
