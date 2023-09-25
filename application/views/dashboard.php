@@ -135,7 +135,7 @@
                   data: [ <?php 
                     if (count($reservationDo) > 0) {
                       foreach($reservationDo as $data) {
-                        echo $data - > countRes.
+                        echo $data->countRes.
                         ',';
                       }
                     } else {
@@ -147,7 +147,7 @@
                   data: [ <?php 
                     if (count($reservationEnAttent) > 0) {
                       foreach($reservationEnAttent as $data) {
-                        echo $data - > countRes.
+                        echo $data->countRes.
                         ',';
                       }
                     } else {
@@ -159,7 +159,7 @@
                   data: [ <?php 
                     if (count($reservationAnnule) > 0) {
                       foreach($reservationAnnule as $data) {
-                        echo $data - > countRes.
+                        echo $data->countRes.
                         ',';
                       }
                     } else {
@@ -192,8 +192,8 @@
                 },
                 xaxis: {
                   categories: [ <?php  foreach($reservationEnAttent as $data) {
-                    if ($data - > yearDate > 0) {
-                      echo '"'.$data - > yearDate.
+                    if ($data->yearDate > 0) {
+                      echo '"'.$data->yearDate.
                       '",';
                     }
                   } ?> ],
@@ -298,14 +298,14 @@
         <script type="text/javascript">
           var options = {
             series: [ <?php  foreach($SalleRecords as $data) {
-              echo $data - > COUNT.
+              echo $data->COUNT.
               ',';
             } ?> ],
             chart: {
               type: 'pie',
             },
             labels: [ <?php  foreach($SalleRecords as $data) {
-              echo '"'.$data - > nom.
+              echo '"'.$data->nom.
               '",';
             } ?> ],
             responsive: [{
