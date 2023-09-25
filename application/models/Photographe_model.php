@@ -44,7 +44,7 @@ class Photographe_model extends CI_Model
         $this->db->join('tbl_pack_photographe as Pack', 'Pack.packId = BaseTbl.packId','left');
        
 
-        $this->db->where('YEAR(BaseTbl.date) >= ',$year );
+        $this->db->where('YEAR(BaseTbl.date) = ',$year );
         
 
         $this->db->limit('3');
