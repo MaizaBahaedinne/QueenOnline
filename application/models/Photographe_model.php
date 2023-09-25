@@ -24,15 +24,35 @@ class Photographe_model extends CI_Model
       
         $this->db->where('BaseTbl.date >=  SUBDATE(NOW(),1) ');
         $this->db->order_by('BaseTbl.date ASC');
-
- 
-
-    
-
         $query = $this->db->get();
         
         $result = $query->result();        
         return $result;
+    }
+
+
+
+         /**
+     * This function used to get user information by id
+     * @param number $userId : This is user id
+     * @return array $result : This is user information
+     */
+    function ClassementPhotographe($year , $type)
+    {
+       $this->db->select('BaseTbl.prestationId , Pack.* , Pack.nom packname  , count(BaseTbl.prestationId) countRes ');
+        $this->db->from('tbl_reservation_photographe as BaseTbl');
+        $this->db->join('tbl_pack_photographe as Pack', 'Pack.packId = BaseTbl.packId','left');
+       
+
+        $this->db->where('YEAR(BaseTbl.date) >= ',$year );
+        
+
+        $this->db->limit('3');
+        $this->db->group_by('BaseTbl.packId ' );
+        $this->db->order_by('countRes DESC');
+        $query = $this->db->get();
+        
+        return $query->result();
     }
 
 

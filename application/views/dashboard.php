@@ -411,7 +411,7 @@
             </div>
             <div class="btn-actions-pane-right text-capitalize">
               <a class="btn-wide btn-outline-2x btn btn-outline-primary btn-sm" href="
-                           <?php echo base_url() ?>Prestation">Voir</a>
+                           <?php echo base_url() ?>Voiture">Voir</a>
             </div>
           </div>
           <div class="pt-2 pb-0 card-body">
@@ -421,6 +421,29 @@
               </div>
               <div class="col-sm-8"> <?php  echo $voiture->name ; ?> </div>
               <div class="col-sm-2"> <?php  echo $voiture->countRes ; ?> </div> <?php } ?>
+            </div>
+          </div>
+          <div class="divider mb-0"></div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="mb-3 card">
+          <div class="card-header-tab card-header">
+            <div class="card-header-title">
+              <i class="header-icon lnr-rocket icon-gradient bg-tempting-azure"></i> TOP 3 Photographe ( <?php $year = date("Y"); echo $year; ?>)
+            </div>
+            <div class="btn-actions-pane-right text-capitalize">
+              <a class="btn-wide btn-outline-2x btn btn-outline-primary btn-sm" href="
+                           <?php echo base_url() ?>Photographe">Voir</a>
+            </div>
+          </div>
+          <div class="pt-2 pb-0 card-body">
+            <div class="row"> <?php $i = 0 ; foreach ($ClassementPhotograohe as $photographe) {
+                        $i++ ; ?> <div class="col-sm-2">
+                <strong> <?php  echo $i ; ?> </strong>
+              </div>
+              <div class="col-sm-8"> <?php  echo $photographe->name ; ?> </div>
+              <div class="col-sm-2"> <?php  echo $photographe->countRes ; ?> </div> <?php } ?>
             </div>
           </div>
           <div class="divider mb-0"></div>
