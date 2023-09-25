@@ -369,6 +369,7 @@
             </div>
           </div>
           <div class="pt-2 pb-0 card-body">
+            <table class="table" width="100%">
             <?php $i = 0 ; foreach ($ClassementPrestations as $prestation) {
                           $i++ ; ?> 
                 <tr>
@@ -378,6 +379,7 @@
                 </tr>
 
             <?php } ?>
+          </table>
           </div>
           <div class="divider mb-0"></div>
         </div>
