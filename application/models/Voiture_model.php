@@ -46,8 +46,8 @@ class Voiture_model extends CI_Model
     {
         $this->db->select(' BaseTbl.voitureName name , count(BaseTbl.*) countRes ');
         $this->db->from('tbl_reservation_voiture as BaseTbl');
-        $this->db->where('BaseTbl.date >=   ' , $year);
-        $this->db->order_by('BaseTbl.date DESC');
+        $this->db->where('BaseTbl.date >= ' , $year);
+        $this->db->order_by('BaseTbl.countRes DESC');
 
         $query = $this->db->get();
         
