@@ -140,7 +140,7 @@
                       }
                     } else {
                       echo "0";
-                    } ? >
+                    } ?>
                   ]
                 }, {
                   name: 'en attente',
@@ -152,7 +152,7 @@
                       }
                     } else {
                       echo "0";
-                    } ? >
+                    } ?>
                   ]
                 }, {
                   name: 'Annulée',
@@ -164,7 +164,7 @@
                       }
                     } else {
                       echo "0";
-                    } ? >
+                    } ?>
                   ]
                 }],
                 chart: {
@@ -196,7 +196,7 @@
                       echo '"'.$data - > yearDate.
                       '",';
                     }
-                  } ? > ],
+                  } ?> ],
                   position: 'buttom',
                   axisBorder: {
                     show: true
@@ -300,14 +300,14 @@
             series: [ <?php  foreach($SalleRecords as $data) {
               echo $data - > COUNT.
               ',';
-            } ? > ],
+            } ?> ],
             chart: {
               type: 'pie',
             },
             labels: [ <?php  foreach($SalleRecords as $data) {
               echo '"'.$data - > nom.
               '",';
-            } ? > ],
+            } ?> ],
             responsive: [{
               breakpoint: 500,
               options: {
