@@ -112,7 +112,7 @@ class Troupe extends BaseController
 
                 $HatemMobile = "92888625";
                 $mySms =  "Une nouvelle reservation pour le ".$date ;
-                $this->sendSMS("216" . $MakremMobile, $mySms);
+                $this->sendSMS("216" . $HatemMobile, $mySms);
 
             $paiementInfo = [
                 "createdDate" => date("Y-m-d H:i:s"),
