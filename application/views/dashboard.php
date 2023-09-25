@@ -384,7 +384,42 @@ Increased by
             </div>
 
          </div>
-         
+
+         <div class="col-lg-4">
+            <div class="mb-3 card">
+               <div class="card-header-tab card-header">
+                  <div class="card-header-title">
+                     <i class="header-icon lnr-rocket icon-gradient bg-tempting-azure"> </i>
+                     Classement des chanteurs (<?php $year = date("Y"); echo $year; ?>)
+                  </div>
+                  <div class="btn-actions-pane-right text-capitalize">
+                     <a class="btn-wide btn-outline-2x btn btn-outline-primary btn-sm" href="<?php echo base_url() ?>Prestation" >Voir tout</a>
+                  </div>
+               </div>
+               <div class="pt-2 pb-0 card-body">
+                  <div class="row">
+                     <?php $i = 0 ; foreach ($ClassementChanteurs as $prestation) {
+                        $i++ ; ?>
+                        <div class="col-sm-2">
+                           <strong><?php  echo $i ; ?></strong>
+                         </div>
+                        <div class="col-sm-8">
+                           <?php  echo $prestation->packname ; ?>
+                         </div>
+                         <div class="col-sm-2">
+                           <?php  echo $prestation->countRes ; ?>
+                         </div>
+
+                     <?php } ?>
+                     
+                  </div>
+               </div>
+               
+               <div class="divider mb-0"></div>
+            </div>
+
+         </div>
+
       </div>
    </div>
 </div>

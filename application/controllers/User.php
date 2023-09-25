@@ -21,7 +21,7 @@ class User extends BaseController
         $this->load->model('user_model');
         $this->load->model('reservation_model');
         $this->load->model('paiement_model');
-        
+
         $this->load->model('troupe_model');
         $this->load->model('voiture_model');
         $this->load->model('prestation_model');
@@ -47,9 +47,10 @@ class User extends BaseController
         $data['chiffres'] =   $this->paiement_model->getTotalByYear(date('Y'));
         $data['chiffresPrec'] =   $this->paiement_model->getTotalByYear(date('Y')-1);
   
-        $data['ClassementPrestations'] =   $this->prestation_model->ClassementPacksReservation(date('Y') ) ;
+        $data['ClassementChanteurs'] =   $this->prestation_model->ClassementPacksReservation(date('Y') , 'chanteur' ) ;
+        $data['ClassementPrestations'] =   $this->prestation_model->ClassementPacksReservation(date('Y') , 'prestataire' ) ;
 
-        $this->global['pageTitle'] = 'Dashboard ';
+        $this->global['pageTitle'] = 'Dashboard';
  
         $this->loadViews("dashboard", $this->global, $data , NULL);
     }
