@@ -22,16 +22,10 @@ class Prestation_model extends CI_Model
         $this->db->from('tbl_reservation_prestation as BaseTbl');
         $this->db->join('tbl_pack_prestation as Pack', 'Pack.packId = BaseTbl.packId','left');
         
-
         if($resId != null ){ $this->db->where('BaseTbl.reservationId ', $resId ); }
 
         $this->db->where('BaseTbl.date >=  SUBDATE(NOW(),1) ');
         $this->db->order_by('BaseTbl.date ASC');
-
- 
-
-    
-
         $query = $this->db->get();
         
         $result = $query->result();        
@@ -146,14 +140,35 @@ class Prestation_model extends CI_Model
      * @param array $userInfo : This is users updated information
      * @param number $userId : This is user id
      */
-    function editReservation($reservationInfo, $locationId)
+    function editReservation($reservationInfo, $prestationId)
     {
-        $this->db->where('prestationId', $locationId);
+        $this->db->where('prestationId', $prestationId);
         $this->db->update('tbl_reservation_prestation', $reservationInfo);
         
         return TRUE;
     }
 
+
+
+         /**
+     * This function used to get user information by id
+     * @param number $userId : This is user id
+     * @return array $result : This is user information
+     */
+    function ClassementPacksReservation($year)
+    {
+       $this->db->select('BaseTbl.prestationId , Pack.* , Pack.nom packname  , count(BaseTbl.prestationId) countRes ');
+        $this->db->from('tbl_reservation_prestation as BaseTbl');
+        $this->db->join('tbl_pack_prestation as Pack', 'Pack.packId = BaseTbl.packId','left');
+       
+
+        $this->db->where('YEAR(BaseTbl.date) = ',$year );
+        $this->db->group_by('BaseTbl.packId ' );
+        $this->db->order_by('countRes DESC');
+        $query = $this->db->get();
+        
+        return $query->result();
+    }
    
 
    

@@ -22,6 +22,10 @@ class User extends BaseController
         $this->load->model('reservation_model');
         $this->load->model('paiement_model');
         
+        $this->load->model('troupe_model');
+        $this->load->model('voiture_model');
+        $this->load->model('prestation_model');
+        
         $this->isLoggedIn();   
     }
     
@@ -43,7 +47,9 @@ class User extends BaseController
         $data['chiffres'] =   $this->paiement_model->getTotalByYear(date('Y'));
         $data['chiffresPrec'] =   $this->paiement_model->getTotalByYear(date('Y')-1);
   
-        $this->global['pageTitle'] = 'CodeInsect : Dashboard';
+        $data['ClassementPrestations'] =   $this->prestation_model->ClassementPacksReservation(date('Y') ) ;
+
+        $this->global['pageTitle'] = 'Dashboard ';
  
         $this->loadViews("dashboard", $this->global, $data , NULL);
     }
