@@ -369,7 +369,7 @@
             </div>
           </div>
           <div class="pt-2 pb-0 card-body">
-            <?php $i = 0 ; foreach ($ClassementPrestation as $prestation) {
+            <?php $i = 0 ; foreach ($ClassementPrestations as $prestation) {
                           $i++ ; ?> 
                 <tr>
                 <td> <strong> <?php  echo $i ; ?> </strong> </td>
