@@ -112,7 +112,7 @@ class Reservation_model extends CI_Model
         $this->db->where('YEAR(BaseTbl.dateFin)  = ', $year);
         $this->db->where('BaseTbl.statut in (0,1) ');
         $this->db->group_by('packname');
-        $this->db->order_by('BaseTbl.countRes ASC');
+        $this->db->order_by('countRes ASC');
         $query = $this->db->get();
         
         $result = $query->result();        
