@@ -110,12 +110,9 @@ class Reservation_model extends CI_Model
         
         
 
-        if( $date != null ){
-         $this->db->where("BaseTbl.dateFin >= );
-        
-        }
+      
 
-
+        $this->db->where('YEAR(BaseTbl.dateFin)  >= ', $year);
         $this->db->where('BaseTbl.statut in (0,1) ');
     
         $this->db->order_by('BaseTbl.dateFin ASC');
