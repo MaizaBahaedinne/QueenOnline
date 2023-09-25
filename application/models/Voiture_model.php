@@ -35,6 +35,28 @@ class Voiture_model extends CI_Model
 
 
 
+     /**
+     * This function is used to get the user listing count
+     * @param string $searchText : This is optional search text
+     * @param number $page : This is pagination offset
+     * @param number $segment : This is pagination limit
+     * @return array $result : This is result
+     */
+    function ClassementVoiture($year)
+    {
+        $this->db->select(' BaseTbl.voitureName name , count(BaseTbl.*) countRes ');
+        $this->db->from('tbl_reservation_voiture as BaseTbl');
+        $this->db->where('BaseTbl.date >=   ' , $year);
+        $this->db->order_by('BaseTbl.date DESC');
+
+        $query = $this->db->get();
+        
+        $result = $query->result();        
+        return $result;
+    }
+
+
+
 
 
     /**

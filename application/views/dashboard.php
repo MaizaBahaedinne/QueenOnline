@@ -420,6 +420,41 @@ Increased by
 
          </div>
 
+         <div class="col-lg-6">
+            <div class="mb-3 card">
+               <div class="card-header-tab card-header">
+                  <div class="card-header-title">
+                     <i class="header-icon lnr-rocket icon-gradient bg-tempting-azure"> </i>
+                     TOP 3 Voitures (<?php $year = date("Y"); echo $year; ?>)
+                  </div>
+                  <div class="btn-actions-pane-right text-capitalize">
+                     <a class="btn-wide btn-outline-2x btn btn-outline-primary btn-sm" href="<?php echo base_url() ?>Prestation" >Voir tout</a>
+                  </div>
+               </div>
+               <div class="pt-2 pb-0 card-body">
+                  <div class="row">
+                     <?php $i = 0 ; foreach ($ClassementVoiture as $voiture) {
+                        $i++ ; ?>
+                        <div class="col-sm-2">
+                           <strong><?php  echo $i ; ?></strong>
+                         </div>
+                        <div class="col-sm-8">
+                           <?php  echo $voiture->name ; ?>
+                         </div>
+                         <div class="col-sm-2">
+                           <?php  echo $voiture->countRes ; ?>
+                         </div>
+
+                     <?php } ?>
+                     
+                  </div>
+               </div>
+               
+               <div class="divider mb-0"></div>
+            </div>
+
+         </div>
+
       </div>
    </div>
-</div>
+</div
