@@ -345,7 +345,12 @@ Increased by
                <div class="divider mb-0"></div>
             </div>
 
-            <div class="col-lg-4">
+            
+        
+      </div>
+      <div class="col-md-12">
+         
+         <div class="col-lg-4">
             <div class="mb-3 card">
                <div class="card-header-tab card-header">
                   <div class="card-header-title">
@@ -379,7 +384,7 @@ Increased by
             </div>
 
          </div>
-        
+         
       </div>
    </div>
 </div>
