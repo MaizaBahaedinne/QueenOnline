@@ -162,7 +162,7 @@ class Prestation_model extends CI_Model
         $this->db->join('tbl_pack_prestation as Pack', 'Pack.packId = BaseTbl.packId','left');
        
 
-        $this->db->where('YEAR(BaseTbl.date) >= ',$year );
+        $this->db->where('YEAR(BaseTbl.date) = ',$year );
         $this->db->where('Pack.type = ',$type );
 
         $this->db->limit('3');
