@@ -26,7 +26,7 @@ class User extends BaseController
         $this->load->model('voiture_model');
         $this->load->model('prestation_model');
         $this->load->model('photographe_model');
-        
+
         
         $this->isLoggedIn();   
     }
@@ -52,7 +52,8 @@ class User extends BaseController
         $data['ClassementChanteurs'] =   $this->prestation_model->ClassementPacksReservation(date('Y') , 'chanteur' ) ;
         $data['ClassementPrestations'] =   $this->prestation_model->ClassementPacksReservation(date('Y') , 'prestataire' ) ;
         $data['ClassementVoiture'] =   $this->voiture_model->ClassementVoiture(date('Y')) ; 
-        $data['ClassementPhotographe'] =   $this->photographe_model->ClassementPhotographe(date('Y')) ; 
+        $data['ClassementPhotographe'] =   $this->photographe_model->ClassementPhotographe(date('Y')) ;
+      //  $data['ClassementTroupe'] =   $this->photographe_model->ClassementTroupe(date('Y')) ; 
 
 
         $this->global['pageTitle'] = 'Dashboard';
