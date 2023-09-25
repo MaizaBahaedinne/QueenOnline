@@ -357,7 +357,7 @@
           <div class="divider mb-0"></div>
         </div>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-4">
         <div class="mb-3 card">
           <div class="card-header-tab card-header">
             <div class="card-header-title">
@@ -365,7 +365,7 @@
             </div>
             <div class="btn-actions-pane-right text-capitalize">
               <a class="btn-wide btn-outline-2x btn btn-outline-primary btn-sm" href="
-                           <?php echo base_url() ?>Prestation">Voir tout </a>
+                           <?php echo base_url() ?>Prestation">Voir</a>
             </div>
           </div>
           <div class="pt-2 pb-0 card-body">
@@ -380,7 +380,7 @@
           <div class="divider mb-0"></div>
         </div>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-4">
         <div class="mb-3 card">
           <div class="card-header-tab card-header">
             <div class="card-header-title">
@@ -388,7 +388,7 @@
             </div>
             <div class="btn-actions-pane-right text-capitalize">
               <a class="btn-wide btn-outline-2x btn btn-outline-primary btn-sm" href="
-                           <?php echo base_url() ?>Prestation">Voir tout </a>
+                           <?php echo base_url() ?>Prestation">Voir</a>
             </div>
           </div>
           <div class="pt-2 pb-0 card-body">
@@ -403,7 +403,7 @@
           <div class="divider mb-0"></div>
         </div>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-4">
         <div class="mb-3 card">
           <div class="card-header-tab card-header">
             <div class="card-header-title">
@@ -411,7 +411,7 @@
             </div>
             <div class="btn-actions-pane-right text-capitalize">
               <a class="btn-wide btn-outline-2x btn btn-outline-primary btn-sm" href="
-                           <?php echo base_url() ?>Prestation">Voir tout </a>
+                           <?php echo base_url() ?>Prestation">Voir</a>
             </div>
           </div>
           <div class="pt-2 pb-0 card-body">
