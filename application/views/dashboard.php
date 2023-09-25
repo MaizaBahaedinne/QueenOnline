@@ -138,8 +138,9 @@
                         echo $data->countRes.
                         ',';
                       }
-                    } else {
-                      echo "0,";
+                    } else {?>0,
+                      
+                   <?php
                     } ?>
                   ]
                 }, {
@@ -150,9 +151,9 @@
                         echo $data->countRes.
                         ',';
                       }
-                    } else {
-                      echo "0,";
-                    } ?>
+                    } else { ?>0,
+                      
+                   <?php } ?>
                   ]
                 }, {
                   name: 'Annulée',
@@ -162,8 +163,8 @@
                         echo $data->countRes.
                         ',';
                       }
-                    } else {
-                      echo "0,";
+                    } else {?>0,                     
+                   <?php
                     } ?>
                   ]
                 }],
