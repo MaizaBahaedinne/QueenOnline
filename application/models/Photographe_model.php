@@ -39,7 +39,7 @@ class Photographe_model extends CI_Model
      */
     function ClassementPhotographe($year)
     {
-       $this->db->select('BaseTbl.prestationId , Pack.* , Pack.nom packname  , count(BaseTbl.packId) countRes ');
+       $this->db->select('BaseTbl.packId , Pack.* , Pack.nom packname  , count(BaseTbl.packId) countRes ');
         $this->db->from('tbl_reservation_photographe as BaseTbl');
         $this->db->join('tbl_pack_photographe as Pack', 'Pack.packId = BaseTbl.packId','left');
        
