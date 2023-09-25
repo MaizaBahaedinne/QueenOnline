@@ -50,7 +50,7 @@ class User extends BaseController
         $data['chiffresPrec'] =   $this->paiement_model->getTotalByYear(date('Y')-1);
   
 
-        $data['ClassementSalle'] =   $this->reservation_model->ClassementSalles(date('Y')) ;
+        $data['ClassementSalles'] =   $this->reservation_model->ClassementSalles(date('Y')) ;
         $data['ClassementChanteurs'] =   $this->prestation_model->ClassementPacksReservation(date('Y') , 'chanteur' ) ;
         $data['ClassementPrestations'] =   $this->prestation_model->ClassementPacksReservation(date('Y') , 'prestataire' ) ;
         $data['ClassementVoiture'] =   $this->voiture_model->ClassementVoiture(date('Y')) ; 
