@@ -93,6 +93,39 @@ class Reservation_model extends CI_Model
     }
 
 
+
+    /**
+     * This function is used to get the user listing count
+     * @param string $searchText : This is optional search text
+     * @param number $page : This is pagination offset
+     * @param number $segment : This is pagination limit
+     * @return array $result : This is result
+     */
+    function ClassementSalle($year = null )
+    {
+        $this->db->select('count(BaseTbl.reservationId) countRes ,  Salles.nom packname');
+        $this->db->from('tbl_reservation as BaseTbl');
+        
+        $this->db->join('tbl_salle as Salles', 'Salles.salleID = BaseTbl.salleId','left');
+        
+        
+
+        if( $date != null ){
+         $this->db->where("BaseTbl.dateFin >= );
+        
+        }
+
+
+        $this->db->where('BaseTbl.statut in (0,1) ');
+    
+        $this->db->order_by('BaseTbl.dateFin ASC');
+        $query = $this->db->get();
+        
+        $result = $query->result();        
+        return $result;
+    }
+
+
      /**
      * This function is used to get the user listing count
      * @param string $searchText : This is optional search text

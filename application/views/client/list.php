@@ -62,7 +62,8 @@
                 <?php if ($reservation->statut == 3 ) { ?>
                 <span class="badge badge-pill badge-danger"><i class="metismenu-icon pe-7s-close"></i></span>
                 <?php } ?>
-                <?php echo $reservation->salle." ".$reservation->dateDebut  ?><br>
+                
+                <?php echo $reservation->salle." ".date_format(date_create($reservation->dateDebut)  , 'd/m/20y');  ?><br>
                </a> 
                <?php    }   ?>
                   </td>
