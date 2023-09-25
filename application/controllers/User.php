@@ -25,6 +25,8 @@ class User extends BaseController
         $this->load->model('troupe_model');
         $this->load->model('voiture_model');
         $this->load->model('prestation_model');
+        $this->load->model('photographe_model');
+        
         
         $this->isLoggedIn();   
     }
