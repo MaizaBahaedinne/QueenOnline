@@ -350,7 +350,7 @@ Increased by
       </div>
       <div class="row">
          
-         <div class="col-lg-6">
+         <div class="col-md-6">
             <div class="mb-3 card">
                <div class="card-header-tab card-header">
                   <div class="card-header-title">
@@ -385,7 +385,7 @@ Increased by
 
          </div>
 
-         <div class="col-lg-6">
+         <div class="col-md-6">
             <div class="mb-3 card">
                <div class="card-header-tab card-header">
                   <div class="card-header-title">
@@ -420,7 +420,7 @@ Increased by
 
          </div>
 
-         <div class="col-lg-6">
+         <div class="col-md-6">
             <div class="mb-3 card">
                <div class="card-header-tab card-header">
                   <div class="card-header-title">
