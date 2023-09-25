@@ -49,7 +49,7 @@ class User extends BaseController
   
         $data['ClassementChanteurs'] =   $this->prestation_model->ClassementPacksReservation(date('Y') , 'chanteur' ) ;
         $data['ClassementPrestations'] =   $this->prestation_model->ClassementPacksReservation(date('Y') , 'prestataire' ) ;
-        $data['ClassementVoiture'] =   $this->voitue_model->ClassementVoiture(date('Y')) ; 
+        $data['ClassementVoiture'] =   $this->voiture_model->ClassementVoiture(date('Y')) ; 
 
 
         $this->global['pageTitle'] = 'Dashboard';
