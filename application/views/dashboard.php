@@ -359,7 +359,7 @@ Increased by
                <div class="pt-2 pb-0 card-body">
                   <div class="row">
                      <?php $i = 0 ; foreach ($ClassementPrestations as $prestation) {
-                        i++ ; ?>
+                        $i++ ; ?>
                         <div class="col-sm-2">
                            <strong><?php  echo $i ; ?></strong>
                          </div>
