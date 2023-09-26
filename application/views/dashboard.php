@@ -133,7 +133,7 @@
                 series: [{
                   name: 'Terminée',
                   data: [ <?php                     
-                        for ($i = 2018 ; i >= date('Y') ; $i++) {
+                        for ($i = 2018 ; i <= date('Y')+1 ; $i++) {
                           foreach($reservationDo as $data) {
                               if($data->yearDate == $i ){
                                     echo $data->countRes.',';
@@ -147,7 +147,7 @@
                 }, {
                   name: 'en attente',
                   data: [ <?php 
-                      for ( $i = 2018 ; $i >= date('Y') ; $i++) {
+                      for ( $i = 2018 ; $i <= date('Y')+1 ; $i++) {
                           foreach($reservationEnAttent as $data) {
                               if($data->yearDate == $i ){
                                     echo $data->countRes.',';
@@ -161,7 +161,7 @@
                 }, {
                   name: 'Annulée',
                   data: [ <?php 
-                    for ( $i = 2018 ; $i >= date('Y') ; $i++) {
+                    for ( $i = 2018 ; $i <= date('Y')+1 ; $i++) {
                           foreach($reservationAnnule as $data) {
                               if($data->yearDate == $i ){
                                     echo $data->countRes.',';
