@@ -132,39 +132,45 @@
               var options = {
                 series: [{
                   name: 'Terminée',
-                  data: [ <?php 
-                    if (count($reservationDo) > 0) {
-                      foreach($reservationDo as $data) {
-                        echo $data->countRes.
-                        ',';
-                      }
-                    } else {
-                      echo "'0',";
-                    } ?>
+                  data: [ <?php                     
+                        for (var i = 2018 ; i >= date('Y') ; i++) {
+                          foreach($reservationDo as $data) {
+                              if($data->yearDate == i ){
+                                    echo $data->countRes.',';
+                              } else {
+                                    echo "0,";
+                              }
+                          }
+                        }                     
+                     ?>
                   ]
                 }, {
                   name: 'en attente',
                   data: [ <?php 
-                    if (count($reservationEnAttent) > 0) {
-                      foreach($reservationEnAttent as $data) {
-                        echo $data->countRes.
-                        ',';
-                      }
-                    } else {
-                      echo "'0',";
-                    } ?>
+                      for (var i = 2018 ; i >= date('Y') ; i++) {
+                          foreach($reservationEnAttent as $data) {
+                              if($data->yearDate == i ){
+                                    echo $data->countRes.',';
+                              } else {
+                                    echo "0,";
+                              }
+                          }
+                        } 
+                     ?>
                   ]
                 }, {
                   name: 'Annulée',
                   data: [ <?php 
-                    if (count($reservationAnnule) > 0) {
-                      foreach($reservationAnnule as $data) {
-                        echo $data->countRes.
-                        ',';
-                      }
-                    } else {
-                      echo "'0',";
-                    } ?>
+                    for (var i = 2018 ; i >= date('Y') ; i++) {
+                          foreach($reservationAnnule as $data) {
+                              if($data->yearDate == i ){
+                                    echo $data->countRes.',';
+                              } else {
+                                    echo "0,";
+                              }
+                          }
+                        } 
+                    ?>
                   ]
                 }],
                 chart: {
