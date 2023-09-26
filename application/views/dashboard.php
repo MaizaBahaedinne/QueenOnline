@@ -147,7 +147,7 @@
                 }, {
                   name: 'en attente',
                   data: [ <?php 
-                      for (var $i = 2018 ; $i >= date('Y') ; $$i++) {
+                      for (var $i = 2018 ; $i >= date('Y') ; $i++) {
                           foreach($reservationEnAttent as $data) {
                               if($data->yearDate == $i ){
                                     echo $data->countRes.',';
