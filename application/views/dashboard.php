@@ -151,7 +151,7 @@
                             for ($i=2018 ; $i<=date('Y')+1 ; $i++  ) { 
                               if ( in_array($i , $reservationEnAttent )
                               {
-                                
+                                print_r($reservationEnAttent) ;
                               }
                               else{
                                 foreach($reservationEnAttent as $data)
