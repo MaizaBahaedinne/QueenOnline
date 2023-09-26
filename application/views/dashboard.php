@@ -149,7 +149,7 @@
                   name: 'En attente',
                   data: [ <?php                     
                             for ($i=2018 ; $i<=date('Y')+1 ; $i++  ) { 
-                              if(in_array($i,$reservationEnAttent )
+                              if ( in_array($i , $reservationEnAttent )
                               {
                                 echo "0," ;
                               }
