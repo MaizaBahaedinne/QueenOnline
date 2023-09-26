@@ -133,7 +133,19 @@
                 series: [{
                   name: 'Terminée',
                   data: [ <?php                     
-                                            
+                            for ($i=2018 ; $i<=date('Y')+1 ; $i++  ) { 
+                              foreach($reservationDo as $data)
+                              {
+                                if ($data->yearDate == $i )
+                                {
+                                  echo $data->countRes.',' ;
+                                }
+                                else 
+                                {
+                                  echo "0," ;
+                                }
+                              } 
+                            }                
                      ?>
                   ]
                 },
