@@ -151,7 +151,7 @@
                             for ($i=2018 ; $i<=date('Y')+1 ; $i++  ) { 
                               if ( in_array($i , $reservationEnAttent )
                               {
-                                echo "0," ;
+                                echo '0,' ;
                               }
                               else{
                                 foreach($reservationEnAttent as $data)
