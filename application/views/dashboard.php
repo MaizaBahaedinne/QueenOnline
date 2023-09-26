@@ -162,12 +162,7 @@
                   }
                 },
                 xaxis: {
-                  categories: [ <?php  foreach($reservationEnAttent as $data) {
-                    if ($data->yearDate > 0) {
-                      echo '"'.$data->yearDate.
-                      '",';
-                    }
-                  } ?> ],
+                  categories: [ <?php  for ($i= 2018 , $i <= date('Y')+1 , $i++  ) { echo '"'.$i.'",';}  ?> ],
                   position: 'buttom',
                   axisBorder: {
                     show: true
