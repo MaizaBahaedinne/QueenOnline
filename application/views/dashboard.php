@@ -140,10 +140,6 @@
                                 {
                                   echo $data->countRes.',' ;
                                 }
-                                else 
-                                {
-                                  echo "0," ;
-                                }
                               } 
                             }                
                      ?>
