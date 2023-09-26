@@ -157,10 +157,10 @@
                                     {
                                       echo $data->countRes.',' ;
                                       $t = 1 ; 
-                                      
+
                                     }
                                   }
-                                  if($t==0){ echo "0," ; echo $i ; }
+                                  if($t==0){ echo "0," ;  }
                               
                             }                
                      ?>
