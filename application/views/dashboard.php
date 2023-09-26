@@ -148,7 +148,7 @@
                 {
                   name: 'En attente',
                   data: [ <?php 
-                            $t = false ;                     
+                            $t = 0 ;                     
                             for ($i=2018 ; $i<=date('Y')+1 ; $i++  ) { 
                               
                                 foreach($reservationEnAttent as $data)
@@ -156,10 +156,10 @@
                                     if ($data->yearDate == $i )
                                     {
                                       echo $data->countRes.',' ;
-                                      $t = true ; 
+                                      $t = 1 ; 
                                     }
                                   }
-                                  if($t==false){ echo "0," ;  }
+                                  if($t==0){ echo "0," ;  }
                               
                             }                
                      ?>
@@ -168,7 +168,7 @@
                 {
                   name: 'Annulée',
                   data: [ <?php    
-                           $t = false ;                 
+                           $t = 0 ;                 
                             for ($i=2018 ; $i<=date('Y')+1 ; $i++  ) { 
                               
                                 foreach($reservationAnnule as $data)
@@ -176,10 +176,10 @@
                                     if ($data->yearDate == $i )
                                     {
                                       echo $data->countRes.',' ;
-                                      $t = true ;
+                                      $t = 1 ;
                                     }
                                   }
-                                  if($t==false){ echo "0," ;  }
+                                  if($t==0){ echo "0," ;  }
                               
                             }                
                      ?>
