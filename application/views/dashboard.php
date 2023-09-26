@@ -145,6 +145,21 @@
                      ?>
                   ]
                 },
+                {
+                  name: 'En attente',
+                  data: [ <?php                     
+                            for ($i=2018 ; $i<=date('Y')+1 ; $i++  ) { 
+                              foreach($reservationEnAttent as $data)
+                              {
+                                if ($data->yearDate == $i )
+                                {
+                                  echo $data->countRes.',' ;
+                                }
+                              } 
+                            }                
+                     ?>
+                  ]
+                },
                 ] ,
                 chart: {
                   height: 580,
