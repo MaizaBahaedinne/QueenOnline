@@ -149,13 +149,19 @@
                   name: 'En attente',
                   data: [ <?php                     
                             for ($i=2018 ; $i<=date('Y')+1 ; $i++  ) { 
-                              foreach($reservationEnAttent as $data)
+                              if(in_array($i,$reservationEnAttent )
                               {
-                                if ($data->yearDate == $i )
-                                {
-                                  echo $data->countRes.',' ;
+                                echo "0," ;
+                              }
+                              else{
+                                foreach($reservationEnAttent as $data)
+                                  {
+                                    if ($data->yearDate == $i )
+                                    {
+                                      echo $data->countRes.',' ;
+                                    }
+                                  }
                                 }
-                              } 
                             }                
                      ?>
                   ]
