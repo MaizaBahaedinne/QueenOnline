@@ -17,10 +17,10 @@
         <div class="mb-3 card">
           <div class="card-header-tab card-header">
             <div class="card-header-title font-size-lg text-capitalize font-weight-normal">
-              <i class="header-icon lnr-charts icon-gradient bg-happy-green"></i> Portfolio Performance
+              <i class="header-icon lnr-charts icon-gradient bg-happy-green"></i> Portfolio
             </div>
             <div class="btn-actions-pane-right text-capitalize">
-              <button class="btn-wide btn-outline-2x mr-md-2 btn btn-outline-focus btn-sm">View All</button>
+              <a class="btn-wide btn-outline-2x mr-md-2 btn btn-outline-focus btn-sm">View All</a>
             </div>
           </div>
           <div class="no-gutters row">

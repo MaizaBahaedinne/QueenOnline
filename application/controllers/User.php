@@ -43,7 +43,7 @@ class User extends BaseController
         $data['ReservationPerYearRecords'] = $this->reservation_model->ReservationCalenderStatYear() ;
         $data['SalleRecords'] = $this->reservation_model->ReservationCalenderStatSalle() ;
         $data['ReservationPerEmployeRecords'] = $this->reservation_model->ReservationCalenderStatEmploye() ;
-        $data['ReservationRecords'] = $this->reservation_model->ReservationListing(null ,null , 'date');
+        $data['ReservationRecords'] = $this->reservation_model->ReservationListing(null ,null , date('d.m.Y',strtotime("-1 days")) );
 
         $data['clientecords'] =   $this->client_model->clientListing();
         $data['chiffres'] =   $this->paiement_model->getTotalByYear(date('Y'));
