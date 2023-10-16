@@ -23,6 +23,7 @@ class Photographe_model extends CI_Model
         $this->db->join('tbl_pack_photographe as Pack', 'Pack.packId = BaseTbl.packId','left');
       
         $this->db->where('BaseTbl.date >=  SUBDATE(NOW(),1) ');
+        $this->db->where('BaseTbl.statut in (0,1) ');
         $this->db->order_by('BaseTbl.date ASC');
         $query = $this->db->get();
         
