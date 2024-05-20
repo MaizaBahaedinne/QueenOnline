@@ -59,15 +59,19 @@
                   <h6 class="card-title mb-0"></h6>
                   <div class="dropdown mb-2">
                      <?php if( $totalPaiement->valeur >= 100  ) {  ?>
+                     <?php   if ($projectInfo->Pstatut != 3)  {  ?> 
+
                      <button id="printC" class="dropdown-item d-flex align-items-center"  onclick="print()">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-printer icon-sm mr-2">
                            <polyline points="6 9 6 2 18 2 18 9"></polyline>
                            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
                            <rect x="6" y="14" width="12" height="8"></rect>
                         </svg>
-                        <span   >Imprimer</span>
+                        <span >Imprimer</span>
                      </button>
-                     <?php } else{   ?> 
+                     <?php } else  {   ?> 
+                     <span style="color: red" >  <?php   if ($projectInfo->Pstatut == 3) { echo "reservation annulée" ;  }  ?>   </span> 
+                     <?php }} else{   ?> 
                         <script type="text/javascript">
                            
                            Swal.fire({
@@ -363,6 +367,24 @@
   
          
   </script>
+
+
+  <?php if( $projectInfo->Pstatut == 3  ) {  ?>
+
+                           <script type="text/javascript">
+                           
+                           Swal.fire({
+                                      icon: 'error',
+                                      title: 'Annulée',
+                                      text: 'cette reservation a été annulée',
+                                      footer: ''
+                                    }); 
+
+                           $('#printC').hide() ; 
+
+                        </script>
+
+                        <?php } ?> 
 
 
    </div>
