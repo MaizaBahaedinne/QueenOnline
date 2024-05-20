@@ -309,59 +309,7 @@
                                     <i class="icon text-primary ion-android-apps"></i>
                                 </span>
                             </button>
-                            <!--
-                            <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu-xl rm-pointers dropdown-menu dropdown-menu-right">
-                                <div class="dropdown-menu-header">
-                                    <div class="dropdown-menu-header-inner bg-plum-plate">
-                                        <div class="menu-header-image" style="background-image: url('<?php echo base_url() ; ?>assets/images/dropdown-header/abstract4.jpg');"></div>
-                                        <div class="menu-header-content text-white">
-                                            <h5 class="menu-header-title">Grid Dashboard</h5>
-                                            <h6 class="menu-header-subtitle">Easy grid navigation inside dropdowns</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="grid-menu grid-menu-xl grid-menu-3col">
-                                    <div class="no-gutters row">
-                                        <div class="col-sm-6 col-xl-4">
-                                            <button class="btn-icon-vertical btn-square btn-transition btn btn-outline-link">
-                                                <i class="pe-7s-world icon-gradient bg-night-fade btn-icon-wrapper btn-icon-lg mb-3"></i> Automation
-                                            </button>
-                                        </div>
-                                        <div class="col-sm-6 col-xl-4">
-                                            <button class="btn-icon-vertical btn-square btn-transition btn btn-outline-link">
-                                                <i class="pe-7s-piggy icon-gradient bg-night-fade btn-icon-wrapper btn-icon-lg mb-3"> </i> Reports
-                                            </button>
-                                        </div>
-                                        <div class="col-sm-6 col-xl-4">
-                                            <button class="btn-icon-vertical btn-square btn-transition btn btn-outline-link">
-                                                <i class="pe-7s-config icon-gradient bg-night-fade btn-icon-wrapper btn-icon-lg mb-3"> </i> Settings
-                                            </button>
-                                        </div>
-                                        <div class="col-sm-6 col-xl-4">
-                                            <button class="btn-icon-vertical btn-square btn-transition btn btn-outline-link">
-                                                <i class="pe-7s-browser icon-gradient bg-night-fade btn-icon-wrapper btn-icon-lg mb-3"> </i> Content
-                                            </button>
-                                        </div>
-                                        <div class="col-sm-6 col-xl-4">
-                                            <button class="btn-icon-vertical btn-square btn-transition btn btn-outline-link">
-                                                <i class="pe-7s-hourglass icon-gradient bg-night-fade btn-icon-wrapper btn-icon-lg mb-3"></i> Activity
-                                            </button>
-                                        </div>
-                                        <div class="col-sm-6 col-xl-4">
-                                            <button class="btn-icon-vertical btn-square btn-transition btn btn-outline-link">
-                                                <i class="pe-7s-world icon-gradient bg-night-fade btn-icon-wrapper btn-icon-lg mb-3"> </i> Contacts
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <ul class="nav flex-column">
-                                    <li class="nav-item-divider nav-item"></li>
-                                    <li class="nav-item-btn text-center nav-item">
-                                        <button class="btn-shadow btn btn-primary btn-sm">Follow-ups</button>
-                                    </li>
-                                </ul>
-                            </div>
-                            -->
+                          
                         </div>
                         <div class="dropdown">
                             <button type="button" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown"
@@ -682,55 +630,7 @@
                                 </ul>
                             </div>
                         </div>
-                       
-                        <div class="dropdown">
-                            <button type="button" aria-haspopup="true" data-toggle="dropdown" aria-expanded="false" class="p-0 btn btn-link dd-chart-btn">
-                                <span class="icon-wrapper icon-wrapper-alt rounded-circle">
-                                    <span class="icon-wrapper-bg bg-success"></span>
-                                    <i class="icon text-success ion-ios-analytics"></i>
-                                </span>
-                            </button>
-                            <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu-xl rm-pointers dropdown-menu dropdown-menu-right">
-                                <div class="dropdown-menu-header">
-                                    <div class="dropdown-menu-header-inner bg-premium-dark">
-                                        <div class="menu-header-image" style="background-image: url('<?php echo base_url() ; ?>assets/images/dropdown-header/abstract4.jpg');"></div>
-                                        <div class="menu-header-content text-white">
-                                            <h5 class="menu-header-title">Users Online</h5>
-                                            <h6 class="menu-header-subtitle">Recent Account Activity Overview</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="widget-chart">
-                                    <div class="widget-chart-content">
-                                        <div class="icon-wrapper rounded-circle">
-                                            <div class="icon-wrapper-bg opacity-9 bg-focus"></div>
-                                            <i class="lnr-users text-white"></i>
-                                        </div>
-                                        <div class="widget-numbers">
-                                            <span>344k</span>
-                                        </div>
-                                        <div class="widget-subheading pt-2">
-                                            Profile views since last login
-                                        </div>
-                                        <div class="widget-description text-danger">
-                                            <span class="pr-1"><span>176%</span></span>
-                                            <i class="fa fa-arrow-left"></i>
-                                        </div>
-                                    </div>
-                                    <div class="widget-chart-wrapper">
-                                        <div id="dashboard-sparkline-carousel-3-pop"></div>
-                                    </div>
-                                </div>
-                                <ul class="nav flex-column">
-                                    <li class="nav-item-divider mt-0 nav-item"></li>
-                                    <li class="nav-item-btn text-center nav-item">
-                                        <button class="btn-shine btn-wide btn-pill btn btn-warning btn-sm">
-                                            <i class="fa fa-cog fa-spin mr-2"></i>View Details
-                                        </button>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+                   
                     </div>
                     
                     <div class="header-btn-lg pr-0">
@@ -797,7 +697,7 @@
                                                     </ul>
                                                 </div>
                                             </div>
-                                            -->
+                                            
                                             <ul class="nav flex-column">
                                                 <li class="nav-item-divider mb-0 nav-item"></li>
                                             </ul>
@@ -823,6 +723,7 @@
                                                     <button class="btn-wide btn btn-primary btn-sm"> Open Messages </button>
                                                 </li>
                                             </ul>
+                                            -->
                                         </div>
                                     </div>
                                 </div>
@@ -970,25 +871,7 @@
                         </h3>
                         <div class="p-3">
                             <ul class="list-group">
-                                <!--<li class="list-group-item">
-                                    <div class="widget-content p-0">
-                                        <div class="widget-content-wrapper">
-                                            <div class="widget-content-left mr-3">
-                                                <div class="switch has-switch" data-on-label="ON" data-off-label="OFF">
-                                                    <div class="switch-animate switch-off">
-                                                        <input type="checkbox" data-toggle="toggle" data-onstyle="success">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="widget-content-left">
-                                                <div class="widget-heading">Sidebar Background Image
-                                                </div>
-                                                <div class="widget-subheading">Enable background images for sidebar!
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>-->
+                               
                                 <li class="list-group-item">
                                     <h5 class="pb-2">Choose Color Scheme</h5>
                                     <div class="theme-settings-swatches">
@@ -1031,88 +914,7 @@
                                         <div class="swatch-holder bg-happy-green switch-sidebar-cs-class" data-class="bg-happy-green sidebar-text-light"></div>
                                     </div>
                                 </li>
-                                <!--<li class="theme-settings-swatches d-none list-group-item">
-                                    <div class="widget-content p-0">
-                                        <div class="widget-content-wrapper">
-                                            <div class="widget-content-left">
-                                                <div class="widget-heading">Background Opacity
-                                                </div>
-                                            </div>
-                                            <div class="widget-content-right">
-                                                <div role="group" class="btn-group-sm btn-group">
-                                                    <button type="button" class="btn-shadow opacity-3 active btn btn-primary">4%
-                                                    </button>
-                                                    <button type="button" class="btn-shadow opacity-4 btn btn-primary">6%
-                                                    </button>
-                                                    <button type="button" class="btn-shadow opacity-5 btn btn-primary">8%
-                                                    </button>
-                                                    <button type="button" class="btn-shadow opacity-6 btn btn-primary">10%
-                                                    </button>
-                                                    <button type="button" class="btn-shadow opacity-7 btn btn-primary">15%
-                                                    </button>
-                                                    <button type="button" class="btn-shadow opacity-8 btn btn-primary">20%
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>-->
-                                <!--<li class="theme-settings-swatches d-none list-group-item">
-                                    <h5>Sidebar Image Background
-                                    </h5>
-                                    <div class="divider">
-                                    </div>
-                                    <div class="swatch-holder swatch-holder-img active">
-                                        <a class="img-holder switch-trigger">
-                                            <img alt=" " src="<?php echo base_url() ; ?>assets/images/sidebar/city1.jpg">
-                                        </a>
-                                    </div>
-                                    <div class="swatch-holder swatch-holder-img">
-                                        <a class="img-holder switch-trigger">
-                                            <img alt=" " src="<?php echo base_url() ; ?>assets/images/sidebar/city2.jpg">
-                                        </a>
-                                    </div>
-                                    <div class="swatch-holder swatch-holder-img">
-                                        <a class="img-holder switch-trigger">
-                                            <img alt=" " src="<?php echo base_url() ; ?>assets/images/sidebar/city3.jpg">
-                                        </a>
-                                    </div>
-                                    <div class="swatch-holder swatch-holder-img">
-                                        <a class="img-holder switch-trigger">
-                                            <img alt=" " src="<?php echo base_url() ; ?>assets/images/sidebar/city4.jpg">
-                                        </a>
-                                    </div>
-                                    <div class="swatch-holder swatch-holder-img">
-                                        <a class="img-holder switch-trigger">
-                                            <img alt=" " src="<?php echo base_url() ; ?>assets/images/sidebar/city5.jpg">
-                                        </a>
-                                    </div>
-                                    <div class="swatch-holder swatch-holder-img">
-                                        <a class="img-holder switch-trigger">
-                                            <img alt=" " src="<?php echo base_url() ; ?>assets/images/sidebar/abstract1.jpg">
-                                        </a>
-                                    </div>
-                                    <div class="swatch-holder swatch-holder-img">
-                                        <a class="img-holder switch-trigger">
-                                            <img alt=" " src="<?php echo base_url() ; ?>assets/images/sidebar/abstract2.jpg">
-                                        </a>
-                                    </div>
-                                    <div class="swatch-holder swatch-holder-img">
-                                        <a class="img-holder switch-trigger">
-                                            <img alt=" " src="<?php echo base_url() ; ?>assets/images/sidebar/abstract3.jpg">
-                                        </a>
-                                    </div>
-                                    <div class="swatch-holder swatch-holder-img">
-                                        <a class="img-holder switch-trigger">
-                                            <img alt=" " src="<?php echo base_url() ; ?>assets/images/sidebar/abstract4.jpg">
-                                        </a>
-                                    </div>
-                                    <div class="swatch-holder swatch-holder-img">
-                                        <a class="img-holder switch-trigger">
-                                            <img alt=" " src="<?php echo base_url() ; ?>assets/images/sidebar/abstract5.jpg">
-                                        </a>
-                                    </div>
-                                </li>-->
+                         
                             </ul>
                         </div>
                         <h3 class="themeoptions-heading">
@@ -1121,44 +923,7 @@
                         </h3>
                         <div class="p-3">
                             <ul class="list-group">
-                                <!--<li class="list-group-item">
-                                    <div class="widget-content p-0">
-                                        <div class="widget-content-wrapper">
-                                            <div class="widget-content-left mr-3">
-                                                <div class="switch has-switch" data-on-label="ON" data-off-label="OFF">
-                                                    <div class="switch-animate switch-on">
-                                                        <input type="checkbox" data-toggle="toggle" data-onstyle="success">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="widget-content-left">
-                                                <div class="widget-heading">Page Title Icon
-                                                </div>
-                                                <div class="widget-subheading">Enable the icon box for page titles!
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="list-group-item">
-                                    <div class="widget-content p-0">
-                                        <div class="widget-content-wrapper">
-                                            <div class="widget-content-left mr-3">
-                                                <div class="switch has-switch" data-on-label="ON" data-off-label="OFF">
-                                                    <div class="switch-animate switch-on">
-                                                        <input type="checkbox" data-toggle="toggle" data-onstyle="success">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="widget-content-left">
-                                                <div class="widget-heading">Page Title Description
-                                                </div>
-                                                <div class="widget-subheading">Enable the description below page title!
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>-->
+                                
                                 <li class="list-group-item">
                                     <h5 class="pb-2">Page Section Tabs</h5>
                                     <div class="theme-settings-swatches">
@@ -1221,19 +986,42 @@
                             <li class="app-sidebar__heading">Menu</li>
                              <li>
                                 <a href="<?php echo base_url() ?>">
-                                    <i class="metismenu-icon pe-7s-home"></i>Dashboard
+                                    <i class="metismenu-icon pe-7s-home"></i>Tableau de bord
                                 </a>
                             </li>
                         </ul>
                         <ul class="vertical-nav-menu">
                             <li class="app-sidebar__heading">Reservation</li>
-                            <?php if($role == 1 || $role == 2 ){  ?>
-                            <li>
-                                <a href="<?php echo base_url() ?>Reservation">
-                                    <i class="metismenu-icon pe-7s-culture"></i>Salles
+                            
+
+                            <li class="">
+                                <a href="#" aria-expanded="false">
+                                <i class="metismenu-icon pe-7s-culture"></i> Salles
+                                <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                                 </a>
+                                <ul class="mm-collapse" style="height: 7.04px;">
+                                <?php if($role == 1 || $role == 2 ){  ?>
+                                <li>
+                                <a href="<?php echo base_url() ?>Reservation">
+                                    <i class="metismenu-icon pe-7s-piggy"></i>A venir
+                                </a>
+                                </li>
+                                <li>
+                                <a href="<?php echo base_url() ?>Reservation/ReservationOld">
+                                    <i class="metismenu-icon pe-7s-piggy"></i>Passées
+                                </a>
+                                </li>
+                                <li>
+                                <a href="<?php echo base_url() ?>Reservation/Calender">
+                                    <i class="metismenu-icon pe-7s-piggy"></i>Calenderier
+                                </a>
+                                </li>
+                                
+
+                                <?php }  ?>
+                                </ul>
                             </li>
-                            <?php }  ?>
+
                             <?php if($role == 1 || $role == 2 ){  ?>
                             
                             <li>
@@ -1275,7 +1063,7 @@
                             -->
                             <li>
                                 <a href="<?php echo base_url() ?>Prestation/Pestataire">
-                                    <i class="metismenu-icon pe-7s-box2"></i>Artists
+                                    <i class="metismenu-icon pe-7s-micro"></i>Artists & Prestataires
                                 </a>
                             </li>
                             

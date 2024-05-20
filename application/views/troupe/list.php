@@ -39,14 +39,14 @@
         <table id="example" style="width: 100%;" id="example" class="table  table-hover table-striped table-bordered table-responsive" cellspacing="0"  >
           <thead>
             <tr>
-              <th>ID</th>
+               <th>ID</th>
               <th>Date</th>
-              <th>Espace</th>
-              <th>Pack</th>
-              <th width="15%">prix</th>
-              <th width="15%">avance</th>
-              <th width="15%">mobile 1</th>
-              <th width="15%">mobile 2</th>
+              <th >Espace</th>
+              <th >Pack</th>
+              <th width="5%">prix</th>
+              <th width="5%">avance</th>
+              <th width="10%">mobile 1</th>
+              <th width="10%">mobile 2</th>
               <th width="5%">Statut</th>
               <th width="5%">Action</th>
             </tr>
@@ -117,14 +117,14 @@
           </tbody>
           <tfoot>
             <tr>
-              <th>ID</th>
+               <th>ID</th>
               <th>Date</th>
-              <th>Espace</th>
-              <th>Pack</th>
-              <th width="15%">prix</th>
-              <th width="15%">avance</th>
-              <th width="15%">mobile 1</th>
-              <th width="15%">mobile 2</th>
+              <th >Espace</th>
+              <th >Pack</th>
+              <th width="5%">prix</th>
+              <th width="5%">avance</th>
+              <th width="10%">mobile 1</th>
+              <th width="10%">mobile 2</th>
               <th width="5%">Statut</th>
               <th width="5%">Action</th>
             </tr>

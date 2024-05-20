@@ -7,7 +7,7 @@
             </div>
             <div>
                Détails de la reservation
-               <div class="page-title-subheading">Reservation du photographe</div>
+               <div class="page-title-subheading">Reservation du troupe</div>
             </div>
          </div>
          <div class="page-title-actions">
@@ -31,7 +31,7 @@
                         </a>
                      </li>
                      <li class="nav-item">
-                        <a  href="<?php echo base_url() ?>Troupe/deleteReservation/<?php $projectInfo->reservationTId   ?>" class="nav-link">
+                        <a  href="<?php echo base_url() ?>Troupe/deleteReservation/<?php  echo $projectInfo->reservationTId   ?>" class="nav-link">
                         <i class="nav-link-icon lnr-file-empty"></i>
                         <span> Annuler</span>
                         </a>

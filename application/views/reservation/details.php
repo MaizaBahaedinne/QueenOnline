@@ -826,6 +826,24 @@
   </script>
 
 
+  <?php if( $projectInfo->statut == 3  ) {  ?>
+
+                           <script type="text/javascript">
+                           
+                           Swal.fire({
+                                      icon: 'error',
+                                      title: 'Annulée',
+                                      text: 'cette reservation a été annulée',
+                                      footer: ''
+                                    }); 
+
+                           $('#printC').hide() ; 
+
+                        </script>
+
+                        <?php } ?> 
+
+
    </div>
 </div>
 

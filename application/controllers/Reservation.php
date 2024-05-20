@@ -44,6 +44,41 @@ class Reservation extends BaseController
                 $this->global["pageTitle"] = "Reservation des salles";
                 $this->loadViews("reservation/list", $this->global, $data, null);
         }
+
+
+        /**
+         * This function used to load the first screen of the user
+         */
+        public function Calender()
+        {
+                
+                $data["userRecords"] = $this->reservation_model->ReservationListing();
+                     foreach ($data["userRecords"]  as $rerva) {
+        
+                         $rerva->prestation = $this->prestation_model->ReservationListing($rerva->reservationId) ; 
+                       }   
+                $this->global["pageTitle"] = "Reservation des salles";
+                $this->global["calenderOK"] = true ;
+                $this->global["calenderType"] = 'dayGridMonth' ;
+                $this->loadViews("reservation/calender", $this->global, $data, null);
+        }
+
+
+        /**
+         * This function used to load the first screen of the user
+         */
+        public function ReservationOld()
+        {
+                
+                $data["userRecords"] = $this->reservation_model->ReservationListingOld();
+                     foreach ($data["userRecords"]  as $rerva) {
+        
+                         $rerva->prestation = $this->prestation_model->ReservationListing($rerva->reservationId) ; 
+                       }   
+                $this->global["pageTitle"] = "Anciennes reservations des salles";
+                $this->loadViews("reservation/list", $this->global, $data, null);
+        }
+
         public function addNew()
         {
                 $data["salleRecords"] = $this->salle_model->SalleListing();

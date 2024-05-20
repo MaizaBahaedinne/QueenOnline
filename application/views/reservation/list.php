@@ -1,11 +1,11 @@
 <style> 
 .alert-bg {
   background: red;
-  animation: mymove 4s infinite;
+  animation: mymove 5s infinite;
 }
 
 @keyframes mymove {
-  from {background-color: whitesmoke;}
+  from {background-color: ghostwhite;}
   to {background-color: indianred ;}
 }
 </style>
@@ -19,7 +19,7 @@
           <i class="pe-7s-medal icon-gradient bg-tempting-azure"></i>
         </div>
         <div>
-          Reservation
+          Reservation des salles
           <div class="page-title-subheading">Les reservations</div>
         </div>
       </div>
@@ -41,11 +41,11 @@
           <thead>
             <tr>
               
-              <th width="10%" >Date</th>
+              <th  >Date</th>
               <th width="10%" >Espace</th>
-              <th width="10%">titre</th>
-              <th >Options</th>
-              <th >Contact</th>
+              <th >titre</th>
+              <th width="15%">Options</th>
+              <th width="20%" >Contact</th>
               <th width="5%">Statut</th>
               <th width="5%" >Action</th>
             </tr>
@@ -62,7 +62,7 @@
               <td>
                
 
-                <b><?php echo date_format(date_create($record->dateFin)  , 'd/m/20y');  ?></b><br>  de <?php echo date_format(date_create($record->heureDebut)  , 'H:i'); ?>  à  <?php echo date_format(date_create($record->heureFin)  , 'H:i'); ?>
+                <b><?php echo date_format(date_create($record->dateFin)  , 'd/m/20y');  ?></b><br>  de <b><?php echo date_format(date_create($record->heureDebut)  , 'H:i'); ?> </b> à  <b><?php echo date_format(date_create($record->heureFin)  , 'H:i'); ?></b>
               </td>
               <td>            
                 <?php echo $record->salle  ?>
@@ -122,13 +122,13 @@
           </tbody>
           <tfoot>
             <tr>
-              <th width="10%" >Date</th>
-              <th width="10%" >Espace</th>
-              <th width="10%">titre</th>
+              <th >Date</th>
+              <th >Espace</th>
+              <th >titre</th>
               <th >Options</th>
               <th >Contact</th>
-              <th width="5%">Statut</th>
-              <th width="5%" >Action</th>
+              <th >Statut</th>
+              <th >Action</th>
             </tr>
           </tfoot>
         </table>

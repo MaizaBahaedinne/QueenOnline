@@ -68,6 +68,23 @@ class Prestation extends BaseController
         $this->loadViews("prestation/new", $this->global, $data, null);
     }
 
+
+     function deleteReservation($resId)
+        {
+                $reservationInfo = [ "statut" => 3];
+                $result = $this->prestation_model->editReservation($reservationInfo, $resId);
+                if ($result) {
+                        $this->session->set_flashdata("success", "Reservation mise à jour avec succées ");
+                        redirect("prestation/view/" . $resId);
+                } else {
+                        $this->session->set_flashdata("error", "Problème de mise à jours");
+                        redirect("prestation/view/" . $resId);
+                }
+        }
+
+
+
+
     /**
      * This function is used to add new user to the system
      */

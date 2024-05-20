@@ -59,6 +59,8 @@ class User extends BaseController
 
 
         $this->global['pageTitle'] = 'Dashboard';
+        $this->global["calenderOK"] = true ;
+        $this->global["calenderType"] = 'dayGridWeek' ;
  
         $this->loadViews("dashboard", $this->global, $data , NULL);
     }

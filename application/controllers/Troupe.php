@@ -227,7 +227,7 @@ class Troupe extends BaseController
                 $reservationInfo = [ "statut" => 3];
                 $result = $this->troupe_model->editReservation($reservationInfo, $resId);
                 if ($result) {
-                        $this->session->set_flashdata("success", "Reservation mise à jour avec succées ");
+                        $this->session->set_flashdata("success", "Reservation a été annulée ");
                         redirect("Troupe/view/" . $resId);
                 } else {
                         $this->session->set_flashdata("error", "Problème de mise à jours");
