@@ -311,8 +311,14 @@ class Reservation extends BaseController
                 $clientInfo = $this->client_model->getClientInfo($ReservationInfo->clientId);
                 $myMobile = $clientInfo->mobile;
                 $mySms = "Salut " . $clientInfo->name . ", Votre réservation de l'espace (" . $ReservationInfo->salle . ") pour la date (" . $ReservationInfo->dateDebut . ") a été enregistrée.";
-                echo $this->sendSMS("216" . $myMobile, $mySms);
+                $this->sendSMS("216" . $myMobile, $mySms);
+
+                $mySmsK = $this->name . " a recu (" . $avance . " DT) de la reservation de ". $ReservationInfo->salle ." pour le ". $ReservationInfo->dateDebut  ;
+                $this->sendSMS("21655465244", $mySmsK);
+
                 redirect("Reservation/view/" . $resId);
+                
+
         }
         /**
          * This function is used to load the user list
