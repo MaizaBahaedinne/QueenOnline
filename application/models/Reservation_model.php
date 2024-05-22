@@ -216,6 +216,9 @@ class Reservation_model extends CI_Model
     }
 
 
+
+
+
     /**
      * This function is used to get the user listing count
      * @param string $searchText : This is optional search text
@@ -233,6 +236,27 @@ class Reservation_model extends CI_Model
         $result = $query->result();        
         return $result;
     }
+
+
+        /**
+     * This function is used to get the user listing count
+     * @param string $searchText : This is optional search text
+     * @param number $page : This is pagination offset
+     * @param number $segment : This is pagination limit
+     * @return array $result : This is result
+     */
+    function ReservationYearTypesStat($status)
+    {
+        $this->db->select('COUNT(reservationId) countTypes , BaseTbl.type , , Year(BaseTbl.dateFin) yearDate ');
+        $this->db->from('tbl_reservation as BaseTbl');
+        $this->db->where('BaseTbl.statut IN ('.$status.')  and  Year(BaseTbl.dateFin) = Year(NOW()) ');
+        $this->db->group_by('BaseTbl.type') ;
+        $this->db->group_by('yearDate') ;
+        $query = $this->db->get();
+        $result = $query->result();        
+        return $result;
+    }
+
 
 
     /**

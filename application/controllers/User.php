@@ -45,6 +45,7 @@ class User extends BaseController
         $data['ReservationPerEmployeRecords'] = $this->reservation_model->ReservationCalenderStatEmploye() ;
         $data['ReservationRecords'] = $this->reservation_model->ReservationListing(null ,null , date('d.m.Y',strtotime("-1 days")) );
 
+
         $data['clientecords'] =   $this->client_model->clientListing();
         $data['chiffres'] =   $this->paiement_model->getTotalByYear(date('Y'));
         $data['chiffresPrec'] =   $this->paiement_model->getTotalByYear(date('Y')-1);
@@ -55,7 +56,7 @@ class User extends BaseController
         $data['ClassementPrestations'] =   $this->prestation_model->ClassementPacksReservation(date('Y') , 'prestataire' ) ;
         $data['ClassementVoiture'] =   $this->voiture_model->ClassementVoiture(date('Y')) ; 
         $data['ClassementPhotographe'] =   $this->photographe_model->ClassementPhotographe(date('Y')) ;
-      //  $data['ClassementTroupe'] =   $this->photographe_model->ClassementTroupe(date('Y')) ; 
+        $data['TypesRecords'] = $this->reservation_model->ReservationYearTypesStat("0,1,2");
 
 
         $this->global['pageTitle'] = 'Dashboard';

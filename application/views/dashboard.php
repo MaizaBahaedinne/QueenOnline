@@ -342,6 +342,56 @@
           var chart = new ApexCharts(document.querySelector("#Salle"), options);
           chart.render();
         </script>
+
+
+          <div class="mb-3 card">
+          <div class="card-header-tab card-header">
+            <div class="card-header-title">
+              <i class="header-icon lnr-rocket icon-gradient bg-tempting-azure"></i> Reservation Par type ( <?php $year = date("Y"); echo $year; ?>)
+            </div>
+            <div class="btn-actions-pane-right text-capitalize">
+              <a class="btn-wide btn-outline-2x btn btn-outline-primary btn-sm" href="
+                        <?php echo base_url() ?>Reservation">Voir tout </a>
+            </div>
+          </div>
+          <div class="pt-2 pb-0 card-body">
+            <div class="row"></div>
+          </div>
+          <div class="widget-chart p-0">
+            <div id="Types"></div>
+          </div>
+          <div class="divider mb-0"></div>
+        </div>
+
+        <script type="text/javascript">
+          var options = {
+            series: [ <?php  foreach($TypesRecords as $data) {
+              echo $data->countTypes.
+              ',';
+            } ?> ],
+            chart: {
+              type: 'pie',
+            },
+            labels: [ <?php  foreach($TypesRecords as $data) {
+              echo '"'.$data->type.
+              '",';
+            } ?> ],
+            responsive: [{
+              breakpoint: 500,
+              options: {
+                chart: {
+                  width: 100
+                },
+                legend: {
+                  position: 'buttom'
+                }
+              }
+            }]
+          };
+          var chart = new ApexCharts(document.querySelector("#Types"), options);
+          chart.render();
+        </script>
+
         <div class="mb-3 card">
           <div class="card-header-tab card-header">
             <div class="card-header-title">
