@@ -31,10 +31,25 @@
                         </a>
                      </li>
                      <li class="nav-item">
+                        <?php
+
+                         $annule = true ;  
+                         if (!(empty($troupe->STroupe))) { if ($troupe->STroupe != 3 )           { $annule = false ; } } 
+                         if (!(empty($photographe->Pstatut))) { if ($photographe->Pstatut != 3) { $annule = false ; } } 
+                         if (!(empty($voiture->statut ))) { if ($voiture->statut != 3)           { $annule = false ; } } 
+                         if (!(empty($projectInfo->statut ))) { if ($projectInfo->statut != 3)           { $annule = false ; } }    
+                        if ($annule == true )
+                        {
+                        ?>
                         <a  href="<?php echo base_url(); ?>Reservation/deleteReservation/<?php echo $projectInfo->reservationId; ?>" class="nav-link">
                         <i class="nav-link-icon lnr-file-empty"></i>
                         <span> Annuler</span>
                         </a>
+                        <?php
+                         } 
+                        ?>
+                        
+                        
                         <a  class="nav-link o nannuler" onclick="annule()" > <i class="nav-link-icon lnr-file-empty"></i> New Annuler</a>
 
 
@@ -846,6 +861,3 @@
 
    </div>
 </div>
-
-
-

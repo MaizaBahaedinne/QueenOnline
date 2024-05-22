@@ -5,7 +5,7 @@
         <div class="page-title-icon">
           <i class="pe-7s-graph icon-gradient bg-ripe-malin"></i>
         </div>
-        <div> Dashboard <div class="page-title-subheading"></div>
+        <div> Tableau de bord <div class="page-title-subheading"></div>
         </div>
       </div>
       <div class="page-title-actions"></div>
@@ -20,7 +20,7 @@
               <i class="header-icon lnr-charts icon-gradient bg-happy-green"></i> Portfolio
             </div>
             <div class="btn-actions-pane-right text-capitalize">
-              <a class="btn-wide btn-outline-2x mr-md-2 btn btn-outline-focus btn-sm">View All</a>
+           <!--   <a class="btn-wide btn-outline-2x mr-md-2 btn btn-outline-focus btn-sm">View All</a> -->
             </div>
           </div>
           <div class="no-gutters row">
@@ -28,17 +28,17 @@
               <div class="card no-shadow rm-border bg-transparent widget-chart text-left">
                 <div class="icon-wrapper rounded-circle">
                   <div class="icon-wrapper-bg opacity-10 bg-warning"></div>
-                  <i class="lnr-laptop-phone text-dark opacity-8"></i>
+                  <i class="lnr-calendar-full text-dark opacity-8"></i>
                 </div>
                 <div class="widget-chart-content">
-                  <div class="widget-subheading">Reservations</div>
+                  <div class="widget-subheading">Projets</div>
                   <div class="widget-numbers"> <?php echo count($reservationRecords) ?> </div>
-                  <div class="widget-description opacity-8 text-focus">
+                  <!-- <div class="widget-description opacity-8 text-focus">
                     <div class="d-inline text-danger pr-1">
                       <i class="fa fa-angle-down"></i>
                       <span class="pl-1">54.1%</span>
                     </div> less earnings
-                  </div>
+                  </div> -->
                 </div>
               </div>
               <div class="divider m-0 d-md-none d-sm-block"></div>
@@ -47,18 +47,19 @@
               <div class="card no-shadow rm-border bg-transparent widget-chart text-left">
                 <div class="icon-wrapper rounded-circle">
                   <div class="icon-wrapper-bg opacity-9 bg-danger"></div>
-                  <i class="lnr-graduation-hat text-white"></i>
+                  <i class="lnr-user text-white"></i>
                 </div>
                 <div class="widget-chart-content">
                   <div class="widget-subheading">Clients</div>
                   <div class="widget-numbers">
                     <span> <?php echo count($clientecords) ?> </span>
                   </div>
+                  <!--
                   <div class="widget-description opacity-8 text-focus"> Grow Rate: <span class="text-info pl-1">
                       <i class="fa fa-angle-down"></i>
                       <span class="pl-1">14.1%</span>
                     </span>
-                  </div>
+                  </div> -->
                 </div>
               </div>
               <div class="divider m-0 d-md-none d-sm-block"></div>
@@ -67,14 +68,14 @@
               <div class="card no-shadow rm-border bg-transparent widget-chart text-left">
                 <div class="icon-wrapper rounded-circle">
                   <div class="icon-wrapper-bg opacity-9 bg-success"></div>
-                  <i class="lnr-apartment text-white"></i>
+                  <i class="lnr-rocket text-white"></i>
                 </div>
                 <div class="widget-chart-content">
                   <div class="widget-subheading">Gain</div>
                   <div class="widget-numbers text-success">
                     <span> <?php if($uid == 1 ){ echo ($chiffres->valeur)/1000 ; }  ?>M DT </span>
                   </div>
-                  <div class="widget-description text-focus"> Increased by <span class="text-warning pl-1">
+                  <div class="widget-description text-focus"> Augmentaion de <span class="text-warning pl-1">
                       <i class="fa fa-angle-up"></i>
                       <span class="pl-1"> <?php if($uid == 1 ){ echo ($chiffresPrec->valeur)/1000 ; }  ?>M DT </span>
                     </span>
@@ -83,6 +84,7 @@
               </div>
             </div>
           </div>
+          <!--
           <div class="text-center d-block p-3 card-footer">
             <a href="
                      <?php echo base_url() ?>" class="btn-pill btn-shadow btn-wide fsize-1 btn btn-primary btn-lg">
@@ -91,6 +93,7 @@
               </span>
             </a>
           </div>
+        -->
         </div>
       </div>
       <div class="col-lg-12">

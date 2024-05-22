@@ -30,11 +30,10 @@
                        <tr><td width="20%"> <img src="<?php echo base_url() ?>assets/images/logo-inverse.png" width="75%"></td>
                       <td>
                         <table>
-                          <tr><td>Queen Park </td></tr>
-                          <tr><td><p>MC 35,Route mornag,Boujardga , Ben Arous 2090.</p> </td></tr>
-                          <tr><td> <p><b>e-mail :</b> info@queenpark.tn</p> </td></tr>
-                          <tr><td> <p><b>mobile :</b> 54 419 959 </p> </td></tr>
-                          <tr> <td><p><b>Fixe :</b> 79 153 352 </p> </td></tr>
+                          <tr><td><H5>Queen Park</H5> </td></tr>
+                          <tr><td><p>MC 35,Route mornag,Boujardga , Ben Arous 2090.
+                           <br><p><b>e-mail :</b> info@queenpark.tn <br><b>mobile :</b> 54 419 959  <br><b>Fixe :</b> 79 153 352 </p> </td></tr>
+                          
                         </table> 
                         </td>
                     </tr>  
@@ -45,9 +44,9 @@
                                   
               
                   
-                      <h3>Recu de paiement</h3><br>
+                      <h4>Recu de paiement <small><?php echo $projectInfo->reservationId ?> - <?php $date = new DateTime() ; echo $date->format('dmYHi') ?> </small></h4><br>
                     <p >
-                      <b>Sujet :</b> &nbsp; Location de l'espace <?php echo $projectInfo->salle ?> pour  le <?php echo $projectInfo->dateDebut ?>  <?php echo $projectInfo->heureDebut ?> au  <?php echo $projectInfo->heureFin ?> 
+                      <b>Sujet :</b> &nbsp; Location de l'espace <b><?php echo $projectInfo->salle ?>  (Ref : QP<?php echo $contratInfo->cin; ?>/<?php echo $contratInfo->reservationId; ?>/<?php echo $contratInfo->createdBy; ?>) </b> pour  le <?php echo $projectInfo->dateDebut ?>  <?php echo $projectInfo->heureDebut ?> au  <?php echo $projectInfo->heureFin ?> 
                     </p>
                      
                     <br>
@@ -92,8 +91,8 @@
                                 </tr>
                                 
                                 <tr>
-                                  <td class="text-right" > <b>montant payée</b> </td>
-                                  <td class="text-danger text-right">- <?php echo $totalPaiement->valeur  ?> DT </td>
+                                  <td class="text-right" > <b>montant payé</b> </td>
+                                  <td class="text-success text-right"><?php echo $totalPaiement->valeur  ?> DT </td>
                                   <?php if (  $totalPaiement->valeur < 1000 ) { ?>
 
                                     <script type="text/javascript">
@@ -111,7 +110,7 @@
                                 </tr>
                                 <tr class="bg-light">
                                   <td class="text-right"><b>Reste à payer</b></td>
-                                  <td class="text-right"><?php echo $projectInfo->prix - $totalPaiement->valeur  ?> DT </td>
+                                  <td class="text-danger text-right"><?php echo $projectInfo->prix - $totalPaiement->valeur  ?> DT </td>
                                 </tr>
                               </tbody>
                           </table>

@@ -26,7 +26,7 @@
        
         <div class="d-inline-block">
           <a href="<?php echo base_url() ?>Voiture/addNewO" class="btn  btn-info">
-          Ajouter
+          Ajouter (Hors Queen Park)
           </a>
           
         </div>
