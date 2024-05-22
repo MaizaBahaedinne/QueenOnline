@@ -409,6 +409,21 @@ class Voiture extends BaseController
 
 
 
+     function deleteReservation($resId)
+        {
+                $reservationInfo = [ "statut" => 3];
+                $result = $this->voiture_model->editReservation($reservationInfo, $resId);
+                if ($result) {
+                        $this->session->set_flashdata("success", "Reservation a été annulée ");
+                        redirect("voiture/view/" . $resId);
+                } else {
+                        $this->session->set_flashdata("error", "Problème de mise à jours");
+                        redirect("voiture/view/" . $resId);
+                }
+        }
+
+
+
 
         function http_response($url)
         {

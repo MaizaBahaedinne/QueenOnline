@@ -109,9 +109,11 @@
                 <a class="btn" href="<?php echo base_url() ?>Reservation/view/<?php echo $record->reservationId ?>" >
                   <i class="fa fa-eye"></i>
                 </a>
-                <a class="btn" href="<?php echo base_url() ?>Reservation/edit/<?php echo $record->reservationId ?>" >
+                <?php if  ($record->statut == 1 ) { ?>
+                <a class="btn" href="<?php echo base_url() ?>Reservation/editDate/<?php echo $record->reservationId ?>" >
                   <i class="fas fa-pencil-alt"></i>
                 </a>
+                <?php } ?>
               </div>
               </td>
             </tr>

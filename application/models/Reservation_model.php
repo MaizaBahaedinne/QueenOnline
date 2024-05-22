@@ -110,9 +110,9 @@ class Reservation_model extends CI_Model
 
         }
 
-        $this->db->where('BaseTbl.statut in (0,1) ');
+        $this->db->where('BaseTbl.statut in (0,1,3) ');
     
-         $this->db->order_by('BaseTbl.dateFin ASC');
+         $this->db->order_by('BaseTbl.dateFin DESC');
         $query = $this->db->get();
         
         $result = $query->result();        

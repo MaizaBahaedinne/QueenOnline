@@ -23,6 +23,15 @@
                </button>
                <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
                   <ul class="nav flex-column">
+                    <?php if ($projectInfo->statut == 3 )  {  ?>
+                    <li class="nav-item">
+                        <a href="" class="nav-link">
+                           <i class="nav-link-icon lnr-inbox"></i>
+                           <span> Retour de la reservation</span>            
+                        </a>
+                     </li>
+                     <?php } ?>
+                     <?php if ($projectInfo->statut != 3 )  {  ?>
                      <li class="nav-item">
                         <a href="<?php echo base_url(); ?>Reservation/edit/<?php echo $projectInfo->reservationId; ?>" class="nav-link">
                            <i class="nav-link-icon lnr-inbox"></i>
@@ -37,7 +46,7 @@
                          if (!(empty($troupe->STroupe))) { if ($troupe->STroupe != 3 )           { $annule = false ; } } 
                          if (!(empty($photographe->Pstatut))) { if ($photographe->Pstatut != 3) { $annule = false ; } } 
                          if (!(empty($voiture->statut ))) { if ($voiture->statut != 3)           { $annule = false ; } } 
-                         if (!(empty($projectInfo->statut ))) { if ($projectInfo->statut != 3)           { $annule = false ; } }    
+                         if (!(empty($projectInfo->statut ))) { if ($projectInfo->statut == 3)           { $annule = false ; } }    
                         if ($annule == true )
                         {
                         ?>
@@ -51,7 +60,7 @@
                         
                         
                         <a  class="nav-link o nannuler" onclick="annule()" > <i class="nav-link-icon lnr-file-empty"></i> New Annuler</a>
-
+                        <?php  } ?>
 
                         <script type="text/javascript">
                             function annule() {

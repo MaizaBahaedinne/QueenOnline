@@ -18,7 +18,7 @@
           <i class="pe-7s-medal icon-gradient bg-tempting-azure"></i>
         </div>
         <div>
-          Cars reservation
+           Reservation des voitures
           <div class="page-title-subheading">Les reservations</div>
         </div>
       </div>
@@ -42,7 +42,7 @@
               <th>ID</th>
               <th>Date</th>
               <th>voiture</th>
-              <th width="15%">Depart</th>
+              <th width="15%">Départ</th>
               <th width="15%">arret</th>
               <th width="15%">arrivé</th>
               <th width="15%">mobile 1</th>
