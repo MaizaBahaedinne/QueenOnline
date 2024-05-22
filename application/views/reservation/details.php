@@ -507,7 +507,7 @@
                   <div class="row ">
                      <div class="col-md-2"> </div>
                      <div class="col-md-8">
-                        <p style="font-size: 25; text-align: center;" >Contrat de location de salle des fêtes <br> <?php echo $contratInfo->salle; ?></p>
+                        <p style="font-size: 25; text-align: center;" ><b>Contrat de location de salle des fêtes </b><br>< <?php echo $contratInfo->salle; ?> ></p>
                      </div>
                      <div class="col-md-2"> </div>
                   </div>
@@ -566,20 +566,26 @@
                   <b>2. dans le cas de report du date de la reservation ce contrat sera systèmatiquement annulé et un autre sera signer avec une nouvelle négociation du montant tout en respectant le montant deja versé  </b> <br>
                   <hr>
                   <h6>ARTICLE 10 – RÈGLEMENT INTÉRIEUR :</h6>
-                  - Il est interdit de fumer à l’intérieur des locaux. <br>
-                  - Il est strictement interdit d’importer des boissons alcooliques à l’intérieur des locaux.<br>
+                  - Il est strictement interdit d’importer des boissons alcooliques et de fumer à l’intérieur des locaux. à l’intérieur des locaux.<br>
                   - En aucun cas, le mobilier ne doit sortir de la salle. <br>
-                  - La préparation des repas se fera exclusivement dans la cuisine de la salle.<br>
-                  - Il est demandé aux utilisateurs de la salle d’éviter les nuisances sonores à l’extérieur de la salle.<br>
                   - Le bailleur ne pourra être tenu de tout dommage causé aux véhicules ou matériel situés sur le parking. <br>
                   <br>          
                   <br>
-                  <p style="text-align: right; background: #FFFC25;">يرجى ذكر العنوان أدناه في دعوات حفلتكم : 
-                     <br>
-                     <b>   "<?php echo $contratInfo->salle; ?>&nbsp;فضاء  "</b> 
-                     <br> 
-                     بوجردقة طريق مرناق      Centre Queen Park
-                  </p>
+                  <table width="100%">
+                    <tr>
+                    <td width="20%">
+                        <img src="<?php echo base_url() ?>assets/images/localisation.png" width="100px" >
+                    </td>
+                    <td>
+                          <p style="text-align: right; background: #FFFC25;">يرجى ذكر العنوان أدناه في دعوات حفلتكم : 
+                             <br>
+                             <b>   "<?php echo $contratInfo->salle; ?>&nbsp;فضاء  "</b> 
+                             <br> 
+                             بوجردقة طريق مرناق       Queen Park Tunisie
+                          </p>
+                  </td>
+                  </tr>
+                </table>
                   <br><br>
                   <div class="row">
                      <div class="col-md-12"> Fait à Mornag , le <b><?php echo $contratInfo->createdDate; ?></b>  </div>
