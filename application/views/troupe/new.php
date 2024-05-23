@@ -48,7 +48,7 @@
                                         <div class="card-body">
                                            
                                            <div class="row">
-                                            <div class="col-md-9">
+                                            <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label class="control-label">Pack</label>
                                                         <select class="form-control" name="packId" required>
@@ -57,6 +57,16 @@
                                                                 <option value="<?php echo $Pack->packId ?>" ><?php echo $Pack->nom ?></option>
                                                             <?php } ?>
                                                         </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="control-label">Pack</label>
+                                                           
+                                                            <?php foreach ($Artistes as $artiste ) {  ?>
+                                                                <input type="checkbox" name="" > <?php echo $artiste->nom ?>
+                                                            <?php } ?>
+                                                        
                                                     </div>
                                                 </div>
                                              <div class="col-md-3">
@@ -75,6 +85,7 @@
                                                     </div>
                                                 </div>
                                                 
+
                                                 <div class="col-md-12">
                                                     <br>
                                                     <strong>Note</strong>

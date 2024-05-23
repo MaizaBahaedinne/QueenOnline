@@ -97,6 +97,23 @@ class Troupe_model extends CI_Model
 
 
 
+         /**
+     * This function used to get user information by id
+     * @param number $userId : This is user id
+     * @return array $result : This is user information
+     */
+    function Artists()
+    {
+       $this->db->select('BaseTbl.* ');
+        $this->db->from('tbl_pack_troupe_artist as BaseTbl');
+        $this->db->order_by('BaseTbl.nom ASC');
+        $query = $this->db->get();
+        
+        return $query->result();
+    }
+
+
+
         /**
      * This function is used to update the user information
      * @param array $userInfo : This is users updated information

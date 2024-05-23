@@ -47,7 +47,8 @@ class Troupe extends BaseController
 
     public function addNew($reservationId)
     {
-        $data["Packs"] = $this->troupe_model->Packs();
+        $data["Artistes"] = $this->troupe_model->Artists();
+        $data["Packs"] = $this->troupe_model->Ar();
         $data["projectInfo"] = $this->reservation_model->ReservationInfo(
             $reservationId
         );
