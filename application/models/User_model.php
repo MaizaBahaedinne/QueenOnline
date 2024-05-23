@@ -76,7 +76,7 @@ class User_model extends CI_Model
         $this->db->where('BaseTbl.roleId IN (1,2,3,5,6,7,8)'); 
         $this->db->group_by('BaseTbl.userId'); 
 
-        $this->db->order_by('lastCnx', 'DESC');
+        $this->db->order_by('lastCnx', 'ASC');
     
         $query = $this->db->get();
         
