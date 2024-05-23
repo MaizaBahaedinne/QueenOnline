@@ -74,9 +74,9 @@ class User_model extends CI_Model
 
         $this->db->where('BaseTbl.isDeleted', 0);
         $this->db->where('BaseTbl.roleId IN (1,2,3,5,6,7,8)'); 
-        $this->db->group_by('BaseTbl.userId'); 
-
-        $this->db->order_by('lastCnx', 'ASC');
+        $this->db->order_by('last.createdDtm', 'DESC');
+  
+        
     
         $query = $this->db->get();
         
