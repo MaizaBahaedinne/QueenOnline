@@ -4,10 +4,10 @@
     <div class="page-title-wrapper">
       <div class="page-title-heading">
         <div class="page-title-icon">
-          <i class="pe-7s-car icon-gradient bg-tempting-azure"></i>
+          <i class="pe-7s-music icon-gradient bg-tempting-azure"></i>
         </div>
         <div>
-          Reservation des voitures
+          Reservation de troupe 
           <div class="page-title-subheading">Nouvelle reservation</div>
         </div>
       </div>
@@ -80,7 +80,7 @@
 
                                                            
                                                             <?php foreach ($Artistes as $artiste ) {  ?>
-                                                                <br><input type="checkbox" name="" > <?php echo $artiste->nom ?>
+                                                                <br><input type="checkbox" name="Chanteurs[]" > <?php echo $artiste->nom ?>
                                                             <?php } ?>
                                                         
                                                     </div>
