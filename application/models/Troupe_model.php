@@ -105,7 +105,7 @@ class Troupe_model extends CI_Model
     function Artists()
     {
        $this->db->select('BaseTbl.* ');
-        $this->db->from('tbl_pack_troupe_artist as BaseTbl');
+        $this->db->from('tbl_pack_troupe_artiste as BaseTbl');
         $this->db->order_by('BaseTbl.nom ASC');
         $query = $this->db->get();
         

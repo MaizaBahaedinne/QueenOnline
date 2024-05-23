@@ -48,27 +48,6 @@
                                         <div class="card-body">
                                            
                                            <div class="row">
-                                            <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label class="control-label">Pack</label>
-                                                        <select class="form-control" name="packId" required>
-                                                            <option value=""></option>
-                                                            <?php foreach ($Packs as $Pack ) {  ?>
-                                                                <option value="<?php echo $Pack->packId ?>" ><?php echo $Pack->nom ?></option>
-                                                            <?php } ?>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label class="control-label">Pack</label>
-                                                           
-                                                            <?php foreach ($Artistes as $artiste ) {  ?>
-                                                                <input type="checkbox" name="" > <?php echo $artiste->nom ?>
-                                                            <?php } ?>
-                                                        
-                                                    </div>
-                                                </div>
                                              <div class="col-md-3">
                                                     <div class="form-group">
                                                         <label class="control-label">Date </label>
@@ -84,20 +63,29 @@
                                                          <!-- value="<?php echo date_format(date_create($projectInfo->dateDebut)  , 'd/m/20y');  ?>"-->
                                                     </div>
                                                 </div>
-                                                
-
-                                                <div class="col-md-12">
-                                                    <br>
-                                                    <strong>Note</strong>
-                                                </div>   
-                                                 <div class="col-md-12">
-                                                        <label for="formGroupExampleInput">Note Admin au troupe</label>
-                                                        <textarea  rows="10" class="form-control" name="noteAdmin"></textarea>
+                                            <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label class="control-label">Artiste</label>
+                                                        <select class="form-control" name="packId" required>
+                                                            <option value=""></option>
+                                                            <?php foreach ($Packs as $Pack ) {  ?>
+                                                                <option value="<?php echo $Pack->packId ?>" ><?php echo $Pack->nom ?></option>
+                                                            <?php } ?>
+                                                        </select>
+                                                    </div>
                                                 </div>
-                                                
-                                                
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label class="control-label">Chanteurs</label>
 
-                                               
+                                                           
+                                                            <?php foreach ($Artistes as $artiste ) {  ?>
+                                                                <br><input type="checkbox" name="" > <?php echo $artiste->nom ?>
+                                                            <?php } ?>
+                                                        
+                                                    </div>
+                                                </div>
+                                            
                                                 <div class="col-md-12">
                                                     <br>
                                                     <strong>Administration/Finance</strong>
@@ -110,6 +98,11 @@
                                                         <label for="formGroupExampleInput">Avance</label>
                                                         <input type="number" class="form-control" name="avance"  />
                                                 </div>
+                                                 <div class="col-md-6">
+                                                    
+                                                    <label for="formGroupExampleInput">Note Admin au troupe</label>
+                                                        <textarea  rows="10" class="form-control" name="noteAdmin"></textarea>
+                                                </div>   
 
                                                
                                                 <div class="col-md-12">
