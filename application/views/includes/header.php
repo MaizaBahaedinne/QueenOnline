@@ -855,6 +855,13 @@
                                     <i class="metismenu-icon pe-7s-id"></i>Clients
                                 </a>
                             </li>
+                            <?php if($role == 1  ){  ?>
+                            <li>
+                                <a href="<?php echo base_url() ?>User/management">
+                                    <i class="metismenu-icon pe-7s-user"></i>Utilisateur
+                                </a>
+                            </li>
+                            <?php }  ?>
                         </ul>
                         <ul class="vertical-nav-menu">
 

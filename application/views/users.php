@@ -18,8 +18,8 @@
           <i class="pe-7s-medal icon-gradient bg-tempting-azure"></i>
         </div>
         <div>
-          Cars reservation
-          <div class="page-title-subheading">Les reservations</div>
+          Liste des utilisateurs
+          <div class="page-title-subheading">Liste des users</div>
         </div>
       </div>
       <div class="page-title-actions">
@@ -34,9 +34,9 @@
     </div>
   </div>
   <div class="main-card mb-3 card">
-    <div class="card-body" style="width: 100%;">
+    
       
-       <table width="100%" id="example" class="table  table-hover table-striped table-bordered table-responsive" >
+       <table id="example" style="width: 100%;" id="example" class="table  table-hover table-striped table-bordered table-responsive" cellspacing="0"  >
             <thead>
                <tr>
                   <th>Name</th>
@@ -44,6 +44,7 @@
                   <th>Mobile</th>
                   <th>Role</th>
                   <th>Created On</th>
+                  <th>derniere connexion</th>
                   <th class="text-center">Actions</th>
                </tr>
             </thead>
@@ -60,6 +61,7 @@
                   <td><?php echo $record->mobile ?></td>
                   <td><?php echo $record->role ?></td>
                   <td><?php echo date("d-m-Y", strtotime($record->createdDtm)) ?></td>
+                  <td><?php echo date("d-m-Y H:i", strtotime($record->lastCnx)) ?></td>
                   <td class="text-center">
                      <a class="btn btn-sm btn-info" href="<?php echo base_url().'editOld/'.$record->userId; ?>" title="Edit">Modifier</a>
                   </td>
@@ -70,16 +72,17 @@
                   ?>
             </tbody>
             <tfoot>
-               <th>Name</th>
-               <th>Email</th>
-               <th>Mobile</th>
-               <th>Role</th>
-               <th>Created On</th>
-               <th class="text-center">Actions</th>
+                <th>Name</th>
+                  <th>Email</th>
+                  <th>Mobile</th>
+                  <th>Role</th>
+                  <th>Created On</th>
+                  <th>derniere connexion</th>
+                  <th class="text-center">Actions</th>
             </tfoot>
          </table>
       
-    </div>
+    
   </div>
 </div>
 <!-- Modal -->

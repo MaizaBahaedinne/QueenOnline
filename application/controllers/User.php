@@ -89,6 +89,22 @@ class User extends BaseController
         
     }
 
+
+        /**
+     * This function is used to load the user list
+     */
+    function management()
+    {
+          
+            $data['userRecords'] = $this->user_model->userAdListing();
+            
+            $this->global['pageTitle'] = 'Utilisateur Administration';
+            
+            $this->loadViews("users", $this->global, $data, NULL);
+        
+    }
+
+
     /**
      * This function is used to load the add new form
      */

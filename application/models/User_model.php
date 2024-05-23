@@ -54,6 +54,35 @@ class User_model extends CI_Model
         $result = $query->result();        
         return $result;
     }
+
+
+
+        /**
+     * This function is used to get the user listing count
+     * @param string $searchText : This is optional search text
+     * @param number $page : This is pagination offset
+     * @param number $segment : This is pagination limit
+     * @return array $result : This is result
+     */
+    function userAdListing()
+    {
+        $this->db->select('BaseTbl.* , Role.role , last.createdDtm lastCnx');
+        $this->db->from('tbl_users as BaseTbl');
+        $this->db->join('tbl_roles as Role', 'Role.roleId = BaseTbl.roleId','left');
+        $this->db->join('tbl_last_login as last', 'last.userId = BaseTbl.userId','left');
+
+
+        $this->db->where('BaseTbl.isDeleted', 0);
+        $this->db->where('BaseTbl.roleId IN (1,2,3,5,6,7,8)'); 
+        $this->db->group_by('BaseTbl.userId'); 
+
+        $this->db->order_by('lastCnx', 'DESC');
+    
+        $query = $this->db->get();
+        
+        $result = $query->result();        
+        return $result;
+    }
     
     /**
      * This function is used to get the user roles information
