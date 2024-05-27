@@ -35,7 +35,7 @@
                                     <div class="modal-body">
                                         <div class="h5 modal-title text-center">
                                             <h4 class="mt-2">
-                                                <div><img width="200px" src="<?php echo base_url() ?>assets/images/logo-inverse.png"> </div>
+                                                <div><img width="200px" src="<?php echo base_url() ?>assets/images/logo-inverse.svg"> </div>
                                                 <span>Merci de vous connecter avec votre compte.</span>
                                             </h4>
                                         </div>
