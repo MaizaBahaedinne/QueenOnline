@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta http-equiv="Content-Language" content="en">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>Login - Queen Online</title>
+        <title>Queen Online - Login</title>
         <meta name="viewport"
             content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
         <meta name="description" content="ArchitectUI HTML Bootstrap 4 Dashboard Template">
@@ -70,7 +70,7 @@
                                 </div>
                                 </form>
                             </div>
-                            <div class="text-center text-white opacity-8 mt-3">Copyright © Koussay Bahaedinne Maiza 2022</div>
+                            <div class="text-center text-white opacity-8 mt-3">Copyright © Koussay Bahaedinne Maiza 2024</div>
                         </div>
                     </div>
                 </div>
