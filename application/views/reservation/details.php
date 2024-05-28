@@ -109,8 +109,8 @@
                           " >Ajouter</a> ";
                   } else { ?>
                     
-                    Pack : <?php echo $troupe->packname; ?>  <br>  
-                     statut :   <?php if ($troupe->STroupe == 0) { ?>
+                    <b>Pack :</b> <?php echo $troupe->packname; ?> <br> <?php echo $troupe->chanteurs ?> <br>  
+                    <b>statut :</b>   <?php if ($troupe->STroupe == 0) { ?>
                    <span class="badge badge-pill badge-success"><i class="metismenu-icon pe-7s-check"></i> Validée</span>
                    <?php } ?>    
                    <?php if ($troupe->STroupe == 1) { ?>

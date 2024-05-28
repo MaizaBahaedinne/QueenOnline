@@ -107,7 +107,7 @@
                   <hr>
                 
                   <h6>ARTICLE 2 – Pack :</h6>
-                  La troupe sera composé de  : <b><?php echo $projectInfo->packname ?></b>
+                  La troupe sera composé de  : <b><?php echo $projectInfo->packname ?> + <?php echo $projectInfo->chanteurs ?></b>
                   <br>
                   TROUPE LAHMEDI : s’engage que les musiciens seront sur la lieu déjà cité dessus à l’horaire prévu. 
                  
