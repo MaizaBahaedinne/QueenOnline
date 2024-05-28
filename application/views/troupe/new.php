@@ -80,7 +80,7 @@
 
                                                            
                                                             <?php foreach ($Artistes as $artiste ) {  ?>
-                                                                <br><input type="checkbox" name="Chanteurs[]" > <?php echo $artiste->nom ?>
+                                                                <br><input type="checkbox" name="Chanteurs[]" value="<?php echo $artiste->nom ?>" > <?php echo $artiste->nom ?>
                                                             <?php } ?>
                                                         
                                                     </div>

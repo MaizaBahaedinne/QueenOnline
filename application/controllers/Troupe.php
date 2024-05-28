@@ -65,6 +65,8 @@ class Troupe extends BaseController
         $reservationId = $this->input->post("reservationId");
 
         $packId = $this->input->post("packId");
+        $Chanteurs = json_encode($this->input->post("Chanteurs"));
+        
         $date = $this->input->post("date");
         
 
@@ -75,6 +77,7 @@ class Troupe extends BaseController
 
         $reservationInfo = [
             "packId" => $packId,
+            "chanteurs" => $Chanteurs , 
             "date" => $date,
             
 
@@ -90,6 +93,7 @@ class Troupe extends BaseController
         ];
 
         $result = $this->troupe_model->addNewReservation($reservationInfo);
+        $data["projectInfo"] = $this->troupe_model->ReservationInfo( $result );
 
         if ($result > 0) {
             $reservationInfo1 = array("Troupe" => $result, 'noteAdmin' => 'Ajout de Troupe'); ;
@@ -101,19 +105,7 @@ class Troupe extends BaseController
             );
 
 
-            $koussayMobile = "55465244";
-                $mySms = $this->name . " a reservé le troupe pour le ".$date ;
-                $this->sendSMS("216" . $koussayMobile, $mySms);
-                
 
-                $HaythemMobile = "54419959";
-                $mySms = $this->name . " a reservé le troupe pour le ".$date ;
-                $this->sendSMS("216" . $HaythemMobile, $mySms);
-
-
-                $HatemMobile = "92888625";
-                $mySms =  "Une nouvelle reservation pour le ".$date ;
-                $this->sendSMS("216" . $HatemMobile, $mySms);
 
             $paiementInfo = [
                 "createdDate" => date("Y-m-d H:i:s"),
@@ -135,6 +127,19 @@ class Troupe extends BaseController
                     $result
                 );
             }
+
+                $koussayMobile = "55465244";
+                $mySms = $data["projectInfo"]->packname. " + ".$Chanteurs." pour le ".$date ;
+                $HaythemMobile = "54419959";
+                $HatemMobile = "92888625";
+
+
+                $this->sendSMS("216" . $HatemMobile, $mySms);
+                
+                $mySms = "[TROUPE] ".$this->name."a recu pour ".$avance."DT pour le ".$date ;
+               $this->sendSMS("216" . $HaythemMobile, $mySms);    
+               $this->sendSMS("216" . $koussayMobile, $mySms);
+     
 
             $this->session->set_flashdata(
                 "success",
