@@ -69,7 +69,7 @@
                                                         <select class="form-control" name="packId" required>
                                                             <option value=""></option>
                                                             <?php foreach ($Packs as $Pack ) {  ?>
-                                                                <option value="<?php echo $Pack->packId ?>" ><?php echo $Pack->nom ?></option>
+                                                                <option value="<?php echo $Pack->packId ?>" ><?php echo $Pack->nom ?> -  <?php echo $Pack->prix ?> DT</option>
                                                             <?php } ?>
                                                         </select>
                                                     </div>
@@ -80,7 +80,7 @@
 
                                                            
                                                             <?php foreach ($Artistes as $artiste ) {  ?>
-                                                                <br><input type="checkbox" name="Chanteurs[]" value="<?php echo $artiste->nom ?>" > <?php echo $artiste->nom ?>
+                                                                <br><input type="checkbox" name="Chanteurs[]" value="<?php echo $artiste->nom ?>" > <b><?php echo $artiste->nom ?></b>  -  <?php echo $artiste->prix ?> DT
                                                             <?php } ?>
                                                         
                                                     </div>
@@ -92,7 +92,7 @@
                                                 </div>
                                                 <div class="col-md-3">
                                                         <label for="formGroupExampleInput">Prix</label>
-                                                        <input type="number" class="form-control" name="prix"  />
+                                                        <input type="number" class="form-control" name="prix" min="1600" />
                                                 </div>
                                                 <div class="col-md-3">
                                                         <label for="formGroupExampleInput">Avance</label>
