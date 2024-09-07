@@ -1,3 +1,11 @@
+<div id="LoadingDiv" style="left: -200px;">
+    <div>
+        <img src="images/loading.gif" title="Loading" />
+        <div class="LoadingTitle">Veuillez Patientez ...</div>
+    </div>
+</div>
+
+
 <div class="app-main__inner">
   <div class="app-page-title">
     <div class="page-title-wrapper">
@@ -36,12 +44,12 @@
                                                         </a>
                                                     </li>
                                                     <li>
-                                                        <a href="#step-2" disabled>
+                                                        <a href="#step-2" >
                                                             <em><i class="fa fa-calendar" aria-hidden="true"></i></em><span>Reservation</span>
                                                         </a>
                                                     </li>
                                                     <li>
-                                                        <a href="#step-3" disabled>
+                                                        <a href="#step-3" >
                                                             <em><i class="fa fa-file"></i></em><span>Verification</span>
                                                         </a>
                                                     </li>
@@ -99,8 +107,11 @@
                                                                         im-insert="false"
                                                                         type="Date"
                                                                         required
-                                                                        max="<?php echo date('Y-m-d') ?>"
+                                                                       
+                                                                       
                                                                     />
+                                                                    <div id="alertAge" ></div>
+                                                                   
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -109,7 +120,7 @@
                                                                 <label class="control-label">Sexe : </label>
                                                                 <div class="form-check">
                                                                     <label class="form-check-label">
-                                                                        <input type="radio" name="sexe" checked value="Homme" class="form-check-input" />
+                                                                        <input type="radio" name="sexe" checked value="Homme" class="form-check-input" required />
                                                                         Homme
                                                                         <i class="input-frame"></i>
                                                                     </label>
@@ -128,21 +139,21 @@
                                                         <div class="form-row">
                                                             <div class="col-sm-2">
                                                                 <div class="form-group">
-                                                                    <label class="control-label">N°</label>
-                                                                    <input type="number" class="form-control" name="N" id="n" placeholder="N°" />
+                                                                    <label class="control-label">N° *</label>
+                                                                    <input type="number" class="form-control" name="N" id="n" placeholder="N°"  min="1" required />
                                                                 </div>
                                                             </div>
                                                             <!-- Col -->
                                                             <div class="col-sm-4">
                                                                 <div class="form-group">
-                                                                    <label class="control-label">Rue</label>
-                                                                    <input type="text" class="form-control" name="rue" minlength="6" id="rue" placeholder="Rue" />
+                                                                    <label class="control-label">Rue *</label>
+                                                                    <input type="text" class="form-control" name="rue" minlength="6" id="rue" placeholder="Rue" required  />
                                                                 </div>
                                                             </div>
                                                             <!-- Col -->
                                                             <div class="col-sm-4">
                                                                 <div class="form-group">
-                                                                    <label class="control-label">Ville*</label>
+                                                                    <label class="control-label">Ville *</label>
                                                                     
                                                                     <select name="ville" class="form-control" id="ville" required>
                                                                         <option value="">—— Selectionner —— </option>
@@ -203,8 +214,7 @@
                                                             </div>
                                                             <!-- Col -->
                                                         </div>
-                                                    </div>
-                                                    <div id="step-2">
+                                                    <h4>Reservation</h4>
                                                         <div data-parent="#accordion" id="collapseOne" aria-labelledby="headingOne" class="collapse show">
                                                             <div class="card-body">
                                                                 <div class="form-row">
@@ -219,15 +229,15 @@
                                                                     </div>
                                                                     <div class="col-md-3">
                                                                         <label for="formGroupExampleInput">Debut</label>
-                                                                        <input type="time" class="form-control" name="heureDebut" placeholder="Example input" value="21:00" />
+                                                                        <input type="time" class="form-control" name="heureDebut" placeholder="Example input" value="21:00" required/>
                                                                     </div>
                                                                     <div class="col-md-3">
                                                                         <label for="formGroupExampleInput">Fin</label>
-                                                                        <input type="time" class="form-control" name="heureFin" placeholder="Example input" value="23:59" />
+                                                                        <input type="time" class="form-control" name="heureFin" placeholder="Example input" value="23:59"  required />
                                                                     </div>
                                                                     <div class="col-md-6">
                                                                         <label for="formGroupExampleInput">Espace</label>
-                                                                        <select  class="form-control" name="salle" id="salle"  required="">
+                                                                        <select  class="form-control" name="salle" id="salle"  required>
                                                                             <option value=""></option>
                                                                             <?php foreach ($salleRecords as $record ) {
                                                                     ?>
@@ -237,7 +247,7 @@
                                                                     </div>
                                                                     <div class="col-md-6">
                                                                         <label for="formGroupExampleInput2">Type</label>
-                                                                        <select type="text" class="form-control" name="type">
+                                                                        <select type="text" class="form-control" name="type" required>
                                                                             <option value=""></option>
                                                                             <option value="Marriage"> Marriage </option>
                                                                             <option value="Finacailles"> Finacailles </option>
@@ -253,19 +263,18 @@
                                                                     
                                                                     <div class="col-md-6">
                                                                         <label for="formGroupExampleInput2">Prix</label>
-                                                                        <input type="number" class="form-control" min="300" name="prix" id="prix" placeholder="Prix" />
+                                                                        <input type="number" class="form-control" min="500" name="prix" id="prix" placeholder="Prix" />
                                                                     </div>
 
                                                                     <div class="col-md-6">
                                                                         <label for="formGroupExampleInput2">invités</label>
-                                                                        <input type="number" class="form-control" min="1" max="600" name="nbPlace" id="nbPlace" placeholder="Nombre des invités" />
+                                                                        <input type="number" class="form-control" min="1" max="600" name="nbPlace" id="nbPlace" placeholder="Nombre des invités"  />
                                                                     </div>
                                                                     <div class="col-md-12">
                                                                         <label for="formGroupExampleInput">Options </label><br />
                                                                         <input type="checkbox" name="tableCM" value="1" /> Table contrat de mariage <br />
                                                                         <input type="checkbox" name="cuisine" value="1" /> Cuisine <br />
-                                                                        <input type="checkbox" name="Troupe" value="1" hidden /> Troupe<br />
-                                                                        <input type="checkbox" name="Photographe" value="1" hidden /> Photographe<br />
+                                                                        
                                                                     </div>
                                                                     <div class="col-md-12">
                                                                         <label for="formGroupExampleInput">Note Administratif </label>
@@ -274,8 +283,9 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div id="step-3">
+
+                                                    <h4>Confirmation</h4>
+
                                                         <div class="no-results">
                                                             <div class="swal2-icon swal2-success swal2-animate-success-icon">
                                                                 <div class="swal2-success-circular-line-left" style="background-color: rgb(255, 255, 255);"></div>
@@ -289,7 +299,8 @@
                                                             <div class="results-title">Vous êtes arrivé à la dernière étape de l'assistant de formulaire</div>
                                                             <div class="mt-3 mb-3"></div>
                                                             <div class="text-center">
-                                                                <input type="submit" class="btn-shadow btn-wide btn btn-success btn-lg" />
+                                                                
+                                                                <button type="submit" onclick="LoadingDiv()" class="btn-shadow btn-wide btn btn-success btn-lg" />Confirmer<span class="spinner"></span>
                                                                
                                                             </div>
                                                         </div>
@@ -298,8 +309,8 @@
                                             </div>
                                             <div class="clearfix">
                         <button type="button" id="reset-btn" class="btn-shadow float-left btn btn-link">Reset</button>
-                        <button type="button" id="next-btn" class="btn-shadow btn-wide float-right btn-pill btn-hover-shine btn btn-primary">Suivant</button>
-                        <button type="button" id="prev-btn" class="btn-shadow float-right btn-wide btn-pill mr-3 btn btn-outline-secondary">Précédent</button>
+                   <!--     <button type="button" id="next-btn" class="btn-shadow btn-wide float-right btn-pill btn-hover-shine btn btn-primary">Suivant</button>
+                        <button type="button" id="prev-btn" class="btn-shadow float-right btn-wide btn-pill mr-3 btn btn-outline-secondary">Précédent</button> -->
                     </div>
                                         </div>
                                     </div>
@@ -313,3 +324,14 @@
                 
             </form>
         </div>
+
+
+<script type="text/javascript">
+var div = $("#LoadingDiv");
+function LoadingDiv() {
+    div.animate({
+        left: parseInt(div.css('left'), 10) == 0 ?
+          -div.outerWidth() * 2 :
+          0
+    });
+}</script>
