@@ -34,7 +34,7 @@ class SMS extends BaseController
                 $mySms = "CECI EST UN TEST DE JOB";
                 
                
-                $this->sendSMS("216" . $koussayMobile, $mySms); 
+                // $this->sendSMS("216" . $koussayMobile, $mySms); 
 
             
             $this->global['pageTitle'] = 'SMS';
