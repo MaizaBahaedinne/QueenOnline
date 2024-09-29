@@ -10,7 +10,7 @@ require APPPATH . '/libraries/BaseController.php';
  * @since : 15 November 2016
  */
 
-class Client extends BaseController
+class SMS extends BaseController
 {
     /**
      * This is default constructor of the class
