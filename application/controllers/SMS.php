@@ -40,7 +40,7 @@ class Client extends BaseController
 
             
             $this->global['pageTitle'] = 'SMS';
-            $this->loadViews("sms/list", $this->global, $data, NULL);
+         //   $this->loadViews("sms/list", $this->global, $data, NULL);
     }
 
 
