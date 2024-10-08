@@ -39,7 +39,7 @@ class SMS extends BaseController
 
             
             $this->global['pageTitle'] = 'SMS';
-            $this->loadViews("sms/list", $this->global, $data, NULL);
+            $this->load->view("sms/list", $data );
     }
 
 
