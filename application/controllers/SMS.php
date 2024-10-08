@@ -18,6 +18,7 @@ class SMS extends BaseController
     public function __construct()
     {
         parent::__construct();
+                $this->load->model('sms_model');
        
         
     }
@@ -27,7 +28,7 @@ class SMS extends BaseController
      */
     public function index()
     {
-            
+             $data['smsRecords'] = $this->sms_model->SmsListing();
 
                $koussayMobile = "55465244";
 

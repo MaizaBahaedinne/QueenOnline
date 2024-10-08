@@ -10,7 +10,16 @@
 class Sms_model extends CI_Model
 {
     
-    
+     function SmsListing()
+    {
+        $this->db->select('   BaseTbl.* ');
+        $this->db->from('tbl_reservation as BaseTbl');
+
+        $this->db->where('BaseTbl.statut = ',1);
+        $query = $this->db->get();
+        $result = $query->result();        
+        return $result;
+    }
   
     /**
      * This function is used to add new user to system

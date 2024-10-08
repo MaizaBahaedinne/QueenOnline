@@ -289,16 +289,18 @@ class Photographe extends BaseController
                 }
                 curl_close($ch);
         }
+
         function sendSMS($myMobile, $mySms)
         {
-                $mySender = "Queen park";
-                $key = "ns1PwxEKAljejzi3RSBAHPsoQl/P9s0jtrXDkRb4j6sjNpzNER8aprZNyzyAuLlteKM222LwbgBRrlBCvFDV4YlQbSvBZMYA/Ye3r0ggsYQ=";
-                $Url_str = "www.tunisiesms.tn/client/Api/Api.aspx?fct=sms&key=%KEY%&mobile=%MSISDN%&sms=%SMS%&sender=%SENDER%";
-                $Url_str = str_replace("%MSISDN%", $myMobile, $Url_str);
-                $Url_str = str_replace("%SMS%", urlencode($mySms), $Url_str);
-                $Url_str = str_replace("%SENDER%", urlencode($mySender), $Url_str);
-                $Url_str = str_replace("%KEY%", urlencode($key), $Url_str);
-                echo $this->http_response($Url_str);
+            $smsInfo = array('destination'=>"216".$myMobile,
+                              'text' => $mySms,
+                              'createdBy'=>$this->vendorId,
+                              'createdDtm'=>date('Y-m-d H:i:s') ,
+                              'statut'=>1 ,
+
+                            );
+            $this->Sms_model->addNewSms($smsInfo) ; 
+
         }
 
 
