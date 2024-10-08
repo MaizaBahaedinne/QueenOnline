@@ -30,12 +30,15 @@ class SMS extends BaseController
     {
              $data['smsRecords'] = $this->sms_model->SmsListing();
 
-               $koussayMobile = "55465244";
-
-                $mySms = "CECI EST UN TEST DE JOB";
+               
+                    foreach ($data["smsRecords"]  as $record) {
+        
+                         $this->sendSMS($record->destination , $record->text );  
+                       }   
+                
                 
                
-                // $this->sendSMS("216" . $koussayMobile, $mySms); 
+             
 
             
             $this->global['pageTitle'] = 'SMS';
