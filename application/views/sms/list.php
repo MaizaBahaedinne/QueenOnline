@@ -55,9 +55,9 @@
               ?>
             <tr  >
               
-             <th width="10%"><?php echo $record->smsid ?> </th>
-              <th ><?php echo $record->destination ?> </th>
-              <th width="50%"><?php echo $record->text ?> </th>
+             <td width="10%"><?php echo $record->smsId ?> </td>
+              <td ><?php echo $record->destination ?> </td>
+              <td width="50%"><?php echo $record->text ?> </td>
       
               <td style="text-align:center;"> 
                 <?php if ($record->statut == 0 ) { ?>
@@ -71,7 +71,7 @@
                 <span class="badge badge-pill badge-danger"><i class="metismenu-icon pe-7s-close"></i></span>
                 <?php } ?>
               </td>
-             
+              <td ><?php echo $record->statut ?> </td>
             </tr>
             <?php
               } 
