@@ -20,6 +20,20 @@ class Sms_model extends CI_Model
         $result = $query->result();        
         return $result;
     }
+
+
+            /**
+     * This function is used to update the user information
+     * @param array $userInfo : This is users updated information
+     * @param number $userId : This is user id
+     */
+    function editSms($smsInfo, $smsId)
+    {
+        $this->db->where('smsId', $smsId);
+        $this->db->update('tbl_sms', $smsInfo);
+        
+        return TRUE;
+    }
   
     /**
      * This function is used to add new user to system
