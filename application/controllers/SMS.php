@@ -30,9 +30,7 @@ class SMS extends BaseController
     {
              $data['smsRecords'] = $this->sms_model->SmsListing();
 
-             $this->global['pageTitle'] = 'SMS';
-            $this->load->view("sms/list", $data );
-               
+            
                     foreach ($data["smsRecords"]  as $record) {
         
                          $this->sendSMS($record->destination , $record->text );  
@@ -43,7 +41,11 @@ class SMS extends BaseController
                             );
                          $this->sms_model->editSms($smsInfo,$record->smsId) ;
                        }   
-            
+
+                       
+             $this->global['pageTitle'] = 'SMS';
+            $this->load->view("sms/list", $data );
+               
             
     }
 
