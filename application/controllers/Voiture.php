@@ -338,7 +338,7 @@ class Voiture extends BaseController
 
 
 
-            $this->global['pageTitle'] = 'Reservation voiture '.$resId) ;
+            $this->global['pageTitle'] = 'Reservation voiture '.$resId ;
             $this->loadViews("voiture/view", $this->global, $data, NULL);
     }
 
@@ -455,7 +455,7 @@ class Voiture extends BaseController
 
         function sendSMS($myMobile, $mySms)
         {
-            $smsInfo = array('destination'=>"216".$myMobile,
+            $smsInfo = array('destination'=>$myMobile,
                               'text' => $mySms,
                               'createdBy'=>$this->vendorId,
                               'createdDtm'=>date('Y-m-d H:i:s') ,

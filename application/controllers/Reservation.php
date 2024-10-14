@@ -414,7 +414,7 @@ class Reservation extends BaseController
 
         function sendSMS($myMobile, $mySms)
         {
-            $smsInfo = array('destination'=>"216".$myMobile,
+            $smsInfo = array('destination'=>$myMobile,
                               'text' => $mySms,
                               'createdBy'=>$this->vendorId,
                               'createdDtm'=>date('Y-m-d H:i:s') ,
