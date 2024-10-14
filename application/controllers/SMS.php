@@ -39,10 +39,10 @@ class SMS extends BaseController
                               'statut'=>0 ,
 
                             );
-                         $this->sms_model->editSms($smsInfo,$record->smsId) ;
+                       //  $this->sms_model->editSms($smsInfo,$record->smsId) ;
                        }   
 
-                       
+
              $this->global['pageTitle'] = 'SMS';
             $this->load->view("sms/list", $data );
                
