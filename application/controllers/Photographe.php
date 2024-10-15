@@ -24,7 +24,7 @@ class Photographe extends BaseController
         $this->load->model('photographe_model');
         $this->load->model('contrat_model');
         $this->load->model('paiement_model');
-    
+    $this->load->model("Sms_model");
 
         $this->isLoggedIn();   
     }

@@ -24,7 +24,7 @@ class Voiture extends BaseController
         $this->load->model('voiture_model');
         $this->load->model('contrat_model');
         $this->load->model('paiement_model');
-    
+        $this->load->model("Sms_model");
 
         $this->isLoggedIn();   
     }

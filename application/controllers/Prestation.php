@@ -26,6 +26,7 @@ class Prestation extends BaseController
         $this->load->model("prestation_model");
         $this->load->model("contrat_model");
         $this->load->model("paiement_model");
+        $this->load->model("Sms_model");
 
         $this->isLoggedIn();
     }
