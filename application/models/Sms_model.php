@@ -16,6 +16,7 @@ class Sms_model extends CI_Model
         $this->db->from('tbl_sms as BaseTbl');
 
         $this->db->where('BaseTbl.statut = ',1);
+        $this->db->limit(5);
         $query = $this->db->get();
         $result = $query->result();        
         return $result;

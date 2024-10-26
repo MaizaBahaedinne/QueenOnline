@@ -377,40 +377,7 @@ class Reservation extends BaseController
                 $this->reservation_model->editReservation($reservationInfo, $resId , $this->vendorId );
                 redirect("Reservation/view/" . $resId);
         }
-        function checkreservation($dateDebut, $datefin, $heureDebut, $heureFin)
-        {
-                if ($this->reservation_model->checkreservation($dateDebut, $datefin, $heureDebut, $heureFin)) {
-                        return true;
-                }
-                return false;
-        }
-
-        function http_response($url)
-        {
-                $ch = curl_init();
-                $options = [
-                        CURLOPT_URL => $url,
-                        CURLOPT_RETURNTRANSFER => true,
-                        CURLOPT_HEADER => false,
-                        CURLOPT_FOLLOWLOCATION => true,
-                        CURLOPT_ENCODING => "",
-                        CURLOPT_AUTOREFERER => true,
-                        CURLOPT_CONNECTTIMEOUT => 120,
-                        CURLOPT_TIMEOUT => 120,
-                        CURLOPT_MAXREDIRS => 10,
-                        CURLOPT_SSL_VERIFYPEER => false,
-                ];
-                curl_setopt_array($ch, $options);
-                $response = curl_exec($ch);
-                $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-                if ($httpCode != 200) {
-                        return "Return code is {$httpCode} \n" . curl_error($ch);
-                } else {
-                        //echo "<pre>".htmlspecialchars($response)."</pre>";
-                        return $response;
-                }
-                curl_close($ch);
-        }
+        
 
         function sendSMS($myMobile, $mySms)
         {
