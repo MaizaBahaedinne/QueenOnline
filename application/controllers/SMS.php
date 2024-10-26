@@ -88,7 +88,7 @@ class SMS extends BaseController
         }
 
 
-          public  function sendSMS($myMobile, $mySms)
+        public  function sendSMS($myMobile, $mySms)
             { 
                 $mySender = 'Queen park';
                 $myDate = '26/10/2024';
