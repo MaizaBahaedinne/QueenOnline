@@ -30,7 +30,7 @@ class SMS extends BaseController
                     foreach ($data["smsRecords"]  as $record) {
         
                           
-                         if ($this->sendSMS($record->destination , $record->text ) == "200"){
+                         $this->sendSMS($record->destination , $record->text ) 
                          $smsInfo = array(
                               'sendDate'=>date('Y-m-d H:i:s') ,
                               'statut'=>0 ,
