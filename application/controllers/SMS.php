@@ -29,29 +29,18 @@ class SMS extends BaseController
     public function index()
     {
              $data['smsRecords'] = $this->sms_model->SmsListing();
-
-            
                     foreach ($data["smsRecords"]  as $record) {
-        
                          $this->sendSMS($record->destination , $record->text );  
                          $smsInfo = array(
                               'sendDate'=>date('Y-m-d H:i:s') ,
                               'statut'=>0 ,
-
                             );
                       //  $this->sms_model->editSms($smsInfo,$record->smsId) ;
                        }   
-
-
              $this->global['pageTitle'] = 'SMS';
             $this->load->view("sms/list", $data );
-               
-            
+  
     }
-
-
-
-     
 
 
 
