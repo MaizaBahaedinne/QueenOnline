@@ -55,7 +55,7 @@ class SMS extends BaseController
                 $Url_str = str_replace("%MSISDN%",$myMobile,$Url_str);
                 $Url_str = str_replace("%SMS%",urlencode($mySms),$Url_str);
                 $Url_str = str_replace("%SENDER%",urlencode($mySender),$Url_str);
-                $Url_str = str_replace("%KEY%",urlencode($key),$Url_str);
+              
 
 
                 echo $this->http_response($Url_str);
