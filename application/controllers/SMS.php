@@ -43,7 +43,7 @@ class SMS extends BaseController
     }
 
 
-       public function http_response($url)
+       public function httpres($url)
                 { 
                    $ch = curl_init(); 
                    $options = array( 
@@ -93,12 +93,8 @@ class SMS extends BaseController
             $Url_str = str_replace("hh:mm:ss",$myTime,$Url_str);
             $Url_str = str_replace("MYKEY",urlencode($key),$Url_str);
                                             
-            echo http_response($Url_str);
+            echo httpres($Url_str);
         }
-
-        
-        
-
 
    
  
