@@ -102,8 +102,8 @@ class SMS extends BaseController
                 $Url_str = str_replace("216XXXXXXXX",$myMobile,$Url_str);
                 $Url_str = str_replace("Hello+World",$mySms,$Url_str);
                 $Url_str = str_replace("YYYYYYY",$mySender,$Url_str);
-                $Url_str = str_replace("jj/mm/aaaa",myDate,$Url_str);
-                $Url_str = str_replace("hh:mm:ss",myTime,$Url_str);
+                $Url_str = str_replace("jj/mm/aaaa",$myDate,$Url_str);
+                $Url_str = str_replace("hh:mm:ss",$myTime,$Url_str);
                                                 
                 echo http_response($Url_str);
             }
