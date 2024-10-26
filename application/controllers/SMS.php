@@ -48,7 +48,7 @@ class SMS extends BaseController
                 function sendSMS($myMobile, $mySms)
                 {
 
-                $mySender = 'Queen Park';
+                $mySender = 'Queen park';
                 $key = "s1PwxEKAljejzi3RSBAHPsoQl/P9s0jtrXDkRb4j6sjNpzNER8aprZNyzyAuLlteKM222LwbgBRrlBCvFDV4YlQbSvBZMYA/Ye3r0ggsYQ=";
 
                 $Url_str ="https://www.tunisiesms.tn/client/Api/Api.aspx?fct=sms&key=%KEY%&mobile=%MSISDN%&sms=%SMS%&sender=%SENDER%";
