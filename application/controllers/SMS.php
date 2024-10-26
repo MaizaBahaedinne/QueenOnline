@@ -37,7 +37,7 @@ class SMS extends BaseController
                             );
                              $this->sms_model->editSms($smsInfo,$record->smsId) ;
                          } 
-                       }  
+                         
 
                   
              $this->global['pageTitle'] = 'SMS';
