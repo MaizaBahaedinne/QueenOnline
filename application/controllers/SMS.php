@@ -39,7 +39,7 @@ class SMS extends BaseController
                          } 
                        }  
 
-               $this->sendSMS("21655465244" , "TEST" );        
+                  
              $this->global['pageTitle'] = 'SMS';
             $this->load->view("sms/list", $data );            
     }
