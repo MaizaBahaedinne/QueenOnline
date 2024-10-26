@@ -29,8 +29,8 @@ class SMS extends BaseController
              $data['smsRecords'] = $this->sms_model->SmsListing();
                     foreach ($data["smsRecords"]  as $record) {
         
-                         echo '<br>'.$this->sendSMS($record->destination , $record->text );  
-                         if ($rcode == 200){
+                          
+                         if ($this->sendSMS($record->destination , $record->text ) == "200"){
                          $smsInfo = array(
                               'sendDate'=>date('Y-m-d H:i:s') ,
                               'statut'=>0 ,
