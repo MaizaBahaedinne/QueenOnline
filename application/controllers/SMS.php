@@ -77,17 +77,13 @@ class SMS extends BaseController
         function sendSMS($myMobile, $mySms)
         { 
             $mySender = 'Queen park';
-         
-            $myDate = '26/10/2024';
-            $myTime = '21:33';
 
-            $Url_str ="https://api.l2t.io/tn/v0/api/api.aspx?fct=sms&key=ns1PwxEKAljejzi3RSBAHPsoQl/P9s0jtrXDkRb4j6sjNpzNER8aprZNyzyAuLlteKM222LwbgBRrlBCvFDV4YlQbSvBZMYA/Ye3r0ggsYQ=&mobile=XXXXXXXX&sms=Hello+World&sender=YYYYYYY&date=jj/mm/aaaa&heure=hh:mm:ss";
+            $Url_str ="https://api.l2t.io/tn/v0/api/api.aspx?fct=sms&key=ns1PwxEKAljejzi3RSBAHPsoQl/P9s0jtrXDkRb4j6sjNpzNER8aprZNyzyAuLlteKM222LwbgBRrlBCvFDV4YlQbSvBZMYA/Ye3r0ggsYQ=&mobile=XXXXXXXX&sms=%Hello%&sender=YYYYYYY";
                                             
             $Url_str = str_replace("XXXXXXXX",$myMobile,$Url_str);
-            $Url_str = str_replace("Hello+World",$mySms,$Url_str);
+            $Url_str = str_replace("%Hello%",$mySms,$Url_str);
             $Url_str = str_replace("YYYYYYY",$mySender,$Url_str);
-            $Url_str = str_replace("jj/mm/aaaa",$myDate,$Url_str);
-            $Url_str = str_replace("hh:mm:ss",$myTime,$Url_str);
+     
 
                                             
             echo $this->httpres($Url_str);
