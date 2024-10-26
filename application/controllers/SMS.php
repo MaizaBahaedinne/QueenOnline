@@ -55,7 +55,7 @@ class SMS extends BaseController
 
 
 
-    function http_response($url)
+    public function http_response($url)
         {
             $ch = curl_init();
 
@@ -88,10 +88,7 @@ class SMS extends BaseController
         }
 
 
-
-
-
-            function sendSMS($myMobile, $mySms)
+          public  function sendSMS($myMobile, $mySms)
             { 
                 $mySender = 'Queen park';
                 $myDate = '26/10/2024';
@@ -103,8 +100,7 @@ class SMS extends BaseController
                 $Url_str = str_replace("Hello+World",$mySms,$Url_str);
                 $Url_str = str_replace("YYYYYYY",$mySender,$Url_str);
                 $Url_str = str_replace("jj/mm/aaaa",$myDate,$Url_str);
-                $Url_str = str_replace("hh:mm:ss",$myTime,$Url_str);
-                                                
+                $Url_str = str_replace("hh:mm:ss",$myTime,$Url_str);                              
                 echo http_response($Url_str);
             }
 
