@@ -23,9 +23,7 @@ class SMS extends BaseController
         
     }
     
-    /**
-     * This function used to load the first screen of the user
-     */
+
     public function index()
     {
              $data['smsRecords'] = $this->sms_model->SmsListing();
@@ -43,7 +41,7 @@ class SMS extends BaseController
     }
 
 
-       public function httpres($url)
+    public function httpres($url)
                 { 
                    $ch = curl_init(); 
                    $options = array( 
