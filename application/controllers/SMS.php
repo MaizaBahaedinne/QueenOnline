@@ -91,7 +91,7 @@ class SMS extends BaseController
             $Url_str = str_replace("hh:mm:ss",$myTime,$Url_str);
             $Url_str = str_replace("MYKEY",urlencode($key),$Url_str);
                                             
-            echo httpres($Url_str);
+            echo $this->httpres($Url_str);
         }
 
    
