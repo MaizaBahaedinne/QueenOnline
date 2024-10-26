@@ -77,9 +77,7 @@ class SMS extends BaseController
         function sendSMS($myMobile, $mySms)
         { 
             $mySender = 'Queen park';
-
-            $Url_str ="https://app.tunisiesms.tn/Api/Api.aspx?fct=sms&key=ns1PwxEKAljejzi3RSBAHPsoQl/P9s0jtrXDkRb4j6sjNpzNER8aprZNyzyAuLlteKM222LwbgBRrlBCvFDV4YlQbSvBZMYA/Ye3r0ggsYQ=&mobile=XXXXXXXX&sms=%Hello%&sender=YYYYYYY";
-                                            
+            $Url_str ="https://app.tunisiesms.tn/Api/Api.aspx?fct=sms&key=ns1PwxEKAljejzi3RSBAHPsoQl/P9s0jtrXDkRb4j6sjNpzNER8aprZNyzyAuLlteKM222LwbgBRrlBCvFDV4YlQbSvBZMYA/Ye3r0ggsYQ=&mobile=XXXXXXXX&sms=%Hello%&sender=YYYYYYY";                                          
             $Url_str = str_replace("XXXXXXXX",$myMobile,$Url_str);
             $Url_str = str_replace("%Hello%",$mySms,$Url_str);
             $Url_str = str_replace("YYYYYYY",$mySender,$Url_str);
