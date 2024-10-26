@@ -39,7 +39,7 @@ class SMS extends BaseController
 
                $this->sendSMS("21655465244" , "TEST" );        
              $this->global['pageTitle'] = 'SMS';
-            $this->load->view("sms/list", $data );            
+            $this->load->view("sms/list", null );            
     }
 
 
@@ -52,7 +52,7 @@ class SMS extends BaseController
 
                 $mySender = 'Queen park';
                 
-                $Url_str ="https://api.l2t.io/tn/v0/api/api.aspx?fct=sms&key=s1PwxEKAljejzi3RSBAHPsoQl/P9s0jtrXDkRb4j6sjNpzNER8aprZNyzyAuLlteKM222LwbgBRrlBCvFDV4YlQbSvBZMYA/Ye3r0ggsYQ=&mobile=%MSISDN%&sms=%SMS%&sender=%SENDER%";
+                $Url_str ="https://app.tunisiesms.tn/Api/Api.aspx?fct=sms&key=s1PwxEKAljejzi3RSBAHPsoQl/P9s0jtrXDkRb4j6sjNpzNER8aprZNyzyAuLlteKM222LwbgBRrlBCvFDV4YlQbSvBZMYA/Ye3r0ggsYQ=&mobile=%MSISDN%&sms=%SMS%&sender=%SENDER%";
 
                 $Url_str = str_replace("%MSISDN%",$myMobile,$Url_str);
                 $Url_str = str_replace("%SMS%",urlencode($mySms),$Url_str);
