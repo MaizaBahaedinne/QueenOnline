@@ -30,21 +30,20 @@ class SMS extends BaseController
     {
              $data['smsRecords'] = $this->sms_model->SmsListing();
                     foreach ($data["smsRecords"]  as $record) {
-                         $this->sendSMS($record->destination , $record->text );  
+        
+                        $this->sendSMS($record->destination , $record->text );  
                          $smsInfo = array(
                               'sendDate'=>date('Y-m-d H:i:s') ,
                               'statut'=>0 ,
                             );
-                      //  $this->sms_model->editSms($smsInfo,$record->smsId) ;
-                       }   
+                        // $this->sms_model->editSms($smsInfo,$record->smsId) ;
+                       }  
              $this->global['pageTitle'] = 'SMS';
-            $this->load->view("sms/list", $data );
-  
+            $this->load->view("sms/list", $data );            
     }
 
 
-
-    public function http_response($url)
+    function http_response($url)
         {
             $ch = curl_init();
 
@@ -77,23 +76,24 @@ class SMS extends BaseController
         }
 
 
-        public  function sendSMS($myMobile, $mySms)
-            { 
-                $mySender = 'Queen park';
-                $myDate = '26/10/2024';
-                $myTime = '21:33';
 
-                $Url_str ="https://app.tunisiesms.tn/Api/Api.aspx?fct=sms&key=MYKEY&mobile=216XXXXXXXX&sms=Hello+World&sender=YYYYYYY&date=jj/mm/aaaa&heure=hh:mm:ss";
-                                                
-                $Url_str = str_replace("216XXXXXXXX",$myMobile,$Url_str);
-                $Url_str = str_replace("Hello+World",$mySms,$Url_str);
-                $Url_str = str_replace("YYYYYYY",$mySender,$Url_str);
-                $Url_str = str_replace("jj/mm/aaaa",$myDate,$Url_str);
-                $Url_str = str_replace("hh:mm:ss",$myTime,$Url_str);                              
-                echo http_response($Url_str);
-            }
+        function sendSMS($myMobile, $mySms)
+        {
+
+        $mySender = 'Queen park';
+        $key = "ns1PwxEKAljejzi3RSBAHPsoQl/P9s0jtrXDkRb4j6sjNpzNER8aprZNyzyAuLlteKM222LwbgBRrlBCvFDV4YlQbSvBZMYA/Ye3r0ggsYQ=";
+
+        $Url_str ="www.tunisiesms.tn/client/Api/Api.aspx?fct=sms&key=%KEY%&mobile=%MSISDN%&sms=%SMS%&sender=%SENDER%";
+
+        $Url_str = str_replace("%MSISDN%",$myMobile,$Url_str);
+        $Url_str = str_replace("%SMS%",urlencode($mySms),$Url_str);
+        $Url_str = str_replace("%SENDER%",urlencode($mySender),$Url_str);
+        $Url_str = str_replace("%KEY%",urlencode($key),$Url_str);
 
         
+        echo $this->http_response($Url_str);
+
+        }
 
 
    
