@@ -37,7 +37,7 @@
   <div class="main-card mb-3 card">
     <div class="card-body" style="width: 100%;">
       
-        <table id="example" style="width: 100%;"  class="table  table-hover table-striped table-bordered " cellspacing="0" >
+        <table id="example" style="width: 100%;"  class="table  table-hover table-striped table-bordered " cellspacing="0" border="1px" >
           <thead>
             <tr>
               <th width="10%">id</th>
