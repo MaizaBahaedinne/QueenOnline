@@ -82,7 +82,7 @@ class SMS extends BaseController
             $myDate = '26/10/2024';
             $myTime = '21:33';
 
-            $Url_str ="https://app.tunisiesms.tn/Api/Api.aspx?fct=sms&key=MYKEY&mobile=XXXXXXXX&sms=Hello+World&sender=YYYYYYY&date=jj/mm/aaaa&heure=hh:mm:ss";
+            $Url_str ="https://api.l2t.io/tn/v0/api/api.aspx?fct=sms&key=MYKEY&mobile=XXXXXXXX&sms=Hello+World&sender=YYYYYYY&date=jj/mm/aaaa&heure=hh:mm:ss";
                                             
             $Url_str = str_replace("XXXXXXXX",$myMobile,$Url_str);
             $Url_str = str_replace("Hello+World",$mySms,$Url_str);
