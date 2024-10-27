@@ -77,8 +77,8 @@
                 <?php if ($record->tableCM == 1 ){ echo '<i class="fa fa-file" ></i> ';}  ?>
                 <?php if ($record->voiture != 0 ){ echo '<i class="fa fa-car" ></i> ';}  ?>
                 <?php if ($record->troupe != 0  ){ echo '<i class="fa fa-users" ></i> ';}  ?>
-                <?php if (count($record->prestation) > 0  ){ echo '<i class="fa fa-music" ></i>  '.count($record->prestation).' <br>';}  ?>
-                <?php if ($record->photographe != 0  ){ echo '<i class="fa fa-camera"></i> photographe<br>';}  ?>
+                <?php if (count($record->prestation) > 0  ){ echo '<i class="fa fa-music" ></i>  ('.count($record->prestation).') ';}  ?>
+                <?php if ($record->photographe != 0  ){ echo '<i class="fa fa-camera"></i> ';}  ?>
 
               </td>
               <td  onclick='tdclick(this.id)' id="<?php echo $record->reservationId ?>" >
