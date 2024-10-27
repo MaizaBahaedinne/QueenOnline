@@ -204,7 +204,7 @@ class Finance extends BaseController
         $mySender = 'Queen park';
         $key = "ns1PwxEKAljejzi3RSBAHPsoQl/P9s0jtrXDkRb4j6sjNpzNER8aprZNyzyAuLlteKM222LwbgBRrlBCvFDV4YlQbSvBZMYA/Ye3r0ggsYQ=";
 
-        $Url_str ="www.tunisiesms.tn/client/Api/Api.aspx?fct=sms&key=%KEY%&mobile=%MSISDN%&sms=%SMS%&sender=%SENDER%";
+        $Url_str ="https://app.tunisiesms.tn/Api/Api.aspx?fct=sms&key=%KEY%&mobile=%MSISDN%&sms=%SMS%&sender=%SENDER%";
 
         $Url_str = str_replace("%MSISDN%",$myMobile,$Url_str);
         $Url_str = str_replace("%SMS%",urlencode($mySms),$Url_str);

@@ -73,11 +73,11 @@
               
               
               <td>
-                <?php if ($record->cuisine == 1 ){ echo '<i class="fas fa-utensils"></i> Cuisine<br>';}  ?>
-                <?php if ($record->tableCM == 1 ){ echo '<i class="fa fa-file" ></i> contrat de mariage<br>';}  ?>
-                <?php if ($record->voiture != 0 ){ echo '<i class="fa fa-car" ></i> Voiture<br>';}  ?>
-                <?php if ($record->troupe != 0  ){ echo '<i class="fa fa-users" ></i> Troupe <br>';}  ?>
-                <?php if (count($record->prestation) > 0  ){ echo '<i class="fa fa-music" ></i>  '.count($record->prestation).' Prestations<br>';}  ?>
+                <?php if ($record->cuisine == 1 ){ echo '<i class="fas fa-utensils"></i> ';}  ?>
+                <?php if ($record->tableCM == 1 ){ echo '<i class="fa fa-file" ></i> ';}  ?>
+                <?php if ($record->voiture != 0 ){ echo '<i class="fa fa-car" ></i> ';}  ?>
+                <?php if ($record->troupe != 0  ){ echo '<i class="fa fa-users" ></i> ';}  ?>
+                <?php if (count($record->prestation) > 0  ){ echo '<i class="fa fa-music" ></i>  '.count($record->prestation).' <br>';}  ?>
                 <?php if ($record->photographe != 0  ){ echo '<i class="fa fa-camera"></i> photographe<br>';}  ?>
 
               </td>
