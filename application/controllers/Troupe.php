@@ -129,15 +129,16 @@ class Troupe extends BaseController
                 );
             }
 
+                $mySms = $data["projectInfo"]->packname. " + ".$Chanteurs." pour le ".$date. ; 
+
                 $koussayMobile = "55465244";
-                $mySms = $data["projectInfo"]->packname. " + ".$Chanteurs." pour le ".$date ;
                 $HaythemMobile = "54419959";
                 $HatemMobile = "92888625";
 
 
-                $this->sendSMS("216" . $HatemMobile, $mySms);
+               $this->sendSMS("216" . $HatemMobile, $mySms);
                 
-                $mySms = "[TROUPE] ".$this->name."a recu pour ".$avance."DT pour le ".$date ;
+                $mySms = "[TROUPE] ".$this->name." a recu pour ".$avance."DT pour le ".$date ;
                $this->sendSMS("216" . $HaythemMobile, $mySms);    
                $this->sendSMS("216" . $koussayMobile, $mySms);
      

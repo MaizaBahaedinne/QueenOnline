@@ -41,10 +41,12 @@
           gtag('config', 'G-3WXM3GLE2B');
         </script>
 
-    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
     <script  src="<?php echo base_url() ; ?>assets/scripts/script.js"></script>
     <script  src="<?php echo base_url() ; ?>assets/scripts/print.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script src="<?php echo base_url() ?>assets/scripts/jquery.loading-indicator.js"></script>
+    <script src="<?php echo base_url() ?>assets/scripts/main.d810cf0ae7f39f28f336.js"></script>
     
     
 
