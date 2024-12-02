@@ -61,9 +61,9 @@
     <script src='https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.7/index.global.min.js'></script>
     <script src='https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@6.1.7/index.global.min.js'></script>
     
-    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="<?php echo base_url() ?>assets/scripts/apexcharts.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script  defer src="<?php echo base_url() ?>assets/scripts/main.js"></script>
+    <script src="<?php echo base_url() ?>assets/scripts/main.js"></script>
 
 </head>
 
