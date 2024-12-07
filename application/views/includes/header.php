@@ -57,7 +57,7 @@
     
 
     <script  src="<?php echo base_url() ?>assets/scripts/main.js"></script>
-    <script defer src="<?php echo base_url() ?>assets/scripts/apexcharts.js"></script>
+    <script async src="<?php echo base_url() ?>assets/scripts/apexcharts.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script  src="<?php echo base_url() ; ?>assets/scripts/print.js"></script>
     <script  src="<?php echo base_url() ; ?>assets/scripts/script.js"></script>
