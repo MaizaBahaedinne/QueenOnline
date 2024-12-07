@@ -53,17 +53,17 @@
     </style>
     <style type="text/css">@keyframes resizeanim { from { opacity: 0; } to { opacity: 0; } } .resize-triggers { animation: 1ms resizeanim; visibility: hidden; opacity: 0; } .resize-triggers, .resize-triggers > div, .contract-trigger:before { content: " "; display: block; position: absolute; top: 0; left: 0; height: 100%; width: 100%; overflow: hidden; } .resize-triggers > div { background: #eee; overflow: auto; } .contract-trigger:before { width: 200%; height: 200%; }
     </style>  
+   
+    
 
-
-     <script  src="<?php echo base_url() ; ?>assets/scripts/print.js"></script>
-     <script  src="<?php echo base_url() ; ?>assets/scripts/script.js"></script>
+    <script defer src="<?php echo base_url() ?>assets/scripts/main.js"></script>
+    <script src="<?php echo base_url() ?>assets/scripts/apexcharts.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script  src="<?php echo base_url() ; ?>assets/scripts/print.js"></script>
+    <script  src="<?php echo base_url() ; ?>assets/scripts/script.js"></script>
     <script src="<?php echo base_url() ?>assets/scripts/jquery.loading-indicator.js"></script>
     <script src='https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.7/index.global.min.js'></script>
     <script src='https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@6.1.7/index.global.min.js'></script>
-    
-    <script src="<?php echo base_url() ?>assets/scripts/apexcharts.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="<?php echo base_url() ?>assets/scripts/main.js"></script>
 
 </head>
 
