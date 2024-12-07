@@ -482,6 +482,18 @@
 </div>
 
 
+
+   <script  src="<?php echo base_url() ?>assets/scripts/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script  src="<?php echo base_url() ; ?>assets/scripts/print.js"></script>
+    <script  src="<?php echo base_url() ; ?>assets/scripts/script.js"></script>
+    <script src="<?php echo base_url() ?>assets/scripts/jquery.loading-indicator.js"></script>
+    <script src='https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.7/index.global.min.js'></script>
+    <script src='https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@6.1.7/index.global.min.js'></script>
+
+
+
 <script type="text/javascript">
 
 
