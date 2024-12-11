@@ -129,7 +129,7 @@ class Troupe extends BaseController
                 );
             }
 
-                $mySms = $data["projectInfo"]->packname. " + ".$Chanteurs." pour le ".$date. ; 
+                $mySms = $data["projectInfo"]->packname. " + ".$Chanteurs." pour le ".$date ; 
 
                 $koussayMobile = "55465244";
                 $HaythemMobile = "54419959";
