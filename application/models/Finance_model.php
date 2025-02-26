@@ -28,7 +28,7 @@ class Finance_model extends CI_Model
         $this->db->join('tbl_users Client', 'Reservation.clientId = Client.userId','left');
         $this->db->join('tbl_salle as Salles', 'Salles.salleID = Reservation.salleId','left');
 
-        $this->db->where("YEAR(aseTbl.createdDate) >= ", $annee)  ; 
+        $this->db->where("YEAR(BaseTbl.createdDate) >= ", $annee)  ; 
         $this->db->order_by("BaseTbl.createdDate DESC") ; 
 
 
