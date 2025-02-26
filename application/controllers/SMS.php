@@ -96,7 +96,7 @@ class SMS extends BaseController
                 $Url_str = str_replace("jj/mm/aaaa",$myDate,$Url_str);
                 $Url_str = str_replace("hh:mm:ss",$myTime,$Url_str);
                                                 
-                echo http_response($Url_str);
+                echo  $this->http_response($Url_str);
             }
 
              
