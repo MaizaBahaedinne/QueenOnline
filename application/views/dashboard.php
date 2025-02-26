@@ -285,37 +285,46 @@
             <div class="row"></div>
           </div>
           <div class="widget-chart p-0">
-            <div id="Salle"></div>
+            <canvas id="Salle"></canvas>
           </div>
           <div class="divider mb-0"></div>
         </div>
         <script type="text/javascript">
-          var options = {
-            series: [ <?php  foreach($SalleRecords as $data) {
-              echo $data->COUNT.
-              ',';
-            } ?> ],
-            chart: {
-              type: 'pie',
-            },
-            labels: [ <?php  foreach($SalleRecords as $data) {
-              echo '"'.$data->nom.
-              '",';
-            } ?> ],
-            responsive: [{
-              breakpoint: 500,
-              options: {
-                chart: {
-                  width: 100
-                },
-                legend: {
-                  position: 'buttom'
-                }
-              }
-            }]
-          };
-          var chart = new ApexCharts(document.querySelector("#Salle"), options);
-          chart.render();
+            document.addEventListener("DOMContentLoaded", function () {
+                var ctx = document.getElementById('Salle').getContext('2d');
+
+                // Données PHP converties en JavaScript
+                var labels = [ <?php foreach($SalleRecords as $data) { echo '"'.$data->nom.'",'; } ?> ];
+                var dataValues = [ <?php foreach($SalleRecords as $data) { echo $data->COUNT.','; } ?> ];
+
+                var chart = new Chart(ctx, {
+                    type: 'pie',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            data: dataValues,
+                            backgroundColor: [
+                                '#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40'
+                            ],
+                            borderColor: '#ffffff',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: 'Répartition des Salles',
+                                font: { size: 18 }
+                            },
+                            legend: {
+                                position: 'bottom'
+                            }
+                        }
+                    }
+                });
+            });
         </script>
 
 
