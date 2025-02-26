@@ -69,7 +69,7 @@ function http_response($url)
 { 
    $ch = curl_init(); 
    $options = array( 
-   CURLOPT_URL            =--> $url , 
+   CURLOPT_URL            => $url , 
    CURLOPT_RETURNTRANSFER => true, 
    CURLOPT_HEADER         => false, 
    CURLOPT_FOLLOWLOCATION => true, 
