@@ -101,17 +101,17 @@ class Photographe extends BaseController
 
                 $koussayMobile = "55465244";
                 $mySms = $this->name . " a reservé le photographe pour le ".$date ;
-                $this->sendSMS("216" . $koussayMobile, $mySms);
+                $this->sendSMS("216" . $koussayMobile, $mySms , "Notif admin photographe");
                 
 
                 $HaythemMobile = "54419959";
                 $mySms = $this->name . " a reservé le photographe pour le ".$date ;
-                $this->sendSMS("216" . $HaythemMobile, $mySms);
+                $this->sendSMS("216" . $HaythemMobile, $mySms , "Notif admin photographe");
 
 
                 $MakremMobile = "98541815";
                 $mySms =  "Une nouvelle reservation pour le ".$date ;
-                $this->sendSMS("216" . $MakremMobile, $mySms);
+                $this->sendSMS("216" . $MakremMobile, $mySms , "Notif photographe");
 
 
                 if($result > 0)
@@ -225,6 +225,8 @@ class Photographe extends BaseController
                         'statut'=>0 ,
                                 );
         }
+        $HaythemMobile = "54419959";
+        $this->sendSMS("216" . $HaythemMobile, "(Photographe) paiement de ".$avance." par ".$this->name." pour ".$resId , "Notif admin Troupe"); 
 
         $this->photographe_model->editReservation($reservationInfo, $resId);    
         redirect('Photographe/view/'.$resId) ; 
@@ -263,37 +265,12 @@ class Photographe extends BaseController
 
 
 
-        function http_response($url)
-        {
-                $ch = curl_init();
-                $options = [
-                        CURLOPT_URL => $url,
-                        CURLOPT_RETURNTRANSFER => true,
-                        CURLOPT_HEADER => false,
-                        CURLOPT_FOLLOWLOCATION => true,
-                        CURLOPT_ENCODING => "",
-                        CURLOPT_AUTOREFERER => true,
-                        CURLOPT_CONNECTTIMEOUT => 120,
-                        CURLOPT_TIMEOUT => 120,
-                        CURLOPT_MAXREDIRS => 10,
-                        CURLOPT_SSL_VERIFYPEER => false,
-                ];
-                curl_setopt_array($ch, $options);
-                $response = curl_exec($ch);
-                $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-                if ($httpCode != 200) {
-                        return "Return code is {$httpCode} \n" . curl_error($ch);
-                } else {
-                        //echo "<pre>".htmlspecialchars($response)."</pre>";
-                        return $response;
-                }
-                curl_close($ch);
-        }
 
-        function sendSMS($myMobile, $mySms)
+        function sendSMS($myMobile, $mySms, $type)
         {
             $smsInfo = array('destination'=>$myMobile,
                               'text' => $mySms,
+                              'type' => $type,
                               'createdBy'=>$this->vendorId,
                               'createdDtm'=>date('Y-m-d H:i:s') ,
                               'statut'=>1 ,

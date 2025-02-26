@@ -142,8 +142,8 @@ class Voiture extends BaseController
                             }
 
                        $mySms = "[".$voitureName."] ".$this->name." a recu pour ".$avance."DT pour le ".$date ;
-                                   $this->sendSMS("216" . $HaythemMobile, $mySms);    
-                                   $this->sendSMS("216" . $koussayMobile, $mySms);    
+                                   $this->sendSMS("216" . $HaythemMobile, $mySms , "Notif admin voiture");    
+                                   $this->sendSMS("216" . $koussayMobile, $mySms , "Notif admin voiture");    
 
 
                     $this->session->set_flashdata('success', 'Reservation mise à jour avec succées ');
@@ -292,8 +292,8 @@ class Voiture extends BaseController
 
                     
                                    $mySms = "[".$voitureName."] ".$this->name." a recu pour ".$avance."DT pour le ".$date ;
-                                   $this->sendSMS("216" . $HaythemMobile, $mySms);    
-                                   $this->sendSMS("216" . $koussayMobile, $mySms);
+                                   $this->sendSMS("216" . $HaythemMobile, $mySms, , "Notif admin voiture" );    
+                                   $this->sendSMS("216" . $koussayMobile, $mySms , , "Notif admin voiture");
 
 
                                      
@@ -425,10 +425,11 @@ class Voiture extends BaseController
 
 
 
-        function sendSMS($myMobile, $mySms)
+        function sendSMS($myMobile, $mySms , $type )
         {
             $smsInfo = array('destination'=>$myMobile,
                               'text' => $mySms,
+                              'type' => $type,
                               'createdBy'=>$this->vendorId,
                               'createdDtm'=>date('Y-m-d H:i:s') ,
                               'statut'=>1 ,

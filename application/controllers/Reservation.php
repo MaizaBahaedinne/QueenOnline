@@ -316,10 +316,10 @@ class Reservation extends BaseController
                 $myMobile = $clientInfo->mobile;
 
                 $mySms =  "Votre réservation de l'espace (" . $ReservationInfo->salle . ") pour la date (" . $ReservationInfo->dateDebut . ") a été enregistrée.";
-                $this->sendSMS("216" . $myMobile, $mySms);
+                $this->sendSMS("216" . $myMobile, $mySms , "generation de contrat");
 
                 $mySmsK = $this->name . " a recu (" . $avance . " DT) salle : (". $ReservationInfo->salle .") pour le ". $ReservationInfo->dateDebut  ;
-                $this->sendSMS("21655465244", $mySmsK);
+                $this->sendSMS("21655465244", $mySmsK , "Notif admin");
 
                 redirect("Reservation/view/" . $resId);
                 
@@ -337,7 +337,7 @@ class Reservation extends BaseController
                 $clientInfo = $this->client_model->getClientInfo($ReservationInfo->clientId);
                 $myMobile = $clientInfo->mobile;
                 $mySms = "Salut " . $clientInfo->name . ", une paiement de (" . $avance . " DT)  pour la reservation N°" . $resId . " a été effectuée avec succées";
-                $this->sendSMS("216" . $myMobile, $mySms);
+                $this->sendSMS("216" . $myMobile, $mySms , "Paiement");
                 $this->paiement_model->addNewPaiement($paiementInfo);
                 $totalPaiement = $this->paiement_model->getTotal($resId);
                 $projectInfo = $this->reservation_model->ReservationInfo($resId);
@@ -348,14 +348,14 @@ class Reservation extends BaseController
                 if ($projectInfo->prix - $totalPaiement->valeur == 0) {
                         $myMobile = $clientInfo->mobile;
                         $mySms = "Bonjour " . $clientInfo->name . ", votre reservation de la salle (" . $ReservationInfo->salle . ") pour le (" . $ReservationInfo->dateDebut . ") a été validée on vous souhaite une belle cérémonie.";
-                        $this->sendSMS("216" . $myMobile, $mySms);
+                        $this->sendSMS("216" . $myMobile, $mySms , "Reservation");
 
 
                 $HediMobile = "98552446";
                 $koussayMobile = "55465244";
                 $mySms = $this->name . " a réçu le reste (" . $avance . " DT) salle (" . $ReservationInfo->salle . ") pour le " . $ReservationInfo->dateDebut ;
-                $this->sendSMS("216" . $HediMobile, $mySms);
-                $this->sendSMS("216" . $koussayMobile, $mySms);
+                $this->sendSMS("216" . $HediMobile, $mySms , "Notif admin");
+                $this->sendSMS("216" . $koussayMobile, $mySms, "Notif admin" );
 
                         $reservationInfo = ["noteAdmin" => "Paiement de reste  <br>".$noteAdmin, "statut" => 0];
 
@@ -368,8 +368,8 @@ class Reservation extends BaseController
 
                 $mySms = $this->name . " a réçu (" . $avance . " DT) pour la reservation de " . $ReservationInfo->salle . " pour le " . $ReservationInfo->dateDebut;
                 
-                $this->sendSMS("216" . $HediMobile, $mySms);
-                $this->sendSMS("216" . $koussayMobile, $mySms);
+                $this->sendSMS("216" . $HediMobile, $mySms , "Notif admin");
+                $this->sendSMS("216" . $koussayMobile, $mySms, "Notif admin" );
 
                 }
 
@@ -379,10 +379,11 @@ class Reservation extends BaseController
         }
         
 
-        function sendSMS($myMobile, $mySms)
+        function sendSMS($myMobile, $mySms , $type)
         {
             $smsInfo = array('destination'=>$myMobile,
                               'text' => $mySms,
+                              'type' =>$type,
                               'createdBy'=>$this->vendorId,
                               'createdDtm'=>date('Y-m-d H:i:s') ,
                               'statut'=>1 ,
