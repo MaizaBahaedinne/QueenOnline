@@ -53,7 +53,7 @@ class SMS extends BaseController
                 $mySender = 'Queen park';
                 $key = "GuDqqXQAY97z7PP2v9XD4VynAcnYUu/zoxnBn/Y4VNLvuwzVZI/j7eCpkB4DZtoFceCyE/5F5huzCAlvDUb6kNXub5Detypa";
 
-                $Url_str ="https://aapp.tunisiesms.tn/Api/Api.aspx?fct=sms&key=GuDqqXQAY97z7PP2v9XD4VynAcnYUu/zoxnBn/Y4VNLvuwzVZI/j7eCpkB4DZtoFceCyE/5F5huzCAlvDUb6kNXub5Detypa&mobile=216XXXXXXXX&sms=Hello+World&sender=YYYYYYY";
+                $Url_str ="https://app.tunisiesms.tn/Api/Api.aspx?fct=sms&key=GuDqqXQAY97z7PP2v9XD4VynAcnYUu/zoxnBn/Y4VNLvuwzVZI/j7eCpkB4DZtoFceCyE/5F5huzCAlvDUb6kNXub5Detypa&mobile=216XXXXXXXX&sms=Hello+World&sender=YYYYYYY";
 
             $Url_str = str_replace("216XXXXXXXX",$myMobile,$Url_str);
             $Url_str = str_replace("Hello+World",$mySms,$Url_str);
