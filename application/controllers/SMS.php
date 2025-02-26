@@ -70,15 +70,10 @@ class SMS extends BaseController
            curl_setopt_array( $ch, $options );  
            $response = curl_exec($ch); 
            $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE); 
-           if ( $httpCode != 200 ) 
-           { 
-           return 'Return code is ' . $httpCode . ' ' . curl_error($ch); 
-           } 
-            else  
-           { 
-           return $response; 
-            } 
+             
            curl_close($ch);
+
+           return $httpCode  ;
         }
             
         
