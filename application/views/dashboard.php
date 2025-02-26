@@ -130,9 +130,9 @@
             <div class="row"></div>
           </div>
           <div class="widget-chart p-0">
-            
+            <canvas id="parSalle" style="padding-right: 30px;padding-left: 30px"></canvas>
               <div class="row">
-                 <canvas id="parSalle" style="padding-right: 30px"></canvas>
+                 
               <script type="text/javascript">
                   document.addEventListener("DOMContentLoaded", function () {
                       var ctx = document.getElementById('parSalle').getContext('2d');
