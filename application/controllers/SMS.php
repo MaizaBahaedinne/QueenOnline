@@ -65,18 +65,22 @@ class SMS extends BaseController
                     CURLOPT_CONNECTTIMEOUT => 120,
                     CURLOPT_TIMEOUT        => 120,  
                     CURLOPT_MAXREDIRS      => 10,  
-                    CURLOPT_SSL_VERIFYPEER => false, 
+                    CURLOPT_SSL_VERIFYHOST => 0, // 🔥 Désactiver la vérification du certificat SSL
+                    CURLOPT_SSL_VERIFYPEER => 0, // 🔥 Ignorer les erreurs SSL
                 ]); 
 
                 $response = curl_exec($ch); 
                 $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE); 
+                $error = curl_error($ch); // Récupérer les erreurs cURL
                 curl_close($ch);
 
                 echo "<br>HTTP Code: " . $httpCode . "<br>";
-                echo "API Response: " . $response . "<br>"; // 👀 Affiche la réponse complète de l'API
+                echo "API Response: " . $response . "<br>"; 
+                echo "cURL Error: " . $error . "<br>"; // 🔥 Affiche les erreurs cURL
 
                 return $response;
             }
+
 
             
         
