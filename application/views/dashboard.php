@@ -127,12 +127,12 @@
             </div>
           </div>
           <div class="pt-2 pb-0 card-body">
-            <div class="row"></div>
-          </div>
-          <div class="widget-chart p-0">
+            <div class="row">
+         
+          
             
-              <div class="row">
-                 <canvas id="parSalle" style="padding-right: 30px;padding-left: 30px;max-height:450px ;"></canvas>
+              
+                 <canvas id="parSalle" style="padding-right: 30px;padding-left: 30px;max-height:750px ;"></canvas>
               <script type="text/javascript">
                   document.addEventListener("DOMContentLoaded", function () {
                       var ctx = document.getElementById('parSalle').getContext('2d');
@@ -239,7 +239,7 @@
               </script>
 
           </div>
-          <div class="divider mb-0"></div>
+        <!--  <div class="divider mb-0"></div>
           <div class="grid-menu grid-menu-2col">
             <div class="no-gutters row"> <?php foreach ($ReservationPerYearRecords as $data ) { if ($data->YEAR > 0 ){  ?> <div class="col-md-6 ">
                 <div class="widget-content mt-2 ">
@@ -264,11 +264,12 @@
                   </div>
                 </div>
               </div> <?php } } ?> </div>
-          </div>
-        </div>
+          </div>-->
+       
       </div>
     </div>
-    <div class="row">
+  </div>
+
       <div class="col-lg-4">
         <div class="mb-3 card">
           <div class="card-header-tab card-header">
@@ -400,7 +401,7 @@
           <div class="divider mb-0"></div>
         </div>
       </div>
-    </div>
+  
       <div class="col-md-4">
         <div class="mb-3 card">
           <div class="card-header-tab card-header">
