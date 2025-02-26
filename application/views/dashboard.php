@@ -265,6 +265,7 @@
               };
               var chart = new ApexCharts(document.querySelector("#parSalle"), options);
               chart.render();
+              console.log(chart);
             </script>
           </div>
           <div class="divider mb-0"></div>
