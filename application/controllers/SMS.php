@@ -78,7 +78,7 @@ class SMS extends BaseController
                 echo "API Response: " . $response . "<br>"; 
                 echo "cURL Error: " . $error . "<br>"; // 🔥 Affiche les erreurs cURL
 
-                return $response;
+                return $httpCode;
             }
 
 
@@ -100,6 +100,8 @@ class SMS extends BaseController
                 $Url_str = "https://app.tunisiesms.tn/Api/Api.aspx?" . http_build_query($params, '', '&', PHP_QUERY_RFC3986);
 
                 echo $this->http_response($Url_str);
+
+                return $this->http_response($Url_str) ;
             }
 
 
