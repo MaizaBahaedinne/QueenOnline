@@ -92,24 +92,20 @@ class SMS extends BaseController
           public function sendSMS($myMobile, $mySms)
             { 
                 $mySender = 'Queen park';
-                
 
-                $Url_str = "https://app.tunisiesms.tn/Api/Api.aspx?" . http_build_query([
-                'fct' => 'sms',
-                'key' => 'GuDqqXQAY97z7PP2v9XD4VynAcnYUu/zoxnBn/Y4VNLvuwzVZI/j7eCpkB4DZtoFceCyE/5F5huzCAlvDUb6kNXub5Detypa',
-                'mobile' => 'XXXXXXXXXXX',
-                'sms' => 'Hello+World',
-                'sender' => 'YYYYYYY'
-]               );
+                $params = [
+                    'fct'    => 'sms',
+                    'key'    => 'GuDqqXQAY97z7PP2v9XD4VynAcnYUu/zoxnBn/Y4VNLvuwzVZI/j7eCpkB4DZtoFceCyE/5F5huzCAlvDUb6kNXub5Detypa',
+                    'mobile' => $myMobile,
+                    'sms'    => $mySms,  // Ne pas ajouter "+", `http_build_query` s'occupe de l'encodage
+                    'sender' => $mySender
+                ];
 
-                                                
-                $Url_str = str_replace("XXXXXXXXXXX",$myMobile,$Url_str);
-                $Url_str = str_replace("Hello+World",$mySms,$Url_str);
-                $Url_str = str_replace("YYYYYYY",$mySender,$Url_str);
-                
-                                                
-                echo  $this->http_response($Url_str);
+                $Url_str = "https://app.tunisiesms.tn/Api/Api.aspx?" . http_build_query($params, '', '&', PHP_QUERY_RFC3986);
+
+                echo $this->http_response($Url_str);
             }
+
 
              
  
