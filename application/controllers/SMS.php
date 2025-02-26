@@ -94,7 +94,7 @@ function http_response($url)
     } 
    curl_close($ch);
 }
-            ?>
+            
         
                     
 
