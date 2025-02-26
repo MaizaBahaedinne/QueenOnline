@@ -53,27 +53,38 @@ class SMS extends BaseController
         public function http_response($url)
         { 
 
-            echo  $url ; 
-           $ch = curl_init(); 
-           $options = array( 
-           CURLOPT_URL            => $url , 
-           CURLOPT_RETURNTRANSFER => true, 
-           CURLOPT_HEADER         => false, 
-           CURLOPT_FOLLOWLOCATION => true, 
-           CURLOPT_ENCODING       => '', 
-           CURLOPT_AUTOREFERER    => true, 
-           CURLOPT_CONNECTTIMEOUT => 120, 
-           CURLOPT_TIMEOUT        => 120,  
-           CURLOPT_MAXREDIRS      => 10,  
-           CURLOPT_SSL_VERIFYPEER => false, 
-           ); 
-           curl_setopt_array( $ch, $options );  
-           $response = curl_exec($ch); 
-           $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE); 
-             
-           curl_close($ch);
-           echo  $httpCode ;
-           return $httpCode  ;
+          { 
+    echo "Testing URL: " . $url . "<br>";
+
+            $ch = curl_init(); 
+            $options = array( 
+                CURLOPT_URL            => $url, 
+                CURLOPT_RETURNTRANSFER => true, 
+                CURLOPT_HEADER         => false, 
+                CURLOPT_FOLLOWLOCATION => false, // Désactivé pour tester
+                CURLOPT_ENCODING       => '', 
+                CURLOPT_AUTOREFERER    => true, 
+                CURLOPT_CONNECTTIMEOUT => 120, 
+                CURLOPT_TIMEOUT        => 120,  
+                CURLOPT_MAXREDIRS      => 10,  
+                CURLOPT_SSL_VERIFYPEER => false, 
+                CURLOPT_USERAGENT      => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36',
+                CURLOPT_HTTPHEADER     => array(
+                    'Content-Type: application/json'
+                ),
+                CURLOPT_VERBOSE        => true // Active le mode débogage
+            ); 
+            curl_setopt_array($ch, $options);  
+            $response = curl_exec($ch); 
+            $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE); 
+
+            if ($httpCode != 200) {
+                echo "Erreur cURL: " . curl_error($ch);
+            }
+
+            curl_close($ch);
+            echo "HTTP Code: " . $httpCode . "<br>";
+            return $httpCode;
         }
             
         
