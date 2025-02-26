@@ -72,7 +72,7 @@ class SMS extends BaseController
            $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE); 
              
            curl_close($ch);
-
+           echo  $httpCode ;
            return $httpCode  ;
         }
             
