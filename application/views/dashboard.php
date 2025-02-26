@@ -130,143 +130,114 @@
             <div class="row"></div>
           </div>
           <div class="widget-chart p-0">
-            <div id="parSalle" style="padding-right: 30px"></div>
-            <script type="text/javascript">
-              var options = {
-                series: [{
-                  name: 'Terminée',
-                  data: [ <?php                     
-                            for ($i=2018 ; $i<=date('Y')+1 ; $i++  ) { 
-                              foreach($reservationDo as $data)
-                              {
-                                if ($data->yearDate == $i )
-                                {
-                                  echo $data->countRes.',' ;
-                                }
+            
+              <div class="row">
+                 <canvas id="parSalle" style="padding-right: 30px"></canvas>
+              <script type="text/javascript">
+                  document.addEventListener("DOMContentLoaded", function () {
+                      var ctx = document.getElementById('parSalle').getContext('2d');
+
+                      // Données PHP converties en JavaScript
+                      var labels = [ <?php for ($i=2018; $i<=date('Y')+1; $i++) { echo "'$i',"; } ?> ];
+                      
+                      var termineeData = [ <?php                     
+                          for ($i=2018; $i<=date('Y')+1; $i++) { 
+                              foreach ($reservationDo as $data) {
+                                  if ($data->yearDate == $i) {
+                                      echo $data->countRes . ',';
+                                  }
                               } 
-                            }                
-                     ?>
-                  ]
-                },
-                {
-                  name: 'En attente',
-                  data: [ <?php 
-                                                
-                            for ($i=2018 ; $i<=date('Y')+1 ; $i++  ) { 
-                              $t = 0 ; 
-                                foreach($reservationEnAttent as $data)
-                                  {
-                                    if ($data->yearDate == $i )
-                                    {
-                                      echo $data->countRes.',' ;
-                                      $t = 1 ; 
-
-                                    }
+                          } 
+                      ?> ];
+                      
+                      var attenteData = [ <?php 
+                          for ($i=2018; $i<=date('Y')+1; $i++) { 
+                              $t = 0;
+                              foreach ($reservationEnAttent as $data) {
+                                  if ($data->yearDate == $i) {
+                                      echo $data->countRes . ',';
+                                      $t = 1;
                                   }
-                                  if($t==0){ echo "0," ;  }
-                              
-                            }                
-                     ?>
-                  ]
-                },
-                {
-                  name: 'Annulée',
-                  data: [ <?php    
-                                            
-                            for ($i=2018 ; $i<=date('Y')+1 ; $i++  ) { 
-                              $t = 0 ;
-                                foreach($reservationAnnule as $data)
-                                  {
-                                    if ($data->yearDate == $i )
-                                    {
-                                      echo $data->countRes.',' ;
-                                      $t = 1 ;
+                              }
+                              if ($t == 0) { echo "0,"; }
+                          } 
+                      ?> ];
 
-                                    }
+                      var annuleeData = [ <?php    
+                          for ($i=2018; $i<=date('Y')+1; $i++) { 
+                              $t = 0;
+                              foreach ($reservationAnnule as $data) {
+                                  if ($data->yearDate == $i) {
+                                      echo $data->countRes . ',';
+                                      $t = 1;
                                   }
-                                  if($t==0){ echo "0," ;  }
-                              
-                            }                
-                     ?>
-                  ]
-                },
-                ] ,
-                chart: {
-                  height: 580,
-                  type: 'bar',
-                },
-                plotOptions: {
-                  bar: {
-                    borderRadius: 2,
-                    dataLabels: {
-                      position: 'top', // top, center, bottom
-                    },
-                  }
-                },
-                dataLabels: {
-                  enabled: true,
-                  formatter: function(val) {
-                    return val;
-                  },
-                  offsetY: -20,
-                  style: {
-                    fontSize: '12px',
-                    colors: ["#304758", "#FF8C00"]
-                  }
-                },
-                xaxis: {
-                  categories: [ <?php  for ($i=2018 ; $i<=date('Y')+1 ; $i++  ) { echo '"'.$i.'",';}  ?> ],
-                  position: 'buttom',
-                  axisBorder: {
-                    show: true
-                  },
-                  axisTicks: {
-                    show: false
-                  },
-                  crosshairs: {
-                    fill: {
-                      type: 'gradient',
-                      gradient: {
-                        colorFrom: '#D8E3F0',
-                        colorTo: '#BED1E6',
-                        stops: [0, 100],
-                        opacityFrom: 0.4,
-                        opacityTo: 0.5,
-                      }
-                    }
-                  },
-                  tooltip: {
-                    enabled: false,
-                  }
-                },
-                yaxis: {
-                  axisBorder: {
-                    show: false
-                  },
-                  axisTicks: {
-                    show: false,
-                  },
-                  labels: {
-                    show: false,
-                    formatter: function(val) {
-                      return val;
-                    }
-                  }
-                },
-                title: {
-                  text: 'Reservation par année',
-                  floating: false,
-                  offsetY: 0,
-                  align: 'center',
-                  style: {
-                    color: '#444'
-                  }
-                }
-              };
-              var chart = new ApexCharts(document.querySelector("#parSalle"), options);
-              chart.render();
-              console.log(chart);
-            </script>
+                              }
+                              if ($t == 0) { echo "0,"; }
+                          } 
+                      ?> ];
+
+                      // Création du graphe avec Chart.js
+                      var chart = new Chart(ctx, {
+                          type: 'bar',
+                          data: {
+                              labels: labels,
+                              datasets: [
+                                  {
+                                      label: 'Terminée',
+                                      data: termineeData,
+                                      backgroundColor: '#28a745',
+                                      borderColor: '#1e7e34',
+                                      borderWidth: 1
+                                  },
+                                  {
+                                      label: 'En attente',
+                                      data: attenteData,
+                                      backgroundColor: '#ffc107',
+                                      borderColor: '#e0a800',
+                                      borderWidth: 1
+                                  },
+                                  {
+                                      label: 'Annulée',
+                                      data: annuleeData,
+                                      backgroundColor: '#dc3545',
+                                      borderColor: '#c82333',
+                                      borderWidth: 1
+                                  }
+                              ]
+                          },
+                          options: {
+                              responsive: true,
+                              maintainAspectRatio: false,
+                              plugins: {
+                                  title: {
+                                      display: true,
+                                      text: 'Réservations par année',
+                                      font: { size: 18 }
+                                  },
+                                  legend: {
+                                      position: 'top'
+                                  }
+                              },
+                              scales: {
+                                  x: {
+                                      title: {
+                                          display: true,
+                                          text: 'Année'
+                                      }
+                                  },
+                                  y: {
+                                      beginAtZero: true,
+                                      title: {
+                                          display: true,
+                                          text: 'Nombre de réservations'
+                                      }
+                                  }
+                              }
+                          }
+                      });
+                  });
+              </script>
+
           </div>
           <div class="divider mb-0"></div>
           <div class="grid-menu grid-menu-2col">
