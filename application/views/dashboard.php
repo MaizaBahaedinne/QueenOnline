@@ -130,7 +130,7 @@
             <div class="row"></div>
           </div>
           <div class="widget-chart p-0">
-            <canvas id="parSalle" style="padding-right: 30px;padding-left: 30px"></canvas>
+            <canvas id="parSalle" style="padding-right: 30px;padding-left: 30px;max-height:450px ;"></canvas>
               <div class="row">
                  
               <script type="text/javascript">
