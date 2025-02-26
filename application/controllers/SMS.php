@@ -70,8 +70,7 @@ class SMS extends BaseController
            $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE); 
            if ( $httpCode != 200 ) 
            { 
-           return 'Return code is {$httpCode}' 
-           .curl_error($ch); 
+           return 'Return code is ' . $httpCode . ' ' . curl_error($ch); 
            } 
             else  
            { 
@@ -85,16 +84,14 @@ class SMS extends BaseController
           public function sendSMS($myMobile, $mySms)
             { 
                 $mySender = 'Queen park';
-                $myDate = '26/02/2025';
-                $myTime = '19:28';
+                
 
-                $Url_str ="https://app.tunisiesms.tn/Api/Api.aspx?fct=sms&key=MYKEY&mobile=XXXXXXXX&sms=Hello+World&sender=YYYYYYY&date=jj/mm/aaaa&heure=hh:mm:ss";
+                $Url_str ="https://app.tunisiesms.tn/Api/Api.aspx?fct=sms&key=MYKEY&mobile=XXXXXXXXXXX&sms=Hello+World&sender=YYYYYYY";
                                                 
-                $Url_str = str_replace("XXXXXXXX",$myMobile,$Url_str);
+                $Url_str = str_replace("XXXXXXXXXXX",$myMobile,$Url_str);
                 $Url_str = str_replace("Hello+World",$mySms,$Url_str);
                 $Url_str = str_replace("YYYYYYY",$mySender,$Url_str);
-                $Url_str = str_replace("jj/mm/aaaa",$myDate,$Url_str);
-                $Url_str = str_replace("hh:mm:ss",$myTime,$Url_str);
+                
                                                 
                 echo  $this->http_response($Url_str);
             }
