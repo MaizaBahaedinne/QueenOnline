@@ -47,58 +47,55 @@ class SMS extends BaseController
 
 
 
-             function sendSMS($myMobile, $mySms)
-                {
+          
+function sendSMS($myMobile, $mySms)
+{ 
+    $mySender = 'Queen park';
+    $myDate = '26/02/2025';
+    $myTime = '19:28';
 
-                $mySender = 'Queen park';
-                $key = "GuDqqXQAY97z7PP2v9XD4VynAcnYUu/zoxnBn/Y4VNLvuwzVZI/j7eCpkB4DZtoFceCyE/5F5huzCAlvDUb6kNXub5Detypa";
+    $Url_str ="https://app.tunisiesms.tn/Api/Api.aspx?fct=sms&key=MYKEY&mobile=XXXXXXXX&sms=Hello+World&sender=YYYYYYY&date=jj/mm/aaaa&heure=hh:mm:ss";
+                                    
+    $Url_str = str_replace("XXXXXXXX",$myMobile,$Url_str);
+    $Url_str = str_replace("Hello+World",$mySms,$Url_str);
+    $Url_str = str_replace("YYYYYYY",$mySender,$Url_str);
+    $Url_str = str_replace("jj/mm/aaaa",myDate,$Url_str);
+    $Url_str = str_replace("hh:mm:ss",myTime,$Url_str);
+                                    
+    echo http_response($Url_str);
+}
 
-                $Url_str ="https://app.tunisiesms.tn/Api/Api.aspx?fct=sms&key=GuDqqXQAY97z7PP2v9XD4VynAcnYUu/zoxnBn/Y4VNLvuwzVZI/j7eCpkB4DZtoFceCyE/5F5huzCAlvDUb6kNXub5Detypa&mobile=216XXXXXXXX&sms=Hello+World&sender=YYYYYYY";
-
-            $Url_str = str_replace("216XXXXXXXX",$myMobile,$Url_str);
-            $Url_str = str_replace("Hello+World",$mySms,$Url_str);
-            $Url_str = str_replace("YYYYYYY",$mySender,$Url_str);
-
-
-
-                echo $this->http_response($Url_str);
-
-                }
-
-
-                function http_response($url)
-                {
-                    $ch = curl_init();
-
-                    $options = array(
-                        CURLOPT_URL            => $url ,
-                        CURLOPT_RETURNTRANSFER => true,
-                        CURLOPT_HEADER         => false,
-                        CURLOPT_FOLLOWLOCATION => true,
-                        CURLOPT_ENCODING       => "",
-                        CURLOPT_AUTOREFERER    => true,
-                        CURLOPT_CONNECTTIMEOUT => 120,
-                        CURLOPT_TIMEOUT        => 120,
-                        CURLOPT_MAXREDIRS      => 10,
-                        CURLOPT_SSL_VERIFYPEER => false,
-                    );
-                    curl_setopt_array( $ch, $options );
-                    $response = curl_exec($ch);
-                   
-                    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-
-
-                    if ( $httpCode == 200 ){ return 200 ;  }
-                    if ( $httpCode != 200 ){
-                        return "Return code is {$httpCode} \n"
-                            .curl_error($ch);
-                    } else {
-                        echo "<pre>".htmlspecialchars($response)."</pre>";
-                        return $response;
-                    }
-
-                    curl_close($ch);
-                }
+function http_response($url)
+{ 
+   $ch = curl_init(); 
+   $options = array( 
+   CURLOPT_URL            =--> $url , 
+   CURLOPT_RETURNTRANSFER => true, 
+   CURLOPT_HEADER         => false, 
+   CURLOPT_FOLLOWLOCATION => true, 
+   CURLOPT_ENCODING       => '', 
+   CURLOPT_AUTOREFERER    => true, 
+   CURLOPT_CONNECTTIMEOUT => 120, 
+   CURLOPT_TIMEOUT        => 120,  
+   CURLOPT_MAXREDIRS      => 10,  
+   CURLOPT_SSL_VERIFYPEER => false, 
+   ); 
+   curl_setopt_array( $ch, $options );  
+   $response = curl_exec($ch); 
+   $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE); 
+   if ( $httpCode != 200 ) 
+   { 
+   return 'Return code is {$httpCode}' 
+   .curl_error($ch); 
+   } 
+    else  
+   { 
+   return $response; 
+    } 
+   curl_close($ch);
+}
+            ?>
+        
                     
 
 
