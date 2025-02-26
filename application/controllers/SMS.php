@@ -53,8 +53,8 @@ class SMS extends BaseController
         public function http_response($url)
         { 
 
-          { 
-    echo "Testing URL: " . $url . "<br>";
+          
+            echo "Testing URL: " . $url . "<br>";
 
             $ch = curl_init(); 
             $options = array( 
