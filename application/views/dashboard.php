@@ -115,7 +115,7 @@
           <div class="divider mb-0 bg-dark"></div>
         </div>
       </div>
-      <div class="col-lg-8 col-xl-8">
+      <div class="col-lg-12 col-xl-12">
         <div class="mb-3 card">
           <div class="card-header-tab card-header">
             <div class="card-header-title">
@@ -130,9 +130,9 @@
             <div class="row"></div>
           </div>
           <div class="widget-chart p-0">
-            <canvas id="parSalle" style="padding-right: 30px;padding-left: 30px;max-height:450px ;"></canvas>
+            
               <div class="row">
-                 
+                 <canvas id="parSalle" style="padding-right: 30px;padding-left: 30px;max-height:450px ;"></canvas>
               <script type="text/javascript">
                   document.addEventListener("DOMContentLoaded", function () {
                       var ctx = document.getElementById('parSalle').getContext('2d');
@@ -267,6 +267,7 @@
           </div>
         </div>
       </div>
+    </div>
       <div class="col-lg-4">
         <div class="mb-3 card">
           <div class="card-header-tab card-header">
