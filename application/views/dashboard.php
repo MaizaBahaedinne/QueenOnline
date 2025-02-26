@@ -286,10 +286,7 @@
           </div>
           <div class="widget-chart p-0">
             <canvas id="Salle"></canvas>
-          </div>
-          <div class="divider mb-0"></div>
-        </div>
-        <script type="text/javascript">
+            <script type="text/javascript">
             document.addEventListener("DOMContentLoaded", function () {
                 var ctx = document.getElementById('Salle').getContext('2d');
 
@@ -326,6 +323,10 @@
                 });
             });
         </script>
+          </div>
+          <div class="divider mb-0"></div>
+        </div>
+        
 
 
           <div class="mb-3 card">
@@ -411,6 +412,7 @@
         </div>
       </div>
   
+    <div class="row">
       <div class="col-md-4">
         <div class="mb-3 card">
           <div class="card-header-tab card-header">
@@ -553,4 +555,5 @@
         </div>
       </div>
     </div>
+    </divv>
   </div
