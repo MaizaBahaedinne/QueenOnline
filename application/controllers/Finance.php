@@ -43,7 +43,7 @@ class Finance extends BaseController
             $data['financeRecords'] = $this->finance_model->paiemenentListing();
             
 
-            $this->global['pageTitle'] = 'User Listing';
+            $this->global['pageTitle'] = 'Finance Salle';
             $this->loadViews("finance/view", $this->global, $data, NULL);
     }
 
