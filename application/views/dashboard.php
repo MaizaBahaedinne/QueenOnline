@@ -132,7 +132,7 @@
           
             
               
-                 <canvas id="parSalle" style="padding-right: 30px;padding-left: 30px;height:750px ;"></canvas>
+                 <canvas id="parSalle" style="padding-right: 30px;padding-left: 30px;height:550px ;"></canvas>
               <script type="text/javascript">
                   document.addEventListener("DOMContentLoaded", function () {
                       var ctx = document.getElementById('parSalle').getContext('2d');
