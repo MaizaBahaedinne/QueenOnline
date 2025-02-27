@@ -275,7 +275,7 @@
       <div class="row"></div>
     </div>
     <div class="widget-chart p-0">
-      <canvas id="Salle"></canvas>
+      <canvas id="Salle" style=" width:'80%' "></canvas>
 
       <script type="text/javascript">
           document.addEventListener("DOMContentLoaded", function () {
@@ -333,7 +333,7 @@
       <div class="row"></div>
     </div>
     <div class="widget-chart p-0">
-      <canvas id="Types"></canvas>
+      <canvas id="Types" style=" width:'80%' " ></canvas>
 
       <script type="text/javascript">
           document.addEventListener("DOMContentLoaded", function () {
