@@ -130,51 +130,107 @@
       </div>
       <div class="pt-2 pb-0 card-body">
         <div class="row">
-          <div id="parSalle" style="width: 100%; height: 550px;"></div>
-          <script type="text/javascript">
-            google.charts.load("current", {packages:["corechart"]});
-            google.charts.setOnLoadCallback(drawChart);
-            
-            function drawChart() {
-                var data = google.visualization.arrayToDataTable([
-                    ['Année', 'Terminée', 'En attente', 'Annulée'],
-                    <?php
-              for ($i=2018; $i<=date('Y')+1; $i++) {
-                  $terminee = 0; $attente = 0; $annulee = 0;
-              
-                  foreach ($reservationDo as $data) {
-                      if ($data->yearDate == $i) { $terminee = $data->countRes; }
-                  }
-                  foreach ($reservationEnAttent as $data) {
-                      if ($data->yearDate == $i) { $attente = $data->countRes; }
-                  }
-                  foreach ($reservationAnnule as $data) {
-                      if ($data->yearDate == $i) { $annulee = $data->countRes; }
-                  }
-              
-                  echo "['$i', $terminee, $attente, $annulee],";
-              }
-              ?>
-                ]);
-            
-                var options = {
-                    title: 'Réservations par année',
-                    chartArea: { width: '80%', height: '70%' },
-                    hAxis: {
-                        title: 'Année',
-                        minValue: 2018
+        <canvas id="parSalle" style="width: 100%; height: 550px;"></canvas>
+
+        <script type="text/javascript">
+            document.addEventListener("DOMContentLoaded", function () {
+                var ctx = document.getElementById('parSalle').getContext('2d');
+
+                // Données PHP converties en JavaScript
+                var labels = [ <?php for ($i=2018; $i<=date('Y')+1; $i++) { echo "'$i',"; } ?> ];
+                
+                var termineeData = [ <?php                     
+                    for ($i=2018; $i<=date('Y')+1; $i++) { 
+                        $terminee = 0;
+                        foreach ($reservationDo as $data) {
+                            if ($data->yearDate == $i) { $terminee = $data->countRes; }
+                        }
+                        echo "$terminee,";
+                    } 
+                ?> ];
+                
+                var attenteData = [ <?php 
+                    for ($i=2018; $i<=date('Y')+1; $i++) { 
+                        $attente = 0;
+                        foreach ($reservationEnAttent as $data) {
+                            if ($data->yearDate == $i) { $attente = $data->countRes; }
+                        }
+                        echo "$attente,";
+                    } 
+                ?> ];
+
+                var annuleeData = [ <?php    
+                    for ($i=2018; $i<=date('Y')+1; $i++) { 
+                        $annulee = 0;
+                        foreach ($reservationAnnule as $data) {
+                            if ($data->yearDate == $i) { $annulee = $data->countRes; }
+                        }
+                        echo "$annulee,";
+                    } 
+                ?> ];
+
+                // Création du graphe avec Chart.js
+                var chart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: labels,
+                        datasets: [
+                            {
+                                label: 'Terminée',
+                                data: termineeData,
+                                backgroundColor: '#28a745',
+                                borderColor: '#1e7e34',
+                                borderWidth: 1
+                            },
+                            {
+                                label: 'En attente',
+                                data: attenteData,
+                                backgroundColor: '#ffc107',
+                                borderColor: '#e0a800',
+                                borderWidth: 1
+                            },
+                            {
+                                label: 'Annulée',
+                                data: annuleeData,
+                                backgroundColor: '#dc3545',
+                                borderColor: '#c82333',
+                                borderWidth: 1
+                            }
+                        ]
                     },
-                    vAxis: {
-                        title: 'Nombre de réservations'
-                    },
-                    legend: { position: 'top' },
-                    backgroundColor: 'transparent'
-                };
-            
-                var chart = new google.visualization.ColumnChart(document.getElementById('parSalle'));
-                chart.draw(data, options);
-            }
-          </script>
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: 'Réservations par année',
+                                font: { size: 18 }
+                            },
+                            legend: {
+                                position: 'top'
+                            }
+                        },
+                        scales: {
+                            x: {
+                                title: {
+                                    display: true,
+                                    text: 'Année'
+                                }
+                            },
+                            y: {
+                                beginAtZero: true,
+                                title: {
+                                    display: true,
+                                    text: 'Nombre de réservations'
+                                }
+                            }
+                        }
+                    }
+                });
+            });
+        </script>
+
         </div>
         <!--  <div class="divider mb-0"></div>
           <div class="grid-menu grid-menu-2col">
@@ -219,33 +275,47 @@
       <div class="row"></div>
     </div>
     <div class="widget-chart p-0">
-      <div id="Salle" style="width: 100%; height: 500px;"></div>
+      <canvas id="Salle"></canvas>
+
       <script type="text/javascript">
-        google.charts.load("current", {packages:["corechart"]});
-        google.charts.setOnLoadCallback(drawChart);
-        
-        function drawChart() {
-            var data = google.visualization.arrayToDataTable([
-                ['Salle', 'Nombre'],
-                <?php
-          foreach ($SalleRecords as $data) {
-              echo "['".$data->nom."', ".$data->COUNT."],";
-          }
-          ?>
-            ]);
-        
-            var options = {
-                title: 'Répartition des Salles',
-                pieHole: 0.4, // Donut chart
-                chartArea: { width: '90%', height: '80%' },
-                legend: { position: 'bottom' },
-                backgroundColor: 'transparent'
-            };
-        
-            var chart = new google.visualization.PieChart(document.getElementById('Salle'));
-            chart.draw(data, options);
-        }
+          document.addEventListener("DOMContentLoaded", function () {
+              var ctx = document.getElementById('Salle').getContext('2d');
+
+              // Données PHP converties en JavaScript
+              var labels = [ <?php foreach($SalleRecords as $data) { echo '"'.$data->nom.'",'; } ?> ];
+              var dataValues = [ <?php foreach($SalleRecords as $data) { echo $data->COUNT.','; } ?> ];
+
+              var chart = new Chart(ctx, {
+                  type: 'doughnut', // Change en 'pie' si tu veux un pie classique
+                  data: {
+                      labels: labels,
+                      datasets: [{
+                          data: dataValues,
+                          backgroundColor: [
+                              '#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40'
+                          ],
+                          borderColor: '#ffffff',
+                          borderWidth: 2
+                      }]
+                  },
+                  options: {
+                      responsive: true,
+                      maintainAspectRatio: false,
+                      plugins: {
+                          title: {
+                              display: true,
+                              text: 'Répartition des Salles',
+                              font: { size: 18 }
+                          },
+                          legend: {
+                              position: 'bottom'
+                          }
+                      }
+                  }
+              });
+          });
       </script>
+
     </div>
     <div class="divider mb-0"></div>
   </div>
@@ -263,33 +333,47 @@
       <div class="row"></div>
     </div>
     <div class="widget-chart p-0">
-      <div id="Types" style="width: 100%; height: 500px;"></div>
+      <canvas id="Types"></canvas>
+
       <script type="text/javascript">
-        google.charts.load("current", {packages:["corechart"]});
-        google.charts.setOnLoadCallback(drawChart);
-        
-        function drawChart() {
-            var data = google.visualization.arrayToDataTable([
-                ['Type', 'Nombre'],
-                <?php
-          foreach ($TypesRecords as $data) {
-              echo "['".$data->type."', ".$data->countTypes."],";
-          }
-          ?>
-            ]);
-        
-            var options = {
-                title: 'Répartition des Types',
-                pieHole: 0.4, // Donut chart (modifier à 0 pour un pie normal)
-                chartArea: { width: '90%', height: '80%' },
-                legend: { position: 'bottom' },
-                backgroundColor: 'transparent'
-            };
-        
-            var chart = new google.visualization.PieChart(document.getElementById('Types'));
-            chart.draw(data, options);
-        }
+          document.addEventListener("DOMContentLoaded", function () {
+              var ctx = document.getElementById('Types').getContext('2d');
+
+              // Données PHP converties en JavaScript
+              var labels = [ <?php foreach($TypesRecords as $data) { echo '"'.$data->type.'",'; } ?> ];
+              var dataValues = [ <?php foreach($TypesRecords as $data) { echo $data->countTypes.','; } ?> ];
+
+              var chart = new Chart(ctx, {
+                  type: 'doughnut', // Change en 'pie' si tu veux un pie classique
+                  data: {
+                      labels: labels,
+                      datasets: [{
+                          data: dataValues,
+                          backgroundColor: [
+                              '#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40'
+                          ],
+                          borderColor: '#ffffff',
+                          borderWidth: 2
+                      }]
+                  },
+                  options: {
+                      responsive: true,
+                      maintainAspectRatio: false,
+                      plugins: {
+                          title: {
+                              display: true,
+                              text: 'Répartition des Types',
+                              font: { size: 18 }
+                          },
+                          legend: {
+                              position: 'bottom'
+                          }
+                      }
+                  }
+              });
+          });
       </script>
+
     </div>
     <div class="divider mb-0"></div>
   </div>
