@@ -60,13 +60,13 @@
                                                         <div class="form-row">
                                                             <div class="col-sm-6">
                                                                 <div class="form-group">
-                                                                    <label class="control-label">Salle : <?php echo $ ?> </label>
+                                                                    <label class="control-label">Salle : </label>
                                                                     
                                                                 </div>
                                                             </div>   
                                                             <div class="col-sm-6">
                                                                 <div class="form-group">
-                                                                    <label class="control-label">Date : <?php echo $ ?> </label>
+                                                                    <label class="control-label">Date :  </label>
                                                                     
                                                                 </div>
                                                             </div>                                                            
