@@ -80,13 +80,13 @@
                                                         <div class="form-row">
                                                             <div class="col-sm-6">
                                                                 <div class="form-group">
-                                                                    <label class="control-label">Salle : <?php echo $record->salle  ?></label>
+                                                                    <label class="control-label">Salle : <?php echo $projectInfo->salle  ?></label>
                                                                     
                                                                 </div>
                                                             </div>   
                                                             <div class="col-sm-6">
                                                                 <div class="form-group">
-                                                                    <label class="control-label">Date : <?php  echo date_format(date_create($record->dateFin)  , 'd/m/20y');   ?> </label>
+                                                                    <label class="control-label">Date : <?php  echo date_format(date_create($projectInfo->dateFin)  , 'd/m/20y');   ?> </label>
                                                                     
                                                                 </div>
                                                             </div>                                                            
