@@ -158,15 +158,15 @@
 
                         var options = {
                             title: 'Réservations par année',
-                            chartArea: { width: '80%', height: '70%' },
+                            chartArea: { width: '100%', height: '70%' },
                             hAxis: {
                                 title: 'Année',
                                 minValue: 2018
                             },
                             vAxis: {
-                                title: 'Nombre de réservations'
+                                title: ''
                             },
-                            legend: { position: 'top' },
+                            legend: { position: 'buttom' },
                             backgroundColor: 'transparent'
                         };
 
