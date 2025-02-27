@@ -1,30 +1,66 @@
-<style>
-    .rating {
-    display: flex;
-    direction: row;
-    font-size: 30px;
-    }
-    .rating input {
-    display: none;
-    }
-    .rating label {
-    cursor: pointer;
-    color: #ddd;
-    transition: color 0.2s;
-    }
-    .rating input:checked ~ label {
-    color: #ffcc00; /* Or couleur dorée */
-    }
-    .rating input:checked + label {
-    color: #ffcc00;
-    }
-    .rating input:hover ~ label {
-    color: #ffcc00;
-    }
-    .rating input:checked ~ label:hover {
-    color: #ffcc00;
-    }
-</style>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .rating-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .rating {
+            display: inline-flex;
+            flex-direction: row-reverse;
+            justify-content: center;
+        }
+
+        .rating input {
+            display: none;
+        }
+
+        .rating label {
+            font-size: 40px;
+            color: #ddd;
+            cursor: pointer;
+            transition: color 0.2s ease, transform 0.2s ease;
+            margin: 0 5px;
+        }
+
+        .rating label:hover,
+        .rating label:hover ~ label {
+            color: #ffcc00;
+            transform: scale(1.2);
+        }
+
+        .rating input:checked ~ label {
+            color: #ffcc00;
+        }
+
+        .rating input:checked + label {
+            color: #ffcc00;
+        }
+
+        .rating-container p {
+            font-size: 18px;
+            margin-top: 20px;
+            color: #555;
+        }
+    </style>
 <div class="app-main__inner">
     <div class="app-page-title">
         <div class="page-title-wrapper">
@@ -89,30 +125,33 @@
                                                     <div class="col-sm-6">
                                                         <div class="form-group">
                                                             <label class="control-label">La salle</label><br>
-                                                            <div class="rating1">
-                                                                <input type="radio" name="rating" id="star1" value="1">
-                                                                <label for="star1">&#9733;</label>
-                                                                <input type="radio" name="rating" id="star2" value="2">
-                                                                <label for="star2">&#9733;</label>
-                                                                <input type="radio" name="rating" id="star3" value="3">
-                                                                <label for="star3">&#9733;</label>
-                                                                <input type="radio" name="rating" id="star4" value="4">
-                                                                <label for="star4">&#9733;</label>
-                                                                <input type="radio" name="rating" id="star5" value="5">
-                                                                <label for="star5">&#9733;</label>
-                                                            </div>
-                                                            <p id="rating-result1">Vous n'avez pas encore noté.</p>
-                                                            <script>
-                                                                const stars = document.querySelectorAll('.rating1 input');
-                                                                const resultText = document.getElementById('rating-result1');
-                                                                
-                                                                stars.forEach(star => {
-                                                                    star.addEventListener('change', function() {
-                                                                        const ratingValue = this.value;
-                                                                        resultText.textContent = `Vous avez donné une note de ${ratingValue} étoile${ratingValue > 1 ? 's' : ''}.`;
+                                                            <<div class="rating-container">
+                                                                <h2>Notez la salle</h2>
+                                                                <div class="rating">
+                                                                    <input type="radio" name="rating" id="star5" value="5">
+                                                                    <label for="star5">&#9733;</label>
+                                                                    <input type="radio" name="rating" id="star4" value="4">
+                                                                    <label for="star4">&#9733;</label>
+                                                                    <input type="radio" name="rating" id="star3" value="3">
+                                                                    <label for="star3">&#9733;</label>
+                                                                    <input type="radio" name="rating" id="star2" value="2">
+                                                                    <label for="star2">&#9733;</label>
+                                                                    <input type="radio" name="rating" id="star1" value="1">
+                                                                    <label for="star1">&#9733;</label>
+                                                                </div>
+                                                                <p id="rating-result">Vous n'avez pas encore noté.</p>
+                                                                <script>
+                                                                    const stars = document.querySelectorAll('.rating input');
+                                                                    const resultText = document.getElementById('rating-result');
+
+                                                                    stars.forEach(star => {
+                                                                        star.addEventListener('change', function() {
+                                                                            const ratingValue = this.value;
+                                                                            resultText.textContent = `Vous avez donné une note de ${ratingValue} étoile${ratingValue > 1 ? 's' : ''}.`;
+                                                                        });
                                                                     });
-                                                                });
-                                                            </script>
+                                                                </script>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-6">
