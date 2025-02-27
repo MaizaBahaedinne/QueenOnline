@@ -164,9 +164,9 @@
                                 minValue: 2018
                             },
                             vAxis: {
-                                title: ''
+                                title: 'Nombre de réservations'
                             },
-                            legend: { position: 'buttom' },
+                            legend: { position: 'top' },
                             backgroundColor: 'transparent'
                         };
 
