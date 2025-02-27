@@ -232,7 +232,7 @@
         </script>
 
         </div>
-        <!--  <div class="divider mb-0"></div>
+         <div class="divider mb-0"></div>
           <div class="grid-menu grid-menu-2col">
             <div class="no-gutters row"> <?php foreach ($ReservationPerYearRecords as $data ) { if ($data->YEAR > 0 ){  ?> <div class="col-md-6 ">
                 <div class="widget-content mt-2 ">
@@ -257,7 +257,7 @@
                   </div>
                 </div>
               </div> <?php } } ?> </div>
-          </div>-->
+          </div>
       </div>
     </div>
   </div>
