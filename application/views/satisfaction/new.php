@@ -1,3 +1,40 @@
+    <style>
+        .rating {
+            display: flex;
+            direction: row;
+            font-size: 30px;
+        }
+
+        .rating input {
+            display: none;
+        }
+
+        .rating label {
+            cursor: pointer;
+            color: #ddd;
+            transition: color 0.2s;
+        }
+
+        .rating input:checked ~ label {
+            color: #ffcc00; /* Or couleur dorée */
+        }
+
+        .rating input:checked + label {
+            color: #ffcc00;
+        }
+
+        .rating input:hover ~ label {
+            color: #ffcc00;
+        }
+
+        .rating input:checked ~ label:hover {
+            color: #ffcc00;
+        }
+    </style>
+
+
+
+
 <div id="LoadingDiv" style="left: -200px;">
     <div>
         <img src="images/loading.gif" title="Loading" />
@@ -37,36 +74,19 @@
                                     <div class="main-card mb-3 card">
                                         <div class="card-body">
                                             <div id="smartwizard">
-                                                <ul class="forms-wizard">
-                                                    <li>
-                                                        <a href="#step-1" disabled>
-                                                            <em><i class="fa fa-user"></i></em><span>Client</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#step-2" >
-                                                            <em><i class="fa fa-calendar" aria-hidden="true"></i></em><span>Reservation</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#step-3" >
-                                                            <em><i class="fa fa-file"></i></em><span>Verification</span>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                                <br><br>
+                                            
                                                 <div class="form-wizard-content">
                                                     <div id="step-1">
                                                         <div class="form-row">
                                                             <div class="col-sm-6">
                                                                 <div class="form-group">
-                                                                    <label class="control-label">Salle : </label>
+                                                                    <label class="control-label">Salle : <?php echo $record->salle  ?></label>
                                                                     
                                                                 </div>
                                                             </div>   
                                                             <div class="col-sm-6">
                                                                 <div class="form-group">
-                                                                    <label class="control-label">Date :  </label>
+                                                                    <label class="control-label">Date : <?php  echo date_format(date_create($record->dateFin)  , 'd/m/20y');   ?> </label>
                                                                     
                                                                 </div>
                                                             </div>                                                            
@@ -74,13 +94,13 @@
                                                             <div class="col-sm-6">
                                                                 <div class="form-group">
                                                                     <label class="control-label">Remarque pour l'entré</label>
-                                                                    <textarea></textarea>
+                                                                    <textarea class="form-control" name="entre" rows="20"></textarea>
                                                                 </div>
                                                             </div> 
                                                             <div class="col-sm-6">
                                                                 <div class="form-group">
                                                                     <label class="control-label">Remarque pour le sortie</label>
-                                                                    <textarea></textarea>
+                                                                    <textarea class="form-control" name="sortie" rows="20"></textarea>
                                                                 </div>
                                                             </div>       
 
@@ -93,14 +113,60 @@
 
                                                             <div class="col-sm-6">
                                                                 <div class="form-group">
-                                                                    <label class="control-label">La salle</label>
-                                                                    
+                                                                    <label class="control-label">La salle</label><br>
+                                                                    <div class="rating1">
+                                                                        <input type="radio" name="rating" id="star1" value="1">
+                                                                        <label for="star1">&#9733;</label>
+                                                                        <input type="radio" name="rating" id="star2" value="2">
+                                                                        <label for="star2">&#9733;</label>
+                                                                        <input type="radio" name="rating" id="star3" value="3">
+                                                                        <label for="star3">&#9733;</label>
+                                                                        <input type="radio" name="rating" id="star4" value="4">
+                                                                        <label for="star4">&#9733;</label>
+                                                                        <input type="radio" name="rating" id="star5" value="5">
+                                                                        <label for="star5">&#9733;</label>
+                                                                    </div>
+                                                                    <p id="rating-result1">Vous n'avez pas encore noté.</p>
+                                                                    <script>
+                                                                        const stars = document.querySelectorAll('.rating1 input');
+                                                                        const resultText = document.getElementById('rating-result1');
+
+                                                                        stars.forEach(star => {
+                                                                            star.addEventListener('change', function() {
+                                                                                const ratingValue = this.value;
+                                                                                resultText.textContent = `Vous avez donné une note de ${ratingValue} étoile${ratingValue > 1 ? 's' : ''}.`;
+                                                                            });
+                                                                        });
+                                                                    </script>
                                                                 </div>
                                                             </div> 
                                                             <div class="col-sm-6">
                                                                 <div class="form-group">
                                                                     <label class="control-label">Service</label>
-                                                                    
+                                                                    <div class="rating1">
+                                                                        <input type="radio" name="rating" id="star1" value="1">
+                                                                        <label for="star1">&#9733;</label>
+                                                                        <input type="radio" name="rating" id="star2" value="2">
+                                                                        <label for="star2">&#9733;</label>
+                                                                        <input type="radio" name="rating" id="star3" value="3">
+                                                                        <label for="star3">&#9733;</label>
+                                                                        <input type="radio" name="rating" id="star4" value="4">
+                                                                        <label for="star4">&#9733;</label>
+                                                                        <input type="radio" name="rating" id="star5" value="5">
+                                                                        <label for="star5">&#9733;</label>
+                                                                    </div>
+                                                                    <p id="rating-result1">Vous n'avez pas encore noté.</p>
+                                                                    <script>
+                                                                        const stars = document.querySelectorAll('.rating1 input');
+                                                                        const resultText = document.getElementById('rating-result1');
+
+                                                                        stars.forEach(star => {
+                                                                            star.addEventListener('change', function() {
+                                                                                const ratingValue = this.value;
+                                                                                resultText.textContent = `Vous avez donné une note de ${ratingValue} étoile${ratingValue > 1 ? 's' : ''}.`;
+                                                                            });
+                                                                        });
+                                                                    </script>
                                                                 </div>
                                                             </div> 
 
