@@ -33,8 +33,8 @@
                     <i class="pe-7s-medal icon-gradient bg-tempting-azure"></i>
                 </div>
                 <div>
-                    Reservation de salle
-                    <div class="page-title-subheading">Les reservations</div>
+                    Satisfaction  de salle
+                    <div class="page-title-subheading">satisfacation</div>
                 </div>
             </div>
             <div class="page-title-actions">
@@ -56,12 +56,17 @@
                                                 <div class="form-row">
                                                     <div class="col-sm-6">
                                                         <div class="form-group">
-                                                            <label class="control-label">Salle : <?php echo $projectInfo->salle  ?></label>
+                                                            <label class="control-label">Lieu : <?php echo $projectInfo->salle  ?></label>
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-6">
                                                         <div class="form-group">
                                                             <label class="control-label">Date : <?php  echo date_format(date_create($projectInfo->dateFin)  , 'd/m/20y');   ?> </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12">
+                                                        <div class="form-group">
+                                                            <label class="control-label"><?php echo $projectInfo->type ?> : <?php echo $projectInfo->titre ?> </label>
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-6">
@@ -76,9 +81,9 @@
                                                             <textarea class="form-control" name="sortie" rows="20"></textarea>
                                                         </div>
                                                     </div>
-                                                    <div class="col-sm-6">
+                                                    <div class="col-sm-12">
                                                         <div class="form-group">
-                                                            <label class="control-label">Evaluation</label>
+                                                            <h4 class="control-label">Evaluation</h4>
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-6">
@@ -113,7 +118,7 @@
                                                     <div class="col-sm-6">
                                                         <div class="form-group">
                                                             <label class="control-label">Service</label>
-                                                            <div class="rating1">
+                                                            <div class="rating2">
                                                                 <input type="radio" name="rating" id="star1" value="1">
                                                                 <label for="star1">&#9733;</label>
                                                                 <input type="radio" name="rating" id="star2" value="2">
@@ -125,10 +130,10 @@
                                                                 <input type="radio" name="rating" id="star5" value="5">
                                                                 <label for="star5">&#9733;</label>
                                                             </div>
-                                                            <p id="rating-result1">Vous n'avez pas encore noté.</p>
+                                                            <p id="rating-result2">Vous n'avez pas encore noté.</p>
                                                             <script>
-                                                                const stars = document.querySelectorAll('.rating1 input');
-                                                                const resultText = document.getElementById('rating-result1');
+                                                                const stars = document.querySelectorAll('.rating2 input');
+                                                                const resultText = document.getElementById('rating-result2');
                                                                 
                                                                 stars.forEach(star => {
                                                                     star.addEventListener('change', function() {
@@ -141,7 +146,8 @@
                                                     </div>
                                                     <div class="col-sm-12">
                                                         <div class="form-group">
-                                                            <label class="control-label">Reclamation</label>
+                                                            <label class="control-label">Réclamation</label>
+                                                            <textarea class="form-control" name="Reclamation" rows="20"></textarea>
                                                         </div>
                                                     </div>
                                                 </div>
