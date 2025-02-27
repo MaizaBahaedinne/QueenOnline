@@ -208,7 +208,7 @@
     </div>
   </div>
 
-      <div class="row">
+
         <div class="col-lg-4 card">
           <div class="card-header-tab card-header">
             <div class="card-header-title">
@@ -256,8 +256,6 @@
           </div>
           <div class="divider mb-0"></div>
         </div>
-        
-
 
         <div class="col-lg-4 card">
           <div class="card-header-tab card-header">
@@ -306,8 +304,6 @@
           <div class="divider mb-0"></div>
         </div>
 
-        
-
         <div class="col-lg-4 card">
           <div class="card-header-tab card-header">
             <div class="card-header-title">
@@ -341,9 +337,9 @@
           </div>
           <div class="divider mb-0"></div>
         </div>
-      </div>
+     
   
-    <div class="row">
+  
       <div class="col-md-4">
         <div class="mb-3 card">
           <div class="card-header-tab card-header">
@@ -485,6 +481,6 @@
           <div class="divider mb-0"></div>
         </div>
       </div>
+  
     </div>
-    </divv>
   </div
