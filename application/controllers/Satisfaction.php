@@ -47,8 +47,8 @@ class Satisfaction extends BaseController
     {
             $data['Packs'] = $this->photographe_model->Packs();
             $data['projectInfo'] = $this->reservation_model->ReservationInfo($reservationId);
-            $this->global['pageTitle'] = 'Clients';
-            $this->loadViews("photographe/new", $this->global, $data, NULL);
+            $this->global['pageTitle'] = 'Satisfaction';
+            $this->loadViews("satisfaction/new", $this->global, $data, NULL);
     }
 
       /**
