@@ -158,7 +158,7 @@
 
                         var options = {
                             title: 'Réservations par année',
-                            chartArea: { width: '100%', height: '70%' },
+                            chartArea: { width: '80%', height: '70%' },
                             hAxis: {
                                 title: 'Année',
                                 minValue: 2018
