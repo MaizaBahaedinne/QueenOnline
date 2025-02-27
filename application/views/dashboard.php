@@ -208,8 +208,8 @@
     </div>
   </div>
 
-      <div class="col-lg-12">
-        <div class="mb-3 card">
+      <div class="row">
+        <div class="col-lg-4 card">
           <div class="card-header-tab card-header">
             <div class="card-header-title">
               <i class="header-icon lnr-rocket icon-gradient bg-tempting-azure"></i> Reservation Par Salle ( <?php $year = date("Y"); echo $year; ?>)
@@ -259,7 +259,7 @@
         
 
 
-          <div class="mb-3 card">
+        <div class="col-lg-4 card">
           <div class="card-header-tab card-header">
             <div class="card-header-title">
               <i class="header-icon lnr-rocket icon-gradient bg-tempting-azure"></i> Reservation Par type ( <?php $year = date("Y"); echo $year; ?>)
@@ -308,7 +308,7 @@
 
         
 
-        <div class="mb-3 card">
+        <div class="col-lg-4 card">
           <div class="card-header-tab card-header">
             <div class="card-header-title">
               <i class="header-icon lnr-rocket icon-gradient bg-tempting-azure"></i> Statistique par Employée
