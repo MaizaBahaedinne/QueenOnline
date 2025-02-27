@@ -208,7 +208,7 @@
     </div>
   </div>
 
-      <div class="col-lg-4">
+      <div class="col-lg-12">
         <div class="mb-3 card">
           <div class="card-header-tab card-header">
             <div class="card-header-title">
