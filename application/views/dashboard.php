@@ -117,7 +117,7 @@
       <div class="divider mb-0 bg-dark"></div>
     </div>
   </div>
-  <div class="col-lg-12 col-xl-12">
+  <div class="col-lg-8 col-xl-8">
     <div class="mb-3 card">
       <div class="card-header-tab card-header">
         <div class="card-header-title">
@@ -261,158 +261,161 @@
       </div>
     </div>
   </div>
-  <div class="col-lg-4 card">
-    <div class="card-header-tab card-header">
-      <div class="card-header-title">
-        <i class="header-icon lnr-rocket icon-gradient bg-tempting-azure"></i> Reservation Par Salle ( <?php $year = date("Y"); echo $year; ?>)
+
+  <div class="col-lg-4 " >
+    <div class="mb-3 card">
+      <div class="card-header-tab card-header">
+        <div class="card-header-title">
+          <i class="header-icon lnr-rocket icon-gradient bg-tempting-azure"></i> Reservation Par Salle ( <?php $year = date("Y"); echo $year; ?>)
+        </div>
+        <div class="btn-actions-pane-right text-capitalize">
+          <a class="btn-wide btn-outline-2x btn btn-outline-primary btn-sm" href="
+            <?php echo base_url() ?>Reservation">Voir tout </a>
+        </div>
       </div>
-      <div class="btn-actions-pane-right text-capitalize">
-        <a class="btn-wide btn-outline-2x btn btn-outline-primary btn-sm" href="
-          <?php echo base_url() ?>Reservation">Voir tout </a>
+      <div class="pt-2 pb-0 card-body">
+        <div class="row"></div>
       </div>
-    </div>
-    <div class="pt-2 pb-0 card-body">
-      <div class="row"></div>
-    </div>
-    <div class="widget-chart p-0">
-      <canvas id="Salle" style=" width:'80%' "></canvas>
+      <div class="widget-chart p-0">
+        <canvas id="Salle" style=" width:'80%' "></canvas>
 
-      <script type="text/javascript">
-          document.addEventListener("DOMContentLoaded", function () {
-              var ctx = document.getElementById('Salle').getContext('2d');
+        <script type="text/javascript">
+            document.addEventListener("DOMContentLoaded", function () {
+                var ctx = document.getElementById('Salle').getContext('2d');
 
-              // Données PHP converties en JavaScript
-              var labels = [ <?php foreach($SalleRecords as $data) { echo '"'.$data->nom.'",'; } ?> ];
-              var dataValues = [ <?php foreach($SalleRecords as $data) { echo $data->COUNT.','; } ?> ];
+                // Données PHP converties en JavaScript
+                var labels = [ <?php foreach($SalleRecords as $data) { echo '"'.$data->nom.'",'; } ?> ];
+                var dataValues = [ <?php foreach($SalleRecords as $data) { echo $data->COUNT.','; } ?> ];
 
-              var chart = new Chart(ctx, {
-                  type: 'doughnut', // Change en 'pie' si tu veux un pie classique
-                  data: {
-                      labels: labels,
-                      datasets: [{
-                          data: dataValues,
-                          backgroundColor: [
-                              '#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40'
-                          ],
-                          borderColor: '#ffffff',
-                          borderWidth: 2
-                      }]
-                  },
-                  options: {
-                      responsive: true,
-                      maintainAspectRatio: false,
-                      plugins: {
-                          title: {
-                              display: true,
-                              text: 'Répartition des Salles',
-                              font: { size: 18 }
-                          },
-                          legend: {
-                              position: 'bottom'
-                          }
-                      }
-                  }
-              });
-          });
-      </script>
+                var chart = new Chart(ctx, {
+                    type: 'doughnut', // Change en 'pie' si tu veux un pie classique
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            data: dataValues,
+                            backgroundColor: [
+                                '#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40'
+                            ],
+                            borderColor: '#ffffff',
+                            borderWidth: 2
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: 'Répartition des Salles',
+                                font: { size: 18 }
+                            },
+                            legend: {
+                                position: 'bottom'
+                            }
+                        }
+                    }
+                });
+            });
+        </script>
 
-    </div>
-    <div class="divider mb-0"></div>
-  </div>
-  <div class="col-lg-4 card">
-    <div class="card-header-tab card-header">
-      <div class="card-header-title">
-        <i class="header-icon lnr-rocket icon-gradient bg-tempting-azure"></i> Reservation Par type ( <?php $year = date("Y"); echo $year; ?>)
       </div>
-      <div class="btn-actions-pane-right text-capitalize">
-        <a class="btn-wide btn-outline-2x btn btn-outline-primary btn-sm" href="
-          <?php echo base_url() ?>Reservation">Voir tout </a>
+      <div class="divider mb-0"></div>
+    </div>
+    <div class="mb-3 card">
+      <div class="card-header-tab card-header">
+        <div class="card-header-title">
+          <i class="header-icon lnr-rocket icon-gradient bg-tempting-azure"></i> Reservation Par type ( <?php $year = date("Y"); echo $year; ?>)
+        </div>
+        <div class="btn-actions-pane-right text-capitalize">
+          <a class="btn-wide btn-outline-2x btn btn-outline-primary btn-sm" href="
+            <?php echo base_url() ?>Reservation">Voir tout </a>
+        </div>
       </div>
-    </div>
-    <div class="pt-2 pb-0 card-body">
-      <div class="row"></div>
-    </div>
-    <div class="widget-chart p-0">
-      <canvas id="Types" style=" width:'80%' " ></canvas>
-
-      <script type="text/javascript">
-          document.addEventListener("DOMContentLoaded", function () {
-              var ctx = document.getElementById('Types').getContext('2d');
-
-              // Données PHP converties en JavaScript
-              var labels = [ <?php foreach($TypesRecords as $data) { echo '"'.$data->type.'",'; } ?> ];
-              var dataValues = [ <?php foreach($TypesRecords as $data) { echo $data->countTypes.','; } ?> ];
-
-              var chart = new Chart(ctx, {
-                  type: 'doughnut', // Change en 'pie' si tu veux un pie classique
-                  data: {
-                      labels: labels,
-                      datasets: [{
-                          data: dataValues,
-                          backgroundColor: [
-                              '#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40'
-                          ],
-                          borderColor: '#ffffff',
-                          borderWidth: 2
-                      }]
-                  },
-                  options: {
-                      responsive: true,
-                      maintainAspectRatio: false,
-                      plugins: {
-                          title: {
-                              display: true,
-                              text: 'Répartition des Types',
-                              font: { size: 18 }
-                          },
-                          legend: {
-                              position: 'bottom'
-                          }
-                      }
-                  }
-              });
-          });
-      </script>
-
-    </div>
-    <div class="divider mb-0"></div>
-  </div>
-  <div class="col-lg-4 card">
-    <div class="card-header-tab card-header">
-      <div class="card-header-title">
-        <i class="header-icon lnr-rocket icon-gradient bg-tempting-azure"></i> Statistique par Employée
+      <div class="pt-2 pb-0 card-body">
+        <div class="row"></div>
       </div>
-      <div class="btn-actions-pane-right text-capitalize">
-        <button class="btn-wide btn-outline-2x btn btn-outline-primary btn-sm">Voir tout</button>
+      <div class="widget-chart p-0">
+        <canvas id="Types" style=" width:'80%' " ></canvas>
+
+        <script type="text/javascript">
+            document.addEventListener("DOMContentLoaded", function () {
+                var ctx = document.getElementById('Types').getContext('2d');
+
+                // Données PHP converties en JavaScript
+                var labels = [ <?php foreach($TypesRecords as $data) { echo '"'.$data->type.'",'; } ?> ];
+                var dataValues = [ <?php foreach($TypesRecords as $data) { echo $data->countTypes.','; } ?> ];
+
+                var chart = new Chart(ctx, {
+                    type: 'doughnut', // Change en 'pie' si tu veux un pie classique
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            data: dataValues,
+                            backgroundColor: [
+                                '#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40'
+                            ],
+                            borderColor: '#ffffff',
+                            borderWidth: 2
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: 'Répartition des Types',
+                                font: { size: 18 }
+                            },
+                            legend: {
+                                position: 'bottom'
+                            }
+                        }
+                    }
+                });
+            });
+        </script>
+
       </div>
+      <div class="divider mb-0"></div>
     </div>
-    <div class="pt-2 pb-0 card-body">
-      <div class="row">
-        <ul class="rm-list-borders list-group list-group-flush" style="width: 100%;padding: 20px">
-          <?php if($uid == 1 ){ foreach ($ReservationPerEmployeRecords as $Employer ) {  ?> 
-          <li class="list-group-item">
-            <div class="widget-content p-0">
-              <div class="widget-content-wrapper">
-                <div class="widget-content-left mr-3">
-                  <img width="42" class="rounded-circle" src="https://www.queenpark.tn/assets/img/teams/
-                    <?php echo $Employer->avatar  ?>" alt="">
-                </div>
-                <div class="widget-content-left">
-                  <div class="widget-heading"> <?php echo  $Employer->name ?> </div>
-                </div>
-                <div class="widget-content-right">
-                  <div class="font-size-xlg text-muted">
-                    <span> <?php echo $Employer->COUNT ?> </span>
+    <div class="mb-3 card">
+      <div class="card-header-tab card-header">
+        <div class="card-header-title">
+          <i class="header-icon lnr-rocket icon-gradient bg-tempting-azure"></i> Statistique par Employée
+        </div>
+        <div class="btn-actions-pane-right text-capitalize">
+          <button class="btn-wide btn-outline-2x btn btn-outline-primary btn-sm">Voir tout</button>
+        </div>
+      </div>
+      <div class="pt-2 pb-0 card-body">
+        <div class="row">
+          <ul class="rm-list-borders list-group list-group-flush" style="width: 100%;padding: 20px">
+            <?php if($uid == 1 ){ foreach ($ReservationPerEmployeRecords as $Employer ) {  ?> 
+            <li class="list-group-item">
+              <div class="widget-content p-0">
+                <div class="widget-content-wrapper">
+                  <div class="widget-content-left mr-3">
+                    <img width="42" class="rounded-circle" src="https://www.queenpark.tn/assets/img/teams/
+                      <?php echo $Employer->avatar  ?>" alt="">
+                  </div>
+                  <div class="widget-content-left">
+                    <div class="widget-heading"> <?php echo  $Employer->name ?> </div>
+                  </div>
+                  <div class="widget-content-right">
+                    <div class="font-size-xlg text-muted">
+                      <span> <?php echo $Employer->COUNT ?> </span>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </li>
-          <?php  }  } ?> 
-        </ul>
+            </li>
+            <?php  }  } ?> 
+          </ul>
+        </div>
       </div>
+      <div class="divider mb-0"></div>
     </div>
-    <div class="divider mb-0"></div>
   </div>
   <div class="col-md-4">
     <div class="mb-3 card">
