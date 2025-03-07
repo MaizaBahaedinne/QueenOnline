@@ -81,7 +81,7 @@ class Satisfaction extends BaseController
                     );
 
            
-                $result = $this->satisfaction_model->addNewSatisfaction($reservationInfo);
+                $result = $this->satisfaction_model->addNewSatisfaction($satisfactionInfo);
 
                 $this->session->set_flashdata('success', 'Reservation mise à jour avec succées ');
 
