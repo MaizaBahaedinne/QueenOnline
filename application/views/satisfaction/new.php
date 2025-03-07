@@ -125,7 +125,7 @@
                                                     <div class="col-sm-6">
                                                         <div class="form-group">
                                                             <label class="control-label">La salle</label><br>
-                                                            <<div class="rating-container">
+                                                            <div class="rating-container">
                                                                 <h4>Notez la salle</h4>
                                                                 <div class="rating">
                                                                     <input type="radio" name="rating" id="star5" value="5">
