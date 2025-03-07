@@ -81,7 +81,8 @@
                                                     ),
                                                     "d/m/20y"
                                                     ); ?> </h6>
-                                                    <input type="" hidden  name="reservationId" value="<?php echo $projectInfo->reservationId ?>" >
+                                                    <input type="" hidden  name="reservationId" 
+                                                    value="<?php echo $projectInfo->reservationId ?>" >
                                             </div>
                                         </div>
                                         <hr>
