@@ -23,35 +23,35 @@
             color: #333;
         }
 
-        .rating {
+        .rating , .rating2 , .rating3 , .rating4 , .rating5 {
             display: inline-flex;
             flex-direction: row-reverse;
             justify-content: center;
         }
 
-        .rating input {
+        .rating , .rating2 , .rating3 , .rating4 , .rating5 input {
             display: none;
         }
 
-        .rating label {
-            font-size: 20px;
+        .rating , .rating2 , .rating3 , .rating4 , .rating5 label {
+            font-size: 30px;
             color: #ddd;
             cursor: pointer;
             transition: color 0.2s ease, transform 0.2s ease;
             margin: 0 5px;
         }
 
-        .rating label:hover,
-        .rating label:hover ~ label {
+        .rating , .rating2 , .rating3 , .rating4 , .rating5 label:hover,
+        .rating , .rating2 , .rating3 , .rating4 , .rating5 label:hover ~ label {
             color: #ffcc00;
             transform: scale(1.2);
         }
 
-        .rating input:checked ~ label {
+        .rating , .rating2 , .rating3 , .rating4 , .rating5 input:checked ~ label {
             color: #ffcc00;
         }
 
-        .rating input:checked + label {
+        .rating , .rating2 , .rating3 , .rating4 , .rating5 input:checked + label {
             color: #ffcc00;
         }
 
@@ -127,21 +127,21 @@
                                                             <label class="control-label">La salle</label><br>
                                                             <div class="rating-container">
                                                                 <h4>Notez la salle</h4>
-                                                                <div class="rating">
-                                                                    <input type="radio" name="rating" id="star5" value="5">
+                                                                <div class="rating1">
+                                                                    <input type="radio" name="salle" id="star5" value="5">
                                                                     <label for="star5">&#9733;</label>
-                                                                    <input type="radio" name="rating" id="star4" value="4">
+                                                                    <input type="radio" name="salle" id="star4" value="4">
                                                                     <label for="star4">&#9733;</label>
-                                                                    <input type="radio" name="rating" id="star3" value="3">
+                                                                    <input type="radio" name="salle" id="star3" value="3">
                                                                     <label for="star3">&#9733;</label>
-                                                                    <input type="radio" name="rating" id="star2" value="2">
+                                                                    <input type="radio" name="salle" id="star2" value="2">
                                                                     <label for="star2">&#9733;</label>
-                                                                    <input type="radio" name="rating" id="star1" value="1">
+                                                                    <input type="radio" name="salle" id="star1" value="1">
                                                                     <label for="star1">&#9733;</label>
                                                                 </div>
                                                                 <p id="rating-result">Vous n'avez pas encore noté.</p>
                                                                 <script>
-                                                                    const stars = document.querySelectorAll('.rating input');
+                                                                    const stars = document.querySelectorAll('.rating1 input');
                                                                     const resultText = document.getElementById('rating-result');
 
                                                                     stars.forEach(star => {
@@ -158,15 +158,15 @@
                                                         <div class="form-group">
                                                             <label class="control-label">Service</label>
                                                             <div class="rating2">
-                                                                <input type="radio" name="rating" id="star1" value="1">
+                                                                <input type="radio" name="Service" id="star1" value="1">
                                                                 <label for="star1">&#9733;</label>
-                                                                <input type="radio" name="rating" id="star2" value="2">
+                                                                <input type="radio" name="Service" id="star2" value="2">
                                                                 <label for="star2">&#9733;</label>
-                                                                <input type="radio" name="rating" id="star3" value="3">
+                                                                <input type="radio" name="Service" id="star3" value="3">
                                                                 <label for="star3">&#9733;</label>
-                                                                <input type="radio" name="rating" id="star4" value="4">
+                                                                <input type="radio" name="Service" id="star4" value="4">
                                                                 <label for="star4">&#9733;</label>
-                                                                <input type="radio" name="rating" id="star5" value="5">
+                                                                <input type="radio" name="Service" id="star5" value="5">
                                                                 <label for="star5">&#9733;</label>
                                                             </div>
                                                             <p id="rating-result2">Vous n'avez pas encore noté.</p>
