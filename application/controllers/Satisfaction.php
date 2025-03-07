@@ -54,103 +54,40 @@ class Satisfaction extends BaseController
       /**
      * This function is used to add new user to the system
      */
-    function addNewReservationL()
+    function addNewSatisfaction()
     {
 
-                $clientId = $this->input->post('clientId');
-                $reservationId = $this->input->post('reservationId');
+            
+              $satisfactionInfo = array(
+                        'reclamation'   => $this->input->post('reclamation'),                    
+                        'reservationId' => $this->input->post('reservationId'),
+                        'createdBy'     => $this->vendorId,
+                        'createdDTM'    => date('Y-m-d H:i:s'),
+                        
+                        'salle'         => $this->input->post('salle'),
+                        'service'       => $this->input->post('service'),
+                        'proprete'      => $this->input->post('proprete'),
+                        'lumiere'       => $this->input->post('lumiere'),
+                        'decoration'    => $this->input->post('decoration'),
+                        'photographe'   => $this->input->post('photographe'),
+                        'musicale'      => $this->input->post('musicale'),
+                        'voiture'       => $this->input->post('voiture'),
 
-              
-                
-               
-                $packId = $this->input->post('packId');
-                $date = $this->input->post('date');
-             
+                        'entre'         => $this->input->post('entre'),
+                        'sortie'        => $this->input->post('sortie'),
 
-   
-
-                $prix = $this->input->post('prix');
-                $avance = $this->input->post('avance');
-
-                $noteAdmin = $this->input->post('noteAdmin');  
-                 
-       
-                $reservationInfo = array(
-                    'packId'=>$packId,
-                    'date'=>$date,
-
-
-                    'prix'=>$prix,
-                    'avance'=>$avance,
-                    'noteAdmin'=>$noteAdmin,
-                    
-                    'reservationId'=>$reservationId,
-                    'createdBy'=>$this->vendorId ,
-                    'createdDTM'=>date('Y-m-d H:i:s'),
-                       
-                    'statut' => 1 
-                            );
+                        'statut'        => 1
+                    );
 
            
-                $result = $this->photographe_model->addNewReservation($reservationInfo);
+                $result = $this->satisfaction_model->addNewSatisfaction($reservationInfo);
 
-                $koussayMobile = "55465244";
-                $mySms = $this->name . " a reservé le photographe pour le ".$date ;
-                $this->sendSMS("216" . $koussayMobile, $mySms , "Notif admin photographe");
+                $this->session->set_flashdata('success', 'Reservation mise à jour avec succées ');
+
+
+                redirect('Reservation/view/'.$reservationId);
                 
-
-                $HaythemMobile = "54419959";
-                $mySms = $this->name . " a reservé le photographe pour le ".$date ;
-                $this->sendSMS("216" . $HaythemMobile, $mySms , "Notif admin photographe");
-
-
-                $MakremMobile = "98541815";
-                $mySms =  "Une nouvelle reservation pour le ".$date ;
-                $this->sendSMS("216" . $MakremMobile, $mySms , "Notif photographe");
-
-
-                if($result > 0)
-                {
-
-                     $reservationInfo1 = array('photographe'=>$result, 'noteAdmin' => 'Ajout de photographe');
-
-                    $this->reservation_model->editReservation($reservationInfo1, $reservationId, $this->vendorId); 
-
-                    $paiementInfo = array(
-                        'createdDate'=>date('Y-m-d H:i:s'),
-                        'valeur'=>$avance,
-                        'recepteurId'=>$this->vendorId,
-                        'libele'=>'Avance ',
-                        'reservationPId'=>$result, 
-                                            
-                                );
-                        $resId = $this->paiement_model->addNewPhotographePaiement($paiementInfo);
-
-
-
-                            if (  $prix - $avance == 0   )
-                            {
-                              
-                                $reservationInfoe = array(
-                                            'statut'=>0 ,
-                                                    );
-                                 $this->photographe_model->editReservation($reservationInfoe, $result); 
-                            }
-
-                           
-
-
-                    $this->session->set_flashdata('success', 'Reservation mise à jour avec succées ');
-
-
-                    redirect('Reservation/view/'.$reservationId);
-                }
-                else
-                {
-                    $this->session->set_flashdata('error', 'Problème de mise à jours');
-                    redirect('Reservation/view/'.$reservationId);
-                }
-           
+            
         
     }
 
