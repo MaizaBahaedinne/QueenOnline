@@ -89,13 +89,13 @@
                                                     <div class="col-sm-6">
                                                         <div class="form-group">
                                                             <label class="control-label">Remarque pour l'entré</label>
-                                                            <textarea class="form-control" name="entre" rows="20"></textarea>
+                                                            <textarea class="form-control" name="entre" rows="10"></textarea>
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-6">
                                                         <div class="form-group">
                                                             <label class="control-label">Remarque pour le sortie</label>
-                                                            <textarea class="form-control" name="sortie" rows="20"></textarea>
+                                                            <textarea class="form-control" name="sortie" rows="10"></textarea>
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-12">
@@ -214,7 +214,7 @@
                                                     <div class="col-sm-12">
                                                         <div class="form-group">
                                                             <label class="control-label">Réclamation</label>
-                                                            <textarea class="form-control" name="Reclamation" rows="20"></textarea>
+                                                            <textarea class="form-control" name="Reclamation" rows="10"></textarea>
                                                         </div>
                                                     </div>
                                                 </div>
