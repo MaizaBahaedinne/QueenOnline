@@ -1,66 +1,47 @@
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f9f9f9;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
+    .rating-container {
+        background-color: white;
+        padding: 10px;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        margin-bottom: 20px;
+    }
 
-        .rating-container {
-            background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
+    .rating {
+        display: inline-flex;
+        flex-direction: row-reverse;
+        justify-content: center;
+    }
 
-        h2 {
-            margin-bottom: 10px;
-            color: #333;
-        }
+    .rating input {
+        display: none;
+    }
 
-        .rating , .rating2 , .rating3 , .rating4 , .rating5 {
-            display: inline-flex;
-            flex-direction: row-reverse;
-            justify-content: center;
-        }
+    .rating label {
+        font-size: 30px;
+        color: #ddd;
+        cursor: pointer;
+        transition: color 0.2s ease, transform 0.2s ease;
+        margin: 0 5px;
+    }
 
-        .rating , .rating2 , .rating3 , .rating4 , .rating5 input {
-            display: none;
-        }
+    .rating label:hover,
+    .rating label:hover ~ label {
+        color: #ffcc00;
+        transform: scale(1.2);
+    }
 
-        .rating , .rating2 , .rating3 , .rating4 , .rating5 label {
-            font-size: 30px;
-            color: #ddd;
-            cursor: pointer;
-            transition: color 0.2s ease, transform 0.2s ease;
-            margin: 0 5px;
-        }
+    .rating input:checked ~ label {
+        color: #ffcc00;
+    }
 
-        .rating , .rating2 , .rating3 , .rating4 , .rating5 label:hover,
-        .rating , .rating2 , .rating3 , .rating4 , .rating5 label:hover ~ label {
-            color: #ffcc00;
-            transform: scale(1.2);
-        }
-
-        .rating , .rating2 , .rating3 , .rating4 , .rating5 input:checked ~ label {
-            color: #ffcc00;
-        }
-
-        .rating , .rating2 , .rating3 , .rating4 , .rating5 input:checked + label {
-            color: #ffcc00;
-        }
-
-        .rating-container p {
-            font-size: 18px;
-            margin-top: 20px;
-            color: #555;
-        }
-    </style>
+    .rating-container p {
+        font-size: 16px;
+        margin-top: 10px;
+        color: #555;
+    }
+</style>
 <div class="app-main__inner">
     <div class="app-page-title">
         <div class="page-title-wrapper">
@@ -122,67 +103,114 @@
                                                             <h4 class="control-label">Evaluation</h4>
                                                         </div>
                                                     </div>
-                                                    <div class="col-sm-6">
-                                                        <div class="form-group">
-                                                            <label class="control-label">La salle</label><br>
-                                                            <div class="rating-container">
-                                                                <h4>Notez la salle</h4>
-                                                                <div class="rating1">
-                                                                    <input type="radio" name="salle" id="star5" value="5">
-                                                                    <label for="star5">&#9733;</label>
-                                                                    <input type="radio" name="salle" id="star4" value="4">
-                                                                    <label for="star4">&#9733;</label>
-                                                                    <input type="radio" name="salle" id="star3" value="3">
-                                                                    <label for="star3">&#9733;</label>
-                                                                    <input type="radio" name="salle" id="star2" value="2">
-                                                                    <label for="star2">&#9733;</label>
-                                                                    <input type="radio" name="salle" id="star1" value="1">
-                                                                    <label for="star1">&#9733;</label>
-                                                                </div>
-                                                                <p id="rating-result">Vous n'avez pas encore noté.</p>
-                                                                <script>
-                                                                    const stars = document.querySelectorAll('.rating1 input');
-                                                                    const resultText = document.getElementById('rating-result');
+                                                    <div class="col-md-3">
+            <div class="rating-container">
+                <h4>Salle</h4>
+                <div class="rating rating-salle">
+                    <input type="radio" name="salle" id="salle5" value="5"><label for="salle5">&#9733;</label>
+                    <input type="radio" name="salle" id="salle4" value="4"><label for="salle4">&#9733;</label>
+                    <input type="radio" name="salle" id="salle3" value="3"><label for="salle3">&#9733;</label>
+                    <input type="radio" name="salle" id="salle2" value="2"><label for="salle2">&#9733;</label>
+                    <input type="radio" name="salle" id="salle1" value="1"><label for="salle1">&#9733;</label>
+                </div>
+            </div>
+        </div>
 
-                                                                    stars.forEach(star => {
-                                                                        star.addEventListener('change', function() {
-                                                                            const ratingValue = this.value;
-                                                                            resultText.textContent = `Vous avez donné une note de ${ratingValue} étoile${ratingValue > 1 ? 's' : ''}.`;
-                                                                        });
-                                                                    });
-                                                                </script>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-6">
-                                                        <div class="form-group">
-                                                            <label class="control-label">Service</label>
-                                                            <div class="rating2">
-                                                                <input type="radio" name="Service" id="star1" value="1">
-                                                                <label for="star1">&#9733;</label>
-                                                                <input type="radio" name="Service" id="star2" value="2">
-                                                                <label for="star2">&#9733;</label>
-                                                                <input type="radio" name="Service" id="star3" value="3">
-                                                                <label for="star3">&#9733;</label>
-                                                                <input type="radio" name="Service" id="star4" value="4">
-                                                                <label for="star4">&#9733;</label>
-                                                                <input type="radio" name="Service" id="star5" value="5">
-                                                                <label for="star5">&#9733;</label>
-                                                            </div>
-                                                            <p id="rating-result2">Vous n'avez pas encore noté.</p>
-                                                            <script>
-                                                                const stars = document.querySelectorAll('.rating2 input');
-                                                                const resultText = document.getElementById('rating-result2');
-                                                                
-                                                                stars.forEach(star => {
-                                                                    star.addEventListener('change', function() {
-                                                                        const ratingValue = this.value;
-                                                                        resultText.textContent = `Vous avez donné une note de ${ratingValue} étoile${ratingValue > 1 ? 's' : ''}.`;
-                                                                    });
-                                                                });
-                                                            </script>
-                                                        </div>
-                                                    </div>
+        <!-- Service -->
+        <div class="col-md-3">
+            <div class="rating-container">
+                <h4>Service</h4>
+                <div class="rating rating-service">
+                    <input type="radio" name="service" id="service5" value="5"><label for="service5">&#9733;</label>
+                    <input type="radio" name="service" id="service4" value="4"><label for="service4">&#9733;</label>
+                    <input type="radio" name="service" id="service3" value="3"><label for="service3">&#9733;</label>
+                    <input type="radio" name="service" id="service2" value="2"><label for="service2">&#9733;</label>
+                    <input type="radio" name="service" id="service1" value="1"><label for="service1">&#9733;</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Propreté -->
+        <div class="col-md-3">
+            <div class="rating-container">
+                <h4>Propreté</h4>
+                <div class="rating rating-proprete">
+                    <input type="radio" name="proprete" id="proprete5" value="5"><label for="proprete5">&#9733;</label>
+                    <input type="radio" name="proprete" id="proprete4" value="4"><label for="proprete4">&#9733;</label>
+                    <input type="radio" name="proprete" id="proprete3" value="3"><label for="proprete3">&#9733;</label>
+                    <input type="radio" name="proprete" id="proprete2" value="2"><label for="proprete2">&#9733;</label>
+                    <input type="radio" name="proprete" id="proprete1" value="1"><label for="proprete1">&#9733;</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lumière -->
+        <div class="col-md-3">
+            <div class="rating-container">
+                <h4>Lumière</h4>
+                <div class="rating rating-lumiere">
+                    <input type="radio" name="lumiere" id="lumiere5" value="5"><label for="lumiere5">&#9733;</label>
+                    <input type="radio" name="lumiere" id="lumiere4" value="4"><label for="lumiere4">&#9733;</label>
+                    <input type="radio" name="lumiere" id="lumiere3" value="3"><label for="lumiere3">&#9733;</label>
+                    <input type="radio" name="lumiere" id="lumiere2" value="2"><label for="lumiere2">&#9733;</label>
+                    <input type="radio" name="lumiere" id="lumiere1" value="1"><label for="lumiere1">&#9733;</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ajout de la décoration, photographe, troupe musicale, voiture -->
+        <div class="col-md-3">
+            <div class="rating-container">
+                <h4>Décoration</h4>
+                <div class="rating rating-decoration">
+                    <input type="radio" name="decoration" id="decoration5" value="5"><label for="decoration5">&#9733;</label>
+                    <input type="radio" name="decoration" id="decoration4" value="4"><label for="decoration4">&#9733;</label>
+                    <input type="radio" name="decoration" id="decoration3" value="3"><label for="decoration3">&#9733;</label>
+                    <input type="radio" name="decoration" id="decoration2" value="2"><label for="decoration2">&#9733;</label>
+                    <input type="radio" name="decoration" id="decoration1" value="1"><label for="decoration1">&#9733;</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="rating-container">
+                <h4>Photographe</h4>
+                <div class="rating rating-photographe">
+                    <input type="radio" name="photographe" id="photographe5" value="5"><label for="photographe5">&#9733;</label>
+                    <input type="radio" name="photographe" id="photographe4" value="4"><label for="photographe4">&#9733;</label>
+                    <input type="radio" name="photographe" id="photographe3" value="3"><label for="photographe3">&#9733;</label>
+                    <input type="radio" name="photographe" id="photographe2" value="2"><label for="photographe2">&#9733;</label>
+                    <input type="radio" name="photographe" id="photographe1" value="1"><label for="photographe1">&#9733;</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="rating-container">
+                <h4>Troupe musicale</h4>
+                <div class="rating rating-musicale">
+                    <input type="radio" name="musicale" id="musicale5" value="5"><label for="musicale5">&#9733;</label>
+                    <input type="radio" name="musicale" id="musicale4" value="4"><label for="musicale4">&#9733;</label>
+                    <input type="radio" name="musicale" id="musicale3" value="3"><label for="musicale3">&#9733;</label>
+                    <input type="radio" name="musicale" id="musicale2" value="2"><label for="musicale2">&#9733;</label>
+                    <input type="radio" name="musicale" id="musicale1" value="1"><label for="musicale1">&#9733;</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="rating-container">
+                <h4>Voiture</h4>
+                <div class="rating rating-voiture">
+                    <input type="radio" name="voiture" id="voiture5" value="5"><label for="voiture5">&#9733;</label>
+                    <input type="radio" name="voiture" id="voiture4" value="4"><label for="voiture4">&#9733;</label>
+                    <input type="radio" name="voiture" id="voiture3" value="3"><label for="voiture3">&#9733;</label>
+                    <input type="radio" name="voiture" id="voiture2" value="2"><label for="voiture2">&#9733;</label>
+                    <input type="radio" name="voiture" id="voiture1" value="1"><label for="voiture1">&#9733;</label>
+                </div>
+            </div>
+        </div>
+                                                    
                                                     <div class="col-sm-12">
                                                         <div class="form-group">
                                                             <label class="control-label">Réclamation</label>
