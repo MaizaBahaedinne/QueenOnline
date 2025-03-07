@@ -63,26 +63,27 @@
                             <div class="main-card mb-3 card">
                                 <div class="card-body">
                                     <div class="form-row">
-                                        <div class="col-sm-4">
+                                        <div class="col-sm-12">
                                             <div class="form-group">
-                                                <h4 class="control-label"><b><?php echo $projectInfo->type; ?> :</b> <?php echo $projectInfo->titre; ?> </h4>
+                                                <h6 class="control-label"><b><?php echo $projectInfo->type; ?> :</b> <?php echo $projectInfo->titre; ?> </h6>
                                             </div>
                                         </div>
-                                        <div class="col-sm-4">
+                                        <div class="col-sm-12">
                                             <div class="form-group">
-                                                <h4 class="control-label"><b>Lieu :</b> <?php echo $projectInfo->salle; ?></h4>
+                                                <h6 class="control-label"><b>Lieu :</b> <?php echo $projectInfo->salle; ?></h6>
                                             </div>
                                         </div>
-                                        <div class="col-sm-4">
+                                        <div class="col-sm-12">
                                             <div class="form-group">
-                                                <h4 class="control-label"><b>Date :</b> <?php echo date_format(
+                                                <h6 class="control-label"><b>Date :</b> <?php echo date_format(
                                                     date_create(
                                                         $projectInfo->dateFin
                                                     ),
                                                     "d/m/20y"
-                                                    ); ?> </h4>
+                                                    ); ?> </h6>
                                             </div>
                                         </div>
+                                        <hr>
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label class="control-label"> <i class="fa fa-sign-in" aria-hidden="true"></i> Remarque d'entrée</label>
