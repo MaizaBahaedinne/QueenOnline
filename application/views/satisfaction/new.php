@@ -71,30 +71,31 @@
                                   
                                         
                                                 <div class="form-row">
-                                                    <div class="col-sm-3">
-                                                        <div class="form-group">
-                                                            <label class="control-label"><b>Lieu :</b> <?php echo $projectInfo->salle  ?></label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-3">
-                                                        <div class="form-group">
-                                                            <label class="control-label"><b>Date :</b> <?php  echo date_format(date_create($projectInfo->dateFin)  , 'd/m/20y');   ?> </label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-3">
+                                                    <div class="col-sm-4">
                                                         <div class="form-group">
                                                             <label class="control-label"><b><?php echo $projectInfo->type ?> :</b> <?php echo $projectInfo->titre ?> </label>
                                                         </div>
                                                     </div>
+                                                    <div class="col-sm-4">
+                                                        <div class="form-group">
+                                                            <label class="control-label"><b>Lieu :</b> <?php echo $projectInfo->salle  ?></label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <div class="form-group">
+                                                            <label class="control-label"><b>Date :</b> <?php  echo date_format(date_create($projectInfo->dateFin)  , 'd/m/20y');   ?> </label>
+                                                        </div>
+                                                    </div>
+
                                                     <div class="col-sm-6">
                                                         <div class="form-group">
-                                                            <label class="control-label"> <i class="fa fa-sign-in" aria-hidden="true"></i> Remarque pour l'entré</label>
+                                                            <label class="control-label"> <i class="fa fa-sign-in" aria-hidden="true"></i> Remarque d'entrée</label>
                                                             <textarea class="form-control" name="entre" rows="10"></textarea>
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-6">
                                                         <div class="form-group">
-                                                            <label class="control-label"><i class="fa fa-sign-out" aria-hidden="true"></i> Remarque pour le sortie</label>
+                                                            <label class="control-label"><i class="fa fa-sign-out" aria-hidden="true"></i> Remarque de sortie</label>
                                                             <textarea class="form-control" name="sortie" rows="10"></textarea>
                                                         </div>
                                                     </div>
@@ -213,7 +214,7 @@
                                                     
                                                     <div class="col-sm-12">
                                                         <div class="form-group">
-                                                            <label class="control-label">Réclamation</label>
+                                                            <label class="control-label">Réclamation client</label>
                                                             <textarea class="form-control" name="Reclamation" rows="10"></textarea>
                                                         </div>
                                                     </div>
@@ -225,9 +226,9 @@
                                 </div>
                             </div>
                             <div class="clearfix">
-                            <button type="button" id="reset-btn" class="btn-shadow float-left btn btn-link">Reset</button>
-                            <!--     <button type="button" id="next-btn" class="btn-shadow btn-wide float-right btn-pill btn-hover-shine btn btn-primary">Suivant</button>
-                                <button type="button" id="prev-btn" class="btn-shadow float-right btn-wide btn-pill mr-3 btn btn-outline-secondary">Précédent</button> -->
+                            <button type="button" id="reset-btn" class="btn-shadow float-left btn btn-link">Réinitialiser</button>
+                                <button type="submit" id="next-btn" class="btn-shadow btn-wide float-right btn-pill btn-hover-shine btn btn-primary">Suivant</button>
+                           <!--      <button type="button" id="prev-btn" class="btn-shadow float-right btn-wide btn-pill mr-3 btn btn-outline-secondary">Précédent</button> -->
                             </div>
                         </div>
                     </div>
