@@ -76,7 +76,7 @@ class Satisfaction extends BaseController
                         'entre'         => $this->input->post('entre'),
                         'sortie'        => $this->input->post('sortie'),
 
-                        'statut'        => 1
+ 
                     );
 
            
