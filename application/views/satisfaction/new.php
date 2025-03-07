@@ -206,7 +206,7 @@
                                         <div class="col-sm-12">
                                             <div class="form-group">
                                                 <label class="control-label">Réclamation client</label>
-                                                <textarea class="form-control" name="Reclamation" rows="10"></textarea>
+                                                <textarea class="form-control" name="reclamation" rows="10"></textarea>
                                             </div>
                                         </div>
                                     </div>
