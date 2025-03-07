@@ -71,30 +71,30 @@
                                   
                                         
                                                 <div class="form-row">
-                                                    <div class="col-sm-6">
+                                                    <div class="col-sm-3">
                                                         <div class="form-group">
-                                                            <label class="control-label">Lieu : <?php echo $projectInfo->salle  ?></label>
+                                                            <label class="control-label"><b>Lieu :</b> <?php echo $projectInfo->salle  ?></label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <div class="form-group">
+                                                            <label class="control-label"><b>Date :</b> <?php  echo date_format(date_create($projectInfo->dateFin)  , 'd/m/20y');   ?> </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-3">
+                                                        <div class="form-group">
+                                                            <label class="control-label"><b><?php echo $projectInfo->type ?> :</b> <?php echo $projectInfo->titre ?> </label>
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-6">
                                                         <div class="form-group">
-                                                            <label class="control-label">Date : <?php  echo date_format(date_create($projectInfo->dateFin)  , 'd/m/20y');   ?> </label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-12">
-                                                        <div class="form-group">
-                                                            <label class="control-label"><?php echo $projectInfo->type ?> : <?php echo $projectInfo->titre ?> </label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-6">
-                                                        <div class="form-group">
-                                                            <label class="control-label">Remarque pour l'entré</label>
+                                                            <label class="control-label"> <i class="fa fa-sign-in" aria-hidden="true"></i> Remarque pour l'entré</label>
                                                             <textarea class="form-control" name="entre" rows="10"></textarea>
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-6">
                                                         <div class="form-group">
-                                                            <label class="control-label">Remarque pour le sortie</label>
+                                                            <label class="control-label"><i class="fa fa-sign-out" aria-hidden="true"></i> Remarque pour le sortie</label>
                                                             <textarea class="form-control" name="sortie" rows="10"></textarea>
                                                         </div>
                                                     </div>
