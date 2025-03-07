@@ -34,7 +34,7 @@
         }
 
         .rating label {
-            font-size: 40px;
+            font-size: 20px;
             color: #ddd;
             cursor: pointer;
             transition: color 0.2s ease, transform 0.2s ease;
@@ -126,7 +126,7 @@
                                                         <div class="form-group">
                                                             <label class="control-label">La salle</label><br>
                                                             <<div class="rating-container">
-                                                                <h2>Notez la salle</h2>
+                                                                <h4>Notez la salle</h4>
                                                                 <div class="rating">
                                                                     <input type="radio" name="rating" id="star5" value="5">
                                                                     <label for="star5">&#9733;</label>
