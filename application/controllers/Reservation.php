@@ -28,6 +28,7 @@ class Reservation extends BaseController
                 $this->load->model("photographe_model");
                 $this->load->model("prestation_model");
                 $this->load->model("troupe_model");
+                $this->load->model("satisfaction_model");
                 $this->load->model("Sms_model");
                 $this->isLoggedIn();
         }
@@ -234,6 +235,7 @@ class Reservation extends BaseController
         function view($resId)
         {
                 $data["projectInfo"] = $this->reservation_model->ReservationInfo($resId);
+                $data["satisfaction"] = $this->satisfaction_model->ReservationInfo($resId);
                 $data["clientInfo"] = $this->user_model->getUserInfo($data["projectInfo"]->clientId);
                 $data["contratInfo"] = $this->contrat_model->contratInfo($resId);
                 $data["paiementInfo"] = $this->paiement_model->paiementListingbyReservation($resId);

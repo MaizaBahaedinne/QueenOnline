@@ -61,13 +61,10 @@ class Satisfaction_model extends CI_Model
      */
     function ReservationInfo($resId)
     {
-       $this->db->select('BaseTbl.* , Pack.*  , Pack.nom packname  , BaseTbl.statut Pstatut , Reservation.* , Salles.nom salle , BaseTbl.prix , BaseTbl.avance');
-        $this->db->from('tbl_reservation_photographe as BaseTbl');
-        $this->db->join('tbl_pack_photographe as Pack', 'Pack.packId = BaseTbl.packId','left');
-         $this->db->join('tbl_reservation as Reservation', 'Reservation.reservationId = BaseTbl.reservationId','left');
-          $this->db->join('tbl_salle as Salles', 'Salles.salleID = Reservation.salleId','left');
-        
-        $this->db->where('BaseTbl.reservationPId =',$resId );
+       $this->db->select('BaseTbl.* ');
+        $this->db->from('tbl_satisfaction as BaseTbl');
+      
+        $this->db->where('BaseTbl.reservationId =',$resId );
 
         $query = $this->db->get();
         

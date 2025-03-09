@@ -538,31 +538,42 @@
 
                                 <div class="row">
                                   
-                                  <p id="result-salle">Note : -</p>
-                                    <p id="result-service">Note : -</p>
-                                    <p id="result-proprete">Note : -</p>
-                                    <p id="result-lumiere">Note : -</p>
-                                    <p id="result-decoration">Note : -</p>
-                                    <p id="result-photographe">Note : -</p>
-                                    <p id="result-musicale">Note : -</p>
-                                    <p id="result-voiture">Note : -</p>
+                                    <table width="100%">
+                                        <tr>
+                                            <td><strong>Salle</strong></td>
+                                            <td><?php echo str_repeat("⭐",$satisfaction->salle) ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Service</strong></td>
+                                            <td><?php echo str_repeat("⭐",$satisfaction->service) ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Propreté</strong></td>
+                                            <td><?php echo str_repeat("⭐",$satisfaction->proprete) ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Lumière</strong></td>
+                                            <td><?php echo str_repeat("⭐",$satisfaction->lumiere) ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Décoration</strong></td>
+                                            <td><?php echo str_repeat("⭐",$satisfaction->decoration) ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Photographe</strong></td>
+                                            <td><?php echo str_repeat("⭐",$satisfaction->photographe) ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Troupe musicale</strong></td>
+                                            <td><?php echo str_repeat("⭐",$satisfaction->musicale) ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Voiture</strong></td>
+                                            <td><?php echo str_repeat("⭐",$satisfaction->voiture) ?></td>
+                                        </tr>
+                                    </table>
 
-                                    <script>
-                                        document.addEventListener("DOMContentLoaded", function () {
-                                            const categories = ["salle", "service", "proprete", "lumiere", "decoration", "photographe", "musicale", "voiture"];
-
-                                            categories.forEach(category => {
-                                                const radios = document.querySelectorAll(`input[name="${category}"]`);
-                                                const resultParagraph = document.getElementById(`result-${category}`);
-
-                                                radios.forEach(radio => {
-                                                    radio.addEventListener("change", function () {
-                                                        resultParagraph.textContent = `Note : ${this.value}/5`;
-                                                    });
-                                                });
-                                            });
-                                        });
-                                        </script>
+                                   
 
 
                               </div>   

@@ -292,8 +292,8 @@ class Voiture extends BaseController
 
                     
                                    $mySms = "[".$voitureName."] ".$this->name." a recu pour ".$avance."DT pour le ".$date ;
-                                   $this->sendSMS("216" . $HaythemMobile, $mySms, , "Notif admin voiture" );    
-                                   $this->sendSMS("216" . $koussayMobile, $mySms , , "Notif admin voiture");
+                                   $this->sendSMS("216" . $HaythemMobile, $mySms,  "Notif admin voiture" );    
+                                   $this->sendSMS("216" . $koussayMobile, $mySms ,  "Notif admin voiture");
 
 
                                      
