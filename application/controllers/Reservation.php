@@ -71,7 +71,7 @@ class Reservation extends BaseController
          */
         public function ReservationOld($dateD = null )
         {
-                if ($dateD === null) {
+                if ($dateD == null) {
                         $dateD = date('Y');
                     }
                 $data["userRecords"] = $this->reservation_model->ReservationListingOld($dateD);
