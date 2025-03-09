@@ -496,7 +496,7 @@
                               <div class="modal-body">
 
                                
-                                  
+                                  <?php if !(empty($satisfaction) { ?>
                                     <table width="100%">
                                         <tr>
                                             <td width="20%"><strong>Salle</strong></td>
@@ -523,23 +523,33 @@
                                             <td><?php echo str_repeat("⭐",$satisfaction->decoration) ?></td>
                                             <td></td>
                                         </tr>
+                                        <?php if ($projectInfo->photographe != 0) { ?>
                                         <tr>
                                             <td><strong>Photographe</strong></td>
                                             <td><?php echo str_repeat("⭐",$satisfaction->photographe) ?></td>
                                             <td></td>
                                         </tr>
+                                        <?php if ($projectInfo->troupe != 0) { ?>
                                         <tr>
                                             <td><strong>Troupe musicale</strong></td>
                                             <td><?php echo str_repeat("⭐",$satisfaction->musicale) ?></td>
                                             <td></td>
                                         </tr>
+                                        <?php } ?>
+                                        <?php if ($projectInfo->voiture != 0) { ?>
                                         <tr>
                                             <td><strong>Voiture</strong></td>
                                             <td><?php echo str_repeat("⭐",$satisfaction->voiture) ?></td>
                                             <td></td>
                                         </tr>
+                                        <?php } ?>
                                     </table>
+                                <?php } else { ?>
 
+                                         <a href="<?php echo base_url() ?>Satisfaction/addNew/<?php echo $projectInfo->reservationId ?>" class='btn btn-primary  btn-block' >Ajouter une évaluation
+                                        </button>
+
+                                    <?php } ?>
                                    
                                 </div>
 
