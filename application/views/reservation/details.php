@@ -451,7 +451,7 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <?php if !(empty($satisfaction)) { ?>
+                                    <?php if (!(empty($satisfaction))) { ?>
                                     <table width="100%">
                                         <tr>
                                             <td width="20%"><strong>Salle</strong></td>
