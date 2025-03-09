@@ -26,7 +26,9 @@ class Satisfaction extends BaseController
         $this->load->model('paiement_model');
         $this->load->model("Sms_model");
         $this->load->model("satisfaction_model");
-
+        $this->load->model("voiture_model");
+        $this->load->model("photographe_model");
+        $this->load->model("troupe_model");
         $this->isLoggedIn();   
     }
     
@@ -40,7 +42,7 @@ class Satisfaction extends BaseController
             $data["voiture"] = $this->voiture_model->ReservationInfo($data["projectInfo"]->voiture);
             $data["photographe"] = $this->photographe_model->ReservationInfo($data["projectInfo"]->photographe);
             $data["troupe"] = $this->troupe_model->ReservationInfo($data["projectInfo"]->troupe);
-            $data['projectInfo'] = $this->reservation_model->ReservationInfo($reservationId);
+            $data['projectInfo'] = $this->photographe_model->ReservationInfo($reservationId);
             $this->global['pageTitle'] = 'Satisfaction';
             $this->loadViews("satisfaction/new", $this->global, $data, NULL);
     }
