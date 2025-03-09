@@ -1,44 +1,3 @@
-
-<style>
-    .rating-container {
-    background-color: white;
-    padding: 10px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    margin-bottom: 20px;
-    }
-    .rating {
-    display: inline-flex;
-    flex-direction: row-reverse;
-    justify-content: center;
-    }
-    .rating input {
-    display: none;
-    }
-    .rating label {
-    font-size: 30px;
-    color: #ddd;
-    cursor: pointer;
-    transition: color 0.2s ease, transform 0.2s ease;
-    margin: 0 5px;
-    }
-    .rating label:hover,
-    .rating label:hover ~ label {
-    color: #ffcc00;
-    transform: scale(1.2);
-    }
-    .rating input:checked ~ label {
-    color: #ffcc00;
-    }
-    .rating-container p {
-    font-size: 16px;
-    margin-top: 10px;
-    color: #555;
-    }
-</style>
-
-
 <div class="app-main__inner">
    <div class="app-page-title">
       <div class="page-title-wrapper">
@@ -536,47 +495,55 @@
                               </div>
                               <div class="modal-body">
 
-                                <div class="row">
+                               
                                   
                                     <table width="100%">
                                         <tr>
-                                            <td><strong>Salle</strong></td>
+                                            <td width="20%"><strong>Salle</strong></td>
                                             <td><?php echo str_repeat("⭐",$satisfaction->salle) ?></td>
+                                            <td></td>
                                         </tr>
                                         <tr>
                                             <td><strong>Service</strong></td>
                                             <td><?php echo str_repeat("⭐",$satisfaction->service) ?></td>
+                                            <td></td>
                                         </tr>
                                         <tr>
                                             <td><strong>Propreté</strong></td>
                                             <td><?php echo str_repeat("⭐",$satisfaction->proprete) ?></td>
+                                            <td></td>
                                         </tr>
                                         <tr>
                                             <td><strong>Lumière</strong></td>
                                             <td><?php echo str_repeat("⭐",$satisfaction->lumiere) ?></td>
+                                            <td></td>
                                         </tr>
                                         <tr>
                                             <td><strong>Décoration</strong></td>
                                             <td><?php echo str_repeat("⭐",$satisfaction->decoration) ?></td>
+                                            <td></td>
                                         </tr>
                                         <tr>
                                             <td><strong>Photographe</strong></td>
                                             <td><?php echo str_repeat("⭐",$satisfaction->photographe) ?></td>
+                                            <td></td>
                                         </tr>
                                         <tr>
                                             <td><strong>Troupe musicale</strong></td>
                                             <td><?php echo str_repeat("⭐",$satisfaction->musicale) ?></td>
+                                            <td></td>
                                         </tr>
                                         <tr>
                                             <td><strong>Voiture</strong></td>
                                             <td><?php echo str_repeat("⭐",$satisfaction->voiture) ?></td>
+                                            <td></td>
                                         </tr>
                                     </table>
 
                                    
+                                </div>
 
-
-                              </div>   
+                                
                                            
                               <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
