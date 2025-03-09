@@ -69,10 +69,10 @@ class Reservation extends BaseController
         /**
          * This function used to load the first screen of the user
          */
-        public function ReservationOld()
+        public function ReservationOld($dateD = date('Y') )
         {
                 
-                $data["userRecords"] = $this->reservation_model->ReservationListingOld();
+                $data["userRecords"] = $this->reservation_model->ReservationListingOld($dateD);
                      foreach ($data["userRecords"]  as $rerva) {
         
                          $rerva->prestation = $this->prestation_model->ReservationListing($rerva->reservationId) ; 
@@ -84,7 +84,7 @@ class Reservation extends BaseController
         public function addNew()
         {
                 $data["salleRecords"] = $this->salle_model->SalleListing();
-                $this->global["pageTitle"] = "CodeInsect : User Listing";
+                $this->global["pageTitle"] = "les réservation de ".$dateD;
                 $this->loadViews("reservation/new", $this->global, $data, null);
         }
         /**
@@ -246,7 +246,7 @@ class Reservation extends BaseController
                 $data["photographe"] = $this->photographe_model->ReservationInfo($data["projectInfo"]->photographe);
                 $data["troupe"] = $this->troupe_model->ReservationInfo($data["projectInfo"]->troupe);
                 $data["prestation"] = $this->prestation_model->ReservationListing($resId);
-                $this->global["pageTitle"] = "CodeInsect : User Listing";
+                $this->global["pageTitle"] = "Reservation de salle ".$resId;
                 $this->loadViews("reservation/details", $this->global, $data, null);
         }
         /**
@@ -258,7 +258,7 @@ class Reservation extends BaseController
                 $data["contratInfo"] = $this->contrat_model->contratInfo($resId);
                 $data["paiementInfo"] = $this->paiement_model->paiementListingbyReservation($resId);
                 $data["totalPaiement"] = $this->paiement_model->getTotal($resId);
-                $this->global["pageTitle"] = "Recu de reservation";
+                $this->global["pageTitle"] = "Recu de reservation ".$resId;
                 $this->loadViews("paiement/recu", $this->global, $data, null);
         }
         /**

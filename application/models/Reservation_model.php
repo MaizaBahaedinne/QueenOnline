@@ -74,7 +74,7 @@ class Reservation_model extends CI_Model
      * @param number $segment : This is pagination limit
      * @return array $result : This is result
      */
-    function ReservationListingOld($troupe = 0 , $photographe = 0 , $date = null , $clientId = null )
+    function ReservationListingOld(  $dateF = null )
     {
         $this->db->select('BaseTbl.reservationId , BaseTbl.titre , BaseTbl.type , BaseTbl.prix ,  BaseTbl.dateDebut , BaseTbl.heureDebut , BaseTbl.dateFin , BaseTbl.heureFin , BaseTbl.cuisine , BaseTbl.tableCM , BaseTbl.voiture , BaseTbl.troupe , BaseTbl.photographe , BaseTbl.gateau   , BaseTbl.nbPlace , BaseTbl.noteAdmin , BaseTbl.statut , Client.name clientName , Client.mobile , Salles.nom salle');
         $this->db->from('tbl_reservation as BaseTbl');
@@ -89,26 +89,14 @@ class Reservation_model extends CI_Model
 
         }
 
-        if( $troupe != 0 ){
-        $this->db->where('BaseTbl.troupe = ',1);
-        }
-
-        if( $photographe != 0 ){
-        $this->db->where('BaseTbl.photographe = ',1);
-        }
-
-
-        if( $date != null ){
-         $this->db->where("BaseTbl.dateFin >=   '".$date."'" );
         
+
+        if( $dateF != null ){
+         $this->db->where("BaseTbl.dateFin <=  NOW() and YEAR(BaseTbl.dateFin) >=   ".$dateF-1."'" );
+       
         }
 
-        if( $clientId != null ){
-            $this->db->where('BaseTbl.statut in (0,1,3) ');
-         $this->db->where('BaseTbl.clientId = ', $clientId );
-
-
-        }
+        
 
         $this->db->where('BaseTbl.statut in (0,1,3) ');
     
