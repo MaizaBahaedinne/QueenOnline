@@ -92,7 +92,7 @@ class Reservation_model extends CI_Model
         
 
         if( $dateF != null ){
-         $this->db->where("BaseTbl.dateFin =  ".($dateF)." );
+         $this->db->where("BaseTbl.dateFin =  ".($dateF)." and YEAR(BaseTbl.dateFin) >=   ".($dateF) );
        
         }
 
