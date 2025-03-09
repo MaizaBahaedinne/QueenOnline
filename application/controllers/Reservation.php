@@ -69,9 +69,11 @@ class Reservation extends BaseController
         /**
          * This function used to load the first screen of the user
          */
-        public function ReservationOld($dateD = date('Y') )
+        public function ReservationOld($dateD = null )
         {
-                
+                if ($dateD === null) {
+                        $dateD = date('Y');
+                    }
                 $data["userRecords"] = $this->reservation_model->ReservationListingOld($dateD);
                      foreach ($data["userRecords"]  as $rerva) {
         
