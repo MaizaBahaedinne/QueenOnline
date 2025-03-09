@@ -1,3 +1,44 @@
+
+<style>
+    .rating-container {
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin-bottom: 20px;
+    }
+    .rating {
+    display: inline-flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    }
+    .rating input {
+    display: none;
+    }
+    .rating label {
+    font-size: 30px;
+    color: #ddd;
+    cursor: pointer;
+    transition: color 0.2s ease, transform 0.2s ease;
+    margin: 0 5px;
+    }
+    .rating label:hover,
+    .rating label:hover ~ label {
+    color: #ffcc00;
+    transform: scale(1.2);
+    }
+    .rating input:checked ~ label {
+    color: #ffcc00;
+    }
+    .rating-container p {
+    font-size: 16px;
+    margin-top: 10px;
+    color: #555;
+    }
+</style>
+
+
 <div class="app-main__inner">
    <div class="app-page-title">
       <div class="page-title-wrapper">
@@ -479,7 +520,62 @@
                             </div>
                           </div>
                         </div>
-             
+             <hr>
+
+             <button type='button' class='btn btn-primary  btn-block' data-toggle='modal' data-target='#evaluation'>Satisfaction
+             </button>
+
+             <div class="modal fade bd-example-modal-lg" id="evaluation" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="margin-top: 100px;">
+                          <div class="modal-dialog modal-lg" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Historique de la reservation</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+
+                                <div class="row">
+                                  
+                                  <p id="result-salle">Note : -</p>
+                                    <p id="result-service">Note : -</p>
+                                    <p id="result-proprete">Note : -</p>
+                                    <p id="result-lumiere">Note : -</p>
+                                    <p id="result-decoration">Note : -</p>
+                                    <p id="result-photographe">Note : -</p>
+                                    <p id="result-musicale">Note : -</p>
+                                    <p id="result-voiture">Note : -</p>
+
+                                    <script>
+                                        document.addEventListener("DOMContentLoaded", function () {
+                                            const categories = ["salle", "service", "proprete", "lumiere", "decoration", "photographe", "musicale", "voiture"];
+
+                                            categories.forEach(category => {
+                                                const radios = document.querySelectorAll(`input[name="${category}"]`);
+                                                const resultParagraph = document.getElementById(`result-${category}`);
+
+                                                radios.forEach(radio => {
+                                                    radio.addEventListener("change", function () {
+                                                        resultParagraph.textContent = `Note : ${this.value}/5`;
+                                                    });
+                                                });
+                                            });
+                                        });
+                                        </script>
+
+
+                              </div>   
+                                           
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                                <button type="button" class="btn btn-primary">Eneregistrer</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+
              </div>
              
                   
