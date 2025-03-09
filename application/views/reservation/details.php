@@ -529,6 +529,7 @@
                                             <td><?php echo str_repeat("⭐",$satisfaction->photographe) ?></td>
                                             <td></td>
                                         </tr>
+                                        <?php } ?>
                                         <?php if ($projectInfo->troupe != 0) { ?>
                                         <tr>
                                             <td><strong>Troupe musicale</strong></td>
