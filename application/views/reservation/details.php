@@ -503,7 +503,7 @@
                                     <?php } else { ?>
                                     <a href="<?php echo base_url() ?>Satisfaction/addNew/<?php echo $projectInfo->reservationId ?>" class='btn btn-primary  btn-block' >
                                         Ajouter une évaluation
-                                        </button>
+                                        </a>
                                         <?php } ?>
                                 </div>
                                 <div class="modal-footer">
