@@ -39,9 +39,9 @@ class Satisfaction extends BaseController
     public function addNew($reservationId)
 
     {
-            $data["voiture"] = $this->voiture_model->ReservationInfo($data["projectInfo"]->voiture);
-            $data["photographe"] = $this->photographe_model->ReservationInfo($data["projectInfo"]->photographe);
-            $data["troupe"] = $this->troupe_model->ReservationInfo($data["projectInfo"]->troupe);
+            $data["voiture"] = $this->voiture_model->ReservationInfo($reservationId);
+            $data["photographe"] = $this->photographe_model->ReservationInfo($reservationId);
+            $data["troupe"] = $this->troupe_model->ReservationInfo($reservationId);
             $data['projectInfo'] = $this->photographe_model->ReservationInfo($reservationId);
             $this->global['pageTitle'] = 'Satisfaction';
             $this->loadViews("satisfaction/new", $this->global, $data, NULL);
