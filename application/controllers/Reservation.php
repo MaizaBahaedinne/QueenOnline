@@ -79,7 +79,7 @@ class Reservation extends BaseController
         
                          $rerva->prestation = $this->prestation_model->ReservationListing($rerva->reservationId) ; 
                        }   
-                $this->global["pageTitle"] = "Anciennes reservations des salles";
+                $this->global["pageTitle"] = "reservations des salles de ".$dateD ;
                 $this->loadViews("reservation/list", $this->global, $data, null);
         }
 
