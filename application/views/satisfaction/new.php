@@ -103,7 +103,7 @@
                                                 <h4 class="control-label">Evaluation</h4>
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
+                                        <div class="col-md-4">
                                             <div class="rating-container">
                                                 <h4>Salle</h4>
                                                 <div class="rating rating-salle">
@@ -116,7 +116,7 @@
                                             </div>
                                         </div>
                                         <!-- Service -->
-                                        <div class="col-md-3">
+                                        <div class="col-md-4">
                                             <div class="rating-container">
                                                 <h4>Service</h4>
                                                 <div class="rating rating-service">
@@ -129,7 +129,7 @@
                                             </div>
                                         </div>
                                         <!-- Propreté -->
-                                        <div class="col-md-3">
+                                        <div class="col-md-4">
                                             <div class="rating-container">
                                                 <h4>Propreté</h4>
                                                 <div class="rating rating-proprete">
@@ -142,7 +142,7 @@
                                             </div>
                                         </div>
                                         <!-- Lumière -->
-                                        <div class="col-md-3">
+                                        <div class="col-md-4">
                                             <div class="rating-container">
                                                 <h4>Lumière</h4>
                                                 <div class="rating rating-lumiere">
@@ -155,7 +155,7 @@
                                             </div>
                                         </div>
                                         <!-- Ajout de la décoration, photographe, troupe musicale, voiture -->
-                                        <div class="col-md-3">
+                                        <div class="col-md-4">
                                             <div class="rating-container">
                                                 <h4>Décoration</h4>
                                                 <div class="rating rating-decoration">
@@ -167,7 +167,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
+                                        <?php if ($projectInfo->photographe != 0) { ?>
+                                        <div class="col-md-4">
                                             <div class="rating-container">
                                                 <h4>Photographe</h4>
                                                 <div class="rating rating-photographe">
@@ -179,7 +180,9 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
+                                        <?php } ?>
+                                        <?php if ($projectInfo->troupe != 0) { ?>
+                                        <div class="col-md-4">
                                             <div class="rating-container">
                                                 <h4>Troupe musicale</h4>
                                                 <div class="rating rating-musicale">
@@ -191,7 +194,9 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
+                                        <?php } ?>
+                                        <?php if ($projectInfo->voiture != 0) { ?>
+                                        <div class="col-md-4">
                                             <div class="rating-container">
                                                 <h4>Voiture</h4>
                                                 <div class="rating rating-voiture">
@@ -203,6 +208,7 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <?php } ?>
                                         <div class="col-sm-12">
                                             <div class="form-group">
                                                 <label class="control-label">Réclamation client</label>
