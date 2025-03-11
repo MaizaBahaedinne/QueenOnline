@@ -785,9 +785,22 @@
                                 </a>
                                 </li>
                                 <li>
-                                <a href="<?php echo base_url() ?>Reservation/ReservationOld">
+
+                                <a >
                                     <i class="metismenu-icon pe-7s-piggy"></i>Passées
                                 </a>
+                                <li>
+                                    <a href="<?php echo base_url() ?>Reservation/ReservationListingOld">Tous</a>
+                                    <a href="<?php echo base_url() ?>Reservation/ReservationListingOld/2025">2025</a>
+                                    <a href="<?php echo base_url() ?>Reservation/ReservationListingOld/2024">2024</a>
+                                    <a href="<?php echo base_url() ?>Reservation/ReservationListingOld/2023">2023</a>
+                                    <a href="<?php echo base_url() ?>Reservation/ReservationListingOld/2022">2022</a>
+                                    <a href="<?php echo base_url() ?>Reservation/ReservationListingOld/2021">2021</a>
+                                    <a href="<?php echo base_url() ?>Reservation/ReservationListingOld/2020">2020</a>
+                                    <a href="<?php echo base_url() ?>Reservation/ReservationListingOld/2019">2019</a>
+                                    <a href="<?php echo base_url() ?>Reservation/ReservationListingOld/2018">2018</a>
+                                    <a href="<?php echo base_url() ?>Reservation/ReservationListingOld/2017">2017</a>
+                                </li>
                                 </li>
                                 <li>
                                 <a href="<?php echo base_url() ?>Reservation/Calender">
