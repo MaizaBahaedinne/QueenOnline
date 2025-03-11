@@ -784,22 +784,17 @@
                                     <i class="metismenu-icon pe-7s-piggy"></i>A venir
                                 </a>
                                 </li>
-                                <li>
-
-                                <a >
-                                    <i class="metismenu-icon pe-7s-piggy"></i>Passées
-                                </a>
-                                <li>
-                                    <a href="<?php echo base_url() ?>Reservation/ReservationOld">Tous</a>
-                                    <a href="<?php echo base_url() ?>Reservation/ReservationOld/2025">2025</a>
-                                    <a href="<?php echo base_url() ?>Reservation/ReservationOld/2024">2024</a>
-                                    <a href="<?php echo base_url() ?>Reservation/ReservationOld/2023">2023</a>
-                                    <a href="<?php echo base_url() ?>Reservation/ReservationOld/2022">2022</a>
-                                    <a href="<?php echo base_url() ?>Reservation/ReservationOld/2021">2021</a>
-                                    <a href="<?php echo base_url() ?>Reservation/ReservationOld/2020">2020</a>
-                                    <a href="<?php echo base_url() ?>Reservation/ReservationOld/2019">2019</a>
-                                    <a href="<?php echo base_url() ?>Reservation/ReservationOld/2018">2018</a>
-                                    <a href="<?php echo base_url() ?>Reservation/ReservationOld/2017">2017</a>
+                               <l
+                                    <a href="<?php echo base_url() ?>Reservation/ReservationOld"><i class="metismenu-icon pe-7s-piggy"></i>Passées</a>
+                                    <a href="<?php echo base_url() ?>Reservation/ReservationOld/2025">&nbsp;&nbsp;2025</a>
+                                    <a href="<?php echo base_url() ?>Reservation/ReservationOld/2024">&nbsp;&nbsp;2024</a>
+                                    <a href="<?php echo base_url() ?>Reservation/ReservationOld/2023">&nbsp;&nbsp;2023</a>
+                                    <a href="<?php echo base_url() ?>Reservation/ReservationOld/2022">&nbsp;&nbsp;2022</a>
+                                    <a href="<?php echo base_url() ?>Reservation/ReservationOld/2021">&nbsp;&nbsp;2021</a>
+                                    <a href="<?php echo base_url() ?>Reservation/ReservationOld/2020">&nbsp;&nbsp;2020</a>
+                                    <a href="<?php echo base_url() ?>Reservation/ReservationOld/2019">&nbsp;&nbsp;2019</a>
+                                    <a href="<?php echo base_url() ?>Reservation/ReservationOld/2018">&nbsp;&nbsp;2018</a>
+                                    <a href="<?php echo base_url() ?>Reservation/ReservationOld/2017">&nbsp;&nbsp;2017</a>
                                 </li>
                                 </li>
                                 <li>
