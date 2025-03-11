@@ -81,9 +81,15 @@ class Reservation_model extends CI_Model
         $this->db->join('tbl_users as Client', 'Client.userId = BaseTbl.clientId','left');
         $this->db->join('tbl_users as Locataire', 'Locataire.userId = BaseTbl.clientId','left');
         $this->db->join('tbl_salle as Salles', 'Salles.salleID = BaseTbl.salleId','left');
-                
+        
+        if ($dateF == null )  {      
         $this->db->where('BaseTbl.dateFin <= NOW() ');
         $this->db->where('Year(BaseTbl.dateFin) >= Year(NOW())-1 ');
+         }
+         else {
+            $this->db->where('Year(BaseTbl.dateFin) = ',$dateF );
+          }
+
 
         $this->db->where('BaseTbl.statut in (0,1,3) ');
     
