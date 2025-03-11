@@ -86,7 +86,7 @@ class Reservation extends BaseController
         public function addNew()
         {
                 $data["salleRecords"] = $this->salle_model->SalleListing();
-                $this->global["pageTitle"] = "les réservation de ".$dateD;
+                $this->global["pageTitle"] = "Ajouter reservation";
                 $this->loadViews("reservation/new", $this->global, $data, null);
         }
         /**
