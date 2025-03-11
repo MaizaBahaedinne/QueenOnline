@@ -84,7 +84,7 @@ class Reservation_model extends CI_Model
         
         
         $this->db->where('BaseTbl.dateFin <= NOW() ');
-        $this->db->where('Year(BaseTbl.dateFin) >= Year(NOW()-1) ');
+        $this->db->where('Year(BaseTbl.dateFin) >= Year(NOW())-1 ');
 
         
 
