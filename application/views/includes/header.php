@@ -784,7 +784,7 @@
                                     <i class="metismenu-icon pe-7s-piggy"></i>A venir
                                 </a>
                                 </li>
-                               <l
+                               <li>
                                     <a href="<?php echo base_url() ?>Reservation/ReservationOld"><i class="metismenu-icon pe-7s-piggy"></i>Passées</a>
                                     <a href="<?php echo base_url() ?>Reservation/ReservationOld/2025">&nbsp;&nbsp;2025</a>
                                     <a href="<?php echo base_url() ?>Reservation/ReservationOld/2024">&nbsp;&nbsp;2024</a>
