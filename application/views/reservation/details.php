@@ -460,7 +460,7 @@
                                         <h5>Etat de sortie</h5>
                                         <p><?php echo $satisfaction->sortie ?></p>
                                     </div>
-
+                                    <hr>
                                     <table width="100%">
                                         <tr>
                                             <td width="20%"><strong>Salle</strong></td>
@@ -509,11 +509,12 @@
                                         </tr>
                                         <?php } ?>
                                     </table>
-
+                                    <hr>
                                     <div>
                                         <h5>Reclamation de client </h5>
                                         <p><?php echo $satisfaction->reclamation ?></p>
                                     </div>
+                                    <hr>
                                      <div>
                                         <h5>date et heure </h5>
                                         <p><?php echo $satisfaction->createdDTM ?></p>
