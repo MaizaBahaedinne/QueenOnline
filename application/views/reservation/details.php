@@ -452,6 +452,15 @@
                                 </div>
                                 <div class="modal-body">
                                     <?php if (!(empty($satisfaction))) { ?>
+
+                                    <div>
+                                        <h5>Etat d'entré</h5>
+                                        <p><?php echo $satisfaction->entre ?></p>
+                                        <hr>
+                                        <h5>Etat de sortie</h5>
+                                        <p><?php echo $satisfaction->sortie ?></p>
+                                    </div>
+
                                     <table width="100%">
                                         <tr>
                                             <td width="20%"><strong>Salle</strong></td>
@@ -500,6 +509,16 @@
                                         </tr>
                                         <?php } ?>
                                     </table>
+
+                                    <div>
+                                        <h5>Reclamation de client </h5>
+                                        <p><?php echo $satisfaction->reclamation ?></p>
+                                    </div>
+                                     <div>
+                                        <h5>date et heure </h5>
+                                        <p><?php echo $satisfaction->createdDTM ?></p>
+                                    </div>                                   
+
                                     <?php } else { ?>
                                     <a href="<?php echo base_url() ?>Satisfaction/addNew/<?php echo $projectInfo->reservationId ?>" class='btn btn-primary  btn-block' >
                                         Ajouter une évaluation
