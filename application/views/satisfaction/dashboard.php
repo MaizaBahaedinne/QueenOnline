@@ -16,6 +16,8 @@
    </div>
    <div class="tabs-animation">
       <div class="row">
+         <?php for ($i=1; $i<=12 ; $i+1) { 
+           echo "<h4>".$i."</h4>"?>
          <?php foreach ( $satisfactionSalles as $satisfactionSalle ) { ?>
          <div class="col-md-4 col-xl-4">
             <div class="mb-3 card">
@@ -81,7 +83,8 @@
             </div>
             
          </div>
-         <?php } ?>
+         <?php } 
+         echo "</hr>" ;} ?>
       </div>
    </div>
 </div>
