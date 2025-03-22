@@ -78,7 +78,7 @@ class Satisfaction_model extends CI_Model
      */
     function SatisfactionStatYear($annee = null)
     {
-            // Start the query
+        // Start the query
     $this->db->select('
         AVG(BaseTbl.salle) as avg_salle,
         AVG(BaseTbl.service) as avg_service,
@@ -86,8 +86,8 @@ class Satisfaction_model extends CI_Model
         AVG(BaseTbl.lumiere) as avg_lumiere,
         AVG(BaseTbl.decoration) as avg_decoration,
         AVG(BaseTbl.photographe) as avg_photographe,
-        AVG(BaseTbl.voiture) as avg_voiture,Ò
-        YEAR(Res.dateFin) as YEAR,
+        AVG(BaseTbl.voiture) as avg_voiture,
+        YEAR(Res.dateFin) as YEAR,  -- Now using Res.dateFin instead of BaseTbl.dateFin
         Salles.nom as salle
     ');
     
@@ -96,12 +96,12 @@ class Satisfaction_model extends CI_Model
     $this->db->join('tbl_salle as Salles', 'Salles.salleID = Res.salleId', 'left');
     $this->db->from('tbl_satisfaction as BaseTbl');
     
-    // Apply grouping
-    $this->db->group_by('salle, YEAR');
+    // Apply grouping correctly
+    $this->db->group_by('Salles.nom, YEAR(Res.dateFin)');  -- Now grouping by YEAR(Res.dateFin)
     
     // Apply the year filter if $annee is not null
     if ($annee !== null) {
-        $this->db->where('YEAR(BaseTbl.dateFin)', $annee);
+        $this->db->where('YEAR(Res.dateFin)', $annee);  -- Now filtering by YEAR(Res.dateFin)
     }
         
         $query = $this->db->get();
