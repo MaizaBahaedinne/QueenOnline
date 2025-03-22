@@ -88,7 +88,8 @@ class Satisfaction_model extends CI_Model
         AVG(BaseTbl.photographe) as avg_photographe,
         AVG(BaseTbl.voiture) as avg_voiture,
         AVG(BaseTbl.musicale) as avg_musicale,
-        YEAR(Res.dateFin) as YEAR,  
+        YEAR(Res.dateFin) as YEAR,
+        MONTH(Res.dateFin) as MONTH,  
         Salles.nom as salle
     ');
     
@@ -99,7 +100,7 @@ class Satisfaction_model extends CI_Model
     
     
     // Apply grouping correctly
-    $this->db->group_by('Salles.nom, YEAR(Res.dateFin)');  
+    $this->db->group_by('Salles.nom, YEAR(Res.dateFin), MONTH(Res.dateFin)');  
     
     // Apply the year filter if $annee is not null
     
