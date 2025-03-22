@@ -16,7 +16,7 @@
    </div>
    <div class="tabs-animation">
       <div class="row">
-         <?php for ( $satisfaction as $satisfactionSalle ) { ?>
+         <?php foreach ( $satisfaction as $satisfactionSalle ) { ?>
          <div class="col-md-4 col-xl-4">
             <div class="mb-3 card">
                <div class="card-header-tab card-header">
