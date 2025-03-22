@@ -97,11 +97,11 @@ class Satisfaction_model extends CI_Model
     $this->db->from('tbl_satisfaction as BaseTbl');
     
     // Apply grouping correctly
-    $this->db->group_by('Salles.nom, YEAR(Res.dateFin)');  -- Now grouping by YEAR(Res.dateFin)
+    $this->db->group_by('Salles.nom, YEAR(Res.dateFin)');  
     
     // Apply the year filter if $annee is not null
     if ($annee !== null) {
-        $this->db->where('YEAR(Res.dateFin)', $annee);  -- Now filtering by YEAR(Res.dateFin)
+        $this->db->where('YEAR(Res.dateFin)', $annee);  
     }
         
         $query = $this->db->get();
