@@ -66,7 +66,7 @@
                                         </tr>
                                        
                                         <tr>
-                                            <td><strong>Troupe musicale</strong></td>
+                                            <td><strong>Troupe</strong></td>
                                             <td><?php echo str_repeat("⭐",$satisfactionSalle->avg_musicale) ?></td>
                                             <td></td>
                                         </tr>                                        
