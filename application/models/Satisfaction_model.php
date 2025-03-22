@@ -86,8 +86,8 @@ class Satisfaction_model extends CI_Model
         AVG(BaseTbl.lumiere) as avg_lumiere,
         AVG(BaseTbl.decoration) as avg_decoration,
         AVG(BaseTbl.photographe) as avg_photographe,
-        AVG(BaseTbl.voiture) as avg_voiture,
-        YEAR(BaseTbl.dateFin) as YEAR,
+        AVG(BaseTbl.voiture) as avg_voiture,Ò
+        YEAR(Res.dateFin) as YEAR,
         Salles.nom as salle
     ');
     
