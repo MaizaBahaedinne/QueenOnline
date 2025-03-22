@@ -6,7 +6,7 @@
                <i class="pe-7s-graph icon-gradient bg-ripe-malin"></i>
             </div>
             <div>
-               Satisfaction des services pour <?php echo $satisfactionSalle->YEAR ?>
+               Satisfaction des services pour <?php echo $satisfactionSalles[0]->YEAR ?>
                <div class="page-title-subheading"></div>
             </div>
          </div>
