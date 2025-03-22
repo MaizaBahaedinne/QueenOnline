@@ -102,9 +102,9 @@ class Satisfaction_model extends CI_Model
     $this->db->group_by('Salles.nom, YEAR(Res.dateFin)');  
     
     // Apply the year filter if $annee is not null
-    if ($annee !== null) {
-        $this->db->where('YEAR(Res.dateFin)', $annee);  
-    }
+    
+        $this->db->where('YEAR(Res.dateFin)', 2025);  
+    
         
         $query = $this->db->get();
         $result = $query->result();        
