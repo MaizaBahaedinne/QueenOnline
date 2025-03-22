@@ -930,6 +930,11 @@
                                     <i class="metismenu-icon pe-7s-graph"></i>Salle/Ans
                                 </a>
                             </li>
+                            <li>
+                                <a href="<?php echo base_url() ?>Statistique/satisfaction">
+                                    <i class="metismenu-icon pe-7s-graph"></i>Satisfaction
+                                </a>
+                            </li>                            
                             <?php }  ?>
                         </ul>
 

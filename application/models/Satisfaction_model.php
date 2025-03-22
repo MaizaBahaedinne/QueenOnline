@@ -61,17 +61,53 @@ class Satisfaction_model extends CI_Model
      */
     function ReservationInfo($resId)
     {
-       $this->db->select('BaseTbl.* ');
-        $this->db->from('tbl_satisfaction as BaseTbl');
-      
+        $this->db->select('BaseTbl.* ');
+        $this->db->from('tbl_satisfaction as BaseTbl');      
         $this->db->where('BaseTbl.reservationId =',$resId );
-
-        $query = $this->db->get();
-        
+        $query = $this->db->get();    
         return $query->row();
     }
 
 
+     /**
+     * This function is used to get the user listing count
+     * @param string $searchText : This is optional search text
+     * @param number $page : This is pagination offset
+     * @param number $segment : This is pagination limit
+     * @return array $result : This is result
+     */
+    function SatisfactionStatYear($annee = null)
+    {
+            // Start the query
+    $this->db->select('
+        AVG(BaseTbl.salle) as avg_salle,
+        AVG(BaseTbl.service) as avg_service,
+        AVG(BaseTbl.proprete) as avg_proprete,
+        AVG(BaseTbl.lumiere) as avg_lumiere,
+        AVG(BaseTbl.decoration) as avg_decoration,
+        AVG(BaseTbl.photographe) as avg_photographe,
+        AVG(BaseTbl.voiture) as avg_voiture,
+        YEAR(BaseTbl.dateFin) as YEAR,
+        Salles.nom as salle
+    ');
+    
+    // Join the necessary tables
+    $this->db->join('tbl_reservation as Res', 'Res.reservationId = BaseTbl.reservationId', 'left');
+    $this->db->join('tbl_salle as Salles', 'Salles.salleID = Res.salleId', 'left');
+    $this->db->from('tbl_satisfaction as BaseTbl');
+    
+    // Apply grouping
+    $this->db->group_by('Salles.nom, YEAR(BaseTbl.dateFin)');
+    
+    // Apply the year filter if $annee is not null
+    if ($annee !== null) {
+        $this->db->where('YEAR(BaseTbl.dateFin)', $annee);
+    }
+        
+        $query = $this->db->get();
+        $result = $query->result();        
+        return $result;
+    }
 
 
    

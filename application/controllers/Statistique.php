@@ -31,6 +31,7 @@ class Statistique extends BaseController
         $this->load->model('paiement_model');
         $this->load->model('finance_model');
         $this->load->model('statistique_model');
+        $this->load->model('satisfaction_model');
         
         $this->isLoggedIn();   
     }
@@ -45,6 +46,19 @@ class Statistique extends BaseController
 
             $this->global['pageTitle'] = 'Statistique par salles';
             $this->loadViews("stats/salles", $this->global, $data, NULL);
+    }
+
+
+    /**
+     * This function used to load the first screen of the user
+     */
+    public function satisfacton()
+    {
+            $data['satisfactionSalle'] = $this->satisfaction_model->SatisfactionStatYear();
+            
+
+            $this->global['pageTitle'] = 'Satisfaction';
+            $this->loadViews("satisfaction/dashboard", $this->global, $data, NULL);
     }
 
 
