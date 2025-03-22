@@ -92,9 +92,10 @@ class Satisfaction_model extends CI_Model
     ');
     
     // Join the necessary tables
+    $this->db->from('tbl_satisfaction as BaseTbl');
     $this->db->join('tbl_reservation as Res', 'Res.reservationId = BaseTbl.reservationId', 'left');
     $this->db->join('tbl_salle as Salles', 'Salles.salleID = Res.salleId', 'left');
-    $this->db->from('tbl_satisfaction as BaseTbl');
+    
     
     // Apply grouping correctly
     $this->db->group_by('Salles.nom, YEAR(Res.dateFin)');  
