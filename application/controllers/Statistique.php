@@ -56,9 +56,9 @@ class Statistique extends BaseController
     {
             $data['satisfactionSalles'] = $this->satisfaction_model->SatisfactionStatYear();
             
-
+            print_r($data['satisfactionSalles']) ; 
             $this->global['pageTitle'] = 'Satisfaction';
-            $this->loadViews("satisfaction/dashboard", $this->global, $data, NULL);
+         //   $this->loadViews("satisfaction/dashboard", $this->global, $data, NULL);
     }
 
 
