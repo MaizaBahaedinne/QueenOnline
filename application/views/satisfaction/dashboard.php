@@ -35,43 +35,43 @@
                <div class="widget-chart p-0">
                   <table width="100%">
                                         <tr>
-                                            <td width="20%"><strong>Salle</strong></td>
+                                            <td width="20%">Salle</td>
                                             <td><?php echo str_repeat("⭐",$satisfactionSalle->avg_salle) ?></td>
                                             <td></td>
                                         </tr>
                                         <tr>
-                                            <td><strong>Service</strong></td>
+                                            <td>Service</td>
                                             <td><?php echo str_repeat("⭐",$satisfactionSalle->avg_service) ?></td>
                                             <td></td>
                                         </tr>
                                         <tr>
-                                            <td><strong>Propreté</strong></td>
+                                            <td>Propreté</td>
                                             <td><?php echo str_repeat("⭐",$satisfactionSalle->avg_proprete) ?></td>
                                             <td></td>
                                         </tr>
                                         <tr>
-                                            <td><strong>Lumière</strong></td>
+                                            <td>Lumière</td>
                                             <td><?php echo str_repeat("⭐",$satisfactionSalle->avg_lumiere) ?></td>
                                             <td></td>
                                         </tr>
                                         <tr>
-                                            <td><strong>Décoration</strong></td>
+                                            <td>Décoration</td>
                                             <td><?php echo str_repeat("⭐",$satisfactionSalle->avg_decoration) ?></td>
                                             <td></td>
                                         </tr>
                                         <tr>
-                                            <td><strong>Photographe</strong></td>
+                                            <td>Photographe</td>
                                             <td><?php echo str_repeat("⭐",$satisfactionSalle->avg_photographe) ?></td>
                                             <td></td>
                                         </tr>
                                        
                                         <tr>
-                                            <td><strong>Troupe</strong></td>
+                                            <td>Troupe</td>
                                             <td><?php echo str_repeat("⭐",$satisfactionSalle->avg_musicale) ?></td>
                                             <td></td>
                                         </tr>                                        
                                         <tr>
-                                            <td><strong>Voiture</strong></td>
+                                            <td>Voiture</td>
                                             <td><?php echo str_repeat("⭐",$satisfactionSalle->avg_voiture) ?></td>
                                             <td></td>
                                         </tr>
