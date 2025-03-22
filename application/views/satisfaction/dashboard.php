@@ -36,7 +36,7 @@
          for ($i = 1; $i <= 12; $i++) { 
             // Remplacer le numéro de mois par son nom en français
             $mois_nom = $mois_francais[$i];
-            echo "<h4>".$mois_nom."</h4>"; // Afficher le nom du mois
+            echo '<div class="col-md-12 col-xl-12"><h4>'.$mois_nom."</h4></div>"; // Afficher le nom du mois
          ?>
          <?php foreach ($satisfactionSalles as $satisfactionSalle) { 
             if ($satisfactionSalle->MONTH == $i ) {  ?>
