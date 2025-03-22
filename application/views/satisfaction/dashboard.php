@@ -17,7 +17,7 @@
    <div class="tabs-animation">
       <div class="row">
          <?php for ($i=1; $i<=12 ; $i++) { 
-            echo "<h4>".$i."</h4>"?>
+            echo ' <div class="col-md-12 col-xl-12"> <h4>'.$i."</h4></div>"?>
          <?php foreach ( $satisfactionSalles as $satisfactionSalle ) { 
             if ($satisfactionSalle->MONTH == $i ) {  ?>
          <div class="col-md-4 col-xl-4">
