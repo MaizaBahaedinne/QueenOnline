@@ -34,49 +34,48 @@
                </div>
                <div class="widget-chart p-0">
                   <table width="100%">
-                                        <tr>
-                                            <td width="20%">Salle</td>
-                                            <td><?php echo str_repeat("⭐",$satisfactionSalle->avg_salle) ?></td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Service</td>
-                                            <td><?php echo str_repeat("⭐",$satisfactionSalle->avg_service) ?></td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Propreté</td>
-                                            <td><?php echo str_repeat("⭐",$satisfactionSalle->avg_proprete) ?></td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Lumière</td>
-                                            <td><?php echo str_repeat("⭐",$satisfactionSalle->avg_lumiere) ?></td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Décoration</td>
-                                            <td><?php echo str_repeat("⭐",$satisfactionSalle->avg_decoration) ?></td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Photographe</td>
-                                            <td><?php echo str_repeat("⭐",$satisfactionSalle->avg_photographe) ?></td>
-                                            <td></td>
-                                        </tr>
-                                       
-                                        <tr>
-                                            <td>Troupe</td>
-                                            <td><?php echo str_repeat("⭐",$satisfactionSalle->avg_musicale) ?></td>
-                                            <td></td>
-                                        </tr>                                        
-                                        <tr>
-                                            <td>Voiture</td>
-                                            <td><?php echo str_repeat("⭐",$satisfactionSalle->avg_voiture) ?></td>
-                                            <td></td>
-                                        </tr>
-                                        
-                                    </table>
+                      <tr>
+                          <td width="20%">Salle</td>
+                          <td><?php echo str_repeat("⭐", round($satisfactionSalle->avg_salle)) ?></td>
+                          <td><?php echo round($satisfactionSalle->avg_salle, 1) ?></td> <!-- Rounded to 1 decimal place -->
+                      </tr>
+                      <tr>
+                          <td>Service</td>
+                          <td><?php echo str_repeat("⭐", round($satisfactionSalle->avg_service)) ?></td>
+                          <td><?php echo round($satisfactionSalle->avg_service, 1) ?></td> <!-- Rounded to 1 decimal place -->
+                      </tr>
+                      <tr>
+                          <td>Propreté</td>
+                          <td><?php echo str_repeat("⭐", round($satisfactionSalle->avg_proprete)) ?></td>
+                          <td><?php echo round($satisfactionSalle->avg_proprete, 1) ?></td> <!-- Rounded to 1 decimal place -->
+                      </tr>
+                      <tr>
+                          <td>Lumière</td>
+                          <td><?php echo str_repeat("⭐", round($satisfactionSalle->avg_lumiere)) ?></td>
+                          <td><?php echo round($satisfactionSalle->avg_lumiere, 1) ?></td> <!-- Rounded to 1 decimal place -->
+                      </tr>
+                      <tr>
+                          <td>Décoration</td>
+                          <td><?php echo str_repeat("⭐", round($satisfactionSalle->avg_decoration)) ?></td>
+                          <td><?php echo round($satisfactionSalle->avg_decoration, 1) ?></td> <!-- Rounded to 1 decimal place -->
+                      </tr>
+                      <tr>
+                          <td>Photographe</td>
+                          <td><?php echo str_repeat("⭐", round($satisfactionSalle->avg_photographe)) ?></td>
+                          <td><?php echo round($satisfactionSalle->avg_photographe, 1) ?></td> <!-- Rounded to 1 decimal place -->
+                      </tr>
+                      <tr>
+                          <td>Troupe</td>
+                          <td><?php echo str_repeat("⭐", round($satisfactionSalle->avg_musicale)) ?></td>
+                          <td><?php echo round($satisfactionSalle->avg_musicale, 1) ?></td> <!-- Rounded to 1 decimal place -->
+                      </tr>
+                      <tr>
+                          <td>Voiture</td>
+                          <td><?php echo str_repeat("⭐", round($satisfactionSalle->avg_voiture)) ?></td>
+                          <td><?php echo round($satisfactionSalle->avg_voiture, 1) ?></td> <!-- Rounded to 1 decimal place -->
+                      </tr>
+                  </table>
+
                </div>
                <div class="divider mb-0"></div>
             </div>
