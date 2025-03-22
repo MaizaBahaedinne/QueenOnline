@@ -87,7 +87,7 @@ class Satisfaction_model extends CI_Model
         AVG(BaseTbl.decoration) as avg_decoration,
         AVG(BaseTbl.photographe) as avg_photographe,
         AVG(BaseTbl.voiture) as avg_voiture,
-        YEAR(Res.dateFin) as YEAR,  -- Now using Res.dateFin instead of BaseTbl.dateFin
+        YEAR(Res.dateFin) as YEAR,  
         Salles.nom as salle
     ');
     
