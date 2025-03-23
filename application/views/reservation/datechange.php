@@ -66,7 +66,7 @@
                     </div>
 
                    
-                    <div class="col-md-2">
+                    <div class="col-md-4">
                       <label for="formGroupExampleInput2">Prix (DT)</label>
                       <input type="number" class="form-control" value="<?php echo $projectInfo->prix ?>"   min="300" name="prix" placeholder="Prix">
                   </div>
