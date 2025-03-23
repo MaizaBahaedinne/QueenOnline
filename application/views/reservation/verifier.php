@@ -96,10 +96,6 @@
 <script>
 // Récupérer les réservations depuis PHP
 var reservations = <?php echo json_encode($reseAvenir); ?>;
-</script>
-
-<script>
-
 
 // Fonction appelée lors du changement de la salle
 function onSalleChange() {
@@ -186,27 +182,33 @@ function formatTime(hour, minutes) {
 }
 
 // Fonction pour mettre à jour les créneaux horaires disponibles
-function updateTimeSelectors(reservedHours) {
-    var heureDebutSelect = document.getElementById("heureDebut");
+function updateAvailableTimes(salleId, dateDebut) {
+    // Filtrer les réservations par salle et date
+    var reservedHours = reservations.filter(function(reservation) {
+        return reservation.salleId == salleId && reservation.dateDebut == dateDebut;
+    });
 
-    // Vider les options actuelles
+    // Vider les options actuelles d'heure de début
+    var heureDebutSelect = document.getElementById("heureDebut");
     heureDebutSelect.innerHTML = "<option value=''>Sélectionner une heure de début</option>";
 
     var startHour = 8;  // Par exemple, commencer à 8h du matin
     var endHour = 23;
 
+    // Remplir les options d'heure de début disponibles en fonction des horaires réservés
     for (var h = startHour; h <= endHour; h++) {
         for (var m = 0; m < 60; m += 30) {
             var time = formatTime(h, m);
             var isReserved = false;
 
-            // Vérification des réservations sur cette plage horaire
+            // Vérification des créneaux réservés
             reservedHours.forEach(function(reservation) {
-                if (isTimeBetween(time, reservation.start, reservation.end)) {
+                if (isTimeBetween(time, reservation.heureDebut, reservation.heureFin)) {
                     isReserved = true;
                 }
             });
 
+            // Si l'heure n'est pas réservée, l'ajouter à la liste
             if (!isReserved) {
                 var option = document.createElement("option");
                 option.value = time;
@@ -215,11 +217,14 @@ function updateTimeSelectors(reservedHours) {
             }
         }
     }
+
+    // Réactiver l'heure de début
+    document.getElementById("heureDebut").disabled = false;
 }
 
 // Fonction pour vérifier si une heure est comprise entre deux heures
 function isTimeBetween(time, start, end) {
-    return time >= start && time <= end;
+    return time >= start && time < end;
 }
 </script>
 
