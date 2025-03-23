@@ -32,10 +32,16 @@
               <input type="date" class="form-control" id="dateDebut" name="dateDebut" min="<?php echo date('Y-m-d') ?>" placeholder="Exemple input" value="<?php echo $projectInfo->dateDebut ?>" onchange="updateAvailableTimes()">
             </div> 
             <div class="col-md-3">
-              <input type="time" class="form-control" id="heureDebut" name="heureDebut" value="<?php echo $projectInfo->heureDebut ?>" placeholder="Exemple input" onchange="validateTimes()">
+              <select class="form-control" id="heureDebut" name="heureDebut" onchange="validateTimes()">
+                <option value="">heure de début</option>
+                <!-- Les options seront ajoutées par JavaScript -->
+              </select>
             </div>
             <div class="col-md-3">
-              <input type="time" class="form-control" id="heureFin" value="<?php echo $projectInfo->heureFin ?>" name="heureFin" placeholder="Exemple input" onchange="validateTimes()">
+             <select class="form-control" id="heureFin" name="heureFin" onchange="validateTimes()">
+              <option value="">heure de fin</option>
+              <!-- Les options seront ajoutées par JavaScript -->
+            </select>
             </div>
             <div class="col-md-12">
               <h5 style="color: red" id="alert"></h5>
@@ -142,8 +148,8 @@ var reseAvenir = <?php echo json_encode($reseAvenir); ?>;
 
 function updateAvailableTimes() {
     const dateInput = document.getElementById('dateDebut');
-    const heureDebutInput = document.getElementById('heureDebut');
-    const heureFinInput = document.getElementById('heureFin');
+    const heureDebutSelect = document.getElementById('heureDebut');
+    const heureFinSelect = document.getElementById('heureFin');
 
     if (!dateInput) {
         console.error("L'élément dateDebut n'a pas été trouvé dans le DOM.");
@@ -160,32 +166,53 @@ function updateAvailableTimes() {
     // Filtrer les réservations pour la date sélectionnée
     const reservedTimes = reseAvenir.filter(reservation => reservation.dateDebut === selectedDate);
 
-    // Vérifier si l'heure de début est réservée
-    checkAvailability(heureDebutInput, reservedTimes);
+    // Créer la liste des créneaux horaires disponibles
+    let timeSlots = [];
+    let startHour = 8; // 08:00 AM
+    let endHour = 23; // 11:00 PM
 
-    // Vérifier si l'heure de fin est réservée
-    checkAvailability(heureFinInput, reservedTimes);
-}
+    // Remplir la liste des créneaux horaires
+    for (let hour = startHour; hour <= endHour; hour++) {
+        let hourString = hour < 10 ? '0' + hour : hour;
+        timeSlots.push(hourString + ":00");
+        timeSlots.push(hourString + ":30");
+    }
 
-// Vérifier la disponibilité d'un créneau horaire
-function checkAvailability(inputElement, reservedTimes) {
-    const time = inputElement.value;
-    let isReserved = false;
+    // Ajouter les options dans le select "heureDebut"
+    timeSlots.forEach(time => {
+        let option = document.createElement('option');
+        option.value = time;
+        option.innerHTML = time;
 
-    // Vérifier si l'heure correspond à un créneau réservé
-    reservedTimes.forEach(reservation => {
-        if (reservation.heureDebut <= time && reservation.heureFin > time) {
-            isReserved = true;
+        // Vérifier si l'heure est réservée
+        let isReserved = reservedTimes.some(reservation => reservation.heureDebut <= time && reservation.heureFin > time);
+
+        if (isReserved) {
+            option.style.color = 'red'; // Si réservé, mettre en rouge
+        } else {
+            option.style.color = 'black'; // Si disponible, mettre en noir
         }
+
+        heureDebutSelect.appendChild(option);
     });
 
-    // Si l'heure est réservée, appliquer la couleur rouge, sinon noir
-    if (isReserved) {
-        inputElement.style.backgroundColor = 'red';
-    } else {
-        inputElement.style.backgroundColor = 'black';
-        inputElement.style.color = 'white'; // Pour rendre le texte visible sur fond noir
-    }
+    // Ajouter les options dans le select "heureFin"
+    timeSlots.forEach(time => {
+        let option = document.createElement('option');
+        option.value = time;
+        option.innerHTML = time;
+
+        // Vérifier si l'heure est réservée
+        let isReserved = reservedTimes.some(reservation => reservation.heureDebut <= time && reservation.heureFin > time);
+
+        if (isReserved) {
+            option.style.color = 'red'; // Si réservé, mettre en rouge
+        } else {
+            option.style.color = 'black'; // Si disponible, mettre en noir
+        }
+
+        heureFinSelect.appendChild(option);
+    });
 }
 
 function validateTimes() {
@@ -203,5 +230,4 @@ function validateTimes() {
 window.onload = function() {
     updateAvailableTimes();
 };
-
 </script>
