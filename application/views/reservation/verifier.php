@@ -70,6 +70,7 @@
               <select class="form-control" id="heureFin" name="heureFin" onchange="validateTimes()">
                 <option value="">heure de fin</option>
               </select>
+              <h5 id="alert" ></h5>
             </div>
 
             <!-- Alerte d'erreur -->
@@ -122,7 +123,7 @@
       var reservation = reservations[i];
 
       // Vérifier si la réservation correspond à la salle et à la date
-      if (reservation.salleID == salleId && reservation.dateDebut == dateDebut) {
+      if (reservation.salleId == salleId && reservation.dateDebut == dateDebut) {
         var startHour = reservation.heureDebut;
         var endHour = reservation.heureFin;
 
