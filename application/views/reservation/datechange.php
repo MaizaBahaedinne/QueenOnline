@@ -177,6 +177,9 @@ function updateAvailableTimes() {
         timeSlots.push(hourString + ":00");
         timeSlots.push(hourString + ":30");
     }
+    
+    // Ajouter 23:59 comme dernier créneau possible pour l'heure de fin
+    timeSlots.push("23:59");
 
     // Ajouter les options dans le select "heureDebut"
     timeSlots.forEach(time => {
@@ -188,9 +191,7 @@ function updateAvailableTimes() {
         let isReserved = reservedTimes.some(reservation => reservation.heureDebut <= time && reservation.heureFin > time);
 
         if (isReserved) {
-            option.style.color = 'red'; // Si réservé, mettre en rouge
-        } else {
-            option.style.color = 'black'; // Si disponible, mettre en noir
+            option.disabled = true; // Griser l'option si elle est réservée
         }
 
         heureDebutSelect.appendChild(option);
@@ -206,13 +207,23 @@ function updateAvailableTimes() {
         let isReserved = reservedTimes.some(reservation => reservation.heureDebut <= time && reservation.heureFin > time);
 
         if (isReserved) {
-            option.style.color = 'red'; // Si réservé, mettre en rouge
-        } else {
-            option.style.color = 'black'; // Si disponible, mettre en noir
+            option.disabled = true; // Griser l'option si elle est réservée
         }
 
         heureFinSelect.appendChild(option);
     });
+
+    // Récupérer les anciennes valeurs de réservation pour pré-sélectionner les horaires
+    const currentStartTime = "<?php echo $projectInfo->heureDebut; ?>"; // Valeur d'heure de début actuelle
+    const currentEndTime = "<?php echo $projectInfo->heureFin; ?>"; // Valeur d'heure de fin actuelle
+
+    // Pré-sélectionner les anciennes valeurs dans les listes déroulantes
+    if (currentStartTime) {
+        heureDebutSelect.value = currentStartTime;
+    }
+    if (currentEndTime) {
+        heureFinSelect.value = currentEndTime;
+    }
 }
 
 function validateTimes() {
