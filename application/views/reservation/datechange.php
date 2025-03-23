@@ -127,59 +127,55 @@
 // Tableau des horaires réservés à l'avance (exemple en PHP converti en JavaScript)
 var reseAvenir = <?php echo json_encode($reseAvenir); ?>;
 
-// Fonction pour vérifier si l'heure choisie entre en conflit avec les horaires réservés
-function checkReservationConflict(date, heureDebut, heureFin) {
-    for (var i = 0; i < reseAvenir.length; i++) {
-        var reservation = reseAvenir[i];
-        if (reservation.date === date) {
-            // Vérification du chevauchement des horaires
-            if ((heureDebut >= reservation.heureDebut && heureDebut < reservation.heureFin) || 
-                (heureFin > reservation.heureDebut && heureFin <= reservation.heureFin) || 
-                (heureDebut <= reservation.heureDebut && heureFin >= reservation.heureFin)) {
-                return true; // Conflit trouvé
+function updateAvailableTimes() {
+            const selectedDate = document.getElementById('dateInput').value;
+            const scheduleDiv = document.getElementById('schedule');
+            scheduleDiv.innerHTML = '';  // Réinitialiser les horaires
+
+            const reservedTimes = reseAvenir.filter(reservation => reservation.dateFin === selectedDate);
+            
+            // Création d'une plage horaire pour la journée
+            let timeSlots = [];
+            let startHour = 8; // 08:00 AM
+            let endHour = 23; // 11:00 PM
+
+            for (let hour = startHour; hour <= endHour; hour++) {
+                let hourString = hour < 10 ? '0' + hour : hour;
+                timeSlots.push(hourString + ":00");
+                timeSlots.push(hourString + ":30");
             }
-        }
-    }
-    return false; // Aucun conflit
-}
 
-// Fonction pour valider la date et les horaires
-function validateDateAndHours() {
-    var date = document.getElementById('dateDebut').value;
-    var alertDiv = document.getElementById('alert');
-    
-    // Réinitialiser les horaires possibles à chaque changement de date
-    var heures = document.querySelectorAll("#heureDebut, #heureFin");
-    heures.forEach(function(hourInput) {
-        hourInput.disabled = false; // Réactiver tous les champs horaires
-    });
-
-    // Désactiver les horaires réservés
-    for (var i = 0; i < reseAvenir.length; i++) {
-        var reservation = reseAvenir[i];
-        if (reservation.date === date) {
-            var hours = document.querySelectorAll("input[type='time']");
-            hours.forEach(function(hourInput) {
-                if (reservation.heureDebut <= hourInput.value && hourInput.value < reservation.heureFin) {
-                    hourInput.disabled = true; // Désactiver l'input horaire
-                }
+            // Affichage des créneaux horaires
+            timeSlots.forEach(time => {
+                let slot = document.createElement('button');
+                slot.innerHTML = time;
+                slot.classList.add('available');
+                
+                // Vérification des horaires réservés
+                reservedTimes.forEach(reservation => {
+                    if (reservation.heureDebut <= time && reservation.heureFin > time) {
+                        slot.classList.remove('available');
+                        slot.classList.add('reserved');
+                    }
+                });
+                
+                scheduleDiv.appendChild(slot);
             });
         }
-    }
-}
 
-// Fonction pour valider l'heure de fin supérieure à l'heure de début
-function validateHours() {
-    var heureDebut = document.getElementById('heureDebut').value;
-    var heureFin = document.getElementById('heureFin').value;
-    var alertDiv = document.getElementById('alert');
+        function validateTimes() {
+            const startTime = document.getElementById('startTime').value;
+            const endTime = document.getElementById('endTime').value;
 
-    // Vérification que l'heure de fin est supérieure à l'heure de début
-    if (heureDebut && heureFin && heureDebut >= heureFin) {
-        alertDiv.style.display = 'block';
-        alertDiv.textContent = "L'heure de fin doit être supérieure à l'heure de début.";
-    } else {
-        alertDiv.style.display = 'none';
-    }
-}
+            if (startTime && endTime && startTime >= endTime) {
+                alert("L'heure de fin doit être supérieure à l'heure de début.");
+                document.getElementById('endTime').value = ''; // Réinitialiser l'heure de fin
+            }
+        }
+
+        // Initialisation au chargement de la page
+        window.onload = function() {
+            updateAvailableTimes();
+        };
+    </script>
 </script>
