@@ -60,7 +60,7 @@
 
             <!-- Sélecteur Heure de début -->
             <div class="col-md-3">
-              <select class="form-control" id="heureDebut" name="heureDebut" onchange="validateTimes(); onHeureDebutChange();">
+              <select class="form-control" id="heureDebut" name="heureDebut" onchange="onHeureDebutChange();">
                 <option value="">heure de début</option>
               </select>
             </div>
