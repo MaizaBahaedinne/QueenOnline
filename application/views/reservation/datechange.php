@@ -173,7 +173,7 @@ function updateAvailableTimes() {
 
     // Affichage des créneaux horaires
     timeSlots.forEach(time => {
-        let slot = document.createElement('button');
+        let slot = document.createElement('p');
         slot.innerHTML = time;
         slot.classList.add('available');
         
