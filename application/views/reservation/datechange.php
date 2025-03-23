@@ -10,11 +10,6 @@
           <div class="page-title-subheading"><?php echo $projectInfo->type ?> <?php echo $projectInfo->dateDebut ?> | <?php echo $projectInfo->salle ?> | <?php echo $projectInfo->titre ?> </div>
         </div>
       </div>
-      <div class="page-title-actions">
-        <div class="d-inline-block">
-          <!-- Autres actions ici -->
-        </div>
-      </div>
     </div>
   </div>
   <div class="main-card mb-3 card">
@@ -24,7 +19,7 @@
           <label for="formGroupExampleInput">Date</label>
           <div class="row">
             <div class="col-md-6">
-              <input type="date" class="form-control" id="dateDebut" name="dateDebut" min="<?php echo date('Y-m-d') ?>" placeholder="Exemple input" value="<?php echo $projectInfo->dateDebut ?>" onchange="validateHours()">
+              <input type="date" class="form-control" id="dateDebut" name="dateDebut" min="<?php echo date('Y-m-d') ?>" placeholder="Exemple input" value="<?php echo $projectInfo->dateDebut ?>" onchange="validateDateAndHours()">
             </div> 
             <div class="col-md-3">
               <input type="time" class="form-control" id="heureDebut" name="heureDebut" value="<?php echo $projectInfo->heureDebut ?>" placeholder="Exemple input" onchange="validateHours()">
@@ -34,18 +29,6 @@
             </div>
             <div class="col-md-12">
               <h5 style="color: red" id="alert"></h5>
-            </div>
-            <div class="col-md-4">
-              <label for="formGroupExampleInput">Espace</label>
-              <input readonly type="text" class="form-control" name="salle" id="salle" value="<?php echo $projectInfo->salle ?>">
-            </div>
-            <div class="col-md-4">
-              <label for="formGroupExampleInput2">Type</label>
-              <input readonly type="text" class="form-control" name="type" value="<?php echo $projectInfo->type; ?>" >
-            </div>
-            <div class="col-md-2">
-              <label for="formGroupExampleInput2">Prix (DT)</label>
-              <input type="number" class="form-control" value="<?php echo $projectInfo->prix ?>" min="300" name="prix" placeholder="Prix">
             </div>
           </div> 
         </div> 
@@ -72,22 +55,6 @@
                       <span class="badge badge-pill badge-danger"><i class="metismenu-icon pe-7s-close"></i></span>
                     <?php } ?>
                   <?php } ?>
-                  <hr>
-                  <?php if ($projectInfo->troupe != 0) { ?> 
-                    <a style="color: white" href="<?php echo base_url(); ?>Troupe/view/<?php echo $projectInfo->troupe; ?>"  class="btn btn-success btn-block">Détails</a> 
-                  <?php } ?>
-                  <hr>
-                  <?php foreach ($prestation as $pres) { ?>
-                    <?php if ($pres->PresStatut == 0) { ?>
-                      <span class="badge badge-pill badge-success"><i class="metismenu-icon pe-7s-check"></i></span>
-                    <?php } ?>    
-                    <?php if ($pres->PresStatut == 1) { ?>
-                      <span class="badge badge-pill badge-warning"><i class="metismenu-icon pe-7s-stopwatch"></i></span>
-                    <?php } ?>
-                    <?php if ($pres->PresStatut == 3) { ?>
-                      <span class="badge badge-pill badge-danger"><i class="metismenu-icon pe-7s-close"></i></span>
-                    <?php } echo $pres->packname; ?> à <?php echo $pres->heure;  echo "<br>" ; } ?>
-                  <br>
                 </div>
               </div>
             </div>
@@ -113,11 +80,6 @@
                     <?php } ?>
                   <?php } ?>
                 </div>
-                <?php if ($projectInfo->photographe != 0) { ?> 
-                  <div class="card-footer">
-                    <a style="color: white" href="<?php echo base_url(); ?>Photographe/view/<?php echo $projectInfo->photographe; ?>"  class="btn btn-success btn-block">Détails</a> 
-                  </div>
-                <?php } ?>
               </div>
             </div>
 
@@ -148,16 +110,11 @@
                     <?php } ?>
                   <?php } ?>
                 </div>
-                <?php if ($projectInfo->voiture != 0) { ?> 
-                  <div class="card-footer">
-                    <a style="color: white" href="<?php echo base_url(); ?>Voiture/view/<?php echo $projectInfo->voiture; ?>"  class="btn btn-success btn-block">Détails</a> 
-                  </div>
-                <?php } ?>
               </div>
             </div>
           </div>
         </div>
-        
+
         <div class="card-body">
           <button type="submit" class="btn btn-primary btn-lg btn-block">Modifier la réservation</button>
         </div>
@@ -186,29 +143,43 @@ function checkReservationConflict(date, heureDebut, heureFin) {
     return false; // Aucun conflit
 }
 
-// Fonction pour alerter l'utilisateur
-function validateHours() {
+// Fonction pour valider la date et les horaires
+function validateDateAndHours() {
     var date = document.getElementById('dateDebut').value;
-    var heureDebut = document.getElementById('heureDebut').value;
-    var heureFin = document.getElementById('heureFin').value;
-
     var alertDiv = document.getElementById('alert');
+    
+    // Réinitialiser les horaires possibles à chaque changement de date
+    var heures = document.querySelectorAll("#heureDebut, #heureFin");
+    heures.forEach(function(hourInput) {
+        hourInput.disabled = false; // Réactiver tous les champs horaires
+    });
 
-    if (date && heureDebut && heureFin) {
-        // Appel de la fonction de vérification
-        var conflit = checkReservationConflict(date, heureDebut, heureFin);
-
-        if (conflit) {
-            alertDiv.style.display = 'block';  // Afficher l'alerte
-            alertDiv.textContent = "Désolé, cet horaire est déjà réservé. Veuillez choisir un autre horaire.";
-        } else {
-            alertDiv.style.display = 'none';  // Masquer l'alerte
+    // Désactiver les horaires réservés
+    for (var i = 0; i < reseAvenir.length; i++) {
+        var reservation = reseAvenir[i];
+        if (reservation.date === date) {
+            var hours = document.querySelectorAll("input[type='time']");
+            hours.forEach(function(hourInput) {
+                if (reservation.heureDebut <= hourInput.value && hourInput.value < reservation.heureFin) {
+                    hourInput.disabled = true; // Désactiver l'input horaire
+                }
+            });
         }
     }
+}
 
-    // Masquer l'alerte après 5 secondes si elle est affichée
-    setTimeout(function() {
+// Fonction pour valider l'heure de fin supérieure à l'heure de début
+function validateHours() {
+    var heureDebut = document.getElementById('heureDebut').value;
+    var heureFin = document.getElementById('heureFin').value;
+    var alertDiv = document.getElementById('alert');
+
+    // Vérification que l'heure de fin est supérieure à l'heure de début
+    if (heureDebut && heureFin && heureDebut >= heureFin) {
+        alertDiv.style.display = 'block';
+        alertDiv.textContent = "L'heure de fin doit être supérieure à l'heure de début.";
+    } else {
         alertDiv.style.display = 'none';
-    }, 5000); // 5000 ms = 5 secondes
+    }
 }
 </script>
