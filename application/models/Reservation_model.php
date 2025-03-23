@@ -440,7 +440,7 @@ class Reservation_model extends CI_Model
      */
     function ReservationInfo($resId)
     {
-        $this->db->select('BaseTbl.reservationId , BaseTbl.titre , BaseTbl.type , BaseTbl.prix ,  BaseTbl.dateDebut  , DATE_ADD(BaseTbl.dateDebut , INTERVAL -30 DAY) delai  , BaseTbl.heureDebut , BaseTbl.dateFin , BaseTbl.heureFin , BaseTbl.cuisine , BaseTbl.tableCM ,  BaseTbl.troupe , BaseTbl.photographe , BaseTbl.voiture ,BaseTbl.nbPlace , BaseTbl.noteAdmin , BaseTbl.statut , Client.userId clientId , Client.dateCin , Client.name clientName ,  Client.cin , Client.mobile , Salles.salleID , Salles.nom salle ,  BaseTbl.clientId,Client.mobile ,Client.mobile2');
+        $this->db->select('BaseTbl.reservationId, BaseTbl.salleId  , BaseTbl.titre , BaseTbl.type , BaseTbl.prix ,  BaseTbl.dateDebut  , DATE_ADD(BaseTbl.dateDebut , INTERVAL -30 DAY) delai  , BaseTbl.heureDebut , BaseTbl.dateFin , BaseTbl.heureFin , BaseTbl.cuisine , BaseTbl.tableCM ,  BaseTbl.troupe , BaseTbl.photographe , BaseTbl.voiture ,BaseTbl.nbPlace , BaseTbl.noteAdmin , BaseTbl.statut , Client.userId clientId , Client.dateCin , Client.name clientName ,  Client.cin , Client.mobile , Salles.salleID , Salles.nom salle ,  BaseTbl.clientId,Client.mobile ,Client.mobile2');
         $this->db->from('tbl_reservation as BaseTbl');
         $this->db->join('tbl_users as Client', 'Client.userId = BaseTbl.clientId','left');
         $this->db->join('tbl_users as Locataire', 'Locataire.userId = BaseTbl.clientId','left');
