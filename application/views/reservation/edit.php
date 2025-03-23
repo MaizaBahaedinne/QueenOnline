@@ -24,9 +24,6 @@
     <div class="card-body" style="width: 100%;">
       
         <form action="<?php echo base_url() ?>Reservation/editReservation/<?php echo $projectInfo->reservationId ?>" method="post" >
-                
-                
-                 
                     <label for="formGroupExampleInput">Date <a href="<?php echo base_url() ?>Reservation/editDate/<?php echo $projectInfo->reservationId ?>"> Changment de date </a></label>
                     <div class="row">
                       <div class="col-md-6">

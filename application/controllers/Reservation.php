@@ -324,7 +324,17 @@ class Reservation extends BaseController
                 $this->loadViews("reservation/datechange", $this->global, $data, $data);
         }
 
+             /**
+         * This function is used to load the user list
+         */
+        function verifier()
+        {
 
+                $data["reseAvenir"] = $this->reservation_model->ReservationListing();
+
+                $this->global["pageTitle"] = "Recherche de disponibilité des salles";
+                $this->loadViews("reservation/verifier", $this->global, $data, $data);
+        }
 
         /**
          * This function is used to load the user list
