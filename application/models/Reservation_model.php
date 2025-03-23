@@ -24,7 +24,7 @@ class Reservation_model extends CI_Model
      */
     function ReservationListing($troupe = 0 , $photographe = 0 , $date = null , $clientId = null )
     {
-        $this->db->select('BaseTbl.reservationId , BaseTbl.titre , BaseTbl.type , BaseTbl.prix ,  BaseTbl.dateDebut , BaseTbl.heureDebut , BaseTbl.dateFin , BaseTbl.heureFin , BaseTbl.cuisine , BaseTbl.tableCM , BaseTbl.voiture , BaseTbl.troupe , BaseTbl.photographe , BaseTbl.gateau   , BaseTbl.nbPlace , BaseTbl.noteAdmin , BaseTbl.statut , Client.name clientName , Client.mobile , Salles.nom salle');
+        $this->db->select('BaseTbl.reservationId , BaseTbl.salleId , BaseTbl.titre , BaseTbl.type , BaseTbl.prix ,  BaseTbl.dateDebut , BaseTbl.heureDebut , BaseTbl.dateFin , BaseTbl.heureFin , BaseTbl.cuisine , BaseTbl.tableCM , BaseTbl.voiture , BaseTbl.troupe , BaseTbl.photographe , BaseTbl.gateau   , BaseTbl.nbPlace , BaseTbl.noteAdmin , BaseTbl.statut , Client.name clientName , Client.mobile , Salles.nom salle');
         $this->db->from('tbl_reservation as BaseTbl');
         $this->db->join('tbl_users as Client', 'Client.userId = BaseTbl.clientId','left');
         $this->db->join('tbl_users as Locataire', 'Locataire.userId = BaseTbl.clientId','left');
