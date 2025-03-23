@@ -21,7 +21,7 @@
             <!-- Sélecteur Espace -->
             <div class="col-md-4">
               <label for="formGroupExampleInput">Espace</label>
-              <select class="form-control" name="salle" id="salle" required onchange="onSalleChange();">
+              <select class="form-control" name="salle" id="salle" required onchange="updateAvailableTimes();">
                 <option value=""></option>
                 <?php foreach ($salleRecords as $record) { ?>
                   <option value="<?php echo $record->salleID ?>"> <?php echo $record->nom ?> </option>
