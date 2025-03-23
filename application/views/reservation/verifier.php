@@ -99,44 +99,7 @@ var reservations = <?php echo json_encode($reseAvenir); ?>;
 </script>
 
 <script>
-<form id="reservationForm">
-    <label for="salle">Salle:</label>
-    <select id="salle" onchange="onSalleChange();">
-        <option value="">Choisir une salle</option>
-        <option value="1">Elila ERSI</option>
-        <option value="2">Farhet Elamor</option>
-    </select>
 
-    <br>
-
-    <label for="dateDebut">Date:</label>
-    <input type="date" id="dateDebut" onchange="onDateChange();">
-    
-    <br>
-
-    <label for="heureDebut">Heure de début:</label>
-    <select id="heureDebut" onchange="onHeureDebutChange();" disabled>
-        <option value="">Sélectionner une heure de début</option>
-    </select>
-
-    <br>
-
-    <label for="heureFin">Heure de fin:</label>
-    <select id="heureFin" disabled>
-        <option value="">Sélectionner une heure de fin</option>
-    </select>
-
-    <br>
-
-    <button id="submitBtn" type="submit" disabled>Valider</button>
-</form>
-
-<script>
-// Tableau des réservations
-var reservations = [
-    {"reservationId": "1723", "salleId": "1", "titre": "Mohamed - Sameh", "type": "Marriage", "prix": "4500", "dateDebut": "2025-04-04", "heureDebut": "19:00:00", "heureFin": "23:59:00", "clientName": "HASSOUMI Mohamed"},
-    // Ajouter vos réservations ici
-];
 
 // Fonction appelée lors du changement de la salle
 function onSalleChange() {
@@ -260,8 +223,5 @@ function isTimeBetween(time, start, end) {
 }
 
 </script>
-
-
-
 
 
