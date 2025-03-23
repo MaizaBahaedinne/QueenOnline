@@ -38,6 +38,9 @@
                         <div class="col-md-3">
                             <input type="time" class="form-control" id="heureFin" value="<?php echo $projectInfo->heureFin ?>" name="heureFin" placeholder="Exemple input" onchange="validateHours()">
                         </div>
+                        <div class="col-md-12">
+                            <h5 style="color: red" id="alert" ></h5>
+                        </div>
 
                       <div class="col-md-4">
                       <label for="formGroupExampleInput">Espace</label>
