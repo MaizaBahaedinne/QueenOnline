@@ -1,13 +1,3 @@
-<style>
-    .reserved {
-        color: red;
-    }
-    .available {
-        color: black;
-    }
-</style>
-
-
 <div class="app-main__inner">
   <div class="app-page-title">
     <div class="page-title-wrapper">
@@ -16,8 +6,8 @@
           <i class="pe-7s-medal icon-gradient bg-tempting-azure"></i>
         </div>
         <div>
-          Verification 
-          <div class="page-title-subheading">Verification des disponibilité </div>
+          Verification
+          <div class="page-title-subheading">Verification des disponibilités</div>
         </div>
       </div>
     </div>
@@ -26,79 +16,74 @@
     <div class="card-body" style="width: 100%;">
       <form action="<?php echo base_url() ?>Reservation/addNew" method="get">
         <div class="card-body">
-          
           <div class="row">
             <div class="col-md-4">
-                      <label for="formGroupExampleInput">Espace</label>
-                      <select  class="form-control" name="salle" id="salle"  required>
-                            <option value=""></option>
-                            <?php foreach ($salleRecords as $record ) {
-                    ?>
-                            <option value="<?php echo $record->salleID ?>"> <?php echo $record->nom ?> </option>
-                            <?php } ?>
-                        </select>
+              <label for="formGroupExampleInput">Espace</label>
+              <select class="form-control" name="salle" id="salle" required>
+                <option value=""></option>
+                <?php foreach ($salleRecords as $record) { ?>
+                  <option value="<?php echo $record->salleID ?>"> <?php echo $record->nom ?> </option>
+                <?php } ?>
+              </select>
+            </div>
 
-                    </div>
+            <div class="col-md-4">
+              <label for="formGroupExampleInput2">Type</label>
+              <select class="form-control" name="type" required>
+                <option value=""></option>
+                <option value="Marriage"> Marriage </option>
+                <option value="Finacailles"> Finacailles </option>
+                <option value="Hena"> Hena </option>
+                <option value="Outya"> Outya </option>
+                <option value="Congret"> Congret </option>
+                <option value="Circoncision"> Circoncision </option>
+                <option value="Team Building"> Team Building </option>
+                <option value="Anniversaire"> Anniversaire </option>
+                <option value="Evenement"> Evenement </option>
+              </select>
+            </div>
 
-                    <div class="col-md-4">
-                      <label for="formGroupExampleInput2">Type</label>
-              
-                      <select type="text" class="form-control" name="type" required>
-                          <option value=""></option>
-                          <option value="Marriage"> Marriage </option>
-                          <option value="Finacailles"> Finacailles </option>
-                          <option value="Hena"> Hena </option>
-                          <option value="Outya"> Outya </option>
-                          <option value="Congret"> Congret </option>
-                          <option value="Circoncision"> Circoncision </option>
-                          <option value="Team Building"> Team Building </option>
-                          <option value="Anniversaire"> Anniversaire </option>
-                          <option value="Evenement"> Evenement </option>
-                      </select>
-                      
-                    </div>
+            <div class="col-md-4">
+              <label for="formGroupExampleInput2">Prix (DT)</label>
+              <input type="number" class="form-control" min="300" name="prix" placeholder="Prix">
+            </div>
 
-                   
-                    <div class="col-md-4">
-                      <label for="formGroupExampleInput2">Prix (DT)</label>
-                      <input type="number" class="form-control" value=""   min="300" name="prix" placeholder="Prix">
-                  </div>
             <div class="col-md-6">
               <label for="formGroupExampleInput">Date</label>
-              <input type="date" class="form-control" id="dateDebut" name="dateDebut" min="<?php echo date('Y-m-d') ?>" placeholder="Exemple input" value="" onchange="updateAvailableTimes()">
-            </div> 
+              <input type="date" class="form-control" id="dateDebut" name="dateDebut" min="<?php echo date('Y-m-d') ?>" onchange="updateAvailableTimes()">
+            </div>
+
             <div class="col-md-3">
               <select class="form-control" id="heureDebut" name="heureDebut" onchange="validateTimes()">
                 <option value="">heure de début</option>
-                <!-- Les options seront ajoutées par JavaScript -->
               </select>
             </div>
+
             <div class="col-md-3">
-             <select class="form-control" id="heureFin" name="heureFin" onchange="validateTimes()">
-              <option value="">heure de fin</option>
-              <!-- Les options seront ajoutées par JavaScript -->
-            </select>
+              <select class="form-control" id="heureFin" name="heureFin" onchange="validateTimes()">
+                <option value="">heure de fin</option>
+              </select>
             </div>
+
             <div class="col-md-12">
               <h5 style="color: red" id="alert"></h5>
             </div>
+
             <div class="col-md-12" id="schedule">
-                <!-- Les créneaux horaires réservés ou disponibles seront ajoutés ici par JavaScript -->
+              <!-- Les créneaux horaires réservés ou disponibles seront ajoutés ici par JavaScript -->
             </div>
+          </div>
+        </div>
 
-                    
-
-          </div> 
-        </div> 
-
-        
         <div class="card-body">
-          <button type="submit" class="btn btn-primary btn-lg btn-block">Continuer</button>
+          <button type="submit" class="btn btn-primary btn-lg btn-block" id="submitBtn" disabled>Continuer</button>
         </div>
       </form>
     </div>
   </div>
 </div>
+
+
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
