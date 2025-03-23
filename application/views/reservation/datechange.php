@@ -50,6 +50,27 @@
                 <!-- Les créneaux horaires réservés ou disponibles seront ajoutés ici par JavaScript -->
             </div>
 
+                    <div class="col-md-4">
+                      <label for="formGroupExampleInput">Espace</label>
+                      <input readonly type="text" class="form-control" name="salle" id="salle" value="<?php echo$projectInfo->salle ?>">
+                      
+                   
+                    
+                    </div>
+
+                    <div class="col-md-4">
+                      <label for="formGroupExampleInput2">Type</label>
+              
+                      <input readonly type="text" class="form-control" name="type" value="<?php echo $projectInfo->type ;  ?>" >
+                      
+                    </div>
+
+                   
+                    <div class="col-md-2">
+                      <label for="formGroupExampleInput2">Prix (DT)</label>
+                      <input type="number" class="form-control" value="<?php echo $projectInfo->prix ?>"   min="300" name="prix" placeholder="Prix">
+                  </div>
+
           </div> 
         </div> 
 
