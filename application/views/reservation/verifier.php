@@ -55,7 +55,7 @@
             <!-- Sélecteur Date -->
             <div class="col-md-6">
               <label for="formGroupExampleInput">Date</label>
-              <input type="date" class="form-control" id="dateDebut" name="dateDebut" min="<?php echo date('Y-m-d') ?>" onchange="updateAvailableTimes()">
+              <input type="date" class="form-control" id="dateDebut" name="dateDebut" min="<?php echo date('Y-m-d') ?>" onchange="updateAvailableTimes(); resetTimeFields();">
             </div>
 
             <!-- Sélecteur Heure de début -->
@@ -92,17 +92,18 @@
   </div>
 </div>
 
-<script type="text/javascript">
+<script>
+// Tableau des réservations
+var reservations = [
+    // Vous pouvez ajouter vos réservations ici
+];
 
-// Récupérer les réservations depuis PHP
-var reservations = <?php echo json_encode($reseAvenir); ?>;
-  
-// Fonction pour vérifier les disponibilités en fonction de la salle et de la date sélectionnées
+// Fonction pour mettre à jour les heures disponibles en fonction de la salle et de la date
 function updateAvailableTimes() {
     var salleId = document.getElementById("salle").value;
     var dateDebut = document.getElementById("dateDebut").value;
-    
-    // Si la salle ou la date sont vides, ne pas afficher les créneaux
+
+    // Si la salle ou la date ne sont pas sélectionnées, ne pas afficher les créneaux
     if (!salleId || !dateDebut) {
         return;
     }
@@ -119,7 +120,7 @@ function updateAvailableTimes() {
         }
     });
 
-    // Mise à jour des créneaux horaires disponibles
+    // Mettre à jour les créneaux horaires disponibles
     updateTimeSelectors(reservedHours);
 }
 
@@ -129,10 +130,10 @@ function updateTimeSelectors(reservedHours) {
     var heureFinSelect = document.getElementById("heureFin");
 
     // Vider les options actuelles
-    heureDebutSelect.innerHTML = "<option value=''>heure de début</option>";
-    heureFinSelect.innerHTML = "<option value=''>heure de fin</option>";
+    heureDebutSelect.innerHTML = "<option value=''>Sélectionner une heure de début</option>";
+    heureFinSelect.innerHTML = "<option value=''>Sélectionner une heure de fin</option>";
 
-    // Plage horaire à vérifier (par exemple de 8h à 23h)
+    // Plage horaire à vérifier (par exemple de 8h à 23h59)
     var startHour = 8;
     var endHour = 23;
 
@@ -154,7 +155,7 @@ function updateTimeSelectors(reservedHours) {
                 optionDebut.value = time;
                 optionDebut.textContent = time;
                 heureDebutSelect.appendChild(optionDebut);
-                
+
                 var optionFin = document.createElement("option");
                 optionFin.value = time;
                 optionFin.textContent = time;
@@ -179,7 +180,7 @@ function updateTimeSelectors(reservedHours) {
 
 // Fonction pour formater les heures en "HH:MM"
 function formatTime(hour, minutes) {
-    return (hour < 10 ? "0" : "") + hour + ":" + (minutes < 10 ? "0" : "") + minutes;
+    return (hour < 10 ? "0" : "") + hour + ":" + (minutes < 10 ? "00" : minutes);
 }
 
 // Fonction pour vérifier si une heure est comprise entre deux heures
@@ -187,6 +188,29 @@ function isTimeBetween(time, start, end) {
     return time >= start && time <= end;
 }
 
+// Fonction de validation des heures
+function validateTimes() {
+    var heureDebut = document.getElementById("heureDebut").value;
+    var heureFin = document.getElementById("heureFin").value;
+    var submitBtn = document.getElementById("submitBtn");
+
+    // Le bouton est activé seulement si les heures de début et de fin sont bien sélectionnées
+    if (heureDebut && heureFin && heureDebut < heureFin) {
+        submitBtn.disabled = false;  // Activer le bouton
+    } else {
+        submitBtn.disabled = true;   // Désactiver le bouton
+    }
+}
+
+// Réinitialiser les heures lorsque la salle est changée
+function resetTimeFields() {
+    // Réinitialiser les heures de début et de fin
+    document.getElementById("heureDebut").value = "";
+    document.getElementById("heureFin").value = "";
+
+    // Désactiver le bouton jusqu'à ce que les champs soient valides
+    document.getElementById("submitBtn").disabled = true;
+}
 </script>
 
 
