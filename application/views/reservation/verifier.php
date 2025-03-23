@@ -92,7 +92,6 @@
   </div>
 </div>
 
-
 <script>
 // Récupérer les réservations depuis PHP
 var reservations = <?php echo json_encode($reseAvenir); ?>;
@@ -210,13 +209,14 @@ function updateAvailableTimes(salleId, dateDebut) {
                 }
             });
 
-            // Si l'heure n'est pas réservée, l'ajouter à la liste
-            if (!isReserved) {
-                var option = document.createElement("option");
-                option.value = time;
-                option.textContent = time;
-                heureDebutSelect.appendChild(option);
+            // Si l'heure n'est pas réservée, l'ajouter à la liste, sinon, désactiver l'option
+            var option = document.createElement("option");
+            option.value = time;
+            option.textContent = time;
+            if (isReserved) {
+                option.disabled = true;  // Désactiver les heures réservées
             }
+            heureDebutSelect.appendChild(option);
         }
     }
 
@@ -254,6 +254,7 @@ function validateTimes() {
 document.getElementById("heureDebut").addEventListener("change", validateTimes);
 document.getElementById("heureFin").addEventListener("change", validateTimes);
 </script>
+
 
 
 
