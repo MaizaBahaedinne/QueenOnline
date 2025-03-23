@@ -21,7 +21,7 @@
             <!-- Sélecteur Espace -->
             <div class="col-md-4">
               <label for="formGroupExampleInput">Espace</label>
-              <select class="form-control" name="salle" id="salle" required>
+              <select class="form-control" name="salle" id="salle" required onchange="onSalleChange();">
                 <option value=""></option>
                 <?php foreach ($salleRecords as $record) { ?>
                   <option value="<?php echo $record->salleID ?>"> <?php echo $record->nom ?> </option>
@@ -54,24 +54,21 @@
 
             <!-- Sélecteur Date -->
             <div class="col-md-6">
-              
-            <label for="dateDebut">Date:</label>
-            <input type="date" class="form-control" id="dateDebut" onchange="onDateChange();">
+              <label for="formGroupExampleInput">Date</label>
+              <input type="date" class="form-control" id="dateDebut" name="dateDebut" min="<?php echo date('Y-m-d') ?>" onchange="updateAvailableTimes(); resetTimeFields(); onDateChange();">
             </div>
 
             <!-- Sélecteur Heure de début -->
             <div class="col-md-3">
-              <label for="heureDebut">Heure de début:</label>
-              <select id="heureDebut" class="form-control" onchange="onHeureDebutChange();" disabled>
-                  <option value="">Sélectionner une heure de début</option>
+              <select class="form-control" id="heureDebut" name="heureDebut" onchange="validateTimes(); onHeureDebutChange();">
+                <option value="">heure de début</option>
               </select>
             </div>
 
             <!-- Sélecteur Heure de fin -->
             <div class="col-md-3">
-               <label for="heureFin">Heure de fin:</label>
-              <select id="heureFin" class="form-control" disabled>
-                  <option value="">Sélectionner une heure de fin</option>
+              <select class="form-control" id="heureFin" name="heureFin" onchange="validateTimes()">
+                <option value="">heure de fin</option>
               </select>
               <h5 id="alert" ></h5>
             </div>
@@ -103,6 +100,62 @@ var reservations = <?php echo json_encode($reseAvenir); ?>;
 
 <script>
 // Tableau des réservations
+function onSalleChange() {
+    var salleId = document.getElementById("salle").value;
+    var dateDebut = document.getElementById("dateDebut").value;
+
+    // Désactivation du champ salle après sélection
+    document.getElementById("salle").disabled = true;  // Désactiver le champ de salle après sélection
+
+    // Réinitialisation des champs associés
+    document.getElementById("dateDebut").disabled = false; // Activer le champ date
+    document.getElementById("heureDebut").innerHTML = "<option value=''>Sélectionner une heure de début</option>"; // Vider les options d'heure de début
+    document.getElementById("heureFin").innerHTML = "<option value=''>Sélectionner une heure de fin</option>"; // Vider les options d'heure de fin
+    document.getElementById("heureDebut").disabled = true; // Désactiver l'heure de début
+    document.getElementById("heureFin").disabled = true; // Désactiver l'heure de fin
+    document.getElementById("submitBtn").disabled = true; // Désactiver le bouton de soumission
+
+    // Si la salle et la date sont sélectionnées, mettre à jour les heures
+    if (salleId && dateDebut) {
+        updateAvailableTimes(salleId, dateDebut);
+    }
+}
+
+
+// Fonction appelée lors du changement de la date
+function onDateChange() {
+    var salleId = document.getElementById("salle").value;
+    var dateDebut = document.getElementById("dateDebut").value;
+
+    // Réinitialiser les champs des heures si la date est changée
+    document.getElementById("heureDebut").innerHTML = "<option value=''>Sélectionner une heure de début</option>"; // Vider les options d'heure de début
+    document.getElementById("heureFin").innerHTML = "<option value=''>Sélectionner une heure de fin</option>"; // Vider les options d'heure de fin
+    document.getElementById("submitBtn").disabled = true; // Désactiver le bouton de soumission
+
+    // Si la salle et la date sont sélectionnées, mettre à jour les heures
+    if (salleId && dateDebut) {
+        updateAvailableTimes(salleId, dateDebut);
+    }
+
+    // Activer le champ d'heure de début
+    document.getElementById("heureDebut").disabled = false;
+}
+
+
+// Fonction appelée lors du changement de l'heure de début
+function onHeureDebutChange() {
+    var heureDebut = document.getElementById("heureDebut").value;
+    var heureFin = document.getElementById("heureFin");
+
+    // Activer l'heure de fin et vérifier la validité
+    if (heureDebut) {
+        document.getElementById("heureFin").disabled = false;
+        updateHeureFin(heureDebut);
+    } else {
+        document.getElementById("heureFin").disabled = true;
+        document.getElementById("submitBtn").disabled = true;
+    }
+}
 
 
 // Fonction pour mettre à jour les heures disponibles en fonction de la salle et de la date
