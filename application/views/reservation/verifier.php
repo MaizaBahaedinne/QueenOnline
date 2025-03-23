@@ -171,15 +171,7 @@ document.addEventListener('DOMContentLoaded', function() {
             heureFinSelect.appendChild(option);
         });
 
-        const currentStartTime = "<?php echo $projectInfo->heureDebut; ?>";
-        const currentEndTime = "<?php echo $projectInfo->heureFin; ?>";
-
-        if (currentStartTime) {
-            heureDebutSelect.value = currentStartTime;
-        }
-        if (currentEndTime) {
-            heureFinSelect.value = currentEndTime;
-        }
+        
 
         toggleSubmitButton();
     }
