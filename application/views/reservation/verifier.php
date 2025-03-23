@@ -16,8 +16,8 @@
           <i class="pe-7s-medal icon-gradient bg-tempting-azure"></i>
         </div>
         <div>
-          Modification de date
-          <div class="page-title-subheading"><?php echo $projectInfo->type ?> <?php echo $projectInfo->dateDebut ?> | <?php echo $projectInfo->salle ?> | <?php echo $projectInfo->titre ?> </div>
+          Verification 
+          <div class="page-title-subheading">Verification des disponibilité </div>
         </div>
       </div>
     </div>
