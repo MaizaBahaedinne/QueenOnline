@@ -102,7 +102,7 @@ function onSalleChange() {
     var dateDebut = document.getElementById("dateDebut").value;
 
     // Désactivation du champ salle après sélection
-    document.getElementById("salle").disabled = true;  // Désactiver le champ de salle après sélection
+    document.getElementById("salle").disabled = true;
 
     // Réinitialisation des champs associés
     resetTimeFields();  // Appel de la fonction resetTimeFields pour réinitialiser les heures et le bouton
@@ -128,7 +128,7 @@ function onDateChange() {
     var dateDebut = document.getElementById("dateDebut").value;
 
     // Réinitialiser les champs des heures si la date est changée
-    resetTimeFields();  // Appel de la fonction resetTimeFields pour réinitialiser les heures et le bouton
+    resetTimeFields();
 
     // Si la salle et la date sont sélectionnées, mettre à jour les heures
     if (salleId && dateDebut) {
@@ -147,7 +147,7 @@ function onHeureDebutChange() {
     // Si une heure de début est sélectionnée, mettre à jour les heures de fin possibles
     if (heureDebut) {
         document.getElementById("heureFin").disabled = false;
-        updateHeureFin();  // Mettre à jour les options d'heure de fin
+        updateHeureFin(heureDebut);  // Mettre à jour les options d'heure de fin
     } else {
         document.getElementById("heureFin").disabled = true;
         document.getElementById("submitBtn").disabled = true; // Désactiver le bouton de soumission
@@ -155,23 +155,25 @@ function onHeureDebutChange() {
 }
 
 // Fonction pour mettre à jour les heures disponibles de fin
-function updateHeureFin() {
+function updateHeureFin(heureDebut) {
     var heureFinSelect = document.getElementById("heureFin");
     heureFinSelect.innerHTML = "<option value=''>Sélectionner une heure de fin</option>"; // Réinitialiser les options
 
-    // Affichage des heures de fin de 00:00 à 23:59 (incluant la validation de réservation)
-    for (var h = 0; h <= 23; h++) {
-        for (var m = 0; m < 60; m += 30) {
-            var time = formatTime(h, m);
+    // Obtenons l'heure de début sous forme de nombre pour comparaison
+    var startHour = parseInt(heureDebut.split(":")[0]);
+    var startMinute = parseInt(heureDebut.split(":")[1]);
 
-            // Ajouter l'option même si l'heure est inférieure ou égale à l'heure de début
+    // Remplir les options de l'heure de fin en fonction de l'heure de début
+    for (var h = startHour; h <= 23; h++) {
+        for (var m = (h === startHour ? startMinute : 0); m < 60; m += 30) {
+            var time = formatTime(h, m);
             var option = document.createElement("option");
             option.value = time;
             option.textContent = time;
 
             // Vérifier si l'heure est réservée
             if (isReserved(time)) {
-                option.disabled = true; // Désactiver l'heure réservée
+                option.disabled = true;  // Désactiver l'heure réservée
             }
 
             heureFinSelect.appendChild(option);
