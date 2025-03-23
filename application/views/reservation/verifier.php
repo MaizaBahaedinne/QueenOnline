@@ -67,7 +67,7 @@
 
             <!-- Sélecteur Heure de fin -->
             <div class="col-md-3">
-              <select class="form-control" id="heureFin" name="heureFin" onchange="validateTimes()">
+              <select class="form-control" id="heureFin" name="heureFin" >
                 <option value="">heure de fin</option>
               </select>
               <h5 id="alert" ></h5>
