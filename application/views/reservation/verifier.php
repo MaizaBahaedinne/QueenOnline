@@ -162,9 +162,8 @@ function updateHeureFin(heureDebut) {
     var startHour = parseInt(heureDebut.split(":")[0]);
     var startMinute = parseInt(heureDebut.split(":")[1]);
 
-    // Remplir les options de l'heure de fin en fonction de l'heure de début
     // L'heure de fin doit être au moins 1 heure après l'heure de début
-    var minHeureFin = startHour + 1;
+    var minHeureFin = startHour + 1; // L'heure de fin doit être au moins 1 heure après l'heure de début
 
     for (var h = minHeureFin; h <= 23; h++) {
         for (var m = 0; m < 60; m += 30) {
@@ -271,6 +270,7 @@ function validateTimes() {
 document.getElementById("heureDebut").addEventListener("change", validateTimes);
 document.getElementById("heureFin").addEventListener("change", validateTimes);
 </script>
+
 
 
 
