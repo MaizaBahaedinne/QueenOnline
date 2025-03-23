@@ -124,7 +124,7 @@ function updateAvailableTimes() {
 
     // Filtrer les réservations pour la date et la salle sélectionnées
     const reservedTimes = reseAvenir.filter(reservation =>
-        reservation.dateDebut === selectedDate && reservation.salleID === selectedSalle
+        reservation.dateDebut === selectedDate && reservation.salleId === selectedSalle
     );
 
     // Créer la liste des créneaux horaires disponibles
