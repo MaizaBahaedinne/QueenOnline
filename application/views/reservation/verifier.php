@@ -92,53 +92,13 @@
   </div>
 </div>
 
-<script>
+
+<script type="text/javascript">
+
 // Récupérer les réservations depuis PHP
 var reservations = <?php echo json_encode($reseAvenir); ?>;
 
-// Fonction appelée lors du changement de la salle
-function onSalleChange() {
-    var salleId = document.getElementById("salle").value;
-    var dateDebut = document.getElementById("dateDebut").value;
-
-    // Désactivation du champ salle après sélection
-    document.getElementById("salle").disabled = true;
-
-    // Réinitialisation des champs associés
-    resetTimeFields();  // Appel de la fonction resetTimeFields pour réinitialiser les heures et le bouton
-
-    // Si la salle et la date sont sélectionnées, mettre à jour les heures
-    if (salleId && dateDebut) {
-        updateAvailableTimes(salleId, dateDebut);
-    }
-}
-
-// Fonction pour réinitialiser les champs liés aux heures
-function resetTimeFields() {
-    document.getElementById("heureDebut").innerHTML = "<option value=''>Sélectionner une heure de début</option>"; // Vider les options d'heure de début
-    document.getElementById("heureFin").innerHTML = "<option value=''>Sélectionner une heure de fin</option>"; // Vider les options d'heure de fin
-    document.getElementById("heureDebut").disabled = true; // Désactiver l'heure de début
-    document.getElementById("heureFin").disabled = true; // Désactiver l'heure de fin
-    document.getElementById("submitBtn").disabled = true; // Désactiver le bouton de soumission
-}
-
-// Fonction appelée lors du changement de la date
-function onDateChange() {
-    var salleId = document.getElementById("salle").value;
-    var dateDebut = document.getElementById("dateDebut").value;
-
-    // Réinitialiser les champs des heures si la date est changée
-    resetTimeFields();
-
-    // Si la salle et la date sont sélectionnées, mettre à jour les heures
-    if (salleId && dateDebut) {
-        updateAvailableTimes(salleId, dateDebut);
-    }
-
-    // Activer le champ d'heure de début
-    document.getElementById("heureDebut").disabled = false;
-}
-
+  
 // Fonction appelée lors du changement de l'heure de début
 function onHeureDebutChange() {
     var heureDebut = document.getElementById("heureDebut").value;
@@ -147,26 +107,38 @@ function onHeureDebutChange() {
     // Si une heure de début est sélectionnée, mettre à jour les heures de fin possibles
     if (heureDebut) {
         document.getElementById("heureFin").disabled = false;
-        
+        updateEndHourOptions(heureDebut);  // Mettre à jour les options d'heure de fin
     } else {
         document.getElementById("heureFin").disabled = true;
         document.getElementById("submitBtn").disabled = true; // Désactiver le bouton de soumission
     }
 }
 
+// Fonction pour mettre à jour les options d'heure de fin
+function updateEndHourOptions(heureDebut) {
+    var heureFinSelect = document.getElementById("heureFin");
+    var startHour = parseInt(heureDebut.split(":")[0]); // Extraire l'heure de début
+    var startMinute = parseInt(heureDebut.split(":")[1]);
+    
+    // Vider les options d'heure de fin
+    heureFinSelect.innerHTML = "<option value=''>Sélectionner une heure de fin</option>";
 
+    var endHour = startHour + 1;  // L'heure de fin doit être au moins une heure après l'heure de début
 
-// Fonction pour formater l'heure en "HH:MM"
-function formatTime(hour, minutes) {
-    return (hour < 10 ? "0" : "") + hour + ":" + (minutes < 10 ? "00" : minutes);
-}
+    // Remplir les options d'heure de fin possibles à partir de l'heure de début
+    for (var h = endHour; h <= 23; h++) {
+        for (var m = 0; m < 60; m += 30) {
+            var time = formatTime(h, m);
 
-// Fonction pour vérifier si l'heure est réservée
-function isReserved(time) {
-    // Vérifier si l'heure est présente dans les réservations
-    return reservations.some(function(reservation) {
-        return reservation.heureDebut <= time && reservation.heureFin > time;
-    });
+            // Vérification si l'heure de fin est réservée
+            if (!isReserved(time)) {
+                var option = document.createElement("option");
+                option.value = time;
+                option.textContent = time;
+                heureFinSelect.appendChild(option);
+            }
+        }
+    }
 }
 
 // Fonction pour mettre à jour les créneaux horaires disponibles
@@ -217,7 +189,6 @@ function isTimeBetween(time, start, end) {
 }
 
 </script>
-
 
 
 
