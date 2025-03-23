@@ -21,8 +21,8 @@
           <i class="pe-7s-medal icon-gradient bg-tempting-azure"></i>
         </div>
         <div>
-          Reservation
-          <div class="page-title-subheading">Les reservations</div>
+          La recette
+          <div class="page-title-subheading">Les revenus </div>
         </div>
       </div>
       <div class="page-title-actions">

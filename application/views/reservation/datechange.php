@@ -30,14 +30,14 @@
                 <label for="formGroupExampleInput">Date</label>
                     <div class="row">
                       <div class="col-md-6">
-                    <input type="date" class="form-control" name="dateDebut"  min="<?php echo date('Y-m-d') ?>" placeholder="Example input" value="<?php echo $projectInfo->dateDebut ?>" >
-                      </div> 
-                      <div class="col-md-3">
-                    <input type="time" class="form-control" name="heureDebut" value="<?php echo $projectInfo->heureDebut ?>" placeholder="Example input">
-                      </div>
-                      <div class="col-md-3">
-                    <input type="time" class="form-control" value="<?php echo $projectInfo->heureFin ?>" name="heureFin" placeholder="Example input">
-                      </div>
+                            <input type="date" class="form-control" id="dateDebut" name="dateDebut" min="<?php echo date('Y-m-d') ?>" placeholder="Exemple input" value="<?php echo $projectInfo->dateDebut ?>" onchange="validateHours()">
+                        </div> 
+                        <div class="col-md-3">
+                            <input type="time" class="form-control" id="heureDebut" name="heureDebut" value="<?php echo $projectInfo->heureDebut ?>" placeholder="Exemple input" onchange="validateHours()">
+                        </div>
+                        <div class="col-md-3">
+                            <input type="time" class="form-control" id="heureFin" value="<?php echo $projectInfo->heureFin ?>" name="heureFin" placeholder="Exemple input" onchange="validateHours()">
+                        </div>
 
                       <div class="col-md-4">
                       <label for="formGroupExampleInput">Espace</label>
@@ -74,11 +74,7 @@
              </div>
              <div class="card-body">
                   <?php if ($projectInfo->troupe == 0) {
-                      echo '<a style="color: white"  class="btn btn-info btn-block" href=' .
-                          base_url() .
-                          "Troupe/addNew/" .
-                          $projectInfo->reservationId .
-                          " >Ajouter</a> ";
+                      echo "Pas de reservation ";
                   } else { ?>
                     
                     Pack : <?php echo $troupe->packname; ?>  <br>  
@@ -112,11 +108,7 @@
                        <span class="badge badge-pill badge-danger"><i class="metismenu-icon pe-7s-close"></i></span>
                   <?php } echo $pres->packname; ?> à <?php echo $pres->heure;  echo "<br>" ; } ?>
                   <br>
-                  <?php echo '<a style="color: white"  class="btn btn-info btn-block" href=' .
-                      base_url() .
-                      "Prestation/addNew/" .
-                      $projectInfo->reservationId .
-                      " >Ajouter une prestation</a> "; ?>
+                 
              </div>
          </div>
           
@@ -129,11 +121,7 @@
              </div>
             <div class="card-body">
                 <?php if ($projectInfo->photographe == 0) {
-                    echo '<a style="color: white"  class="btn btn-info btn-block" href=' .
-                        base_url() .
-                        "Photographe/addNew/" .
-                        $projectInfo->reservationId .
-                        " >Ajouter</a> ";
+                    echo "Pas de reservation";
                 } else {
                      ?>
                   
@@ -169,11 +157,7 @@
              </div>
             <div class="card-body">
                <?php if ($projectInfo->voiture == 0) {
-                   echo '<a  style="color: white"  class="btn btn-info btn-block" href=' .
-                       base_url() .
-                       "Voiture/addNew/" .
-                       $projectInfo->reservationId .
-                       " >Ajouter</a> ";
+                   echo "Pas de reservation ";
                } else {
                     ?>
                   Depart  :   <?php echo $voiture->depart; ?><br>
@@ -218,3 +202,46 @@
     </div>
   </div>
 </div>
+
+
+
+<script>
+    // Tableau des horaires réservés à l'avance (exemple en PHP converti en JavaScript)
+    var reseAvenir = <?php echo json_encode($reseAvenir); ?>;
+
+    // Fonction pour vérifier si l'heure choisie entre en conflit avec les horaires réservés
+    function checkReservationConflict(date, heureDebut, heureFin) {
+        for (var i = 0; i < reseAvenir.length; i++) {
+            var reservation = reseAvenir[i];
+            if (reservation.date === date) {
+                // Vérification du chevauchement des horaires
+                if ((heureDebut >= reservation.heureDebut && heureDebut < reservation.heureFin) || 
+                    (heureFin > reservation.heureDebut && heureFin <= reservation.heureFin) || 
+                    (heureDebut <= reservation.heureDebut && heureFin >= reservation.heureFin)) {
+                    return true; // Conflit trouvé
+                }
+            }
+        }
+        return false; // Aucun conflit
+    }
+
+    // Fonction pour alerter l'utilisateur
+    function validateHours() {
+        var date = document.getElementById('dateDebut').value;
+        var heureDebut = document.getElementById('heureDebut').value;
+        var heureFin = document.getElementById('heureFin').value;
+
+        if (date && heureDebut && heureFin) {
+            // Appel de la fonction de vérification
+            var conflit = checkReservationConflict(date, heureDebut, heureFin);
+            var alertDiv = document.getElementById('alert');
+
+            if (conflit) {
+                alertDiv.style.display = 'block';  // Afficher l'alerte
+                alertDiv.textContent = "Désolé, cet horaire est déjà réservé. Veuillez choisir un autre horaire.";
+            } else {
+                alertDiv.style.display = 'none';  // Masquer l'alerte
+            }
+        }
+    }
+    </script>
