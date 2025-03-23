@@ -41,7 +41,7 @@
 
                       <div class="col-md-4">
                       <label for="formGroupExampleInput">Espace</label>
-                      <select type="text" class="form-control" name="salle" id="salle" placeholder="Example input">
+                      <select  readonly type="text" class="form-control" name="salle" id="salle" placeholder="Example input">
                       <?php foreach ($salleRecords as $record ) {
                       ?>  
                       <option value="<?php echo $record->salleID ?>" <?php if($record->salleID == $projectInfo->salleID ){ echo "selected" ; }  ?>  > <?php echo $record->nom ?> </option>
