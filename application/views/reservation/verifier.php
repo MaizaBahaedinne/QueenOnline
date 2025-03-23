@@ -147,42 +147,14 @@ function onHeureDebutChange() {
     // Si une heure de début est sélectionnée, mettre à jour les heures de fin possibles
     if (heureDebut) {
         document.getElementById("heureFin").disabled = false;
-        updateHeureFin(heureDebut);  // Mettre à jour les options d'heure de fin
+        
     } else {
         document.getElementById("heureFin").disabled = true;
         document.getElementById("submitBtn").disabled = true; // Désactiver le bouton de soumission
     }
 }
 
-// Fonction pour mettre à jour les heures disponibles de fin
-function updateHeureFin(heureDebut) {
-    var heureFinSelect = document.getElementById("heureFin");
-    heureFinSelect.innerHTML = "<option value=''>Sélectionner une heure de fin</option>"; // Réinitialiser les options
 
-    // Obtenons l'heure de début sous forme de nombre pour comparaison
-    var startHour = parseInt(heureDebut.split(":")[0]);
-    var startMinute = parseInt(heureDebut.split(":")[1]);
-
-    // Remplir les options de l'heure de fin en fonction de l'heure de début
-    for (var h = startHour; h <= 23; h++) {
-        for (var m = (h === startHour ? startMinute : 0); m < 60; m += 30) {
-            var time = formatTime(h, m);
-            var option = document.createElement("option");
-            option.value = time;
-            option.textContent = time;
-
-            // Vérifier si l'heure est réservée
-            if (isReserved(time)) {
-                option.disabled = true;  // Désactiver l'heure réservée
-            }
-
-            heureFinSelect.appendChild(option);
-        }
-    }
-
-    // Activer le bouton de soumission si une heure de fin est sélectionnée
-    document.getElementById("submitBtn").disabled = false;
-}
 
 // Fonction pour formater l'heure en "HH:MM"
 function formatTime(hour, minutes) {
