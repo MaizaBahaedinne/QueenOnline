@@ -138,40 +138,54 @@
 var reseAvenir = <?php echo json_encode($reseAvenir); ?>;
 
    function updateAvailableTimes() {
-            const selectedDate = document.getElementById('dateInput').value;
-            const scheduleDiv = document.getElementById('schedule');
-            scheduleDiv.innerHTML = '';  // Réinitialiser les horaires
+    const dateInput = document.getElementById('dateInput');
+    const scheduleDiv = document.getElementById('schedule');
 
-            const reservedTimes = reseAvenir.filter(reservation => reservation.dateDebut === selectedDate);
-            
-            // Création d'une plage horaire pour la journée
-            let timeSlots = [];
-            let startHour = 8; // 08:00 AM
-            let endHour = 23; // 11:00 PM
+    if (!dateInput) {
+        console.error("L'élément dateInput n'a pas été trouvé dans le DOM.");
+        return;
+    }
 
-            for (let hour = startHour; hour <= endHour; hour++) {
-                let hourString = hour < 10 ? '0' + hour : hour;
-                timeSlots.push(hourString + ":00");
-                timeSlots.push(hourString + ":30");
+    const selectedDate = dateInput.value;
+
+    if (!selectedDate) {
+        console.error("Aucune date sélectionnée.");
+        return;
+    }
+
+    scheduleDiv.innerHTML = '';  // Réinitialiser les horaires
+
+    const reservedTimes = reseAvenir.filter(reservation => reservation.dateDebut === selectedDate);
+    
+    // Création d'une plage horaire pour la journée
+    let timeSlots = [];
+    let startHour = 8; // 08:00 AM
+    let endHour = 23; // 11:00 PM
+
+    for (let hour = startHour; hour <= endHour; hour++) {
+        let hourString = hour < 10 ? '0' + hour : hour;
+        timeSlots.push(hourString + ":00");
+        timeSlots.push(hourString + ":30");
+    }
+
+    // Affichage des créneaux horaires
+    timeSlots.forEach(time => {
+        let slot = document.createElement('button');
+        slot.innerHTML = time;
+        slot.classList.add('available');
+        
+        // Vérification des horaires réservés
+        reservedTimes.forEach(reservation => {
+            if (reservation.heureDebut <= time && reservation.heureFin > time) {
+                slot.classList.remove('available');
+                slot.classList.add('reserved');
             }
+        });
+        
+        scheduleDiv.appendChild(slot);
+    });
+}
 
-            // Affichage des créneaux horaires
-            timeSlots.forEach(time => {
-                let slot = document.createElement('button');
-                slot.innerHTML = time;
-                slot.classList.add('available');
-                
-                // Vérification des horaires réservés
-                reservedTimes.forEach(reservation => {
-                    if (reservation.heureDebut <= time && reservation.heureFin > time) {
-                        slot.classList.remove('available');
-                        slot.classList.add('reserved');
-                    }
-                });
-                
-                scheduleDiv.appendChild(slot);
-            });
-        }
 
         function validateTimes() {
             const startTime = document.getElementById('startTime').value;
