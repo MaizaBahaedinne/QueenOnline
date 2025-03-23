@@ -108,7 +108,9 @@ function updateAvailableTimes() {
     const salleSelect = document.getElementById('salle');
     const heureDebutSelect = document.getElementById('heureDebut');
     const heureFinSelect = document.getElementById('heureFin');
+    const submitButton = document.querySelector("button[type='submit']");
 
+    // Vérifier si les éléments existent
     if (!dateInput || !salleSelect) {
         console.error("L'élément 'dateDebut' ou 'salle' n'a pas été trouvé dans le DOM.");
         return;
@@ -176,10 +178,36 @@ function updateAvailableTimes() {
         heureFinSelect.appendChild(option);
     });
 
-    
+    // Pré-sélectionner les anciennes valeurs dans les listes déroulantes
+    const currentStartTime = "<?php echo $projectInfo->heureDebut; ?>"; // Valeur d'heure de début actuelle
+    const currentEndTime = "<?php echo $projectInfo->heureFin; ?>"; // Valeur d'heure de fin actuelle
 
-    
-    
+    // Pré-sélectionner les anciennes valeurs dans les listes déroulantes
+    if (currentStartTime) {
+        heureDebutSelect.value = currentStartTime;
+    }
+    if (currentEndTime) {
+        heureFinSelect.value = currentEndTime;
+    }
+
+    // Activer ou désactiver le bouton de soumission en fonction de la validité des champs
+    toggleSubmitButton();
+}
+
+// Fonction pour valider si tous les champs sont remplis et activer/désactiver le bouton de soumission
+function toggleSubmitButton() {
+    const dateInput = document.getElementById('dateDebut');
+    const salleSelect = document.getElementById('salle');
+    const heureDebutSelect = document.getElementById('heureDebut');
+    const heureFinSelect = document.getElementById('heureFin');
+    const submitButton = document.querySelector("button[type='submit']");
+
+    // Vérifier que tous les champs sont remplis
+    if (dateInput.value && salleSelect.value && heureDebutSelect.value && heureFinSelect.value) {
+        submitButton.disabled = false; // Activer le bouton
+    } else {
+        submitButton.disabled = true; // Désactiver le bouton
+    }
 }
 
 function validateTimes() {
@@ -197,5 +225,11 @@ function validateTimes() {
 window.onload = function() {
     updateAvailableTimes();
 };
+
+// Ajouter un écouteur d'événements pour le changement de salle
+document.getElementById('salle').addEventListener('change', function() {
+    updateAvailableTimes();
+});
+
 </script>
 
