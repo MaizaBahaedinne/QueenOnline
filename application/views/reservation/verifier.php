@@ -165,19 +165,24 @@ function updateHeureFin(heureDebut) {
     // L'heure de fin doit être au moins 1 heure après l'heure de début
     var minHeureFin = startHour + 1; // L'heure de fin doit être au moins 1 heure après l'heure de début
 
-    for (var h = minHeureFin; h <= 23; h++) {
+    // Affichage des heures de fin de 00:00 à 23:59
+    for (var h = 0; h <= 23; h++) {
         for (var m = 0; m < 60; m += 30) {
             var time = formatTime(h, m);
-            var option = document.createElement("option");
-            option.value = time;
-            option.textContent = time;
 
-            // Vérifier si l'heure est réservée
-            if (isReserved(time)) {
-                option.disabled = true; // Désactiver l'heure réservée
+            // Si l'heure de fin est supérieure ou égale à l'heure de début + 1h, ajouter l'option
+            if (h >= minHeureFin || (h == minHeureFin && m > 0)) {
+                var option = document.createElement("option");
+                option.value = time;
+                option.textContent = time;
+
+                // Vérifier si l'heure est réservée ou chevauche une réservation
+                if (isReserved(time)) {
+                    option.disabled = true; // Désactiver l'heure réservée
+                }
+
+                heureFinSelect.appendChild(option);
             }
-
-            heureFinSelect.appendChild(option);
         }
     }
 
@@ -270,6 +275,7 @@ function validateTimes() {
 document.getElementById("heureDebut").addEventListener("change", validateTimes);
 document.getElementById("heureFin").addEventListener("change", validateTimes);
 </script>
+
 
 
 
