@@ -24,7 +24,7 @@
   </div>
   <div class="main-card mb-3 card">
     <div class="card-body" style="width: 100%;">
-      <form action="<?php echo base_url() ?>Reservation/DateChange/<?php echo $projectInfo->reservationId ?>" method="post">
+      <form action="<?php echo base_url() ?>Reservation/addNew" method="get">
         <div class="card-body">
           
           <div class="row">
@@ -65,7 +65,7 @@
                   </div>
             <div class="col-md-6">
               <label for="formGroupExampleInput">Date</label>
-              <input type="date" class="form-control" id="dateDebut" name="dateDebut" min="<?php echo date('Y-m-d') ?>" placeholder="Exemple input" value="<?php echo $projectInfo->dateDebut ?>" onchange="updateAvailableTimes()">
+              <input type="date" class="form-control" id="dateDebut" name="dateDebut" min="<?php echo date('Y-m-d') ?>" placeholder="Exemple input" value="" onchange="updateAvailableTimes()">
             </div> 
             <div class="col-md-3">
               <select class="form-control" id="heureDebut" name="heureDebut" onchange="validateTimes()">
@@ -176,17 +176,10 @@ function updateAvailableTimes() {
         heureFinSelect.appendChild(option);
     });
 
-    // Récupérer les anciennes valeurs de réservation pour pré-sélectionner les horaires
-    const currentStartTime = "<?php echo $projectInfo->heureDebut; ?>"; // Valeur d'heure de début actuelle
-    const currentEndTime = "<?php echo $projectInfo->heureFin; ?>"; // Valeur d'heure de fin actuelle
+    
 
-    // Pré-sélectionner les anciennes valeurs dans les listes déroulantes
-    if (currentStartTime) {
-        heureDebutSelect.value = currentStartTime;
-    }
-    if (currentEndTime) {
-        heureFinSelect.value = currentEndTime;
-    }
+    
+    
 }
 
 function validateTimes() {
