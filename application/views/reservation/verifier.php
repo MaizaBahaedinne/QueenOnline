@@ -228,7 +228,33 @@ function updateAvailableTimes(salleId, dateDebut) {
 function isTimeBetween(time, start, end) {
     return time >= start && time < end;
 }
+
+// Fonction de validation des heures (debut < fin)
+function validateTimes() {
+    var heureDebut = document.getElementById("heureDebut").value;
+    var heureFin = document.getElementById("heureFin").value;
+
+    // Si les heures sont valides, activer le bouton de soumission, sinon le désactiver
+    if (heureDebut && heureFin) {
+        var debutParts = heureDebut.split(":");
+        var finParts = heureFin.split(":");
+
+        var heureDebutMinutes = parseInt(debutParts[0]) * 60 + parseInt(debutParts[1]);
+        var heureFinMinutes = parseInt(finParts[0]) * 60 + parseInt(finParts[1]);
+
+        if (heureFinMinutes > heureDebutMinutes) {
+            document.getElementById("submitBtn").disabled = false;  // Activer le bouton de soumission
+        } else {
+            document.getElementById("submitBtn").disabled = true;  // Désactiver le bouton de soumission
+        }
+    }
+}
+
+// Attacher la fonction de validation au changement d'heure de début et de fin
+document.getElementById("heureDebut").addEventListener("change", validateTimes);
+document.getElementById("heureFin").addEventListener("change", validateTimes);
 </script>
+
 
 
 
