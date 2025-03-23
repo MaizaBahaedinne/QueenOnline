@@ -231,6 +231,35 @@ class Reservation extends BaseController
                         redirect("Reservation/view/" . $resId);
                 }
         }
+
+                /**
+         * This function is used to add new user to the system
+         */
+        function DateChange($resId)
+        {       $data["projectInfo"] = $this->reservation_model->ReservationInfo($resId);
+                $dateDebut = $this->input->post("dateDebut");
+                $heureDebut = $this->input->post("heureDebut");
+                $dateFin = $this->input->post("dateDebut");
+                $heureFin = $this->input->post("heureFin");
+                $reservationInfo = [
+                        "dateDebut" => $dateDebut,
+                        "heureDebut" => $heureDebut,
+                        "dateFin" => $dateFin,
+                        "heureFin" => $heureFin,
+                        "noteAdmin" => "Changement de date de ".$data["projectInfo"]->dateDebut." vers ".$dateDebut,                    
+                ];
+
+                $result = $this->reservation_model->
+                       editReservation($reservationInfo,$resId, $this->vendorId );
+                if ($result) {
+                        $this->session->set_flashdata("success", "Reservation mise à jour avec succées ");
+                        redirect("Reservation/view/" . $resId);
+                } else {
+                        $this->session->set_flashdata("error", "Problème de mise à jours");
+                        redirect("Reservation/edit/" . $resId);
+                }
+        }
+
         /**
          * This function is used to load the user list
          */
@@ -294,6 +323,9 @@ class Reservation extends BaseController
                 $this->global["pageTitle"] = "Modification de la date de reservation ".$resId;
                 $this->loadViews("reservation/datechange", $this->global, $data, $data);
         }
+
+
+
         /**
          * This function is used to load the user list
          */

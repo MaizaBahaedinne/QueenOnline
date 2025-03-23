@@ -24,7 +24,7 @@
   </div>
   <div class="main-card mb-3 card">
     <div class="card-body" style="width: 100%;">
-      <form action="<?php echo base_url() ?>Reservation/changeDate/<?php echo $projectInfo->reservationId ?>" method="post">
+      <form action="<?php echo base_url() ?>Reservation/DateChange/<?php echo $projectInfo->reservationId ?>" method="post">
         <div class="card-body">
           <label for="formGroupExampleInput">Date</label>
           <div class="row">

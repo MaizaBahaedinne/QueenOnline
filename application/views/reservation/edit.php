@@ -27,7 +27,7 @@
                 
                 
                  
-                    <label for="formGroupExampleInput">Date</label>
+                    <label for="formGroupExampleInput">Date <a href="<?php echo base_url() ?>Reservation/editDate/<?php echo $projectInfo->reservationId ?>"> Changment de date </a></label>
                     <div class="row">
                       <div class="col-md-6">
                     <input readonly type="date" class="form-control" name="dateDebut"  min="<?php echo date('Y-m-d') ?>" placeholder="Example input" value="<?php echo $projectInfo->dateDebut ?>" >
