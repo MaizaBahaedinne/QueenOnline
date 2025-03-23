@@ -93,95 +93,100 @@
 </div>
 
 <script type="text/javascript">
-  // Tableau PHP des réservations futures
-  var reservations = <?php echo json_encode($reseAvenir); ?>;
 
-  // Fonction pour vérifier les créneaux réservés
-  function updateAvailableTimes() {
-    // Récupération de la salle et de la date sélectionnée
-    var salleId = document.getElementById('salle').value;
-    var dateDebut = document.getElementById('dateDebut').value;
-
-    // Vérification si la salle et la date sont valides
+// Récupérer les réservations depuis PHP
+var reservations = <?php echo json_encode($reseAvenir); ?>;
+  
+// Fonction pour vérifier les disponibilités en fonction de la salle et de la date sélectionnées
+function updateAvailableTimes() {
+    var salleId = document.getElementById("salle").value;
+    var dateDebut = document.getElementById("dateDebut").value;
+    
+    // Si la salle ou la date sont vides, ne pas afficher les créneaux
     if (!salleId || !dateDebut) {
-      document.getElementById('alert').innerHTML = "Veuillez sélectionner la salle et la date.";
-      return;
+        return;
     }
 
-    // Filtrer les réservations pour la salle et la date spécifiées
-    var availableHours = getAvailableTimes(salleId, dateDebut);
+    var reservedHours = [];
 
-    // Mettre à jour les options des heures de début et de fin
-    updateTimeOptions(availableHours);
-  }
+    // Filtrer les réservations pour la salle et la date sélectionnées
+    reservations.forEach(function(reservation) {
+        if (reservation.salleId == salleId && reservation.dateDebut == dateDebut) {
+            reservedHours.push({
+                start: reservation.heureDebut,
+                end: reservation.heureFin
+            });
+        }
+    });
 
-  // Fonction pour obtenir les heures disponibles pour la salle et la date
-  function getAvailableTimes(salleId, dateDebut) {
-    var availableTimes = [];
-    // Parcourir les réservations futures
-    for (var i = 0; i < reservations.length; i++) {
-      var reservation = reservations[i];
+    // Mise à jour des créneaux horaires disponibles
+    updateTimeSelectors(reservedHours);
+}
 
-      // Vérifier si la réservation correspond à la salle et à la date
-      if (reservation.salleId == salleId && reservation.dateDebut == dateDebut) {
-        var startHour = reservation.heureDebut;
-        var endHour = reservation.heureFin;
+// Mettre à jour les sélecteurs d'heure en fonction des réservations
+function updateTimeSelectors(reservedHours) {
+    var heureDebutSelect = document.getElementById("heureDebut");
+    var heureFinSelect = document.getElementById("heureFin");
 
-        // Ajouter les heures réservées à la liste des heures non disponibles
-        availableTimes.push({ start: startHour, end: endHour });
-      }
-    }
-    return availableTimes;
-  }
-
-  // Fonction pour mettre à jour les options des heures
-  function updateTimeOptions(availableHours) {
-    // Récupérer les éléments des heures de début et de fin
-    var heureDebutSelect = document.getElementById('heureDebut');
-    var heureFinSelect = document.getElementById('heureFin');
-
-    // Effacer les options existantes
+    // Vider les options actuelles
     heureDebutSelect.innerHTML = "<option value=''>heure de début</option>";
     heureFinSelect.innerHTML = "<option value=''>heure de fin</option>";
 
-    // Ajouter les options d'heures disponibles
-    for (var i = 8; i <= 22; i++) { // Disons que les créneaux horaires vont de 8h à 22h
-      var startHour = i + ":00";
-      var endHour = (i + 1) + ":00";
+    // Plage horaire à vérifier (par exemple de 8h à 23h)
+    var startHour = 8;
+    var endHour = 23;
 
-      // Vérifier si l'heure de début et l'heure de fin sont disponibles
-      var isAvailable = true;
-      for (var j = 0; j < availableHours.length; j++) {
-        if ((startHour >= availableHours[j].start && startHour < availableHours[j].end) || 
-            (endHour > availableHours[j].start && endHour <= availableHours[j].end)) {
-          isAvailable = false;
-          break;
+    for (var h = startHour; h <= endHour; h++) {
+        for (var m = 0; m < 60; m += 30) {  // Incrément de 30 minutes
+            var time = formatTime(h, m);
+            var isReserved = false;
+
+            // Vérification des réservations sur cette plage horaire
+            reservedHours.forEach(function(reservation) {
+                if (isTimeBetween(time, reservation.start, reservation.end)) {
+                    isReserved = true;
+                }
+            });
+
+            if (!isReserved) {
+                // Ajouter l'heure de début et de fin disponible
+                var optionDebut = document.createElement("option");
+                optionDebut.value = time;
+                optionDebut.textContent = time;
+                heureDebutSelect.appendChild(optionDebut);
+                
+                var optionFin = document.createElement("option");
+                optionFin.value = time;
+                optionFin.textContent = time;
+                heureFinSelect.appendChild(optionFin);
+            } else {
+                // Désactiver l'option si l'heure est réservée
+                var optionDebut = document.createElement("option");
+                optionDebut.value = time;
+                optionDebut.textContent = time;
+                optionDebut.disabled = true;  // Désactiver l'option réservée
+                heureDebutSelect.appendChild(optionDebut);
+
+                var optionFin = document.createElement("option");
+                optionFin.value = time;
+                optionFin.textContent = time;
+                optionFin.disabled = true;  // Désactiver l'option réservée
+                heureFinSelect.appendChild(optionFin);
+            }
         }
-      }
-
-      // Ajouter les heures disponibles
-      if (isAvailable) {
-        heureDebutSelect.innerHTML += "<option value='" + startHour + "'>" + startHour + "</option>";
-        heureFinSelect.innerHTML += "<option value='" + endHour + "'>" + endHour + "</option>";
-      }
     }
-  }
+}
 
-  // Fonction pour valider les heures de début et de fin
-  function validateTimes() {
-    var heureDebut = document.getElementById('heureDebut').value;
-    var heureFin = document.getElementById('heureFin').value;
-    var alertElement = document.getElementById('alert');
+// Fonction pour formater les heures en "HH:MM"
+function formatTime(hour, minutes) {
+    return (hour < 10 ? "0" : "") + hour + ":" + (minutes < 10 ? "0" : "") + minutes;
+}
 
-    // Vérifier si l'heure de fin est après l'heure de début
-    if (heureDebut && heureFin && heureDebut >= heureFin) {
-      alertElement.innerHTML = "L'heure de fin doit être après l'heure de début.";
-      document.getElementById('submitBtn').disabled = true;
-    } else {
-      alertElement.innerHTML = "";
-      document.getElementById('submitBtn').disabled = false;
-    }
-  }
+// Fonction pour vérifier si une heure est comprise entre deux heures
+function isTimeBetween(time, start, end) {
+    return time >= start && time <= end;
+}
+
 </script>
 
 
