@@ -167,19 +167,17 @@ function updateHeureFin(heureDebut) {
         for (var m = 0; m < 60; m += 30) {
             var time = formatTime(h, m);
 
-            // Ajouter l'option si l'heure de fin est supérieure ou égale à l'heure de début
-            if (h > startHour || (h == startHour && m >= startMinute + 30)) {
-                var option = document.createElement("option");
-                option.value = time;
-                option.textContent = time;
+            // Ajouter l'option même si l'heure est inférieure ou égale à l'heure de début
+            var option = document.createElement("option");
+            option.value = time;
+            option.textContent = time;
 
-                // Vérifier si l'heure est réservée
-                if (isReserved(time)) {
-                    option.disabled = true; // Désactiver l'heure réservée
-                }
-
-                heureFinSelect.appendChild(option);
+            // Vérifier si l'heure est réservée
+            if (isReserved(time)) {
+                option.disabled = true; // Désactiver l'heure réservée
             }
+
+            heureFinSelect.appendChild(option);
         }
     }
 
@@ -247,30 +245,6 @@ function isTimeBetween(time, start, end) {
     return time >= start && time < end;
 }
 
-// Fonction de validation des heures (debut < fin)
-function validateTimes() {
-    var heureDebut = document.getElementById("heureDebut").value;
-    var heureFin = document.getElementById("heureFin").value;
-
-    // Si les heures sont valides, activer le bouton de soumission, sinon le désactiver
-    if (heureDebut && heureFin) {
-        var debutParts = heureDebut.split(":");
-        var finParts = heureFin.split(":");
-
-        var heureDebutMinutes = parseInt(debutParts[0]) * 60 + parseInt(debutParts[1]);
-        var heureFinMinutes = parseInt(finParts[0]) * 60 + parseInt(finParts[1]);
-
-        if (heureFinMinutes > heureDebutMinutes) {
-            document.getElementById("submitBtn").disabled = false;  // Activer le bouton de soumission
-        } else {
-            document.getElementById("submitBtn").disabled = true;  // Désactiver le bouton de soumission
-        }
-    }
-}
-
-// Attacher la fonction de validation au changement d'heure de début et de fin
-document.getElementById("heureDebut").addEventListener("change", validateTimes);
-document.getElementById("heureFin").addEventListener("change", validateTimes);
 </script>
 
 
