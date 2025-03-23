@@ -1,3 +1,13 @@
+<style>
+        .reserved {
+            color: red;
+        }
+        .available {
+            color: black;
+        }
+    </style>
+
+
 <div class="app-main__inner">
   <div class="app-page-title">
     <div class="page-title-wrapper">
@@ -127,12 +137,12 @@
 // Tableau des horaires réservés à l'avance (exemple en PHP converti en JavaScript)
 var reseAvenir = <?php echo json_encode($reseAvenir); ?>;
 
-function updateAvailableTimes() {
+   function updateAvailableTimes() {
             const selectedDate = document.getElementById('dateInput').value;
             const scheduleDiv = document.getElementById('schedule');
             scheduleDiv.innerHTML = '';  // Réinitialiser les horaires
 
-            const reservedTimes = reseAvenir.filter(reservation => reservation.dateFin === selectedDate);
+            const reservedTimes = reseAvenir.filter(reservation => reservation.dateDebut === selectedDate);
             
             // Création d'une plage horaire pour la journée
             let timeSlots = [];
@@ -167,6 +177,7 @@ function updateAvailableTimes() {
             const startTime = document.getElementById('startTime').value;
             const endTime = document.getElementById('endTime').value;
 
+            // Vérification que l'heure de début est inférieure à l'heure de fin
             if (startTime && endTime && startTime >= endTime) {
                 alert("L'heure de fin doit être supérieure à l'heure de début.");
                 document.getElementById('endTime').value = ''; // Réinitialiser l'heure de fin
@@ -178,4 +189,3 @@ function updateAvailableTimes() {
             updateAvailableTimes();
         };
     </script>
-</script>
