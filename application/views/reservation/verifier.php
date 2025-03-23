@@ -163,12 +163,21 @@ function updateHeureFin(heureDebut) {
     var startMinute = parseInt(heureDebut.split(":")[1]);
 
     // Remplir les options de l'heure de fin en fonction de l'heure de début
-    for (var h = startHour; h <= 23; h++) {
+    // L'heure de fin doit être au moins 1 heure après l'heure de début
+    var minHeureFin = startHour + 1;
+
+    for (var h = minHeureFin; h <= 23; h++) {
         for (var m = 0; m < 60; m += 30) {
             var time = formatTime(h, m);
             var option = document.createElement("option");
             option.value = time;
             option.textContent = time;
+
+            // Vérifier si l'heure est réservée
+            if (isReserved(time)) {
+                option.disabled = true; // Désactiver l'heure réservée
+            }
+
             heureFinSelect.appendChild(option);
         }
     }
@@ -180,6 +189,14 @@ function updateHeureFin(heureDebut) {
 // Fonction pour formater l'heure en "HH:MM"
 function formatTime(hour, minutes) {
     return (hour < 10 ? "0" : "") + hour + ":" + (minutes < 10 ? "00" : minutes);
+}
+
+// Fonction pour vérifier si l'heure est réservée
+function isReserved(time) {
+    // Vérifier si l'heure est présente dans les réservations
+    return reservations.some(function(reservation) {
+        return reservation.heureDebut <= time && reservation.heureFin > time;
+    });
 }
 
 // Fonction pour mettre à jour les créneaux horaires disponibles
