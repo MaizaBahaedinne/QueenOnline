@@ -101,133 +101,107 @@
 </div>
 
 <script>
-var reseAvenir = <?php echo json_encode($reseAvenir); ?>;
+document.addEventListener('DOMContentLoaded', function() {
+    // Définir la fonction updateAvailableTimes ici
+    var reseAvenir = <?php echo json_encode($reseAvenir); ?>;
 
-function updateAvailableTimes() {
-    const dateInput = document.getElementById('dateDebut');
-    const salleSelect = document.getElementById('salle');
-    const heureDebutSelect = document.getElementById('heureDebut');
-    const heureFinSelect = document.getElementById('heureFin');
-    const submitButton = document.querySelector("button[type='submit']");
+    function updateAvailableTimes() {
+        const dateInput = document.getElementById('dateDebut');
+        const salleSelect = document.getElementById('salle');
+        const heureDebutSelect = document.getElementById('heureDebut');
+        const heureFinSelect = document.getElementById('heureFin');
+        const submitButton = document.querySelector("button[type='submit']");
 
-    // Vérifier si les éléments existent
-    if (!dateInput || !salleSelect) {
-        console.error("L'élément 'dateDebut' ou 'salle' n'a pas été trouvé dans le DOM.");
-        return;
-    }
-
-    const selectedDate = dateInput.value;
-    const selectedSalle = salleSelect.value;
-
-    if (!selectedDate || !selectedSalle) {
-        console.error("Aucune date ou salle sélectionnée.");
-        return;
-    }
-
-    // Filtrer les réservations pour la date et la salle sélectionnées
-    const reservedTimes = reseAvenir.filter(reservation =>
-        reservation.dateDebut === selectedDate && reservation.salleId === selectedSalle
-    );
-
-    // Créer la liste des créneaux horaires disponibles
-    let timeSlots = [];
-    let startHour = 8; // 08:00 AM
-    let endHour = 23; // 11:00 PM
-
-    // Remplir la liste des créneaux horaires
-    for (let hour = startHour; hour <= endHour; hour++) {
-        let hourString = hour < 10 ? '0' + hour : hour;
-        timeSlots.push(hourString + ":00");
-        timeSlots.push(hourString + ":30");
-    }
-
-    // Ajouter 23:59 comme dernier créneau possible pour l'heure de fin
-    timeSlots.push("23:59");
-
-    // Ajouter les options dans le select "heureDebut"
-    heureDebutSelect.innerHTML = '<option value="">heure de début</option>'; // Réinitialiser les options
-    timeSlots.forEach(time => {
-        let option = document.createElement('option');
-        option.value = time;
-        option.innerHTML = time;
-
-        // Vérifier si l'heure est réservée pour la salle et la date sélectionnées
-        let isReserved = reservedTimes.some(reservation => reservation.heureDebut <= time && reservation.heureFin > time);
-
-        if (isReserved) {
-            option.disabled = true; // Griser l'option si elle est réservée
+        if (!dateInput || !salleSelect) {
+            console.error("L'élément 'dateDebut' ou 'salle' n'a pas été trouvé dans le DOM.");
+            return;
         }
 
-        heureDebutSelect.appendChild(option);
-    });
+        const selectedDate = dateInput.value;
+        const selectedSalle = salleSelect.value;
 
-    // Ajouter les options dans le select "heureFin"
-    heureFinSelect.innerHTML = '<option value="">heure de fin</option>'; // Réinitialiser les options
-    timeSlots.forEach(time => {
-        let option = document.createElement('option');
-        option.value = time;
-        option.innerHTML = time;
-
-        // Vérifier si l'heure est réservée pour la salle et la date sélectionnées
-        let isReserved = reservedTimes.some(reservation => reservation.heureDebut <= time && reservation.heureFin > time);
-
-        if (isReserved) {
-            option.disabled = true; // Griser l'option si elle est réservée
+        if (!selectedDate || !selectedSalle) {
+            console.error("Aucune date ou salle sélectionnée.");
+            return;
         }
 
-        heureFinSelect.appendChild(option);
-    });
+        const reservedTimes = reseAvenir.filter(reservation =>
+            reservation.dateDebut === selectedDate && reservation.salleId === selectedSalle
+        );
 
-    // Pré-sélectionner les anciennes valeurs dans les listes déroulantes
-    const currentStartTime = "<?php echo $projectInfo->heureDebut; ?>"; // Valeur d'heure de début actuelle
-    const currentEndTime = "<?php echo $projectInfo->heureFin; ?>"; // Valeur d'heure de fin actuelle
+        let timeSlots = [];
+        let startHour = 8; // 08:00 AM
+        let endHour = 23; // 11:00 PM
 
-    // Pré-sélectionner les anciennes valeurs dans les listes déroulantes
-    if (currentStartTime) {
-        heureDebutSelect.value = currentStartTime;
+        for (let hour = startHour; hour <= endHour; hour++) {
+            let hourString = hour < 10 ? '0' + hour : hour;
+            timeSlots.push(hourString + ":00");
+            timeSlots.push(hourString + ":30");
+        }
+
+        timeSlots.push("23:59");
+
+        heureDebutSelect.innerHTML = '<option value="">heure de début</option>';
+        timeSlots.forEach(time => {
+            let option = document.createElement('option');
+            option.value = time;
+            option.innerHTML = time;
+
+            let isReserved = reservedTimes.some(reservation => reservation.heureDebut <= time && reservation.heureFin > time);
+
+            if (isReserved) {
+                option.disabled = true;
+            }
+
+            heureDebutSelect.appendChild(option);
+        });
+
+        heureFinSelect.innerHTML = '<option value="">heure de fin</option>';
+        timeSlots.forEach(time => {
+            let option = document.createElement('option');
+            option.value = time;
+            option.innerHTML = time;
+
+            let isReserved = reservedTimes.some(reservation => reservation.heureDebut <= time && reservation.heureFin > time);
+
+            if (isReserved) {
+                option.disabled = true;
+            }
+
+            heureFinSelect.appendChild(option);
+        });
+
+        const currentStartTime = "<?php echo $projectInfo->heureDebut; ?>";
+        const currentEndTime = "<?php echo $projectInfo->heureFin; ?>";
+
+        if (currentStartTime) {
+            heureDebutSelect.value = currentStartTime;
+        }
+        if (currentEndTime) {
+            heureFinSelect.value = currentEndTime;
+        }
+
+        toggleSubmitButton();
     }
-    if (currentEndTime) {
-        heureFinSelect.value = currentEndTime;
+
+    function toggleSubmitButton() {
+        const dateInput = document.getElementById('dateDebut');
+        const salleSelect = document.getElementById('salle');
+        const heureDebutSelect = document.getElementById('heureDebut');
+        const heureFinSelect = document.getElementById('heureFin');
+        const submitButton = document.querySelector("button[type='submit']");
+
+        if (dateInput.value && salleSelect.value && heureDebutSelect.value && heureFinSelect.value) {
+            submitButton.disabled = false;
+        } else {
+            submitButton.disabled = true;
+        }
     }
 
-    // Activer ou désactiver le bouton de soumission en fonction de la validité des champs
-    toggleSubmitButton();
-}
+    document.getElementById('salle').addEventListener('change', updateAvailableTimes);
+    document.getElementById('dateDebut').addEventListener('change', updateAvailableTimes);
 
-// Fonction pour valider si tous les champs sont remplis et activer/désactiver le bouton de soumission
-function toggleSubmitButton() {
-    const dateInput = document.getElementById('dateDebut');
-    const salleSelect = document.getElementById('salle');
-    const heureDebutSelect = document.getElementById('heureDebut');
-    const heureFinSelect = document.getElementById('heureFin');
-    const submitButton = document.querySelector("button[type='submit']");
-
-    // Vérifier que tous les champs sont remplis
-    if (dateInput.value && salleSelect.value && heureDebutSelect.value && heureFinSelect.value) {
-        submitButton.disabled = false; // Activer le bouton
-    } else {
-        submitButton.disabled = true; // Désactiver le bouton
-    }
-}
-
-function validateTimes() {
-    const startTime = document.getElementById('heureDebut').value;
-    const endTime = document.getElementById('heureFin').value;
-
-    // Vérifier que l'heure de début est inférieure à l'heure de fin
-    if (startTime && endTime && startTime >= endTime) {
-        alert("L'heure de fin doit être supérieure à l'heure de début.");
-        document.getElementById('heureFin').value = ''; // Réinitialiser l'heure de fin
-    }
-}
-
-// Initialiser au chargement de la page
-window.onload = function() {
-    updateAvailableTimes();
-};
-
-// Ajouter un écouteur d'événements pour le changement de salle
-document.getElementById('salle').addEventListener('change', function() {
+    // Initialiser les créneaux horaires à la première ouverture de la page
     updateAvailableTimes();
 });
 
