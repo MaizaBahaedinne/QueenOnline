@@ -92,11 +92,15 @@
   </div>
 </div>
 
+
+<script>
+// Récupérer les réservations depuis PHP
+var reservations = <?php echo json_encode($reseAvenir); ?>;
+</script>
+
 <script>
 // Tableau des réservations
-var reservations = [
-    // Vous pouvez ajouter vos réservations ici
-];
+
 
 // Fonction pour mettre à jour les heures disponibles en fonction de la salle et de la date
 function updateAvailableTimes() {
