@@ -168,7 +168,7 @@ function updateAvailableTimes() {
     for (let hour = startHour; hour <= endHour; hour++) {
         let hourString = hour < 10 ? '0' + hour : hour;
         timeSlots.push(hourString + ":00");
-        timeSlots.push(hourString + ":30");
+        
     }
 
     // Affichage des créneaux horaires
