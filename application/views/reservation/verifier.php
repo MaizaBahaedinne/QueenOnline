@@ -165,13 +165,13 @@ function updateHeureFin(heureDebut) {
     // L'heure de fin doit être au moins 1 heure après l'heure de début
     var minHeureFin = startHour + 1; // L'heure de fin doit être au moins 1 heure après l'heure de début
 
-    // Affichage des heures de fin de 00:00 à 23:59
+    // Affichage des heures de fin de 00:00 à 23:59 (incluant la validation de réservation)
     for (var h = 0; h <= 23; h++) {
         for (var m = 0; m < 60; m += 30) {
             var time = formatTime(h, m);
 
             // Si l'heure de fin est supérieure ou égale à l'heure de début + 1h, ajouter l'option
-            if (h >= minHeureFin || (h == minHeureFin && m > 0)) {
+            if (h > startHour || (h == startHour && m >= startMinute + 30)) {
                 var option = document.createElement("option");
                 option.value = time;
                 option.textContent = time;
@@ -275,6 +275,7 @@ function validateTimes() {
 document.getElementById("heureDebut").addEventListener("change", validateTimes);
 document.getElementById("heureFin").addEventListener("change", validateTimes);
 </script>
+
 
 
 
