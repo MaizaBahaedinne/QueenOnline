@@ -147,7 +147,7 @@ function onHeureDebutChange() {
     // Si une heure de début est sélectionnée, mettre à jour les heures de fin possibles
     if (heureDebut) {
         document.getElementById("heureFin").disabled = false;
-        updateHeureFin(heureDebut);  // Mettre à jour les options d'heure de fin
+        updateHeureFin();  // Mettre à jour les options d'heure de fin
     } else {
         document.getElementById("heureFin").disabled = true;
         document.getElementById("submitBtn").disabled = true; // Désactiver le bouton de soumission
@@ -155,15 +155,12 @@ function onHeureDebutChange() {
 }
 
 // Fonction pour mettre à jour les heures disponibles de fin
-function updateHeureFin(heureDebut) {
+function updateHeureFin() {
     var heureFinSelect = document.getElementById("heureFin");
     heureFinSelect.innerHTML = "<option value=''>Sélectionner une heure de fin</option>"; // Réinitialiser les options
 
-    var startHour = parseInt(heureDebut.split(":")[0]);
-    var startMinute = parseInt(heureDebut.split(":")[1]);
-
     // Affichage des heures de fin de 00:00 à 23:59 (incluant la validation de réservation)
-    for (var h = startHour; h <= 23; h++) {
+    for (var h = 0; h <= 23; h++) {
         for (var m = 0; m < 60; m += 30) {
             var time = formatTime(h, m);
 
