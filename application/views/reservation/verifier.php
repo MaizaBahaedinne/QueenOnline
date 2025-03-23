@@ -1,3 +1,4 @@
+<!-- Formulaire HTML -->
 <div class="app-main__inner">
   <div class="app-page-title">
     <div class="page-title-wrapper">
@@ -17,6 +18,7 @@
       <form action="<?php echo base_url() ?>Reservation/addNew" method="get">
         <div class="card-body">
           <div class="row">
+            <!-- Sélecteur Espace -->
             <div class="col-md-4">
               <label for="formGroupExampleInput">Espace</label>
               <select class="form-control" name="salle" id="salle" required>
@@ -27,52 +29,60 @@
               </select>
             </div>
 
+            <!-- Sélecteur Type -->
             <div class="col-md-4">
               <label for="formGroupExampleInput2">Type</label>
               <select class="form-control" name="type" required>
                 <option value=""></option>
-                <option value="Marriage"> Marriage </option>
-                <option value="Finacailles"> Finacailles </option>
-                <option value="Hena"> Hena </option>
-                <option value="Outya"> Outya </option>
-                <option value="Congret"> Congret </option>
-                <option value="Circoncision"> Circoncision </option>
-                <option value="Team Building"> Team Building </option>
-                <option value="Anniversaire"> Anniversaire </option>
-                <option value="Evenement"> Evenement </option>
+                <option value="Marriage">Marriage</option>
+                <option value="Finacailles">Finacailles</option>
+                <option value="Hena">Hena</option>
+                <option value="Outya">Outya</option>
+                <option value="Congret">Congret</option>
+                <option value="Circoncision">Circoncision</option>
+                <option value="Team Building">Team Building</option>
+                <option value="Anniversaire">Anniversaire</option>
+                <option value="Evenement">Evenement</option>
               </select>
             </div>
 
+            <!-- Prix -->
             <div class="col-md-4">
               <label for="formGroupExampleInput2">Prix (DT)</label>
               <input type="number" class="form-control" min="300" name="prix" placeholder="Prix">
             </div>
 
+            <!-- Sélecteur Date -->
             <div class="col-md-6">
               <label for="formGroupExampleInput">Date</label>
               <input type="date" class="form-control" id="dateDebut" name="dateDebut" min="<?php echo date('Y-m-d') ?>" onchange="updateAvailableTimes()">
             </div>
+
+            <!-- Sélecteur Heure de début -->
             <div class="col-md-3">
               <select class="form-control" id="heureDebut" name="heureDebut" onchange="validateTimes()">
                 <option value="">heure de début</option>
               </select>
             </div>
+
+            <!-- Sélecteur Heure de fin -->
             <div class="col-md-3">
               <select class="form-control" id="heureFin" name="heureFin" onchange="validateTimes()">
                 <option value="">heure de fin</option>
               </select>
             </div>
 
+            <!-- Alerte d'erreur -->
             <div class="col-md-12">
               <h5 style="color: red" id="alert"></h5>
             </div>
 
-            <div class="col-md-12" id="schedule">
-              <!-- Les créneaux horaires réservés ou disponibles seront ajoutés ici par JavaScript -->
-            </div>
+            <!-- Zone des créneaux horaires -->
+            <div class="col-md-12" id="schedule"></div>
           </div>
         </div>
 
+        <!-- Bouton Continuer -->
         <div class="card-body">
           <button type="submit" class="btn btn-primary btn-lg btn-block" id="submitBtn" disabled>Continuer</button>
         </div>
@@ -81,107 +91,97 @@
   </div>
 </div>
 
+<script type="text/javascript">
+  // Tableau PHP des réservations futures
+  var reservations = <?php echo json_encode($reseAvenir); ?>;
 
+  // Fonction pour vérifier les créneaux réservés
+  function updateAvailableTimes() {
+    // Récupération de la salle et de la date sélectionnée
+    var salleId = document.getElementById('salle').value;
+    var dateDebut = document.getElementById('dateDebut').value;
 
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-      var reseAvenir = <?php echo json_encode($reseAvenir); ?>;
+    // Vérification si la salle et la date sont valides
+    if (!salleId || !dateDebut) {
+      document.getElementById('alert').innerHTML = "Veuillez sélectionner la salle et la date.";
+      return;
+    }
 
-      function updateAvailableTimes() {
-          const dateInput = document.getElementById('dateDebut');
-          const salleSelect = document.getElementById('salle');
-          const heureDebutSelect = document.getElementById('heureDebut');
-          const heureFinSelect = document.getElementById('heureFin');
-          const submitButton = document.getElementById('submitBtn');
+    // Filtrer les réservations pour la salle et la date spécifiées
+    var availableHours = getAvailableTimes(salleId, dateDebut);
 
-          if (!dateInput || !salleSelect) {
-              console.error("L'élément 'dateDebut' ou 'salle' n'a pas été trouvé dans le DOM.");
-              return;
-          }
+    // Mettre à jour les options des heures de début et de fin
+    updateTimeOptions(availableHours);
+  }
 
-          const selectedDate = dateInput.value;
-          const selectedSalle = salleSelect.value;
+  // Fonction pour obtenir les heures disponibles pour la salle et la date
+  function getAvailableTimes(salleId, dateDebut) {
+    var availableTimes = [];
+    // Parcourir les réservations futures
+    for (var i = 0; i < reservations.length; i++) {
+      var reservation = reservations[i];
 
-          if (!selectedDate || !selectedSalle) {
-              console.error("Aucune date ou salle sélectionnée.");
-              return;
-          }
+      // Vérifier si la réservation correspond à la salle et à la date
+      if (reservation.salleID == salleId && reservation.dateDebut == dateDebut) {
+        var startHour = reservation.heureDebut;
+        var endHour = reservation.heureFin;
 
-          const reservedTimes = reseAvenir.filter(reservation =>
-              reservation.dateDebut === selectedDate && reservation.salleId === selectedSalle
-          );
+        // Ajouter les heures réservées à la liste des heures non disponibles
+        availableTimes.push({ start: startHour, end: endHour });
+      }
+    }
+    return availableTimes;
+  }
 
-          let timeSlots = [];
-          let startHour = 8; // 08:00 AM
-          let endHour = 23; // 11:00 PM
+  // Fonction pour mettre à jour les options des heures
+  function updateTimeOptions(availableHours) {
+    // Récupérer les éléments des heures de début et de fin
+    var heureDebutSelect = document.getElementById('heureDebut');
+    var heureFinSelect = document.getElementById('heureFin');
 
-          for (let hour = startHour; hour <= endHour; hour++) {
-              let hourString = hour < 10 ? '0' + hour : hour;
-              timeSlots.push(hourString + ":00");
-              timeSlots.push(hourString + ":30");
-          }
+    // Effacer les options existantes
+    heureDebutSelect.innerHTML = "<option value=''>heure de début</option>";
+    heureFinSelect.innerHTML = "<option value=''>heure de fin</option>";
 
-          timeSlots.push("23:59");
+    // Ajouter les options d'heures disponibles
+    for (var i = 8; i <= 22; i++) { // Disons que les créneaux horaires vont de 8h à 22h
+      var startHour = i + ":00";
+      var endHour = (i + 1) + ":00";
 
-          // Clear previous options
-          heureDebutSelect.innerHTML = '<option value="">heure de début</option>';
-          heureFinSelect.innerHTML = '<option value="">heure de fin</option>';
-
-          timeSlots.forEach(time => {
-              let isReserved = reservedTimes.some(reservation => reservation.heureDebut <= time && reservation.heureFin > time);
-
-              let heureDebutOption = document.createElement('option');
-              heureDebutOption.value = time;
-              heureDebutOption.innerHTML = time;
-              if (isReserved) heureDebutOption.disabled = true;
-              heureDebutSelect.appendChild(heureDebutOption);
-
-              let heureFinOption = document.createElement('option');
-              heureFinOption.value = time;
-              heureFinOption.innerHTML = time;
-              if (isReserved) heureFinOption.disabled = true;
-              heureFinSelect.appendChild(heureFinOption);
-          });
-
-          // Vérifier que tous les champs sont remplis pour activer le bouton
-          toggleSubmitButton();
+      // Vérifier si l'heure de début et l'heure de fin sont disponibles
+      var isAvailable = true;
+      for (var j = 0; j < availableHours.length; j++) {
+        if ((startHour >= availableHours[j].start && startHour < availableHours[j].end) || 
+            (endHour > availableHours[j].start && endHour <= availableHours[j].end)) {
+          isAvailable = false;
+          break;
+        }
       }
 
-      function validateTimes() {
-          const startTime = document.getElementById('heureDebut').value;
-          const endTime = document.getElementById('heureFin').value;
-          const alert = document.getElementById('alert');
-
-          if (startTime && endTime && startTime >= endTime) {
-              alert.textContent = "L'heure de fin doit être supérieure à l'heure de début.";
-              document.getElementById('heureFin').value = ''; // Réinitialiser l'heure de fin
-              toggleSubmitButton();
-          } else {
-              alert.textContent = '';
-              toggleSubmitButton();
-          }
+      // Ajouter les heures disponibles
+      if (isAvailable) {
+        heureDebutSelect.innerHTML += "<option value='" + startHour + "'>" + startHour + "</option>";
+        heureFinSelect.innerHTML += "<option value='" + endHour + "'>" + endHour + "</option>";
       }
+    }
+  }
 
-      function toggleSubmitButton() {
-          const dateInput = document.getElementById('dateDebut');
-          const salleSelect = document.getElementById('salle');
-          const heureDebutSelect = document.getElementById('heureDebut');
-          const heureFinSelect = document.getElementById('heureFin');
-          const submitButton = document.getElementById('submitBtn');
+  // Fonction pour valider les heures de début et de fin
+  function validateTimes() {
+    var heureDebut = document.getElementById('heureDebut').value;
+    var heureFin = document.getElementById('heureFin').value;
+    var alertElement = document.getElementById('alert');
 
-          if (dateInput.value && salleSelect.value && heureDebutSelect.value && heureFinSelect.value) {
-              submitButton.disabled = false;
-          } else {
-              submitButton.disabled = true;
-          }
-      }
-
-      // Initialiser les créneaux horaires à la première ouverture de la page
-      updateAvailableTimes();
-
-      // Ajouter un écouteur d'événements pour les champs `salle` et `dateDebut`
-      document.getElementById('salle').addEventListener('change', updateAvailableTimes);
-      document.getElementById('dateDebut').addEventListener('change', updateAvailableTimes);
-  });
+    // Vérifier si l'heure de fin est après l'heure de début
+    if (heureDebut && heureFin && heureDebut >= heureFin) {
+      alertElement.innerHTML = "L'heure de fin doit être après l'heure de début.";
+      document.getElementById('submitBtn').disabled = true;
+    } else {
+      alertElement.innerHTML = "";
+      document.getElementById('submitBtn').disabled = false;
+    }
+  }
 </script>
+
+
 
