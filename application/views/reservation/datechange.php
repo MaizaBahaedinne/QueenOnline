@@ -40,6 +40,10 @@
             <div class="col-md-12">
               <h5 style="color: red" id="alert"></h5>
             </div>
+            <div class="col-md-12" id="schedule">
+                <!-- Les créneaux horaires réservés ou disponibles seront ajoutés ici par JavaScript -->
+            </div>
+
           </div> 
         </div> 
 
@@ -134,15 +138,14 @@
 </div>
 
 <script>
-// Tableau des horaires réservés à l'avance (exemple en PHP converti en JavaScript)
 var reseAvenir = <?php echo json_encode($reseAvenir); ?>;
 
-   function updateAvailableTimes() {
-    const dateInput = document.getElementById('dateInput');
-    const scheduleDiv = document.getElementById('schedule');
+function updateAvailableTimes() {
+    const dateInput = document.getElementById('dateDebut'); // Utilisez l'ID correct ici
+    const scheduleDiv = document.getElementById('schedule'); // Cette div doit être présente dans le HTML
 
     if (!dateInput) {
-        console.error("L'élément dateInput n'a pas été trouvé dans le DOM.");
+        console.error("L'élément dateDebut n'a pas été trouvé dans le DOM.");
         return;
     }
 
@@ -186,20 +189,19 @@ var reseAvenir = <?php echo json_encode($reseAvenir); ?>;
     });
 }
 
+function validateTimes() {
+    const startTime = document.getElementById('heureDebut').value; // Modification de l'ID ici
+    const endTime = document.getElementById('heureFin').value; // Modification de l'ID ici
 
-        function validateTimes() {
-            const startTime = document.getElementById('startTime').value;
-            const endTime = document.getElementById('endTime').value;
+    // Vérification que l'heure de début est inférieure à l'heure de fin
+    if (startTime && endTime && startTime >= endTime) {
+        alert("L'heure de fin doit être supérieure à l'heure de début.");
+        document.getElementById('heureFin').value = ''; // Réinitialiser l'heure de fin
+    }
+}
 
-            // Vérification que l'heure de début est inférieure à l'heure de fin
-            if (startTime && endTime && startTime >= endTime) {
-                alert("L'heure de fin doit être supérieure à l'heure de début.");
-                document.getElementById('endTime').value = ''; // Réinitialiser l'heure de fin
-            }
-        }
-
-        // Initialisation au chargement de la page
-        window.onload = function() {
-            updateAvailableTimes();
-        };
-    </script>
+// Initialisation au chargement de la page
+window.onload = function() {
+    updateAvailableTimes();
+};
+</script>
