@@ -141,8 +141,9 @@
 var reseAvenir = <?php echo json_encode($reseAvenir); ?>;
 
 function updateAvailableTimes() {
-    const dateInput = document.getElementById('dateDebut'); // Utilisez l'ID correct ici
-    const scheduleDiv = document.getElementById('schedule'); // Cette div doit être présente dans le HTML
+    const dateInput = document.getElementById('dateDebut');
+    const heureDebutInput = document.getElementById('heureDebut');
+    const heureFinInput = document.getElementById('heureFin');
 
     if (!dateInput) {
         console.error("L'élément dateDebut n'a pas été trouvé dans le DOM.");
@@ -156,52 +157,51 @@ function updateAvailableTimes() {
         return;
     }
 
-    scheduleDiv.innerHTML = '';  // Réinitialiser les horaires
-
+    // Filtrer les réservations pour la date sélectionnée
     const reservedTimes = reseAvenir.filter(reservation => reservation.dateDebut === selectedDate);
-    
-    // Création d'une plage horaire pour la journée
-    let timeSlots = [];
-    let startHour = 8; // 08:00 AM
-    let endHour = 23; // 11:00 PM
 
-    for (let hour = startHour; hour <= endHour; hour++) {
-        let hourString = hour < 10 ? '0' + hour : hour;
-        timeSlots.push(hourString + ":00");
-        
-    }
+    // Vérifier si l'heure de début est réservée
+    checkAvailability(heureDebutInput, reservedTimes);
 
-    // Affichage des créneaux horaires
-    timeSlots.forEach(time => {
-        let slot = document.createElement('p');
-        slot.innerHTML = time;
-        slot.classList.add('available');
-        
-        // Vérification des horaires réservés
-        reservedTimes.forEach(reservation => {
-            if (reservation.heureDebut <= time && reservation.heureFin > time) {
-                slot.classList.remove('available');
-                slot.classList.add('reserved');
-            }
-        });
-        
-        scheduleDiv.appendChild(slot);
+    // Vérifier si l'heure de fin est réservée
+    checkAvailability(heureFinInput, reservedTimes);
+}
+
+// Vérifier la disponibilité d'un créneau horaire
+function checkAvailability(inputElement, reservedTimes) {
+    const time = inputElement.value;
+    let isReserved = false;
+
+    // Vérifier si l'heure correspond à un créneau réservé
+    reservedTimes.forEach(reservation => {
+        if (reservation.heureDebut <= time && reservation.heureFin > time) {
+            isReserved = true;
+        }
     });
+
+    // Si l'heure est réservée, appliquer la couleur rouge, sinon noir
+    if (isReserved) {
+        inputElement.style.backgroundColor = 'red';
+    } else {
+        inputElement.style.backgroundColor = 'black';
+        inputElement.style.color = 'white'; // Pour rendre le texte visible sur fond noir
+    }
 }
 
 function validateTimes() {
-    const startTime = document.getElementById('heureDebut').value; // Modification de l'ID ici
-    const endTime = document.getElementById('heureFin').value; // Modification de l'ID ici
+    const startTime = document.getElementById('heureDebut').value;
+    const endTime = document.getElementById('heureFin').value;
 
-    // Vérification que l'heure de début est inférieure à l'heure de fin
+    // Vérifier que l'heure de début est inférieure à l'heure de fin
     if (startTime && endTime && startTime >= endTime) {
         alert("L'heure de fin doit être supérieure à l'heure de début.");
         document.getElementById('heureFin').value = ''; // Réinitialiser l'heure de fin
     }
 }
 
-// Initialisation au chargement de la page
+// Initialiser au chargement de la page
 window.onload = function() {
     updateAvailableTimes();
 };
+
 </script>
