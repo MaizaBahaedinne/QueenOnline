@@ -30,13 +30,13 @@
                     <label for="formGroupExampleInput">Date</label>
                     <div class="row">
                       <div class="col-md-6">
-                    <input type="date" class="form-control" name="dateDebut"  min="<?php echo date('Y-m-d') ?>" placeholder="Example input" value="<?php echo $projectInfo->dateDebut ?>" >
+                    <input readonly type="date" class="form-control" name="dateDebut"  min="<?php echo date('Y-m-d') ?>" placeholder="Example input" value="<?php echo $projectInfo->dateDebut ?>" >
                       </div> 
                       <div class="col-md-3">
-                    <input type="time" class="form-control" name="heureDebut" value="<?php echo $projectInfo->heureDebut ?>" placeholder="Example input">
+                    <input readonly type="time" class="form-control" name="heureDebut" value="<?php echo $projectInfo->heureDebut ?>" placeholder="Example input">
                       </div>
                       <div class="col-md-3">
-                    <input type="time" class="form-control" value="<?php echo $projectInfo->heureFin ?>" name="heureFin" placeholder="Example input">
+                    <input readonly type="time" class="form-control" value="<?php echo $projectInfo->heureFin ?>" name="heureFin" placeholder="Example input">
                       </div>
 
                       <div class="col-md-4">
