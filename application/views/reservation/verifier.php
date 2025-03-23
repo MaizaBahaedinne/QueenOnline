@@ -61,7 +61,7 @@
                    
                     <div class="col-md-4">
                       <label for="formGroupExampleInput2">Prix (DT)</label>
-                      <input type="number" class="form-control" value="<?php echo $projectInfo->prix ?>"   min="300" name="prix" placeholder="Prix">
+                      <input type="number" class="form-control" value=""   min="300" name="prix" placeholder="Prix">
                   </div>
             <div class="col-md-6">
               <label for="formGroupExampleInput">Date</label>

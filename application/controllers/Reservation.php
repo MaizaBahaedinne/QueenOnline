@@ -329,7 +329,7 @@ class Reservation extends BaseController
          */
         function verifier()
         {
-
+                $data["salleRecords"] = $this->salle_model->SalleListing();
                 $data["reseAvenir"] = $this->reservation_model->ReservationListing();
 
                 $this->global["pageTitle"] = "Recherche de disponibilité des salles";
