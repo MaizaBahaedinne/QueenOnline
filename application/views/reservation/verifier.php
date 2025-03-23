@@ -106,17 +106,21 @@ function onSalleChange() {
     document.getElementById("salle").disabled = true;  // Désactiver le champ de salle après sélection
 
     // Réinitialisation des champs associés
-    document.getElementById("dateDebut").disabled = false; // Activer le champ date
-    document.getElementById("heureDebut").innerHTML = "<option value=''>Sélectionner une heure de début</option>"; // Vider les options d'heure de début
-    document.getElementById("heureFin").innerHTML = "<option value=''>Sélectionner une heure de fin</option>"; // Vider les options d'heure de fin
-    document.getElementById("heureDebut").disabled = true; // Désactiver l'heure de début
-    document.getElementById("heureFin").disabled = true; // Désactiver l'heure de fin
-    document.getElementById("submitBtn").disabled = true; // Désactiver le bouton de soumission
+    resetTimeFields();  // Appel de la fonction resetTimeFields pour réinitialiser les heures et le bouton
 
     // Si la salle et la date sont sélectionnées, mettre à jour les heures
     if (salleId && dateDebut) {
         updateAvailableTimes(salleId, dateDebut);
     }
+}
+
+// Fonction pour réinitialiser les champs liés aux heures
+function resetTimeFields() {
+    document.getElementById("heureDebut").innerHTML = "<option value=''>Sélectionner une heure de début</option>"; // Vider les options d'heure de début
+    document.getElementById("heureFin").innerHTML = "<option value=''>Sélectionner une heure de fin</option>"; // Vider les options d'heure de fin
+    document.getElementById("heureDebut").disabled = true; // Désactiver l'heure de début
+    document.getElementById("heureFin").disabled = true; // Désactiver l'heure de fin
+    document.getElementById("submitBtn").disabled = true; // Désactiver le bouton de soumission
 }
 
 // Fonction appelée lors du changement de la date
@@ -125,9 +129,7 @@ function onDateChange() {
     var dateDebut = document.getElementById("dateDebut").value;
 
     // Réinitialiser les champs des heures si la date est changée
-    document.getElementById("heureDebut").innerHTML = "<option value=''>Sélectionner une heure de début</option>"; // Vider les options d'heure de début
-    document.getElementById("heureFin").innerHTML = "<option value=''>Sélectionner une heure de fin</option>"; // Vider les options d'heure de fin
-    document.getElementById("submitBtn").disabled = true; // Désactiver le bouton de soumission
+    resetTimeFields();  // Appel de la fonction resetTimeFields pour réinitialiser les heures et le bouton
 
     // Si la salle et la date sont sélectionnées, mettre à jour les heures
     if (salleId && dateDebut) {
@@ -227,5 +229,6 @@ function isTimeBetween(time, start, end) {
     return time >= start && time < end;
 }
 </script>
+
 
 
