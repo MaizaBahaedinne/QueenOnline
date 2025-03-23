@@ -99,11 +99,7 @@ var reservations = <?php echo json_encode($reseAvenir); ?>;
 </script>
 
 <script>
-// Tableau des réservations
-var reservations = [
-    {"reservationId": "1723", "salleId": "1", "titre": "Mohamed - Sameh", "type": "Marriage", "prix": "4500", "dateDebut": "2025-04-04", "heureDebut": "19:00:00", "heureFin": "23:59:00", "clientName": "HASSOUMI Mohamed"},
-    // Ajouter vos réservations ici
-];
+
 
 // Fonction appelée lors du changement de la salle
 function onSalleChange() {
