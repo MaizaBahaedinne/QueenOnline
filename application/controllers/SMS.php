@@ -24,6 +24,8 @@ class SMS extends BaseController
     }
     
 
+     
+
     public function index()
     {
              $data['smsRecords'] = $this->sms_model->SmsListing();
