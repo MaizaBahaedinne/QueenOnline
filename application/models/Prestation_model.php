@@ -135,6 +135,20 @@ class Prestation_model extends CI_Model
 
 
 
+       /**
+     * This function is used to update the user information
+     * @param array $userInfo : This is users updated information
+     * @param number $userId : This is user id
+     */
+    function editPrestatiare($PrestatiareInfo, $prestationId)
+    {
+        $this->db->where('prestationId', $prestationId);
+        $this->db->update('tbl_pack_prestation', $PrestatiareInfo);
+        
+        return TRUE;
+    }
+
+
          /**
      * This function used to get user information by id
      * @param number $userId : This is user id
@@ -150,6 +164,8 @@ class Prestation_model extends CI_Model
         
         return $query->result();
     }
+
+
 
 
 

@@ -265,11 +265,40 @@ class Prestation extends BaseController
     }
 
 
+public function addNewPrestataire ()
+    {   
+        $prestaInfo = [
+            "nom" => $this->input->post("nom"),
+            "prix" => $this->input->post("prix"),
+            "description" => $this->input->post("description"), 
+            "type" => $this->input->post("type") 
+        ];
+        $this->prestation_model->addPrestataire($prestaInfo);
+
+        redirect("Prestation") ; 
+    }
+
+
+
  public function editPresta($packId)
     {   
         $data["packs"] = $this->prestation_model->Pack($packId);
         $this->global["pageTitle"] = "Modification d'un prestataire";
         $this->loadViews("prestation/editPres", $this->global, $data, null);
+    }
+
+
+    public function editPrestataire ($packId)
+    {   
+        $prestaInfo = [
+            "nom" => $this->input->post("nom"),
+            "prix" => $this->input->post("prix"),
+            "description" => $this->input->post("description"), 
+            "type" => $this->input->post("type") 
+        ];
+        $this->prestation_model->editPrestatiare($prestaInfo , $packId );
+
+        redirect("Prestation") ; 
     }
 
 }
