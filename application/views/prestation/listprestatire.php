@@ -74,29 +74,10 @@
              
               <td>
                  <div class="btn-group" role="group" > 
-                  <a class="btn" href="#" data-bs-toggle="modal" data-bs-target="#editModal<?php echo $record->packId ?>">
+                  <a class="btn" href="<?php echo base_url() ?>Prestation/editPresta/<?php echo $record->packId ?>" >
                     <i class="fas fa-pencil-alt"></i>
                   </a>                
-                  <!-- Modal -->
-                  <div class="modal fade" id="editModal<?php echo $record->packId ?>" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="editModalLabel">Modifier</h5>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
-                        </div>
-                        <div class="modal-body">
-                          <form action="<?php echo base_url(); ?>Prestation/editPrestataire" method="post">                
-                                   <input type="text" name="nom">   
-                                   <input type="text" name="prix">
-                                   <textarea row="20" name="description"></textarea>
-                                   <select  name="type">
-                                      <option value="Chanteur" >Chanteur</option>
-                                      <option value="Chanteur" >Notaire</option>
-                                      <option value="prestataire" >prestataire</option>
-                                   </select>
-                          </form>
-                        </div>
+                  
                         <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
                           <button type="button" class="btn btn-primary">Sauvegarder</button>
