@@ -21,9 +21,13 @@
     </div>
   </div>
     <form action="<?php echo base_url(); ?>Prestation/editPrestataire" method="post">                
-             <input class="form-control" type="text" name="nom" value="<?php echo $packs->nom  ?>">   
+            <label>Nom</label>
+             <input class="form-control" type="text" name="nom" value="<?php echo $packs->nom  ?>"> 
+             <label>Prix</label>  
              <input class="form-control" type="number" min="50" placeholder="TND"  name="prix" value="<?php echo $packs->prix  ?>" >
-             <textarea class="form-control" row="20" name="description">value="<?php echo $packs->description  ?>"</textarea>
+             <label>Description</label>
+             <textarea class="form-control" row="20" name="description"><?php echo $packs->description  ?></textarea>
+             <label>Type</label>
              <select  class="form-control"  name="type">
                 <option value="Chanteur" >Chanteur</option>
                 <option value="Notaire" >Notaire</option>
