@@ -142,7 +142,7 @@ class Prestation_model extends CI_Model
      */
     function editPrestatiare($PrestatiareInfo, $prestationId)
     {
-        $this->db->where('prestationId', $prestationId);
+        $this->db->where('packId', $prestationId);
         $this->db->update('tbl_pack_prestation', $PrestatiareInfo);
         
         return TRUE;
