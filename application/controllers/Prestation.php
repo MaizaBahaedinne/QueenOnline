@@ -270,7 +270,7 @@ class Prestation extends BaseController
 
         $data["Packs"] = $this->prestation_model->PacksReservation($packId);
         $this->global["pageTitle"] = "Modification d'un prestataire";
-        $this->loadViews("prestation/editPerstataire", $this->global, $data, null);
+        $this->loadViews("prestation/editPersta", $this->global, $data, null);
     }
 
 }
