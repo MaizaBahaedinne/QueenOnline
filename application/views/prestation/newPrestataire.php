@@ -21,10 +21,10 @@
     </div>
   </div>
     <form action="<?php echo base_url(); ?>Prestation/addNewPrestataire" method="post">                
-             <input type="text" name="nom">   
-             <input type="text" name="prix">
-             <textarea row="20" name="description"></textarea>
-             <select  name="type">
+             <input class="form-control" type="text" name="nom">   
+             <input class="form-control" type="number" min="50" placeholder="TND"  name="prix">
+             <textarea class="form-control" row="20" name="description"></textarea>
+             <select  class="form-control"  name="type">
                 <option value="Chanteur" >Chanteur</option>
                 <option value="Notaire" >Notaire</option>
                 <option value="prestataire" >prestataire</option>
