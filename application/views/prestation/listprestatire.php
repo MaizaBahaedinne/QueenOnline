@@ -73,20 +73,11 @@
               </td>
              
               <td>
-                 <div class="btn-group" role="group" > 
-                  <a class="btn" href="<?php echo base_url() ?>Prestation/editPresta/<?php echo $record->packId ?>" >
-                    <i class="fas fa-pencil-alt"></i>
-                  </a>                
-                  
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                          <button type="button" class="btn btn-primary">Sauvegarder</button>
-                        </div>
-                      </div>
-                    </div>
+                  <div class="btn-group" role="group" > 
+                    <a class="btn" href="<?php echo base_url() ?>Prestation/editPresta/<?php echo $record->packId ?>" >
+                      <i class="fas fa-pencil-alt"></i>
+                    </a>                
                   </div>
-             
-                </div>
               </td>
             </tr>
             <?php
