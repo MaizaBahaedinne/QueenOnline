@@ -275,7 +275,7 @@ public function addNewPrestataire ()
         ];
         $this->prestation_model->addPrestataire($prestaInfo);
 
-        redirect("Prestation") ; 
+        redirect("Prestation/Pestataire") ; 
     }
 
 
@@ -298,7 +298,7 @@ public function addNewPrestataire ()
         ];
         $this->prestation_model->editPrestatiare($prestaInfo , $packId );
 
-        redirect("Prestation") ; 
+        redirect("Prestation/Pestataire") ; 
     }
 
 }
