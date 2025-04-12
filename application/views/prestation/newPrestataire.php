@@ -29,5 +29,6 @@
                 <option value="Notaire" >Notaire</option>
                 <option value="prestataire" >prestataire</option>
              </select>
+             <button type="submit"  class="btn btn-info btn-block block-page-btn-example-1"  >Envoyer</button>
     </form>
 </div>
