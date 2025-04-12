@@ -29,7 +29,7 @@
       </div>
       <div class="page-title-actions">
         <div class="d-inline-block">
-         <a href="<?php echo base_url() ?>Prestation/addNewPrestataire" class="btn  btn-info"> Ajouter </a>
+         <a href="<?php echo base_url() ?>Prestation/addNewPersta" class="btn  btn-info"> Ajouter </a>
         </div>
       </div>
     </div>

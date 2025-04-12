@@ -258,9 +258,20 @@ class Prestation extends BaseController
 
         }
 
+ public function addNewPersta()
+    {   
+        $this->global["pageTitle"] = "Ajouter une prestataire";
+        $this->loadViews("prestation/editPerstataire", $this->global, null, null);
+    }
 
 
+ public function editPersta($packId)
+    {   
 
+        $data["Packs"] = $this->prestation_model->PacksReservation($packId);
+        $this->global["pageTitle"] = "Modification d'un prestataire";
+        $this->loadViews("prestation/editPerstataire", $this->global, $data, null);
+    }
 
 }
 
