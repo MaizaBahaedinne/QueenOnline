@@ -19,24 +19,18 @@
         </div>
         <div>
            Liste des prestataires
-
           <div class="page-title-subheading">Les prestataires</div>
         </div>
       </div>
       <div class="page-title-actions">
-       
         <div class="d-inline-block">
-         <!-- <a href="<?php echo base_url() ?>Voiture/addNewO" class="btn  btn-info">
-          Ajouter
-          </a>-->
-          
+         <a href="<?php echo base_url() ?>Prestation/addNewPrestataire" class="btn  btn-info"> Ajouter </a>
         </div>
       </div>
     </div>
   </div>
   <div class="main-card mb-3 card">
     <div class="card-body" style="width: 100%;">
-      
         <table id="example" style="width: 100%;" id="example" class="table  table-hover table-striped table-bordered table-responsive" cellspacing="0"  >
           <thead>
             <tr>
@@ -74,9 +68,37 @@
               </td>
              
               <td>
-                <div class="btn-group" role="group" > 
-               
-              </div>
+                 <div class="btn-group" role="group" > 
+                                  
+                  <!-- Modal -->
+                  <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="editModalLabel">Modifier</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+                        </div>
+                        <div class="modal-body">
+                          <form action="<?php echo base_url(); ?>Prestation/editPrestataire" method="post">                
+                                   <input type="text" name="nom">   
+                                   <input type="text" name="prix">
+                                   <textarea row="20" name="description"></textarea>
+                                   <select  name="type">
+                                      <option value="Chanteur" >Chanteur</option>
+                                      <option value="Chanteur" >Notaire</option>
+                                      <option value="prestataire" >prestataire</option>
+                                   </select>
+                          </form>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                          <button type="button" class="btn btn-primary">Sauvegarder</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+             
+                </div>
               </td>
             </tr>
             <?php
