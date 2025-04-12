@@ -20,7 +20,7 @@
       </div>
     </div>
   </div>
-    <form action="<?php echo base_url(); ?>Prestation/editPrestataire" method="post">                
+    <form action="<?php echo base_url(); ?>Prestation/editPrestataire/<?php echo $packs->packId ?>" method="post">                
             <label>Nom</label>
              <input class="form-control" type="text" name="nom" value="<?php echo $packs->nom  ?>"> 
              <label>Prix</label>  
