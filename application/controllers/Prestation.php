@@ -265,7 +265,7 @@ class Prestation extends BaseController
     }
 
 
- public function editPersta($packId)
+ public function editPresta($packId)
     {   
 
         $data["Packs"] = $this->prestation_model->PacksReservation($packId);
