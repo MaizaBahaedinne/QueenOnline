@@ -261,7 +261,7 @@ class Prestation extends BaseController
  public function addNewPersta()
     {   
         $this->global["pageTitle"] = "Ajouter une prestataire";
-        $this->loadViews("prestation/editPerstataire", $this->global, null, null);
+        $this->loadViews("prestation/newPrestataire", $this->global, null, null);
     }
 
 
