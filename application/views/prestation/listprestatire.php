@@ -79,7 +79,7 @@
                   </a>                
                   <!-- Modal -->
                   <div class="modal fade" id="editModal<?php echo $record->packId ?>" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
+                    <div class="modal-dialog modal-dialog-centered">
                       <div class="modal-content">
                         <div class="modal-header">
                           <h5 class="modal-title" id="editModalLabel">Modifier</h5>

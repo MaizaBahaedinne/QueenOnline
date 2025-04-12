@@ -26,7 +26,7 @@
              <textarea row="20" name="description"></textarea>
              <select  name="type">
                 <option value="Chanteur" >Chanteur</option>
-                <option value="Chanteur" >Notaire</option>
+                <option value="Notaire" >Notaire</option>
                 <option value="prestataire" >prestataire</option>
              </select>
     </form>
