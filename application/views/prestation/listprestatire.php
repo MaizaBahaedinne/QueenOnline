@@ -69,9 +69,11 @@
              
               <td>
                  <div class="btn-group" role="group" > 
-                                  
+                  <a class="btn" href="#" data-bs-toggle="modal" data-bs-target="#editModal<?php echo $record->packId ?>">
+                    <i class="fas fa-pencil-alt"></i>
+                  </a>                
                   <!-- Modal -->
-                  <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+                  <div class="modal fade" id="editModal<?php echo $record->packId ?>" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                       <div class="modal-content">
                         <div class="modal-header">
