@@ -149,7 +149,7 @@ class Voiture extends BaseController
                                    $this->sendSMS("216" . $koussayMobile, $mySms , "Notif admin voiture");    
 
                         $imedMobile = "98595159" ; 
-                        $mySms = "Une nouvelle reservation pour le ".$date ;
+                        $mySms = "Une nouvelle reservation pour le ".$date."de ".$l1." -> ".$l3 ;
 
                         $this->sendSMS("216" . $imedMobile, $mySms , "Notif chauffeur voiture");  
 
