@@ -273,7 +273,7 @@ public function addNewPrestataire ()
             "description" => $this->input->post("description"), 
             "type" => $this->input->post("type") 
         ];
-        $this->prestation_model->addPrestataire($prestaInfo);
+        $this->prestation_model->addPrestatiare($prestaInfo);
 
         redirect("Prestation/Pestataire") ; 
     }
