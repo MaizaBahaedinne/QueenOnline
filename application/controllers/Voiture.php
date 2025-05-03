@@ -141,10 +141,17 @@ class Voiture extends BaseController
                                  $this->voiture_model->editReservation($reservationInfoe, $resId); 
                             }
 
+                        $HaythemMobile = "54419959" ;
+                        $koussayMobile = "55465244" ; 
+
                        $mySms = "[".$voitureName."] ".$this->name." a recu pour ".$avance."DT pour le ".$date ;
                                    $this->sendSMS("216" . $HaythemMobile, $mySms , "Notif admin voiture");    
                                    $this->sendSMS("216" . $koussayMobile, $mySms , "Notif admin voiture");    
 
+                        $imedMobile = "98595159" ; 
+                        $mySms = "Une nouvelle reservation pour le ".$date."de ".$l1." -> ".$l3 ;
+
+                        $this->sendSMS("216" . $imedMobile, $mySms , "Notif chauffeur voiture");  
 
                     $this->session->set_flashdata('success', 'Reservation mise à jour avec succées ');
 
@@ -290,7 +297,8 @@ class Voiture extends BaseController
                                  $this->voiture_model->editReservation($reservationInfoe, $resId); 
                             }
 
-                    
+                     $HaythemMobile = "54419959" ;
+                        $koussayMobile = "55465244" ; 
                                    $mySms = "[".$voitureName."] ".$this->name." a recu pour ".$avance."DT pour le ".$date ;
                                    $this->sendSMS("216" . $HaythemMobile, $mySms,  "Notif admin voiture" );    
                                    $this->sendSMS("216" . $koussayMobile, $mySms ,  "Notif admin voiture");

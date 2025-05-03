@@ -14,7 +14,7 @@
           <i class="pe-7s-medal icon-gradient bg-tempting-azure"></i>
         </div>
         <div>
-          Reservation de salle
+          Réservation de salle
           <div class="page-title-subheading">Les reservations</div>
         </div>
       </div>
@@ -210,6 +210,19 @@
                                                                 <div class="form-group">
                                                                     <label class="control-label">Mobile 2*</label>
                                                                     <input id="mobile2" name="mobile2" class="form-control mb-4 mb-md-0" data-inputmask-alias="99 999 999" im-insert="true" required />
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-sm-6">
+                                                                <div class="form-group">
+                                        <label class="control-label">D'où avez-vous connu Queen PARK ?</label><br>
+
+                                        <label><input type="radio" name="source" value="amis"> Par des amis</label><br>
+                                        <label><input type="radio" name="source" value="reseaux"> Réseaux sociaux</label><br>
+                                        <label><input type="radio" name="source" value="publicite"> Publicité (TV, radio, affiches...)</label><br>
+                                        <label><input type="radio" name="source" value="internet"> Recherche sur Internet</label><br>
+                                        <label><input type="radio" name="source" value="evenement"> Lors d'un événement</label><br>
+                                        <label><input type="radio" name="source" value="autre"> Autre</label><br>
                                                                 </div>
                                                             </div>
                                                             <!-- Col -->

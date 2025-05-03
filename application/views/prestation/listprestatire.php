@@ -10,6 +10,11 @@
 }
 </style>
 
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap JS + Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
 <div class="app-main__inner">
   <div class="app-page-title">
     <div class="page-title-wrapper">
@@ -19,24 +24,18 @@
         </div>
         <div>
            Liste des prestataires
-
           <div class="page-title-subheading">Les prestataires</div>
         </div>
       </div>
       <div class="page-title-actions">
-       
         <div class="d-inline-block">
-         <!-- <a href="<?php echo base_url() ?>Voiture/addNewO" class="btn  btn-info">
-          Ajouter
-          </a>-->
-          
+         <a href="<?php echo base_url() ?>Prestation/addNewPersta" class="btn  btn-info"> Ajouter </a>
         </div>
       </div>
     </div>
   </div>
   <div class="main-card mb-3 card">
     <div class="card-body" style="width: 100%;">
-      
         <table id="example" style="width: 100%;" id="example" class="table  table-hover table-striped table-bordered table-responsive" cellspacing="0"  >
           <thead>
             <tr>
@@ -55,7 +54,7 @@
                   foreach($userRecords as $record)
                   {
               ?>
-            <tr class=""  >
+            <tr class=""  > 
               
               <td>
                 <?php echo $record->packId  ?>
@@ -74,9 +73,11 @@
               </td>
              
               <td>
-                <div class="btn-group" role="group" > 
-               
-              </div>
+                  <div class="btn-group" role="group" > 
+                    <a class="btn" href="<?php echo base_url() ?>Prestation/editPresta/<?php echo $record->packId ?>" >
+                      <i class="fas fa-pencil-alt"></i>
+                    </a>                
+                  </div>
               </td>
             </tr>
             <?php
