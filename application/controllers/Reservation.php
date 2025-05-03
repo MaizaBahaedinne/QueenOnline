@@ -361,8 +361,13 @@ class Reservation extends BaseController
                 $mySms =  "Votre réservation de l'espace (" . $ReservationInfo->salle . ") pour la date (" . $ReservationInfo->dateDebut . ") a été enregistrée.";
                 $this->sendSMS("216" . $myMobile, $mySms , "generation de contrat");
 
-                $mySmsK = $this->name . " a recu (" . $avance . " DT) salle : (". $ReservationInfo->salle .") pour le ". $ReservationInfo->dateDebut  ;
+                $mySmsK = "[NEW] ".$this->name . " a recu (" . $avance . " DT) salle : (". $ReservationInfo->salle .") pour le ". $ReservationInfo->dateDebut  ;
                 $this->sendSMS("21655465244", $mySmsK , "Notif admin");
+
+                
+
+                $mySmsH = "[NEW] ".$this->name . " a recu (" . $avance . " DT) salle : (". $ReservationInfo->salle .") pour le ". $ReservationInfo->dateDebut  ;
+                $this->sendSMS("21698552446", $mySmsH , "Notif admin");
 
                 redirect("Reservation/view/" . $resId);
                 
