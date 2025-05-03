@@ -138,7 +138,7 @@ class Troupe extends BaseController
 
                $this->sendSMS("216" . $HatemMobile, $mySms , "Notif Troupe");
                 
-                $mySms = "[TROUPE] ".$this->name." a recu pour ".$avance."DT pour le ".$date ;
+                $mySms = "[NEW]"."[TROUPE] ".$this->name." a recu pour ".$avance."DT pour le ".$date ;
                $this->sendSMS("216" . $HaythemMobile, $mySms , "Notif admin Troupe");    
                $this->sendSMS("216" . $koussayMobile, $mySms , "Notif admin Troupe" );
      

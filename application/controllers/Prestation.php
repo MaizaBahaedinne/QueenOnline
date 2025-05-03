@@ -155,12 +155,12 @@ class Prestation extends BaseController
            $reservationInfosms = $this->prestation_model->ReservationInfoS($result);
 
             $koussayMobile = "55465244";
-                $mySms = $this->name . " a reservé ".$reservationInfosms->packname." pour le ".$date ;
+                $mySms = "[NEW] ".$this->name . " a reservé ".$reservationInfosms->packname." pour le ".$date ;
                 $this->sendSMS("216" . $koussayMobile, $mySms , "notif admin prestation");
                 
 
             $HaythemMobile = "54419959";
-                $mySms = $this->name . " a reservé ".$reservationInfosms->packname." pour le ".$date ;
+                $mySms = "[NEW] ".$this->name . " a reservé ".$reservationInfosms->packname." pour le ".$date ;
                 $this->sendSMS("216" . $HaythemMobile, $mySms , "notif admin prestation");
 
 
