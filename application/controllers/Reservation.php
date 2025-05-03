@@ -108,6 +108,7 @@ class Reservation extends BaseController
                 $mobile2 = $this->input->post("mobile2");
                 $birthday = $this->input->post("birth");
                 $sexe = $this->input->post("sexe");
+                $source = $this->input->post("source");
                 $userInfo = [
                         "email" => $email,
                         "password" => getHashedPassword($CIN),
@@ -128,6 +129,7 @@ class Reservation extends BaseController
                         "prenom" => $prenom,
                         "Sexe" => $sexe,
                         "birthday" => $birthday,
+                        "source" => $source,
                 ];
                 if ($clientId == null) {
                         $clientId = $this->client_model->addNewClient($userInfo);

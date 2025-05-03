@@ -217,12 +217,12 @@
                                                                 <div class="form-group">
                                         <label class="control-label">D'où avez-vous connu Queen PARK ?</label><br>
 
-                                        <label><input type="radio" name="source" value="amis"> Par des amis</label><br>
-                                        <label><input type="radio" name="source" value="reseaux"> Réseaux sociaux</label><br>
+                                        <label><input type="radio" name="source" value="amis"> Par des amis ou connaissance de l'equipe de Queen Park</label><br>
+                                        <label><input type="radio" name="source" value="reseaux"> Réseaux sociaux (Facebook, Instagram, tiktok ...)</label><br>
                                         <label><input type="radio" name="source" value="publicite"> Publicité (TV, radio, affiches...)</label><br>
                                         <label><input type="radio" name="source" value="internet"> Recherche sur Internet</label><br>
                                         <label><input type="radio" name="source" value="evenement"> Lors d'un événement</label><br>
-                                        <label><input type="radio" name="source" value="autre"> Autre</label><br>
+                                        <label><input type="radio" name="source" value="passager"> Passager</label><br>
                                                                 </div>
                                                             </div>
                                                             <!-- Col -->
