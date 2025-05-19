@@ -337,7 +337,7 @@
                                                 <td><?php echo $record->noteAdmin ; ?>  </td>
                                                 <td>
                                                     <?php echo $record->editDTM; ?> Par                                                         
-                                                    <img width="30" class="rounded-circle" src="https://www.queenpark.tn/assets/img/teams/<?php echo $record->avatar; ?>" alt="<?php echo $record->recuPar; ?>"> 
+                                                    <img width="30" class="rounded-circle" src="<?php echo $record->avatar; ?>" alt="<?php echo $record->recuPar; ?>"> 
                                                 </td>
                                             </tr>
                                             <?php }
