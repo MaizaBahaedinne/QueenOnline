@@ -56,6 +56,13 @@ class User_model extends CI_Model
     }
 
 
+    public function getUsersByRole($roleId)
+        {
+            $this->db->where('roleId', $roleId);
+            $this->db->where('isDeleted', 0); // si tu as ce champ
+            return $this->db->get('tbl_users')->result();
+        }
+
 
         /**
      * This function is used to get the user listing count
