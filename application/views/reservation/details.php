@@ -560,7 +560,102 @@
                         </div>
                         
                     <div id="factures-tab" class="tab-pane">
-                      <!-- Invoices content -->
+                      <div class="facture-container" id="factures-tab" style="display: none; font-family: Arial, sans-serif; max-width: 800px; margin: 20px auto; padding: 20px; border: 1px solid #ddd; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+                            <div class="facture-header" style="text-align: center; margin-bottom: 30px;">
+                                <h2 style="color: #2c3e50;">FACTURE</h2>
+                                <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+                                    <div class="info-client" style="text-align: left;">
+                                        <h3 style="margin-bottom: 10px; color: #3498db;">Client</h3>
+                                        <p><strong>Nom :</strong> <?php echo $clientInfo->name; ?></p>
+                                        <p><strong>CIN :</strong> <?php echo $clientInfo->cin; ?></p>
+                                        <p><strong>Adresse :</strong> <?php echo $clientInfo->n.' '.$clientInfo->rue.', '.$clientInfo->ville; ?></p>
+                                        <p><strong>Tél :</strong> <?php echo $clientInfo->mobile; ?></p>
+                                    </div>
+                                    <div class="info-facture" style="text-align: right;">
+                                        <p><strong>N° Facture :</strong> QP-<?php echo date('Ymd').'-'.$projectInfo->reservationId; ?></p>
+                                        <p><strong>Date :</strong> <?php echo date('d/m/Y'); ?></p>
+                                        <p><strong>Référence :</strong> <?php echo $projectInfo->type.' '.$projectInfo->titre; ?></p>
+                                        <p><strong>Date événement :</strong> <?php echo date('d/m/Y', strtotime($projectInfo->dateDebut)); ?></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <table style="width: 100%; border-collapse: collapse; margin-bottom: 30px;">
+                                <thead>
+                                    <tr style="background-color: #3498db; color: white;">
+                                        <th style="padding: 10px; text-align: left; border: 1px solid #ddd;">Désignation</th>
+                                        <th style="padding: 10px; text-align: right; border: 1px solid #ddd;">Prix HT</th>
+                                        <th style="padding: 10px; text-align: right; border: 1px solid #ddd;">TVA 19%</th>
+                                        <th style="padding: 10px; text-align: right; border: 1px solid #ddd;">Prix TTC</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    $totalHT = $projectInfo->prix / 1.19;
+                                    $montantTVA = $projectInfo->prix - $totalHT;
+                                    ?>
+                                    <tr>
+                                        <td style="padding: 10px; border: 1px solid #ddd;">Location salle <?php echo $projectInfo->salle; ?></td>
+                                        <td style="padding: 10px; text-align: right; border: 1px solid #ddd;"><?php echo number_format($totalHT, 3, '.', ' '); ?> DT</td>
+                                        <td style="padding: 10px; text-align: right; border: 1px solid #ddd;"><?php echo number_format($montantTVA, 3, '.', ' '); ?> DT</td>
+                                        <td style="padding: 10px; text-align: right; border: 1px solid #ddd;"><?php echo number_format($projectInfo->prix, 3, '.', ' '); ?> DT</td>
+                                    </tr>
+                                    
+                                    <!-- Ajoutez d'autres lignes si nécessaire -->
+                                    <?php if($projectInfo->troupe != 0): ?>
+                                    <?php
+                                        $troupeHT = $troupe->prix / 1.19;
+                                        $troupeTVA = $troupe->prix - $troupeHT;
+                                        $totalHT += $troupeHT;
+                                        $montantTVA += $troupeTVA;
+                                    ?>
+                                    <tr>
+                                        <td style="padding: 10px; border: 1px solid #ddd;">Prestation troupe <?php echo $troupe->packname; ?></td>
+                                        <td style="padding: 10px; text-align: right; border: 1px solid #ddd;"><?php echo number_format($troupeHT, 3, '.', ' '); ?> DT</td>
+                                        <td style="padding: 10px; text-align: right; border: 1px solid #ddd;"><?php echo number_format($troupeTVA, 3, '.', ' '); ?> DT</td>
+                                        <td style="padding: 10px; text-align: right; border: 1px solid #ddd;"><?php echo number_format($troupe->prix, 3, '.', ' '); ?> DT</td>
+                                    </tr>
+                                    <?php endif; ?>
+                                    
+                                    <!-- Total -->
+                                    <tr style="font-weight: bold; background-color: #f8f9fa;">
+                                        <td style="padding: 10px; border: 1px solid #ddd; text-align: right;" colspan="3">TOTAL</td>
+                                        <td style="padding: 10px; text-align: right; border: 1px solid #ddd;"><?php echo number_format($projectInfo->prix + ($projectInfo->troupe != 0 ? $troupe->prix : 0), 3, '.', ' '); ?> DT</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <div class="facture-footer" style="margin-top: 30px; border-top: 1px solid #ddd; padding-top: 20px;">
+                                <div style="display: flex; justify-content: space-between;">
+                                    <div class="conditions" style="width: 60%;">
+                                        <h3 style="color: #3498db; margin-bottom: 10px;">Conditions de paiement</h3>
+                                        <p>Paiement en espèce ou par virement bancaire</p>
+                                        <p>RIB : XX XXX XXX XXX XXX XXX XX</p>
+                                        <p>Banque : [Nom de votre banque]</p>
+                                        <p>Code TVA : [Votre code TVA]</p>
+                                    </div>
+                                    <div class="signature" style="width: 30%; text-align: center;">
+                                        <p>Le <?php echo date('d/m/Y'); ?></p>
+                                        <p style="margin-top: 50px;">Signature et cachet</p>
+                                    </div>
+                                </div>
+                                <div class="mention-tva" style="margin-top: 20px; font-style: italic; text-align: center;">
+                                    <p>TVA 19% incluse conformément à la législation tunisienne</p>
+                                </div>
+                            </div>
+                            
+                            <div class="facture-actions" style="margin-top: 30px; text-align: center;">
+                                <button onclick="window.print()" style="background-color: #3498db; color: white; border: none; padding: 10px 20px; cursor: pointer; border-radius: 4px;">Imprimer la facture</button>
+                                <button onclick="downloadFacture()" style="background-color: #2ecc71; color: white; border: none; padding: 10px 20px; cursor: pointer; border-radius: 4px; margin-left: 10px;">Télécharger PDF</button>
+                            </div>
+                        </div>
+
+                        <script>
+                        function downloadFacture() {
+                            // Vous pouvez utiliser une bibliothèque comme jsPDF ou html2pdf pour générer un PDF
+                            alert("Fonctionnalité PDF à implémenter");
+                        }
+                        </script>
                     </div>
                     <div id="satisfaction-tab" class="tab-pane">
                       <!-- Satisfaction content -->
