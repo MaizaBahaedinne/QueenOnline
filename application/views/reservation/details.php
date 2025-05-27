@@ -641,11 +641,12 @@
         </div>
         <?php if (!empty($contratInfo)) { ?>
 
-            <div class="tabs">
-              <button onclick="showTab('contrat')">Contrat</button>
-              <button onclick="showTab('factures')">Factures</button>
-              <button onclick="showTab('satisfaction')">Satisfaction</button>
-            </div>
+        <div class="tab-container">
+              <div class="tab-buttons">
+                <button class="tab-link active" data-tab="contrat">Contrat</button>
+                <button class="tab-link" data-tab="factures">Factures</button>
+                <button class="tab-link" data-tab="satisfaction">Satisfaction</button>
+              </div>
 
             <div class="contrat" id="contrat">
                 <div class="row">
@@ -773,6 +774,23 @@
 
             <div id="factures" class="tab-content" style="display:none;">Liste des factures ici</div>
             <div id="satisfaction" class="tab-content" style="display:none;">Résultat du questionnaire ici</div>
+        </div>
+        <script>
+              const tabs = document.querySelectorAll('.tab-link');
+              const contents = document.querySelectorAll('.tab-content');
+
+              tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                  // Remove active classes
+                  tabs.forEach(t => t.classList.remove('active'));
+                  contents.forEach(c => c.classList.remove('active'));
+
+                  // Add active class to clicked tab
+                  tab.classList.add('active');
+                  document.getElementById(tab.getAttribute('data-tab')).classList.add('active');
+                });
+              });
+            </script>
 
 
         
