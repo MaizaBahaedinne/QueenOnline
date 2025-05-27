@@ -440,7 +440,7 @@
                     </div>
                     
                     <hr>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#affectationModal" onclick="loadAffectationData(<?= $projectInfo->reservationId ?>)">
+                        <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#affectationModal" onclick="loadAffectationData(<?= $projectInfo->reservationId ?>)">
                           Gérer les affectations
                         </button>
                     <hr>
