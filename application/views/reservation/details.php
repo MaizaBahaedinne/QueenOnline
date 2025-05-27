@@ -556,7 +556,7 @@
                                   </div>
                                 </div>
                                 <div class="modal-footer">
-                                  <input type="hidden" name="reservationId" value="<?= $reservation->reservationId ?>">
+                                  <input type="hidden" name="reservationId" value="<?= $projectInfo->reservationId ?>">
                                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
                                   <button type="submit" class="btn btn-primary">Enregistrer</button>
                                 </div>
