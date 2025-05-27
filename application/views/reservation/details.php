@@ -407,17 +407,17 @@
         <!-- contrat -->
         <!-- Partie HTML modifiée -->
             <div class="col-md-8">
+                <?php if (!empty($contratInfo)) { ?>
                 <div class="tab-container">
-                    <div class="tab-buttons">
-                        <button class="tab-link active" data-tab="contrat">Contrat</button>
-                        <button class="tab-link" data-tab="factures">Factures</button>
-                        <button class="tab-link" data-tab="satisfaction-tab">Satisfaction</button>
-                    </div>
+                      <div class="tab-buttons">
+                        <button class="tab-btn active" data-target="contrat-tab">Contrat</button>
+                        <button class="tab-btn" data-target="factures-tab">Factures</button>
+                        <button class="tab-btn" data-target="satisfaction-tab">Satisfaction</button>
+                      </div>
+                      
+                      <div class="tab-content-wrapper">
+                        <div id="contrat-tab" class="tab-pane active">
                     
-                    <div class="tab-contents">
-                        
-                        <?php if (!empty($contratInfo)) { ?>
-                        <div class="contrat tab-content active" id="contrat1">
                             <button id="printC" class="dropdown-item d-flex align-items-center" onclick="print()">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-printer icon-sm mr-2">
                                     <polyline points="6 9 6 2 18 2 18 9"></polyline>
@@ -554,7 +554,10 @@
                         <div id="factures" class="tab-content" style="display:none;">Liste des factures ici</div>
                         <div id="satisfaction" class="tab-content" style="display:none;">Résultat du questionnaire ici</div>
 
-                        <?php } else { ?> 
+                        
+                    </div>
+                </div>
+                <?php } else { ?> 
                         <h5 style="color: red">Pour avoir votre contrat il faut verser une avance superieur à 1000DT</h5>  
                         <script type="text/javascript">
                             Swal.fire({
@@ -567,48 +570,50 @@
                             $('#printC').hide(); 
                         </script>
                         <?php } ?>
-                    </div>
-                </div>
             </div>
 
-           <!-- Fixed JavaScript -->
-            <script>
-            document.addEventListener('DOMContentLoaded', function() {
-              // Wait for full page load
-              setTimeout(function() {
-                const tabLinks = document.querySelectorAll('.tab-link');
-                const tabContents = document.querySelectorAll('.tab-content');
-                
-                // Check if elements exist
-                if(tabLinks.length === 0 || tabContents.length === 0) {
-                  console.error('Tab elements not found!');
-                  return;
-                }
-                
-                tabLinks.forEach(tab => {
-                  tab.addEventListener('click', function() {
-                    // Get target tab content
-                    const targetId = this.getAttribute('data-tab');
-                    const targetContent = document.getElementById(targetId);
+           <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                  try {
+                    // Get all tab buttons and panes
+                    const tabButtons = document.querySelectorAll('.tab-btn');
+                    const tabPanes = document.querySelectorAll('.tab-pane');
                     
-                    // Verify target exists
-                    if(!targetContent) {
-                      console.error('Target content not found:', targetId);
-                      return;
+                    // Check if elements exist
+                    if (!tabButtons.length || !tabPanes.length) {
+                      throw new Error('Tab elements not found!');
                     }
                     
-                    // Remove active classes
-                    tabLinks.forEach(t => t.classList.remove('active'));
-                    tabContents.forEach(c => c.classList.remove('active'));
+                    // Add click event to each button
+                    tabButtons.forEach(button => {
+                      button.addEventListener('click', function() {
+                        try {
+                          const targetId = this.getAttribute('data-target');
+                          const targetPane = document.getElementById(targetId);
+                          
+                          if (!targetPane) {
+                            throw new Error(`Target pane not found: ${targetId}`);
+                          }
+                          
+                          // Remove active classes
+                          tabButtons.forEach(btn => btn.classList.remove('active'));
+                          tabPanes.forEach(pane => pane.classList.remove('active'));
+                          
+                          // Add active classes
+                          this.classList.add('active');
+                          targetPane.classList.add('active');
+                          
+                        } catch (error) {
+                          console.error('Tab switch error:', error);
+                        }
+                      });
+                    });
                     
-                    // Add active classes
-                    this.classList.add('active');
-                    targetContent.classList.add('active');
-                  });
+                  } catch (error) {
+                    console.error('Tab initialization error:', error);
+                  }
                 });
-              }, 100); // Small delay to ensure DOM is ready
-            });
-            </script>
+                </script>
 
         
 
