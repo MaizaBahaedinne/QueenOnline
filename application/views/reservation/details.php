@@ -353,7 +353,7 @@
                                                 </td>
                                                 <td><?php echo $contratInfo->noteAdmin; ?></td>
                                                 <td>
-                                                    <img width="30" class="rounded-circle" src="https://www.queenpark.tn/assets/img/teams/<?php echo $contratInfo->avatar; ?>" alt="<?php echo $contratInfo->recuPar; ?>"> 
+                                                    <img width="30" class="rounded-circle" src="<?php echo $contratInfo->avatar; ?>" alt="<?php echo $contratInfo->recuPar; ?>"> 
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -361,7 +361,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -373,98 +373,9 @@
                     </button>
                     <hr>
 
-                    <button type='button' class='btn btn-primary btn-block' data-toggle='modal' data-target='#evaluation'>Satisfaction</button>
+                 
                     
-                    <div class="modal fade bd-example-modal-lg" id="evaluation" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="margin-top: 100px;">
-                        <div class="modal-dialog modal-lg" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Satisfaction</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <?php if (!empty($satisfaction)) { ?>
-                                    <div>
-                                        <h5>Etat d'entré</h5>
-                                        <p><?php echo $satisfaction->entre ?></p>
-                                        <hr>
-                                        <h5>Etat de sortie</h5>
-                                        <p><?php echo $satisfaction->sortie ?></p>
-                                    </div>
-                                    <hr>
-                                    <table width="100%">
-                                        <tr>
-                                            <td width="20%"><strong>Salle</strong></td>
-                                            <td><?php echo str_repeat("⭐", $satisfaction->salle) ?></td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td><strong>Service</strong></td>
-                                            <td><?php echo str_repeat("⭐", $satisfaction->service) ?></td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td><strong>Propreté</strong></td>
-                                            <td><?php echo str_repeat("⭐", $satisfaction->proprete) ?></td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td><strong>Lumière</strong></td>
-                                            <td><?php echo str_repeat("⭐", $satisfaction->lumiere) ?></td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td><strong>Décoration</strong></td>
-                                            <td><?php echo str_repeat("⭐", $satisfaction->decoration) ?></td>
-                                            <td></td>
-                                        </tr>
-                                        <?php if ($projectInfo->photographe != 0) { ?>
-                                        <tr>
-                                            <td><strong>Photographe</strong></td>
-                                            <td><?php echo str_repeat("⭐", $satisfaction->photographe) ?></td>
-                                            <td></td>
-                                        </tr>
-                                        <?php } ?>
-                                        <?php if ($projectInfo->troupe != 0) { ?>
-                                        <tr>
-                                            <td><strong>Troupe musicale</strong></td>
-                                            <td><?php echo str_repeat("⭐", $satisfaction->musicale) ?></td>
-                                            <td></td>
-                                        </tr>
-                                        <?php } ?>
-                                        <?php if ($projectInfo->voiture != 0) { ?>
-                                        <tr>
-                                            <td><strong>Voiture</strong></td>
-                                            <td><?php echo str_repeat("⭐", $satisfaction->voiture) ?></td>
-                                            <td></td>
-                                        </tr>
-                                        <?php } ?>
-                                    </table>
-                                    <hr>
-                                    <div>
-                                        <h5>Reclamation de client</h5>
-                                        <p><?php echo $satisfaction->reclamation ?></p>
-                                    </div>
-                                    <hr>
-                                    <div>
-                                        <h5>date et heure</h5>
-                                        <p><?php echo $satisfaction->createdDTM ?></p>
-                                    </div>                                   
-                                    <?php } else { ?>
-                                    <a href="<?php echo base_url() ?>Satisfaction/addNew/<?php echo $projectInfo->reservationId ?>" class='btn btn-primary btn-block'>
-                                        Ajouter une évaluation
-                                    </a>
-                                    <?php } ?>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-                                    <button type="button" class="btn btn-primary">Eneregistrer</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                   
 
                     <!-- Modal -->
                     <div class="modal fade" id="affectationModal" tabindex="-1" role="dialog" aria-labelledby="affectationModalLabel" aria-hidden="true">
@@ -512,7 +423,7 @@
                         </div>
                         
                         <?php if (!empty($contratInfo)) { ?>
-                        <div class="contrat1" id="contrat">
+                        <div class="contrat" id="contrat1">
                             <button id="printC" class="dropdown-item d-flex align-items-center" onclick="print()">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-printer icon-sm mr-2">
                                     <polyline points="6 9 6 2 18 2 18 9"></polyline>
@@ -521,7 +432,7 @@
                                 </svg>
                                 <span>Imprimer</span>
                             </button>
-                            
+                            <div class="contrat" id="contrat">
                             <div class="row">
                                 <div class="col-md-2"></div>
                                 <div class="col-md-8">
@@ -644,9 +555,11 @@
                                 </tbody>
                             </table>
                         </div>
+                        </div>
                         
                         <div id="factures" class="tab-content" style="display:none;">Liste des factures ici</div>
                         <div id="satisfaction" class="tab-content" style="display:none;">Résultat du questionnaire ici</div>
+                        
                         <?php } else { ?> 
                         <h5 style="color: red">Pour avoir votre contrat il faut verser une avance superieur à 1000DT</h5>  
                         <script type="text/javascript">
