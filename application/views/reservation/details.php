@@ -678,12 +678,12 @@
 
         <div class="tab-container">
               <div class="tab-buttons">
-                <button class="tab-link active" data-tab="contrat">Contrat</button>
+                <button class="tab-link active" data-tab="contrat1">Contrat</button>
                 <button class="tab-link" data-tab="factures">Factures</button>
                 <button class="tab-link" data-tab="satisfaction">Satisfaction</button>
               </div>
 
-            <div class="contrat" id="contrat">
+            <div class="contrat1" id="contrat">
                         <button id="printC" class="dropdown-item d-flex align-items-center"  onclick="print()">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-printer icon-sm mr-2">
                             <polyline points="6 9 6 2 18 2 18 9"></polyline>
@@ -692,6 +692,7 @@
                             </svg>
                             <span   >Imprimer</span>
                         </button>
+             <div class="contrat1" id="contrat">
                 <div class="row">
                     <div class="col-md-2"></div>
                     <div class="col-md-8">
@@ -814,6 +815,7 @@
                     </tbody>
                 </table>
             </div>
+        </div>
 
             <div id="factures" class="tab-content" style="display:none;">Liste des factures ici</div>
             <div id="satisfaction" class="tab-content" style="display:none;">Résultat du questionnaire ici</div>
