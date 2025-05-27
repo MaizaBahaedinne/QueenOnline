@@ -417,7 +417,7 @@
                     <div class="tab-contents">
                         
                         <?php if (!empty($contratInfo)) { ?>
-                        <div class="contrat" id="contrat1">
+                        <div class="contrat tab-content active" id="contrat1">
                             <button id="printC" class="dropdown-item d-flex align-items-center" onclick="print()">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-printer icon-sm mr-2">
                                     <polyline points="6 9 6 2 18 2 18 9"></polyline>
@@ -571,26 +571,42 @@
                 </div>
             </div>
 
-            <!-- JavaScript corrigé -->
+           <!-- Fixed JavaScript -->
             <script>
             document.addEventListener('DOMContentLoaded', function() {
+              // Wait for full page load
+              setTimeout(function() {
                 const tabLinks = document.querySelectorAll('.tab-link');
                 const tabContents = document.querySelectorAll('.tab-content');
                 
+                // Check if elements exist
+                if(tabLinks.length === 0 || tabContents.length === 0) {
+                  console.error('Tab elements not found!');
+                  return;
+                }
+                
                 tabLinks.forEach(tab => {
-                    tab.addEventListener('click', () => {
-                        // Retirer la classe active de tous les onglets et contenus
-                        tabLinks.forEach(t => t.classList.remove('active'));
-                        tabContents.forEach(c => c.classList.remove('active'));
-                        
-                        // Ajouter la classe active à l'onglet cliqué
-                        tab.classList.add('active');
-                        
-                        // Afficher le contenu correspondant
-                        const tabId = tab.getAttribute('data-tab');
-                        document.getElementById(tabId).classList.add('active');
-                    });
+                  tab.addEventListener('click', function() {
+                    // Get target tab content
+                    const targetId = this.getAttribute('data-tab');
+                    const targetContent = document.getElementById(targetId);
+                    
+                    // Verify target exists
+                    if(!targetContent) {
+                      console.error('Target content not found:', targetId);
+                      return;
+                    }
+                    
+                    // Remove active classes
+                    tabLinks.forEach(t => t.classList.remove('active'));
+                    tabContents.forEach(c => c.classList.remove('active'));
+                    
+                    // Add active classes
+                    this.classList.add('active');
+                    targetContent.classList.add('active');
+                  });
                 });
+              }, 100); // Small delay to ensure DOM is ready
             });
             </script>
 
