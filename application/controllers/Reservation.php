@@ -281,7 +281,7 @@ class Reservation extends BaseController
                 $data["troupe"] = $this->troupe_model->ReservationInfo($data["projectInfo"]->troupe);
                 $data["prestation"] = $this->prestation_model->ReservationListing($resId);
 
-                $data['feedbacks'] = $this->reservation_model->getFeedbacks($reservationId);
+                $data['feedbacks'] = $this->reservation_model->getFeedbacks($resId);
              
                 $this->global["pageTitle"] = "Reservation de salle ".$resId;
                 $this->loadViews("reservation/details", $this->global, $data, null);
