@@ -560,7 +560,7 @@
                         </div>
                         
                     <div id="factures-tab" class="tab-pane">
-                        <div class="facture-container" id="factures-tab" style="display: none;" >
+                        <div class="facture-container" id="factures-tab"  >
                             <div class="facture-header" style="text-align: center; margin-bottom: 30px;">
                                 <h2 style="color: #2c3e50;">FACTURE</h2>
                                 <div style="display: flex; justify-content: space-between; margin-top: 20px;">
