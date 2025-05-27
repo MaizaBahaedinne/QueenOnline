@@ -441,6 +441,10 @@
                     <hr>
                     <button type='button' class='btn btn-primary  btn-block' data-toggle='modal' data-target='#evaluation'>Satisfaction
                     </button>
+                     <!-- Bouton pour ouvrir le modal -->
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#affectationModal" onclick="loadAffectationData(<?= $projectInfo->reservationId ?>)">
+                          Gérer les affectations
+                        </button>
                     <div class="modal fade bd-example-modal-lg" id="evaluation" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="margin-top: 100px;">
                         <div class="modal-dialog modal-lg" role="document">
                             <div class="modal-content">
@@ -533,10 +537,7 @@
                             </div>
                         </div>
 
-                        <!-- Bouton pour ouvrir le modal -->
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#affectationModal" onclick="loadAffectationData(<?= $projectInfo->reservationId ?>)">
-                          Gérer les affectations
-                        </button>
+                       
                         <!-- Modal -->
                         <div class="modal fade" id="affectationModal" tabindex="-1" role="dialog" aria-labelledby="affectationModalLabel" aria-hidden="true">
                           <div class="modal-dialog" role="document">
