@@ -640,6 +640,131 @@
         </div>
         </div>
         <?php if (!empty($contratInfo)) { ?>
+
+            <div class="contrat" id="contrat">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <p style="font-size: 25px; text-align: center;">
+                <b>Contrat de location de salle des fêtes</b><br>
+                <?php echo $contratInfo->salle; ?>
+            </p>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+
+    <hr><br>
+
+    Entre <b>Ste Queen Park</b>, MC 34 Route Mornag Boujardgha Ben Arous 2090, désignée ci-après « le bailleur »<br>
+    <b>ET</b><br>
+    <b><?php echo $contratInfo->nom . " " . $contratInfo->prenom; ?></b>, titulaire de la carte d’identité nationale <b>N°<?php echo $contratInfo->cin; ?></b> délivrée le <b><?php echo date_format(date_create($contratInfo->dateCin), 'd/m/Y'); ?></b> et demeurant à <b>N°<?php echo $contratInfo->n . " " . $contratInfo->rue . " " . $contratInfo->ville; ?></b>, désigné ci-après « le locataire ». <br><br>
+
+    <hr>
+    <h6>ARTICLE 1 – DESIGNATION DES LOCAUX :</h6>
+    Les locaux concernés par la location incluent la salle de réception <b><?php echo $contratInfo->salle; ?></b>, ainsi que les dépendances suivantes : cuisines, WC, vestiaires, parking.<br><br>
+
+    <hr>
+    <h6>ARTICLE 2 – ÉQUIPEMENTS :</h6>
+    Le matériel mis à disposition doit être rendu propre et en bon état de fonctionnement. Il fera l’objet d’un inventaire lors des états des lieux d’entrée et de sortie.<br><br>
+
+    <hr>
+    <h6>ARTICLE 3 – DESTINATION DES LIEUX LOUÉS :</h6>
+    La salle est louée pour accueillir l’évènement suivant : <b><?php echo $contratInfo->type; ?></b><br><br>
+
+    <hr>
+    <h6>ARTICLE 4 – DURÉE :</h6>
+    Débute le <b><?php echo date_format(date_create($contratInfo->dateDebut), 'd/m/Y'); ?></b> à <b><?php echo $contratInfo->heureDebut; ?></b><br>
+    Se termine le <b><?php echo date_format(date_create($contratInfo->dateFin), 'd/m/Y'); ?></b> à <b><?php echo $contratInfo->heureFin; ?></b><br><br>
+
+    Le transfert de responsabilité s'effectue à l’heure indiquée ci-dessus. Le locataire doit se présenter 1h avant pour l’état des lieux d’entrée, et rester 20 minutes après pour l’état des lieux de sortie. <br><br>
+
+    <hr>
+    <h6>ARTICLE 5 – CHARGES ET CONDITIONS DU LOCATAIRE :</h6>
+    Le locataire est tenu :<br>
+    - De régler les arrhes à la signature du contrat<br>
+    - De verser le dépôt de garantie<br>
+    - D’avoir réglé la totalité du loyer au plus tard 30 jours ouvrés avant le début de la location<br>
+    - De fournir une autorisation délivrée par le poste de police de Mornag<br><br>
+
+    <hr>
+    <h6>ARTICLE 6 – OBLIGATIONS DU BAILLEUR :</h6>
+    Le bailleur s’engage à mettre à disposition les locaux pour l’évènement, dans la limite de capacité autorisée.<br>
+    En cas de dépassement du nombre de personnes, la responsabilité du bailleur ne saurait être engagée.<br><br>
+
+    <hr>
+    <h6>ARTICLE 7 – CESSION, SOUS-LOCATION :</h6>
+    Toute sous-location est interdite. Le contrat est nominatif et non cessible.<br><br>
+
+    <hr>
+    <h6>ARTICLE 8 – CLAUSE RÉSOLUTOIRE :</h6>
+    - En cas de changement moins de 2 mois avant la date, les arrhes restent dues<br>
+    - En cas d’annulation durant la période, le loyer reste dû (sauf faute du bailleur)<br>
+    - Le bailleur peut mettre fin à la location si l’évènement ne correspond pas à celui déclaré<br><br>
+
+    <hr>
+    <h6>ARTICLE 9 – PRIX DE LA LOCATION :</h6>
+    Le loyer est de <b><?php echo $contratInfo->prix; ?> DT</b>, payable au plus tard <b style="color: red">30 jours avant le début de la location</b>.<br>
+    Une avance de <b style="color: green"><?php echo $contratInfo->avance; ?> DT</b> est exigée à la signature.<br>
+    Paiement uniquement en espèces.<br><br>
+
+    <b>NB :</b><br>
+    1. Aucun remboursement ne sera effectué. Le client peut seulement reporter la date de réservation.<br>
+    2. En cas de report, ce contrat est annulé et un nouveau sera signé avec renégociation, en tenant compte de l’avance déjà versée.<br><br>
+
+    <hr>
+    <h6>ARTICLE 10 – RÈGLEMENT INTÉRIEUR :</h6>
+    - Interdiction formelle d’amener de l’alcool et de fumer à l’intérieur<br>
+    - Le mobilier ne doit pas sortir de la salle<br>
+    - Le bailleur décline toute responsabilité pour les dommages sur véhicules/matériel sur le parking<br><br>
+
+    <table width="100%">
+        <tr>
+            <td width="20%">
+                <img src="<?php echo base_url() ?>assets/images/localisation.png" width="100px">
+            </td>
+            <td>
+                <p style="text-align: right; background: #FFFC25;">
+                    يرجى ذكر العنوان أدناه في دعوات حفلتكم :<br>
+                    <b>"<?php echo $contratInfo->salle; ?> فضاء"</b><br>
+                    بوجردقة طريق مرناق - Queen Park Tunisie
+                </p>
+            </td>
+        </tr>
+    </table><br><br>
+
+    <div class="row">
+        <div class="col-md-12">Fait à Mornag, le <b><?php echo $contratInfo->createdDate; ?></b></div>
+        <div class="col-md-6">Signature du bailleur :</div>
+        <div class="col-md-6">Signature du locataire :</div>
+    </div><br><br>
+
+    <table class="table table-hover table-striped table-bordered" width="100%">
+        <tbody>
+            <tr>
+                <td width="30%">Référence</td>
+                <td>
+                    QP<?php echo $contratInfo->cin; ?>/<?php echo $contratInfo->reservationId; ?>/<?php echo $contratInfo->createdBy; ?>
+                </td>
+                <td width="30%">Prix</td>
+                <td><b><?php echo $contratInfo->prix; ?></b></td>
+            </tr>
+            <tr>
+                <td width="30%">Évènement & Horaire</td>
+                <td>
+                    <?php echo $contratInfo->type; ?> à l'espace <b><?php echo $contratInfo->salle; ?></b><br>
+                    <b>Début : </b><?php echo date("d/m/Y", strtotime($projectInfo->dateDebut)) . " " . $projectInfo->heureDebut; ?><br>
+                    <b>Fin : </b><?php echo date("d/m/Y", strtotime($projectInfo->dateFin)) . " " . $projectInfo->heureFin; ?>
+                </td>
+                <td>Avance <br>Reste</td>
+                <td>
+                    <b style="color: green"><?php echo $contratInfo->avance; ?> DT</b><br>
+                    <b style="color: red"><?php echo $contratInfo->prix - $contratInfo->avance; ?> DT</b>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
         
         <?php } else {?> 
         <h5 style="color : red" >Pour avoir votre contrat il faut verser une avance superieur à 1000DT </h5>  
@@ -783,129 +908,6 @@
             }
         </script>
 
-        <div class="contrat" id="contrat">
-            <div class="row">
-                <div class="col-md-2"></div>
-                <div class="col-md-8">
-                    <p style="font-size: 25px; text-align: center;">
-                        <b>Contrat de location de salle des fêtes</b><br>
-                        <?php echo $contratInfo->salle; ?>
-                    </p>
-                </div>
-                <div class="col-md-2"></div>
-            </div>
-
-            <hr><br>
-
-            Entre <b>Ste Queen Park</b>, MC 34 Route Mornag Boujardgha Ben Arous 2090, désignée ci-après « le bailleur »<br>
-            <b>ET</b><br>
-            <b><?php echo $contratInfo->nom . " " . $contratInfo->prenom; ?></b>, titulaire de la carte d’identité nationale <b>N°<?php echo $contratInfo->cin; ?></b> délivrée le <b><?php echo date_format(date_create($contratInfo->dateCin), 'd/m/Y'); ?></b> et demeurant à <b>N°<?php echo $contratInfo->n . " " . $contratInfo->rue . " " . $contratInfo->ville; ?></b>, désigné ci-après « le locataire ». <br><br>
-
-            <hr>
-            <h6>ARTICLE 1 – DESIGNATION DES LOCAUX :</h6>
-            Les locaux concernés par la location incluent la salle de réception <b><?php echo $contratInfo->salle; ?></b>, ainsi que les dépendances suivantes : cuisines, WC, vestiaires, parking.<br><br>
-
-            <hr>
-            <h6>ARTICLE 2 – ÉQUIPEMENTS :</h6>
-            Le matériel mis à disposition doit être rendu propre et en bon état de fonctionnement. Il fera l’objet d’un inventaire lors des états des lieux d’entrée et de sortie.<br><br>
-
-            <hr>
-            <h6>ARTICLE 3 – DESTINATION DES LIEUX LOUÉS :</h6>
-            La salle est louée pour accueillir l’évènement suivant : <b><?php echo $contratInfo->type; ?></b><br><br>
-
-            <hr>
-            <h6>ARTICLE 4 – DURÉE :</h6>
-            Débute le <b><?php echo date_format(date_create($contratInfo->dateDebut), 'd/m/Y'); ?></b> à <b><?php echo $contratInfo->heureDebut; ?></b><br>
-            Se termine le <b><?php echo date_format(date_create($contratInfo->dateFin), 'd/m/Y'); ?></b> à <b><?php echo $contratInfo->heureFin; ?></b><br><br>
-
-            Le transfert de responsabilité s'effectue à l’heure indiquée ci-dessus. Le locataire doit se présenter 1h avant pour l’état des lieux d’entrée, et rester 20 minutes après pour l’état des lieux de sortie. <br><br>
-
-            <hr>
-            <h6>ARTICLE 5 – CHARGES ET CONDITIONS DU LOCATAIRE :</h6>
-            Le locataire est tenu :<br>
-            - De régler les arrhes à la signature du contrat<br>
-            - De verser le dépôt de garantie<br>
-            - D’avoir réglé la totalité du loyer au plus tard 30 jours ouvrés avant le début de la location<br>
-            - De fournir une autorisation délivrée par le poste de police de Mornag<br><br>
-
-            <hr>
-            <h6>ARTICLE 6 – OBLIGATIONS DU BAILLEUR :</h6>
-            Le bailleur s’engage à mettre à disposition les locaux pour l’évènement, dans la limite de capacité autorisée.<br>
-            En cas de dépassement du nombre de personnes, la responsabilité du bailleur ne saurait être engagée.<br><br>
-
-            <hr>
-            <h6>ARTICLE 7 – CESSION, SOUS-LOCATION :</h6>
-            Toute sous-location est interdite. Le contrat est nominatif et non cessible.<br><br>
-
-            <hr>
-            <h6>ARTICLE 8 – CLAUSE RÉSOLUTOIRE :</h6>
-            - En cas de changement moins de 2 mois avant la date, les arrhes restent dues<br>
-            - En cas d’annulation durant la période, le loyer reste dû (sauf faute du bailleur)<br>
-            - Le bailleur peut mettre fin à la location si l’évènement ne correspond pas à celui déclaré<br><br>
-
-            <hr>
-            <h6>ARTICLE 9 – PRIX DE LA LOCATION :</h6>
-            Le loyer est de <b><?php echo $contratInfo->prix; ?> DT</b>, payable au plus tard <b style="color: red">30 jours avant le début de la location</b>.<br>
-            Une avance de <b style="color: green"><?php echo $contratInfo->avance; ?> DT</b> est exigée à la signature.<br>
-            Paiement uniquement en espèces.<br><br>
-
-            <b>NB :</b><br>
-            1. Aucun remboursement ne sera effectué. Le client peut seulement reporter la date de réservation.<br>
-            2. En cas de report, ce contrat est annulé et un nouveau sera signé avec renégociation, en tenant compte de l’avance déjà versée.<br><br>
-
-            <hr>
-            <h6>ARTICLE 10 – RÈGLEMENT INTÉRIEUR :</h6>
-            - Interdiction formelle d’amener de l’alcool et de fumer à l’intérieur<br>
-            - Le mobilier ne doit pas sortir de la salle<br>
-            - Le bailleur décline toute responsabilité pour les dommages sur véhicules/matériel sur le parking<br><br>
-
-            <table width="100%">
-                <tr>
-                    <td width="20%">
-                        <img src="<?php echo base_url() ?>assets/images/localisation.png" width="100px">
-                    </td>
-                    <td>
-                        <p style="text-align: right; background: #FFFC25;">
-                            يرجى ذكر العنوان أدناه في دعوات حفلتكم :<br>
-                            <b>"<?php echo $contratInfo->salle; ?> فضاء"</b><br>
-                            بوجردقة طريق مرناق - Queen Park Tunisie
-                        </p>
-                    </td>
-                </tr>
-            </table><br><br>
-
-            <div class="row">
-                <div class="col-md-12">Fait à Mornag, le <b><?php echo $contratInfo->createdDate; ?></b></div>
-                <div class="col-md-6">Signature du bailleur :</div>
-                <div class="col-md-6">Signature du locataire :</div>
-            </div><br><br>
-
-            <table class="table table-hover table-striped table-bordered" width="100%">
-                <tbody>
-                    <tr>
-                        <td width="30%">Référence</td>
-                        <td>
-                            QP<?php echo $contratInfo->cin; ?>/<?php echo $contratInfo->reservationId; ?>/<?php echo $contratInfo->createdBy; ?>
-                        </td>
-                        <td width="30%">Prix</td>
-                        <td><b><?php echo $contratInfo->prix; ?></b></td>
-                    </tr>
-                    <tr>
-                        <td width="30%">Évènement & Horaire</td>
-                        <td>
-                            <?php echo $contratInfo->type; ?> à l'espace <b><?php echo $contratInfo->salle; ?></b><br>
-                            <b>Début : </b><?php echo date("d/m/Y", strtotime($projectInfo->dateDebut)) . " " . $projectInfo->heureDebut; ?><br>
-                            <b>Fin : </b><?php echo date("d/m/Y", strtotime($projectInfo->dateFin)) . " " . $projectInfo->heureFin; ?>
-                        </td>
-                        <td>Avance <br>Reste</td>
-                        <td>
-                            <b style="color: green"><?php echo $contratInfo->avance; ?> DT</b><br>
-                            <b style="color: red"><?php echo $contratInfo->prix - $contratInfo->avance; ?> DT</b>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
 
 
 
