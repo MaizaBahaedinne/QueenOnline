@@ -561,9 +561,9 @@
                         
                     <div id="factures-tab" class="tab-pane">
                         <div class="facture-container" id="factures-tab"  >
-                            <div class="facture-header" style="text-align: center; margin-bottom: 30px;">
+                            <div class="facture-header" style="text-align: center; ">
                                 <h2 style="color: #2c3e50;">FACTURE</h2>
-                                <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+                                <div style="display: flex; justify-content: space-between; ">
                                     <div class="info-client" style="text-align: left;">
                                         <h3 style="margin-bottom: 10px; color: #3498db;">Client</h3>
                                         <p><strong>Nom :</strong> <?php echo $clientInfo->name; ?></p>
