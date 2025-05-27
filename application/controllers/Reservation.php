@@ -282,7 +282,7 @@ class Reservation extends BaseController
                 $data["prestation"] = $this->prestation_model->ReservationListing($resId);
 
                 $data['feedbacks'] = $this->reservation_model->getFeedbacks($resId);
-                $data['retours'] = $this->reservation_model->retourListing($resId);
+                data['rapport'] = $this->services_model->retourListing($reservation);
              
                 $this->global["pageTitle"] = "Reservation de salle ".$resId;
                 $this->loadViews("reservation/details", $this->global, $data, null);
