@@ -658,6 +658,20 @@
                         </script>
                     </div>
                     <div id="satisfaction-tab" class="tab-pane">
+                        <?php
+                        function afficherEtoiles($note) {
+                            $max = 5;
+                            $output = '';
+                            for ($i=1; $i <= $max; $i++) {
+                                if ($i <= $note) {
+                                    $output .= '⭐'; // étoile pleine
+                                } else {
+                                    $output .= '☆'; // étoile vide
+                                }
+                            }
+                            return $output;
+                        }
+                        ?>
                        <?php foreach($feedbacks as $fb): ?>
                             <div style="border:1px solid #ddd; padding:10px; margin-bottom:10px;">
                                 <p><strong>Note Salle :</strong> 
@@ -677,20 +691,7 @@
                             </div>
                         <?php endforeach; ?>
 
-                        <?php
-                        function afficherEtoiles($note) {
-                            $max = 5;
-                            $output = '';
-                            for ($i=1; $i <= $max; $i++) {
-                                if ($i <= $note) {
-                                    $output .= '⭐'; // étoile pleine
-                                } else {
-                                    $output .= '☆'; // étoile vide
-                                }
-                            }
-                            return $output;
-                        }
-                        ?>
+                        
                     </div>
 
                         
