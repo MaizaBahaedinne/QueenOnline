@@ -534,7 +534,7 @@
                         </div>
 
                         <!-- Bouton pour ouvrir le modal -->
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#affectationModal" onclick="loadAffectationData(<?= $reservation->reservationId ?>)">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#affectationModal" onclick="loadAffectationData(<?= $projectInfo->reservationId ?>)">
                           Gérer les affectations
                         </button>
                         <!-- Modal -->
