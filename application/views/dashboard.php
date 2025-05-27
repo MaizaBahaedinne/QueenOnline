@@ -233,34 +233,7 @@
 
         </div>
          <div class="divider mb-0"></div>
-         <!--
-          <div class="grid-menu grid-menu-2col">
-            <div class="no-gutters row"> <?php foreach ($ReservationPerYearRecords as $data ) { if ($data->YEAR > 0 ){  ?> <div class="col-md-6 ">
-                <div class="widget-content mt-2 ">
-                  <div class="widget-content-outer">
-                    <div class="widget-content-wrapper">
-                      <div class="widget-content-left pr-2 fsize-1">
-                        <div class="widget-numbers fsize-3 text-danger "> <?php echo $data->COUNT ?> </div>
-                      </div>
-                      <div class="widget-content-right w-100">
-                        <div class="progress-bar-xs progress">
-                          <div class="progress-bar bg-danger" role="progressbar" 
-                          aria-valuenow="<?php echo round(($data->COUNT ?>" aria-valuemin="0" 
-                                          aria-valuemax="
-                                          <?php echo count($reservationRecords) ?>" style="width: 
-                                          <?php echo round(($data->COUNT/count($reservationRecords))*100) ?>%;">
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="widget-content-left fsize-1">
-                      <div class="text-muted opacity-6"> <?php echo $data->COUNT ?> en <?php echo $data->YEAR ?> </div>
-                    </div>
-                  </div>
-                </div>
-              </div> <?php } } ?> </div>
-          </div>
-         -->
+         
       </div>
     </div>
   </div>
