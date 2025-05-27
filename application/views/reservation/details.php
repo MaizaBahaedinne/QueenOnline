@@ -445,7 +445,7 @@
                         <div class="modal-dialog modal-lg" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Historique de la reservation</h5>
+                                    <h5 class="modal-title" id="exampleModalLabel">Satisfaction</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                     </button>
@@ -532,6 +532,85 @@
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Bouton pour ouvrir le modal -->
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#affectationModal" onclick="loadAffectationData(<?= $reservation->reservationId ?>)">
+                          Gérer les affectations
+                        </button>
+                        <!-- Modal -->
+                        <div class="modal fade" id="affectationModal" tabindex="-1" role="dialog" aria-labelledby="affectationModalLabel" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <form id="affectationForm">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="affectationModalLabel">Affectation des serveurs</h5>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Fermer">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                  <div id="serveurList" class="form-group">
+                                    <!-- La liste des serveurs sera chargée ici -->
+                                  </div>
+                                </div>
+                                <div class="modal-footer">
+                                  <input type="hidden" name="reservationId" value="<?= $reservation->reservationId ?>">
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                                  <button type="submit" class="btn btn-primary">Enregistrer</button>
+                                </div>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+
+                        <script>
+                            function loadAffectationData(reservationId) {
+                              $.ajax({
+                                url: '<?= base_url("Reservation/getAffectationData/") ?>' + reservationId,
+                                type: 'GET',
+                                dataType: 'json',
+                                success: function(data) {
+                                  var serveurList = $('#serveurList');
+                                  serveurList.empty();
+                                  data.serveurs.forEach(function(serveur) {
+                                    var isChecked = data.affectations.some(function(affectation) {
+                                      return affectation.userId == serveur.userId;
+                                    });
+                                    var checkbox = `
+                                      <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="userIds[]" value="${serveur.userId}" id="serveur${serveur.userId}" ${isChecked ? 'checked' : ''}>
+                                        <label class="form-check-label" for="serveur${serveur.userId}">
+                                          ${serveur.nom} ${serveur.prenom}
+                                        </label>
+                                      </div>
+                                    `;
+                                    serveurList.append(checkbox);
+                                  });
+                                },
+                                error: function() {
+                                  alert('Erreur lors du chargement des données.');
+                                }
+                              });
+                            }
+
+                            $('#affectationForm').submit(function(e) {
+                              e.preventDefault();
+                              $.ajax({
+                                url: '<?= base_url("Reservation/saveAffectations") ?>',
+                                type: 'POST',
+                                data: $(this).serialize(),
+                                success: function(response) {
+                                  $('#affectationModal').modal('hide');
+                                  // Optionnel : rafraîchir la page ou mettre à jour l'interface
+                                },
+                                error: function() {
+                                  alert('Erreur lors de l\'enregistrement des affectations.');
+                                }
+                              });
+                            });
+                            </script>
+
+
                     </div>
                 </div>
             </div>

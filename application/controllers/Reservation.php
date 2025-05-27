@@ -441,5 +441,47 @@ class Reservation extends BaseController
             $this->Sms_model->addNewSms($smsInfo) ; 
 
         }
+
+
+
+        public function getAffectationData($reservationId)
+                {
+                   
+
+                    // Récupérer les serveurs (utilisateurs avec roleId = 9)
+                    $serveurs = $this->user_model->getUsersByRole(9);
+
+                    // Récupérer les affectations existantes pour la réservation
+                    $affectations = $this->affectation_model->getAffectationsByReservation($reservationId);
+
+                    // Retourner les données au format JSON
+                    echo json_encode([
+                        'serveurs' => $serveurs,
+                        'affectations' => $affectations
+                    ]);
+                }
+
+        public function saveAffectations()
+                {
+                    $reservationId = $this->input->post('reservationId');
+                    $userIds = $this->input->post('userIds');
+
+                    // Charger le modèle
+                    $this->load->model('affectation_model');
+
+                    // Supprimer les affectations existantes pour cette réservation
+                    $this->affectation_model->deleteAffectationsByReservation($reservationId);
+
+                    // Ajouter les nouvelles affectations
+                    if (!empty($userIds)) {
+                        foreach ($userIds as $userId) {
+                            $this->affectation_model->addAffectation($reservationId, $userId);
+                        }
+                    }
+
+                    echo 'success';
+                }
+
+
 }
 ?>
