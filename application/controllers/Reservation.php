@@ -30,6 +30,7 @@ class Reservation extends BaseController
                 $this->load->model("troupe_model");
                 $this->load->model("satisfaction_model");
                 $this->load->model("Sms_model");
+                $this->load->model("affectation_model");
                 $this->isLoggedIn();
         }
         /**
