@@ -672,6 +672,34 @@
                             return $output;
                         }
                         ?>
+
+                        <table class="table table-bordered" >
+                        <thead>
+                          <tr>
+                            <th width="30%">Nature</th>
+                            <th width="10%">Moment</th>
+                            <th>Quantité d’entrée</th>
+                            
+                            <th>Consommée</th>
+                            <th>Quantité retournée</th>
+                            <th width="20%">Note</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <?php foreach($rapport as $item): ?>
+                            <tr>
+                              <td><?= ucfirst($item->nature) ?></td>
+                              <td><?= $item->moment_service ?></td>
+                              <td><?= $item->quantite ?></td>
+                              
+                              <td><?= $item->quantite - $item->quantiteRetournee ?></td>
+                              <td><?= $item->quantiteRetournee ?></td>
+                              <td><?= $item->noteRetour ?></td>
+                            </tr>
+                          <?php endforeach; ?>
+                        </tbody>
+                      </table>
+                        
                        <?php foreach($feedbacks as $fb): ?>
                             <div style="border:1px solid #ddd; padding:10px; margin-bottom:10px;">
                                 <p><strong>Note Salle :</strong> 

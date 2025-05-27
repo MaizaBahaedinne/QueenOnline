@@ -490,6 +490,18 @@ class Reservation_model extends CI_Model
         $query = $this->db->get('tbl_services_feedbacks');
         return $query->result_array();
     }
+
+    public function retourListing($reservationId)
+    {
+        $this->db->select('r.*, e.*');
+        $this->db->from('tbl_services_retours r');
+        $this->db->join('tbl_services_entrees e', 'e.entreeId = r.entreeId', 'left');
+        $this->db->where('e.reservationId', $reservationId);
+        $this->db->order_by('r.createdDTM', 'DESC');
+        $query = $this->db->get();
+
+        return $query->result();
+    }
    
 
    
