@@ -1,3 +1,4 @@
+<!-- Styles (inchangés) -->
 <style>
     .tab-container {
       width: 90%;
@@ -39,6 +40,7 @@
       display: block;
     }
 </style>
+
 
 <div class="app-main__inner">
     <div class="app-page-title">
