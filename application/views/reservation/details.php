@@ -671,16 +671,7 @@
         <div class="d-flex justify-content-between align-items-center mb-2">
         <h6 class="card-title mb-0"></h6>
         <div class="dropdown mb-2">
-        <?php if (!empty($contratInfo)) { ?>
-        <button id="printC" class="dropdown-item d-flex align-items-center"  onclick="print()">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-printer icon-sm mr-2">
-        <polyline points="6 9 6 2 18 2 18 9"></polyline>
-        <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
-        <rect x="6" y="14" width="12" height="8"></rect>
-        </svg>
-        <span   >Imprimer</span>
-        </button>
-        <?php } ?>
+ 
         </div>
         </div>
         <?php if (!empty($contratInfo)) { ?>
@@ -693,6 +684,14 @@
               </div>
 
             <div class="contrat" id="contrat">
+                        <button id="printC" class="dropdown-item d-flex align-items-center"  onclick="print()">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-printer icon-sm mr-2">
+                            <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                            <rect x="6" y="14" width="12" height="8"></rect>
+                            </svg>
+                            <span   >Imprimer</span>
+                        </button>
                 <div class="row">
                     <div class="col-md-2"></div>
                     <div class="col-md-8">
