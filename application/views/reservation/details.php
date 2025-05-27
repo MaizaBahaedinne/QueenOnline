@@ -1,3 +1,47 @@
+<style>
+
+
+    .tab-container {
+      width: 90%;
+      max-width: 800px;
+      margin: 50px auto;
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+
+    .tab-buttons {
+      display: flex;
+      background-color: #2c3e50;
+    }
+
+    .tab-buttons button {
+      flex: 1;
+      padding: 15px;
+      background: none;
+      border: none;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .tab-buttons button:hover,
+    .tab-buttons button.active {
+      background-color: #34495e;
+    }
+
+    .tab-content {
+      display: none;
+      padding: 20px;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+  </style>
+
 <div class="app-main__inner">
     <div class="app-page-title">
         <div class="page-title-wrapper">
