@@ -559,8 +559,12 @@
                         </div>
                         </div>
                         
-                        <div id="factures" class="tab-content" style="display:none;">Liste des factures ici</div>
-                        <div id="satisfaction" class="tab-content" style="display:none;">Résultat du questionnaire ici</div>
+                    <div id="factures-tab" class="tab-pane">
+                      <!-- Invoices content -->
+                    </div>
+                    <div id="satisfaction-tab" class="tab-pane">
+                      <!-- Satisfaction content -->
+                    </div>
 
                         
                     </div>
