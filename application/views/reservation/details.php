@@ -661,19 +661,19 @@
                        <?php foreach($feedbacks as $fb): ?>
                             <div style="border:1px solid #ddd; padding:10px; margin-bottom:10px;">
                                 <p><strong>Note Salle :</strong> 
-                                    <?= afficherEtoiles($fb['note_salle']); ?>
+                                    <?php echo afficherEtoiles($fb['note_salle']); ?>
                                 </p>
                                 <p><strong>Note Service :</strong> 
-                                    <?= afficherEtoiles($fb['note_service']); ?>
+                                    <?php echo afficherEtoiles($fb['note_service']); ?>
                                 </p>
                                 <p><strong>Nom et prénom :</strong> 
-                                    <?= $fb['nom']; ?>
+                                    <?php echo $fb['nom']; ?>
                                 </p>
                                 <p><strong>Commentaire :</strong> <?= htmlspecialchars($fb['commentaire']); ?></p>
                                 
-                                <?php if(!empty($fb['photo_user'])): ?>
-                                    <img src="data:image/jpeg;base64,<?= $fb['photo_user']; ?>" alt="Photo utilisateur" style="max-width:150px; border-radius:8px;">
-                                <?php endif; ?>
+                                <?php if(!empty($fb['photo_user'])){ ?>
+                                    <img src="data:image/jpeg;base64,<?php echo $fb['photo_user']; ?>" alt="Photo utilisateur" style="max-width:150px; border-radius:8px;">
+                                <?php } ?>
                             </div>
                         <?php endforeach; ?>
 
