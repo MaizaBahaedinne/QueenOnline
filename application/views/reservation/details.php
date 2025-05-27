@@ -658,7 +658,39 @@
                         </script>
                     </div>
                     <div id="satisfaction-tab" class="tab-pane">
-                       Satisfaction
+                       <?php foreach($feedbacks as $fb): ?>
+                            <div style="border:1px solid #ddd; padding:10px; margin-bottom:10px;">
+                                <p><strong>Note Salle :</strong> 
+                                    <?= afficherEtoiles($fb['note_salle']); ?>
+                                </p>
+                                <p><strong>Note Service :</strong> 
+                                    <?= afficherEtoiles($fb['note_service']); ?>
+                                </p>
+                                <p><strong>Nom et prénom :</strong> 
+                                    <?= $fb['nom']; ?>
+                                </p>
+                                <p><strong>Commentaire :</strong> <?= htmlspecialchars($fb['commentaire']); ?></p>
+                                
+                                <?php if(!empty($fb['photo_user'])): ?>
+                                    <img src="data:image/jpeg;base64,<?= $fb['photo_user']; ?>" alt="Photo utilisateur" style="max-width:150px; border-radius:8px;">
+                                <?php endif; ?>
+                            </div>
+                        <?php endforeach; ?>
+
+                        <?php
+                        function afficherEtoiles($note) {
+                            $max = 5;
+                            $output = '';
+                            for ($i=1; $i <= $max; $i++) {
+                                if ($i <= $note) {
+                                    $output .= '⭐'; // étoile pleine
+                                } else {
+                                    $output .= '☆'; // étoile vide
+                                }
+                            }
+                            return $output;
+                        }
+                        ?>
                     </div>
 
                         

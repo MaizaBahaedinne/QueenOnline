@@ -483,6 +483,13 @@ class Reservation_model extends CI_Model
         return TRUE;
     }
 
+
+    public function getFeedbacks($reservationId)
+    {
+        $this->db->where('reservationId', $reservationId);
+        $query = $this->db->get('tbl_services_feedbacks');
+        return $query->result_array();
+    }
    
 
    
