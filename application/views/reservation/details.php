@@ -570,6 +570,30 @@
                     </div>
                 </div>
             </div>
+
+            <!-- JavaScript corrigé -->
+            <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const tabLinks = document.querySelectorAll('.tab-link');
+                const tabContents = document.querySelectorAll('.tab-content');
+                
+                tabLinks.forEach(tab => {
+                    tab.addEventListener('click', () => {
+                        // Retirer la classe active de tous les onglets et contenus
+                        tabLinks.forEach(t => t.classList.remove('active'));
+                        tabContents.forEach(c => c.classList.remove('active'));
+                        
+                        // Ajouter la classe active à l'onglet cliqué
+                        tab.classList.add('active');
+                        
+                        // Afficher le contenu correspondant
+                        const tabId = tab.getAttribute('data-tab');
+                        document.getElementById(tabId).classList.add('active');
+                    });
+                });
+            });
+            </script>
+
         
 
         <div class="col-md-4">
