@@ -1,8 +1,7 @@
 <!-- Styles (inchangés) -->
 <style>
     .tab-container {
-      width: 90%;
-      max-width: 800px;
+ 
       margin: 50px auto;
       background-color: #fff;
       border-radius: 12px;
