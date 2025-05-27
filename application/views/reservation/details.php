@@ -407,20 +407,16 @@
         </div>
         
         <!-- contrat -->
-        <div class="col-md-8">
-            <div class="tab-container">
-                <div class="tab-buttons">
-                    <button class="tab-link active" data-tab="contrat1">Contrat</button>
-                    <button class="tab-link" data-tab="factures">Factures</button>
-                    <button class="tab-link" data-tab="satisfaction">Satisfaction</button>
-                </div>
-                
-                <div class="main-card mb-3 card">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between align-items-center mb-2">
-                            <h6 class="card-title mb-0"></h6>
-                            <div class="dropdown mb-2"></div>
-                        </div>
+        <!-- Partie HTML modifiée -->
+            <div class="col-md-8">
+                <div class="tab-container">
+                    <div class="tab-buttons">
+                        <button class="tab-link active" data-tab="contrat">Contrat</button>
+                        <button class="tab-link" data-tab="factures">Factures</button>
+                        <button class="tab-link" data-tab="satisfaction-tab">Satisfaction</button>
+                    </div>
+                    
+                    <div class="tab-contents">
                         
                         <?php if (!empty($contratInfo)) { ?>
                         <div class="contrat" id="contrat1">
@@ -559,7 +555,7 @@
                         
                         <div id="factures" class="tab-content" style="display:none;">Liste des factures ici</div>
                         <div id="satisfaction" class="tab-content" style="display:none;">Résultat du questionnaire ici</div>
-                        
+
                         <?php } else { ?> 
                         <h5 style="color: red">Pour avoir votre contrat il faut verser une avance superieur à 1000DT</h5>  
                         <script type="text/javascript">
@@ -576,7 +572,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        
 
         <div class="col-md-4">
             <div class="card-shadow-primary card-border mb-3 card">
