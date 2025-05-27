@@ -666,6 +666,12 @@
         </div>
         <!-- contrat -->
         <div class="col-md-8">
+            <div class="tab-container">
+              <div class="tab-buttons">
+                <button class="tab-link active" data-tab="contrat1">Contrat</button>
+                <button class="tab-link" data-tab="factures">Factures</button>
+                <button class="tab-link" data-tab="satisfaction">Satisfaction</button>
+              </div>
         <div class="main-card mb-3 card">
         <div class="card-body">
         <div class="d-flex justify-content-between align-items-center mb-2">
@@ -676,12 +682,7 @@
         </div>
         <?php if (!empty($contratInfo)) { ?>
 
-        <div class="tab-container">
-              <div class="tab-buttons">
-                <button class="tab-link active" data-tab="contrat1">Contrat</button>
-                <button class="tab-link" data-tab="factures">Factures</button>
-                <button class="tab-link" data-tab="satisfaction">Satisfaction</button>
-              </div>
+        
 
             <div class="contrat1" id="contrat">
                         <button id="printC" class="dropdown-item d-flex align-items-center"  onclick="print()">
