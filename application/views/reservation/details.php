@@ -658,7 +658,7 @@
                         </script>
                     </div>
                     <div id="satisfaction-tab" class="tab-pane">
-                      <!-- Satisfaction content -->
+                       Satisfaction
                     </div>
 
                         
