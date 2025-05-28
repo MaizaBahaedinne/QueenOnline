@@ -549,7 +549,7 @@
                                             <br>
                                             <b><?php echo $contratInfo->type; ?> </b> de <b> <?php echo $projectInfo->titre; ?> </b> à l'espace <b><?php echo $contratInfo->salle; ?></b><br> pour <?php echo $contratInfo->nbPlace; ?> invités
                                             <br>
-                                            <?php if ($projectInfo->cuisine == 1 || $projectInfo->tableCM == 1) { echo "avec " ; } ?>
+                                            <?php if ($projectInfo->cuisine == 1 || $projectInfo->tableCM == 1) { echo "<b>avec</b>" ; } ?>
                                             <br>
                                              <?php if (
                                                         $projectInfo->cuisine == 1
