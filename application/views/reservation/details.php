@@ -529,7 +529,7 @@
                                 <div class="col-md-12">Fait à Mornag, le <b><?php echo $contratInfo->createdDate; ?></b></div>
                                 <div class="col-md-6">Signature du bailleur :</div>
                                 <div class="col-md-6">Signature du locataire :</div>
-                            </div><br><br><br><br><br><br>
+                            </div><br><br><br><br><br><br><br><br><br>
 
                             <table class="table table-hover table-striped table-bordered" width="100%">
                                 <tbody>
