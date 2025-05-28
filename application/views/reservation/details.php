@@ -538,7 +538,7 @@
                                         <td>
                                             QP<?php echo $contratInfo->cin; ?>/<?php echo $contratInfo->reservationId; ?>/<?php echo $contratInfo->createdBy; ?>
                                         </td>
-                                        <td width="30%">Prix</td>
+                                        <td width="20%">Prix</td>
                                         <td><b><?php echo $contratInfo->prix; ?></b></td>
                                     </tr>
                                     <tr>
@@ -551,12 +551,12 @@
                                              <?php if (
                                                         $projectInfo->cuisine == 1
                                                         ) {
-                                                        echo "<i class='fas fa-utensils'></i> Cuisine<br> disponible le jour de l'évenement à partir de 09h de matin <br> ";
+                                                        echo "<i class='fas fa-utensils'></i> Cuisine <br> <small>disponible le jour de l'évenement à partir de 09h de matin</small> <br> ";
                                                         } ?>
                                                     <?php if (
                                                         $projectInfo->tableCM == 1
                                                         ) {
-                                                        echo '<i class="fa fa-file" ></i>table contrat de mariage<br>';
+                                                        echo '<i class="fa fa-file" ></i> Table contrat de mariage<br>';
                                                         } ?>
                                                         <br>
                                             <b>Début : </b><?php echo date("d/m/Y", strtotime($projectInfo->dateDebut)) . " " . $projectInfo->heureDebut; ?><br>
