@@ -538,13 +538,16 @@
                                         <td width="40%">
                                             QP<?php echo $contratInfo->cin; ?>/<?php echo $contratInfo->reservationId; ?>/<?php echo $contratInfo->createdBy; ?>
                                         </td>
-                                        <td >Prix</td>
+                                        <td width="15%" >Prix</td>
                                         <td width="15%"><b><?php echo $contratInfo->prix; ?> DT</b></td>
                                     </tr>
                                     <tr>
                                         <td >Évènement & Horaire</td>
                                         <td>
-                                            <?php echo $contratInfo->type; ?> à l'espace <b><?php echo $contratInfo->salle; ?></b><br> pour <?php echo $contratInfo->nbPlace; ?>
+
+                                            <b>Début : </b><?php echo date("d/m/Y", strtotime($projectInfo->dateDebut)) . " " . $projectInfo->heureDebut; ?><br>
+                                            <b>Fin : </b><?php echo date("d/m/Y", strtotime($projectInfo->dateFin)) . " " . $projectInfo->heureFin; ?>
+                                            <?php echo $contratInfo->type; ?> à l'espace <b><?php echo $contratInfo->salle; ?></b><br> pour <?php echo $contratInfo->nbPlace; ?> invités
                                             <br>
                                             <?php if ($projectInfo->cuisine == 1 || $projectInfo->tableCM == 1) { echo "avec " ; } ?>
                                             <br>
@@ -558,9 +561,8 @@
                                                         ) {
                                                         echo '<i class="fa fa-file" ></i> Table contrat de mariage<br>';
                                                         } ?>
-                                                        <br>
-                                            <b>Début : </b><?php echo date("d/m/Y", strtotime($projectInfo->dateDebut)) . " " . $projectInfo->heureDebut; ?><br>
-                                            <b>Fin : </b><?php echo date("d/m/Y", strtotime($projectInfo->dateFin)) . " " . $projectInfo->heureFin; ?>
+                                                        
+                                            
                                         </td>
                                         <td>Avance <br>Reste</td>
                                         <td>
