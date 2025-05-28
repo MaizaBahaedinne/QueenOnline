@@ -534,12 +534,12 @@
                             <table class="table table-hover table-striped table-bordered" width="100%">
                                 <tbody>
                                     <tr>
-                                        <td width="40%">Reference</td>
-                                        <td>
+                                        <td width="15%">Reference</td>
+                                        <td width="40%">
                                             QP<?php echo $contratInfo->cin; ?>/<?php echo $contratInfo->reservationId; ?>/<?php echo $contratInfo->createdBy; ?>
                                         </td>
-                                        <td width="20%">Prix</td>
-                                        <td><b><?php echo $contratInfo->prix; ?></b></td>
+                                        <td >Prix</td>
+                                        <td width="15%"><b><?php echo $contratInfo->prix; ?> DT</b></td>
                                     </tr>
                                     <tr>
                                         <td width="40%">Évènement & Horaire</td>
