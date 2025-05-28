@@ -551,7 +551,7 @@
                                              <?php if (
                                                         $projectInfo->cuisine == 1
                                                         ) {
-                                                        echo "<i class="fas fa-utensils"></i> Cuisine<br> disponible le jour de l'évenement à partir de 09h de matin <br> ";
+                                                        echo "<i class='fas fa-utensils'></i> Cuisine<br> disponible le jour de l'évenement à partir de 09h de matin <br> ";
                                                         } ?>
                                                     <?php if (
                                                         $projectInfo->tableCM == 1
