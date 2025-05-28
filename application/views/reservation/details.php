@@ -544,9 +544,6 @@
                                     <tr>
                                         <td >Évènement & Horaire</td>
                                         <td>
-
-                                            
-                                            <br>
                                             <b><?php echo $contratInfo->type; ?> </b> de <b> <?php echo $projectInfo->titre; ?> </b> à l'espace <b><?php echo $contratInfo->salle; ?></b> pour <?php echo $contratInfo->nbPlace; ?> invités
                                             <br>
                                             <b>Début : </b><?php echo date("d/m/Y", strtotime($projectInfo->dateDebut)) . " " . $projectInfo->heureDebut; ?><br>
