@@ -569,6 +569,7 @@
                                             <b style="color: green"><?php echo $contratInfo->avance; ?> DT</b>
                                             <hr>
                                             <b style="color: red"><?php echo $contratInfo->prix - $contratInfo->avance; ?> DT</b>
+                                            <br><?= "Paiement dû avant le : <strong>".(new DateTime($projectInfo->dateFin))->sub(new DateInterval('P30D'))->format('d/m/Y')."</strong>" ?>
                                         </td>
                                     </tr>
                                 </tbody>
