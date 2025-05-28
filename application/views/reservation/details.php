@@ -551,12 +551,12 @@
                                              <?php if (
                                                         $projectInfo->cuisine == 1
                                                         ) {
-                                                        echo '<i class="fas fa-utensils"></i> Cuisine<br>';
+                                                        echo "<i class="fas fa-utensils"></i> Cuisine<br> disponible le jour de l'évenement à partir de 09h de matin <br> ";
                                                         } ?>
                                                     <?php if (
                                                         $projectInfo->tableCM == 1
                                                         ) {
-                                                        echo '<i class="fa fa-file" ></i> contrat de mariage<br>';
+                                                        echo '<i class="fa fa-file" ></i>table contrat de mariage<br>';
                                                         } ?>
                                                         <br>
                                             <b>Début : </b><?php echo date("d/m/Y", strtotime($projectInfo->dateDebut)) . " " . $projectInfo->heureDebut; ?><br>
