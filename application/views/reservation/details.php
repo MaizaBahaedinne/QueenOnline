@@ -529,12 +529,12 @@
                                 <div class="col-md-12">Fait à Mornag, le <b><?php echo $contratInfo->createdDate; ?></b></div>
                                 <div class="col-md-6">Signature du bailleur :</div>
                                 <div class="col-md-6">Signature du locataire :</div>
-                            </div><br><br>
+                            </div><br><br><br><br><br><br>
 
                             <table class="table table-hover table-striped table-bordered" width="100%">
                                 <tbody>
                                     <tr>
-                                        <td width="30%">Référence</td>
+                                        <td width="30%">Reference</td>
                                         <td>
                                             QP<?php echo $contratInfo->cin; ?>/<?php echo $contratInfo->reservationId; ?>/<?php echo $contratInfo->createdBy; ?>
                                         </td>
@@ -544,7 +544,17 @@
                                     <tr>
                                         <td width="30%">Évènement & Horaire</td>
                                         <td>
-                                            <?php echo $contratInfo->type; ?> à l'espace <b><?php echo $contratInfo->salle; ?></b><br>
+                                            <?php echo $contratInfo->type; ?> à l'espace <b><?php echo $contratInfo->salle; ?></b><br> pour <?php echo $contratInfo->nbPlace; ?>
+                                            <br> avec <?php if (
+                                                        $projectInfo->cuisine == 1
+                                                        ) {
+                                                        echo '<i class="fas fa-utensils"></i> Cuisine<br>';
+                                                        } ?>
+                                                    <?php if (
+                                                        $projectInfo->tableCM == 1
+                                                        ) {
+                                                        echo '<i class="fa fa-file" ></i> contrat de mariage<br>';
+                                                        } ?>
                                             <b>Début : </b><?php echo date("d/m/Y", strtotime($projectInfo->dateDebut)) . " " . $projectInfo->heureDebut; ?><br>
                                             <b>Fin : </b><?php echo date("d/m/Y", strtotime($projectInfo->dateFin)) . " " . $projectInfo->heureFin; ?>
                                         </td>
@@ -632,7 +642,7 @@
                                         <p>Paiement en espèce ou par virement bancaire</p>
                                         <p>RIB : XX XXX XXX XXX XXX XXX XX</p>
                                         <p>Banque : [Nom de votre banque]</p>
-                                        <p>Code TVA : [Votre code TVA]</p>
+                                        <p>Code TVA : 1454754RAM000</p>
                                     </div>
                                     <div class="signature" style="width: 30%; text-align: center;">
                                         <p>Le <?php echo date('d/m/Y'); ?></p>
@@ -699,7 +709,7 @@
                           <?php endforeach; ?>
                         </tbody>
                       </table>
-                        
+
                        <?php foreach($feedbacks as $fb): ?>
                             <div style="border:1px solid #ddd; padding:10px; margin-bottom:10px;">
                                 <p><strong>Note Salle :</strong> 
