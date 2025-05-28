@@ -564,7 +564,7 @@
                                                         
                                             
                                         </td>
-                                        <td>Avance <hr>Reste<br><p style="color:white;">Paiement dû avant le : 01/05/2025</p></td>
+                                        <td>Avance<hr>Reste<br><p style="color:white;">Paiement dû avant le : 01/05/2025</p></td>
                                         <td>
                                             <b style="color: green"><?php echo $contratInfo->avance; ?> DT</b>
                                             <hr>
