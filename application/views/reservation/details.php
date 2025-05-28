@@ -542,7 +542,7 @@
                                         <td width="15%"><b><?php echo $contratInfo->prix; ?> DT</b></td>
                                     </tr>
                                     <tr>
-                                        <td width="40%">Évènement & Horaire</td>
+                                        <td >Évènement & Horaire</td>
                                         <td>
                                             <?php echo $contratInfo->type; ?> à l'espace <b><?php echo $contratInfo->salle; ?></b><br> pour <?php echo $contratInfo->nbPlace; ?>
                                             <br>
