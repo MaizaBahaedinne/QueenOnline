@@ -564,9 +564,10 @@
                                                         
                                             
                                         </td>
-                                        <td>Avance <br>Reste</td>
+                                        <td>Avance <hr>Reste</td>
                                         <td>
-                                            <b style="color: green"><?php echo $contratInfo->avance; ?> DT</b><br>
+                                            <b style="color: green"><?php echo $contratInfo->avance; ?> DT</b>
+                                            <hr>
                                             <b style="color: red"><?php echo $contratInfo->prix - $contratInfo->avance; ?> DT</b>
                                         </td>
                                     </tr>
