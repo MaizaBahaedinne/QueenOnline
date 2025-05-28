@@ -534,7 +534,7 @@
                             <table class="table table-hover table-striped table-bordered" width="100%">
                                 <tbody>
                                     <tr>
-                                        <td width="30%">Reference</td>
+                                        <td width="40%">Reference</td>
                                         <td>
                                             QP<?php echo $contratInfo->cin; ?>/<?php echo $contratInfo->reservationId; ?>/<?php echo $contratInfo->createdBy; ?>
                                         </td>
@@ -542,7 +542,7 @@
                                         <td><b><?php echo $contratInfo->prix; ?></b></td>
                                     </tr>
                                     <tr>
-                                        <td width="30%">Évènement & Horaire</td>
+                                        <td width="40%">Évènement & Horaire</td>
                                         <td>
                                             <?php echo $contratInfo->type; ?> à l'espace <b><?php echo $contratInfo->salle; ?></b><br> pour <?php echo $contratInfo->nbPlace; ?>
                                             <br>
