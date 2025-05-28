@@ -545,7 +545,10 @@
                                         <td width="30%">Évènement & Horaire</td>
                                         <td>
                                             <?php echo $contratInfo->type; ?> à l'espace <b><?php echo $contratInfo->salle; ?></b><br> pour <?php echo $contratInfo->nbPlace; ?>
-                                            <br> avec <?php if (
+                                            <br>
+                                            <?php if ($projectInfo->cuisine == 1 || $projectInfo->tableCM == 1) { echo "avec " ; } ?>
+
+                                             <?php if (
                                                         $projectInfo->cuisine == 1
                                                         ) {
                                                         echo '<i class="fas fa-utensils"></i> Cuisine<br>';
