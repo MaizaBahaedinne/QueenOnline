@@ -549,6 +549,9 @@
                                             <br>
                                             <b><?php echo $contratInfo->type; ?> </b> de <b> <?php echo $projectInfo->titre; ?> </b> à l'espace <b><?php echo $contratInfo->salle; ?></b><br> pour <?php echo $contratInfo->nbPlace; ?> invités
                                             <br>
+                                            <b>Début : </b><?php echo date("d/m/Y", strtotime($projectInfo->dateDebut)) . " " . $projectInfo->heureDebut; ?><br>
+                                <b>Fin : </b><?php echo date("d/m/Y", strtotime($projectInfo->dateFin)) . " " . $projectInfo->heureFin; ?>
+                                            <br>
                                             <?php if ($projectInfo->cuisine == 1 || $projectInfo->tableCM == 1) { echo "<b>avec</b>" ; } ?>
                                             <br>
                                              <?php if (
