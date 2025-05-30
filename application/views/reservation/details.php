@@ -1025,6 +1025,20 @@
                     `;
                 }
 
+                // Affiche juste les avatars, sans nom, sans checkbox
+                function generateServeurHHtml(affectation) {
+                    const image = affectation.avatar
+                        ? (affectation.avatar.startsWith("data:image") ? affectation.avatar : 'data:image/png;base64,' + affectation.avatar)
+                        : 'https://via.placeholder.com/60?text=?';
+
+                    return `
+                        <div class="select-image checked" data-userid="${affectation.userId}">
+                            <img src="${image}" alt="${affectation.nom}" class="img-user">
+                        </div>
+                    `;
+                }
+
+
                 function loadAffectationData(reservationId) {
                     $.ajax({
                         url: '<?= base_url("Reservation/getAffectationData/") ?>' + reservationId,
@@ -1034,6 +1048,9 @@
                             var serveurList = $('#serveurList');
                             serveurList.empty();
 
+                            var serveurAffectes = $('#serveurAffectes');  // j’imagine que c’est la div où tu veux afficher les affectés
+                            serveurAffectes.empty();
+
                             data.serveurs.forEach(function(serveur) {
                                 var isChecked = data.affectations.some(function(affectation) {
                                     return affectation.userId == serveur.userId;
@@ -1041,6 +1058,11 @@
 
                                 var html = generateServeurHtml(serveur, isChecked);
                                 serveurList.append(html);
+                            });
+                                             // Affiche seulement les affectations (avatars)
+                            data.affectations.forEach(function(affectation) {
+                                var htmlH = generateServeurHHtml(affectation);
+                                serveurAffectes.append(htmlH);
                             });
 
                             // Toggle checked class and input disabled state on click
