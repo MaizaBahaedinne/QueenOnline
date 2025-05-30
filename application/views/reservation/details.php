@@ -45,57 +45,50 @@
 }
 
 .select-image {
-    display: inline-flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
+    display: inline-block;
+    text-align: center;
     margin: 10px;
     cursor: pointer;
-    border-radius: 50%;
-    overflow: visible;
+    position: relative;
+    width: 80px;
+}
+.img-user {
     width: 60px;
-}
-
-.select-image img.img-user {
-    width: 40px;
-    height: 40px;
-    object-fit: cover;
-    filter: brightness(0.6);
+    height: 60px;
     border-radius: 50%;
-    border: 2px solid transparent;
-    transition: filter 0.2s ease, border 0.2s ease;
+    filter: grayscale(100%);
+    transition: all 0.2s ease;
+    object-fit: cover;
 }
-
-.select-image .checkmark {
+.select-image.checked .img-user {
+    filter: none;
+    border: 2px solid #007bff;
+}
+.checkmark {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 40px;
-    height: 40px;
+    top: 5px;
+    right: 5px;
+    background-color: #007bff;
+    color: white;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    font-size: 12px;
     display: none;
     align-items: center;
     justify-content: center;
-    color: white;
-    font-size: 16px;
 }
-
-.select-image.checked img.img-user {
-    filter: brightness(1);
-    border-color: #007bff;
-}
-
 .select-image.checked .checkmark {
     display: flex;
 }
-
-.select-image .user-name {
+.user-name {
     margin-top: 5px;
     font-size: 12px;
-    text-align: center;
-    max-width: 60px;
-    word-break: break-word;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 80px;
 }
-
 </style>
 
 
@@ -1011,68 +1004,80 @@
                 });
             });
             
-            function loadAffectationData(reservationId) {
-                $.ajax({
-                    url: '<?= base_url("Reservation/getAffectationData/") ?>' + reservationId,
-                    type: 'GET',
-                    dataType: 'json',
-                    success: function(data) {
-                        var serveurList = $('#serveurList');
-                        serveurList.empty();
+            </script>
 
-                        data.serveurs.forEach(function(serveur) {
-                            var isChecked = data.affectations.some(function(affectation) {
-                                return affectation.userId == serveur.userId;
+
+           <script>
+                function generateServeurHtml(serveur, isChecked) {
+                    const checkedClass = isChecked ? 'checked' : '';
+                    // Gérer image base64, si image_base64 commence pas par data:image, on le préfixe
+                    const image = serveur.image_base64 
+                        ? (serveur.image_base64.startsWith("data:image") ? serveur.image_base64 : 'data:image/png;base64,' + serveur.image_base64)
+                        : 'https://via.placeholder.com/60?text=?';
+
+                    return `
+                        <div class="select-image ${checkedClass}" data-userid="${serveur.userId}">
+                            <img src="${image}" alt="${serveur.nom}" class="img-user">
+                            <div class="checkmark"><i class="fas fa-check"></i></div>
+                            <input type="hidden" name="userIds[]" value="${serveur.userId}" ${isChecked ? '' : 'disabled'}>
+                            <div class="user-name">${serveur.nom} ${serveur.prenom}</div>
+                        </div>
+                    `;
+                }
+
+                function loadAffectationData(reservationId) {
+                    $.ajax({
+                        url: '<?= base_url("Reservation/getAffectationData/") ?>' + reservationId,
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function(data) {
+                            var serveurList = $('#serveurList');
+                            serveurList.empty();
+
+                            data.serveurs.forEach(function(serveur) {
+                                var isChecked = data.affectations.some(function(affectation) {
+                                    return affectation.userId == serveur.userId;
+                                });
+
+                                var html = generateServeurHtml(serveur, isChecked);
+                                serveurList.append(html);
                             });
 
-                            const imageBase64 = serveur.image_base64.startsWith('data:image') ? serveur.image_base64 : 'data:image/png;base64,' + serveur.image_base64;
-                            const checkedClass = isChecked ? 'checked' : '';
+                            // Toggle checked class and input disabled state on click
+                            $('.select-image').off('click').on('click', function() {
+                                $(this).toggleClass('checked');
+                                const input = $(this).find('input[type="hidden"]');
+                                input.prop('disabled', !$(this).hasClass('checked'));
+                            });
+                        },
+                        error: function() {
+                            alert('Erreur lors du chargement des données.');
+                        }
+                    });
+                }
 
-                            return `
-                                <div class="select-image ${checkedClass}" data-userid="${serveur.userId}">
-                                    <img src="${imageBase64}" alt="${serveur.nom}" class="img-user">
-                                    <div class="checkmark"><i class="fas fa-check"></i></div>
-                                    <input type="hidden" name="userIds[]" value="${serveur.userId}" ${isChecked ? '' : 'disabled'}>
-                                    <div class="user-name">${serveur.nom} ${serveur.prenom}</div>
-                                </div>
-                            `;
-
-
-                            serveurList.append(html);
-
-                            
-                        });
-
-                        // Toggle on click
-                        $('.select-image').off('click').on('click', function() {
-                            $(this).toggleClass('checked');
-                            const input = $(this).find('input');
-                            input.prop('disabled', !$(this).hasClass('checked'));
-                        });
-                    },
-                    error: function() {
-                        alert('Erreur lors du chargement des données.');
-                    }
+                // Gestion du submit du formulaire (si tu as un form autour)
+                $('#affectationForm').submit(function(e) {
+                    e.preventDefault();
+                    $.ajax({
+                        url: '<?= base_url("Reservation/saveAffectations") ?>',
+                        type: 'POST',
+                        data: $(this).serialize(),
+                        success: function(response) {
+                            $('#affectationModal').modal('hide');
+                            // Optionnel: refresh ou update interface
+                        },
+                        error: function() {
+                            alert('Erreur lors de l\'enregistrement des affectations.');
+                        }
+                    });
                 });
-            }
+                </script>
 
 
-            $('#affectationForm').submit(function(e) {
-                e.preventDefault();
-                $.ajax({
-                    url: '<?= base_url("Reservation/saveAffectations") ?>',
-                    type: 'POST',
-                    data: $(this).serialize(),
-                    success: function(response) {
-                        $('#affectationModal').modal('hide');
-                        // Optionnel : rafraîchir la page ou mettre à jour l'interface
-                    },
-                    error: function() {
-                        alert('Erreur lors de l\'enregistrement des affectations.');
-                    }
-                });
-            });
-            
+
+
+            <script>
             function annule() {
                 Swal.fire({
                     title: '<strong>Une nouvelle procédure d\'annulation d\'un contrat de location</strong>',
