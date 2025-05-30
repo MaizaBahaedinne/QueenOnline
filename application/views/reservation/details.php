@@ -1013,7 +1013,7 @@
                     // Gérer image base64, si image_base64 commence pas par data:image, on le préfixe
                     const image = serveur.image_base64 
                         ? (serveur.image_base64.startsWith("data:image") ? serveur.image_base64 : 'data:image/png;base64,' + serveur.image_base64)
-                        ;
+                        : 'https://via.placeholder.com/60?text=?';
 
                     return `
                         <div class="select-image ${checkedClass}" data-userid="${serveur.userId}">
@@ -1021,20 +1021,6 @@
                             <div class="checkmark"><i class="fas fa-check"></i></div>
                             <input type="hidden" name="userIds[]" value="${serveur.userId}" ${isChecked ? '' : 'disabled'}>
                             <div class="user-name">${serveur.nom} ${serveur.prenom}</div>
-                        </div>
-                    `;
-                }
-
-
-                function generateServeurHHtml(serveur) {
-                    
-                    const image = serveur.image_base64 
-                        ? (serveur.image_base64.startsWith("data:image") ? serveur.image_base64 : 'data:image/png;base64,' + serveur.image_base64)
-                        ;
-
-                    return `
-                        <div class="select-image ${checkedClass}" data-userid="${serveur.userId}">
-                            <img src="${image}" alt="${serveur.nom}" class="img-user">
                         </div>
                     `;
                 }
@@ -1048,9 +1034,6 @@
                             var serveurList = $('#serveurList');
                             serveurList.empty();
 
-                            var serveurList = $('#serveur');
-                            serveurList.empty();
-
                             data.serveurs.forEach(function(serveur) {
                                 var isChecked = data.affectations.some(function(affectation) {
                                     return affectation.userId == serveur.userId;
@@ -1058,14 +1041,7 @@
 
                                 var html = generateServeurHtml(serveur, isChecked);
                                 serveurList.append(html);
-
-                                var html = generateServeurHHtml(affectations);
-                                serveurList.append(html);
-
-                                
-
                             });
-                            
 
                             // Toggle checked class and input disabled state on click
                             $('.select-image').off('click').on('click', function() {
