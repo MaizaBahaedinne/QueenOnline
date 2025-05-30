@@ -1011,13 +1011,13 @@
                 function generateServeurHtml(serveur, isChecked) {
                     const checkedClass = isChecked ? 'checked' : '';
                     // Gérer image base64, si image_base64 commence pas par data:image, on le préfixe
-                    const image = serveur.image_base64 
-                        ? (serveur.image_base64.startsWith("data:image") ? serveur.image_base64 : 'data:image/png;base64,' + serveur.image_base64)
+                    const avatar = serveur.avatar 
+                        ? (serveur.avatar.startsWith("data:image") ? serveur.avatar : 'data:image/png;base64,' + serveur.avatar)
                         : 'https://via.placeholder.com/60?text=?';
 
                     return `
                         <div class="select-image ${checkedClass}" data-userid="${serveur.userId}">
-                            <img src="${image}" alt="${serveur.nom}" class="img-user">
+                            <img src="${avatar}" alt="${serveur.nom}" class="img-user">
                             <div class="checkmark"><i class="fas fa-check"></i></div>
                             <input type="hidden" name="userIds[]" value="${serveur.userId}" ${isChecked ? '' : 'disabled'}>
                             <div class="user-name">${serveur.nom} ${serveur.prenom}</div>
