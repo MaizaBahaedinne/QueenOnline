@@ -227,10 +227,7 @@
                 <div class="card-body">
                     <?php echo $projectInfo->noteAdmin; ?>
                     <hr>
-                    <?php if (count($Backups) > 0) {
-                        echo "<button type='button' class='btn btn-primary btn-block' data-toggle='modal' data-target='#changements'>
-                                Historique (" . count($Backups) . ") </button>";
-                    } ?> 
+                   
                     
                     <div class="modal fade bd-example-modal-lg" id="changements" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="margin-top: 100px;">
                         <div class="modal-dialog modal-lg" role="document">
@@ -373,11 +370,26 @@
                         </div>
                     </div>
                     
-                    <hr>
-                    <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#affectationModal" onclick="loadAffectationData(<?= $projectInfo->reservationId ?>)">
-                        Gérer les affectations
-                    </button>
-                    <a href="<?php echo base_url('Service/entree/'.$projectInfo->reservationId) ?>">Gestion des entrées</a>
+                    
+                     <div class="d-flex justify-content-start gap-2">
+
+                            <?php if (count($Backups) > 0): ?>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#changements" title="Historique">
+                                    <i class="fas fa-history"></i>
+                                </button>
+                            <?php endif; ?>
+
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#affectationModal"
+                                    onclick="loadAffectationData(<?= $projectInfo->reservationId ?>)" title="Gérer les affectations">
+                                <i class="fas fa-users-cog"></i>
+                            </button>
+
+                            <a href="<?= base_url('Service/entree/'.$projectInfo->reservationId) ?>" class="btn btn-primary" title="Gestion des entrées">
+                                <i class="fas fa-sign-in-alt"></i>
+                            </a>
+
+                        </div>
+
                     <hr>
 
                  
