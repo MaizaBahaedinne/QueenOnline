@@ -371,24 +371,28 @@
                     </div>
                     
                     
-                     <div class="d-flex justify-content-start gap-2">
-
-                            <?php if (count($Backups) > 0): ?>
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#changements" title="Historique">
+                   <div class="row">
+                        <?php if (count($Backups) > 0): ?>
+                            <div class="col-4">
+                                <button type="button" class="btn btn-primary w-100" data-toggle="modal" data-target="#changements" title="Historique">
                                     <i class="fas fa-history"></i>
                                 </button>
-                            <?php endif; ?>
-
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#affectationModal"
-                                    onclick="loadAffectationData(<?= $projectInfo->reservationId ?>)" title="Gérer les affectations">
+                            </div>
+                        <?php endif; ?>
+                        
+                        <div class="col-4">
+                            <button type="button" class="btn btn-primary w-100" data-toggle="modal" data-target="#affectationModal" title="Gérer les affectations" onclick="loadAffectationData(<?= $projectInfo->reservationId ?>)">
                                 <i class="fas fa-users-cog"></i>
                             </button>
+                        </div>
 
-                            <a href="<?= base_url('Service/entree/'.$projectInfo->reservationId) ?>" class="btn btn-primary" title="Gestion des entrées">
+                        <div class="col-4">
+                            <a href="<?= base_url('Service/entree/'.$projectInfo->reservationId) ?>" class="btn btn-primary w-100" title="Gestion des entrées">
                                 <i class="fas fa-sign-in-alt"></i>
                             </a>
-
                         </div>
+                    </div>
+
 
                     <hr>
 
