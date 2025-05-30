@@ -45,53 +45,56 @@
 }
 
 .select-image {
-    display: inline-block;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
     position: relative;
-    margin: 5px;
+    margin: 10px;
     cursor: pointer;
     border-radius: 50%;
-    overflow: hidden;
-    width: 40px;
-    height: 40px;
-    background-color: #333;
-    box-shadow: 0 0 0 2px transparent;
-    transition: box-shadow 0.2s ease;
+    overflow: visible;
+    width: 60px;
 }
 
 .select-image img.img-user {
-    width: 100%;
-    height: 100%;
+    width: 40px;
+    height: 40px;
     object-fit: cover;
     filter: brightness(0.6);
     border-radius: 50%;
+    border: 2px solid transparent;
+    transition: filter 0.2s ease, border 0.2s ease;
 }
 
 .select-image .checkmark {
     position: absolute;
     top: 0;
-    right: 0;
-    bottom: 0;
     left: 0;
-    color: white;
-    font-size: 14px;
+    width: 40px;
+    height: 40px;
     display: none;
     align-items: center;
     justify-content: center;
-    pointer-events: none;
+    color: white;
+    font-size: 16px;
 }
 
-.select-image.checked {
-    box-shadow: 0 0 0 2px #007bff;
+.select-image.checked img.img-user {
+    filter: brightness(1);
+    border-color: #007bff;
 }
 
 .select-image.checked .checkmark {
     display: flex;
 }
 
-.select-image.checked img.img-user {
-    filter: brightness(1);
+.select-image .user-name {
+    margin-top: 5px;
+    font-size: 12px;
+    text-align: center;
+    max-width: 60px;
+    word-break: break-word;
 }
-
 
 </style>
 
@@ -1025,8 +1028,10 @@
                                     <img src="${image}" alt="${serveur.nom}" class="img-user">
                                     <div class="checkmark"><i class="fas fa-check"></i></div>
                                     <input type="hidden" name="userIds[]" value="${serveur.userId}" ${isChecked ? '' : 'disabled'}>
+                                    <div class="user-name">${serveur.nom} ${serveur.prenom}</div>
                                 </div>
                             `;
+
 
                             serveurList.append(html);
                         });
