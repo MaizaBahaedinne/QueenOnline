@@ -451,33 +451,7 @@
                     <div id="serveurAffectes" class="d-flex flex-wrap mt-4"></div>
 
                     <script>
-                        function loadAffectationData(reservationId) {
-                            $.ajax({
-                                url: '<?= base_url("Reservation/getAffectationData/") ?>' + reservationId,
-                                type: 'GET',
-                                dataType: 'json',
-                                success: function(data) {
-                                    const serveurList = $('#serveurAffectes');
-                                    serveurList.empty();
-
-                                    data.serveurs.forEach(serveur => {
-                                        const isChecked = data.affectations.some(a => a.userId == serveur.userId);
-                                        const html = generateServeurHtml(serveur, isChecked);
-                                        serveurList.append(html);
-                                    });
-
-                                    // toggle check on click
-                                    $('.select-image').off('click').on('click', function () {
-                                        const isChecked = $(this).hasClass('checked');
-                                        $(this).toggleClass('checked');
-                                        $(this).find('input[type="hidden"]').prop('disabled', isChecked);
-                                    });
-                                },
-                                error: function() {
-                                    alert('Erreur lors du chargement des données.');
-                                }
-                            });
-                        }
+                        
 
 
                     </script>
@@ -1051,13 +1025,12 @@
                                 return affectation.userId == serveur.userId;
                             });
 
-                            var checkedClass = isChecked ? 'checked' : '';
+                            const imageBase64 = serveur.image_base64.startsWith('data:image') ? serveur.image_base64 : 'data:image/png;base64,' + serveur.image_base64;
+                            const checkedClass = isChecked ? 'checked' : '';
 
-                            var image = serveur.imageUrl ?? 'https://via.placeholder.com/20'; // à adapter
-
-                            var html = `
+                            return `
                                 <div class="select-image ${checkedClass}" data-userid="${serveur.userId}">
-                                    <img src="${image}" alt="${serveur.nom}" class="img-user">
+                                    <img src="${imageBase64}" alt="${serveur.nom}" class="img-user">
                                     <div class="checkmark"><i class="fas fa-check"></i></div>
                                     <input type="hidden" name="userIds[]" value="${serveur.userId}" ${isChecked ? '' : 'disabled'}>
                                     <div class="user-name">${serveur.nom} ${serveur.prenom}</div>
@@ -1066,6 +1039,8 @@
 
 
                             serveurList.append(html);
+
+                            
                         });
 
                         // Toggle on click
