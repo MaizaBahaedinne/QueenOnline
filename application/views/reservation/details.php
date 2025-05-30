@@ -1026,34 +1026,18 @@
                 }
 
 
-               function generateServeurHtml(serveur, isChecked) {
-    const checkedClass = isChecked ? 'checked' : '';
-    const image = serveur.avatar
-        ? (serveur.avatar.startsWith("data:image") ? serveur.avatar : 'data:image/png;base64,' + serveur.avatar)
-        : 'https://via.placeholder.com/60?text=?';
+                function generateServeurHHtml(affectations) {
+                    
+                    const image = serveur.image_base64 
+                        ? (affectations.image_base64.startsWith("data:image") ? affectations.image_base64 : 'data:image/png;base64,' + affectations.image_base64)
+                        ;
 
-    return `
-        <div class="select-image ${checkedClass}" data-userid="${serveur.userId}">
-            <img src="${image}" alt="${serveur.nom}" class="img-user">
-            <div class="checkmark"><i class="fas fa-check"></i></div>
-            <input type="hidden" name="userIds[]" value="${serveur.userId}" ${isChecked ? '' : 'disabled'}>
-            <div class="user-name">${serveur.nom} ${serveur.prenom}</div>
-        </div>
-    `;
-}
-
-// Affiche juste les avatars, sans nom, sans checkbox
-function generateServeurHHtml(affectation) {
-    const image = affectation.avatar
-        ? (affectation.avatar.startsWith("data:image") ? affectation.avatar : 'data:image/png;base64,' + affectation.avatar)
-        : 'https://via.placeholder.com/60?text=?';
-
-    return `
-        <div class="select-image checked" data-userid="${affectation.userId}">
-            <img src="${image}" alt="${affectation.nom}" class="img-user">
-        </div>
-    `;
-}
+                    return `
+                        <div class="select-image ${checkedClass}" data-userid="${affectations.userId}">
+                            <img src="${image}" alt="${affectations.nom}" class="img-user">
+                        </div>
+                    `;
+                }
 
                 function loadAffectationData(reservationId) {
                     $.ajax({
@@ -1064,26 +1048,26 @@ function generateServeurHHtml(affectation) {
                             var serveurList = $('#serveurList');
                             serveurList.empty();
 
-                            var serveurAffectes = $('#serveur');  // j’imagine que c’est la div où tu veux afficher les affectés
-                            serveurAffectes.empty();
+                            var serveurList = $('#serveur');
+                            serveurList.empty();
 
                             data.serveurs.forEach(function(serveur) {
                                 var isChecked = data.affectations.some(function(affectation) {
                                     return affectation.userId == serveur.userId;
                                 });
 
-                                // Ajout des serveurs avec checkbox & nom
                                 var html = generateServeurHtml(serveur, isChecked);
                                 serveurList.append(html);
-                            });
 
-                            // Affiche seulement les affectations (avatars)
-                            data.affectations.forEach(function(affectation) {
-                                var htmlH = generateServeurHHtml(affectation);
-                                serveurAffectes.append(htmlH);
-                            });
+                                var html = generateServeurHHtml(affectations);
+                                serveurAffectes.append(html);
 
-                            // Toggle checked class and input disabled state on click (uniquement dans serveurList)
+                                
+
+                            });
+                            
+
+                            // Toggle checked class and input disabled state on click
                             $('.select-image').off('click').on('click', function() {
                                 $(this).toggleClass('checked');
                                 const input = $(this).find('input[type="hidden"]');
@@ -1095,7 +1079,6 @@ function generateServeurHHtml(affectation) {
                         }
                     });
                 }
-
 
                 // Gestion du submit du formulaire (si tu as un form autour)
                 $('#affectationForm').submit(function(e) {
