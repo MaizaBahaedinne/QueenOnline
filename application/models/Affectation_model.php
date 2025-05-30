@@ -9,11 +9,16 @@
 
 class Affectation_model extends CI_Model
 {
-    public function getAffectationsByReservation($reservationId)
-    {
-        $this->db->where('reservationId', $reservationId);
-        return $this->db->get('tbl_service_affectation')->result();
-    }
+   public function getAffectationsByReservation($reservationId)
+{
+    $this->db->select('a.*, u.*'); // ajoute ici tous les champs utiles de tbl_users
+    $this->db->from('tbl_service_affectation a');
+    $this->db->join('tbl_users u', 'u.userId = a.userId');
+    $this->db->where('a.reservationId', $reservationId);
+
+    return $this->db->get()->result();
+}
+
 
     public function deleteAffectationsByReservation($reservationId)
     {
