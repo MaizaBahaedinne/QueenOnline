@@ -377,6 +377,7 @@
                     <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#affectationModal" onclick="loadAffectationData(<?= $projectInfo->reservationId ?>)">
                         Gérer les affectations
                     </button>
+                    <a href="<?php echo base_url('Service/entree/'.$projectInfo->reservationId) ?>">Gestion des entrées</a>
                     <hr>
 
                  
