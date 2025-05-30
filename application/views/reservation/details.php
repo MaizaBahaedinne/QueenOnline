@@ -53,8 +53,8 @@
     width: 80px;
 }
 .img-user {
-    width: 60px;
-    height: 60px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     filter: grayscale(100%);
     transition: all 0.2s ease;
