@@ -1033,7 +1033,7 @@
 
                     return `
                         <div class="select-image checked" data-userid="${affectation.userId}">
-                            <img src="${image}" alt="${affectation.nom}" class="img-user">
+                            <img src="${avatar}" alt="${affectation.nom}" class="img-user" width ='10px'>
                         </div>
                     `;
                 }
