@@ -43,6 +43,56 @@
 .tab-pane.active {
   display: block;
 }
+
+.select-image {
+    display: inline-block;
+    position: relative;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 50%;
+    overflow: hidden;
+    width: 40px;
+    height: 40px;
+    background-color: #333;
+    box-shadow: 0 0 0 2px transparent;
+    transition: box-shadow 0.2s ease;
+}
+
+.select-image img.img-user {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.6);
+    border-radius: 50%;
+}
+
+.select-image .checkmark {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    color: white;
+    font-size: 14px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+
+.select-image.checked {
+    box-shadow: 0 0 0 2px #007bff;
+}
+
+.select-image.checked .checkmark {
+    display: flex;
+}
+
+.select-image.checked img.img-user {
+    filter: brightness(1);
+}
+
+
 </style>
 
 
@@ -960,19 +1010,32 @@
                     success: function(data) {
                         var serveurList = $('#serveurList');
                         serveurList.empty();
+
                         data.serveurs.forEach(function(serveur) {
                             var isChecked = data.affectations.some(function(affectation) {
                                 return affectation.userId == serveur.userId;
                             });
-                            var checkbox = `
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="userIds[]" value="${serveur.userId}" id="serveur${serveur.userId}" ${isChecked ? 'checked' : ''}>
-                                    <label class="form-check-label" for="serveur${serveur.userId}">
-                                        ${serveur.nom} ${serveur.prenom}
-                                    </label>
+
+                            var checkedClass = isChecked ? 'checked' : '';
+
+                            var image = serveur.imageUrl ?? 'https://via.placeholder.com/20'; // à adapter
+
+                            var html = `
+                                <div class="select-image ${checkedClass}" data-userid="${serveur.userId}">
+                                    <img src="${image}" alt="${serveur.nom}" class="img-user">
+                                    <div class="checkmark"><i class="fas fa-check"></i></div>
+                                    <input type="hidden" name="userIds[]" value="${serveur.userId}" ${isChecked ? '' : 'disabled'}>
                                 </div>
                             `;
-                            serveurList.append(checkbox);
+
+                            serveurList.append(html);
+                        });
+
+                        // Toggle on click
+                        $('.select-image').off('click').on('click', function() {
+                            $(this).toggleClass('checked');
+                            const input = $(this).find('input');
+                            input.prop('disabled', !$(this).hasClass('checked'));
                         });
                     },
                     error: function() {
@@ -980,6 +1043,7 @@
                     }
                 });
             }
+
 
             $('#affectationForm').submit(function(e) {
                 e.preventDefault();
