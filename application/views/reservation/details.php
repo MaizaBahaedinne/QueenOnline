@@ -448,7 +448,44 @@
 
 
                     <hr>
+                    <div id="serveurAffectes" class="d-flex flex-wrap mt-4"></div>
 
+                    <script>
+                        var affectesList = $('#serveurAffectes');
+                        affectesList.empty();
+
+                        data.serveurs.forEach(function(serveur) {
+                            var isChecked = data.affectations.some(function(affectation) {
+                                return affectation.userId == serveur.userId;
+                            });
+
+                            // Partie existante : affichage dans la liste de sélection
+                            var image = serveur.photoUrl || 'https://ui-avatars.com/api/?name=' + encodeURIComponent(serveur.nom + ' ' + serveur.prenom);
+                            var checkedClass = isChecked ? 'checked' : '';
+
+                            var html = `
+                                <div class="select-image ${checkedClass}" data-userid="${serveur.userId}">
+                                    <img src="${image}" alt="${serveur.nom}" class="img-user">
+                                    <div class="checkmark"><i class="fas fa-check"></i></div>
+                                    <input type="hidden" name="userIds[]" value="${serveur.userId}" ${isChecked ? '' : 'disabled'}>
+                                    <div class="user-name">${serveur.nom} ${serveur.prenom}</div>
+                                </div>
+                            `;
+                            serveurList.append(html);
+
+                            // 🎯 Nouvelle partie : affichage horizontal si affecté
+                            if (isChecked) {
+                                var miniCard = `
+                                    <div class="text-center mx-2">
+                                        <img src="${image}" class="rounded-circle" style="width:30px; height:30px;" alt="${serveur.nom}">
+                                        <div style="font-size:10px; max-width:40px; word-break:break-word;">${serveur.nom}</div>
+                                    </div>
+                                `;
+                                affectesList.append(miniCard);
+                            }
+                        });
+
+                    </script>
                  
                     
                    
