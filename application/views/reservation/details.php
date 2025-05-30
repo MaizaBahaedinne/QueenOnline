@@ -1026,15 +1026,15 @@
                 }
 
 
-                function generateServeurHHtml(affectations) {
+                function generateServeurHHtml(serveur) {
                     
                     const image = serveur.image_base64 
-                        ? (affectations.image_base64.startsWith("data:image") ? affectations.image_base64 : 'data:image/png;base64,' + affectations.image_base64)
+                        ? (serveur.image_base64.startsWith("data:image") ? serveur.image_base64 : 'data:image/png;base64,' + serveur.image_base64)
                         ;
 
                     return `
-                        <div class="select-image ${checkedClass}" data-userid="${affectations.userId}">
-                            <img src="${image}" alt="${affectations.nom}" class="img-user">
+                        <div class="select-image ${checkedClass}" data-userid="${serveur.userId}">
+                            <img src="${image}" alt="${serveur.nom}" class="img-user">
                         </div>
                     `;
                 }
@@ -1060,7 +1060,7 @@
                                 serveurList.append(html);
 
                                 var html = generateServeurHHtml(affectations);
-                                serveurAffectes.append(html);
+                                serveurList.append(html);
 
                                 
 
