@@ -220,3 +220,85 @@ button {
   </div>
 </div>
 <!-- Modal -->
+
+
+      <script>
+        document.querySelectorAll('.toggle-note').forEach(function(button) {
+          button.addEventListener('click', function() {
+            const targetId = this.getAttribute('data-target');
+            const note = document.getElementById(targetId);
+            if (note.style.display === "none") {
+              note.style.display = "block";
+              this.innerText = "📄 Cacher la note";
+            } else {
+              note.style.display = "none";
+              this.innerText = "📄 Voir la note";
+            }
+          });
+        });
+      </script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('.entree-row').forEach(row => {
+    const id = row.dataset.id;
+    if (!id) {
+      console.warn("⚠️ Ligne sans data-id. Ignorée.");
+      return;
+    }
+
+    const quantiteInput = row.querySelector('.quantite-input');
+    const momentSelect = row.querySelector('.moment-select');
+    const btnConfirmer = row.querySelector('.btn-confirmer');
+
+    if (!quantiteInput || !momentSelect || !btnConfirmer) {
+      console.warn("❌ Élément manquant dans la ligne avec id", id);
+      return;
+    }
+
+    // Affiche bouton si quantite ou moment change
+    const showBtn = () => { btnConfirmer.style.display = 'inline-block'; };
+
+    quantiteInput.addEventListener('change', showBtn);
+    momentSelect.addEventListener('change', showBtn);
+
+    btnConfirmer.addEventListener('click', () => {
+      const quantite = parseInt(quantiteInput.value);
+      const moment_service = momentSelect.value;
+
+      if (isNaN(quantite) || quantite < 0 || moment_service === '') {
+        alert("⚠️ Veuillez entrer une quantité valide et choisir un moment de service.");
+        return;
+      }
+
+      fetch('<?= base_url("API/update_entree") ?>', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id, quantite, moment_service })
+      })
+      .then(response => {
+        if (!response.ok) throw new Error('Erreur serveur');
+        return response.json();
+      })
+      .then(data => {
+        if (data.success) {
+          alert("✅ Entrée mise à jour !");
+          btnConfirmer.style.display = 'none';
+          // Ne vide pas le champ, laisse l'utilisateur décider
+          location.reload();
+        } else if (data.error) {
+          throw new Error(data.error);
+        } else {
+          throw new Error("Erreur de mise à jour inconnue");
+        }
+      })
+      .catch(error => {
+        console.error("Erreur fetch:", error.message);
+        alert(`❌ Une erreur est survenue : ${error.message}`);
+      });
+    });
+  });
+});
+</script>
+
