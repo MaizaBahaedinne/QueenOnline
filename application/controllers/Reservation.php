@@ -466,6 +466,8 @@ class Reservation extends BaseController
                     ]);
                 }
 
+        
+
         public function saveAffectations()
                 {
                     $reservationId = $this->input->post('reservationId');
