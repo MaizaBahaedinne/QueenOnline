@@ -161,7 +161,7 @@ button {
 
 
           <!-- ➕ NOUVELLES ENTRÉES -->
-      <form method="post" action="<?php echo base_url() ?>Reservation/addEntrees/<?php echo $reservation->reservationId ?>" class="form-style">
+      <form method="post" action="<?php echo base_url() ?>Service/addEntrees/<?php echo $reservation->reservationId ?>" class="form-style">
           <h3>Ajouter de nouvelles entrées</h3>
           <div id="entree-container">
             <div class="entree-row">
