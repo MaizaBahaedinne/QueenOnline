@@ -169,7 +169,7 @@ class Finance extends BaseController
 
                     foreach ($reservations as $res) {
                         $now = new DateTime();
-                        $resDate = new DateTime($res->date_reservation);
+                        $resDate = new DateTime($res->dateFin);
 
                         // Date limite = demande client OU 30 jours avant date réservation
                         $dateLimite = $res->demandeEcheance
