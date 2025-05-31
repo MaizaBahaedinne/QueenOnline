@@ -60,6 +60,7 @@ class User_model extends CI_Model
         {
             $this->db->where('roleId', $roleId);
             $this->db->where('isDeleted', 0); // si tu as ce champ
+            $this->db->order_by('email', 'ASC');
             return $this->db->get('tbl_users')->result();
         }
 
