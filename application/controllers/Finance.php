@@ -224,6 +224,8 @@ class Finance extends BaseController
                             echo "[TEST][$relanceType] Vers $mobile ➜ $message\n";
                         }
                     }
+
+                    $this->loadViews("test", $this->global, null , NULL);
                 }
 
 
