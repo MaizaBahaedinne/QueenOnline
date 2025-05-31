@@ -166,7 +166,7 @@ public function autoRelanceCronTest()
     $reservations = $this->finance_model->ReservationCalender();
     $now = new DateTime();
 
-    echo "\n========== LANCEMENT DU TEST DE RELANCES AUTO ==========\n\n";
+    echo "<br>========== LANCEMENT DU TEST DE RELANCES AUTO ==========<br><br>";
 
     foreach ($reservations as $res) {
         // Vérification des données
@@ -204,7 +204,7 @@ public function autoRelanceCronTest()
 
             if ($diffSinceLastRelance < 2) {
                 $canRelance = false;
-                echo "⏸️  [SKIP] Résa #{$res->reservationId} | Dernière relance trop récente (il y a $diffSinceLastRelance jour(s))\n";
+                echo "⏸️  [SKIP] Résa #{$res->reservationId} | Dernière relance trop récente (il y a $diffSinceLastRelance jour(s))<br>";
                 continue;
             }
         }
@@ -229,21 +229,21 @@ public function autoRelanceCronTest()
 
         // Affichage propre
         if ($relanceType && $canRelance) {
-            echo "✅ [RELANCE $relanceType] ----------------------------------\n";
-            echo "🆔 Réservation  : #{$res->reservationId}\n";
-            echo "👤 Client       : $prenom\n";
-            echo "📱 Téléphone    : $mobile\n";
-            echo "💰 Reste à payer: $reste DT\n";
-            echo "📆 Échéance     : " . $dateLimite->format('Y-m-d') . " (J" . ($interval > 0 ? "-" : "+") . abs($interval) . ")\n";
-            echo "✉️  Message     : $message\n";
-            echo "--------------------------------------------------------\n\n";
+            echo "✅ [RELANCE $relanceType] ----------------------------------<br>";
+            echo "🆔 Réservation  : #{$res->reservationId}<br>";
+            echo "👤 Client       : $prenom<br>";
+            echo "📱 Téléphone    : $mobile<br>";
+            echo "💰 Reste à payer: $reste DT<br>";
+            echo "📆 Échéance     : " . $dateLimite->format('Y-m-d') . " (J" . ($interval > 0 ? "-" : "+") . abs($interval) . ")<br>";
+            echo "✉️  Message     : $message<br>";
+            echo "--------------------------------------------------------<br><br>";
 
             // En production, décommenter :
             // $this->relance_model->addRelance($res->reservationId, $this->session->user_id ?? 1);
         }
     }
 
-    echo "=========== FIN DU TEST DE RELANCES AUTO ===========\n";
+    echo "=========== FIN DU TEST DE RELANCES AUTO ===========<br>";
 }
 
 
