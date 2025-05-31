@@ -166,8 +166,10 @@ public function autoRelanceCronTest()
     $reservations = $this->finance_model->ReservationCalender();
     $now = new DateTime();
 
+    echo "\n========== LANCEMENT DU TEST DE RELANCES AUTO ==========\n\n";
+
     foreach ($reservations as $res) {
-        // Skip données incomplètes
+        // Vérification des données
         if (!$res->clientId || !$res->prix || !$res->dateFin) continue;
 
         $resDate = new DateTime($res->dateFin);
@@ -175,24 +177,24 @@ public function autoRelanceCronTest()
             ? new DateTime($res->demandeEcheance)
             : (clone $resDate)->modify('-30 days');
 
-        $interval = (int)$now->diff($dateLimite)->format('%r%a'); // jours entre now et dateLimite
+        $interval = (int)$now->diff($dateLimite)->format('%r%a'); // Jours entre aujourd'hui et date limite
         $isFuture = $now < $dateLimite;
 
-        // Paiement
+        // Paiements
         $paiements = $this->paiement_model->paiementListingbyReservation($res->reservationId);
         $totalPaye = array_sum(array_map(fn($p) => $p->valeur, $paiements));
         $reste = $res->prix - $totalPaye;
 
-        if ($reste <= 0) continue; // Déjà payé
+        if ($reste <= 0) continue;
 
-        // Client
+        // Infos client
         $client = $this->user_model->getUserInfo($res->clientId);
         if (!$client || !$client->mobile) continue;
 
         $prenom = $client->prenom ?? 'Client';
         $mobile = "216" . $client->mobile;
 
-        // Vérifie la dernière relance
+        // Vérifie si une relance a été envoyée récemment
         $lastRelance = $this->relance_model->getLastRelance($res->reservationId);
         $canRelance = true;
 
@@ -202,37 +204,48 @@ public function autoRelanceCronTest()
 
             if ($diffSinceLastRelance < 2) {
                 $canRelance = false;
-                echo "[SKIP] Relance trop récente pour la résa #{$res->reservationId}\n";
+                echo "⏸️  [SKIP] Résa #{$res->reservationId} | Dernière relance trop récente (il y a $diffSinceLastRelance jour(s))\n";
+                continue;
             }
         }
 
-        // Message selon le stade
+        // Choix du type de relance
         $relanceType = null;
         $message = "";
 
         if ($isFuture && $interval === 45) {
-            $relanceType = 'gentil';
-            $message = "📅 J-45 - Bonjour $prenom ! Pensez à régler les $reste DT restants.";
+            $relanceType = 'gentille';
+            $message = "📅 Bonjour $prenom ! Votre réservation approche. Merci de régler les $reste DT restants.";
         } elseif ($isFuture && $interval <= 30 && $interval > 15 && $interval % 3 === 0) {
-            $relanceType = 'normal';
-            $message = "🔄 Relance J-$interval - $prenom, il reste $reste DT à payer. Merci d'anticiper.";
+            $relanceType = 'standard';
+            $message = "🔄 Rappel : $prenom, il vous reste $reste DT à régler avant échéance.";
         } elseif ($isFuture && $interval === 15) {
-            $relanceType = 'agressif';
-            $message = "⚠️ Urgence J-15 - $prenom, il vous reste $reste DT. Sans règlement, la réservation est compromise.";
+            $relanceType = 'sévère';
+            $message = "⚠️ Urgence $prenom ! Plus que 15 jours. Solde dû : $reste DT. Merci d'agir rapidement.";
         } elseif (!$isFuture && $interval === -1 && $res->demandeEcheance) {
-            $relanceType = 'derniere';
-            $message = "⏰ Ultime rappel - $prenom, votre échéance spéciale est dans moins de 24h. Reste dû : $reste DT.";
+            $relanceType = 'ultime';
+            $message = "⏰ Dernier rappel $prenom ! Votre échéance spéciale est dans moins de 24h. Reste dû : $reste DT.";
         }
 
-        // Affichage test
+        // Affichage propre
         if ($relanceType && $canRelance) {
-            echo "[TEST][$relanceType] Vers $mobile ➜ $message\n";
+            echo "✅ [RELANCE $relanceType] ----------------------------------\n";
+            echo "🆔 Réservation  : #{$res->reservationId}\n";
+            echo "👤 Client       : $prenom\n";
+            echo "📱 Téléphone    : $mobile\n";
+            echo "💰 Reste à payer: $reste DT\n";
+            echo "📆 Échéance     : " . $dateLimite->format('Y-m-d') . " (J" . ($interval > 0 ? "-" : "+") . abs($interval) . ")\n";
+            echo "✉️  Message     : $message\n";
+            echo "--------------------------------------------------------\n\n";
 
-            // --- En prod tu décommentes cette ligne :
+            // En production, décommenter :
             // $this->relance_model->addRelance($res->reservationId, $this->session->user_id ?? 1);
         }
     }
+
+    echo "=========== FIN DU TEST DE RELANCES AUTO ===========\n";
 }
+
 
 
 
