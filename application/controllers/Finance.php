@@ -31,7 +31,7 @@ class Finance extends BaseController
         $this->load->model('paiement_model');
         $this->load->model('finance_model');
         $this->load->model("Sms_model");
-        
+        $this->load->model("relance_model");
         $this->isLoggedIn();   
     }
     
