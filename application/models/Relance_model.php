@@ -14,7 +14,7 @@ class Relance_model extends CI_Model
    public function getLastRelance($reservationId)
     {
         return $this->db->select('createdDTM')
-            ->from('relance')
+            ->from('tbl_relance')
             ->where('reservationId', $reservationId)
             ->order_by('createdDTM', 'DESC')
             ->limit(1)
@@ -24,7 +24,7 @@ class Relance_model extends CI_Model
 
     public function addRelance($reservationId, $userId)
     {
-        $this->db->insert('relance', [
+        $this->db->insert('tbl_relance', [
             'reservationId' => $reservationId,
             'createdDTM' => date('Y-m-d H:i:s'),
             'createdBy' => $userId,
