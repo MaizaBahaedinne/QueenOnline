@@ -363,7 +363,15 @@ class Paiement_model extends CI_Model
         return $query->row();
     }
     
-    
+
+    public function getLastPaymentDate($reservationId)
+    {
+        $this->db->where('reservationId', $reservationId);
+        $this->db->order_by('datePaiement', 'DESC');
+        $this->db->limit(1);
+        return $this->db->get('tbl_paiement')->row();
+    }
+        
     
 
 
