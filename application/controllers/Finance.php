@@ -221,7 +221,7 @@ class Finance extends BaseController
         }
     }
 
-    $this->loadViews("test", $this->global, null , NULL);
+    
 }
 
 
