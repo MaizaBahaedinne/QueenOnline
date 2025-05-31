@@ -567,7 +567,7 @@
                             <h6>ARTICLE 9 – PRIX DE LA LOCATION :</h6>
                             Le loyer est de <b><?php echo $contratInfo->prix; ?> DT</b>, payable au plus tard <b style="color: red">30 jours avant le début de la location</b>.<br>
                             Une avance de <b style="color: green"><?php echo $contratInfo->avance; ?> DT</b> est exigée à la signature.<br>
-                            Paiement uniquement en espèces.<br><br>
+                            Paiement uniquement en espèces ou Par CB.<br><br>
 
                             <b>NB :</b><br>
                             1. Aucun remboursement ne sera effectué. Le client peut seulement reporter la date de réservation.<br>
@@ -661,6 +661,8 @@
                                     <div class="info-facture" style="text-align: right;">
                                         <p><strong>N° Facture :</strong> QP-<?php echo date('Ymd').'-'.$projectInfo->reservationId; ?></p>
                                         <p><strong>Date :</strong> <?php echo date('d/m/Y'); ?></p>
+                                        <p><strong>Date d’échéance finale</strong>
+                                        <input type="date" name="demandeEcheance" class="form-control" value="<?= $reservation->demandeEcheance ?>">
                                         <p><strong>Référence :</strong> <?php echo $projectInfo->type.' '.$projectInfo->titre; ?></p>
                                         <p><strong>Date événement :</strong> <?php echo date('d/m/Y', strtotime($projectInfo->dateDebut)); ?></p>
                                     </div>
