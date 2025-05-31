@@ -202,7 +202,7 @@ public function autoRelanceCronTest()
             $lastRelanceDTM = new DateTime($lastRelance->createdDTM);
             $diffSinceLastRelance = $now->diff($lastRelanceDTM)->days;
 
-            if ($diffSinceLastRelance < 2) {
+            if ($diffSinceLastRelance < 1) {
                 $canRelance = false;
                 echo "⏸️  [SKIP] Résa #{$res->reservationId} | Dernière relance trop récente (il y a $diffSinceLastRelance jour(s))<br>";
                 continue;
@@ -216,13 +216,13 @@ public function autoRelanceCronTest()
         if ($isFuture && $interval === 45) {
             $relanceType = 'gentille';
             $message = "📅 Bonjour $prenom ! Votre réservation approche. Merci de régler les $reste DT restants.";
-        } elseif ($isFuture && $interval <= 30 && $interval > 15 && $interval % 3 === 0) {
+        } elseif ($isFuture && $interval <= 30 && $interval > 10 && $interval % 2 === 0) {
             $relanceType = 'standard';
             $message = "🔄 Rappel : $prenom, il vous reste $reste DT à régler avant échéance.";
-        } elseif ($isFuture && $interval === 15) {
+        } elseif ($isFuture && $interval === 7) {
             $relanceType = 'sévère';
-            $message = "⚠️ Urgence $prenom ! Plus que 15 jours. Solde dû : $reste DT. Merci d'agir rapidement.";
-        } elseif (!$isFuture && $interval === -1 && $res->demandeEcheance) {
+            $message = "⚠️ Urgence $prenom ! Plus que 7 jours. Solde dû : $reste DT. Merci d'agir rapidement.";
+        } elseif (!$isFuture && $interval === 3 ) {
             $relanceType = 'ultime';
             $message = "⏰ Dernier rappel $prenom ! Votre échéance spéciale est dans moins de 24h. Reste dû : $reste DT.";
         }
