@@ -222,6 +222,43 @@ button {
 <!-- Modal -->
 
 
+
+      <script type="text/javascript">
+        const naturesExistantes = [
+              "Jus", "Eau", "Pâtisserie", "Gâteau", "Salé", "Boisson gazeuse", "Thé", "Café", "Snack", "Fruit"
+            ];
+
+            // Remplir datalist
+            const datalist = document.getElementById("natures");
+            naturesExistantes.forEach(nature => {
+              const option = document.createElement("option");
+              option.value = nature;
+              datalist.appendChild(option);
+            });
+
+            // Ajouter ligne
+            document.getElementById('add-row').addEventListener('click', () => {
+              const container = document.getElementById('entree-container');
+              const firstRow = container.querySelector('.entree-row');
+              const clone = firstRow.cloneNode(true);
+              clone.querySelectorAll('input, select').forEach(input => input.value = '');
+              container.appendChild(clone);
+            });
+
+            // Supprimer ligne
+            document.addEventListener('click', function (e) {
+              if (e.target && e.target.classList.contains('remove-btn')) {
+                const rows = document.querySelectorAll('.entree-row');
+                if (rows.length > 1) {
+                  e.target.closest('.entree-row').remove();
+                }
+              }
+            });
+
+
+
+      </script>
+
       <script>
         document.querySelectorAll('.toggle-note').forEach(function(button) {
           button.addEventListener('click', function() {
@@ -301,4 +338,6 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 </script>
+
+
 
