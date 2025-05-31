@@ -662,7 +662,7 @@
                                         <p><strong>N° Facture :</strong> QP-<?php echo date('Ymd').'-'.$projectInfo->reservationId; ?></p>
                                         <p><strong>Date :</strong> <?php echo date('d/m/Y'); ?></p>
                                         <p><strong>Date d’échéance finale</strong>
-                                        <input type="date" name="demandeEcheance" class="form-control" value="<?= $reservation->demandeEcheance ?>">
+                                        <input type="date" name="demandeEcheance" class="form-control" value="">
                                         <p><strong>Référence :</strong> <?php echo $projectInfo->type.' '.$projectInfo->titre; ?></p>
                                         <p><strong>Date événement :</strong> <?php echo date('d/m/Y', strtotime($projectInfo->dateDebut)); ?></p>
                                     </div>
