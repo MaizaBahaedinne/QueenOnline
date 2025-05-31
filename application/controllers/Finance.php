@@ -160,6 +160,65 @@ class Finance extends BaseController
             redirect("Finance/relance") ;
     }
 
+
+
+
+                    public function autoRelanceCron()
+                {
+                    $reservations = $this->finance_model->ReservationCalender();
+
+                    foreach ($reservations as $res) {
+                        $now = new DateTime();
+                        $resDate = new DateTime($res->date_reservation);
+
+                        // Date limite = demande client OU 30 jours avant date réservation
+                        $dateLimite = $res->demandeEcheance
+                            ? new DateTime($res->demandeEcheance)
+                            : (clone $resDate)->modify('-30 days');
+
+                        $interval = (int)$now->diff($dateLimite)->format('%r%a'); // négatif si en retard
+                        $isFuture = $now < $dateLimite;
+
+                        // Paiement
+                        $paiements = $this->paiement_model->paiementListingbyReservation($res->reservationId);
+                        $totalPaye = array_sum(array_map(fn($p) => $p->valeur, $paiements));
+                        $reste = $res->prix - $totalPaye;
+
+                        if ($reste <= 0) continue;
+
+                        $lastPayment = $this->paiement_model->getLastPaymentDate($res->reservationId);
+                        $lastPayDate = $lastPayment ? new DateTime($lastPayment->datePaiement) : null;
+
+                        $client = $this->user_model->getUserInfo($res->clientId);
+                        $mobile = "216" . $client->mobile;
+                        $prenom = $client->prenom;
+
+                        // --- TEST MODE: afficher ce qu'on ferait ---
+                        $relanceType = null;
+                        $message = "";
+
+                        if ($isFuture && $interval == 45 && $lastPayDate) {
+                            $relanceType = 'gentil';
+                            $message = "📅 Rappel J-45 à $prenom - Dernier paiement : " . $lastPayDate->format('d/m/Y') . " | Reste : $reste DT";
+                        } elseif ($isFuture && $interval <= 30 && $interval > 15 && $interval % 3 == 0) {
+                            $relanceType = 'normal';
+                            $message = "🔄 Relance $prenom (chaque 3 jours) | J-$interval | Reste : $reste DT";
+                        } elseif ($isFuture && $interval == 15) {
+                            $relanceType = 'agressif';
+                            $message = "⚠️ Rappel agressif J-15 $prenom | Reste : $reste DT";
+                        } elseif (!$isFuture && $interval == -1) {
+                            $relanceType = 'derniere';
+                            $message = "⏰ Dernière relance < 24h $prenom | Reste : $reste DT";
+                        }
+
+                        if ($relanceType) {
+                            echo "[TEST][$relanceType] $message\n";
+                            $this->logRelance($res->reservationId, $relanceType); // Tu peux commenter cette ligne si tu veux un test 100% dry
+                        }
+                    }
+                }
+
+
              
 
         public function sendSMS($myMobile, $mySms , $type)
