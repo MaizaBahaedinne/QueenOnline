@@ -213,19 +213,28 @@ public function autoRelanceCronTest()
         $relanceType = null;
         $message = "";
 
+                /*
+         * Mapping des relances :
+         * - J-45     : gentille
+         * - J-30 à J-10 tous les 3 jours : standard
+         * - J-7      : sévère
+         * - J+3      : ultime
+         */
+
         if ($isFuture && $interval === 45) {
             $relanceType = 'gentille';
             $message = "📅 Bonjour $prenom ! Votre réservation approche. Merci de régler les $reste DT restants.";
         } elseif ($isFuture && $interval <= 30 && $interval > 10 && $interval % 3 === 0) {
             $relanceType = 'standard';
             $message = "🔄 Rappel : $prenom, il vous reste $reste DT à régler avant échéance.";
-        } elseif ($isFuture && $interval === 7) {
+        } elseif ($isFuture && $interval === 7 && $interval <= 3 ) {
             $relanceType = 'sévère';
             $message = "⚠️ Urgence $prenom ! Plus que 7 jours. Solde dû : $reste DT. Merci d'agir rapidement.";
-        } elseif (!$isFuture && $interval === 3 ) {
+        } elseif (!$isFuture && $interval === 3) {
             $relanceType = 'ultime';
-            $message = "⏰ Dernier rappel $prenom ! Votre échéance spéciale est dans moins de 24h. Reste dû : $reste DT.";
+            $message = "⏰ Dernier rappel $prenom ! Votre échéance est dépassée depuis 3 jours. Reste dû : $reste DT.";
         }
+
 
         // Affichage propre
         if ($relanceType && $canRelance) {
