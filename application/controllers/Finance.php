@@ -231,9 +231,9 @@ public function autoRelanceCronTest()
         } elseif ($isFuture && $interval === 7) {
             $relanceType = 'sévère';
             $message = "⚠️ Urgence $prenom ! Plus que 7 jours. Solde dû : $reste DT. Merci d'agir rapidement.";
-        } elseif (!$isFuture && $interval <= -3 && $interval > -6) {
+        } elseif ($isFuture && $interval === 3) {
             $relanceType = 'ultime';
-            $message = "⏰ Dernier rappel $prenom ! Votre échéance est passée depuis 3 jours. Reste dû : $reste DT.";
+            $message = "⚠️ Alerte $prenom ! Il ne vous reste que 3 jours pour régler les $reste DT restants. Merci de faire le nécessaire.";
         }
 
         if ($relanceType && $canRelance) {
