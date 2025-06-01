@@ -185,11 +185,17 @@ public function autoRelanceCronTest()
         $totalPaye = array_sum(array_map(fn($p) => $p->valeur, $paiements));
         $reste = $res->prix - $totalPaye;
 
-        if ($reste <= 0) continue;
+        if ($reste <= 0) {
+            echo "💸 [PAYÉ] Résa #{$res->reservationId} | Montant total déjà payé<br>";
+            continue;
+        }
 
         // Infos client
         $client = $this->user_model->getUserInfo($res->clientId);
-        if (!$client || !$client->mobile) continue;
+        if (!$client || !$client->mobile) {
+            echo "📵 [SKIP] Résa #{$res->reservationId} | Client invalide ou pas de mobile<br>";
+            continue;
+        }
 
         $prenom = $client->prenom ?? 'Client';
         $mobile = "216" . $client->mobile;
@@ -204,22 +210,17 @@ public function autoRelanceCronTest()
 
             if ($diffSinceLastRelance < 1) {
                 $canRelance = false;
-                echo "⏸️  [SKIP] Résa #{$res->reservationId} | Dernière relance trop récente (il y a $diffSinceLastRelance jour(s))<br>";
+                echo "⏸️  [SKIP] Résa #{$res->reservationId} | Relance trop récente (il y a $diffSinceLastRelance jour(s))<br>";
                 continue;
             }
         }
 
+        // Debug infos
+        echo "🔍 Résa #{$res->reservationId} | Client : $prenom | Reste : $reste DT | Échéance : " . $dateLimite->format('Y-m-d') . " | Interval : $interval jour(s)<br>";
+
         // Choix du type de relance
         $relanceType = null;
         $message = "";
-
-                /*
-         * Mapping des relances :
-         * - J-45     : gentille
-         * - J-30 à J-10 tous les 3 jours : standard
-         * - J-7      : sévère
-         * - J+3      : ultime
-         */
 
         if ($isFuture && $interval === 45) {
             $relanceType = 'gentille';
@@ -227,18 +228,16 @@ public function autoRelanceCronTest()
         } elseif ($isFuture && $interval <= 30 && $interval > 10 && $interval % 3 === 0) {
             $relanceType = 'standard';
             $message = "🔄 Rappel : $prenom, il vous reste $reste DT à régler avant échéance.";
-        } elseif ($isFuture && $interval === 7 && $interval <= 3 ) {
+        } elseif ($isFuture && $interval === 7) {
             $relanceType = 'sévère';
             $message = "⚠️ Urgence $prenom ! Plus que 7 jours. Solde dû : $reste DT. Merci d'agir rapidement.";
-        } elseif (!$isFuture && $interval === 3) {
+        } elseif (!$isFuture && $interval <= -3 && $interval > -6) {
             $relanceType = 'ultime';
-            $message = "⏰ Dernier rappel $prenom ! Votre échéance est dépassée depuis 3 jours. Reste dû : $reste DT.";
+            $message = "⏰ Dernier rappel $prenom ! Votre échéance est passée depuis 3 jours. Reste dû : $reste DT.";
         }
 
-
-        // Affichage propre
         if ($relanceType && $canRelance) {
-            echo "✅ [RELANCE $relanceType] ----------------------------------<br>";
+            echo "<br>✅ [RELANCE $relanceType] ----------------------------------<br>";
             echo "🆔 Réservation  : #{$res->reservationId}<br>";
             echo "👤 Client       : $prenom<br>";
             echo "📱 Téléphone    : $mobile<br>";
@@ -247,12 +246,14 @@ public function autoRelanceCronTest()
             echo "✉️  Message     : $message<br>";
             echo "--------------------------------------------------------<br><br>";
 
-            // En production, décommenter :
+            // En prod, décommente pour enregistrer :
             // $this->relance_model->addRelance($res->reservationId, $this->session->user_id ?? 1);
+        } else {
+            echo "🚫 [NO RELANCE] Résa #{$res->reservationId} | Conditions non remplies<br><br>";
         }
     }
 
-    echo "=========== FIN DU TEST DE RELANCES AUTO ===========<br>";
+    echo "<br>=========== FIN DU TEST DE RELANCES AUTO ===========<br>";
 }
 
 
