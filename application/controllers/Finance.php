@@ -186,7 +186,7 @@ public function autoRelanceCronTest()
         $reste = $res->prix - $totalPaye;
 
         if ($reste <= 0) {
-            echo "💸 [PAYÉ] Résa #{$res->reservationId} | <p style-'color:green'>Montant total déjà payé</p><br>";
+            echo "<p style-'color:green'>💸 [PAYÉ] Résa #{$res->reservationId} | Montant total déjà payé</p><br>";
             continue;
         }
 
