@@ -19,6 +19,14 @@ class SMS extends BaseController
     {
         parent::__construct();
                 $this->load->model('sms_model');
+                        $this->load->model('user_model');
+        $this->load->model('client_model');
+        $this->load->model('reservation_model');
+        $this->load->model('salle_model');
+        $this->load->model('paiement_model');
+        $this->load->model('finance_model');
+        $this->load->model("Sms_model");
+        $this->load->model("relance_model");
        
         
     }
@@ -49,6 +57,114 @@ class SMS extends BaseController
              $this->global['pageTitle'] = 'SMS';
             $this->load->view("sms/list", $data );            
     }
+
+
+    public function autoRelanceCronTest()
+{
+    $reservations = $this->finance_model->ReservationCalender();
+    $now = new DateTime();
+
+    echo "<br>========== LANCEMENT DU TEST DE RELANCES AUTO ==========<br><br>";
+
+    foreach ($reservations as $res) {
+        // Vérification des données
+        if (!$res->clientId || !$res->prix || !$res->dateFin) continue;
+
+        $resDate = new DateTime($res->dateFin);
+        $dateLimite = $res->demandeEcheance
+            ? new DateTime($res->demandeEcheance)
+            : (clone $resDate)->modify('-30 days');
+
+        $interval = (int)$now->diff($resDate)->format('%r%a'); // Jours entre aujourd'hui et date limite
+        $isFuture = $now < $dateLimite;
+
+        // Paiements
+        $paiements = $this->paiement_model->paiementListingbyReservation($res->reservationId);
+        $totalPaye = array_sum(array_map(fn($p) => $p->valeur, $paiements));
+        $reste = $res->prix - $totalPaye;
+
+        if ($reste <= 0) {
+            echo "<p style-'color:green'>💸 [PAYÉ] Résa #{$res->reservationId} | Montant total déjà payé</p><br>";
+            continue;
+        }
+
+        // Infos client
+        $client = $this->user_model->getUserInfo($res->clientId);
+        if (!$client || !$client->mobile) {
+            echo "📵 [SKIP] Résa #{$res->reservationId} | Client invalide ou pas de mobile<br>";
+            continue;
+        }
+
+        $prenom = $client->prenom ?? 'Client';
+        $mobile = "216" . $client->mobile;
+        $mobile2 = "216" . $client->mobile2;
+        $salle = $res->salle;
+
+        // Vérifie si une relance a été envoyée récemment
+        $lastRelance = $this->relance_model->getLastRelance($res->reservationId);
+        $canRelance = true;
+
+  
+
+        // Debug infos
+        echo "🔍 Résa #{$res->reservationId} | Client : $prenom | Reste : $reste DT | Échéance : " . $dateLimite->format('Y-m-d') . " | Interval : $interval jour(s)<br>";
+
+        // Choix du type de relance
+        $relanceType = null;
+        $message = "";
+
+        if ($interval === 40 || $interval === 31) {
+            $relanceType = 'gentille';
+            $message = "📅 Bonjour $prenom ! Votre réservation approche. Merci de régler les $reste DT restants.";
+             $this->relance_model->addRelance($res->reservationId, 1 );
+             $this->sendSMS($mobile, $message , "relance") ;
+
+        } elseif (($interval === 29 || $interval === 25  || $interval === 20 ) ) {
+            $relanceType = 'standard';
+            $message = "🔄 Rappel : $prenom, il vous reste $reste DT à régler avant échéance.";
+             $this->relance_model->addRelance($res->reservationId, 1 );
+             $this->sendSMS($mobile, $message , "relance") ;
+            
+        } elseif (($interval === 15 || $interval === 12  ||  $interval === 7  ||  $interval === 5  ) ) {
+            $relanceType = 'sévère';
+            $message = "⚠️ Urgence $prenom ! Plus que $interval jours. Solde dû : $reste DT. Merci d'agir rapidement.";
+             $this->relance_model->addRelance($res->reservationId, 1 );
+             $this->sendSMS($mobile, $message , "relance") ;
+             $this->sendSMS($mobile2, $message , "relance") ;
+        } elseif ( ($interval === 3 ) ) {
+            $relanceType = 'ultime';
+            $message = "⚠️ Alerte $prenom ! Il ne vous reste que 1 jour pour régler les $reste DT restants. Merci de faire le nécessaire.";
+             $this->relance_model->addRelance($res->reservationId, 1 );
+             $this->sendSMS($mobile, $message , "relance") ;
+             $this->sendSMS($mobile2, $message , "relance") ;
+        } elseif ($interval === 0) {
+            $relanceType = 'dernier_jour';
+            $message = "⏰ Aujourd'hui c'est le dernier délai, $prenom n'a pas réglé les $reste DT pour la salle $salle.";
+             $this->sendSMS("21655465244", $message , "alert des relances") ;
+             $this->sendSMS("21654419959", $message , "alert des relances") ;
+        } 
+
+        if ($relanceType && $canRelance) {
+            echo "<br>✅ [RELANCE $relanceType] ----------------------------------<br>";
+            echo "🆔 Réservation  : #{$res->reservationId}<br>";
+            echo "👤 Client       : $prenom<br>";
+            echo "📱 Téléphone    : $mobile<br>";
+            echo "💰 Reste à payer: $reste DT<br>";
+            echo "📆 Échéance     : " . $dateLimite->format('Y-m-d') . " (J" . ($interval > 0 ? "-" : "+") . abs($interval) . ")<br>";
+            echo "✉️  Message     : $message<br>";
+            echo "--------------------------------------------------------<br><br>";
+
+            // En prod, décommente pour enregistrer :
+            // $this->relance_model->addRelance($res->reservationId, 1 );
+            // $this->sendSMS($mobile, $message , "relance") ;
+            // $this->sendSMS($mobile2, $message , "relance") ;
+        } else {
+            echo "🚫 [NO RELANCE] Résa #{$res->reservationId} | Conditions non remplies<br><br>";
+        }
+    }
+
+    echo "<br>=========== FIN DU TEST DE RELANCES AUTO ===========<br>";
+}
 
 
 
