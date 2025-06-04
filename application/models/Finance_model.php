@@ -83,7 +83,7 @@ class Finance_model extends CI_Model
         $this->db->where('BaseTbl.statut = 1 ');
         
         $this->db->where('BaseTbl.dateDebut >= NOW() ');
-        $this->db->where('BaseTbl.dateDebut <= NOW()+INTERVAL 30 DAY ');
+        $this->db->where('BaseTbl.dateDebut <= NOW()+INTERVAL 45 DAY ');
         
 
 

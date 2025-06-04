@@ -237,7 +237,7 @@ public function autoRelanceCronTest()
             $message = "⚠️ Alerte $prenom ! Il ne vous reste que $interval jours. les $reste DT restants. Merci de faire le nécessaire.";
         }  elseif ($isFuture && $interval == 0) {
             $relanceType = 'ultime';
-            $message = "⚠️ Alerte $prenom n'a pas payé les $reste DT restants por la salle $salle ";
+            $message = "⚠️ Alerte $prenom n'a pas payé les $reste DT restants pour la salle $salle ";
         }
 
         if ($relanceType && $canRelance) {
