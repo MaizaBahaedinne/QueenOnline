@@ -186,7 +186,7 @@ public function autoRelanceCronTest()
         $reste = $res->prix - $totalPaye;
 
         if ($reste <= 0) {
-            echo "💸 [PAYÉ] Résa #{$res->reservationId} | Montant total déjà payé<br>";
+            echo "💸 [PAYÉ] Résa #{$res->reservationId} | <p style-'color:green'>Montant total déjà payé</p><br>";
             continue;
         }
 
@@ -224,7 +224,7 @@ public function autoRelanceCronTest()
         $relanceType = null;
         $message = "";
 
-        if ($isFuture && $interval === 45) {
+        if ($isFuture && $interval === 40) {
             $relanceType = 'gentille';
             $message = "📅 Bonjour $prenom ! Votre réservation approche. Merci de régler les $reste DT restants.";
         } elseif ($isFuture && $interval <= 30 && $interval > 15 && $interval % 3 === 0) {
@@ -233,13 +233,13 @@ public function autoRelanceCronTest()
         } elseif ($isFuture && $interval <= 7 && $interval > 3 && $interval % 2 === 0) {
             $relanceType = 'sévère';
             $message = "⚠️ Urgence $prenom ! Plus que $interval jours. Solde dû : $reste DT. Merci d'agir rapidement.";
-        } elseif ($isFuture && $interval <= 3 && $interval > 0 && $interval % 1 === 0) {
+        } elseif ($isFuture && $interval === 3) {
             $relanceType = 'ultime';
-            $message = "⚠️ Alerte $prenom ! Il ne vous reste que $interval jours. les $reste DT restants. Merci de faire le nécessaire.";
-        }  elseif ($isFuture && $interval == 0) {
-            $relanceType = 'ultime';
-            $message = "⚠️ Alerte $prenom n'a pas payé les $reste DT restants pour la salle $salle ";
-        }
+            $message = "⚠️ Alerte $prenom ! Il ne vous reste que 3 jours pour régler les $reste DT restants. Merci de faire le nécessaire.";
+        } elseif ($isFuture && $interval === 0) {
+            $relanceType = 'dernier_jour';
+            $message = "⏰ Aujourd'hui c'est le dernier délai $prenom n'a pas réglé les $reste DT pour la salle $salle.";
+        } 
 
         if ($relanceType && $canRelance) {
             echo "<br>✅ [RELANCE $relanceType] ----------------------------------<br>";
