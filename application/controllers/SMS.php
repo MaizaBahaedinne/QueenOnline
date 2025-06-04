@@ -40,7 +40,7 @@ class SMS extends BaseController
                     foreach ($data["smsRecords"]  as $record) {
         
                           
-                         $code = $this->sendSMS1($record->destination , $record->text ) ;
+                       /*  $code = $this->sendSMS1($record->destination , $record->text ) ;
                          
                          if ($code == 200)
                          {
@@ -50,9 +50,9 @@ class SMS extends BaseController
                             );
                           } 
                              $this->sms_model->editSms($smsInfo,$record->smsId) ;
-                         } 
+                        */ } 
                          
-
+   
                   
              $this->global['pageTitle'] = 'SMS';
             $this->load->view("sms/list", $data );            
@@ -237,7 +237,7 @@ class SMS extends BaseController
 
                
 
-                return $this->http_response($Url_str) ;
+            //    return $this->http_response($Url_str) ;
             }
 
 
