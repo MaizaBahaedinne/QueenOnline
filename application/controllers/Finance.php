@@ -224,25 +224,25 @@ public function autoRelanceCronTest()
         $relanceType = null;
         $message = "";
 
-        if ($isFuture && $interval === 40 || $interval === 31) {
+        if ($interval === 40 || $interval === 31) {
             $relanceType = 'gentille';
             $message = "📅 Bonjour $prenom ! Votre réservation approche. Merci de régler les $reste DT restants.";
              $this->relance_model->addRelance($res->reservationId, 1 );
              $this->sendSMS($mobile, $message , "relance") ;
 
-        } elseif ($isFuture && ($interval === 29 || $interval === 25  || $interval === 20 ) ) {
+        } elseif (($interval === 29 || $interval === 25  || $interval === 20 ) ) {
             $relanceType = 'standard';
             $message = "🔄 Rappel : $prenom, il vous reste $reste DT à régler avant échéance.";
              $this->relance_model->addRelance($res->reservationId, 1 );
              $this->sendSMS($mobile, $message , "relance") ;
             
-        } elseif ($isFuture && ($interval === 15 || $interval === 12  ||  $interval === 7  ||  $interval === 5  ) ) {
+        } elseif (($interval === 15 || $interval === 12  ||  $interval === 7  ||  $interval === 5  ) ) {
             $relanceType = 'sévère';
             $message = "⚠️ Urgence $prenom ! Plus que $interval jours. Solde dû : $reste DT. Merci d'agir rapidement.";
              $this->relance_model->addRelance($res->reservationId, 1 );
              $this->sendSMS($mobile, $message , "relance") ;
              $this->sendSMS($mobile2, $message , "relance") ;
-        } elseif ($isFuture && ($interval === 3 ) ) {
+        } elseif ( ($interval === 3 ) ) {
             $relanceType = 'ultime';
             $message = "⚠️ Alerte $prenom ! Il ne vous reste que 1 jour pour régler les $reste DT restants. Merci de faire le nécessaire.";
              $this->relance_model->addRelance($res->reservationId, 1 );
