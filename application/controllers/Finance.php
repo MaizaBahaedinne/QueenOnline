@@ -206,16 +206,7 @@ public function autoRelanceCronTest()
         $lastRelance = $this->relance_model->getLastRelance($res->reservationId);
         $canRelance = true;
 
-        if ($lastRelance && isset($lastRelance->createdDTM)) {
-            $lastRelanceDTM = new DateTime($lastRelance->createdDTM);
-            $diffSinceLastRelance = $now->diff($lastRelanceDTM)->days;
-
-            if ($diffSinceLastRelance < 1) {
-                $canRelance = false;
-                echo "⏸️  [SKIP] Résa #{$res->reservationId} | Relance trop récente (il y a $diffSinceLastRelance jour(s))<br>";
-                continue;
-            }
-        }
+  
 
         // Debug infos
         echo "🔍 Résa #{$res->reservationId} | Client : $prenom | Reste : $reste DT | Échéance : " . $dateLimite->format('Y-m-d') . " | Interval : $interval jour(s)<br>";
