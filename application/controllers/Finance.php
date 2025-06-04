@@ -227,18 +227,32 @@ public function autoRelanceCronTest()
         if ($isFuture && $interval === 40 || $interval === 31) {
             $relanceType = 'gentille';
             $message = "📅 Bonjour $prenom ! Votre réservation approche. Merci de régler les $reste DT restants.";
-        } elseif ($isFuture && ($interval === 29 || $interval === 25  || $interval === 20 || $interval === 15) ) {
+             $this->relance_model->addRelance($res->reservationId, 1 );
+             $this->sendSMS($mobile, $message , "relance") ;
+
+        } elseif ($isFuture && ($interval === 29 || $interval === 25  || $interval === 20 ) ) {
             $relanceType = 'standard';
             $message = "🔄 Rappel : $prenom, il vous reste $reste DT à régler avant échéance.";
-        } elseif ($isFuture && ($interval === 10 || $interval === 7  || $interval === 5 ) ) {
+             $this->relance_model->addRelance($res->reservationId, 1 );
+             $this->sendSMS($mobile, $message , "relance") ;
+            
+        } elseif ($isFuture && ($interval === 15  $interval === 7   ) ) {
             $relanceType = 'sévère';
             $message = "⚠️ Urgence $prenom ! Plus que $interval jours. Solde dû : $reste DT. Merci d'agir rapidement.";
-        } elseif ($isFuture && ($interval === 3 || $interval === 1  ) ) {
+             $this->relance_model->addRelance($res->reservationId, 1 );
+             $this->sendSMS($mobile, $message , "relance") ;
+             $this->sendSMS($mobile2, $message , "relance") ;
+        } elseif ($isFuture && ($interval === 5 || $interval === 3 || $interval === 2  ) ) {
             $relanceType = 'ultime';
-            $message = "⚠️ Alerte $prenom ! Il ne vous reste que 3 jours pour régler les $reste DT restants. Merci de faire le nécessaire.";
+            $message = "⚠️ Alerte $prenom ! Il ne vous reste que $interval jours pour régler les $reste DT restants. Merci de faire le nécessaire.";
+             $this->relance_model->addRelance($res->reservationId, 1 );
+             $this->sendSMS($mobile, $message , "relance") ;
+             $this->sendSMS($mobile2, $message , "relance") ;
         } elseif ($isFuture && $interval === 0) {
             $relanceType = 'dernier_jour';
-            $message = "⏰ Aujourd'hui c'est le dernier délai $prenom n'a pas réglé les $reste DT pour la salle $salle.";
+            $message = "⏰ Aujourd'hui c'est le dernier délai, $prenom n'a pas réglé les $reste DT pour la salle $salle.";
+             $this->sendSMS("21655465244", $message , "alert des relances") ;
+             $this->sendSMS("21654419959", $message , "alert des relances") ;
         } 
 
         if ($relanceType && $canRelance) {
