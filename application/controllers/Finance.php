@@ -285,7 +285,7 @@ public function autoRelanceCronTest()
                               'statut'=>1 ,
 
                             );
-           // $this->Sms_model->addNewSms($smsInfo) ; 
+            $this->Sms_model->addNewSms($smsInfo) ; 
 
         }
 
