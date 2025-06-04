@@ -233,7 +233,7 @@ public function autoRelanceCronTest()
         } elseif ($isFuture && ($interval === 10 || $interval === 7  || $interval === 5 ) ) {
             $relanceType = 'sévère';
             $message = "⚠️ Urgence $prenom ! Plus que $interval jours. Solde dû : $reste DT. Merci d'agir rapidement.";
-        } elseif ($isFuture && ($interval === 3 || $interval === 1   ) {
+        } elseif ($isFuture && ($interval === 3 || $interval === 1  ) ) {
             $relanceType = 'ultime';
             $message = "⚠️ Alerte $prenom ! Il ne vous reste que 3 jours pour régler les $reste DT restants. Merci de faire le nécessaire.";
         } elseif ($isFuture && $interval === 0) {
