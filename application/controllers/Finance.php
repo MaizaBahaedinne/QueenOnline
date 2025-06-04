@@ -200,6 +200,7 @@ public function autoRelanceCronTest()
         $prenom = $client->prenom ?? 'Client';
         $mobile = "216" . $client->mobile;
         $mobile2 = "216" . $client->mobile2;
+        $salle = $res->salle;
 
         // Vérifie si une relance a été envoyée récemment
         $lastRelance = $this->relance_model->getLastRelance($res->reservationId);
