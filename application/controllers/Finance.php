@@ -224,10 +224,10 @@ public function autoRelanceCronTest()
         $relanceType = null;
         $message = "";
 
-        if ($isFuture && $interval === 40 || $interval === 32) {
+        if ($isFuture && $interval === 40 || $interval === 31) {
             $relanceType = 'gentille';
             $message = "📅 Bonjour $prenom ! Votre réservation approche. Merci de régler les $reste DT restants.";
-        } elseif ($isFuture && $interval <= 30 && $interval > 15 && $interval % 3 === 0) {
+        } elseif ($isFuture && $interval < 30 && $interval > 15 && $interval % 3 === 0) {
             $relanceType = 'standard';
             $message = "🔄 Rappel : $prenom, il vous reste $reste DT à régler avant échéance.";
         } elseif ($isFuture && $interval <= 7 && $interval > 3 && $interval % 2 === 0) {
