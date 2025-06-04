@@ -177,7 +177,7 @@ public function autoRelanceCronTest()
             ? new DateTime($res->demandeEcheance)
             : (clone $resDate)->modify('-30 days');
 
-        $interval = (int)$now->diff($dateLimite)->format('%r%a'); // Jours entre aujourd'hui et date limite
+        $interval = (int)$now->diff($resDate)->format('%r%a'); // Jours entre aujourd'hui et date limite
         $isFuture = $now < $dateLimite;
 
         // Paiements
