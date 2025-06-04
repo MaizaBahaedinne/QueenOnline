@@ -40,7 +40,7 @@ class SMS extends BaseController
                     foreach ($data["smsRecords"]  as $record) {
         
                           
-                         $code = $this->sendSMS($record->destination , $record->text ) ;
+                         $code = $this->sendSMS1($record->destination , $record->text ) ;
                          
                          if ($code == 200)
                          {
@@ -166,6 +166,20 @@ class SMS extends BaseController
     echo "<br>=========== FIN DU TEST DE RELANCES AUTO ===========<br>";
 }
 
+   public function sendSMS($myMobile, $mySms , $type)
+        {
+            $smsInfo = array('destination'=>$myMobile,
+                              'text' => $mySms,
+                              'type' => $type ,
+                              'createdBy'=>$this->vendorId,
+                              'createdDtm'=>date('Y-m-d H:i:s') ,
+                              'statut'=>1 ,
+
+                            );
+            $this->Sms_model->addNewSms($smsInfo) ; 
+
+        }
+
 
 
 
@@ -207,7 +221,7 @@ class SMS extends BaseController
             
         
                     
-          public function sendSMS($myMobile, $mySms)
+          public function sendSMS1($myMobile, $mySms)
             { 
                 $mySender = 'Queen park';
 
@@ -219,7 +233,7 @@ class SMS extends BaseController
                     'sender' => $mySender
                 ];
 
-                $Url_str = "https://app.tunisiesms.tn/Api/Api.aspx?" . http_build_query($params, '', '&', PHP_QUERY_RFC3986);
+          //      $Url_str = "https://app.tunisiesms.tn/Api/Api.aspx?" . http_build_query($params, '', '&', PHP_QUERY_RFC3986);
 
                
 
