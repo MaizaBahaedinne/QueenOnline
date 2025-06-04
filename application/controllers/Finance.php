@@ -227,13 +227,13 @@ public function autoRelanceCronTest()
         if ($isFuture && $interval === 40 || $interval === 31) {
             $relanceType = 'gentille';
             $message = "📅 Bonjour $prenom ! Votre réservation approche. Merci de régler les $reste DT restants.";
-        } elseif ($isFuture && $interval < 30 && $interval > 15 && $interval % 3 === 0) {
+        } elseif ($isFuture && ($interval === 29 || $interval === 25  || $interval === 20 || $interval === 15) ) {
             $relanceType = 'standard';
             $message = "🔄 Rappel : $prenom, il vous reste $reste DT à régler avant échéance.";
-        } elseif ($isFuture && $interval <= 7 && $interval > 3 && $interval % 2 === 0) {
+        } elseif ($isFuture && ($interval === 10 || $interval === 7  || $interval === 5 ) ) {
             $relanceType = 'sévère';
             $message = "⚠️ Urgence $prenom ! Plus que $interval jours. Solde dû : $reste DT. Merci d'agir rapidement.";
-        } elseif ($isFuture && $interval === 3) {
+        } elseif ($isFuture && ($interval === 3 || $interval === 1   ) {
             $relanceType = 'ultime';
             $message = "⚠️ Alerte $prenom ! Il ne vous reste que 3 jours pour régler les $reste DT restants. Merci de faire le nécessaire.";
         } elseif ($isFuture && $interval === 0) {
