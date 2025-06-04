@@ -40,7 +40,7 @@ class SMS extends BaseController
                     foreach ($data["smsRecords"]  as $record) {
         
                           
-                       /*  $code = $this->sendSMS1($record->destination , $record->text ) ;
+                         $code = $this->sendSMS1($record->destination , $record->text ) ;
                          
                          if ($code == 200)
                          {
@@ -50,7 +50,7 @@ class SMS extends BaseController
                             );
                           } 
                              $this->sms_model->editSms($smsInfo,$record->smsId) ;
-                        */ } 
+                         } 
                          
    
                   
@@ -233,11 +233,11 @@ class SMS extends BaseController
                     'sender' => $mySender
                 ];
 
-          //      $Url_str = "https://app.tunisiesms.tn/Api/Api.aspx?" . http_build_query($params, '', '&', PHP_QUERY_RFC3986);
+                $Url_str = "https://app.tunisiesms.tn/Api/Api.aspx?" . http_build_query($params, '', '&', PHP_QUERY_RFC3986);
 
                
 
-            //    return $this->http_response($Url_str) ;
+               return $this->http_response($Url_str) ;
             }
 
 
