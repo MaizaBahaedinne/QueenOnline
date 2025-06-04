@@ -236,7 +236,7 @@ public function autoRelanceCronTest()
              $this->relance_model->addRelance($res->reservationId, 1 );
              $this->sendSMS($mobile, $message , "relance") ;
             
-        } elseif ($isFuture && ($interval === 15  $interval === 7   ) ) {
+        } elseif ($isFuture && ($interval === 15 || $interval === 12  ||  $interval === 7   ) ) {
             $relanceType = 'sévère';
             $message = "⚠️ Urgence $prenom ! Plus que $interval jours. Solde dû : $reste DT. Merci d'agir rapidement.";
              $this->relance_model->addRelance($res->reservationId, 1 );
@@ -248,7 +248,7 @@ public function autoRelanceCronTest()
              $this->relance_model->addRelance($res->reservationId, 1 );
              $this->sendSMS($mobile, $message , "relance") ;
              $this->sendSMS($mobile2, $message , "relance") ;
-        } elseif ($isFuture && $interval === 0) {
+        } elseif ($interval === 0) {
             $relanceType = 'dernier_jour';
             $message = "⏰ Aujourd'hui c'est le dernier délai, $prenom n'a pas réglé les $reste DT pour la salle $salle.";
              $this->sendSMS("21655465244", $message , "alert des relances") ;
@@ -294,7 +294,7 @@ public function autoRelanceCronTest()
                               'statut'=>1 ,
 
                             );
-            $this->Sms_model->addNewSms($smsInfo) ; 
+           // $this->Sms_model->addNewSms($smsInfo) ; 
 
         }
 
