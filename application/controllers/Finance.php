@@ -199,6 +199,7 @@ public function autoRelanceCronTest()
 
         $prenom = $client->prenom ?? 'Client';
         $mobile = "216" . $client->mobile;
+        $mobile2 = "216" . $client->mobile2;
 
         // Vérifie si une relance a été envoyée récemment
         $lastRelance = $this->relance_model->getLastRelance($res->reservationId);
@@ -225,13 +226,13 @@ public function autoRelanceCronTest()
         if ($isFuture && $interval === 45) {
             $relanceType = 'gentille';
             $message = "📅 Bonjour $prenom ! Votre réservation approche. Merci de régler les $reste DT restants.";
-        } elseif ($isFuture && $interval <= 30 && $interval > 15 && $interval % 5 === 0) {
+        } elseif ($isFuture && $interval <= 30 && $interval > 15 && $interval % 3 === 0) {
             $relanceType = 'standard';
             $message = "🔄 Rappel : $prenom, il vous reste $reste DT à régler avant échéance.";
-        } elseif ($isFuture && $interval === 7) {
+        } elseif ($isFuture && $interval <= 7 && $interval > 3 && $interval % 2 === 0) {
             $relanceType = 'sévère';
             $message = "⚠️ Urgence $prenom ! Plus que 7 jours. Solde dû : $reste DT. Merci d'agir rapidement.";
-        } elseif ($isFuture && $interval === 3) {
+        } elseif ($isFuture && $interval <= 3 && $interval > 0 && $interval % 1 === 0) {
             $relanceType = 'ultime';
             $message = "⚠️ Alerte $prenom ! Il ne vous reste que 3 jours. les $reste DT restants. Merci de faire le nécessaire.";
         }
@@ -247,7 +248,9 @@ public function autoRelanceCronTest()
             echo "--------------------------------------------------------<br><br>";
 
             // En prod, décommente pour enregistrer :
-            // $this->relance_model->addRelance($res->reservationId, $this->session->user_id ?? 1);
+            // $this->relance_model->addRelance($res->reservationId, 1 );
+            // $this->sendSMS($mobile, $message , "relance") ;
+            // $this->sendSMS($mobile2, $message , "relance") ;
         } else {
             echo "🚫 [NO RELANCE] Résa #{$res->reservationId} | Conditions non remplies<br><br>";
         }
