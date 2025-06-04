@@ -236,15 +236,15 @@ public function autoRelanceCronTest()
              $this->relance_model->addRelance($res->reservationId, 1 );
              $this->sendSMS($mobile, $message , "relance") ;
             
-        } elseif ($isFuture && ($interval === 15 || $interval === 12  ||  $interval === 7   ) ) {
+        } elseif ($isFuture && ($interval === 15 || $interval === 12  ||  $interval === 7  ||  $interval === 5  ) ) {
             $relanceType = 'sévère';
             $message = "⚠️ Urgence $prenom ! Plus que $interval jours. Solde dû : $reste DT. Merci d'agir rapidement.";
              $this->relance_model->addRelance($res->reservationId, 1 );
              $this->sendSMS($mobile, $message , "relance") ;
              $this->sendSMS($mobile2, $message , "relance") ;
-        } elseif ($isFuture && ($interval === 5 || $interval === 3 || $interval === 2  ) ) {
+        } elseif ($isFuture && ($interval === 3 ) ) {
             $relanceType = 'ultime';
-            $message = "⚠️ Alerte $prenom ! Il ne vous reste que $interval jours pour régler les $reste DT restants. Merci de faire le nécessaire.";
+            $message = "⚠️ Alerte $prenom ! Il ne vous reste que 1 jour pour régler les $reste DT restants. Merci de faire le nécessaire.";
              $this->relance_model->addRelance($res->reservationId, 1 );
              $this->sendSMS($mobile, $message , "relance") ;
              $this->sendSMS($mobile2, $message , "relance") ;
