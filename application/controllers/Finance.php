@@ -224,7 +224,7 @@ public function autoRelanceCronTest()
         $relanceType = null;
         $message = "";
 
-        if ($isFuture && $interval === 40) {
+        if ($isFuture && $interval === 40 || $interval === 32) {
             $relanceType = 'gentille';
             $message = "📅 Bonjour $prenom ! Votre réservation approche. Merci de régler les $reste DT restants.";
         } elseif ($isFuture && $interval <= 30 && $interval > 15 && $interval % 3 === 0) {
