@@ -226,7 +226,7 @@ class Photographe extends BaseController
                                 );
         }
         $HaythemMobile = "54419959";
-        $this->sendSMS("216" . $HaythemMobile, "(Photographe) paiement de ".$avance." par ".$this->name." pour ".$resId , "Notif admin Troupe"); 
+        $this->sendSMS("216" . $HaythemMobile, "(Photographe) paiement de ".$avance." par ".$this->name." pour ".$resId , "Notif admin photographe"); 
 
         $this->photographe_model->editReservation($reservationInfo, $resId);    
         redirect('Photographe/view/'.$resId) ; 

@@ -304,7 +304,7 @@
                   <?php } if ($totalPaiement->valeur ==  0 ) {  ?>
                      <form style="display: none; border: 2px " 
                         id="addPayementForm" 
-                        action="<?php echo base_url() ?>Voiture/addPaiement/<?php echo $projectInfo->reservationPId ?>" 
+                        action="<?php echo base_url() ?>Photographe/addPaiement/<?php echo $projectInfo->reservationPId ?>" 
                         method="post"  >
                  
                      <hr>
