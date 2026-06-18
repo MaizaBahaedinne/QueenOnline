@@ -120,126 +120,6 @@
                                     <i class="nav-link-icon lnr-inbox"></i>
                                     <span>Retour de la réservation</span>
                                 </a>
-                                <div class="modal fade" id="modalRetourReservation" tabindex="-1" role="dialog">
-                                    <div class="modal-dialog" role="document">
-                                        <form id="formRetourReservation">
-                                            <div class="modal-content">
-                                                
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title">Retour de la réservation</h5>
-                                                    <button type="button" class="close" data-dismiss="modal">
-                                                        <span>&times;</span>
-                                                    </button>
-                                                </div>
-
-                                                <div class="modal-body">
-
-                                                    <div class="form-group">
-                                                        <label>Date</label>
-                                                        <input type="date" class="form-control" id="date_retour" name="date_retour" required>
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <label>Heure début</label>
-                                                        <input type="time" class="form-control" id="heure_debut" name="heure_debut" required>
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <label>Heure fin</label>
-                                                        <input type="time" class="form-control" id="heure_fin" name="heure_fin" required>
-                                                    </div>
-
-                                                    <div id="msgErreur" class="alert alert-danger d-none"></div>
-
-                                                </div>
-
-                                                <div class="modal-footer">
-                                                    <button type="submit" class="btn btn-primary">
-                                                        Valider
-                                                    </button>
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                                                        Annuler
-                                                    </button>
-                                                </div>
-
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                                <script>
-                                    document.addEventListener('DOMContentLoaded', function () {
-
-                                        // Date par défaut = demain
-                                        let tomorrow = new Date();
-                                        tomorrow.setDate(tomorrow.getDate() + 1);
-
-                                        let yyyy = tomorrow.getFullYear();
-                                        let mm = String(tomorrow.getMonth() + 1).padStart(2, '0');
-                                        let dd = String(tomorrow.getDate()).padStart(2, '0');
-
-                                        let defaultDate = `${yyyy}-${mm}-${dd}`;
-
-                                        document.getElementById('date_retour').value = defaultDate;
-                                        document.getElementById('date_retour').min = defaultDate;
-
-                                        // Heure début = heure actuelle + 1h
-                                        let now = new Date();
-                                        now.setHours(now.getHours() + 1);
-
-                                        let startHour = String(now.getHours()).padStart(2, '0');
-                                        let startMin = String(now.getMinutes()).padStart(2, '0');
-
-                                        let heureDebut = `${startHour}:${startMin}`;
-
-                                        // Heure fin = heure début + 1h
-                                        let end = new Date(now.getTime() + 60 * 60 * 1000);
-
-                                        let endHour = String(end.getHours()).padStart(2, '0');
-                                        let endMin = String(end.getMinutes()).padStart(2, '0');
-
-                                        let heureFin = `${endHour}:${endMin}`;
-
-                                        document.getElementById('heure_debut').value = heureDebut;
-                                        document.getElementById('heure_fin').value = heureFin;
-
-                                        // Validation
-                                        document.getElementById('formRetourReservation').addEventListener('submit', function (e) {
-
-                                            let dateRetour = document.getElementById('date_retour').value;
-                                            let heureDebut = document.getElementById('heure_debut').value;
-                                            let heureFin = document.getElementById('heure_fin').value;
-
-                                            let erreur = document.getElementById('msgErreur');
-                                            erreur.classList.add('d-none');
-
-                                            let today = new Date();
-                                            today.setHours(0,0,0,0);
-
-                                            let selectedDate = new Date(dateRetour);
-
-                                            if (selectedDate <= today) {
-                                                e.preventDefault();
-                                                erreur.innerHTML = "La date doit être supérieure à aujourd'hui.";
-                                                erreur.classList.remove('d-none');
-                                                return;
-                                            }
-
-                                            let debut = new Date('1970-01-01T' + heureDebut);
-                                            let fin = new Date('1970-01-01T' + heureFin);
-
-                                            let diff = (fin - debut) / (1000 * 60 * 60);
-
-                                            if (diff < 1) {
-                                                e.preventDefault();
-                                                erreur.innerHTML = "L'heure de fin doit être au minimum 1 heure après l'heure de début.";
-                                                erreur.classList.remove('d-none');
-                                                return;
-                                            }
-                                        });
-
-                                    });
-                                    </script>
-
                             </li>
                             <?php } ?>
                             <?php if ($projectInfo->statut != 3 ) { ?>
@@ -1254,4 +1134,125 @@
         </script>
         <?php } ?> 
     </div>
+        <div class="modal fade" id="modalRetourReservation" tabindex="-1" role="dialog">
+                                    <div class="modal-dialog" role="document">
+                                        <form id="formRetourReservation">
+                                            <div class="modal-content">
+                                                
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">Retour de la réservation</h5>
+                                                    <button type="button" class="close" data-dismiss="modal">
+                                                        <span>&times;</span>
+                                                    </button>
+                                                </div>
+
+                                                <div class="modal-body">
+
+                                                    <div class="form-group">
+                                                        <label>Date</label>
+                                                        <input type="date" class="form-control" id="date_retour" name="date_retour" required>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label>Heure début</label>
+                                                        <input type="time" class="form-control" id="heure_debut" name="heure_debut" required>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label>Heure fin</label>
+                                                        <input type="time" class="form-control" id="heure_fin" name="heure_fin" required>
+                                                    </div>
+
+                                                    <div id="msgErreur" class="alert alert-danger d-none"></div>
+
+                                                </div>
+
+                                                <div class="modal-footer">
+                                                    <button type="submit" class="btn btn-primary">
+                                                        Valider
+                                                    </button>
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                                        Annuler
+                                                    </button>
+                                                </div>
+
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <script>
+                                    document.addEventListener('DOMContentLoaded', function () {
+
+                                        // Date par défaut = demain
+                                        let tomorrow = new Date();
+                                        tomorrow.setDate(tomorrow.getDate() + 1);
+
+                                        let yyyy = tomorrow.getFullYear();
+                                        let mm = String(tomorrow.getMonth() + 1).padStart(2, '0');
+                                        let dd = String(tomorrow.getDate()).padStart(2, '0');
+
+                                        let defaultDate = `${yyyy}-${mm}-${dd}`;
+
+                                        document.getElementById('date_retour').value = defaultDate;
+                                        document.getElementById('date_retour').min = defaultDate;
+
+                                        // Heure début = heure actuelle + 1h
+                                        let now = new Date();
+                                        now.setHours(now.getHours() + 1);
+
+                                        let startHour = String(now.getHours()).padStart(2, '0');
+                                        let startMin = String(now.getMinutes()).padStart(2, '0');
+
+                                        let heureDebut = `${startHour}:${startMin}`;
+
+                                        // Heure fin = heure début + 1h
+                                        let end = new Date(now.getTime() + 60 * 60 * 1000);
+
+                                        let endHour = String(end.getHours()).padStart(2, '0');
+                                        let endMin = String(end.getMinutes()).padStart(2, '0');
+
+                                        let heureFin = `${endHour}:${endMin}`;
+
+                                        document.getElementById('heure_debut').value = heureDebut;
+                                        document.getElementById('heure_fin').value = heureFin;
+
+                                        // Validation
+                                        document.getElementById('formRetourReservation').addEventListener('submit', function (e) {
+
+                                            let dateRetour = document.getElementById('date_retour').value;
+                                            let heureDebut = document.getElementById('heure_debut').value;
+                                            let heureFin = document.getElementById('heure_fin').value;
+
+                                            let erreur = document.getElementById('msgErreur');
+                                            erreur.classList.add('d-none');
+
+                                            let today = new Date();
+                                            today.setHours(0,0,0,0);
+
+                                            let selectedDate = new Date(dateRetour);
+
+                                            if (selectedDate <= today) {
+                                                e.preventDefault();
+                                                erreur.innerHTML = "La date doit être supérieure à aujourd'hui.";
+                                                erreur.classList.remove('d-none');
+                                                return;
+                                            }
+
+                                            let debut = new Date('1970-01-01T' + heureDebut);
+                                            let fin = new Date('1970-01-01T' + heureFin);
+
+                                            let diff = (fin - debut) / (1000 * 60 * 60);
+
+                                            if (diff < 1) {
+                                                e.preventDefault();
+                                                erreur.innerHTML = "L'heure de fin doit être au minimum 1 heure après l'heure de début.";
+                                                erreur.classList.remove('d-none');
+                                                return;
+                                            }
+                                        });
+
+                                    });
+                                    </script>
+
+                            
 </div>
