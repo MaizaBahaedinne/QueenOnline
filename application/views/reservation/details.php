@@ -1136,7 +1136,7 @@
     </div>
         <div class="modal fade" id="modalRetourReservation" tabindex="-1" role="dialog">
                                     <div class="modal-dialog" role="document">
-                                        <form id="formRetourReservation">
+                                        <form id="formRetourReservation"  >
                                             <div class="modal-content">
                                                 
                                                 <div class="modal-header">
@@ -1150,17 +1150,17 @@
 
                                                     <div class="form-group">
                                                         <label>Date</label>
-                                                        <input type="date" class="form-control" id="date_retour" name="date_retour" required>
+                                                        <input type="date" class="form-control" id="date_retour" name="dateFin" value="<?php echo  $projectInfo->dateFin; ?>" required>
                                                     </div>
 
                                                     <div class="form-group">
                                                         <label>Heure début</label>
-                                                        <input type="time" class="form-control" id="heure_debut" name="heure_debut" required>
+                                                        <input type="time" class="form-control" id="heure_debut" name="heureDebut" value="<?php echo  $projectInfo->heureDebut; ?>" required>
                                                     </div>
 
                                                     <div class="form-group">
                                                         <label>Heure fin</label>
-                                                        <input type="time" class="form-control" id="heure_fin" name="heure_fin" required>
+                                                        <input type="time" class="form-control" id="heure_fin" name="heureFin"  value="<?php echo  $projectInfo->heureFin; ?>" required>
                                                     </div>
 
                                                     <div id="msgErreur" class="alert alert-danger d-none"></div>
