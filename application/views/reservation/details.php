@@ -1191,27 +1191,9 @@
                                         let mm = String(tomorrow.getMonth() + 1).padStart(2, '0');
                                         let dd = String(tomorrow.getDate()).padStart(2, '0');
 
-                                        let defaultDate = `${yyyy}-${mm}-${dd}`;
+                                        
 
-                                        document.getElementById('date_retour').value = defaultDate;
-                                        document.getElementById('date_retour').min = defaultDate;
 
-                                        // Heure début = heure actuelle + 1h
-                                        let now = new Date();
-                                        now.setHours(now.getHours() + 1);
-
-                                        let startHour = String(now.getHours()).padStart(2, '0');
-                                        let startMin = String(now.getMinutes()).padStart(2, '0');
-
-                                        let heureDebut = `${startHour}:${startMin}`;
-
-                                        // Heure fin = heure début + 1h
-                                        let end = new Date(now.getTime() + 60 * 60 * 1000);
-
-                                        let endHour = String(end.getHours()).padStart(2, '0');
-                                        let endMin = String(end.getMinutes()).padStart(2, '0');
-
-                                        let heureFin = `${endHour}:${endMin}`;
 
                                         document.getElementById('heure_debut').value = heureDebut;
                                         document.getElementById('heure_fin').value = heureFin;
